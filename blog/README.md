@@ -2,11 +2,19 @@
 home: true
 layout: Blog
 icon: home
-title: 博客主页
-heroImage: /logo.svg
-heroText: 你博客的名称
-heroFullScreen: true
-tagline: 你可以在这里放置你的口号与标语
+title: 主页
+bgImage: http://www.deadly-exception.icu:8999/img/arknights_bk.jpg
+bgImageStyle: {
+  "height": "400px"
+}
+heroImage: http://www.deadly-exception.icu:8999/img/header.png
+heroText: 五十岚的博客
+heroFullScreen: false
+heroImageStyle: {
+  "margin-top": "0px",
+  "margin-bottom": "76px",
+}
+tagline: Web常用知识、踩坑记录、软件推荐等
 projects:
   - icon: project
     name: 项目名称
@@ -38,11 +46,5 @@ projects:
     desc: 自定义详细介绍
     link: https://你的自定义链接
 
-footer: 自定义你的页脚文字
+footer: MIT Licensed | Copyright © 2021-present Igarashi
 ---
-
-这是一个博客主页的案例。
-
-要使用此布局，你应该在页面前端设置 `layout: Blog` 和 `home: true`。
-
-相关配置文档请见 [博客主页](https://vuepress-theme-hope.github.io/v2/zh/guide/blog/home/)。

@@ -1,18 +1,18 @@
-import { hopeTheme } from "vuepress-theme-hope";
-import navbar from "./navbar.js";
-import sidebar from "./sidebar.js";
+import { hopeTheme } from "vuepress-theme-hope"
+import navbar from "./navbar.js"
+import sidebar from "./sidebar.js"
 
 export default hopeTheme({
   hostname: "https://vuepress-theme-hope-v2-demo.mrhope.site",
 
   author: {
-    name: "Mr.Hope",
+    name: "Igarashi",
     url: "https://mrhope.site",
   },
 
   iconAssets: "iconfont",
 
-  logo: "/logo.svg",
+  logo: "http://www.deadly-exception.icu:8999/img/igarashi.jpg",
 
   repo: "vuepress-theme-hope/vuepress-theme-hope",
 
@@ -31,39 +31,45 @@ export default hopeTheme({
   pageInfo: ["Author", "Original", "Date", "Category", "Tag", "ReadingTime"],
 
   blog: {
-    description: "一个前端开发者",
-    intro: "/intro.html",
+    name: "五十岚",
+    avatar: "http://www.deadly-exception.icu:8999/img/igarashi.jpg",
+    roundAvatar: true,
+    description: "一只Python混子",
+    intro: "/home.html",
     medias: {
-      Baidu: "https://example.com",
-      Bitbucket: "https://example.com",
-      Dingding: "https://example.com",
-      Discord: "https://example.com",
-      Dribbble: "https://example.com",
-      Email: "https://example.com",
-      Evernote: "https://example.com",
-      Facebook: "https://example.com",
-      Flipboard: "https://example.com",
-      Gitee: "https://example.com",
-      GitHub: "https://example.com",
-      Gitlab: "https://example.com",
-      Gmail: "https://example.com",
-      Instagram: "https://example.com",
-      Lines: "https://example.com",
-      Linkedin: "https://example.com",
-      Pinterest: "https://example.com",
-      Pocket: "https://example.com",
-      QQ: "https://example.com",
-      Qzone: "https://example.com",
-      Reddit: "https://example.com",
-      Rss: "https://example.com",
-      Steam: "https://example.com",
-      Twitter: "https://example.com",
-      Wechat: "https://example.com",
-      Weibo: "https://example.com",
-      Whatsapp: "https://example.com",
-      Youtube: "https://example.com",
-      Zhihu: "https://example.com",
+      // Baidu: "https://example.com",
+      // Bitbucket: "https://example.com",
+      // Dingding: "https://example.com",
+      // Discord: "https://example.com",
+      // Dribbble: "https://example.com",
+      // Email: "https://example.com",
+      // Evernote: "https://example.com",
+      // Facebook: "https://example.com",
+      // Flipboard: "https://example.com",
+      GitHub: "https://github.com/Igarashi-Chiduru",
+      Gitee: "https://gitee.com/igarashi",
+      // Gitlab: "https://example.com",
+      // Gmail: "https://example.com",
+      // Instagram: "https://example.com",
+      // Lines: "https://example.com",
+      // Linkedin: "https://example.com",
+      // Pinterest: "https://example.com",
+      // Pocket: "https://example.com",
+      // QQ: "https://example.com",
+      // Qzone: "https://example.com",
+      // Reddit: "https://example.com",
+      // Rss: "https://example.com",
+      // Steam: "https://example.com",
+      // Twitter: "https://example.com",
+      // Wechat: "https://example.com",
+      // Weibo: "https://example.com",
+      // Whatsapp: "https://example.com",
+      // Youtube: "https://example.com",
+      // Zhihu: "https://example.com",
     },
+    //默认每个分页的文章数
+    //https://vuepress-theme-hope.gitee.io/v2/zh/guide/blog/intro.html#%E5%A4%9A%E8%AF%AD%E8%A8%80%E6%94%AF%E6%8C%81
+    articlePerPage: 10,
   },
 
   encrypt: {
@@ -104,26 +110,55 @@ export default hopeTheme({
     },
 
     mdEnhance: {
+      // 自定义对齐
+      // https://vuepress-theme-hope.gitee.io/v2/zh/guide/markdown/align.html
       align: true,
+      
+      // Markdown 元素添加属性
+      // https://vuepress-theme-hope.gitee.io/v2/zh/guide/markdown/attrs.html
       attrs: true,
+
       chart: true,
       codetabs: true,
+
+      // 添加提示、注释、信息、注意、警告和详情自定义容器的支持
+      // https://vuepress-theme-hope.gitee.io/v2/zh/guide/markdown/container.html
       container: true,
+
       demo: true,
       echarts: true,
       flowchart: true,
       gfm: true,
+
+      // 启用图片标记
+      // https://vuepress-theme-hope.gitee.io/v2/zh/guide/markdown/image.html#%E9%85%8D%E7%BD%AE
+      imageMark: true,
+      // 启用图片大小
+      // https://vuepress-theme-hope.gitee.io/v2/zh/guide/markdown/image.html#%E9%85%8D%E7%BD%AE
       imageSize: true,
+
+      // 支持导入其他文件
+      // https://vuepress-theme-hope.gitee.io/v2/zh/guide/markdown/include.html#%E9%85%8D%E7%BD%AE
       include: true,
       lazyLoad: true,
+      
+      // 支持标记
+      // https://vuepress-theme-hope.gitee.io/v2/zh/guide/markdown/mark.html
       mark: true,
+
       mermaid: true,
       playground: {
         presets: ["ts", "vue"],
       },
+
+      // 支持幻灯片
+      // https://vuepress-theme-hope.gitee.io/v2/zh/guide/markdown/presentation.html
       presentation: {
         plugins: ["highlight", "math", "search", "notes", "zoom"],
       },
+
+      // 样式化
+      // https://vuepress-theme-hope.gitee.io/v2/zh/guide/markdown/stylize.html
       stylize: [
         {
           matcher: "Recommanded",
@@ -133,16 +168,61 @@ export default hopeTheme({
                 tag: "Badge",
                 attrs: { type: "tip" },
                 content: "Recommanded",
-              };
+              }
           },
         },
       ],
-      sub: true,
-      sup: true,
+
+      // 启用下角标
+      // https://vuepress-theme-hope.gitee.io/v2/zh/guide/markdown/sup-sub.html#%E9%85%8D%E7%BD%AE
+      sub: false,
+      // 启用上角标
+      // https://vuepress-theme-hope.gitee.io/v2/zh/guide/markdown/sup-sub.html#%E9%85%8D%E7%BD%AE
+      sup: false,
+
+      // 添加选项卡支持
+      // https://vuepress-theme-hope.gitee.io/v2/zh/guide/markdown/tabs.html
       tabs: true,
       tex: true,
       vpre: true,
       vuePlayground: true,
     },
+    // 组件
+    // https://vuepress-theme-hope.gitee.io/v2/zh/guide/markdown/components.html
+    components: ["Badge"],
+
+    // 版权信息
+    // https://vuepress-theme-hope.gitee.io/v2/zh/guide/feature/copyright.html
+    // copyright: {
+    //   global: true,
+    //   hostname: "https://wemchao.ren",
+    //   author: "xkrivzooh(https://wenchao.ren)",
+    //   triggerWords: 20,
+    // },
   },
-});
+
+  //主题色选择器 https://vuepress-theme-hope.gitee.io/v2/zh/guide/interface/theme-color.html#%E4%B8%BB%E9%A2%98%E8%89%B2%E9%80%89%E6%8B%A9%E5%99%A8
+  themeColor: {
+    blue: "#2196f3",
+    red: "#f26d6d",
+    green: "#3eaf7c",
+    orange: "#fb9b5f",
+  },
+
+  //全屏按钮：https://vuepress-theme-hope.gitee.io/v2/zh/guide/interface/others.html#%E5%85%A8%E5%B1%8F%E6%8C%89%E9%92%AE
+  fullscreen: true,
+
+  //深色模式 https://vuepress-theme-hope.gitee.io/v2/zh/guide/interface/darkmode.html
+  darkmode: "switch",
+
+  //纯净模式 https://vuepress-theme-hope.gitee.io/v2/zh/guide/interface/pure.html
+  pure: false,
+
+  // 全局禁用是否展示编辑此页链接
+  // https://vuepress-theme-hope.gitee.io/v2/zh/guide/feature/meta.html#%E5%9F%BA%E4%BA%8E-git-%E7%9A%84%E4%BF%A1%E6%81%AF
+  editLink: false,
+
+  //全局禁用是否显示页面贡献者
+  // https://vuepress-theme-hope.gitee.io/v2/zh/guide/feature/meta.html#%E5%9F%BA%E4%BA%8E-git-%E7%9A%84%E4%BF%A1%E6%81%AF
+  contributors: false,
+})
