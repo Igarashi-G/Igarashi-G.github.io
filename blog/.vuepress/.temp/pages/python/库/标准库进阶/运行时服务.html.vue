@@ -1,0 +1,116 @@
+<template><div><h1 id="运行时服务" tabindex="-1"><a class="header-anchor" href="#运行时服务" aria-hidden="true">#</a> 运行时服务</h1>
+<h2 id="abc" tabindex="-1"><a class="header-anchor" href="#abc" aria-hidden="true">#</a> abc</h2>
+<Alert type="info">抽象基类</Alert><h3 id="" tabindex="-1"><a class="header-anchor" href="#" aria-hidden="true">#</a> </h3>
+<h2 id="atexit" tabindex="-1"><a class="header-anchor" href="#atexit" aria-hidden="true">#</a> atexit：</h2>
+<Alert type="info">退出处理器, **在程序即将结束之前执行** 的代码</Alert><pre><code>使用register函数用于注册程序退出时的回调函数，然后在回调函数中做一些资源清理的操作
+
+内部是通过sys.exitfunc来实现的，它先把注册的回调函数放到一个列表中，当程序退出时，按先进后出的顺序调用注册的回调。
+如果回调函数在执行过程中抛出了异常，atexit会打印异常的文字信息，并继续执行下一下回调，直到所有的回调都执行完毕，
+它会重新抛出最后接收到的异常。
+
+注意：
+    1，如果程序是非正常crash，或通过os._exit()退出，注册的回调函数将不会被调用。
+
+    2，也可以通过sys.exitfunc来注册回调，但通过它只能注册一个回调，而且还不支持参数。
+
+    3，建议使用atexit来注册回调函数。
+
+atexit.register(func, *args, **kargs)       注册函数
+
+atexit.unregister(func)                     取消注册函数
+</code></pre>
+<h2 id="contextlib" tabindex="-1"><a class="header-anchor" href="#contextlib" aria-hidden="true">#</a> contextlib</h2>
+<Alert type="info">为 `with` 语句上下文提供的工具</Alert><pre><code>1.认识：
+    当创建文件时可以利用with open() as f: 的方法来创建，好处就是不用try..finally..手动f.close()。但注意并不是只有open()才能使用
+    with，任何对象，只要正确的实现了上下文管理，就可用with
+
+2.如何实现：
+    上下文管理是通过__enter__和__exit__两个方法实现的
+    class Query(object):
+        def __init__(self, name):
+            self.name = name
+
+        def __enter__(self):    #自动的初始化执行代码
+            print('Begin')
+            return self
+
+        def __exit__(self, exc_type, exc_value, traceback):     #with语句结束时自动执行代码
+            if exc_type:
+                print('Error')
+            else:
+                print('End')
+
+        def query(self):        #方法前后需要添加自动执行代码的方法
+            print('Query info about %s...' % self.name)
+
+    with Query('Bob') as q:
+        q.query()
+
+3.@contextmanager装饰器
+    编写__enter__和__exit__仍然很繁琐，因此Python的标准库contextlib提供了更简单的写法，利用装饰器
+    from contextlib import contextmanager
+
+    class Query(object):
+
+        def __init__(self, name):
+            self.name = name
+
+        def query(self):
+            print('Query info about %s...' % self.name)
+
+    @contextmanager
+    def create_query(name):     #再构造一个函数添加@contextmanager装饰器 再执行方法前添加要执行的代码
+        print('Begin')          #执行前的必要代码
+        q = Query(name)
+        yield q                 #通过yield接收with ...as ..并自动执行之后要执行的代码
+        print('End')            #执行后的必要操作
+
+    with create_query(&quot;bob&quot;) as q:  #这个q接收了yield的返回值，也就是刚刚初始化好的Query(&quot;bob&quot;)类
+        q.query()                   #执行类内方法
+
+    这个decorator接受一个generator
+
+    很多时候，我们希望在某段代码执行前后自动执行特定代码，也可以用@contextmanager实现。
+    @contextmanager
+    def tag(name):
+        print(&quot;&lt;%s&gt;&quot; % name)
+        yield
+        print(&quot;&lt;/%s&gt;&quot; % name)
+
+    with tag(&quot;h1&quot;):
+        print(&quot;hello&quot;)
+        print(&quot;world&quot;)
+
+    代码的执行顺序是：
+        1.with语句首先执行yield之前的语句，因此打印出&lt;h1&gt;；
+        2.yield调用会执行with语句内部的所有语句，因此打印出hello和world；
+        3.最后执行yield之后的语句，打印出&lt;/h1&gt;。
+
+    因此，@contextmanager让我们通过编写generator来简化上下文管理。
+
+4.@closing装饰器：（以后再补）
+    如果一个对象没有实现上下文，我们就不能把它用于with语句。这个时候，可以用closing()来把该对象变为上下文对象。例如，用with语句使用urlopen()：
+
+    from contextlib import closing
+    from urllib.request import urlopen
+
+    with closing(urlopen('https://www.python.org')) as page:
+        for line in page:
+            print(line)
+
+    closing也是一个经过@contextmanager装饰的generator，这个generator编写起来其实非常简单：
+
+    @contextmanager
+    def closing(thing):
+        try:
+            yield thing
+        finally:
+            thing.close()
+    它的作用就是把任意对象变为上下文对象，并支持with语句。
+
+    @contextlib还有一些其他decorator，便于我们编写更简洁的代码。
+</code></pre>
+<h2 id="traceback" tabindex="-1"><a class="header-anchor" href="#traceback" aria-hidden="true">#</a> traceback</h2>
+<Alert type="info">打印或检索堆栈回溯，即**打印异常**</Alert></div></template>
+
+

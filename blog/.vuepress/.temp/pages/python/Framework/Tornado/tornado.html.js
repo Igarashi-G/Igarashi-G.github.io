@@ -1,0 +1,14 @@
+export const data = JSON.parse("{\"key\":\"v-7daa6b09\",\"path\":\"/python/Framework/Tornado/tornado.html\",\"title\":\"Tornado基础\",\"lang\":\"zh-CN\",\"frontmatter\":{\"title\":\"Tornado基础\",\"order\":1,\"group\":{\"title\":\"Tornado框架\",\"order\":23},\"summary\":\"Tornado 框架 Tornado | Book 1.简介 1.1 各类框架的比较 Django 和 Flask：传统老牌框架，一个大而全，一个小而精，但并发低 Tornado 性能高，在底层 IO 处理机制上和 Django 有很大区别：\\rDjango、Flask则是传统模型，即：IO 阻塞 模型; \\r好处是代码容易理解，简单; \\rtronado、gev\",\"head\":[[\"meta\",{\"property\":\"og:url\",\"content\":\"https://vuepress-theme-hope-v2-demo.mrhope.site/igarashi-blog/python/Framework/Tornado/tornado.html\"}],[\"meta\",{\"property\":\"og:site_name\",\"content\":\"是五十岚吖\"}],[\"meta\",{\"property\":\"og:title\",\"content\":\"Tornado基础\"}],[\"meta\",{\"property\":\"og:type\",\"content\":\"article\"}],[\"meta\",{\"property\":\"og:locale\",\"content\":\"zh-CN\"}]]},\"excerpt\":\"\",\"headers\":[{\"level\":3,\"title\":\"1.简介\",\"slug\":\"_1-简介\",\"link\":\"#_1-简介\",\"children\":[]},{\"level\":3,\"title\":\"2. 使用\",\"slug\":\"_2-使用\",\"link\":\"#_2-使用\",\"children\":[]},{\"level\":3,\"title\":\"2.2 示例\",\"slug\":\"_2-2-示例\",\"link\":\"#_2-2-示例\",\"children\":[]}],\"readingTime\":{\"minutes\":1.62,\"words\":485},\"filePathRelative\":\"python/Framework/Tornado/tornado.md\"}")
+
+if (import.meta.webpackHot) {
+  import.meta.webpackHot.accept()
+  if (__VUE_HMR_RUNTIME__.updatePageData) {
+    __VUE_HMR_RUNTIME__.updatePageData(data)
+  }
+}
+
+if (import.meta.hot) {
+  import.meta.hot.accept(({ data }) => {
+    __VUE_HMR_RUNTIME__.updatePageData(data)
+  })
+}

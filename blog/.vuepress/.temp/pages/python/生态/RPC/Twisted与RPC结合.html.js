@@ -1,0 +1,14 @@
+export const data = JSON.parse("{\"key\":\"v-fd5d7046\",\"path\":\"/python/%E7%94%9F%E6%80%81/RPC/Twisted%E4%B8%8ERPC%E7%BB%93%E5%90%88.html\",\"title\":\"Twisted\",\"lang\":\"zh-CN\",\"frontmatter\":{\"title\":\"Twisted\",\"order\":2,\"summary\":\"Twisted 框架 Twisted 是用 Python 实现的基于事件驱动的网络引擎框架，是 python 中一个强大的异步 IO 库。 一、安装： pip3 install twisted # window 下会安装失败 win 下转到该网站下载： https://www.lfd.uci.edu/~gohlke/pythonlibs/#twisted T\",\"head\":[[\"meta\",{\"property\":\"og:url\",\"content\":\"https://vuepress-theme-hope-v2-demo.mrhope.site/igarashi-blog/python/%E7%94%9F%E6%80%81/RPC/Twisted%E4%B8%8ERPC%E7%BB%93%E5%90%88.html\"}],[\"meta\",{\"property\":\"og:site_name\",\"content\":\"是五十岚呐~\"}],[\"meta\",{\"property\":\"og:title\",\"content\":\"Twisted\"}],[\"meta\",{\"property\":\"og:type\",\"content\":\"article\"}],[\"meta\",{\"property\":\"og:locale\",\"content\":\"zh-CN\"}]]},\"excerpt\":\"\",\"headers\":[{\"level\":2,\"title\":\"一、安装：\",\"slug\":\"一、安装\",\"link\":\"#一、安装\",\"children\":[]},{\"level\":2,\"title\":\"二、核心概念\",\"slug\":\"二、核心概念\",\"link\":\"#二、核心概念\",\"children\":[{\"level\":3,\"title\":\"1.reactor\",\"slug\":\"_1-reactor\",\"link\":\"#_1-reactor\",\"children\":[]},{\"level\":3,\"title\":\"2.Factory\",\"slug\":\"_2-factory\",\"link\":\"#_2-factory\",\"children\":[]},{\"level\":3,\"title\":\"3.Protocol\",\"slug\":\"_3-protocol\",\"link\":\"#_3-protocol\",\"children\":[]}]}],\"readingTime\":{\"minutes\":3.33,\"words\":1000},\"filePathRelative\":\"python/生态/RPC/Twisted与RPC结合.md\"}")
+
+if (import.meta.webpackHot) {
+  import.meta.webpackHot.accept()
+  if (__VUE_HMR_RUNTIME__.updatePageData) {
+    __VUE_HMR_RUNTIME__.updatePageData(data)
+  }
+}
+
+if (import.meta.hot) {
+  import.meta.hot.accept(({ data }) => {
+    __VUE_HMR_RUNTIME__.updatePageData(data)
+  })
+}

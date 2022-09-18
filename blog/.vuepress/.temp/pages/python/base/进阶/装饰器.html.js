@@ -1,0 +1,14 @@
+export const data = JSON.parse("{\"key\":\"v-99cd4fd2\",\"path\":\"/python/Base/%E8%BF%9B%E9%98%B6/%E8%A3%85%E9%A5%B0%E5%99%A8.html\",\"title\":\"装饰器\",\"lang\":\"zh-CN\",\"frontmatter\":{\"title\":\"装饰器\",\"order\":4,\"summary\":\"装饰器 1. 概述 装饰器（_Decorators_） 用于源码 ’标记‘ 函数，以某种方式增强函数的行为，必须先掌握 以下三个条件\\r作用域; \\r高阶函数; \\r闭包 的方方面面; 1.1 基础知识 装饰器是可调用对象，其参数是另一个函数（被装饰的函数）。装饰器可能会处理被装饰的函数，然后把它返回，或者将其替换成另一个函数或可调用对象 假如有名为 decora\",\"head\":[[\"meta\",{\"property\":\"og:url\",\"content\":\"https://vuepress-theme-hope-v2-demo.mrhope.site/igarashi-blog/python/Base/%E8%BF%9B%E9%98%B6/%E8%A3%85%E9%A5%B0%E5%99%A8.html\"}],[\"meta\",{\"property\":\"og:site_name\",\"content\":\"是五十岚吖\"}],[\"meta\",{\"property\":\"og:title\",\"content\":\"装饰器\"}],[\"meta\",{\"property\":\"og:type\",\"content\":\"article\"}],[\"meta\",{\"property\":\"og:locale\",\"content\":\"zh-CN\"}]]},\"excerpt\":\"\",\"headers\":[{\"level\":2,\"title\":\"1. 概述\",\"slug\":\"_1-概述\",\"link\":\"#_1-概述\",\"children\":[{\"level\":3,\"title\":\"1.1 基础知识\",\"slug\":\"_1-1-基础知识\",\"link\":\"#_1-1-基础知识\",\"children\":[]},{\"level\":3,\"title\":\"1.2 Python 何时执行装饰器\",\"slug\":\"_1-2-python-何时执行装饰器\",\"link\":\"#_1-2-python-何时执行装饰器\",\"children\":[]},{\"level\":3,\"title\":\"1.3 函数的作用域\",\"slug\":\"_1-3-函数的作用域\",\"link\":\"#_1-3-函数的作用域\",\"children\":[]},{\"level\":3,\"title\":\"1.4 闭包\",\"slug\":\"_1-4-闭包\",\"link\":\"#_1-4-闭包\",\"children\":[]},{\"level\":3,\"title\":\"1.5 结合 nonlocal 声明\",\"slug\":\"_1-5-结合-nonlocal-声明\",\"link\":\"#_1-5-结合-nonlocal-声明\",\"children\":[]}]},{\"level\":2,\"title\":\"2. 实现装饰器\",\"slug\":\"_2-实现装饰器\",\"link\":\"#_2-实现装饰器\",\"children\":[{\"level\":3,\"title\":\"2.1 理念\",\"slug\":\"_2-1-理念\",\"link\":\"#_2-1-理念\",\"children\":[]},{\"level\":3,\"title\":\"2.2 简单装饰器\",\"slug\":\"_2-2-简单装饰器\",\"link\":\"#_2-2-简单装饰器\",\"children\":[]},{\"level\":3,\"title\":\"2.3 标准库中的装饰器\",\"slug\":\"_2-3-标准库中的装饰器\",\"link\":\"#_2-3-标准库中的装饰器\",\"children\":[]},{\"level\":3,\"title\":\"2.4 叠放装饰器\",\"slug\":\"_2-4-叠放装饰器\",\"link\":\"#_2-4-叠放装饰器\",\"children\":[]},{\"level\":3,\"title\":\"2.5 参数化装饰器\",\"slug\":\"_2-5-参数化装饰器\",\"link\":\"#_2-5-参数化装饰器\",\"children\":[]}]}],\"readingTime\":{\"minutes\":14.13,\"words\":4239},\"filePathRelative\":\"python/Base/进阶/装饰器.md\"}")
+
+if (import.meta.webpackHot) {
+  import.meta.webpackHot.accept()
+  if (__VUE_HMR_RUNTIME__.updatePageData) {
+    __VUE_HMR_RUNTIME__.updatePageData(data)
+  }
+}
+
+if (import.meta.hot) {
+  import.meta.hot.accept(({ data }) => {
+    __VUE_HMR_RUNTIME__.updatePageData(data)
+  })
+}

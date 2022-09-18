@@ -1,0 +1,14 @@
+export const data = JSON.parse("{\"key\":\"v-5921e965\",\"path\":\"/python/%E5%BA%93/%E6%A0%87%E5%87%86%E5%BA%93%E8%BF%9B%E9%98%B6/%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B.html\",\"title\":\"函数式编程\",\"lang\":\"zh-CN\",\"frontmatter\":{\"title\":\"函数式编程\",\"order\":1,\"group\":{\"title\":\"标准库进阶\",\"order\":12},\"summary\":\"函数式编程模块 1. functools 高阶函数 和 可调用对象 上的操作 1.1 partial 偏函数:即柯里化 当函数的参数个数太多的时候，可以通过使用functools.partial来创建一个新的函数来简化逻辑从而增强代码的可读性 实现原理：（内部的简单闭包） def partial(func, args, *kwargs): def newfu\",\"head\":[[\"meta\",{\"property\":\"og:url\",\"content\":\"https://vuepress-theme-hope-v2-demo.mrhope.site/igarashi-blog/python/%E5%BA%93/%E6%A0%87%E5%87%86%E5%BA%93%E8%BF%9B%E9%98%B6/%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B.html\"}],[\"meta\",{\"property\":\"og:site_name\",\"content\":\"是五十岚呐~\"}],[\"meta\",{\"property\":\"og:title\",\"content\":\"函数式编程\"}],[\"meta\",{\"property\":\"og:type\",\"content\":\"article\"}],[\"meta\",{\"property\":\"og:locale\",\"content\":\"zh-CN\"}]]},\"excerpt\":\"\",\"headers\":[{\"level\":2,\"title\":\"1. functools\",\"slug\":\"_1-functools\",\"link\":\"#_1-functools\",\"children\":[{\"level\":3,\"title\":\"1.1 partial\",\"slug\":\"_1-1-partial\",\"link\":\"#_1-1-partial\",\"children\":[]},{\"level\":3,\"title\":\"1.2 partialmethod\",\"slug\":\"_1-2-partialmethod\",\"link\":\"#_1-2-partialmethod\",\"children\":[]},{\"level\":3,\"title\":\"1.3 update_wrapper\",\"slug\":\"_1-3-update-wrapper\",\"link\":\"#_1-3-update-wrapper\",\"children\":[]},{\"level\":3,\"title\":\"1.4 wraps\",\"slug\":\"_1-4-wraps\",\"link\":\"#_1-4-wraps\",\"children\":[]},{\"level\":3,\"title\":\"1.5 lru_cache\",\"slug\":\"_1-5-lru-cache\",\"link\":\"#_1-5-lru-cache\",\"children\":[]},{\"level\":3,\"title\":\"1.6 singledispatch\",\"slug\":\"_1-6-singledispatch\",\"link\":\"#_1-6-singledispatch\",\"children\":[]}]},{\"level\":2,\"title\":\"2. itertools\",\"slug\":\"_2-itertools\",\"link\":\"#_2-itertools\",\"children\":[]},{\"level\":2,\"title\":\"3. Operator\",\"slug\":\"_3-operator\",\"link\":\"#_3-operator\",\"children\":[]}],\"readingTime\":{\"minutes\":8.9,\"words\":2669},\"filePathRelative\":\"python/库/标准库进阶/函数式编程.md\"}")
+
+if (import.meta.webpackHot) {
+  import.meta.webpackHot.accept()
+  if (__VUE_HMR_RUNTIME__.updatePageData) {
+    __VUE_HMR_RUNTIME__.updatePageData(data)
+  }
+}
+
+if (import.meta.hot) {
+  import.meta.hot.accept(({ data }) => {
+    __VUE_HMR_RUNTIME__.updatePageData(data)
+  })
+}

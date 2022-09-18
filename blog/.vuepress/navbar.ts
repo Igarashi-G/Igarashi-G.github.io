@@ -5,6 +5,55 @@ export default navbar([
   "/home",
   { text: "使用指南", icon: "creative", link: "/guide/" },
   {
+    text: "Python",
+    icon: "python",
+    link: "/python/",
+    prefix: "/python/",
+    children: [
+      {
+        text: "语言",
+        icon: "guide",
+        prefix: "语言/",
+        children: [
+          { text: "基础", link: "基础/环境安装" },
+          { text: "进阶", link: "进阶/变量机制" },
+          { text: "高级", link: "高级/设计模式" },
+          { text: "网络编程", link: "网络编程" },
+          { text: "资源调度", link: "资源调度" },
+          { text: "异步编程", link: "异步编程" },
+        ],
+      },
+      {
+        text: "库",
+        icon: "edit",
+        prefix: "库/",
+        children: [
+          { text: "标准库基础", link: "标准库基础" },
+          { text: "高级", link: "高级" },
+          { text: "第三方库", link: "第三方库" },
+        ],
+      },
+      {
+        text: "框架",
+        icon: "edit",
+        prefix: "框架/",
+        children: [
+          { text: "网络框架基础", link: "网络框架基础" },
+          { text: "Django", link: "Django" },
+          { text: "Tronado", link: "Tronado" },
+          { text: "FastAPI", link: "FastAPI" },
+        ],
+      },
+    ],
+  },
+  {
+    text: "漫漫全干卷的苦",
+    children: [
+      { text: "GO", link: "https://draveness.me/golang/" },
+      { text: "前端内卷不归路", link: "https://notes.fe-mm.com/interview/base/types.html" },
+    ],
+  },
+  {
     text: "博文",
     icon: "edit",
     prefix: "/posts/",

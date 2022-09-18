@@ -14,7 +14,7 @@ heroImageStyle: {
   "margin-top": "0px",
   "margin-bottom": "76px",
 }
-tagline: Web常用知识、踩坑记录、软件推荐等
+tagline: 吃的多、睡得香、寄迪快、摆滴溜~
 projects:
   - icon: project
     name: 项目名称

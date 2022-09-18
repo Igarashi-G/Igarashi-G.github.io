@@ -34,8 +34,8 @@ export default hopeTheme({
     name: "五十岚",
     avatar: "http://www.deadly-exception.icu:8999/img/igarashi.jpg",
     roundAvatar: true,
-    description: "一只Python混子",
-    intro: "/home.html",
+    description: "啥都不会的Python混子，好吃懒做的大摆锤",
+    intro: "/home",
     medias: {
       // Baidu: "https://example.com",
       // Bitbucket: "https://example.com",
@@ -69,7 +69,11 @@ export default hopeTheme({
     },
     //默认每个分页的文章数
     //https://vuepress-theme-hope.gitee.io/v2/zh/guide/blog/intro.html#%E5%A4%9A%E8%AF%AD%E8%A8%80%E6%94%AF%E6%8C%81
-    articlePerPage: 10,
+    articlePerPage: 20,
+
+    // 在移动视图下访问非博客相关的页面时，你也可以在侧边栏看到它
+    // https://vuepress-theme-hope.github.io/v2/zh/guide/blog/intro.html#%E4%BE%A7%E8%BE%B9%E6%A0%8F
+    sidebarDisplay: "mobile",
   },
 
   encrypt: {
@@ -81,7 +85,17 @@ export default hopeTheme({
   plugins: {
     blog: {
       autoExcerpt: true,
+      article: "/article/",                 // 文章列表
+      category: "/category/",               // 分类地图页
+      categoryItem: "/category/:name/",     // 特定分类列表
+      tag: "/tag/",                         // 标签地图页
+      tagItem: "/tag/:name/",               // 特定标签列表
+      encrypted: "/encrypted/",             // 加密文章列表	
+      slide: "/slide/",                     // 幻灯片列表
+      star: "/star/",                       // 星标文章列表	
+      timeline: "/timeline/",               // 时间线列表	
     },
+    copyCode: {},
 
     // 如果你不需要评论，可以直接删除 comment 配置，
     // 以下配置仅供体验，如果你需要评论，请自行配置并使用自己的环境，详见文档。
@@ -213,7 +227,7 @@ export default hopeTheme({
   fullscreen: true,
 
   //深色模式 https://vuepress-theme-hope.gitee.io/v2/zh/guide/interface/darkmode.html
-  darkmode: "switch",
+  darkmode: "switch", // switch enable
 
   //纯净模式 https://vuepress-theme-hope.gitee.io/v2/zh/guide/interface/pure.html
   pure: false,

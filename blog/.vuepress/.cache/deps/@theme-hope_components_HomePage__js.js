@@ -6,16 +6,16 @@ import {
 } from "./chunk-4UCK7AAQ.js";
 import {
   AutoLink_default
-} from "./chunk-TK2NJA7A.js";
+} from "./chunk-TU22QCLP.js";
 import {
   Icon_default
-} from "./chunk-VUZEXNHW.js";
-import {
-  isLinkExternal
-} from "./chunk-MOAPKBNV.js";
+} from "./chunk-RR4TGKTX.js";
 import {
   client_exports
 } from "./chunk-ANKY43RT.js";
+import {
+  isLinkExternal
+} from "./chunk-MOAPKBNV.js";
 import {
   RouterLink
 } from "./chunk-TYRIGETP.js";

@@ -1,0 +1,25 @@
+<template><div><h1 id="其他不常用模块" tabindex="-1"><a class="header-anchor" href="#其他不常用模块" aria-hidden="true">#</a> 其他不常用模块</h1>
+<h2 id="importlib" tabindex="-1"><a class="header-anchor" href="#importlib" aria-hidden="true">#</a> importlib</h2>
+<p>import 的实现</p>
+<pre><code>importlib支持传入字符来引入一个模块，若模块不存在则捕获异常ImportError
+
+1、动态引入：
+    module = importlib.import_module(module_str)    #通过传入字符串来引入模块并赋值，之后即可调用
+
+2、检查引入模块是否存在：
+    import importlib.util
+    module_spec = importlib.util.find_spec(module_name)     #传入一个没有安装的模块的名称，find_spec函数将会返回None
+
+3、从源文件中引入：
+    module_spec = importlib.util.spec_from_file_location(module_name,module_file_path)  #传入模块名和路径进行引入
+
+4、引入钩子：
+    pip install import_from_github_com
+    使用了PEP 302中新的引入钩子，允许你可以从github上引入包。这个包实际做的就是安装这个包并将它添加到本地。py3.2以上可用。
+    例：from github_com.zzzeek import sqlalchemy
+
+    你将会注意到它并没有使用importlib，而是使用了pip来安装那些没有安装的包，然后使用Python的__import__()函数来引入新安装的模块。
+</code></pre>
+</div></template>
+
+
