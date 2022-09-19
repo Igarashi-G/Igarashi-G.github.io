@@ -31,19 +31,22 @@ b <span class="token operator">=</span> <span class="token number">2</span>
 </ul>
 </li>
 </ul>
-<blockquote>
-<p><strong>注意：</strong></p>
+<div class="custom-container note">
+<p class="custom-container-title">注</p>
 <p>理解赋值，容易走入以下误区</p>
 <ul>
 <li><strong>误解 1</strong>，<code v-pre>a</code> 、<code v-pre>b</code> 都有有自己的地址</li>
 <li><strong>误解 2</strong>，<code v-pre>b = a</code> 是在 <code v-pre>b</code> 中存放了 <code v-pre>a</code> 的地址（误以为 <code v-pre>a</code> 有地址），然后是通过 <code v-pre>b</code> 指向<code v-pre>-&gt;</code> <code v-pre>a</code> 指向<code v-pre>-&gt;</code> <strong>1</strong> 得来 <strong>1</strong> 的值</li>
 </ul>
+</div>
+<div class="custom-container tip">
+<p class="custom-container-title">提示</p>
 <p><strong>Python</strong> 的变量，其实是一种 <strong>堆内存的引用</strong>，更详细的需了解内存机制，因此</p>
 <ol>
 <li>赋值的过程，就是 <strong>改变标签指向</strong> 的过程</li>
 <li>参数传递的过程，就是 <strong>交换标签指向</strong> 的过程</li>
 </ol>
-</blockquote>
+</div>
 <h3 id="_1-2-浅拷贝" tabindex="-1"><a class="header-anchor" href="#_1-2-浅拷贝" aria-hidden="true">#</a> 1.2 浅拷贝</h3>
 <p>创建一个如下列表</p>
 <div class="language-python ext-py line-numbers-mode"><pre v-pre class="language-python"><code>a <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">]</span>
@@ -99,12 +102,12 @@ c<span class="token punctuation">[</span><span class="token number">2</span><spa
 <li>一旦发生 <code v-pre>b[0][1] = 7</code> 这样的操作，实质上改变的是 <code v-pre>a[0]</code> 里面的列表存放的地址 <code v-pre>[1938697316656, 1938697316688]</code> 为 <code v-pre>[1938697316656, 1938697316848]</code> ，此时 <code v-pre>a[0]</code> 的地址，仍是未发生任何变化的</li>
 </ul>
 <p>故如上拷贝操作，即是 <strong>浅拷贝</strong>，它只浅层拷贝各元素的单层地址 （<em>第一层的地址指针</em>）一旦存在可变对象，且变化，源也随之变化</p>
-<blockquote>
-<p><strong>注意：</strong></p>
+<div class="custom-container tip">
+<p class="custom-container-title">提示</p>
 <p>对于列表来说，<code v-pre>.copy()</code> 操作等同于 <code v-pre>[:]</code> 这种切片操作，即 <code v-pre>b = a.copy()</code> <code v-pre>is</code> <code v-pre>b = a[:]</code></p>
-</blockquote>
+</div>
 <h4 id="_1-3-深拷贝" tabindex="-1"><a class="header-anchor" href="#_1-3-深拷贝" aria-hidden="true">#</a> 1.3 深拷贝</h4>
-<p>通常情况，使用 <strong>浅拷贝</strong> 足矣，<strong>深拷贝</strong> 会实打实地拷贝了一份新的数据，会<strong>完完全全地</strong> 开辟新的内存空间，这就<strong>十分消耗内存</strong> 了</p>
+<p>通常情况，使用 <strong>浅拷贝</strong> 足矣，<strong>深拷贝</strong> 会实打实地拷贝了一份新的数据，<strong>完完全全地</strong> 开辟新的内存空间，这就<strong>十分消耗内存</strong> 了</p>
 <h5 id="使用-文档" tabindex="-1"><a class="header-anchor" href="#使用-文档" aria-hidden="true">#</a> <strong>使用</strong> <a href="https://docs.python.org/zh-cn/3.10/library/copy.html?highlight=deepcopy#module-copy" target="_blank" rel="noopener noreferrer">文档<ExternalLinkIcon/></a></h5>
 <div class="language-python ext-py line-numbers-mode"><pre v-pre class="language-python"><code><span class="token keyword">from</span> copy <span class="token keyword">import</span> deepcopy
 

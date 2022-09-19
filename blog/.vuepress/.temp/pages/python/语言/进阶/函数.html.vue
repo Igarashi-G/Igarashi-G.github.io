@@ -20,15 +20,13 @@
 <span class="token keyword">print</span><span class="token punctuation">(</span>func<span class="token punctuation">)</span>
 <span class="token comment">### 输出结果</span>
 <span class="token comment"># &lt;function func at 0x0000025DD40B28B8></span>
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p><strong>注意：</strong></p>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="custom-container tip">
+<p class="custom-container-title">提示</p>
 <ul>
-<li>
-<p><strong>变量名</strong> 不能与函数名相同</p>
-</li>
-<li>
-<p>函数还有返回的地址，当函数 <strong>赋值给变量</strong> 时，变量中存储的便是函数的返回地址</p>
-</li>
+<li><strong>变量名</strong> 不能与函数名相同</li>
+<li>函数还有返回的地址，当函数 <strong>赋值给变量</strong> 时，变量中存储的便是函数的返回地址</li>
 </ul>
+</div>
 <h3 id="_1-3-函数的作用" tabindex="-1"><a class="header-anchor" href="#_1-3-函数的作用" aria-hidden="true">#</a> 1.3 函数的作用</h3>
 <p>函数只要修改一处，所有引用该函数的地方，都会统一被修改，因此好处在于</p>
 <ul>
@@ -36,7 +34,7 @@
 <li>方便日后改写扩展</li>
 <li>保持代码的一致性</li>
 </ul>
-</br>
+<br/>
 <hr>
 <h2 id="_2-函数参数" tabindex="-1"><a class="header-anchor" href="#_2-函数参数" aria-hidden="true">#</a> 2. 函数参数</h2>
 <h3 id="_2-1-参数类别" tabindex="-1"><a class="header-anchor" href="#_2-1-参数类别" aria-hidden="true">#</a> 2.1 参数类别</h3>
@@ -45,7 +43,7 @@
 <li><strong>实参</strong>: 实际上的， <strong>有实际的地址|指针的</strong> 参数变量，占用内存的实际传入值</li>
 </ul>
 <h4 id="关键字参数" tabindex="-1"><a class="header-anchor" href="#关键字参数" aria-hidden="true">#</a> <strong>关键字参数</strong></h4>
-<p>形如 <code v-pre>kwarg=value</code> 的传参，表示使用 <strong>关键字</strong> 的形式来传参</p>
+<p>形如 <strong>key=value</strong> 的传参，表示使用 <strong>关键字</strong> 的形式来传参</p>
 <div class="language-python ext-py line-numbers-mode"><pre v-pre class="language-python"><code><span class="token keyword">def</span> <span class="token function">info</span><span class="token punctuation">(</span>name<span class="token punctuation">,</span> age<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f"age: </span><span class="token interpolation"><span class="token punctuation">{</span>age<span class="token punctuation">}</span></span><span class="token string">, name: </span><span class="token interpolation"><span class="token punctuation">{</span>name<span class="token punctuation">}</span></span><span class="token string">"</span></span><span class="token punctuation">)</span>
     <span class="token keyword">pass</span>
@@ -66,10 +64,9 @@ info<span class="token punctuation">(</span>age<span class="token operator">=</s
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div></div></div><ul>
 <li>这里的 <code v-pre>sex</code> 就是默认参数，必须 <strong>放在最后</strong> ，<Font type="error">即后面不能有空参<Badge>未赋值的参数</Badge></Font></li>
 </ul>
-<p><strong>注意：</strong></p>
-<ul>
-<li>
-<p><strong>1.6 亿操作！</strong>，千万别在 <strong>默认参数</strong> 中写 <code v-pre>xx = list()</code> 或者 <code v-pre>xx = []</code></p>
+<div class="custom-container danger">
+<p class="custom-container-title">警告</p>
+<p><strong>1.6 亿操作!</strong> 千万别在 <strong>默认参数</strong> 中写 <code v-pre>xx = list()</code> 或者 <code v-pre>xx = []</code></p>
 <div class="language-python ext-py line-numbers-mode"><pre v-pre class="language-python"><code><span class="token keyword">def</span> <span class="token function">foo</span><span class="token punctuation">(</span>list1<span class="token operator">=</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
     list1<span class="token punctuation">.</span>append<span class="token punctuation">(</span><span class="token string">"2"</span><span class="token punctuation">)</span>
     <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"list1"</span><span class="token punctuation">,</span> list1<span class="token punctuation">)</span>
@@ -79,7 +76,7 @@ foo<span class="token punctuation">(</span><span class="token punctuation">)</sp
 foo<span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token comment"># list1 ['2', '2', '2']</span>
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><ul>
 <li>
-<p>若函数内部有 <code v-pre>append()</code> 操作，仅第一次，且只有一次的调用正常外，但凡再被调用一次，就炸裂</p>
+<p>若函数内部有 <code v-pre>append()</code> 操作，仅第一次（<em>且只一次</em>）的调用正常外，但凡再被调用，就会不断内存泄漏</p>
 </li>
 <li>
 <p>一旦 <strong>多次调用</strong>，且参数中 <strong>没有默认参数</strong>，函数则会 <strong>直接拿第一次调用的默认参数</strong>（<em>因为地址相同，没有传入新地址</em>）继续 <code v-pre>append()</code> ，业务量一上来，百分百炸裂</p>
@@ -88,10 +85,9 @@ foo<span class="token punctuation">(</span><span class="token punctuation">)</sp
 <p>因此以后需要 <strong>可变类型的默认参数</strong> 时，<strong>直接初始化 None，不会有地址问题</strong></p>
 </li>
 </ul>
-</li>
-</ul>
+</div>
 <h4 id="不定长参数" tabindex="-1"><a class="header-anchor" href="#不定长参数" aria-hidden="true">#</a> <strong>不定长参数</strong></h4>
-<h5 id="args" tabindex="-1"><a class="header-anchor" href="#args" aria-hidden="true">#</a> <Font type="error">*args </Font></h5>
+<h5 id="args" tabindex="-1"><a class="header-anchor" href="#args" aria-hidden="true">#</a> <strong>*args</strong></h5>
 <div class="language-python ext-py line-numbers-mode"><pre v-pre class="language-python"><code><span class="token keyword">def</span> <span class="token function">add</span><span class="token punctuation">(</span><span class="token operator">*</span>args<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">print</span><span class="token punctuation">(</span>args<span class="token punctuation">,</span> <span class="token builtin">type</span><span class="token punctuation">(</span>args<span class="token punctuation">)</span><span class="token punctuation">)</span>
 
@@ -118,7 +114,7 @@ add<span class="token punctuation">(</span><span class="token punctuation">[</sp
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><ul>
 <li><code v-pre>*args</code> <strong>不能直接赋值</strong>，但若使用内置类型转换，如使用 <code v-pre>list()</code> 则能原样取到传入的值</li>
 </ul>
-<h5 id="kwargs" tabindex="-1"><a class="header-anchor" href="#kwargs" aria-hidden="true">#</a> <Font type="error">**kwargs</Font></h5>
+<h5 id="kwargs" tabindex="-1"><a class="header-anchor" href="#kwargs" aria-hidden="true">#</a> <strong>**kwargs</strong></h5>
 <div class="language-python ext-py line-numbers-mode"><pre v-pre class="language-python"><code><span class="token keyword">def</span> <span class="token function">info</span><span class="token punctuation">(</span><span class="token operator">*</span>args<span class="token punctuation">,</span> <span class="token operator">**</span>kwargs<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">print</span><span class="token punctuation">(</span>args<span class="token punctuation">,</span> kwargs<span class="token punctuation">,</span> <span class="token builtin">type</span><span class="token punctuation">(</span>kwargs<span class="token punctuation">)</span><span class="token punctuation">)</span>
 
@@ -128,18 +124,12 @@ info<span class="token punctuation">(</span><span class="token string">"Shiki"</
 <span class="token comment">## 输出结果</span>
 <span class="token comment"># ('Shiki',) {'age': 18, 'sex': 'female'} &lt;class 'dict'></span>
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><ul>
-<li>
-<p><code v-pre>**kwargs</code> 可以接收 <strong>不定长</strong> 的任意多个 <strong>关键字参数</strong></p>
-</li>
-<li>
-<p>返回字典 <strong>dict</strong> 类型</p>
-</li>
-<li>
-<p><strong>位置参数:</strong> <code v-pre>&quot;Shiki&quot;</code> 是 <code v-pre>*args</code>接收的，<strong>关键字参数:</strong> <code v-pre>age=18</code> 和 <code v-pre>sex=&quot;female&quot;</code> 是 <code v-pre>**kwargs</code> 接收的</p>
-</li>
+<li><code v-pre>**kwargs</code> 可以接收 <strong>不定长</strong> 的任意多个 <strong>关键字参数</strong></li>
+<li>返回字典 <strong>dict</strong> 类型</li>
+<li><strong>位置参数:</strong> <code v-pre>&quot;Shiki&quot;</code> 是 <code v-pre>*args</code>接收的，<strong>关键字参数:</strong> <code v-pre>age=18</code> 和 <code v-pre>sex=&quot;female&quot;</code> 是 <code v-pre>**kwargs</code> 接收的</li>
 </ul>
-<blockquote>
-<p><strong>注意：</strong></p>
+<div class="custom-container tip">
+<p class="custom-container-title">提示</p>
 <ul>
 <li>
 <p>这里的 <code v-pre>**kwargs</code> 作为接收参数的默认值，仅接收 <strong>string</strong> 为键的值</p>
@@ -162,11 +152,15 @@ info<span class="token punctuation">(</span><span class="token operator">**</spa
 <span class="token comment"># {'key': 'value'} &lt;class 'dict'></span>
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></li>
 </ul>
-</blockquote>
+</div>
 <h5 id="混合传参" tabindex="-1"><a class="header-anchor" href="#混合传参" aria-hidden="true">#</a> <Font type="dark">混合传参</Font></h5>
 <div class="language-python ext-py line-numbers-mode"><pre v-pre class="language-python"><code><span class="token keyword">def</span> <span class="token function">info</span><span class="token punctuation">(</span>name<span class="token punctuation">,</span> sex<span class="token operator">=</span><span class="token string">"female"</span><span class="token punctuation">,</span> <span class="token operator">*</span>args<span class="token punctuation">,</span> <span class="token operator">**</span>kwargs<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">pass</span>
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div></div></div><Alert type="info">**【优先级】**: **位置参数** > **默认参数** > `*args` > `**kwargs`</Alert><h4 id="特殊参数" tabindex="-1"><a class="header-anchor" href="#特殊参数" aria-hidden="true">#</a> <strong>特殊参数</strong></h4>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div></div></div><div class="custom-container note">
+<p class="custom-container-title">注</p>
+<p><strong>【优先级】</strong>: <strong>位置参数</strong> &gt; <strong>默认参数</strong> &gt; <code v-pre>*args</code> &gt; <code v-pre>**kwargs</code></p>
+</div>
+<h4 id="特殊参数" tabindex="-1"><a class="header-anchor" href="#特殊参数" aria-hidden="true">#</a> <strong>特殊参数</strong></h4>
 <p><strong>Python</strong> 通常能按 <strong>位置</strong> 或 <strong>关键字</strong> 形式给函数传参，但为了提高代码易读性，可以使用特殊标识来 <strong>限制参数传递</strong></p>
 <div class="language-python ext-py line-numbers-mode"><pre v-pre class="language-python"><code><span class="token keyword">def</span> <span class="token function">f</span><span class="token punctuation">(</span>pos1<span class="token punctuation">,</span> pos2<span class="token punctuation">,</span> <span class="token operator">/</span><span class="token punctuation">,</span> pos_or_kwd<span class="token punctuation">,</span> <span class="token operator">*</span><span class="token punctuation">,</span> kwd1<span class="token punctuation">,</span> kwd2<span class="token punctuation">)</span><span class="token punctuation">:</span>
       <span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span>    <span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span>     <span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span>
@@ -178,15 +172,15 @@ info<span class="token punctuation">(</span><span class="token operator">**</spa
 <li><code v-pre>/</code> 可选，用来 限制位置，意思是 <code v-pre>/</code> <strong>前面</strong> 的，<strong>只能用位置传参</strong>，禁用 <code v-pre>kwarg=value</code> 这种关键字形式</li>
 <li><code v-pre>*</code> 可选，用来限制关键字，意思是 <code v-pre>*</code> <strong>后面</strong> 的，<strong>只能用关键字传参</strong>，必须以 <code v-pre>kwarg=value</code> 形式</li>
 </ul>
-</br>
+<br/>
 <hr>
 <h2 id="_3-函数返回值-return" tabindex="-1"><a class="header-anchor" href="#_3-函数返回值-return" aria-hidden="true">#</a> 3. 函数返回值(return)</h2>
 <ul>
 <li>
-<p><strong>Python</strong> 默认情况，<Badge type="queen">当无返回值时</Badge> 会返回<code v-pre>None</code></p>
+<p><strong>Python</strong> 默认情况，<mark>无返回值时</mark> 会返回<code v-pre>None</code></p>
 </li>
 <li>
-<p><strong>Python</strong> 可返回多个对象，编译器不会报错，而是默认返回像 <code v-pre>(1,&quot;qw&quot;,3)</code> 这种封装后的 <strong>tuple</strong> 对象</p>
+<p><strong>Python</strong> 可返回多个对象，编译器不会报错，而是默认返回如 <code v-pre>(1,&quot;qw&quot;,3)</code> 这种封装后的 <strong>tuple</strong> 对象</p>
 <div class="language-python ext-py line-numbers-mode"><pre v-pre class="language-python"><code><span class="token keyword">def</span> <span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">return</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token string">"qw"</span><span class="token punctuation">,</span> <span class="token number">3</span>
 
@@ -202,9 +196,11 @@ a<span class="token punctuation">,</span> b<span class="token punctuation">,</sp
 <li>结束函数，<code v-pre>return</code> 之后便结束，后续代码无任何意义</li>
 <li>返回对象</li>
 </ul>
-</br>
+<br/>
 <hr>
 <h2 id="_4-函数的作用域" tabindex="-1"><a class="header-anchor" href="#_4-函数的作用域" aria-hidden="true">#</a> 4. 函数的作用域</h2>
+<div class="custom-container danger">
+<p class="custom-container-title">如下禁止</p>
 <div class="language-python ext-py line-numbers-mode"><pre v-pre class="language-python"><code><span class="token keyword">def</span> <span class="token function">f</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
   a <span class="token operator">=</span> <span class="token number">10</span>
 
@@ -215,13 +211,14 @@ f<span class="token punctuation">(</span><span class="token punctuation">)</span
 <span class="token comment"># Traceback (most recent call last):</span>
 <span class="token comment"># ...</span>
 <span class="token comment"># NameError: name 'a' is not defined</span>
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><Alert type="error"><Font type="error">像上文如此是不行的！！！</Font></Alert><p>因为变量 <code v-pre>a</code>，声明在函数 <code v-pre>f()</code> 的 <strong>作用域</strong> 里，一旦函数执行完后，就会<strong>销毁</strong><Font type="info" fsize="ss">(因此只在函数内部可用)</Font></p>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>变量 <code v-pre>a</code>，声明在函数 <code v-pre>f()</code> 的 <strong>作用域</strong> 里，一旦函数执行完后，就会<strong>销毁</strong>，故变量 <code v-pre>a</code> 只作用于函数内部，是无法在全局中引用的</p>
+</div>
 <h3 id="_4-1-作用域-legb" tabindex="-1"><a class="header-anchor" href="#_4-1-作用域-legb" aria-hidden="true">#</a> 4.1 作用域 LEGB</h3>
 <ul>
-<li><strong>L</strong>（<code v-pre>local</code>）<strong>局部作用域</strong>，即函数中定义的变量</li>
-<li><strong>E</strong>（<code v-pre>enclosing</code> ）<strong>嵌套的父级函数的局部作用域</strong>，即包含此函数的上级函数的局部作用域，但不是全局的</li>
-<li><strong>G</strong>（<code v-pre>global</code>）<strong>全局变量</strong>，模块级别定义的全局变量</li>
-<li><strong>B</strong>（<code v-pre>bulid_in</code>）<strong>系统固定模块里的变量</strong>， 比如 <code v-pre>int</code> 、 <code v-pre>bytearray</code> 等</li>
+<li><strong>L</strong>（<em>local</em>）<strong>局部作用域</strong>，即函数中定义的变量</li>
+<li><strong>E</strong>（<em>enclosing</em> ）<strong>嵌套的父级函数的局部作用域</strong>，即包含此函数的上级函数的局部作用域，但不是全局的</li>
+<li><strong>G</strong>（<em>global</em>）<strong>全局变量</strong>，模块级别定义的全局变量</li>
+<li><strong>B</strong>（<em>bulid_in</em>）<strong>系统固定模块里的变量</strong>， 比如 <code v-pre>int</code> 、 <code v-pre>bytearray</code> 等</li>
 </ul>
 <p>优先级顺序依次:</p>
 <p><strong>局部作用域</strong> &gt; <strong>外层作用域</strong> &gt; <strong>模块的全局变量</strong> &gt; <strong>Python 内置作用域变量</strong>，也就是 <strong>LEGB</strong></p>
@@ -340,7 +337,7 @@ foo<span class="token punctuation">(</span><span class="token punctuation">)</sp
 <span class="token comment"># {}</span>
 <span class="token comment"># {'i': 'c', 'a': 1, 'b': 1, 'c': 1}</span>
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p><a href="https://www.cnblogs.com/saolv/p/10945463.html" target="_blank" rel="noopener noreferrer">参考<ExternalLinkIcon/></a></p>
-</br>
+<br/>
 <hr>
 <h2 id="_5-进阶" tabindex="-1"><a class="header-anchor" href="#_5-进阶" aria-hidden="true">#</a> 5. 进阶</h2>
 <h3 id="_5-1-函数为参" tabindex="-1"><a class="header-anchor" href="#_5-1-函数为参" aria-hidden="true">#</a> 5.1 函数为参</h3>
@@ -424,7 +421,7 @@ foo<span class="token punctuation">(</span><span class="token number">1</span><s
 </ul>
 <h3 id="_5-4-常用内置函数" tabindex="-1"><a class="header-anchor" href="#_5-4-常用内置函数" aria-hidden="true">#</a> 5.4 常用内置函数</h3>
 <p><strong>Python</strong> 对常用函数进行了封装 <code v-pre>build-in Functions</code></p>
-<h4 id="lambda" tabindex="-1"><a class="header-anchor" href="#lambda" aria-hidden="true">#</a> <strong><code v-pre>lambda</code></strong></h4>
+<h4 id="lambda" tabindex="-1"><a class="header-anchor" href="#lambda" aria-hidden="true">#</a> <strong>lambda</strong></h4>
 <p><strong>Python</strong> 支持 <strong>lambda</strong> 匿名函数</p>
 <ul>
 <li>
@@ -463,7 +460,7 @@ add<span class="token punctuation">(</span><span class="token number">1</span><s
 <li>创建时不需要命名，故也称为 <strong>匿名函数</strong></li>
 </ul>
 <p><strong>lambda</strong> 函数通常的用法是结合 <code v-pre>map()</code>、<code v-pre>reduce()</code>、<code v-pre>filter()</code>、<code v-pre>sorted()</code> 等函数一起使用，这些函数的共性是：<strong>都可以接收其它函数作为参数</strong></p>
-<h4 id="map-function-iterable" tabindex="-1"><a class="header-anchor" href="#map-function-iterable" aria-hidden="true">#</a> <strong><code v-pre>map(function, iterable, ...)</code></strong></h4>
+<h4 id="map-function-iterable" tabindex="-1"><a class="header-anchor" href="#map-function-iterable" aria-hidden="true">#</a> <strong>map(function, iterable, ...)</strong></h4>
 <p>将 <strong>iterable</strong>（<em>可迭代对象</em>）的每一项，传入 <strong>function</strong> 执行，返回一个包含所有结果的 <strong>迭代器</strong></p>
 <div class="language-python ext-py line-numbers-mode"><pre v-pre class="language-python"><code><span class="token keyword">def</span> <span class="token function">foo</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">return</span> x <span class="token operator">*</span> x
@@ -477,7 +474,7 @@ ret <span class="token operator">=</span> <span class="token builtin">map</span>
 <div class="language-python ext-py line-numbers-mode"><pre v-pre class="language-python"><code><span class="token punctuation">[</span>i <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">map</span><span class="token punctuation">(</span><span class="token builtin">int</span><span class="token punctuation">,</span> <span class="token string">"12345"</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
 
 <span class="token comment"># [1, 2, 3, 4, 5]</span>
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h4 id="filter-function-iterable" tabindex="-1"><a class="header-anchor" href="#filter-function-iterable" aria-hidden="true">#</a> <strong><code v-pre>filter(function, iterable)</code></strong></h4>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h4 id="filter-function-iterable" tabindex="-1"><a class="header-anchor" href="#filter-function-iterable" aria-hidden="true">#</a> <strong>filter(function, iterable)</strong></h4>
 <p>将 <strong>iterable</strong>（<em>可迭代对象</em>）的每一项，传入 <strong>function</strong> 执行，返回一个包含所有 <strong>真值</strong> 的 <strong>迭代器</strong></p>
 <div class="language-python ext-py line-numbers-mode"><pre v-pre class="language-python"><code><span class="token comment"># 当 function 不为 None 的时是	(item for item in iterable if function(item))</span>
 
@@ -491,8 +488,8 @@ li <span class="token operator">=</span> <span class="token punctuation">[</span
 
 data <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">"name"</span><span class="token punctuation">:</span> <span class="token string">"zz"</span><span class="token punctuation">,</span> <span class="token string">"age"</span><span class="token punctuation">:</span> <span class="token number">18</span><span class="token punctuation">}</span>
 <span class="token punctuation">[</span>i <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">filter</span><span class="token punctuation">(</span><span class="token boolean">None</span><span class="token punctuation">,</span> data<span class="token punctuation">)</span><span class="token punctuation">]</span>				<span class="token comment"># => [i for i in data if i]</span>
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h4 id="reduce" tabindex="-1"><a class="header-anchor" href="#reduce" aria-hidden="true">#</a> <strong><code v-pre>reduce</code></strong></h4>
-<p><strong>Python 3.4</strong> 中改到 <a href="/back_end/python/package/%E6%A0%87%E5%87%86%E5%BA%93%E8%BF%9B%E9%98%B6/%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B#1-functools" target="_blank" rel="noopener noreferrer">functools<ExternalLinkIcon/></a> 模块中实现</p>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h4 id="reduce" tabindex="-1"><a class="header-anchor" href="#reduce" aria-hidden="true">#</a> <strong>reduce</strong></h4>
+<p><strong>Python 3.4</strong> 中改到 <RouterLink to="/python/%E5%BA%93/%E6%A0%87%E5%87%86%E5%BA%93%E8%BF%9B%E9%98%B6/%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B.html#_1-functools">functools</RouterLink> 模块中实现</p>
 <h3 id="_5-5-题外话" tabindex="-1"><a class="header-anchor" href="#_5-5-题外话" aria-hidden="true">#</a> 5.5 题外话</h3>
 <h4 id="函数式编程" tabindex="-1"><a class="header-anchor" href="#函数式编程" aria-hidden="true">#</a> 函数式编程</h4>
 <p>起源于 <strong>范畴论</strong>（<em>Category Theory</em>）的数学分支，认为世界上所有概念体系，都成抽象成一个个 <strong>范畴</strong>（<em>category</em>）</p>

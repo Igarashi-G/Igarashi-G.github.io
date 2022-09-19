@@ -62,7 +62,7 @@ ret <span class="token operator">=</span> time<span class="token punctuation">.<
 <span class="token comment"># time.struct_time(tm_year=2019, tm_mon=7, tm_mday=27, tm_hour=7, tm_min=3, tm_sec=49, tm_wday=1, tm_yday=208, tm_isdst=0)</span>
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></li>
 </ul>
-</br>
+<br/>
 <Alert type="info"> **UTC 时区：** 北京在`东八区`，东京在东九区，中心为`本初子午线`，因此英国为世界标准时间 </Alert><p><strong>结构化参数说明</strong>：</p>
 <table>
 <thead>
@@ -262,7 +262,7 @@ ret <span class="token operator">=</span> time<span class="token punctuation">.<
 <div class="language-python ext-py line-numbers-mode"><pre v-pre class="language-python"><code>time<span class="token punctuation">.</span>sleep<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>	<span class="token comment"># 此时线程会阻塞 1s</span>
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div></li>
 </ul>
-</br>
+<br/>
 <hr>
 <h2 id="datetime-模块" tabindex="-1"><a class="header-anchor" href="#datetime-模块" aria-hidden="true">#</a> datetime 模块：</h2>
 <pre><code>    .datetime.now()直接看时间 这种方法也常用

@@ -69,16 +69,57 @@ export default sidebar({
               text: "进阶",
               collapsable: true,
               prefix: "进阶/",
-              children: ["变量机制", "函数", "模块和包", "装饰器", "迭代器", "生成器", "错误和异常", "面向对象"],
+              children: ["变量机制", "函数", "模块和包", "装饰器"],
+              // children: ["变量机制", "函数", "模块和包", "装饰器", "迭代器", "生成器", "错误和异常", "面向对象"],
             },
-            {
-              text: "高级",
-              collapsable: true,
-              prefix: "高级/",
-              children: ["设计模式", "垃圾回收", "序列进阶", "映射进阶", "Cpython对象"],
-            },
+            // {
+            //   text: "高级",
+            //   collapsable: true,
+            //   prefix: "高级/",
+            //   children: ["设计模式", "垃圾回收", "序列进阶", "映射进阶", "Cpython对象"],
+            // },
           ],
         },
+        // {
+        //   text: "库",
+        //   icon: "customize",
+        //   collapsable: true,
+        //   prefix: "库/",
+        //   children: [
+        //     {
+        //       text: "标准库基础",
+        //       collapsable: true,
+        //       prefix: "标准库基础/",
+        //       children: ["时间", "系统相关", "序列化", "文本处理", "日志", "其他"],
+        //     },
+        //     {
+        //       text: "标准库进阶",
+        //       collapsable: true,
+        //       prefix: "标准库进阶/",
+        //       children: ["数据类型", "函数式编程", "文件操作", "运行时服务", "国际化", "SMTP", "其他"],
+        //     },
+        //     {
+        //       text: "开源库",
+        //       collapsable: true,
+        //       prefix: "开源库/",
+        //       children: ["arrow", "psutil"],
+        //     },
+        //   ]
+        // },
+        // {
+        //   text: "框架",
+        //   icon: "frame",
+        //   collapsable: true,
+        //   prefix: "框架/",
+        //   children: []
+        // },
+        // {
+        //   text: "生态",
+        //   icon: "autumn",
+        //   collapsable: true,
+        //   prefix: "生态/",
+        //   children: []
+        // },
         
       ],
     },
@@ -90,7 +131,7 @@ export default sidebar({
       icon: "creative",
       prefix: "/guide/",
       link: "/guide/",
-      children: "structure",
+      children: ["disable", "encrypt", "markdown", "page"],
     },
   ],
 })

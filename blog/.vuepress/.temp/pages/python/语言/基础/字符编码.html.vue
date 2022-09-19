@@ -1,11 +1,13 @@
 <template><div><h1 id="字符编码" tabindex="-1"><a class="header-anchor" href="#字符编码" aria-hidden="true">#</a> 字符编码</h1>
-<Alert type="info">`Python3` 明确区分了人类可读的 **文本字符串** 和原始的 **字节序列**</Alert><p><a href="https://docs.python.org/zh-cn/3.10/library/codecs.html#module-codecs" target="_blank" rel="noopener noreferrer">编解码器 文档<ExternalLinkIcon/></a></p>
+<p><strong>Python3</strong> 明确区分了人类可读的 <strong>文本字符串</strong> 和原始的 <strong>字节序列</strong></p>
+<p><a href="https://docs.python.org/zh-cn/3.10/library/codecs.html#module-codecs" target="_blank" rel="noopener noreferrer">编解码器 文档<ExternalLinkIcon/></a></p>
 <h2 id="_1-字符" tabindex="-1"><a class="header-anchor" href="#_1-字符" aria-hidden="true">#</a> 1. 字符</h2>
 <h3 id="_1-1-编码中的字符串" tabindex="-1"><a class="header-anchor" href="#_1-1-编码中的字符串" aria-hidden="true">#</a> 1.1 编码中的字符串</h3>
-<p><strong>“字符串”</strong> 是个相当简单的概念：字符串就是字符组成的序列，问题出现在 “<strong>字符</strong>” 的定义上</p>
-<blockquote>
-<p><strong>字符：</strong> 2015 年将字符最佳定义为 <strong>Unicode</strong> 字符，因此 <code v-pre>Python3</code> 的 <code v-pre>str</code> 对象获取的元素就是 <strong>Unicode</strong> 字符</p>
-</blockquote>
+<p><strong>字符串：</strong> 字符组成的序列，问题出现在 “<strong>字符</strong>” 的定义上</p>
+<div class="custom-container note">
+<p class="custom-container-title">注</p>
+<p><strong>字符：</strong> 2015 年将字符最佳定义为 <strong>Unicode</strong> 字符，因此 <strong>Python3</strong> 的 <code v-pre>str</code> 对象获取的元素就是 <strong>Unicode</strong> 字符</p>
+</div>
 <p><strong>Unicode</strong> 标准把 <strong>字符的标识</strong> 和具体的 <strong>字节表述</strong> 进行了如下区分</p>
 <ul>
 <li><strong>字符的标识</strong>：即 <code v-pre>码位</code> ，是 <code v-pre>0 ~ 1 114 111</code> 的数字 (十进制)，在 <strong>Unicode</strong> 标准中以 <code v-pre>4 ~ 6</code> 个十六进制数字表示，而且加前缀 <code v-pre>U+</code>
@@ -16,7 +18,11 @@
 <li><strong>字节表述</strong>：取决于所用的编码，在 <strong>UTF-8</strong> 编码中，<code v-pre>A (U+0041)</code> 的码位编码为单字节 <code v-pre>\x41</code>，而在 <code v-pre>UTF-16LE</code> 编码中编码成两个字节 <code v-pre>\x41\x00</code></li>
 <li><strong>编码</strong>：在 <code v-pre>码位</code> 和 <code v-pre>字节序列</code> 之间转换时使用的算法</li>
 </ul>
-<Alert type="queen">把 `码位`（_字符串_） 转换成 `字节序列` （_字节串_） 的过程是**编码(encode)**，把 `字节序列` 转化为 `码位` 的过程是**解码(decode)**</Alert><div class="language-python ext-py line-numbers-mode"><pre v-pre class="language-python"><code>s <span class="token operator">=</span> <span class="token string">"coffeé"</span>
+<div class="custom-container tip">
+<p class="custom-container-title">提示</p>
+<p>把 <code v-pre>码位</code>（<em>字符串</em>） 转换成 <code v-pre>字节序列</code> （<em>字节串</em>） 的过程是<strong>编码(encode)</strong>，把 <code v-pre>字节序列</code> 转化为 <code v-pre>码位</code> 的过程是<strong>解码(decode)</strong></p>
+</div>
+<div class="language-python ext-py line-numbers-mode"><pre v-pre class="language-python"><code>s <span class="token operator">=</span> <span class="token string">"coffeé"</span>
 <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span><span class="token punctuation">)</span>
 
 b_sequence <span class="token operator">=</span> s<span class="token punctuation">.</span>encode<span class="token punctuation">(</span><span class="token string">"utf8"</span><span class="token punctuation">)</span>
@@ -37,7 +43,8 @@ b_sequence <span class="token operator">=</span> s<span class="token punctuation
 <h3 id="_1-2-python-编码发展史" tabindex="-1"><a class="header-anchor" href="#_1-2-python-编码发展史" aria-hidden="true">#</a> 1.2 Python 编码发展史</h3>
 <h5 id="_1-2-1-ascii-码" tabindex="-1"><a class="header-anchor" href="#_1-2-1-ascii-码" aria-hidden="true">#</a> <strong>1.2.1 ASCII 码</strong></h5>
 <p>用 <strong>8</strong> 位，即 <strong>一个字节</strong> 表示字符 <code v-pre>0 ~ 127</code> 已编好的 <strong>英文</strong> 和 <strong>拉丁字符</strong></p>
-<blockquote>
+<div class="custom-container tip">
+<p class="custom-container-title">提示</p>
 <p>后为了扩容，各国根据索引等方式又进行进一步的编码</p>
 <p><strong>中国：</strong></p>
 <ul>
@@ -45,7 +52,7 @@ b_sequence <span class="token operator">=</span> s<span class="token punctuation
 <li><code v-pre>gbk1.0</code>: 收录了 2 万 多个字符 (1995 年)</li>
 <li><code v-pre>gb18030</code>：27000 左右中文 (2000 年)</li>
 </ul>
-</blockquote>
+</div>
 <h5 id="_1-2-2-unicode-万国码" tabindex="-1"><a class="header-anchor" href="#_1-2-2-unicode-万国码" aria-hidden="true">#</a> <strong>1.2.2 Unicode 万国码</strong></h5>
 <p><strong>Unicode</strong>: 兼容各国的编码，是一种国际通用标准， <code v-pre>utf-8</code> 则是 <strong>Unicode</strong> 的子集</p>
 <ul>

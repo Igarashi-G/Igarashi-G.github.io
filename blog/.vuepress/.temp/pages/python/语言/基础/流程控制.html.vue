@@ -9,9 +9,10 @@
 <span class="token keyword">elif</span> condition_b<span class="token punctuation">:</span>
     <span class="token keyword">pass</span>
 <span class="token keyword">else</span>
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><blockquote>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="custom-container tip">
+<p class="custom-container-title">提示</p>
 <p><strong>Python</strong> 中 没有 <code v-pre>switch - case</code> 语句，通常用字典 <strong>dict</strong> 模拟，<strong>3.10</strong> 后出现 <a href="https://docs.python.org/zh-cn/3.10/reference/compound_stmts.html#the-match-statement" target="_blank" rel="noopener noreferrer">match<ExternalLinkIcon/></a> 语句，替代<code v-pre>switch</code></p>
-</blockquote>
+</div>
 <h3 id="_1-2-判断运算符" tabindex="-1"><a class="header-anchor" href="#_1-2-判断运算符" aria-hidden="true">#</a> 1.2 判断运算符</h3>
 <p>常用的语义化运算符</p>
 <ul>

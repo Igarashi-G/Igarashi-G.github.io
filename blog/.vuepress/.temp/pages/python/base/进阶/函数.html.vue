@@ -36,7 +36,7 @@
 <li>方便日后改写扩展</li>
 <li>保持代码的一致性</li>
 </ul>
-</br>
+<br/>
 <hr>
 <h2 id="_2-函数参数" tabindex="-1"><a class="header-anchor" href="#_2-函数参数" aria-hidden="true">#</a> 2. 函数参数</h2>
 <h3 id="_2-1-参数类别" tabindex="-1"><a class="header-anchor" href="#_2-1-参数类别" aria-hidden="true">#</a> 2.1 参数类别</h3>
@@ -178,7 +178,7 @@ info<span class="token punctuation">(</span><span class="token operator">**</spa
 <li><code v-pre>/</code> 可选，用来 限制位置，意思是 <code v-pre>/</code> <strong>前面</strong> 的，<strong>只能用位置传参</strong>，禁用 <code v-pre>kwarg=value</code> 这种关键字形式</li>
 <li><code v-pre>*</code> 可选，用来限制关键字，意思是 <code v-pre>*</code> <strong>后面</strong> 的，<strong>只能用关键字传参</strong>，必须以 <code v-pre>kwarg=value</code> 形式</li>
 </ul>
-</br>
+<br/>
 <hr>
 <h2 id="_3-函数返回值-return" tabindex="-1"><a class="header-anchor" href="#_3-函数返回值-return" aria-hidden="true">#</a> 3. 函数返回值(return)</h2>
 <ul>
@@ -202,7 +202,7 @@ a<span class="token punctuation">,</span> b<span class="token punctuation">,</sp
 <li>结束函数，<code v-pre>return</code> 之后便结束，后续代码无任何意义</li>
 <li>返回对象</li>
 </ul>
-</br>
+<br/>
 <hr>
 <h2 id="_4-函数的作用域" tabindex="-1"><a class="header-anchor" href="#_4-函数的作用域" aria-hidden="true">#</a> 4. 函数的作用域</h2>
 <div class="language-python ext-py line-numbers-mode"><pre v-pre class="language-python"><code><span class="token keyword">def</span> <span class="token function">f</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -340,7 +340,7 @@ foo<span class="token punctuation">(</span><span class="token punctuation">)</sp
 <span class="token comment"># {}</span>
 <span class="token comment"># {'i': 'c', 'a': 1, 'b': 1, 'c': 1}</span>
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p><a href="https://www.cnblogs.com/saolv/p/10945463.html" target="_blank" rel="noopener noreferrer">参考<ExternalLinkIcon/></a></p>
-</br>
+<br/>
 <hr>
 <h2 id="_5-进阶" tabindex="-1"><a class="header-anchor" href="#_5-进阶" aria-hidden="true">#</a> 5. 进阶</h2>
 <h3 id="_5-1-函数为参" tabindex="-1"><a class="header-anchor" href="#_5-1-函数为参" aria-hidden="true">#</a> 5.1 函数为参</h3>

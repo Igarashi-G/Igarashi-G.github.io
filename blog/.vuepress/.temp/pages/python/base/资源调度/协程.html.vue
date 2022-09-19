@@ -26,7 +26,7 @@
 </ul>
 <h3 id="_1-2-什么是协程" tabindex="-1"><a class="header-anchor" href="#_1-2-什么是协程" aria-hidden="true">#</a> 1.2 什么是协程</h3>
 <p><strong>协程</strong>，又称<code v-pre>微线程</code>|<code v-pre>纤程</code>。英文：<strong>Coroutine</strong> 可揉挺</p>
-</br>
+<br/>
 <p>一句话说明：协程是一种 <code v-pre>用户态</code> 的 <code v-pre>轻量级</code> <strong>线程</strong>。通过一个<code v-pre>线程</code>，实现代码块相互切换执行，实现麻烦但效率极佳。</p>
 <ul>
 <li>
@@ -36,7 +36,7 @@
 <p><strong>轻量级</strong>：实质上不是利用 CPU 轮询执行，而是用一个线程进行切换，无需 CPU 控制（因此协程说白了是一个单线程）</p>
 </li>
 </ul>
-</br>
+<br/>
 <Alert type="miku">以前<Font type="queen">在系统里</Font>开线程，避免 IO，实现并发。 现在<Font type="queen">在一个线程里</Font>切换阻塞代码，避免 IO，实现并发</Alert><h3 id="_1-3-协程的优缺点" tabindex="-1"><a class="header-anchor" href="#_1-3-协程的优缺点" aria-hidden="true">#</a> 1.3 协程的优缺点</h3>
 <h4 id="协程の好处" tabindex="-1"><a class="header-anchor" href="#协程の好处" aria-hidden="true">#</a> 协程の好处</h4>
 <ul>

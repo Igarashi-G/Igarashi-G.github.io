@@ -1,11 +1,14 @@
 <template><div><h1 id="模块和包" tabindex="-1"><a class="header-anchor" href="#模块和包" aria-hidden="true">#</a> 模块和包</h1>
 <h2 id="_1-模块" tabindex="-1"><a class="header-anchor" href="#_1-模块" aria-hidden="true">#</a> 1. 模块</h2>
-<Alert type="info">用一砣代码实现了某个功能的代码集合</Alert><p>类似于 <strong>函数式编程</strong> 和 <strong>面向过程编程</strong></p>
+<div class="custom-container tip">
+<p class="custom-container-title">用一砣代码实现了某个功能的代码集合</p>
+</div>
+<p>类似于 <strong>函数式编程</strong> 和 <strong>面向过程编程</strong></p>
 <ul>
 <li><strong>函数式编程：</strong> 也叫 <strong>无副作用</strong> 编程，它不会改变外部变量</li>
 <li><strong>面向过程</strong>：函数的堆砌，<strong>不断调用</strong>函数来完成一个功能，提供了代码的 <strong>重用性</strong> 和 <strong>代码间的耦合</strong></li>
 </ul>
-<p><a href="/back_end/python/package/%E5%AE%98%E6%96%B9%E9%9B%86%E6%88%90%E5%8C%85" target="_blank" rel="noopener noreferrer">模块<ExternalLinkIcon/></a>分为三种</p>
+<p>模块分为三种</p>
 <ul>
 <li>
 <p><strong>自定义</strong>模块：自己写的模块</p>
@@ -79,8 +82,12 @@ import re
 <li>通常用来模块内测试代码功能，使功能模块的功能部分，和逻辑执行分离</li>
 </ul>
 <h3 id="_1-3-模块搜索路径" tabindex="-1"><a class="header-anchor" href="#_1-3-模块搜索路径" aria-hidden="true">#</a> 1.3 模块搜索路径</h3>
-<p><a href="/back_end/python/package/%E6%A0%87%E5%87%86%E5%BA%93%E5%9F%BA%E7%A1%80/%E6%97%B6%E9%97%B4" target="_blank" rel="noopener noreferrer">标准库:<ExternalLinkIcon/></a> <strong>Python</strong> 自带的标准模块，内嵌到编译器中，提供操作系统等的基本调用接口，如 <code v-pre>sys</code></p>
-<p>对于非内嵌库（<em>自定义</em>），当模块导入后（如: <code v-pre>import fibo</code>），解释器首先搜索具有 <code v-pre>fibo</code> 名称的内置模块，<code v-pre>sys.builtin_module_names</code> 中，若没找到，则会在 <code v-pre>sys.path</code> 给出的目录列表中搜索</p>
+<p><span style="color: blue"><strong>标准库</strong>:</span> <strong>Python</strong> 自带的标准模块，内嵌到编译器中，提供操作系统等的基本调用接口，如 <code v-pre>sys</code></p>
+<p>对于非内嵌库（<em>自定义</em>），当模块导入后（如: <code v-pre>import fibo</code>）</p>
+<ol>
+<li>解释器首先搜索具有 <code v-pre>fibo</code> 名称的内置模块，<code v-pre>sys.builtin_module_names</code> 中</li>
+<li>若没找到，则会在 <code v-pre>sys.path</code> 给出的目录列表中搜索</li>
+</ol>
 <div class="language-python ext-py line-numbers-mode"><pre v-pre class="language-python"><code><span class="token keyword">import</span> sys
 
 sys<span class="token punctuation">.</span>path
@@ -112,9 +119,10 @@ sys<span class="token punctuation">.</span>path
 
 <span class="token builtin">dir</span><span class="token punctuation">(</span>builtins<span class="token punctuation">)</span>	<span class="token comment"># 查看内置函数和变量名</span>
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p><strong>模块的查找顺序：</strong> 内存中加载 &gt; 内置模块 &gt; <code v-pre>sys.path</code> 路径中包含的模块</p>
-<blockquote>
+<div class="custom-container warning">
+<p class="custom-container-title">注意</p>
 <p><strong>Pycharm</strong> 中，可能会出现正确执行假象，<strong>IDE</strong> 将路径自动添加到了父包，但其实该路径并不在 <code v-pre>sys.path</code> 中</p>
-</blockquote>
+</div>
 <h5 id="利用-file-相对路径找绝对路径" tabindex="-1"><a class="header-anchor" href="#利用-file-相对路径找绝对路径" aria-hidden="true">#</a> <strong>利用 <code v-pre>__file__</code> 相对路径找绝对路径</strong></h5>
 <div class="language-python ext-py line-numbers-mode"><pre v-pre class="language-python"><code><span class="token keyword">import</span> os
 <span class="token keyword">import</span> sys
@@ -129,12 +137,12 @@ sys<span class="token punctuation">.</span>path<span class="token punctuation">.
 <span class="token comment"># 同上，经常出现在配置文件中</span>
 BASE_DIR <span class="token operator">=</span> os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>dirname<span class="token punctuation">(</span>os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>dirname<span class="token punctuation">(</span>os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>abspath<span class="token punctuation">(</span>__file__<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_1-4-python-编译" tabindex="-1"><a class="header-anchor" href="#_1-4-python-编译" aria-hidden="true">#</a> 1.4 Python &quot;编译&quot;</h3>
-<p>为了快速加载模块，<strong>Python</strong> 把模块的编译版缓存在文件名为 <code v-pre>module.version.pyc</code> 的 <code v-pre>__pycache__</code> 目录中， 对编译文件格式进行编码</p>
+<p>为了快速加载模块，<strong>Python</strong> 把模块的编译版缓存在文件名为 <mark><code v-pre>module.version.pyc</code></mark> 的 <code v-pre>__pycache__</code> 目录中， 对编译文件格式进行编码</p>
 <ul>
 <li>
 <p><code v-pre>version</code> 一般为 <strong>Python</strong> 的版本号</p>
 <ul>
-<li>如，<strong>CPython</strong> 的 <strong>3.3</strong> 发行版，<code v-pre>spam.py</code> 的编译版本缓存为 <code v-pre>__pycache__``module.*version*.pyc``__pycache__/spam.cpython-33.pyc</code></li>
+<li>如，<strong>CPython</strong> 的 <strong>3.3</strong> 发行版，<code v-pre>spam.py</code> 的编译版本缓存为 <code v-pre>__pycache__/spam.cpython-33.pyc </code></li>
 <li>使用这种命名惯例，可让不同 <strong>Python</strong> 发行版，及不同版本的已编译模块，<strong>共存</strong></li>
 </ul>
 </li>
@@ -145,6 +153,8 @@ BASE_DIR <span class="token operator">=</span> os<span class="token punctuation"
 <p>编译模块与平台无关，可在不同架构系统之间共享相同的支持库</p>
 </li>
 </ul>
+<div class="custom-container tip">
+<p class="custom-container-title">提示</p>
 <p><strong>Python</strong> 在两种情况下不检查缓存</p>
 <ol>
 <li>从命令行直接载入模块，只重新编译，不存储编译结果</li>
@@ -154,13 +164,13 @@ BASE_DIR <span class="token operator">=</span> os<span class="token punctuation"
 </ul>
 </li>
 </ol>
+</div>
 <p><a href="https://docs.python.org/3.10/library/compileall.html#module-compileall" target="_blank" rel="noopener noreferrer">编译库 文档<ExternalLinkIcon/></a></p>
-</br>
-<hr>
+<br/>
 <h2 id="_2-包" tabindex="-1"><a class="header-anchor" href="#_2-包" aria-hidden="true">#</a> 2. 包</h2>
 <p>解释型语言的 <strong>包</strong> 并不是编译成低级语言（像 <strong>Java</strong> 编译为 <code v-pre>.class</code> 字节码文件）而后打包的意思，而是用 <code v-pre>.module</code> 构造模块命名空间的方法，是利用包按目录的形式，更加方便模块化和管理模块间的依赖</p>
-<h3 id="_2-1-init-py" tabindex="-1"><a class="header-anchor" href="#_2-1-init-py" aria-hidden="true">#</a> 2.1 <code v-pre>__init__.py</code></h3>
-<p>导入包时，<strong>Python</strong> 会搜索 <code v-pre>sys.path</code> 里的目录，查找包的子目录，会只将含有 <code v-pre>__init__.py</code> 文件的目录当成包</p>
+<h3 id="_2-1-init-py" tabindex="-1"><a class="header-anchor" href="#_2-1-init-py" aria-hidden="true">#</a> 2.1 __init__.py</h3>
+<p>导入包时，<strong>Python</strong> 会搜索 <code v-pre>sys.path</code> 里的目录，查找包的子目录，会只将含有 <strong>__init__.py</strong> 文件的目录当成包</p>
 <p>最简情况的 <code v-pre>__init__.py</code> 是一个空文件，其也可以执行包的初始化代码，或设置 <code v-pre>__all__</code> 变量</p>
 <Tree title="/">
   <ul>
@@ -235,7 +245,7 @@ BASE_DIR <span class="token operator">=</span> os<span class="token punctuation"
 
 <span class="token keyword">from</span> sound<span class="token punctuation">.</span>formats<span class="token punctuation">.</span>wavread <span class="token keyword">import</span> <span class="token operator">*</span>
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>此时 <code v-pre>from.sound.effects import *</code> 同时会包含 <strong>formats</strong> 下的 <code v-pre>wavread</code> 模块</p>
-<h3 id="_2-2-all-变量" tabindex="-1"><a class="header-anchor" href="#_2-2-all-变量" aria-hidden="true">#</a> 2.2 <code v-pre>__all__</code> 变量</h3>
+<h3 id="_2-2-all-变量" tabindex="-1"><a class="header-anchor" href="#_2-2-all-变量" aria-hidden="true">#</a> 2.2 <strong>__all__</strong> 变量</h3>
 <p>如果包的 <code v-pre>__init__.py</code> 代码定义了列表 <code v-pre>__all__</code>，运行 <code v-pre>from package import *</code> 时，会从 <code v-pre>__all__</code> 列表中导入</p>
 <ul>
 <li>
@@ -245,8 +255,8 @@ BASE_DIR <span class="token operator">=</span> os<span class="token punctuation"
 </li>
 </ul>
 <p>简单来说就是 <strong>不想引入文件中的所有模块</strong> 或是 <strong>模块中的所有变量</strong> 而进行 <strong>限制</strong> 导入</p>
-<h3 id="_2-3-path-变量" tabindex="-1"><a class="header-anchor" href="#_2-3-path-变量" aria-hidden="true">#</a> 2.3 <code v-pre>__path__</code> 变量</h3>
-<p>包支持一个更特殊的属性 <a href="https://docs.python.org/zh-cn/3.10/reference/import.html#path__" target="_blank" rel="noopener noreferrer"><code v-pre>__path__</code><ExternalLinkIcon/></a> ，在 <code v-pre>__init__.py</code> 文件的代码被执行前，该属性会被初始化为自身所在的目录的列表</p>
+<h3 id="_2-3-path-变量" tabindex="-1"><a class="header-anchor" href="#_2-3-path-变量" aria-hidden="true">#</a> 2.3 <strong>__path__</strong> 变量</h3>
+<p>包支持一个更特殊的属性 <a href="https://docs.python.org/zh-cn/3.10/reference/import.html#path__" target="_blank" rel="noopener noreferrer">__path__<ExternalLinkIcon/></a> ，在 <code v-pre>__init__.py</code> 文件的代码被执行前，该属性会被初始化为自身所在的目录的列表</p>
 <ul>
 <li>
 <p>默认情况下只有一个元素，就是当前包的路径</p>
@@ -258,10 +268,9 @@ BASE_DIR <span class="token operator">=</span> os<span class="token punctuation"
 <p>不常用，但可用于扩展包中的模块集</p>
 </li>
 </ul>
-</br>
-<hr>
+<br/>
 <h2 id="_3-调用解释器" tabindex="-1"><a class="header-anchor" href="#_3-调用解释器" aria-hidden="true">#</a> 3. 调用解释器</h2>
-<p><strong>Python</strong> 解释器（<strong>*Linux</strong> 环境*）通常安装在 <code v-pre>/usr/local/bin/python3.10</code> 路径下，将 <code v-pre>/usr/local/bin</code> 加入系统变量，即可键入 <code v-pre>python3</code> 启动，<strong>Windows</strong> 同理</p>
+<p><strong>Python</strong> 解释器（<em>Linux 环境</em>）通常安装在 <code v-pre>/usr/local/bin/python3.10</code> 路径下，将 <code v-pre>/usr/local/bin</code> 加入系统变量，即可键入 <code v-pre>python3</code> 启动，<strong>Windows</strong> 同理</p>
 <p><a href="https://docs.python.org/zh-cn/3.10/using/cmdline.html#using-on-general" target="_blank" rel="noopener noreferrer">命令行 文档<ExternalLinkIcon/></a></p>
 <h3 id="_3-1-调用模块" tabindex="-1"><a class="header-anchor" href="#_3-1-调用模块" aria-hidden="true">#</a> 3.1 调用模块</h3>
 <div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code>$ python <span class="token parameter variable">-m</span> fibo
@@ -270,16 +279,18 @@ BASE_DIR <span class="token operator">=</span> os<span class="token punctuation"
 $ python <span class="token parameter variable">-m</span> etutorservice <span class="token parameter variable">-c</span> etc/default.yml <span class="token parameter variable">-r</span>
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div></div></div><ul>
 <li><code v-pre>-m</code> 即执行 <code v-pre>etutorservice</code> 项目下的 <code v-pre>main.py</code> 文件，此外，还可以运行 <strong>zip</strong> 的压缩文件</li>
-<li><code v-pre>-c</code> 配置文件的路径，会是用了 <a href="">argparse</a>（<em>参数解析器</em>）来获取执行脚本需要的参数</li>
+<li><code v-pre>-c</code> 配置文件的路径，用 <a href="">argparse</a>（<em>参数解析器</em>）来获取执行脚本需要的参数</li>
 <li><code v-pre>-r</code> 默认 <code v-pre>True</code> ，用于初始化的判断</li>
 </ul>
-<h5 id="python-main-py-和-python-m-main-py-区别" tabindex="-1"><a class="header-anchor" href="#python-main-py-和-python-m-main-py-区别" aria-hidden="true">#</a> <strong><code v-pre>python main.py</code> 和 <code v-pre>python -m main.py</code> 区别</strong></h5>
+<div class="custom-container warning">
+<p class="custom-container-title">注意</p>
+<p><strong><code v-pre>python main.py</code> 和 <code v-pre>python -m main.py</code> 区别</strong></p>
 <ol>
 <li>前者是直接运行，后者是把模块当脚本来启动，此时 <code v-pre>__name__</code> 为脚本名称，而非 <code v-pre>__main__</code></li>
 <li>影响 <code v-pre>sys.path</code> 中的环境变量，<code v-pre>-m</code> 方式默认缺少当下目录路径，直接启动会将当前路径加入环境变量中</li>
 </ol>
-</br>
-<hr>
+</div>
+<br/>
 <h2 id="_4-目录规范" tabindex="-1"><a class="header-anchor" href="#_4-目录规范" aria-hidden="true">#</a> 4. 目录规范</h2>
 <p>假设项目名为 <code v-pre>Foo</code>，最方便快捷目录结构如下足够</p>
 <pre><code>Foo/
@@ -353,10 +364,11 @@ $ python <span class="token parameter variable">-m</span> etutorservice <span cl
 <li>配置文件写在一个或多个 <strong>Python</strong> 文件中，比如此处的 <code v-pre>conf.py</code></li>
 <li>项目中哪个模块用到这个配置文件就直接通过 <code v-pre>import conf</code> 形式在代码引入</li>
 </ol>
-<h5 id="如上做法我非常反对" tabindex="-1"><a class="header-anchor" href="#如上做法我非常反对" aria-hidden="true">#</a> <strong>如上做法我非常反对</strong></h5>
+<div class="custom-container warning">
+<p class="custom-container-title">如上做法问题</p>
 <ol>
 <li>
-<p>这让 <strong>单元测试变得困难</strong>（<em>因为模块内部依赖了外部配置</em>）</p>
+<p><strong>单元测试变得困难</strong>（<em>因为模块内部依赖了外部配置</em>）</p>
 </li>
 <li>
 <p>配置文件作为用户控制程序的接口，应当 <strong>可由用户自由指定</strong> 该文件的路径</p>
@@ -365,7 +377,8 @@ $ python <span class="token parameter variable">-m</span> etutorservice <span cl
 <p>程序组件 <strong>可复用性太差</strong>，为这种贯穿所有模块的代码硬编码方式，使得大部分模块都依赖 <code v-pre>conf.py</code> 这个文件</p>
 </li>
 </ol>
-<h5 id="所以-我认为配置的使用-更好的方式" tabindex="-1"><a class="header-anchor" href="#所以-我认为配置的使用-更好的方式" aria-hidden="true">#</a> <strong>所以，我认为配置的使用，更好的方式</strong></h5>
+</div>
+<h5 id="配置使用更好的方式" tabindex="-1"><a class="header-anchor" href="#配置使用更好的方式" aria-hidden="true">#</a> <strong>配置使用更好的方式：</strong></h5>
 <ol>
 <li>模块的配置都可 <strong>灵活配置</strong> ，不受外部配置文件的影响</li>
 <li>程序的配置都 <strong>灵活控制</strong>，如 <strong>Nginx</strong>、<strong>MySQL</strong> 这种软件的配置文件，可用户自由指定</li>
@@ -378,8 +391,7 @@ $ python <span class="token parameter variable">-m</span> etutorservice <span cl
 <li><code v-pre>conf.py</code> 可换个类似名称，如 <code v-pre>settings.py</code></li>
 <li>当然，也可用其他格式来编写配置文件，如 <code v-pre>settings.yml</code>、<code v-pre>default.yml</code></li>
 </ul>
-</br>
-<hr>
+<br/>
 </div></template>
 
 

@@ -155,7 +155,7 @@ BASE_DIR <span class="token operator">=</span> os<span class="token punctuation"
 </li>
 </ol>
 <p><a href="https://docs.python.org/3.10/library/compileall.html#module-compileall" target="_blank" rel="noopener noreferrer">编译库 文档<ExternalLinkIcon/></a></p>
-</br>
+<br/>
 <hr>
 <h2 id="_2-包" tabindex="-1"><a class="header-anchor" href="#_2-包" aria-hidden="true">#</a> 2. 包</h2>
 <p>解释型语言的 <strong>包</strong> 并不是编译成低级语言（像 <strong>Java</strong> 编译为 <code v-pre>.class</code> 字节码文件）而后打包的意思，而是用 <code v-pre>.module</code> 构造模块命名空间的方法，是利用包按目录的形式，更加方便模块化和管理模块间的依赖</p>
@@ -258,7 +258,7 @@ BASE_DIR <span class="token operator">=</span> os<span class="token punctuation"
 <p>不常用，但可用于扩展包中的模块集</p>
 </li>
 </ul>
-</br>
+<br/>
 <hr>
 <h2 id="_3-调用解释器" tabindex="-1"><a class="header-anchor" href="#_3-调用解释器" aria-hidden="true">#</a> 3. 调用解释器</h2>
 <p><strong>Python</strong> 解释器（<strong>*Linux</strong> 环境*）通常安装在 <code v-pre>/usr/local/bin/python3.10</code> 路径下，将 <code v-pre>/usr/local/bin</code> 加入系统变量，即可键入 <code v-pre>python3</code> 启动，<strong>Windows</strong> 同理</p>
@@ -278,7 +278,7 @@ $ python <span class="token parameter variable">-m</span> etutorservice <span cl
 <li>前者是直接运行，后者是把模块当脚本来启动，此时 <code v-pre>__name__</code> 为脚本名称，而非 <code v-pre>__main__</code></li>
 <li>影响 <code v-pre>sys.path</code> 中的环境变量，<code v-pre>-m</code> 方式默认缺少当下目录路径，直接启动会将当前路径加入环境变量中</li>
 </ol>
-</br>
+<br/>
 <hr>
 <h2 id="_4-目录规范" tabindex="-1"><a class="header-anchor" href="#_4-目录规范" aria-hidden="true">#</a> 4. 目录规范</h2>
 <p>假设项目名为 <code v-pre>Foo</code>，最方便快捷目录结构如下足够</p>
@@ -378,7 +378,7 @@ $ python <span class="token parameter variable">-m</span> etutorservice <span cl
 <li><code v-pre>conf.py</code> 可换个类似名称，如 <code v-pre>settings.py</code></li>
 <li>当然，也可用其他格式来编写配置文件，如 <code v-pre>settings.yml</code>、<code v-pre>default.yml</code></li>
 </ul>
-</br>
+<br/>
 <hr>
 </div></template>
 

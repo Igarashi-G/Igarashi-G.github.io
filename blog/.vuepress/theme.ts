@@ -34,7 +34,7 @@ export default hopeTheme({
     name: "五十岚",
     avatar: "http://www.deadly-exception.icu:8999/img/igarashi.jpg",
     roundAvatar: true,
-    description: "啥都不会的Python混子，好吃懒做的大摆锤",
+    description: "啥也不会的Python混子，好吃懒做的大摆锤",
     intro: "/home",
     medias: {
       // Baidu: "https://example.com",

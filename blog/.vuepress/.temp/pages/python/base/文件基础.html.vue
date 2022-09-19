@@ -171,7 +171,7 @@ f<span class="token punctuation">.</span>seekable<span class="token punctuation"
 <li>文件对象会从 <code v-pre>__enter__()</code> 返回当前对象（<em>自己</em>），让 <code v-pre>open()</code> 作为 <code v-pre>with</code> 语句的上下文表达式</li>
 <li>返回的文件对象会赋值给 <code v-pre>file</code> 变量，该对象的文件类实现了上下文管理协议</li>
 </ul>
-</br>
+<br/>
 <p><strong>contextmanager.<code v-pre>__exit__(*exc_type*, *exc_val*, *exc_tb*) -&gt; bool</code></strong></p>
 <p><strong>退出运行时的上下文</strong>，若运行时发生异常，则会退出上下文管理器，并 <strong>调用此方法</strong>，它返回一个 <strong>bool</strong> 标识，来检测是否有需要处理的异常，退出时参数如下</p>
 <ul>

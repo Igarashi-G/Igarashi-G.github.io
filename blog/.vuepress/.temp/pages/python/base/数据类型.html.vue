@@ -1,6 +1,6 @@
 <template><div><h1 id="数据类型" tabindex="-1"><a class="header-anchor" href="#数据类型" aria-hidden="true">#</a> 数据类型</h1>
 <Alert type="info"> <Font type="info">**Python**: </Font>是 **强类型**（安全，不同类型禁止相加）、**动态**（不显示数据类型）、**脚本**（通过`python 解释器`来执行）的语言，因此 开发效率高、灵活 但不健壮。</Alert><p><a href="https://docs.python.org/zh-cn/3/" target="_blank" rel="noopener noreferrer">官方文档<ExternalLinkIcon/></a></p>
-</br>
+<br/>
 <p><strong>Python3</strong>上统一编码为 <a href="/back_end/python/base/%E5%88%9D%E8%AF%86/%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81#122-unicode%E4%B8%87%E5%9B%BD%E7%A0%81" target="_blank" rel="noopener noreferrer">Unicode<ExternalLinkIcon/></a> ，部分 <strong>Windows</strong> 系统，<code v-pre>cmd</code> 无法输入中文，请执行如下命令</p>
 <div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code>$ chcp <span class="token number">936</span>	<span class="token comment"># 改为支持 GBK 编码</span>
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><h2 id="_1-数字类-number" tabindex="-1"><a class="header-anchor" href="#_1-数字类-number" aria-hidden="true">#</a> 1. 数字类（<code v-pre>Number</code>）</h2>
