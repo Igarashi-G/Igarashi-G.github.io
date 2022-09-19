@@ -12,7 +12,7 @@ export default hopeTheme({
 
   iconAssets: "iconfont",
 
-  logo: "http://www.deadly-exception.icu:8999/img/igarashi.jpg",
+  logo: "avatar.jpg",
 
   repo: "vuepress-theme-hope/vuepress-theme-hope",
 
@@ -32,7 +32,7 @@ export default hopeTheme({
 
   blog: {
     name: "五十岚",
-    avatar: "http://www.deadly-exception.icu:8999/img/igarashi.jpg",
+    avatar: "avatar.jpg",
     roundAvatar: true,
     description: "啥也不会的Python混子，好吃懒做的大摆锤",
     intro: "/home",
@@ -46,7 +46,7 @@ export default hopeTheme({
       // Evernote: "https://example.com",
       // Facebook: "https://example.com",
       // Flipboard: "https://example.com",
-      GitHub: "https://github.com/Igarashi-Chiduru",
+      GitHub: "https://github.com/Igarashi-G",
       Gitee: "https://gitee.com/igarashi",
       // Gitlab: "https://example.com",
       // Gmail: "https://example.com",
@@ -73,7 +73,7 @@ export default hopeTheme({
 
     // 在移动视图下访问非博客相关的页面时，你也可以在侧边栏看到它
     // https://vuepress-theme-hope.github.io/v2/zh/guide/blog/intro.html#%E4%BE%A7%E8%BE%B9%E6%A0%8F
-    sidebarDisplay: "mobile",
+    sidebarDisplay: "mobile"
   },
 
   encrypt: {
@@ -127,7 +127,7 @@ export default hopeTheme({
       // 自定义对齐
       // https://vuepress-theme-hope.gitee.io/v2/zh/guide/markdown/align.html
       align: true,
-      
+
       // Markdown 元素添加属性
       // https://vuepress-theme-hope.gitee.io/v2/zh/guide/markdown/attrs.html
       attrs: true,
@@ -155,7 +155,7 @@ export default hopeTheme({
       // https://vuepress-theme-hope.gitee.io/v2/zh/guide/markdown/include.html#%E9%85%8D%E7%BD%AE
       include: true,
       lazyLoad: true,
-      
+
       // 支持标记
       // https://vuepress-theme-hope.gitee.io/v2/zh/guide/markdown/mark.html
       mark: true,

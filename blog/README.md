@@ -3,11 +3,11 @@ home: true
 layout: Blog
 icon: home
 title: 主页
-bgImage: http://www.deadly-exception.icu:8999/img/arknights_bk.jpg
+bgImage: arknights_bk.jpg
 bgImageStyle: {
   "height": "400px"
 }
-heroImage: http://www.deadly-exception.icu:8999/img/header.png
+heroImage: header.png
 heroText: 五十岚的博客
 heroFullScreen: false
 heroImageStyle: {
