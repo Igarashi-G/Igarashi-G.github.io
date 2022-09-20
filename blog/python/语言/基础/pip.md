@@ -8,6 +8,10 @@ tag:
 star: true
 ---
 
+Python 的包管理器
+
+<!-- more -->
+
 # pip（包管理器）
 
 ## 1. 使用基础

@@ -1,6 +1,8 @@
-<template><div><h1 id="python-环境安装" tabindex="-1"><a class="header-anchor" href="#python-环境安装" aria-hidden="true">#</a> Python 环境安装</h1>
+<template><div><p>Python下载 &amp; Pycharm 基本使用</p>
+<!-- more -->
+<h1 id="python-环境安装" tabindex="-1"><a class="header-anchor" href="#python-环境安装" aria-hidden="true">#</a> Python 环境安装</h1>
 <h3 id="_1-环境安装" tabindex="-1"><a class="header-anchor" href="#_1-环境安装" aria-hidden="true">#</a> 1. 环境安装</h3>
-<p><a href="https://www.python.org/downloads%E3%80%81/" target="_blank" rel="noopener noreferrer">Python 下载<ExternalLinkIcon/></a> | <a href="https://docs.conda.io/en/latest/miniconda.html" target="_blank" rel="noopener noreferrer">Miniconda 下载<ExternalLinkIcon/></a></p>
+<p><a href="https://www.python.org/downloads/" target="_blank" rel="noopener noreferrer">Python 下载<ExternalLinkIcon/></a> | <a href="https://docs.conda.io/en/latest/miniconda.html" target="_blank" rel="noopener noreferrer">Miniconda 下载<ExternalLinkIcon/></a></p>
 <h3 id="_2-python-风格指南" tabindex="-1"><a class="header-anchor" href="#_2-python-风格指南" aria-hidden="true">#</a> 2. python 风格指南</h3>
 <p><a href="https://pep8.org/" target="_blank" rel="noopener noreferrer">PEP 8<ExternalLinkIcon/></a></p>
 <h3 id="_3-pycharm" tabindex="-1"><a class="header-anchor" href="#_3-pycharm" aria-hidden="true">#</a> 3. Pycharm</h3>

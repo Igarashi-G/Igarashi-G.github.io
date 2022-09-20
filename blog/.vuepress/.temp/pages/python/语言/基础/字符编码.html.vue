@@ -1,4 +1,6 @@
-<template><div><h1 id="字符编码" tabindex="-1"><a class="header-anchor" href="#字符编码" aria-hidden="true">#</a> 字符编码</h1>
+<template><div><p>是否重要取决于编程场景，对只处理 <strong>ASCII</strong> 文本的程序员没有影响</p>
+<!-- more -->
+<h1 id="字符编码" tabindex="-1"><a class="header-anchor" href="#字符编码" aria-hidden="true">#</a> 字符编码</h1>
 <p><strong>Python3</strong> 明确区分了人类可读的 <strong>文本字符串</strong> 和原始的 <strong>字节序列</strong></p>
 <p><a href="https://docs.python.org/zh-cn/3.10/library/codecs.html#module-codecs" target="_blank" rel="noopener noreferrer">编解码器 文档<ExternalLinkIcon/></a></p>
 <h2 id="_1-字符" tabindex="-1"><a class="header-anchor" href="#_1-字符" aria-hidden="true">#</a> 1. 字符</h2>

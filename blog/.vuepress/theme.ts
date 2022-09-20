@@ -3,18 +3,18 @@ import navbar from "./navbar.js"
 import sidebar from "./sidebar.js"
 
 export default hopeTheme({
-  hostname: "https://vuepress-theme-hope-v2-demo.mrhope.site",
+  hostname: "https://igarashi-g.github.io/igarashi-blog/",
 
   author: {
-    name: "Igarashi",
-    url: "https://mrhope.site",
+    name: "五十岚",
+    url: "https://github.com/Igarashi-G",
   },
 
   iconAssets: "iconfont",
 
   logo: "avatar.jpg",
 
-  repo: "vuepress-theme-hope/vuepress-theme-hope",
+  repo: "Igarashi-G/igarashi-blog",
 
   docsDir: "demo/src",
 
@@ -35,7 +35,7 @@ export default hopeTheme({
     avatar: "avatar.jpg",
     roundAvatar: true,
     description: "啥也不会的Python混子，好吃懒做的大摆锤",
-    intro: "/home",
+    intro: "/intro",
     medias: {
       // Baidu: "https://example.com",
       // Bitbucket: "https://example.com",
@@ -203,7 +203,7 @@ export default hopeTheme({
     },
     // 组件
     // https://vuepress-theme-hope.gitee.io/v2/zh/guide/markdown/components.html
-    components: ["Badge"],
+    components: ["Badge", "PDF"],
 
     // 版权信息
     // https://vuepress-theme-hope.gitee.io/v2/zh/guide/feature/copyright.html

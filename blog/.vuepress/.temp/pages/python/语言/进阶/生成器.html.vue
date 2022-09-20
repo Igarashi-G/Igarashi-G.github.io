@@ -1,7 +1,7 @@
-<template><div><h1 id="生成器" tabindex="-1"><a class="header-anchor" href="#生成器" aria-hidden="true">#</a> 生成器</h1>
-<Alert>所有的生成器都是 [迭代器](/back_end/python/base/基本概念/迭代器)，因为生成器 **完全实现** 了迭代器接口</Alert><blockquote>
-<p>迭代器从集合中取元素，而生成器用于 <code v-pre>凭空</code> 生成元素</p>
-</blockquote>
+<template><div><p>所有的生成器都是 <RouterLink to="/python/%E8%AF%AD%E8%A8%80/%E8%BF%9B%E9%98%B6/%E8%BF%AD%E4%BB%A3%E5%99%A8.html">迭代器</RouterLink>，因为生成器 <strong>完全实现</strong> 了迭代器接口</p>
+<!-- more -->
+<h1 id="生成器" tabindex="-1"><a class="header-anchor" href="#生成器" aria-hidden="true">#</a> 生成器</h1>
+<p>迭代器从集合中取元素，而生成器用于 <strong>凭空</strong> 生成元素</p>
 <p>【概述】：含有 yield 关键字的函数就是生成器函数。</p>
 <pre><code>列表生成式:(用于生成列表，这可不是生成器)
     [x for x in range(10)] 这样写有病啊 一个range(10)不就出来了

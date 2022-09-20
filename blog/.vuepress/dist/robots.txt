@@ -2,4 +2,4 @@
 User-agent:*
 Disallow:
 
-Sitemap: https://vuepress-theme-hope-v2-demo.mrhope.site/igarashi-blog/sitemap.xml
+Sitemap: https://igarashi-g.github.io/igarashi-blog/igarashi-blog/sitemap.xml

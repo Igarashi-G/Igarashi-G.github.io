@@ -1,6 +1,6 @@
 ---
 title: Python
-index: false
+article: false
 icon: Python
 category:
   - 使用指南

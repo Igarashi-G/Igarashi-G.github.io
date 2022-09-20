@@ -69,8 +69,7 @@ export default sidebar({
               text: "进阶",
               collapsable: true,
               prefix: "进阶/",
-              children: ["变量机制", "函数", "模块和包", "装饰器"],
-              // children: ["变量机制", "函数", "模块和包", "装饰器", "迭代器", "生成器", "错误和异常", "面向对象"],
+              children: ["变量机制", "函数", "模块和包", "装饰器", "迭代器", "生成器", "错误和异常", "面向对象"],
             },
             // {
             //   text: "高级",
@@ -124,6 +123,15 @@ export default sidebar({
       ],
     },
     
+  ],
+  "/book": [
+    {
+      text: "书籍",
+      icon: "book",
+      prefix: "/book/",
+      link: "/book/",
+      children: ["艺术", "社会学", "金融学", "心理学", "技术", "python"],
+    }
   ],
   "/guide": [
     {

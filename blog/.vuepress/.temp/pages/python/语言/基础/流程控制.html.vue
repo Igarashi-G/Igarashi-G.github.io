@@ -1,4 +1,6 @@
-<template><div><h1 id="流程控制" tabindex="-1"><a class="header-anchor" href="#流程控制" aria-hidden="true">#</a> 流程控制</h1>
+<template><div><p>if - else 等流程控制</p>
+<!-- more -->
+<h1 id="流程控制" tabindex="-1"><a class="header-anchor" href="#流程控制" aria-hidden="true">#</a> 流程控制</h1>
 <h2 id="_1-条件判断" tabindex="-1"><a class="header-anchor" href="#_1-条件判断" aria-hidden="true">#</a> 1. 条件判断</h2>
 <h3 id="_1-1-if-语句" tabindex="-1"><a class="header-anchor" href="#_1-1-if-语句" aria-hidden="true">#</a> 1.1 if 语句</h3>
 <p><code v-pre>if</code> / <code v-pre>if-else</code> / <code v-pre>if-elif-else</code> 用于对条件的判断，若找到真值，则执行子句体，书写格式如下</p>

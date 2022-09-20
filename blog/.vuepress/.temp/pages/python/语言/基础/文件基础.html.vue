@@ -1,4 +1,6 @@
-<template><div><h1 id="文件" tabindex="-1"><a class="header-anchor" href="#文件" aria-hidden="true">#</a> 文件</h1>
+<template><div><p><strong>上下文管理器</strong> 可能与子程序（<em>subroutine</em>）本身一样重要，它会做 <mark>事前/后</mark> 的清理操作</p>
+<!-- more -->
+<h1 id="文件" tabindex="-1"><a class="header-anchor" href="#文件" aria-hidden="true">#</a> 文件</h1>
 <h2 id="_1-文件基础" tabindex="-1"><a class="header-anchor" href="#_1-文件基础" aria-hidden="true">#</a> 1. 文件基础</h2>
 <p><strong>Unix</strong> 理念：一切皆文件</p>
 <ul>

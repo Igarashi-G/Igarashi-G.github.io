@@ -1,4 +1,6 @@
-<template><div><h1 id="函数" tabindex="-1"><a class="header-anchor" href="#函数" aria-hidden="true">#</a> 函数</h1>
+<template><div><p>把函数视为 <strong>一等对象</strong></p>
+<!-- more -->
+<h1 id="函数" tabindex="-1"><a class="header-anchor" href="#函数" aria-hidden="true">#</a> 函数</h1>
 <h2 id="_1-概念" tabindex="-1"><a class="header-anchor" href="#_1-概念" aria-hidden="true">#</a> 1. 概念</h2>
 <h3 id="_1-1-函数定义" tabindex="-1"><a class="header-anchor" href="#_1-1-函数定义" aria-hidden="true">#</a> 1.1 函数定义</h3>
 <ul>

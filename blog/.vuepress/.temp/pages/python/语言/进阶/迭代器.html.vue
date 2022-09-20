@@ -1,5 +1,7 @@
-<template><div><h1 id="迭代器" tabindex="-1"><a class="header-anchor" href="#迭代器" aria-hidden="true">#</a> 迭代器</h1>
-<Alert type="info">迭代是数据处理的基石，**内存放不下数据** 时，需要找到一种 **惰性获取数据项** 的方式</Alert><h2 id="_1-什么是迭代器" tabindex="-1"><a class="header-anchor" href="#_1-什么是迭代器" aria-hidden="true">#</a> 1. 什么是迭代器</h2>
+<template><div><p>迭代是数据处理的基石，<strong>内存放不下数据</strong> 时，需要找到一种 <strong>惰性获取数据项</strong> 的方式，即按需一次获取一个数据项，这就是 <strong>迭代器模式</strong>（<em>Iterator pattern</em>）</p>
+<!-- more -->
+<h1 id="迭代器" tabindex="-1"><a class="header-anchor" href="#迭代器" aria-hidden="true">#</a> 迭代器</h1>
+<h2 id="_1-什么是迭代器" tabindex="-1"><a class="header-anchor" href="#_1-什么是迭代器" aria-hidden="true">#</a> 1. 什么是迭代器</h2>
 <blockquote>
 <p>通常，迭代器是从 <strong>集合</strong> 中取元素，表示集合是有限多个，只是通过迭代器来一个个取</p>
 </blockquote>

@@ -1,4 +1,6 @@
-<template><div><h1 id="数据类型" tabindex="-1"><a class="header-anchor" href="#数据类型" aria-hidden="true">#</a> 数据类型</h1>
+<template><div><p>Python 的基本数据类型</p>
+<!-- more -->
+<h1 id="数据类型" tabindex="-1"><a class="header-anchor" href="#数据类型" aria-hidden="true">#</a> 数据类型</h1>
 <p><strong>Python</strong> 是 <strong>强类型</strong>（<em>安全，不同类型禁止相加</em>）、<strong>动态</strong>（<em>不显示数据类型</em>）、<strong>脚本</strong>（<em>通过解释器执行</em>）语言，开发效率高、灵活，但不健壮</p>
 <p><a href="https://docs.python.org/zh-cn/3/" target="_blank" rel="noopener noreferrer">官方文档<ExternalLinkIcon/></a></p>
 <p><strong>Python3</strong>上统一编码为 <a href="./%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81">Unicode</a> ，部分 <strong>Windows</strong> 系统，<code v-pre>cmd</code> 无法输入中文，请执行如下命令</p>

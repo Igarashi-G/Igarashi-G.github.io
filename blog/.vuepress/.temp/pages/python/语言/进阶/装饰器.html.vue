@@ -1,4 +1,7 @@
-<template><div><h1 id="装饰器" tabindex="-1"><a class="header-anchor" href="#装饰器" aria-hidden="true">#</a> 装饰器</h1>
+<template><div><p><strong>装饰器</strong> 这个名称可能更适合再编译器领域使用，因为它会遍历并注解语法树</p>
+<p>—— <strong>PEP 318</strong></p>
+<!-- more -->
+<h1 id="装饰器" tabindex="-1"><a class="header-anchor" href="#装饰器" aria-hidden="true">#</a> 装饰器</h1>
 <h2 id="_1-概述" tabindex="-1"><a class="header-anchor" href="#_1-概述" aria-hidden="true">#</a> 1. 概述</h2>
 <p><strong>装饰器（<em>Decorators</em>）</strong> 用于源码 ’标记‘ 函数，以某种方式增强函数的行为，必须先掌握 <strong>以下三个条件</strong></p>
 <ul>

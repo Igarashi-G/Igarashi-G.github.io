@@ -1,4 +1,6 @@
-<template><div><h1 id="pip-包管理器" tabindex="-1"><a class="header-anchor" href="#pip-包管理器" aria-hidden="true">#</a> pip（包管理器）</h1>
+<template><div><p>Python 的包管理器</p>
+<!-- more -->
+<h1 id="pip-包管理器" tabindex="-1"><a class="header-anchor" href="#pip-包管理器" aria-hidden="true">#</a> pip（包管理器）</h1>
 <h2 id="_1-使用基础" tabindex="-1"><a class="header-anchor" href="#_1-使用基础" aria-hidden="true">#</a> 1. 使用基础</h2>
 <h3 id="_1-1-换源" tabindex="-1"><a class="header-anchor" href="#_1-1-换源" aria-hidden="true">#</a> 1.1 换源</h3>
 <h5 id="pypi-国内源路径" tabindex="-1"><a class="header-anchor" href="#pypi-国内源路径" aria-hidden="true">#</a> PYPI 国内源路径</h5>

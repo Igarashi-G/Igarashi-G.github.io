@@ -1,4 +1,6 @@
-<template><div><h1 id="变量机制" tabindex="-1"><a class="header-anchor" href="#变量机制" aria-hidden="true">#</a> 变量机制</h1>
+<template><div><p><strong>变量不是盒子</strong>，以及 深/浅拷贝</p>
+<!-- more -->
+<h1 id="变量机制" tabindex="-1"><a class="header-anchor" href="#变量机制" aria-hidden="true">#</a> 变量机制</h1>
 <h2 id="_1-深浅拷贝" tabindex="-1"><a class="header-anchor" href="#_1-深浅拷贝" aria-hidden="true">#</a> 1. 深浅拷贝</h2>
 <h3 id="_1-1-变量实现原理" tabindex="-1"><a class="header-anchor" href="#_1-1-变量实现原理" aria-hidden="true">#</a> 1.1 变量实现原理</h3>
 <div class="language-python ext-py line-numbers-mode"><pre v-pre class="language-python"><code>a <span class="token operator">=</span> <span class="token number">1</span>

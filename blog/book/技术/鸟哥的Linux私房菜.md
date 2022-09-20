@@ -1,0 +1,7 @@
+---
+title: 鸟哥的Linux私房菜
+date: 2022-09-19
+article: false
+---
+
+<PDF url="http://www.deadly-exception.icu:7779/pdf/%E6%8A%80%E6%9C%AF/%E9%B8%9F%E5%93%A5%E7%9A%84Linux%E7%A7%81%E6%88%BF%E8%8F%9C.pdf" height="880px"/>

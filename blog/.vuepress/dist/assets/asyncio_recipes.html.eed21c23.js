@@ -1,0 +1,1 @@
+import{_ as o}from"./_plugin-vue_export-helper.cdc0426e.js";import{o as c,c as t,b as n,r}from"./app.bd123c3e.js";const s={};function p(_,a){const e=r("PDF");return c(),t("div",null,[n(e,{url:"http://www.deadly-exception.icu:7779/pdf/python/asyncio%20Recipes.pdf",height:"880px"})])}const f=o(s,[["render",p],["__file","asyncio_recipes.html.vue"]]);export{f as default};

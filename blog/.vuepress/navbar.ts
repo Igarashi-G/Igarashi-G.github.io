@@ -2,12 +2,9 @@ import { navbar } from "vuepress-theme-hope";
 
 export default navbar([
   "/",
-  "/home",
-  { text: "使用指南", icon: "creative", link: "/guide/" },
   {
     text: "Python",
     icon: "python",
-    link: "/python/",
     prefix: "/python/",
     children: [
       {
@@ -48,12 +45,13 @@ export default navbar([
   },
   {
     text: "漫漫全干卷的苦",
-    icon: "note",
     children: [
-      { text: "GO", link: "https://draveness.me/golang/" },
-      { text: "前端内卷不归路", link: "https://notes.fe-mm.com/interview/base/types.html" },
+      { text: "GO", icon: "hot", link: "https://draveness.me/golang/" },
+      { text: "前端内卷不归路", icon: "html", link: "https://notes.fe-mm.com/interview/base/types.html" },
     ],
   },
+  "/home",
+  { text: "使用指南", icon: "creative", link: "/guide/" },
   // {
   //   text: "博文",
   //   icon: "edit",
@@ -94,9 +92,9 @@ export default navbar([
   //     "article12",
   //   ],
   // },
-  {
-    text: "主题文档",
-    icon: "note",
-    link: "https://vuepress-theme-hope.github.io/v2/zh/",
-  },
+  // {
+  //   text: "主题文档",
+  //   icon: "note",
+  //   link: "https://vuepress-theme-hope.github.io/v2/zh/",
+  // },
 ]);
