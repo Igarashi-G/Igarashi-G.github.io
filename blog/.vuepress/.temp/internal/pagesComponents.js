@@ -27,8 +27,6 @@ export const pagesComponents = {
   "v-e377b06c": defineAsyncComponent(() => import(/* webpackChunkName: "v-e377b06c" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/paint/index.html.vue")),
   // path: /paint/SAI%E6%93%8D%E4%BD%9C%E5%9F%BA%E7%A1%80.html
   "v-7a19f208": defineAsyncComponent(() => import(/* webpackChunkName: "v-7a19f208" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/paint/SAI操作基础.html.vue")),
-  // path: /python/
-  "v-63cd5dba": defineAsyncComponent(() => import(/* webpackChunkName: "v-63cd5dba" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/python/index.html.vue")),
   // path: /book/python/asyncio_recipes.html
   "v-31a143f7": defineAsyncComponent(() => import(/* webpackChunkName: "v-31a143f7" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/book/python/asyncio_recipes.html.vue")),
   // path: /book/python/devops_in_python.html
@@ -83,6 +81,8 @@ export const pagesComponents = {
   "v-8835abf2": defineAsyncComponent(() => import(/* webpackChunkName: "v-8835abf2" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/book/艺术/index.html.vue")),
   // path: /book/%E8%89%BA%E6%9C%AF/%E6%B8%85%E9%86%92%E6%80%9D%E8%80%83%E7%9A%84%E8%89%BA%E6%9C%AF.html
   "v-68e38b03": defineAsyncComponent(() => import(/* webpackChunkName: "v-68e38b03" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/book/艺术/清醒思考的艺术.html.vue")),
+  // path: /python/
+  "v-63cd5dba": defineAsyncComponent(() => import(/* webpackChunkName: "v-63cd5dba" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/python/index.html.vue")),
   // path: /book/%E9%87%91%E8%9E%8D%E5%AD%A6/
   "v-0d7ec61b": defineAsyncComponent(() => import(/* webpackChunkName: "v-0d7ec61b" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/book/金融学/index.html.vue")),
   // path: /book/%E9%87%91%E8%9E%8D%E5%AD%A6/%E5%8D%9A%E5%BC%88%E8%AE%BA%E4%B8%8E%E7%BB%8F%E6%B5%8E%E8%A1%8C%E4%B8%BA.html
