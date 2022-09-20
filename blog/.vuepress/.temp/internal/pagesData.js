@@ -57,18 +57,6 @@ export const pagesData = {
   "v-339d01c6": () => import(/* webpackChunkName: "v-339d01c6" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/book/心理学/洗脑心理学.html.js").then(({ data }) => data),
   // path: /book/%E5%BF%83%E7%90%86%E5%AD%A6/%E8%BF%9B%E5%8C%96%E5%BF%83%E7%90%86%E5%AD%A6.html
   "v-7455cc15": () => import(/* webpackChunkName: "v-7455cc15" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/book/心理学/进化心理学.html.js").then(({ data }) => data),
-  // path: /book/%E6%8A%80%E6%9C%AF/CODE.html
-  "v-6072c556": () => import(/* webpackChunkName: "v-6072c556" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/book/技术/CODE.html.js").then(({ data }) => data),
-  // path: /book/%E6%8A%80%E6%9C%AF/
-  "v-0d413314": () => import(/* webpackChunkName: "v-0d413314" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/book/技术/index.html.js").then(({ data }) => data),
-  // path: /book/%E6%8A%80%E6%9C%AF/%E6%88%90%E4%B8%BA%E6%8A%80%E6%9C%AF%E9%A2%86%E5%AF%BC%E8%80%85.html
-  "v-11b4cc99": () => import(/* webpackChunkName: "v-11b4cc99" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/book/技术/成为技术领导者.html.js").then(({ data }) => data),
-  // path: /book/%E6%8A%80%E6%9C%AF/%E9%B8%9F%E5%93%A5%E7%9A%84Linux%E7%A7%81%E6%88%BF%E8%8F%9C.html
-  "v-8902d37a": () => import(/* webpackChunkName: "v-8902d37a" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/book/技术/鸟哥的Linux私房菜.html.js").then(({ data }) => data),
-  // path: /book/%E6%8A%80%E6%9C%AF/%E9%B8%9F%E5%93%A5%E7%9A%84Linux%E7%A7%81%E6%88%BF%E8%8F%9C%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%9E%B6%E8%AE%BE%E7%AF%87.html
-  "v-7aa9b7b3": () => import(/* webpackChunkName: "v-7aa9b7b3" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/book/技术/鸟哥的Linux私房菜服务器架设篇.html.js").then(({ data }) => data),
-  // path: /book/%E6%8A%80%E6%9C%AF/%E9%BB%91%E5%AE%A2%E4%B8%8E%E7%94%BB%E5%AE%B6.html
-  "v-2414670c": () => import(/* webpackChunkName: "v-2414670c" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/book/技术/黑客与画家.html.js").then(({ data }) => data),
   // path: /book/%E7%A4%BE%E4%BC%9A%E5%AD%A6/
   "v-06bc0dee": () => import(/* webpackChunkName: "v-06bc0dee" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/book/社会学/index.html.js").then(({ data }) => data),
   // path: /book/%E7%A4%BE%E4%BC%9A%E5%AD%A6/%E4%B8%AD%E5%9B%BD%E4%BA%BA%E7%9A%84%E6%80%A7%E6%A0%BC.html
@@ -81,6 +69,18 @@ export const pagesData = {
   "v-8835abf2": () => import(/* webpackChunkName: "v-8835abf2" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/book/艺术/index.html.js").then(({ data }) => data),
   // path: /book/%E8%89%BA%E6%9C%AF/%E6%B8%85%E9%86%92%E6%80%9D%E8%80%83%E7%9A%84%E8%89%BA%E6%9C%AF.html
   "v-68e38b03": () => import(/* webpackChunkName: "v-68e38b03" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/book/艺术/清醒思考的艺术.html.js").then(({ data }) => data),
+  // path: /book/%E6%8A%80%E6%9C%AF/CODE.html
+  "v-6072c556": () => import(/* webpackChunkName: "v-6072c556" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/book/技术/CODE.html.js").then(({ data }) => data),
+  // path: /book/%E6%8A%80%E6%9C%AF/
+  "v-0d413314": () => import(/* webpackChunkName: "v-0d413314" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/book/技术/index.html.js").then(({ data }) => data),
+  // path: /book/%E6%8A%80%E6%9C%AF/%E6%88%90%E4%B8%BA%E6%8A%80%E6%9C%AF%E9%A2%86%E5%AF%BC%E8%80%85.html
+  "v-11b4cc99": () => import(/* webpackChunkName: "v-11b4cc99" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/book/技术/成为技术领导者.html.js").then(({ data }) => data),
+  // path: /book/%E6%8A%80%E6%9C%AF/%E9%B8%9F%E5%93%A5%E7%9A%84Linux%E7%A7%81%E6%88%BF%E8%8F%9C.html
+  "v-8902d37a": () => import(/* webpackChunkName: "v-8902d37a" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/book/技术/鸟哥的Linux私房菜.html.js").then(({ data }) => data),
+  // path: /book/%E6%8A%80%E6%9C%AF/%E9%B8%9F%E5%93%A5%E7%9A%84Linux%E7%A7%81%E6%88%BF%E8%8F%9C%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%9E%B6%E8%AE%BE%E7%AF%87.html
+  "v-7aa9b7b3": () => import(/* webpackChunkName: "v-7aa9b7b3" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/book/技术/鸟哥的Linux私房菜服务器架设篇.html.js").then(({ data }) => data),
+  // path: /book/%E6%8A%80%E6%9C%AF/%E9%BB%91%E5%AE%A2%E4%B8%8E%E7%94%BB%E5%AE%B6.html
+  "v-2414670c": () => import(/* webpackChunkName: "v-2414670c" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/book/技术/黑客与画家.html.js").then(({ data }) => data),
   // path: /book/%E9%87%91%E8%9E%8D%E5%AD%A6/
   "v-0d7ec61b": () => import(/* webpackChunkName: "v-0d7ec61b" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/book/金融学/index.html.js").then(({ data }) => data),
   // path: /book/%E9%87%91%E8%9E%8D%E5%AD%A6/%E5%8D%9A%E5%BC%88%E8%AE%BA%E4%B8%8E%E7%BB%8F%E6%B5%8E%E8%A1%8C%E4%B8%BA.html
