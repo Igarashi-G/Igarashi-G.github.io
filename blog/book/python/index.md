@@ -6,15 +6,15 @@ article: false
 
 ## 目录
 
-- [Python Cookbook](./python/python_cookbook)
+- [Python Cookbook](./python_cookbook.md)
 
-- [Fluent Python](./python/fluent_python)
+- [Fluent Python](./fluent_python.md)
 
-- [Using Asyncio in Python](./python/use_asyncio)
+- [Using Asyncio in Python](./use_asyncio.md)
 
-- [asyncio Recipes](./python/asyncio_recipes)
+- [asyncio Recipes](./asyncio_recipes.md)
 
-- [DevOps in Python](./python/devops_in_python)
+- [DevOps in Python](./devops_in_python.md)
 
-- [Python源码剖析](./python/python源码剖析)
+- [Python源码剖析](./python%E6%BA%90%E7%A0%81%E5%89%96%E6%9E%90.md)
 

@@ -130,7 +130,7 @@ export default sidebar({
       icon: "book",
       prefix: "/book/",
       link: "/book/",
-      children: ["艺术", "社会学", "金融学", "心理学", "技术", "python"],
+      children: ["艺术", "社会学", "金融学", "心理学", "python", "技术"],
     }
   ],
   "/guide": [
