@@ -1,5 +1,9 @@
 ---
 home: true
+head:
+  - - meta
+    - http-equiv: Content-Security-Policy
+      content: upgrade-insecure-requests
 layout: Blog
 icon: home
 title: 主页

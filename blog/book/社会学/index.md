@@ -2,6 +2,10 @@
 title: 社会学书籍
 date: 2022-09-20
 article: false
+head:
+  - - meta
+    - http-equiv: Content-Security-Policy
+      content: upgrade-insecure-requests
 ---
 
 ## 目录

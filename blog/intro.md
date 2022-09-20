@@ -24,36 +24,36 @@ tag:
 ### 语言
 
 <a href="https://www.python.org/">
-  <img src="http://www.deadly-exception.icu:8999/img/python.png" alt="Python" height="50"/>
+  <img src="https://www.deadly-exception.icu:7779/img/python.png" alt="Python" height="50"/>
 </a>
 <a href="https://www.javascript.com/">
-  <img src="http://www.deadly-exception.icu:8999/img/js.png" alt="JS" height="50"/>
+  <img src="https://www.deadly-exception.icu:7779/img/js.png" alt="JS" height="50"/>
 </a>
 
 ### 框架
 <a href="https://fastapi.tiangolo.com/">
-  <img src="http://www.deadly-exception.icu:8999/img/fastapi.png" alt="FastApi" height="50"/>
+  <img src="https://www.deadly-exception.icu:7779/img/fastapi.png" alt="FastApi" height="50"/>
 </a>
 <a href="https://www.djangoproject.com/">
-  <img src="http://www.deadly-exception.icu:8999/img/Django.png" alt="Django" height="50"/>
+  <img src="https://www.deadly-exception.icu:7779/img/Django.png" alt="Django" height="50"/>
 </a>
 <a href="https://www.tornadoweb.org/">
-  <img src="http://www.deadly-exception.icu:8999/img/tornado.png" alt="Tornado" height="50"/>
+  <img src="https://www.deadly-exception.icu:7779/img/tornado.png" alt="Tornado" height="50"/>
 </a>
 
 <br/>
 
 <a href="https://v3.cn.vuejs.org/">
-  <img src="http://www.deadly-exception.icu:8999/img/vue.png" alt="Vue" height="50"/>
+  <img src="https://www.deadly-exception.icu:7779/img/vue.png" alt="Vue" height="50"/>
 </a>
 <a href="https://quasar.dev/">
-  <img src="http://www.deadly-exception.icu:8999/img/quasar.png" alt="quasar" height="50"/>
+  <img src="https://www.deadly-exception.icu:7779/img/quasar.png" alt="quasar" height="50"/>
 </a>
 <a href="https://facebook.github.io/react/">
-  <img src="http://www.deadly-exception.icu:8999/img/react.png" alt="React" height="50"/>
+  <img src="https://www.deadly-exception.icu:7779/img/react.png" alt="React" height="50"/>
 </a>
 <a href="https://umijs.org/">
-  <img src="http://www.deadly-exception.icu:8999/img/umi.png" alt="umijs" height="50"/>
+  <img src="https://www.deadly-exception.icu:7779/img/umi.png" alt="umijs" height="50"/>
 </a>
 
 ### My profile：
@@ -63,7 +63,7 @@ tag:
   <img height="156em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=Igarashi-G&hide=html,less&theme=radical&layout=compact" />
 </a>
 
-<img src="http://www.deadly-exception.icu:8999/img/qb.gif" alt="魔法少女QB" height="60" align="right"/>
+<img src="https://www.deadly-exception.icu:7779/img/qb.gif" alt="魔法少女QB" height="60" align="right"/>
 【邮箱地址】2545369032@qq.com 💌
 
 坐标 **深圳**, 欢迎有空一起来玩呀~ 🎮
