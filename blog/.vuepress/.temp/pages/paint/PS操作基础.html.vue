@@ -1,4 +1,6 @@
-<template><div><h1 id="ps-插画基础" tabindex="-1"><a class="header-anchor" href="#ps-插画基础" aria-hidden="true">#</a> PS 插画基础</h1>
+<template><div><p>密码加密的文章</p>
+<!-- more -->
+<h1 id="ps-插画基础" tabindex="-1"><a class="header-anchor" href="#ps-插画基础" aria-hidden="true">#</a> PS 插画基础</h1>
 <h2 id="快捷键" tabindex="-1"><a class="header-anchor" href="#快捷键" aria-hidden="true">#</a> 快捷键：</h2>
 <ul>
 <li>画笔： b</li>

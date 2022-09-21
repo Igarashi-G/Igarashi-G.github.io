@@ -59,18 +59,6 @@ export const pagesComponents = {
   "v-339d01c6": defineAsyncComponent(() => import(/* webpackChunkName: "v-339d01c6" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/book/心理学/洗脑心理学.html.vue")),
   // path: /book/%E5%BF%83%E7%90%86%E5%AD%A6/%E8%BF%9B%E5%8C%96%E5%BF%83%E7%90%86%E5%AD%A6.html
   "v-7455cc15": defineAsyncComponent(() => import(/* webpackChunkName: "v-7455cc15" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/book/心理学/进化心理学.html.vue")),
-  // path: /book/%E7%A4%BE%E4%BC%9A%E5%AD%A6/
-  "v-06bc0dee": defineAsyncComponent(() => import(/* webpackChunkName: "v-06bc0dee" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/book/社会学/index.html.vue")),
-  // path: /book/%E7%A4%BE%E4%BC%9A%E5%AD%A6/%E4%B8%AD%E5%9B%BD%E4%BA%BA%E7%9A%84%E6%80%A7%E6%A0%BC.html
-  "v-15799518": defineAsyncComponent(() => import(/* webpackChunkName: "v-15799518" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/book/社会学/中国人的性格.html.vue")),
-  // path: /book/%E7%A4%BE%E4%BC%9A%E5%AD%A6/%E4%B9%8C%E5%90%88%E4%B9%8B%E4%BC%97.html
-  "v-7f137270": defineAsyncComponent(() => import(/* webpackChunkName: "v-7f137270" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/book/社会学/乌合之众.html.vue")),
-  // path: /book/%E7%A4%BE%E4%BC%9A%E5%AD%A6/%E5%A8%B1%E4%B9%90%E8%87%B3%E6%AD%BB.html
-  "v-33953060": defineAsyncComponent(() => import(/* webpackChunkName: "v-33953060" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/book/社会学/娱乐至死.html.vue")),
-  // path: /book/%E8%89%BA%E6%9C%AF/
-  "v-8835abf2": defineAsyncComponent(() => import(/* webpackChunkName: "v-8835abf2" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/book/艺术/index.html.vue")),
-  // path: /book/%E8%89%BA%E6%9C%AF/%E6%B8%85%E9%86%92%E6%80%9D%E8%80%83%E7%9A%84%E8%89%BA%E6%9C%AF.html
-  "v-68e38b03": defineAsyncComponent(() => import(/* webpackChunkName: "v-68e38b03" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/book/艺术/清醒思考的艺术.html.vue")),
   // path: /book/%E6%8A%80%E6%9C%AF/CODE.html
   "v-6072c556": defineAsyncComponent(() => import(/* webpackChunkName: "v-6072c556" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/book/技术/CODE.html.vue")),
   // path: /book/%E6%8A%80%E6%9C%AF/
@@ -83,6 +71,18 @@ export const pagesComponents = {
   "v-7aa9b7b3": defineAsyncComponent(() => import(/* webpackChunkName: "v-7aa9b7b3" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/book/技术/鸟哥的Linux私房菜服务器架设篇.html.vue")),
   // path: /book/%E6%8A%80%E6%9C%AF/%E9%BB%91%E5%AE%A2%E4%B8%8E%E7%94%BB%E5%AE%B6.html
   "v-2414670c": defineAsyncComponent(() => import(/* webpackChunkName: "v-2414670c" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/book/技术/黑客与画家.html.vue")),
+  // path: /book/%E7%A4%BE%E4%BC%9A%E5%AD%A6/
+  "v-06bc0dee": defineAsyncComponent(() => import(/* webpackChunkName: "v-06bc0dee" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/book/社会学/index.html.vue")),
+  // path: /book/%E7%A4%BE%E4%BC%9A%E5%AD%A6/%E4%B8%AD%E5%9B%BD%E4%BA%BA%E7%9A%84%E6%80%A7%E6%A0%BC.html
+  "v-15799518": defineAsyncComponent(() => import(/* webpackChunkName: "v-15799518" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/book/社会学/中国人的性格.html.vue")),
+  // path: /book/%E7%A4%BE%E4%BC%9A%E5%AD%A6/%E4%B9%8C%E5%90%88%E4%B9%8B%E4%BC%97.html
+  "v-7f137270": defineAsyncComponent(() => import(/* webpackChunkName: "v-7f137270" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/book/社会学/乌合之众.html.vue")),
+  // path: /book/%E7%A4%BE%E4%BC%9A%E5%AD%A6/%E5%A8%B1%E4%B9%90%E8%87%B3%E6%AD%BB.html
+  "v-33953060": defineAsyncComponent(() => import(/* webpackChunkName: "v-33953060" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/book/社会学/娱乐至死.html.vue")),
+  // path: /book/%E8%89%BA%E6%9C%AF/
+  "v-8835abf2": defineAsyncComponent(() => import(/* webpackChunkName: "v-8835abf2" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/book/艺术/index.html.vue")),
+  // path: /book/%E8%89%BA%E6%9C%AF/%E6%B8%85%E9%86%92%E6%80%9D%E8%80%83%E7%9A%84%E8%89%BA%E6%9C%AF.html
+  "v-68e38b03": defineAsyncComponent(() => import(/* webpackChunkName: "v-68e38b03" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/book/艺术/清醒思考的艺术.html.vue")),
   // path: /book/%E9%87%91%E8%9E%8D%E5%AD%A6/
   "v-0d7ec61b": defineAsyncComponent(() => import(/* webpackChunkName: "v-0d7ec61b" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/book/金融学/index.html.vue")),
   // path: /book/%E9%87%91%E8%9E%8D%E5%AD%A6/%E5%8D%9A%E5%BC%88%E8%AE%BA%E4%B8%8E%E7%BB%8F%E6%B5%8E%E8%A1%8C%E4%B8%BA.html
@@ -143,16 +143,22 @@ export const pagesComponents = {
   "v-03d57386": defineAsyncComponent(() => import(/* webpackChunkName: "v-03d57386" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/category/使用指南/index.html.vue")),
   // path: /tag/%E7%A6%81%E7%94%A8/
   "v-83e1f92e": defineAsyncComponent(() => import(/* webpackChunkName: "v-83e1f92e" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/tag/禁用/index.html.vue")),
-  // path: /category/python/
-  "v-78cbe7bb": defineAsyncComponent(() => import(/* webpackChunkName: "v-78cbe7bb" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/category/python/index.html.vue")),
+  // path: /category/%E5%85%B4%E8%B6%A3/
+  "v-6b371a4b": defineAsyncComponent(() => import(/* webpackChunkName: "v-6b371a4b" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/category/兴趣/index.html.vue")),
   // path: /tag/%E6%96%87%E7%AB%A0%E5%8A%A0%E5%AF%86/
   "v-1e447d61": defineAsyncComponent(() => import(/* webpackChunkName: "v-1e447d61" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/tag/文章加密/index.html.vue")),
+  // path: /category/python/
+  "v-78cbe7bb": defineAsyncComponent(() => import(/* webpackChunkName: "v-78cbe7bb" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/category/python/index.html.vue")),
   // path: /tag/markdown/
   "v-484552dc": defineAsyncComponent(() => import(/* webpackChunkName: "v-484552dc" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/tag/markdown/index.html.vue")),
   // path: /tag/%E9%A1%B5%E9%9D%A2%E9%85%8D%E7%BD%AE/
   "v-a378ad66": defineAsyncComponent(() => import(/* webpackChunkName: "v-a378ad66" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/tag/页面配置/index.html.vue")),
   // path: /tag/%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/
   "v-7b167472": defineAsyncComponent(() => import(/* webpackChunkName: "v-7b167472" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/tag/使用指南/index.html.vue")),
+  // path: /tag/%E6%9D%BF%E7%BB%98/
+  "v-e7027b8c": defineAsyncComponent(() => import(/* webpackChunkName: "v-e7027b8c" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/tag/板绘/index.html.vue")),
+  // path: /tag/ps/
+  "v-0da0e57e": defineAsyncComponent(() => import(/* webpackChunkName: "v-0da0e57e" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/tag/ps/index.html.vue")),
   // path: /tag/pip/
   "v-b308a674": defineAsyncComponent(() => import(/* webpackChunkName: "v-b308a674" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/tag/pip/index.html.vue")),
   // path: /tag/python/

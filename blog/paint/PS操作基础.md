@@ -1,13 +1,17 @@
 ---
-title: PS操作基础
-article: false
-date: 2022-09-19
+icon: lock
+date: 2022-09-20
 category:
   - 兴趣
 tag:
   - 板绘
   - ps
+  - 文章加密
 ---
+
+密码加密的文章
+
+<!-- more -->
 
 # PS 插画基础
 

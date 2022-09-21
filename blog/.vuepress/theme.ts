@@ -69,7 +69,7 @@ export default hopeTheme({
     },
     //默认每个分页的文章数
     //https://vuepress-theme-hope.gitee.io/v2/zh/guide/blog/intro.html#%E5%A4%9A%E8%AF%AD%E8%A8%80%E6%94%AF%E6%8C%81
-    articlePerPage: 20,
+    articlePerPage: 12,
 
     // 在移动视图下访问非博客相关的页面时，你也可以在侧边栏看到它
     // https://vuepress-theme-hope.github.io/v2/zh/guide/blog/intro.html#%E4%BE%A7%E8%BE%B9%E6%A0%8F
@@ -79,6 +79,7 @@ export default hopeTheme({
   encrypt: {
     config: {
       "/guide/encrypt.html": ["1234"],
+      "/paint/PS操作基础.html": ["1234"],
     },
   },
 
