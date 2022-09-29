@@ -27,6 +27,8 @@ export const pagesData = {
   "v-7a19f208": () => import(/* webpackChunkName: "v-7a19f208" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/paint/SAI操作基础.html.js").then(({ data }) => data),
   // path: /python/
   "v-63cd5dba": () => import(/* webpackChunkName: "v-63cd5dba" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/python/index.html.js").then(({ data }) => data),
+  // path: /tool/
+  "v-1559ca3e": () => import(/* webpackChunkName: "v-1559ca3e" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/tool/index.html.js").then(({ data }) => data),
   // path: /book/python/asyncio_recipes.html
   "v-31a143f7": () => import(/* webpackChunkName: "v-31a143f7" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/book/python/asyncio_recipes.html.js").then(({ data }) => data),
   // path: /book/python/devops_in_python.html
@@ -93,6 +95,40 @@ export const pagesData = {
   "v-d2dcd5a2": () => import(/* webpackChunkName: "v-d2dcd5a2" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/book/金融学/货币金融学.html.js").then(({ data }) => data),
   // path: /book/%E9%87%91%E8%9E%8D%E5%AD%A6/%E9%9D%9E%E7%90%86%E6%80%A7%E7%B9%81%E8%8D%A3.html
   "v-24fef17f": () => import(/* webpackChunkName: "v-24fef17f" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/book/金融学/非理性繁荣.html.js").then(({ data }) => data),
+  // path: /tool/Docker/docker%E5%AE%B9%E5%99%A8.html
+  "v-67ba2084": () => import(/* webpackChunkName: "v-67ba2084" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/tool/Docker/docker容器.html.js").then(({ data }) => data),
+  // path: /tool/Docker/%E4%BD%BF%E7%94%A8%E5%9F%BA%E7%A1%80.html
+  "v-138b3233": () => import(/* webpackChunkName: "v-138b3233" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/tool/Docker/使用基础.html.js").then(({ data }) => data),
+  // path: /tool/Docker/%E5%91%BD%E4%BB%A4.html
+  "v-28455900": () => import(/* webpackChunkName: "v-28455900" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/tool/Docker/命令.html.js").then(({ data }) => data),
+  // path: /tool/Docker/%E7%BD%91%E7%BB%9C.html
+  "v-721ae358": () => import(/* webpackChunkName: "v-721ae358" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/tool/Docker/网络.html.js").then(({ data }) => data),
+  // path: /tool/Git/Git.html
+  "v-672d5762": () => import(/* webpackChunkName: "v-672d5762" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/tool/Git/Git.html.js").then(({ data }) => data),
+  // path: /tool/Git/GIt%E6%8F%90%E4%BA%A4%E8%A7%84%E5%88%99.html
+  "v-0b016782": () => import(/* webpackChunkName: "v-0b016782" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/tool/Git/GIt提交规则.html.js").then(({ data }) => data),
+  // path: /tool/Git/%E5%AE%89%E8%A3%85GitLab.html
+  "v-6e39b59c": () => import(/* webpackChunkName: "v-6e39b59c" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/tool/Git/安装GitLab.html.js").then(({ data }) => data),
+  // path: /tool/Kubernets/K8s%E5%9F%BA%E7%A1%80.html
+  "v-0da2960d": () => import(/* webpackChunkName: "v-0da2960d" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/tool/Kubernets/K8s基础.html.js").then(({ data }) => data),
+  // path: /tool/Kubernets/k8s%E5%AE%89%E8%A3%85.html
+  "v-e87a30d8": () => import(/* webpackChunkName: "v-e87a30d8" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/tool/Kubernets/k8s安装.html.js").then(({ data }) => data),
+  // path: /tool/Nginx/Nginx%E5%9F%BA%E7%A1%80.html
+  "v-379092fa": () => import(/* webpackChunkName: "v-379092fa" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/tool/Nginx/Nginx基础.html.js").then(({ data }) => data),
+  // path: /tool/Nginx/%E5%BA%94%E7%94%A8%E9%83%A8%E7%BD%B2.html
+  "v-17ee4974": () => import(/* webpackChunkName: "v-17ee4974" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/tool/Nginx/应用部署.html.js").then(({ data }) => data),
+  // path: /tool/Other/Fiddler%E6%8A%93%E5%8C%85%E5%B7%A5%E5%85%B7.html
+  "v-59e97387": () => import(/* webpackChunkName: "v-59e97387" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/tool/Other/Fiddler抓包工具.html.js").then(({ data }) => data),
+  // path: /tool/Other/Postman.html
+  "v-b74ce008": () => import(/* webpackChunkName: "v-b74ce008" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/tool/Other/Postman.html.js").then(({ data }) => data),
+  // path: /tool/Other/rdesktop.html
+  "v-564ed7d2": () => import(/* webpackChunkName: "v-564ed7d2" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/tool/Other/rdesktop.html.js").then(({ data }) => data),
+  // path: /tool/Other/Screen.html
+  "v-d4726ea0": () => import(/* webpackChunkName: "v-d4726ea0" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/tool/Other/Screen.html.js").then(({ data }) => data),
+  // path: /tool/Other/tmux.html
+  "v-913f3dc0": () => import(/* webpackChunkName: "v-913f3dc0" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/tool/Other/tmux.html.js").then(({ data }) => data),
+  // path: /tool/Other/%E7%BD%91%E7%BB%9C%E4%BB%A3%E7%90%86.html
+  "v-3c667bd0": () => import(/* webpackChunkName: "v-3c667bd0" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/tool/Other/网络代理.html.js").then(({ data }) => data),
   // path: /python/%E8%AF%AD%E8%A8%80/%E5%9F%BA%E7%A1%80/pip.html
   "v-6d8029f2": () => import(/* webpackChunkName: "v-6d8029f2" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/python/语言/基础/pip.html.js").then(({ data }) => data),
   // path: /python/%E8%AF%AD%E8%A8%80/%E5%9F%BA%E7%A1%80/%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81.html
@@ -121,6 +157,96 @@ export const pagesData = {
   "v-4670bf71": () => import(/* webpackChunkName: "v-4670bf71" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/python/语言/进阶/错误和异常.html.js").then(({ data }) => data),
   // path: /python/%E8%AF%AD%E8%A8%80/%E8%BF%9B%E9%98%B6/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1.html
   "v-f6f07338": () => import(/* webpackChunkName: "v-f6f07338" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/python/语言/进阶/面向对象.html.js").then(({ data }) => data),
+  // path: /unix/CentOS/UDS/ufscli%E5%B7%A5%E5%85%B7.html
+  "v-308d30fc": () => import(/* webpackChunkName: "v-308d30fc" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/unix/CentOS/UDS/ufscli工具.html.js").then(({ data }) => data),
+  // path: /unix/CentOS/UDS/ufs%E6%A0%B8%E5%BF%83%E7%BB%84%E4%BB%B6.html
+  "v-2d9c4133": () => import(/* webpackChunkName: "v-2d9c4133" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/unix/CentOS/UDS/ufs核心组件.html.js").then(({ data }) => data),
+  // path: /unix/CentOS/UDS/ufs%E7%AE%A1%E7%90%86%E5%B9%B3%E5%8F%B0.html
+  "v-cbfef454": () => import(/* webpackChunkName: "v-cbfef454" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/unix/CentOS/UDS/ufs管理平台.html.js").then(({ data }) => data),
+  // path: /unix/CentOS/UDS/uus%E8%99%9A%E6%8B%9F%E6%9C%BA%E6%8E%92%E9%94%99.html
+  "v-b955b604": () => import(/* webpackChunkName: "v-b955b604" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/unix/CentOS/UDS/uus虚拟机排错.html.js").then(({ data }) => data),
+  // path: /unix/CentOS/%E5%8C%85%E7%AE%A1%E7%90%86/rpm.html
+  "v-5c02b0cc": () => import(/* webpackChunkName: "v-5c02b0cc" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/unix/CentOS/包管理/rpm.html.js").then(({ data }) => data),
+  // path: /unix/CentOS/%E5%8C%85%E7%AE%A1%E7%90%86/yum.html
+  "v-3baa132a": () => import(/* webpackChunkName: "v-3baa132a" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/unix/CentOS/包管理/yum.html.js").then(({ data }) => data),
+  // path: /unix/CentOS/%E5%AE%89%E8%A3%85/CentOS%E7%9A%84%E5%AE%89%E8%A3%85.html
+  "v-6a9fd4b2": () => import(/* webpackChunkName: "v-6a9fd4b2" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/unix/CentOS/安装/CentOS的安装.html.js").then(({ data }) => data),
+  // path: /unix/CentOS/%E5%AE%89%E8%A3%85/%E8%AE%A4%E8%AF%86Linux%E7%B3%BB%E7%BB%9F%E4%B8%80.html
+  "v-898b8e3c": () => import(/* webpackChunkName: "v-898b8e3c" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/unix/CentOS/安装/认识Linux系统一.html.js").then(({ data }) => data),
+  // path: /unix/CentOS/%E5%AE%89%E8%A3%85/%E8%AE%A4%E8%AF%86Linux%E7%B3%BB%E7%BB%9F%E4%BA%8C.html
+  "v-120e33b8": () => import(/* webpackChunkName: "v-120e33b8" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/unix/CentOS/安装/认识Linux系统二.html.js").then(({ data }) => data),
+  // path: /unix/Linux/DNS/bind.html
+  "v-437327a6": () => import(/* webpackChunkName: "v-437327a6" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/unix/Linux/DNS/bind.html.js").then(({ data }) => data),
+  // path: /unix/Linux/DNS/DNS%E6%9C%8D%E5%8A%A1.html
+  "v-7b88c25b": () => import(/* webpackChunkName: "v-7b88c25b" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/unix/Linux/DNS/DNS服务.html.js").then(({ data }) => data),
+  // path: /unix/Linux/DNS/linux%20%E6%96%87%E4%BB%B6%E9%94%81.html
+  "v-39d6a720": () => import(/* webpackChunkName: "v-39d6a720" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/unix/Linux/DNS/linux 文件锁.html.js").then(({ data }) => data),
+  // path: /unix/Linux/DNS/%E8%84%9A%E6%9C%AC%E8%AF%B4%E6%98%8E.html
+  "v-34cc1da1": () => import(/* webpackChunkName: "v-34cc1da1" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/unix/Linux/DNS/脚本说明.html.js").then(({ data }) => data),
+  // path: /unix/Linux/LDAP/AD.html
+  "v-b1980b52": () => import(/* webpackChunkName: "v-b1980b52" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/unix/Linux/LDAP/AD.html.js").then(({ data }) => data),
+  // path: /unix/Linux/LDAP/LDAP.html
+  "v-6d55d5da": () => import(/* webpackChunkName: "v-6d55d5da" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/unix/Linux/LDAP/LDAP.html.js").then(({ data }) => data),
+  // path: /unix/Linux/Linux%E4%BD%BF%E7%94%A8%E8%80%85%E7%AE%A1%E7%90%86/%E8%B4%A6%E5%8F%B7%E7%AE%A1%E7%90%86%E4%B8%8EACL%E6%9D%83%E9%99%90.html
+  "v-09029915": () => import(/* webpackChunkName: "v-09029915" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/unix/Linux/Linux使用者管理/账号管理与ACL权限.html.js").then(({ data }) => data),
+  // path: /unix/Linux/Linux%E5%9F%BA%E7%A1%80%E6%8C%87%E5%BC%95/Linux%E6%98%AF%E4%BB%80%E4%B9%88%E4%B8%8E%E5%A6%82%E4%BD%95%E5%AD%A6%E4%B9%A0.html
+  "v-5de91cb4": () => import(/* webpackChunkName: "v-5de91cb4" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/unix/Linux/Linux基础指引/Linux是什么与如何学习.html.js").then(({ data }) => data),
+  // path: /unix/Linux/Linux%E5%9F%BA%E7%A1%80%E6%8C%87%E5%BC%95/%E4%B8%BB%E6%9C%BA%E8%A7%84%E5%88%92%E4%B8%8E%E7%A3%81%E7%9B%98%E5%88%86%E5%8C%BA.html
+  "v-4d83becc": () => import(/* webpackChunkName: "v-4d83becc" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/unix/Linux/Linux基础指引/主机规划与磁盘分区.html.js").then(({ data }) => data),
+  // path: /unix/Linux/Linux%E5%9F%BA%E7%A1%80%E6%8C%87%E5%BC%95/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%A6%82%E8%AE%BA.html
+  "v-476b0669": () => import(/* webpackChunkName: "v-476b0669" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/unix/Linux/Linux基础指引/计算机概论.html.js").then(({ data }) => data),
+  // path: /unix/Linux/Linux%E6%96%87%E4%BB%B6/Linux%E7%A3%81%E7%9B%98%E4%B8%8E%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%86.html
+  "v-0bb94898": () => import(/* webpackChunkName: "v-0bb94898" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/unix/Linux/Linux文件/Linux磁盘与文件系统管理.html.js").then(({ data }) => data),
+  // path: /unix/Linux/Linux%E6%96%87%E4%BB%B6/%E6%96%87%E4%BB%B6%E4%B8%8E%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E5%8E%8B%E7%BC%A9.html
+  "v-64f4a5c8": () => import(/* webpackChunkName: "v-64f4a5c8" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/unix/Linux/Linux文件/文件与文件系统压缩.html.js").then(({ data }) => data),
+  // path: /unix/Linux/Linux%E6%96%87%E4%BB%B6/%E6%96%87%E4%BB%B6%E6%9D%83%E9%99%90%E4%B8%8E%E7%9B%AE%E5%BD%95%E9%85%8D%E7%BD%AE.html
+  "v-be9e75a4": () => import(/* webpackChunkName: "v-be9e75a4" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/unix/Linux/Linux文件/文件权限与目录配置.html.js").then(({ data }) => data),
+  // path: /unix/Linux/Linux%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%86%E5%91%98/%E8%AE%A4%E8%AF%86%E7%B3%BB%E7%BB%9F%E6%9C%8D%E5%8A%A1.html
+  "v-4c9aa7f6": () => import(/* webpackChunkName: "v-4c9aa7f6" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/unix/Linux/Linux系统管理员/认识系统服务.html.js").then(({ data }) => data),
+  // path: /unix/Linux/NFS/nfs%E5%9F%BA%E7%A1%80.html
+  "v-1d6ae57a": () => import(/* webpackChunkName: "v-1d6ae57a" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/unix/Linux/NFS/nfs基础.html.js").then(({ data }) => data),
+  // path: /unix/Linux/NTP/NTP.html
+  "v-639a81c6": () => import(/* webpackChunkName: "v-639a81c6" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/unix/Linux/NTP/NTP.html.js").then(({ data }) => data),
+  // path: /unix/Linux/Samba/Samba.html
+  "v-b0a2e916": () => import(/* webpackChunkName: "v-b0a2e916" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/unix/Linux/Samba/Samba.html.js").then(({ data }) => data),
+  // path: /unix/Linux/Shell%E8%84%9A%E6%9C%AC/vim%20%E5%BF%AB%E6%8D%B7%E9%94%AE.html
+  "v-9e6d40aa": () => import(/* webpackChunkName: "v-9e6d40aa" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/unix/Linux/Shell脚本/vim 快捷键.html.js").then(({ data }) => data),
+  // path: /unix/Linux/Shell%E8%84%9A%E6%9C%AC/vim%E7%A8%8B%E5%BA%8F%E7%BC%96%E8%BE%91%E5%99%A8.html
+  "v-68cc00c6": () => import(/* webpackChunkName: "v-68cc00c6" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/unix/Linux/Shell脚本/vim程序编辑器.html.js").then(({ data }) => data),
+  // path: /unix/Linux/SNMP/SNMP.html
+  "v-3b4d2ab3": () => import(/* webpackChunkName: "v-3b4d2ab3" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/unix/Linux/SNMP/SNMP.html.js").then(({ data }) => data),
+  // path: /unix/Linux/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/0.Linux%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4.html
+  "v-5ecaebd8": () => import(/* webpackChunkName: "v-5ecaebd8" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/unix/Linux/常用命令/0.Linux基本命令.html.js").then(({ data }) => data),
+  // path: /unix/Linux/%E7%BD%91%E7%BB%9C/CURL.html
+  "v-60db43fb": () => import(/* webpackChunkName: "v-60db43fb" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/unix/Linux/网络/CURL.html.js").then(({ data }) => data),
+  // path: /unix/Linux/%E7%BD%91%E7%BB%9C/Restful.html
+  "v-0ddcf4e2": () => import(/* webpackChunkName: "v-0ddcf4e2" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/unix/Linux/网络/Restful.html.js").then(({ data }) => data),
+  // path: /unix/Linux/%E7%BD%91%E7%BB%9C/SSL%E5%8D%8F%E8%AE%AE.html
+  "v-432e3d5e": () => import(/* webpackChunkName: "v-432e3d5e" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/unix/Linux/网络/SSL协议.html.js").then(({ data }) => data),
+  // path: /unix/Linux/%E7%BD%91%E7%BB%9C/%E5%91%BD%E4%BB%A4.html
+  "v-6c938c42": () => import(/* webpackChunkName: "v-6c938c42" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/unix/Linux/网络/命令.html.js").then(({ data }) => data),
+  // path: /unix/Linux/%E7%BD%91%E7%BB%9C/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80.html
+  "v-800b484a": () => import(/* webpackChunkName: "v-800b484a" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/unix/Linux/网络/网络基础.html.js").then(({ data }) => data),
+  // path: /unix/Ubuntu/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/Ubuntu%E7%B3%BB%E5%88%97%E6%93%8D%E4%BD%9C.html
+  "v-9424ae3c": () => import(/* webpackChunkName: "v-9424ae3c" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/unix/Ubuntu/常用命令/Ubuntu系列操作.html.js").then(({ data }) => data),
+  // path: /unix/%E7%A1%AC%E4%BB%B6%E5%9F%BA%E7%A1%80/CPU/CPU.html
+  "v-20cc37a2": () => import(/* webpackChunkName: "v-20cc37a2" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/unix/硬件基础/CPU/CPU.html.js").then(({ data }) => data),
+  // path: /unix/%E7%A1%AC%E4%BB%B6%E5%9F%BA%E7%A1%80/%E4%B8%BB%E6%9D%BF/%E4%B8%BB%E6%9D%BF.html
+  "v-625906d8": () => import(/* webpackChunkName: "v-625906d8" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/unix/硬件基础/主板/主板.html.js").then(({ data }) => data),
+  // path: /unix/%E7%A1%AC%E4%BB%B6%E5%9F%BA%E7%A1%80/%E5%86%85%E5%AD%98/%E5%86%85%E5%AD%98.html
+  "v-839497d8": () => import(/* webpackChunkName: "v-839497d8" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/unix/硬件基础/内存/内存.html.js").then(({ data }) => data),
+  // path: /unix/%E7%A1%AC%E4%BB%B6%E5%9F%BA%E7%A1%80/%E5%AD%98%E5%82%A8/%E5%AD%98%E5%82%A8.html
+  "v-d4964ad8": () => import(/* webpackChunkName: "v-d4964ad8" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/unix/硬件基础/存储/存储.html.js").then(({ data }) => data),
+  // path: /unix/%E7%A1%AC%E4%BB%B6%E5%9F%BA%E7%A1%80/%E6%89%A9%E5%B1%95%E5%8D%A1%E4%B8%8E%E6%8E%A5%E5%8F%A3/%E6%89%A9%E5%B1%95%E5%8D%A1%E4%B8%8E%E6%8E%A5%E5%8F%A3.html
+  "v-0510ac58": () => import(/* webpackChunkName: "v-0510ac58" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/unix/硬件基础/扩展卡与接口/扩展卡与接口.html.js").then(({ data }) => data),
+  // path: /unix/%E7%A1%AC%E4%BB%B6%E5%9F%BA%E7%A1%80/%E6%98%BE%E5%8D%A1/%E6%98%BE%E5%8D%A1.html
+  "v-478e7b54": () => import(/* webpackChunkName: "v-478e7b54" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/unix/硬件基础/显卡/显卡.html.js").then(({ data }) => data),
+  // path: /unix/%E8%99%9A%E6%8B%9F%E6%9C%BA/PVE/PVE.html
+  "v-0b2bc315": () => import(/* webpackChunkName: "v-0b2bc315" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/unix/虚拟机/PVE/PVE.html.js").then(({ data }) => data),
+  // path: /unix/%E8%99%9A%E6%8B%9F%E6%9C%BA/VMware/%E6%B7%BB%E5%8A%A0%E7%A3%81%E7%9B%98.html
+  "v-267ac7e0": () => import(/* webpackChunkName: "v-267ac7e0" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/unix/虚拟机/VMware/添加磁盘.html.js").then(({ data }) => data),
+  // path: /unix/%E8%99%9A%E6%8B%9F%E6%9C%BA/VMware/%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE.html
+  "v-19cff384": () => import(/* webpackChunkName: "v-19cff384" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/unix/虚拟机/VMware/网络配置.html.js").then(({ data }) => data),
   // path: /404.html
   "v-3706649a": () => import(/* webpackChunkName: "v-3706649a" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/404.html.js").then(({ data }) => data),
   // path: /category/
@@ -145,18 +271,38 @@ export const pagesData = {
   "v-6b371a4b": () => import(/* webpackChunkName: "v-6b371a4b" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/category/兴趣/index.html.js").then(({ data }) => data),
   // path: /tag/%E6%96%87%E7%AB%A0%E5%8A%A0%E5%AF%86/
   "v-1e447d61": () => import(/* webpackChunkName: "v-1e447d61" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/tag/文章加密/index.html.js").then(({ data }) => data),
-  // path: /category/python/
-  "v-78cbe7bb": () => import(/* webpackChunkName: "v-78cbe7bb" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/category/python/index.html.js").then(({ data }) => data),
+  // path: /category/%E8%BF%90%E7%BB%B4/
+  "v-4110d7ce": () => import(/* webpackChunkName: "v-4110d7ce" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/category/运维/index.html.js").then(({ data }) => data),
   // path: /tag/markdown/
   "v-484552dc": () => import(/* webpackChunkName: "v-484552dc" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/tag/markdown/index.html.js").then(({ data }) => data),
+  // path: /category/docker/
+  "v-27fb5a12": () => import(/* webpackChunkName: "v-27fb5a12" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/category/docker/index.html.js").then(({ data }) => data),
   // path: /tag/%E9%A1%B5%E9%9D%A2%E9%85%8D%E7%BD%AE/
   "v-a378ad66": () => import(/* webpackChunkName: "v-a378ad66" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/tag/页面配置/index.html.js").then(({ data }) => data),
+  // path: /category/k8s/
+  "v-65f0f021": () => import(/* webpackChunkName: "v-65f0f021" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/category/k8s/index.html.js").then(({ data }) => data),
   // path: /tag/%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/
   "v-7b167472": () => import(/* webpackChunkName: "v-7b167472" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/tag/使用指南/index.html.js").then(({ data }) => data),
+  // path: /category/%E5%B7%A5%E5%85%B7/
+  "v-14145d44": () => import(/* webpackChunkName: "v-14145d44" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/category/工具/index.html.js").then(({ data }) => data),
   // path: /tag/%E6%9D%BF%E7%BB%98/
   "v-e7027b8c": () => import(/* webpackChunkName: "v-e7027b8c" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/tag/板绘/index.html.js").then(({ data }) => data),
+  // path: /category/python/
+  "v-78cbe7bb": () => import(/* webpackChunkName: "v-78cbe7bb" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/category/python/index.html.js").then(({ data }) => data),
   // path: /tag/ps/
   "v-0da0e57e": () => import(/* webpackChunkName: "v-0da0e57e" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/tag/ps/index.html.js").then(({ data }) => data),
+  // path: /tag/docker/
+  "v-6106c001": () => import(/* webpackChunkName: "v-6106c001" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/tag/docker/index.html.js").then(({ data }) => data),
+  // path: /tag/%E5%B7%A5%E5%85%B7/
+  "v-1fdcff68": () => import(/* webpackChunkName: "v-1fdcff68" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/tag/工具/index.html.js").then(({ data }) => data),
+  // path: /tag/k8s/
+  "v-b30ea152": () => import(/* webpackChunkName: "v-b30ea152" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/tag/k8s/index.html.js").then(({ data }) => data),
+  // path: /tag/nginx/
+  "v-1a8900ba": () => import(/* webpackChunkName: "v-1a8900ba" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/tag/nginx/index.html.js").then(({ data }) => data),
+  // path: /tag/web/
+  "v-b3026aae": () => import(/* webpackChunkName: "v-b3026aae" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/tag/web/index.html.js").then(({ data }) => data),
+  // path: /tag/django/
+  "v-5863ba26": () => import(/* webpackChunkName: "v-5863ba26" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/tag/django/index.html.js").then(({ data }) => data),
   // path: /tag/pip/
   "v-b308a674": () => import(/* webpackChunkName: "v-b308a674" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/tag/pip/index.html.js").then(({ data }) => data),
   // path: /tag/python/
@@ -173,4 +319,12 @@ export const pagesData = {
   "v-1c9a2901": () => import(/* webpackChunkName: "v-1c9a2901" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/tag/装饰器/index.html.js").then(({ data }) => data),
   // path: /tag/%E8%BF%AD%E4%BB%A3%E5%99%A8/
   "v-d81fe600": () => import(/* webpackChunkName: "v-d81fe600" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/tag/迭代器/index.html.js").then(({ data }) => data),
+  // path: /tag/linux/
+  "v-211f44ee": () => import(/* webpackChunkName: "v-211f44ee" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/tag/linux/index.html.js").then(({ data }) => data),
+  // path: /tag/ad/
+  "v-0da0ab5e": () => import(/* webpackChunkName: "v-0da0ab5e" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/tag/ad/index.html.js").then(({ data }) => data),
+  // path: /tag/%E8%AE%A4%E8%AF%81/
+  "v-75abdec8": () => import(/* webpackChunkName: "v-75abdec8" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/tag/认证/index.html.js").then(({ data }) => data),
+  // path: /tag/ldap/
+  "v-28bf17da": () => import(/* webpackChunkName: "v-28bf17da" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/tag/ldap/index.html.js").then(({ data }) => data),
 }

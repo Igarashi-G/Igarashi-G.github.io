@@ -1,0 +1,59 @@
+<template><div><h1 id="配置-linux-网络代理" tabindex="-1"><a class="header-anchor" href="#配置-linux-网络代理" aria-hidden="true">#</a> 配置 Linux 网络代理</h1>
+<h2 id="配置-linux-通过-windows-上网的网络代理" tabindex="-1"><a class="header-anchor" href="#配置-linux-通过-windows-上网的网络代理" aria-hidden="true">#</a> 配置 linux 通过 Windows 上网的网络代理</h2>
+<blockquote>
+<p><strong>背景：</strong> 由于一些服务器处于安全考虑，只能通过内网访问，且服务器不能够请求外网，此时需要 <code v-pre>Windows</code> 代理让 <strong>Linux 联网</strong> 来安装应用</p>
+</blockquote>
+<h3 id="_1-privoxy" tabindex="-1"><a class="header-anchor" href="#_1-privoxy" aria-hidden="true">#</a> 1. privoxy</h3>
+<p><code v-pre>Windows</code> 上先安装代理工具 <a href="https://www.jianshu.com/p/42a90cf33095" target="_blank" rel="noopener noreferrer">privoxy<ExternalLinkIcon/></a></p>
+<p><a href="http://www.privoxy.org/" target="_blank" rel="noopener noreferrer">下载地址<ExternalLinkIcon/></a></p>
+<p>安装软件后，配置启动端口：修改安装目录下的 <code v-pre>config.txt</code> 文件中的 <code v-pre>listen-address</code> （<strong>记得备份</strong>）：</p>
+<img src="@source/tool/Other/img/privoxy配置项.jpg">
+<br/>
+<p>点击 <code v-pre>privoxy.exe</code> 启动代理服务器</p>
+<h3 id="_2-在-linux-中配置代理" tabindex="-1"><a class="header-anchor" href="#_2-在-linux-中配置代理" aria-hidden="true">#</a> 2. 在 linux 中配置代理</h3>
+<ul>
+<li>
+<p>修改 <code v-pre>/etc/profile</code> 文件：</p>
+<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code><span class="token assign-left variable">http_proxy</span><span class="token operator">=</span>http://127.0.0.1:18088/
+<span class="token assign-left variable">https_proxy</span><span class="token operator">=</span>http://127.0.0.1:18088/
+<span class="token builtin class-name">export</span> http_proxy https_proxy
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></li>
+<li>
+<p>执行如下命令使配置生效：</p>
+<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code><span class="token builtin class-name">source</span> /etc/profile
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div></li>
+<li>
+<p>或是通过命令 <strong>一次性</strong> 的设置、取消代理:</p>
+<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code><span class="token comment"># 直接执行命令</span>
+<span class="token builtin class-name">export</span> <span class="token assign-left variable">http_proxy</span><span class="token operator">=</span>http://127.0.0.1:18088/
+<span class="token builtin class-name">export</span> <span class="token assign-left variable">https_proxy</span><span class="token operator">=</span>http://127.0.0.1:18088/
+
+<span class="token comment"># 取消代理</span>
+<span class="token builtin class-name">unset</span> http_proxy
+<span class="token builtin class-name">unset</span> https_proxy
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></li>
+</ul>
+<h3 id="_3-配置映射" tabindex="-1"><a class="header-anchor" href="#_3-配置映射" aria-hidden="true">#</a> 3. 配置映射</h3>
+<p><strong>通过 SecureCRT 配置 Linux 到本机的映射</strong></p>
+<ul>
+<li>
+<p>先正常按照 <code v-pre>xshell</code> 的方式配置一个远程连接 session</p>
+</li>
+<li>
+<p>然后找到 选项 <code v-pre>Options</code> -&gt; <code v-pre>Session Options</code> -&gt; <code v-pre>端口转发Prot...</code> -&gt; <code v-pre>X11</code></p>
+  <img src="@source/tool/Other/img/secureCRT配置1.jpg">
+</li>
+<li>
+<p>点击 <code v-pre>add</code> 按钮，<code v-pre>Name</code> 随便起，<code v-pre>Port</code> 为 <strong>18088</strong> 即可</p>
+  <img src="@source/tool/Other/img/secureCRT配置2.jpg">
+</li>
+</ul>
+<p>最后测试:</p>
+<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code><span class="token function">curl</span> www.baidu.com
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><h3 id="_4-快捷配置" tabindex="-1"><a class="header-anchor" href="#_4-快捷配置" aria-hidden="true">#</a> 4. 快捷配置</h3>
+<p>下载 <a href="https://www.youngzsoft.net/ccproxy/" target="_blank" rel="noopener noreferrer">CCProxy<ExternalLinkIcon/></a></p>
+<p>启动软件并直接执行如下命令即可</p>
+<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code><span class="token builtin class-name">export</span> <span class="token assign-left variable">all_proxy</span><span class="token operator">=</span>http://172.16.70.104:808
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div></div></template>
+
+

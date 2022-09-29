@@ -1,0 +1,14 @@
+export const data = JSON.parse("{\"key\":\"v-9c1c72f0\",\"path\":\"/unix/%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%9F%BA%E7%A1%80/VMware/%E6%B7%BB%E5%8A%A0%E7%A3%81%E7%9B%98.html\",\"title\":\"添加磁盘\",\"lang\":\"zh-CN\",\"frontmatter\":{\"title\":\"添加磁盘\",\"order\":3,\"summary\":\"VMware 磁盘 磁盘热插 正常情况下，添加磁盘后需要重启系统才能被内核识别，在/dev/下才有对应的设备号，使用 fdisk -l 才会显示出来。但是有时候不方便重启。此时可以使用下面的方法。\\r\\\" 查看所有设备的总线信息\\\"\\r\\\" ls /sys/class/scsi_host/\\\"\\r\\\" 确定磁盘在哪条总线上后使用一下命令进行总线扫描,新设备会被添加\\\"\\r\\\" e\",\"head\":[[\"meta\",{\"property\":\"og:url\",\"content\":\"https://igarashi-g.github.io/igarashi-blog/igarashi-blog/unix/%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%9F%BA%E7%A1%80/VMware/%E6%B7%BB%E5%8A%A0%E7%A3%81%E7%9B%98.html\"}],[\"meta\",{\"property\":\"og:site_name\",\"content\":\"五十岚呐~\"}],[\"meta\",{\"property\":\"og:title\",\"content\":\"添加磁盘\"}],[\"meta\",{\"property\":\"og:type\",\"content\":\"article\"}],[\"meta\",{\"property\":\"og:locale\",\"content\":\"zh-CN\"}]]},\"excerpt\":\"\",\"headers\":[{\"level\":2,\"title\":\"磁盘热插\",\"slug\":\"磁盘热插\",\"link\":\"#磁盘热插\",\"children\":[]},{\"level\":2,\"title\":\"磁盘热拔\",\"slug\":\"磁盘热拔\",\"link\":\"#磁盘热拔\",\"children\":[]},{\"level\":2,\"title\":\"磁盘占用\",\"slug\":\"磁盘占用\",\"link\":\"#磁盘占用\",\"children\":[]},{\"level\":2,\"title\":\"二、无法识别\",\"slug\":\"二、无法识别\",\"link\":\"#二、无法识别\",\"children\":[]},{\"level\":2,\"title\":\"\",\"slug\":\"\",\"link\":\"#\",\"children\":[]}],\"readingTime\":{\"minutes\":1.18,\"words\":353},\"filePathRelative\":\"unix/虚拟机基础/VMware/添加磁盘.md\"}")
+
+if (import.meta.webpackHot) {
+  import.meta.webpackHot.accept()
+  if (__VUE_HMR_RUNTIME__.updatePageData) {
+    __VUE_HMR_RUNTIME__.updatePageData(data)
+  }
+}
+
+if (import.meta.hot) {
+  import.meta.hot.accept(({ data }) => {
+    __VUE_HMR_RUNTIME__.updatePageData(data)
+  })
+}

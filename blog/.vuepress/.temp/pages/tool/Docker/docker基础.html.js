@@ -1,0 +1,14 @@
+export const data = JSON.parse("{\"key\":\"v-98be6fe0\",\"path\":\"/tool/Docker/docker%E5%9F%BA%E7%A1%80.html\",\"title\":\"Docker\",\"lang\":\"zh-CN\",\"frontmatter\":{\"title\":\"Docker\",\"order\":1,\"group\":{\"title\":\"Docker容器\",\"order\":2},\"summary\":\"Docker Tip: Docker 可以让开发者打包他们的应用以及依赖包到一个轻量级、可移植的容器中，然后发布到任何流行的 Linux 机器上，也可以实现虚拟化。 容器是完全使用沙箱机制，相互之间不会有任何接口（类似 iPhone 的 app）,更重要的是容器性能开销极低。 1. 啥是 Docker\\rDocker 官网; \\rDocker 官方文档; \\rDo\",\"head\":[[\"meta\",{\"property\":\"og:url\",\"content\":\"https://igarashi-g.github.io/igarashi-blog/igarashi-blog/tool/Docker/docker%E5%9F%BA%E7%A1%80.html\"}],[\"meta\",{\"property\":\"og:site_name\",\"content\":\"五十岚呐~\"}],[\"meta\",{\"property\":\"og:title\",\"content\":\"Docker\"}],[\"meta\",{\"property\":\"og:type\",\"content\":\"article\"}],[\"meta\",{\"property\":\"og:image\",\"content\":\"https://igarashi-g.github.io/igarashi-blog/igarashi-blog/\"}],[\"meta\",{\"property\":\"og:locale\",\"content\":\"zh-CN\"}],[\"meta\",{\"name\":\"twitter:card\",\"content\":\"summary_large_image\"}],[\"meta\",{\"name\":\"twitter:image:alt\",\"content\":\"Docker\"}]]},\"excerpt\":\"\",\"headers\":[{\"level\":2,\"title\":\"1. 啥是 Docker\",\"slug\":\"_1-啥是-docker\",\"link\":\"#_1-啥是-docker\",\"children\":[{\"level\":3,\"title\":\"1.1 教程\",\"slug\":\"_1-1-教程\",\"link\":\"#_1-1-教程\",\"children\":[]},{\"level\":3,\"title\":\"1.2 Linux 容器\",\"slug\":\"_1-2-linux-容器\",\"link\":\"#_1-2-linux-容器\",\"children\":[]},{\"level\":3,\"title\":\"1.3 容器与虚拟机对比\",\"slug\":\"_1-3-容器与虚拟机对比\",\"link\":\"#_1-3-容器与虚拟机对比\",\"children\":[]},{\"level\":3,\"title\":\"1.4 Docker 架构\",\"slug\":\"_1-4-docker-架构\",\"link\":\"#_1-4-docker-架构\",\"children\":[]}]},{\"level\":2,\"title\":\"2. 安装\",\"slug\":\"_2-安装\",\"link\":\"#_2-安装\",\"children\":[{\"level\":3,\"title\":\"2.1 CentOS\",\"slug\":\"_2-1-centos\",\"link\":\"#_2-1-centos\",\"children\":[]},{\"level\":3,\"title\":\"2.2 Debian\",\"slug\":\"_2-2-debian\",\"link\":\"#_2-2-debian\",\"children\":[]},{\"level\":3,\"title\":\"2.3 Windows\",\"slug\":\"_2-3-windows\",\"link\":\"#_2-3-windows\",\"children\":[]}]},{\"level\":2,\"title\":\"3. 实现原理\",\"slug\":\"_3-实现原理\",\"link\":\"#_3-实现原理\",\"children\":[{\"level\":3,\"title\":\"3.1 Namespace 资源隔离\",\"slug\":\"_3-1-namespace-资源隔离\",\"link\":\"#_3-1-namespace-资源隔离\",\"children\":[]},{\"level\":3,\"title\":\"3.2 CGroup 资源限制\",\"slug\":\"_3-2-cgroup-资源限制\",\"link\":\"#_3-2-cgroup-资源限制\",\"children\":[]},{\"level\":3,\"title\":\"3.3 UnionFS 联合文件系统\",\"slug\":\"_3-3-unionfs-联合文件系统\",\"link\":\"#_3-3-unionfs-联合文件系统\",\"children\":[]}]}],\"readingTime\":{\"minutes\":10.61,\"words\":3184},\"filePathRelative\":\"tool/Docker/docker基础.md\"}")
+
+if (import.meta.webpackHot) {
+  import.meta.webpackHot.accept()
+  if (__VUE_HMR_RUNTIME__.updatePageData) {
+    __VUE_HMR_RUNTIME__.updatePageData(data)
+  }
+}
+
+if (import.meta.hot) {
+  import.meta.hot.accept(({ data }) => {
+    __VUE_HMR_RUNTIME__.updatePageData(data)
+  })
+}

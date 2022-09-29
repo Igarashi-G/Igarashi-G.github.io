@@ -41,13 +41,13 @@ projects:
     link: paint/
 
   - icon: article
-    name: 老版本拉
-    desc: 老版本真弟好拉
+    name: 老版本
+    desc: dumi搭的文档，真弟拉胯
     link: http://www.deadly-exception.icu:8888/
 
   - icon: discover
     name: 播放器
-    desc: 是别人开源的播放器
+    desc: 第三方开源播放器
     link: https://netease-music.fe-mm.com/#/music/playlist
 
   - icon: /arknights_logo.png

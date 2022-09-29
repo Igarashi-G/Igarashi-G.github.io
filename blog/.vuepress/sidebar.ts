@@ -46,6 +46,84 @@ import { sidebar } from "vuepress-theme-hope";
 //   },
 // ]);
 export default sidebar({
+  "/unix/Linux": [
+    {
+      text: "Linux",
+      icon: "linux",
+      prefix: "/unix/Linux/",
+      children: [
+        {
+          text: "Linux基础指引",
+          collapsable: true,
+          prefix: "Linux基础指引/",
+          children: ["计算机概论", "主机规划与磁盘分区", "Linux是什么与如何学习"],
+        },
+        {
+          text: "Linux文件",
+          collapsable: true,
+          prefix: "Linux文件/",
+          children: ["文件权限与目录配置", "文件与文件系统压缩", "Linux磁盘与文件系统管理"],
+        },
+        {
+          text: "Shell脚本",
+          collapsable: true,
+          prefix: "Shell脚本/",
+          children: ["vim程序编辑器", "vim 快捷键"],
+        },
+        {
+          text: "LDAP",
+          collapsable: true,
+          prefix: "LDAP/",
+          children: ["LDAP"],
+        },
+      ]
+    }
+  ],
+  "/unix/CentOS": [
+    {
+      text: "CentOS",
+      icon: "centoS",
+      prefix: "/unix/CentOS/",
+      children: [
+        {
+          text: "安装",
+          collapsable: true,
+          prefix: "安装/",
+          children: ["CentOS的安装"],
+        },
+      ]
+    }
+  ],
+  "/unix/Ubuntu": [
+    {
+      text: "Ubuntu",
+      icon: "ubuntu",
+      prefix: "/unix/Ubuntu/",
+      children: [
+        {
+          text: "常用命令",
+          collapsable: true,
+          prefix: "常用命令/",
+          children: ["Ubuntu系列操作"],
+        },
+      ]
+    }
+  ],
+  "/unix/虚拟机": [
+    {
+      text: "虚拟机",
+      icon: "snow",
+      prefix: "/unix/虚拟机/",
+      children: [
+        {
+          text: "PVE",
+          collapsable: true,
+          prefix: "PVE/",
+          children: ["PVE"],
+        },
+      ]
+    }
+  ],
   "/python": [
     {
       text: "python",
@@ -119,10 +197,54 @@ export default sidebar({
         //   prefix: "生态/",
         //   children: []
         // },
-        
+
       ],
     },
-    
+  ],
+  "/tool/Git": [
+    {
+      text: "版本控制",
+      icon: "git",
+      prefix: "/tool/Git/",
+      link: "/tool/Git/",
+      children: ["Git", "GIt提交规则", "安装Gitlab"]
+    }
+  ],
+  "/tool/Docker": [
+    {
+      text: "Docker",
+      icon: "hot",
+      prefix: "/tool/Docker/",
+      link: "/tool/Docker/",
+      children: ["docker容器", "使用基础", "网络", "命令"]
+    }
+  ],
+  "/tool/Kubernets": [
+    {
+      text: "Kubernets",
+      icon: "hot",
+      prefix: "/tool/Kubernets/",
+      link: "/tool/Kubernets/",
+      children: ["K8s基础", "k8s安装"]
+    }
+  ],
+  "/tool/Nginx": [
+    {
+      text: "Nginx",
+      icon: "nginx",
+      prefix: "/tool/Nginx/",
+      link: "/tool/Nginx/",
+      children: ["Nginx基础", "应用部署"]
+    }
+  ],
+  "/tool/Other": [
+    {
+      text: "Other",
+      icon: "operate",
+      prefix: "/tool/Other/",
+      link: "/tool/Other/",
+      children: ["网络代理", "Screen", "rdesktop"]
+    }
   ],
   "/book": [
     {
