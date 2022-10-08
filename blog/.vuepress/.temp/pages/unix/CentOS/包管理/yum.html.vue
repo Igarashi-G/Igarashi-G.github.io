@@ -26,7 +26,7 @@ yum -y upgrade
 <h3 id="_2-阿里云-yum-源" tabindex="-1"><a class="header-anchor" href="#_2-阿里云-yum-源" aria-hidden="true">#</a> 2.阿里云 yum 源：</h3>
 <p>1.备份当前 yum 源防止出现意外还可以还原回来</p>
 <pre><code>cd /etc/yum.repos.d/
-cp /CentOS-Base.repo /CentOS-Base-repo.bak
+cp ./CentOS-Base.repo ./CentOS-Base-repo.bak
 </code></pre>
 <p>2.使用 wget 下载阿里 yum 源 repo 文件</p>
 <pre><code>wget http://mirrors.aliyun.com/repo/Centos-7.repo

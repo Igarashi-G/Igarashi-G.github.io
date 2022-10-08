@@ -1,1 +1,14 @@
-export const data = JSON.parse("{\"key\":\"v-b955b604\",\"path\":\"/unix/CentOS/UDS/uus%E8%99%9A%E6%8B%9F%E6%9C%BA%E6%8E%92%E9%94%99.html\",\"title\":\"虚拟机不使用uus\",\"lang\":\"zh-CN\",\"frontmatter\":{\"title\":\"虚拟机不使用uus\",\"order\":2,\"summary\":\"1. UUS 部分说明 这里 N：M 是 uraid 内数据 chunk 和校验 chunk 的比例。 K 是 URAID 对节点失效容忍度的要求。K 不能大于 M，通常选择是 K=0、1、M。 K 选 0 意味着有任意节点失效时，uraid 将不可访问，如果节点不能恢复或修复，则该 uraid 数据将丢失。 K 选 1 意味着同时有且仅有一个节点失效时，u\",\"head\":[[\"meta\",{\"property\":\"og:url\",\"content\":\"https://igarashi-g.github.io/igarashi-blog/igarashi-blog/unix/CentOS/UDS/uus%E8%99%9A%E6%8B%9F%E6%9C%BA%E6%8E%92%E9%94%99.html\"}],[\"meta\",{\"property\":\"og:site_name\",\"content\":\"五十岚呐~\"}],[\"meta\",{\"property\":\"og:title\",\"content\":\"虚拟机不使用uus\"}],[\"meta\",{\"property\":\"og:type\",\"content\":\"article\"}],[\"meta\",{\"property\":\"og:locale\",\"content\":\"zh-CN\"}]]},\"excerpt\":\"\",\"headers\":[{\"level\":3,\"title\":\"1. UUS 部分说明\",\"slug\":\"_1-uus-部分说明\",\"link\":\"#_1-uus-部分说明\",\"children\":[]},{\"level\":3,\"title\":\"2. 使用 UUS 虚拟机的限制\",\"slug\":\"_2-使用-uus-虚拟机的限制\",\"link\":\"#_2-使用-uus-虚拟机的限制\",\"children\":[]}],\"git\":{\"createdTime\":null,\"updatedTime\":null,\"contributors\":[]},\"readingTime\":{\"minutes\":3.47,\"words\":1041},\"filePathRelative\":\"unix/CentOS/UDS/uus虚拟机排错.md\"}")
+export const data = JSON.parse("{\"key\":\"v-b955b604\",\"path\":\"/unix/CentOS/UDS/uus%E8%99%9A%E6%8B%9F%E6%9C%BA%E6%8E%92%E9%94%99.html\",\"title\":\"虚拟机不使用uus\",\"lang\":\"zh-CN\",\"frontmatter\":{\"title\":\"虚拟机不使用uus\",\"order\":2,\"summary\":\"1. UUS 部分说明 这里 N：M 是 uraid 内数据 chunk 和校验 chunk 的比例。 K 是 URAID 对节点失效容忍度的要求。K 不能大于 M，通常选择是 K=0、1、M。 K 选 0 意味着有任意节点失效时，uraid 将不可访问，如果节点不能恢复或修复，则该 uraid 数据将丢失。 K 选 1 意味着同时有且仅有一个节点失效时，u\",\"head\":[[\"meta\",{\"property\":\"og:url\",\"content\":\"https://igarashi-g.github.io/igarashi-blog/igarashi-blog/unix/CentOS/UDS/uus%E8%99%9A%E6%8B%9F%E6%9C%BA%E6%8E%92%E9%94%99.html\"}],[\"meta\",{\"property\":\"og:site_name\",\"content\":\"五十岚呐~\"}],[\"meta\",{\"property\":\"og:title\",\"content\":\"虚拟机不使用uus\"}],[\"meta\",{\"property\":\"og:type\",\"content\":\"article\"}],[\"meta\",{\"property\":\"og:locale\",\"content\":\"zh-CN\"}]]},\"excerpt\":\"\",\"headers\":[{\"level\":3,\"title\":\"1. UUS 部分说明\",\"slug\":\"_1-uus-部分说明\",\"link\":\"#_1-uus-部分说明\",\"children\":[]},{\"level\":3,\"title\":\"2. 使用 UUS 虚拟机的限制\",\"slug\":\"_2-使用-uus-虚拟机的限制\",\"link\":\"#_2-使用-uus-虚拟机的限制\",\"children\":[]}],\"readingTime\":{\"minutes\":3.47,\"words\":1041},\"filePathRelative\":\"unix/CentOS/UDS/uus虚拟机排错.md\"}")
+
+if (import.meta.webpackHot) {
+  import.meta.webpackHot.accept()
+  if (__VUE_HMR_RUNTIME__.updatePageData) {
+    __VUE_HMR_RUNTIME__.updatePageData(data)
+  }
+}
+
+if (import.meta.hot) {
+  import.meta.hot.accept(({ data }) => {
+    __VUE_HMR_RUNTIME__.updatePageData(data)
+  })
+}

@@ -68,6 +68,8 @@
 <hr>
 <h2 id="_2-安装" tabindex="-1"><a class="header-anchor" href="#_2-安装" aria-hidden="true">#</a> 2. 安装</h2>
 <p>推荐参考官方文档：<a href="https://docs.docker.com/engine/install/" target="_blank" rel="noopener noreferrer">安装 Docker 引擎（英文）<ExternalLinkIcon/></a></p>
+<Tabs :data='[{"title":"CentOS"},{"title":"Debian"},{"title":"Windows"}]'>
+<template #tab0="{ title, value, isActive }">
 <h3 id="_2-1-centos" tabindex="-1"><a class="header-anchor" href="#_2-1-centos" aria-hidden="true">#</a> 2.1 CentOS</h3>
 <h4 id="卸载" tabindex="-1"><a class="header-anchor" href="#卸载" aria-hidden="true">#</a> <strong>卸载</strong></h4>
 <ul>
@@ -169,6 +171,8 @@ systemctl status containerd
 journalctl <span class="token parameter variable">-fu</span> <span class="token function">docker</span>
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></li>
 </ul>
+</template>
+<template #tab1="{ title, value, isActive }">
 <h3 id="_2-2-debian" tabindex="-1"><a class="header-anchor" href="#_2-2-debian" aria-hidden="true">#</a> 2.2 Debian</h3>
 <ul>
 <li>
@@ -198,10 +202,12 @@ journalctl <span class="token parameter variable">-fu</span> <span class="token 
 sudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose-plugin
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div></div></div></li>
 <li>
-<p>后续同上 <a href="/operations/docker/docker%E5%9F%BA%E7%A1%80#yum-%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE-docker" target="_blank" rel="noopener noreferrer">CentOS 安装<ExternalLinkIcon/></a></p>
+<p>后续同 <RouterLink to="/tool/Docker/docker%E5%AE%B9%E5%99%A8.html#_2-%E5%AE%89%E8%A3%85">CentOS 安装</RouterLink></p>
 </li>
 </ul>
 <p><strong>注意：</strong> <strong>PVE</strong> 上禁止安装 <strong>Docker</strong> 若需要，开个虚拟机上装</p>
+</template>
+<template #tab2="{ title, value, isActive }">
 <h3 id="_2-3-windows" tabindex="-1"><a class="header-anchor" href="#_2-3-windows" aria-hidden="true">#</a> 2.3 Windows</h3>
 <p>推荐参考官方文档 <a href="https://docs.docker.com/docker-for-windows/install/" target="_blank" rel="noopener noreferrer">在 Windows 上安装 Docker Desktop（英文）<ExternalLinkIcon/></a></p>
 <p>首先，确保满足先决条件：</p>
@@ -236,16 +242,17 @@ sudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose-plugin
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p>最后重启计算机即可。</p>
 <p><strong>安装完成：</strong>
 <img src="@source/tool/Docker/img/docker_desktop.jpg" alt="主界面" loading="lazy"></p>
-<hr>
+</template>
+</Tabs>
 <h2 id="_3-实现原理" tabindex="-1"><a class="header-anchor" href="#_3-实现原理" aria-hidden="true">#</a> 3. 实现原理</h2>
 <p>虚拟化核心需要解决的问题：<strong>资源隔离</strong> 与 <strong>资源限制</strong></p>
 <ul>
-<li>虚拟机硬件虚拟化技术，通过一个 <code v-pre>hypervisor</code> 层实现对资源的彻底隔离</li>
-<li>容器时操作系统级别的虚拟化，利用的是内核的 <code v-pre>Cgroup</code> 和 <code v-pre>Namespace</code> 特性，此功能完全通过软件实现</li>
+<li>虚拟机硬件虚拟化技术，通过一个 <strong>hypervisor</strong> 层实现对资源的彻底隔离</li>
+<li>容器时操作系统级别的虚拟化，利用的是内核的 <strong>Cgroup</strong> 和 <strong>Namespace</strong> 特性，此功能完全通过软件实现</li>
 </ul>
 <h3 id="_3-1-namespace-资源隔离" tabindex="-1"><a class="header-anchor" href="#_3-1-namespace-资源隔离" aria-hidden="true">#</a> 3.1 Namespace 资源隔离</h3>
-<p>命名空间是全局资源的一种抽象，将资源放到不同的命名空间中，各个命名空间中的资源是相互隔离的</p>
-<p><strong>Docker 容器</strong> 对操作系统来说是个进程， 实现如下：</p>
+<p>命名空间是全局资源的一种抽象，将资源放到不同的命名空间中，各个 <strong>命名空间中的资源是相互隔离的</strong></p>
+<p><strong>Docker 容器</strong> 对操作系统来说是个进程， 实现如下</p>
 <div class="language-C ext-C line-numbers-mode"><pre v-pre class="language-C"><code>// Linux里，用clone() 实现进程创建的系统调用
 int clone(int (*child_func)(void *), void *child_stack, int flags, void *arg);
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div></div></div><ul>
@@ -296,52 +303,52 @@ int clone(int (*child_func)(void *), void *child_stack, int flags, void *arg);
 </tbody>
 </table>
 <ul>
-<li><code v-pre>pid:</code> 用于进程隔离（<code v-pre>PID</code>：进程 <code v-pre>ID</code>）</li>
-<li><code v-pre>net:</code> 管理网络接口（<code v-pre>NET</code>：网络）</li>
-<li><code v-pre>ipc：</code> 管理对 <code v-pre>IPC</code> 资源的访问（<code v-pre>IPC</code>：进程间通信，信号量，消息队列和共享内存）</li>
-<li><code v-pre>mnt：</code> 管理文件系统挂载点（<code v-pre>MNT</code>： 挂载）</li>
+<li><code v-pre>pid:</code> 用于进程隔离（<em>PID：进程 ID</em>）</li>
+<li><code v-pre>net:</code> 管理网络接口（<em>NET：网络</em>）</li>
+<li><code v-pre>ipc：</code> 管理对 <code v-pre>IPC</code> 资源的访问（<em>IPC：进程间通信，信号量，消息队列和共享内存</em>）</li>
+<li><code v-pre>mnt：</code> 管理文件系统挂载点（<em>MNT： 挂载</em>）</li>
 <li><code v-pre>uts：</code> 隔离主机名和域名</li>
 <li><code v-pre>user：</code> 隔离用户、用户组</li>
 </ul>
 <p>实现容器独立的主机名和进程空间</p>
-<div class="language-C ext-C line-numbers-mode"><pre v-pre class="language-C"><code>#define _GNU_SOURCE
-#include &lt;sys/mount.h&gt;
-#include &lt;sys/types.h&gt;
-#include &lt;sys/wait.h&gt;
-#include &lt;stdio.h&gt;
-#include &lt;sched.h&gt;
-#include &lt;signal.h&gt;
-#include &lt;unistd.h&gt;
+<div class="language-c ext-c line-numbers-mode"><pre v-pre class="language-c"><code><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">_GNU_SOURCE</span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;sys/mount.h></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;sys/types.h></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;sys/wait.h></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;sched.h></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;signal.h></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;unistd.h></span></span>
 
-/* 定义一个给 clone 用的栈，栈大小1M */
-#define STACK_SIZE (1024 * 1024)
-static char container_stack[STACK_SIZE];
+<span class="token comment">/* 定义一个给 clone 用的栈，栈大小1M */</span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">STACK_SIZE</span> <span class="token expression"><span class="token punctuation">(</span><span class="token number">1024</span> <span class="token operator">*</span> <span class="token number">1024</span><span class="token punctuation">)</span></span></span>
+<span class="token keyword">static</span> <span class="token keyword">char</span> container_stack<span class="token punctuation">[</span>STACK_SIZE<span class="token punctuation">]</span><span class="token punctuation">;</span>
 
-char* const container_args[] = {
-    &quot;/bin/bash&quot;,
-    NULL
-};
+<span class="token keyword">char</span><span class="token operator">*</span> <span class="token keyword">const</span> container_args<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">{</span>
+    <span class="token string">"/bin/bash"</span><span class="token punctuation">,</span>
+    <span class="token constant">NULL</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
 
-int container_main(void* arg)
-{
-    printf(&quot;容器进程[%5d] ----进入容器!\n&quot;,getpid());
-    sethostname(&quot;container&quot;, 10); // 设置 hostname
-    /**执行/bin/bash */
-    execv(container_args[0], container_args);
-    printf(&quot;Something's Error!\n&quot;);
-    return 1;
-}
+<span class="token keyword">int</span> <span class="token function">container_main</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token operator">*</span> arg<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"容器进程[%5d] ----进入容器!\n"</span><span class="token punctuation">,</span><span class="token function">getpid</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">sethostname</span><span class="token punctuation">(</span><span class="token string">"container"</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 设置 hostname</span>
+    <span class="token comment">/**执行/bin/bash */</span>
+    <span class="token function">execv</span><span class="token punctuation">(</span>container_args<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span> container_args<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"Something's Error!\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token number">1</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 
-int main()
-{
-    printf(&quot;宿主机进程[%5d] - 开始一个容器!\n&quot;,getpid());
-    /* 调用clone函数 新的进程、挂载、空间*/
-    int container_pid = clone(container_main, container_stack+STACK_SIZE,  CLONE_NEWPID | CLONE_NEWUTS | SIGCHLD, NULL);
-    /* 等待子进程结束 */
-    waitpid(container_pid, NULL, 0);
-    printf(&quot;宿主机 - 容器结束!\n&quot;);
-    return 0;
-}
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"宿主机进程[%5d] - 开始一个容器!\n"</span><span class="token punctuation">,</span><span class="token function">getpid</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">/* 调用clone函数 新的进程、挂载、空间*/</span>
+    <span class="token keyword">int</span> container_pid <span class="token operator">=</span> <span class="token function">clone</span><span class="token punctuation">(</span>container_main<span class="token punctuation">,</span> container_stack<span class="token operator">+</span>STACK_SIZE<span class="token punctuation">,</span>  CLONE_NEWPID <span class="token operator">|</span> CLONE_NEWUTS <span class="token operator">|</span> SIGCHLD<span class="token punctuation">,</span> <span class="token constant">NULL</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">/* 等待子进程结束 */</span>
+    <span class="token function">waitpid</span><span class="token punctuation">(</span>container_pid<span class="token punctuation">,</span> <span class="token constant">NULL</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"宿主机 - 容器结束!\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>执行编译并测试</p>
 <div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code><span class="token function">vim</span> container.c
 gcc container.c <span class="token parameter variable">-o</span>  container
@@ -355,20 +362,21 @@ gcc container.c <span class="token parameter variable">-o</span>  container
 <span class="token comment"># 查看当前进程号，发现是 1号进程</span>
 <span class="token builtin class-name">echo</span> <span class="token variable">$$</span>
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>通过 <code v-pre>proc</code> 对比</p>
-<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code><span class="token comment"># 查看子进程</span>
+<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code><span class="token comment"># 查看子进程(打印出来的)</span>
 pstree <span class="token parameter variable">-p</span> <span class="token number">11660</span>
 <span class="token comment">## container2(11660)───bash(11661)</span>
 
 ll /proc/11661/ns/
 ll /proc/11660/ns/
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><img src="@source/tool/Docker/img/proc对比.jpg">
+<span class="token comment"># Ctrl + d 退出</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><img src="@source/tool/Docker/img/proc对比.jpg">
 <p>发现和父进程不同，故<code v-pre>pid</code> 和 <code v-pre>uts</code> 具有不同的命名空间</p>
-<p>因此 <strong>Docker</strong> 在启动一个容器的时候，会调用<code v-pre>Linux Kernel Namespace</code> 的接口，创建一块虚拟空间，<code v-pre>user</code> 通常相同用一样的，不会新建</p>
+<p>因此 <strong>Docker</strong> 在启动一个容器的时候，会调用 <strong>Linux Kernel Namespace</strong> 的接口，创建一块虚拟空间，<code v-pre>user</code> 通常相同用一样的，不会新建</p>
 <h3 id="_3-2-cgroup-资源限制" tabindex="-1"><a class="header-anchor" href="#_3-2-cgroup-资源限制" aria-hidden="true">#</a> 3.2 CGroup 资源限制</h3>
-<p><code v-pre>namespace</code> 可以保证容器间的隔离，但无法限制占用资源，若容器中执行 <code v-pre>CPU</code> 密集型任务，或内存泄漏，此时无法控制，因此需要 <code v-pre>Control Groups</code></p>
-<p><strong>CGroup</strong> 可以隔离宿主机上的物理资源：<code v-pre>CPU</code>、内存、磁盘 <code v-pre>I/O</code>、网络带宽。每一个 <strong>CGroup</strong> 都是一组被相同标准的参数限制的进程，我们只需把容器和进程加入到中指定的 <strong>CGroup</strong> 中</p>
+<p><strong>Namespace：</strong> 可以保证容器间的隔离，但无法限制占用资源，若容器中执行 <strong>CPU</strong> 密集型任务，或内存泄漏，此时无法控制，因此需要 <strong>Control Groups</strong></p>
+<p><strong>CGroup：</strong> 可以隔离宿主机上的物理资源：<strong>CPU</strong>、内存、磁盘 <strong>I/O</strong>、网络带宽，每一个 <strong>CGroup</strong> 都是一组被相同标准的参数限制的进程，我们只需把容器和进程加入到中指定的 <strong>CGroup</strong> 中</p>
 <h3 id="_3-3-unionfs-联合文件系统" tabindex="-1"><a class="header-anchor" href="#_3-3-unionfs-联合文件系统" aria-hidden="true">#</a> 3.3 UnionFS 联合文件系统</h3>
-<p>每台机器若运行上百容器，若都去全量 <code v-pre>copy</code> 文件系统，那么再轻量也会占用大量存储空间，这会导致：</p>
+<p>每台机器若运行上百容器，若都去全量 <code v-pre>copy</code> 文件系统，那么再轻量也会占用大量存储空间，导致</p>
 <ul>
 <li>运行容器速度慢</li>
 <li>占用大量磁盘物理空间</li>
@@ -378,20 +386,28 @@ ll /proc/11660/ns/
 <li>镜像分层存储</li>
 <li><strong>UnionFS</strong></li>
 </ul>
-<p>每个镜像是有一系列的层组成，一层代表 <code v-pre>Dockerfile</code> 中的一条指令，如下文件，就包含了 4 条指令</p>
+<p>每个镜像是有一系列的层组成，一层代表 <strong>Dockerfile</strong> 中的一条指令，如下文件，就包含了 <strong>4</strong> 条指令</p>
 <div class="language-docker ext-docker line-numbers-mode"><pre v-pre class="language-docker"><code><span class="token instruction"><span class="token keyword">FROM</span> ubuntu:15.04</span>
 <span class="token instruction"><span class="token keyword">COPY</span> . /app</span>
 <span class="token instruction"><span class="token keyword">RUN</span> make /app</span>
 <span class="token instruction"><span class="token keyword">CMD</span> python /app/app.py</span>
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>每一行就创建一层，<code v-pre>Dockerfile</code> 构建出来的镜像运行的容器结构如下:</p>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>每一行就创建一层，<strong>Dockerfile</strong> 构建出来的镜像运行的容器结构如下</p>
 <img src="@source/tool/Docker/img/unionFS结构.jpg">
-<p>镜像就是如上一层层堆叠起来的，而且都是只读的，运行时才会再基础层上添加新的可写层（<em>容器层</em>），对于运行中的容器所做的所有更改（<code v-pre>CUD</code>操作）都将写入容器层</p>
+<p>镜像就是如上一层层堆叠起来的，而且都是只读的，运行时才会在基础层上添加新的可写层（<em>容器层</em>），对于运行中的容器所做的所有更改（<em>CUD操作</em>）都将写入容器层</p>
 <h5 id="如何写入" tabindex="-1"><a class="header-anchor" href="#如何写入" aria-hidden="true">#</a> 如何写入</h5>
-<p><img src="@source/tool/Docker/img/CoW技术.jpg">当写入时，容器层用了写时复制 <code v-pre>CoW</code> 技术，<code v-pre>copy-on-write</code>，故所有数据都从 <code v-pre>image</code> 里读，让容器共享 <code v-pre>image</code> 的文件系统，写时才去进行复制到自己文件系统上的副本操作，也不会影响到 <code v-pre>image</code> 的源文件，提高磁盘利用率</p>
-<h5 id="如何合并层到一起" tabindex="-1"><a class="header-anchor" href="#如何合并层到一起" aria-hidden="true">#</a> 如何合并层到一起</h5>
-<p><strong>UnionFS</strong> 是为了 <code v-pre>Linux</code> 系统设计的，用来把多个文件系统联合到同一个挂载点的文件系统服务。能够将<strong>不同文件夹中的层</strong> 联合 <code v-pre>Union</code> 到 <strong>同一个文件夹</strong> 中，整个联合的过程成为联合挂载 <code v-pre>Union Mount</code></p>
+<p><img src="@source/tool/Docker/img/CoW技术.jpg">当写入时</p>
+<ul>
+<li>容器层用了写时复制 <strong>CoW</strong> 技术（<em>copy-on-write</em>），故所有数据都从 <strong>image</strong> 里读，让容器共享 <strong>image</strong> 的文件系统</li>
+<li>写时才去进行复制到自己文件系统上的副本操作，也不会影响到 <strong>image</strong> 的源文件，提高磁盘利用率</li>
+</ul>
+<h5 id="如何合并层到一起" tabindex="-1"><a class="header-anchor" href="#如何合并层到一起" aria-hidden="true">#</a> <strong>如何合并层到一起</strong></h5>
+<p><strong>UnionFS</strong> 是为了 <strong>Linux</strong> 系统设计的，用来把多个文件系统联合到同一个挂载点的文件系统服务。能够将<strong>不同文件夹中的层</strong> 联合（<em>Union</em>） 到 <strong>同一个文件夹</strong> 中，整个联合的过程成为联合挂载 <strong>Union Mount</strong></p>
 <img src="@source/tool/Docker/img/AUFS实现.jpg">
-<p>上述即 <strong>AUFS</strong> （<strong>*Docker</strong>存储驱动*）的一种实现，此外还支持不同驱动 <code v-pre>devicemapper</code> 、 <code v-pre>overlay2</code>、 <code v-pre>zfs</code> 和 <code v-pre>Btrfs</code> 等，新版已经使用 <strong>overlay2</strong> 取代了<code v-pre>AUFS</code>，但在没有 <code v-pre>overlay2</code> 驱动的机器上，依然使用 <strong>AUFS</strong></p>
+<div class="custom-container info">
+<p class="custom-container-title">说明</p>
+<p>上述即 <strong>AUFS</strong> （<em>Docker存储驱动</em>）的一种实现</p>
+<p>此外还支持不同驱动 <strong>devicemapper</strong> 、 <strong>overlay2</strong>、 <strong>zfs</strong> 和 <strong>Btrfs</strong> 等... 新版已经使用 <strong>overlay2</strong> 取代了<strong>AUFS</strong>，但在没有 <strong>overlay2</strong> 驱动的机器上，依然使用 <strong>AUFS</strong></p>
+</div>
 </div></template>
 
 

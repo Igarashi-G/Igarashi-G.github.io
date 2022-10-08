@@ -33,9 +33,8 @@ b <span class="token operator">=</span> <span class="token number">2</span>
 </ul>
 </li>
 </ul>
-<div class="custom-container note">
-<p class="custom-container-title">注</p>
-<p>理解赋值，容易走入以下误区</p>
+<div class="custom-container warning">
+<p class="custom-container-title">理解赋值，容易走入以下误区</p>
 <ul>
 <li><strong>误解 1</strong>，<code v-pre>a</code> 、<code v-pre>b</code> 都有有自己的地址</li>
 <li><strong>误解 2</strong>，<code v-pre>b = a</code> 是在 <code v-pre>b</code> 中存放了 <code v-pre>a</code> 的地址（误以为 <code v-pre>a</code> 有地址），然后是通过 <code v-pre>b</code> 指向<code v-pre>-&gt;</code> <code v-pre>a</code> 指向<code v-pre>-&gt;</code> <strong>1</strong> 得来 <strong>1</strong> 的值</li>
@@ -45,8 +44,22 @@ b <span class="token operator">=</span> <span class="token number">2</span>
 <p class="custom-container-title">提示</p>
 <p><strong>Python</strong> 的变量，其实是一种 <strong>堆内存的引用</strong>，更详细的需了解内存机制，因此</p>
 <ol>
-<li>赋值的过程，就是 <strong>改变标签指向</strong> 的过程</li>
-<li>参数传递的过程，就是 <strong>交换标签指向</strong> 的过程</li>
+<li>
+<p>赋值的过程，就是 <strong>改变标签指向</strong> 的过程</p>
+</li>
+<li>
+<p>参数传递的过程，就是 <strong>交换标签指向</strong> 的过程</p>
+</li>
+<li>
+<p><mark><strong>“=”</strong></mark> 左右的赋值原理如下</p>
+<div class="language-python ext-py line-numbers-mode"><pre v-pre class="language-python"><code><span class="token comment"># 实际上是把等号右侧的先计算出来 a 是 1, 然后再将b 赋值 b = 1</span>
+a <span class="token operator">=</span> <span class="token number">1</span>
+b <span class="token operator">=</span> a 
+
+<span class="token comment"># 两数交换也如此：</span>
+c<span class="token punctuation">,</span> d <span class="token operator">=</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span>
+c<span class="token punctuation">,</span> d <span class="token operator">=</span> d<span class="token punctuation">,</span> c <span class="token operator">+</span> d		<span class="token comment"># 先将等式右侧计算出 4, 7, 然后左侧再赋值 c, d = 3, 7</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></li>
 </ol>
 </div>
 <h3 id="_1-2-浅拷贝" tabindex="-1"><a class="header-anchor" href="#_1-2-浅拷贝" aria-hidden="true">#</a> 1.2 浅拷贝</h3>
@@ -106,8 +119,13 @@ c<span class="token punctuation">[</span><span class="token number">2</span><spa
 <p>故如上拷贝操作，即是 <strong>浅拷贝</strong>，它只浅层拷贝各元素的单层地址 （<em>第一层的地址指针</em>）一旦存在可变对象，且变化，源也随之变化</p>
 <div class="custom-container tip">
 <p class="custom-container-title">提示</p>
-<p>对于列表来说，<code v-pre>.copy()</code> 操作等同于 <code v-pre>[:]</code> 这种切片操作，即 <code v-pre>b = a.copy()</code> <code v-pre>is</code> <code v-pre>b = a[:]</code></p>
-</div>
+<p>对于列表来说，<code v-pre>.copy()</code> 等同于 <code v-pre>[:]</code> 切片操作，即 <code v-pre>b = a.copy()</code> <code v-pre>is</code> <code v-pre>b = a[:]</code></p>
+<div class="language-python ext-py line-numbers-mode"><pre v-pre class="language-python"><code>a <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span>
+b <span class="token operator">=</span> a<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">]</span> <span class="token comment"># a[:] 相当于重新copy， 即 a[0: -1]，等同于 [1, 2, 3] </span>
+
+<span class="token comment"># 故等同于 重新赋值</span>
+b <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></div>
 <h4 id="_1-3-深拷贝" tabindex="-1"><a class="header-anchor" href="#_1-3-深拷贝" aria-hidden="true">#</a> 1.3 深拷贝</h4>
 <p>通常情况，使用 <strong>浅拷贝</strong> 足矣，<strong>深拷贝</strong> 会实打实地拷贝了一份新的数据，<strong>完完全全地</strong> 开辟新的内存空间，这就<strong>十分消耗内存</strong> 了</p>
 <h5 id="使用-文档" tabindex="-1"><a class="header-anchor" href="#使用-文档" aria-hidden="true">#</a> <strong>使用</strong> <a href="https://docs.python.org/zh-cn/3.10/library/copy.html?highlight=deepcopy#module-copy" target="_blank" rel="noopener noreferrer">文档<ExternalLinkIcon/></a></h5>

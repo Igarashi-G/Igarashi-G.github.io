@@ -82,9 +82,7 @@ cat >>/etc/hosts<<EOF
 EOF
 ```
 
-#### 1.4 **检查网络**
-
-在所有节点执行命令
+#### 1.4 **检查网络** 
 
 ```shell {2,11,13}
 [root@k8smaster171 ~]$ ip route show
@@ -110,8 +108,6 @@ default via 192.168.3.1 dev eth0 proto static metric 100
 - 所有节点上 **Kubernetes** 所使用的 **IP** 地址必须可以互通（*无需 NAT 映射、无安全组或防火墙隔离*）
 
 :::
-
-
 
 #### 1.5 通过第三方脚本快速安装
 
@@ -226,7 +222,7 @@ docker version
 
 ## 2. 初始化配置
 
-::: note 所有节点均需如下操作
+::: warning 所有节点执行如下操作
 
 :::
 
@@ -299,9 +295,7 @@ $ date
 
 ## 3. 安装基础软件包
 
-::: warning 
-
-所有节点执行如下命令
+::: warning  所有节点执行如下操作
 
 :::
 

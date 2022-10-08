@@ -1,0 +1,14 @@
+export const data = JSON.parse("{\"key\":\"v-094a9271\",\"path\":\"/unix/Linux/SAMBA/SAMBA%E6%9C%8D%E5%8A%A1.html\",\"title\":\"Samba服务\",\"lang\":\"zh-CN\",\"frontmatter\":{\"title\":\"Samba服务\",\"order\":1,\"group\":{\"title\":\"SAMBA\",\"order\":15},\"summary\":\"SAMBA Server Samba 文档 1. 概述 Samba 是 2.安装&配置 安装\\rCentOS 下安装客户端; 配置 通常在 /etc/samba/smb.conf 文件中指定日志文件名称和共享存放路径 常规全局配置：\\r\\\" #号开头：默认的文字注释信息\\\"\\r\\\"\\\"\\r\\\" ；号开头：默认的注释配置项\\\" [global]: 关键字，全局配置\\rworkgro\",\"head\":[[\"meta\",{\"property\":\"og:url\",\"content\":\"https://igarashi-g.github.io/igarashi-blog/igarashi-blog/unix/Linux/SAMBA/SAMBA%E6%9C%8D%E5%8A%A1.html\"}],[\"meta\",{\"property\":\"og:site_name\",\"content\":\"五十岚呐~\"}],[\"meta\",{\"property\":\"og:title\",\"content\":\"Samba服务\"}],[\"meta\",{\"property\":\"og:type\",\"content\":\"article\"}],[\"meta\",{\"property\":\"og:locale\",\"content\":\"zh-CN\"}]]},\"excerpt\":\"\",\"headers\":[{\"level\":2,\"title\":\"1. 概述\",\"slug\":\"_1-概述\",\"link\":\"#_1-概述\",\"children\":[]},{\"level\":2,\"title\":\"2.安装&配置\",\"slug\":\"_2-安装-配置\",\"link\":\"#_2-安装-配置\",\"children\":[{\"level\":3,\"title\":\"安装\",\"slug\":\"安装\",\"link\":\"#安装\",\"children\":[]},{\"level\":3,\"title\":\"配置\",\"slug\":\"配置\",\"link\":\"#配置\",\"children\":[]}]},{\"level\":2,\"title\":\"3. 命令\",\"slug\":\"_3-命令\",\"link\":\"#_3-命令\",\"children\":[]}],\"readingTime\":{\"minutes\":4.87,\"words\":1461},\"filePathRelative\":\"unix/Linux/SAMBA/SAMBA服务.md\"}")
+
+if (import.meta.webpackHot) {
+  import.meta.webpackHot.accept()
+  if (__VUE_HMR_RUNTIME__.updatePageData) {
+    __VUE_HMR_RUNTIME__.updatePageData(data)
+  }
+}
+
+if (import.meta.hot) {
+  import.meta.hot.accept(({ data }) => {
+    __VUE_HMR_RUNTIME__.updatePageData(data)
+  })
+}

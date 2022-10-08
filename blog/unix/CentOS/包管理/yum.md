@@ -46,7 +46,7 @@ group:
 1.备份当前 yum 源防止出现意外还可以还原回来
 
     cd /etc/yum.repos.d/
-    cp /CentOS-Base.repo /CentOS-Base-repo.bak
+    cp ./CentOS-Base.repo ./CentOS-Base-repo.bak
 
 2.使用 wget 下载阿里 yum 源 repo 文件
 

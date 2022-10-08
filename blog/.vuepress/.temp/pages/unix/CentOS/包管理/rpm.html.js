@@ -1,1 +1,14 @@
-export const data = JSON.parse("{\"key\":\"v-5c02b0cc\",\"path\":\"/unix/CentOS/%E5%8C%85%E7%AE%A1%E7%90%86/rpm.html\",\"title\":\"rpm包\",\"lang\":\"zh-CN\",\"frontmatter\":{\"title\":\"rpm包\",\"order\":2,\"summary\":\"rpm 包管理 1.rpm 和 yum 包管理区别 rpm 适用于所有环境，而 yum 要有本地 yum 源才可以使用。yum 是上层管理工具，可以自动解决依赖性，而 rpm 是底层管理工具。 安装：\",\"head\":[[\"meta\",{\"property\":\"og:url\",\"content\":\"https://igarashi-g.github.io/igarashi-blog/igarashi-blog/unix/CentOS/%E5%8C%85%E7%AE%A1%E7%90%86/rpm.html\"}],[\"meta\",{\"property\":\"og:site_name\",\"content\":\"五十岚呐~\"}],[\"meta\",{\"property\":\"og:title\",\"content\":\"rpm包\"}],[\"meta\",{\"property\":\"og:type\",\"content\":\"article\"}],[\"meta\",{\"property\":\"og:locale\",\"content\":\"zh-CN\"}]]},\"excerpt\":\"\",\"headers\":[{\"level\":2,\"title\":\"rpm 包管理\",\"slug\":\"rpm-包管理\",\"link\":\"#rpm-包管理\",\"children\":[{\"level\":3,\"title\":\"1.rpm 和 yum 包管理区别\",\"slug\":\"_1-rpm-和-yum-包管理区别\",\"link\":\"#_1-rpm-和-yum-包管理区别\",\"children\":[]}]}],\"git\":{\"createdTime\":null,\"updatedTime\":null,\"contributors\":[]},\"readingTime\":{\"minutes\":0.22,\"words\":66},\"filePathRelative\":\"unix/CentOS/包管理/rpm.md\"}")
+export const data = JSON.parse("{\"key\":\"v-5c02b0cc\",\"path\":\"/unix/CentOS/%E5%8C%85%E7%AE%A1%E7%90%86/rpm.html\",\"title\":\"rpm包\",\"lang\":\"zh-CN\",\"frontmatter\":{\"title\":\"rpm包\",\"order\":2,\"summary\":\"rpm 包管理 1.rpm 和 yum 包管理区别 rpm 适用于所有环境，而 yum 要有本地 yum 源才可以使用。yum 是上层管理工具，可以自动解决依赖性，而 rpm 是底层管理工具。 安装：\",\"head\":[[\"meta\",{\"property\":\"og:url\",\"content\":\"https://igarashi-g.github.io/igarashi-blog/igarashi-blog/unix/CentOS/%E5%8C%85%E7%AE%A1%E7%90%86/rpm.html\"}],[\"meta\",{\"property\":\"og:site_name\",\"content\":\"五十岚呐~\"}],[\"meta\",{\"property\":\"og:title\",\"content\":\"rpm包\"}],[\"meta\",{\"property\":\"og:type\",\"content\":\"article\"}],[\"meta\",{\"property\":\"og:locale\",\"content\":\"zh-CN\"}]]},\"excerpt\":\"\",\"headers\":[{\"level\":2,\"title\":\"rpm 包管理\",\"slug\":\"rpm-包管理\",\"link\":\"#rpm-包管理\",\"children\":[{\"level\":3,\"title\":\"1.rpm 和 yum 包管理区别\",\"slug\":\"_1-rpm-和-yum-包管理区别\",\"link\":\"#_1-rpm-和-yum-包管理区别\",\"children\":[]}]}],\"readingTime\":{\"minutes\":0.22,\"words\":66},\"filePathRelative\":\"unix/CentOS/包管理/rpm.md\"}")
+
+if (import.meta.webpackHot) {
+  import.meta.webpackHot.accept()
+  if (__VUE_HMR_RUNTIME__.updatePageData) {
+    __VUE_HMR_RUNTIME__.updatePageData(data)
+  }
+}
+
+if (import.meta.hot) {
+  import.meta.hot.accept(({ data }) => {
+    __VUE_HMR_RUNTIME__.updatePageData(data)
+  })
+}

@@ -5,9 +5,9 @@
 <blockquote>
 <p>通常，迭代器是从 <strong>集合</strong> 中取元素，表示集合是有限多个，只是通过迭代器来一个个取</p>
 </blockquote>
-<p>既然是取集合，那么所有集合都<strong>可迭代</strong>，场景如下：</p>
+<p>既然是取集合，那么所有集合都 <strong>可迭代</strong>，场景如下</p>
 <ul>
-<li>首先可迭代意味着可以 <Font>for 循环</Font></li>
+<li>首先可迭代意味着可以 <strong>for</strong> 循环</li>
 <li>构建和扩展集合类型</li>
 <li>逐行遍历文本文件</li>
 <li>列表、字典、集合推导</li>
@@ -15,10 +15,10 @@
 <li>调用函数时，使用拆包实例</li>
 </ul>
 <h3 id="_1-1-可迭代对象-单词序列" tabindex="-1"><a class="header-anchor" href="#_1-1-可迭代对象-单词序列" aria-hidden="true">#</a> 1.1 可迭代对象：单词序列</h3>
-<p><strong>实现<code v-pre>Sentence</code>类</strong>：向该类的构造方法中，传入一个包含某些文本的字符串，然后可以实现逐个单词的迭代。</p>
+<p><strong>实现 Sentence 类：</strong> 向该类的构造方法中，传入一个包含某些文本的字符串，然后可以实现逐个单词的迭代。</p>
 <ul>
 <li>首先，实现一个类，该类包含了<a href="">序列协议</a></li>
-<li>它的实例化对象可迭代（能像序列一样，使用 <code v-pre>for</code>循环 遍历出结果）</li>
+<li>它的实例化对象可迭代（能像序列一样，使用 <strong>for</strong> 循环 遍历出结果）</li>
 </ul>
 <div class="language-python ext-py line-numbers-mode"><pre v-pre class="language-python"><code><span class="token keyword">import</span> re
 <span class="token keyword">import</span> reprlib
@@ -50,7 +50,7 @@ s <span class="token operator">=</span> Sentence<span class="token punctuation">
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><ul>
 <li>默认情况下 <a href="">reprlib.repr()</a> 生成的字符串最多有 30 个字符，此处给 <code v-pre>__repr__</code> 使用</li>
 </ul>
-<p>首次使用 reprlib 在 109 页 写在字节序列合适</p>
+<p>首次使用 reprlib 在 109 页</p>
 </div></template>
 
 

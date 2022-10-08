@@ -2,40 +2,38 @@
 <!-- more -->
 <h2 id="_1-docker-常规操作" tabindex="-1"><a class="header-anchor" href="#_1-docker-常规操作" aria-hidden="true">#</a> 1. Docker 常规操作</h2>
 <h3 id="_1-1-核心要素" tabindex="-1"><a class="header-anchor" href="#_1-1-核心要素" aria-hidden="true">#</a> 1.1 核心要素</h3>
-<p><code v-pre>Docker</code>如下三核心：</p>
+<p><strong>Docker</strong>如下三核心：</p>
 <ul>
-<li><strong>镜像</strong>（<code v-pre>Images</code>）：打包了业务代码、运行环境的包，是静态文件，不对外直接提供服务</li>
-<li><strong>容器</strong>（<code v-pre>Containers</code>）：镜像运行时，对外提供服务</li>
-<li><strong>仓库</strong>（<code v-pre>Registry</code>）：存放镜像的地方，容器和仓库不会直接交互，都是以镜像为载体
-<ul>
-<li>公有仓库：Docker Hub、阿里、网易... 一般存放以下几类镜像
+<li><strong>镜像</strong>（<em>Images</em>）：打包了业务代码、运行环境的包，是静态文件，不对外直接提供服务</li>
+<li><strong>容器</strong>（<em>Containers</em>）：镜像运行时，对外提供服务</li>
+<li><strong>仓库</strong>（<em>Registry</em>）：存放镜像的地方，容器和仓库不会直接交互，都是以镜像为载体</li>
+</ul>
+<div class="custom-container note">
+<p class="custom-container-title">仓库说明</p>
+<p><strong>公有仓库：</strong> Docker Hub、阿里、网易... 一般存放以下几类镜像</p>
 <ul>
 <li>操作系统基础镜像：CentOS、Ubuntu、suse、alpine</li>
 <li>中间件：Nginx、Redis、MySQL</li>
 <li>语言编译环境：python、go、rust</li>
 <li>业务镜像：breath-for-code</li>
 </ul>
-</li>
-<li>私有仓库： 企业内部搭建
+<p><strong>私有仓库：</strong> 企业内部搭建</p>
 <ul>
-<li>Docker Registry：官方提供仓库存储</li>
-<li><strong>Harbor</strong>：上述封装，WebUI、权限、操作审计等功能（常用）</li>
+<li><strong>Docker Registry：</strong> 官方提供仓库存储</li>
+<li><strong>Harbor：</strong> 上述封装，WebUI、权限、操作审计等功能（常用）</li>
 </ul>
-</li>
-</ul>
-</li>
-</ul>
+</div>
 <img src="@source/tool/Docker/img/核心要素.png">
-<p><strong>Docker</strong> 执行流程：</p>
+<p><strong>Docker</strong> 执行流程</p>
 <ul>
 <li>
-<p><strong>docker pull：</strong> <code v-pre>client</code> 通过 <code v-pre>grpc</code> 和 <code v-pre>DOCKER_HOST</code> 通信，<code v-pre>daemon</code> 进程去<code v-pre>images</code> 中查看目标镜像，若没有则去远程仓库 <code v-pre>registry</code> 下载到本地 <code v-pre>images</code> 中</p>
+<p><strong>docker pull：</strong> <code v-pre>client</code> 通过 <code v-pre>grpc</code> 和 <code v-pre>DOCKER_HOST</code> 通信，<code v-pre>daemon</code> 进程去 <code v-pre>images</code> 中查看目标镜像，若没有则去远程仓库 <code v-pre>registry</code> 下载到本地 <code v-pre>images</code> 中</p>
 </li>
 <li>
 <p><strong>docker run：</strong> 镜像是静态的，需要容器来运行，因此 <code v-pre>daemon</code> 会启动一个容器服务运行镜像来对外提供服务</p>
 </li>
 <li>
-<p><strong>docker build：</strong> 通过 <code v-pre>build</code> 执行 <a href="/operations/docker/docker%E4%BD%BF%E7%94%A8%E5%9F%BA%E7%A1%80#2docker-%E6%9E%84%E5%BB%BA%E9%95%9C%E5%83%8F" target="_blank" rel="noopener noreferrer">DockerFile<ExternalLinkIcon/></a> 来自定义的打包自己的镜像</p>
+<p><strong>docker build：</strong> 通过 <code v-pre>build</code> 执行 <RouterLink to="/tool/Docker/%E4%BD%BF%E7%94%A8%E5%9F%BA%E7%A1%80.html#_2-1-dockerfile">DockerFile</RouterLink> 来自定义的打包自己的镜像</p>
 </li>
 </ul>
 <h3 id="_1-2-基本流程" tabindex="-1"><a class="header-anchor" href="#_1-2-基本流程" aria-hidden="true">#</a> 1.2 基本流程</h3>
@@ -46,10 +44,10 @@
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div></li>
 <li>
 <p>远程仓库拉取镜像</p>
-<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code><span class="token comment"># 从远程仓库拉取 镜像名称：tag标签</span>
+<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code><span class="token comment"># 格式为： 镜像名称:tag标签</span>
 <span class="token function">docker</span> pull nginx:alpine
 
-<span class="token comment">#说明：</span>
+<span class="token comment"># 若不加 tag</span>
 <span class="token function">docker</span> pull ubuntu
 <span class="token comment"># 等同于</span>
 <span class="token function">docker</span> pull docker.io/library/ubuntu:lastest
@@ -72,7 +70,7 @@
 <ul>
 <li>
 <p>创建 <strong>DockerFile</strong></p>
-<p><code v-pre>centos-nfs：</code> 创建一个带有 <code v-pre>NFS</code> 功能的 <code v-pre>CentOS</code> 镜像</p>
+<p><strong>centos-nfs：</strong> 创建一个带有 <strong>NFS</strong> 功能的 <strong>CentOS</strong> 镜像</p>
 <div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code><span class="token comment"># 定义docker使用那个基础系统镜像作为模板，后续命令都已这个基础镜像为准,等同于 pull 操作</span>
 FROM centos:7.6.1810
 
@@ -81,7 +79,7 @@ RUN yum <span class="token parameter variable">-y</span> <span class="token func
 
 <span class="token comment"># 启动容器后执行如下命令（这就是docker容器启动后执行命令的原因）</span>
 CMD <span class="token punctuation">[</span><span class="token string">"systemctl"</span>, <span class="token string">"restart"</span>, <span class="token string">"nfs"</span><span class="token punctuation">]</span>
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p><code v-pre>ubuntu-nginx：</code> 创建一个带有 <code v-pre>Nginx</code> 功能的 <code v-pre>Ubuntu</code> 镜像</p>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p><strong>ubuntu-nginx：</strong> 创建一个带有 <strong>Nginx</strong> 功能的 <strong>Ubuntu</strong> 镜像</p>
 <div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code>FROM ubuntu
 
 RUN <span class="token function">apt-get</span> update <span class="token operator">&amp;&amp;</span> <span class="token function">apt</span> i <span class="token parameter variable">-y</span> nginx
@@ -123,7 +121,7 @@ CMD <span class="token punctuation">[</span><span class="token string">"/usr/sbi
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div></div></div></li>
 </ol>
 <h3 id="_1-3-部署镜像仓库" tabindex="-1"><a class="header-anchor" href="#_1-3-部署镜像仓库" aria-hidden="true">#</a> 1.3 部署镜像仓库</h3>
-<p><strong>Docker</strong> 复杂命令流程图：</p>
+<p><strong>Docker</strong> 复杂命令流程图</p>
 <img src="@source/tool/Docker/img/基本流程.png">
 <ol>
 <li>
@@ -140,7 +138,7 @@ CMD <span class="token punctuation">[</span><span class="token string">"/usr/sbi
 <div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code><span class="token comment"># 用docker官方提供的镜像，来启动一个 镜像仓库服务</span>
 <span class="token function">docker</span> run <span class="token parameter variable">-d</span> <span class="token parameter variable">-p</span> <span class="token number">5000</span>:5000 <span class="token parameter variable">--restart</span> always <span class="token parameter variable">--name</span> registry registry:2
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div></div></div><ul>
-<li><code v-pre>--restart always:</code> 重启 <code v-pre>docker</code> 后会自动拉起该镜像服务</li>
+<li><code v-pre>--restart always:</code> 重启 <code v-pre>docker</code> 后，会自动拉起该镜像服务</li>
 </ul>
 </li>
 <li>
@@ -247,8 +245,8 @@ $ <span class="token function">docker</span> run <span class="token parameter va
 <span class="token function">docker</span> inspect z-nginx:ubuntu <span class="token operator">|</span> <span class="token function">more</span>
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div></div></div></li>
 </ol>
-<h5 id="一号进程" tabindex="-1"><a class="header-anchor" href="#一号进程" aria-hidden="true">#</a> 一号进程</h5>
-<p>1 号进程比较特殊，若退出则容器销毁，不只可通过 <code v-pre>CMD</code> 定义，还能在容器启动时，通过命令去覆盖默认的 <code v-pre>CMD</code></p>
+<h5 id="一号进程" tabindex="-1"><a class="header-anchor" href="#一号进程" aria-hidden="true">#</a> <strong>一号进程</strong></h5>
+<p><strong>1</strong> 号进程比较特殊，若退出则容器销毁，不仅能通过 <code v-pre>CMD</code> 定义，还能在容器启动时，通过命令去覆盖默认的 <code v-pre>CMD</code></p>
 <div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code><span class="token comment"># &lt;自定义命令> 会覆盖镜像中指定的CMD指令，作为容器的 1号进程 启动</span>
 <span class="token function">docker</span> run <span class="token parameter variable">-d</span> <span class="token parameter variable">--name</span> xx nginx:alpine <span class="token operator">&lt;</span>自定义命令<span class="token operator">></span>
 
@@ -258,7 +256,7 @@ $ <span class="token function">docker</span> run <span class="token parameter va
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>因此每个容器都是个隔离进程</p>
 <h3 id="_1-4-注意事项与实用小技巧" tabindex="-1"><a class="header-anchor" href="#_1-4-注意事项与实用小技巧" aria-hidden="true">#</a> 1.4 注意事项与实用小技巧</h3>
 <h5 id="注意" tabindex="-1"><a class="header-anchor" href="#注意" aria-hidden="true">#</a> <strong>注意</strong></h5>
-<p>不建议使用 <code v-pre>commit</code> 和 <code v-pre>import</code> 命令</p>
+<p>不建议使用 <mark>commit</mark> 和 <mark>import</mark> 命令</p>
 <ul>
 <li>
 <p>通常，可以通过历史命令，来查看镜像的执行过程</p>
@@ -301,10 +299,10 @@ $ <span class="token function">docker</span> run <span class="token parameter va
 <p><strong>Dockerfile</strong> 是一堆指令，用来构建镜像的文本文件，在 <code v-pre>docker build</code> 时，按照该指令进行操作，最终生成期望的镜像</p>
 <p><strong>相关文档：</strong></p>
 <ul>
-<li><a href="https://docs.docker.com/engine/reference/builder/" target="_blank" rel="noopener noreferrer"><code v-pre>Dockerfile</code> 文档（英文）<ExternalLinkIcon/></a></li>
-<li><a href="https://docs.docker.com/engine/userguide/eng-image/dockerfile_best-practices/" target="_blank" rel="noopener noreferrer"><code v-pre>Dockerfile</code> 最佳实践（英文）<ExternalLinkIcon/></a></li>
-<li><a href="https://www.runoob.com/docker/docker-dockerfile.html" target="_blank" rel="noopener noreferrer"><code v-pre>Dockerfile</code> | 菜鸟教程<ExternalLinkIcon/></a></li>
-<li><a href="https://www.w3cschool.cn/reqsgr/redknozt.html" target="_blank" rel="noopener noreferrer"><code v-pre>Dockerfile</code> 基本结构 | w3cschool<ExternalLinkIcon/></a></li>
+<li><a href="https://docs.docker.com/engine/reference/builder/" target="_blank" rel="noopener noreferrer">Dockerfile 文档（英文）<ExternalLinkIcon/></a></li>
+<li><a href="https://docs.docker.com/engine/userguide/eng-image/dockerfile_best-practices/" target="_blank" rel="noopener noreferrer">Dockerfile 最佳实践（英文）<ExternalLinkIcon/></a></li>
+<li><a href="https://www.runoob.com/docker/docker-dockerfile.html" target="_blank" rel="noopener noreferrer">Dockerfile | 菜鸟教程<ExternalLinkIcon/></a></li>
+<li><a href="https://www.w3cschool.cn/reqsgr/redknozt.html" target="_blank" rel="noopener noreferrer">Dockerfile 基本结构 | w3cschool<ExternalLinkIcon/></a></li>
 </ul>
 <h5 id="构建命令" tabindex="-1"><a class="header-anchor" href="#构建命令" aria-hidden="true">#</a> 构建命令：</h5>
 <div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code>$ <span class="token function">docker</span> build <span class="token builtin class-name">.</span> <span class="token parameter variable">-t</span> image_name:image_tag <span class="token parameter variable">-f</span> DockerFile
@@ -346,8 +344,9 @@ $ <span class="token function">docker</span> run <span class="token parameter va
 <span class="token comment"># 示例</span>
 	WORKDIR /opt/ufs		<span class="token comment"># 工作目录为 /opt/ufs</span>
 <span class="token comment"># 注意</span>
-	通过 WORKDIR 设置工作目录后，Dokcerfile 中期后的命令RUN、COM、ENTRYPOINT、ADD、COPY等命令都会在该目录下执行
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></li>
+	通过 WORKDIR 设置工作目录后，Dokcerfile 中启动后的命令
+	RUN、COM、ENTRYPOINT、ADD、COPY等都会在该目录下执行
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></li>
 <li>
 <p><strong>RUN</strong> 构建镜像过程中执行命令</p>
 <div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code><span class="token comment"># 格式</span>
@@ -357,8 +356,10 @@ $ <span class="token function">docker</span> run <span class="token parameter va
 	RUN pip <span class="token function">install</span> <span class="token parameter variable">-r</span> ./requirements.txt
 	RUN <span class="token function">mkdir</span> <span class="token builtin class-name">test</span> <span class="token operator">&amp;&amp;</span> <span class="token function">rm</span> <span class="token parameter variable">-rf</span> /var/lib/unusedfiles
 <span class="token comment"># 注意</span>
-	RUN 指令创建的中间镜像会被缓存，并会在下次构建中使用。如果不想使用这些缓存镜像，可以在构建时指定 --no-cache 参数，如： <span class="token function">docker</span> build --no-cache
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></li>
+	RUN 指令创建的中间镜像会被缓存，并会在下次构建中使用.
+	如果不想使用这些缓存镜像，可以在构建时指定 --no-cache 参数
+	如： <span class="token function">docker</span> build --no-cache
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></li>
 <li>
 <p><strong>CMD</strong> 构建容器后调用，也就是在容器启动时才进行调用</p>
 <div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code><span class="token comment"># 格式</span>
@@ -369,8 +370,9 @@ $ <span class="token function">docker</span> run <span class="token parameter va
 	CMD <span class="token punctuation">[</span><span class="token string">"/usr/bin/wc"</span>, <span class="token string">"--help"</span><span class="token punctuation">]</span>
 	CMD <span class="token function">ping</span> www.baidu.com
 <span class="token comment"># 注意</span>
-	CMD 不同于RUN, CMD用于指定在容器启动时所要执行的命令，而RUN用于指定镜像构建时所要执行的命令
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></li>
+	CMD 不同于RUN, CMD 用于指定在容器启动时所要执行的命令
+	而 RUN 用于指定镜像构建时所要执行的命令
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></li>
 <li>
 <p><strong>ENTRYPOINT</strong> 设置容器初始化命令，使其可执行化</p>
 <div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code><span class="token comment"># 格式</span>
@@ -379,9 +381,12 @@ $ <span class="token function">docker</span> run <span class="token parameter va
 <span class="token comment"># 示例</span>
 	ENTRYPOINT <span class="token punctuation">[</span><span class="token string">"/usr/bin/wc"</span>, <span class="token string">"--help"</span><span class="token punctuation">]</span>
 <span class="token comment"># 注意</span>
-	ENTRYPOINT 和 CMD 类似，不同的是通过 <span class="token function">docker</span> run 执行的命令不会覆盖 ENTRYPOINT, 而 <span class="token function">docker</span> run 命令中指定的任何参数，都会被当做参数再次传递给 ENTRYPOINT。
-	Dockerfile中只允许有一个 ENTRYPOINT 命令，多指定时会覆盖前面的设置，而仅执行最后的 ENTRYPOINT 指令
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></li>
+	ENTRYPOINT 和 CMD 类似，不同的是通过 <span class="token function">docker</span> run 执行的命令不会覆盖 ENTRYPOINT,
+	而 <span class="token function">docker</span> run 命令中指定的任何参数，都会被当做参数再次传递给 ENTRYPOINT
+		
+	Dockerfile中只允许有一个 ENTRYPOINT 命令
+	多指定时会覆盖前面的设置，而仅执行最后的 ENTRYPOINT 指令
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></li>
 <li>
 <p><strong>ENV</strong> 环境变量</p>
 <div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code><span class="token comment"># 格式</span>
@@ -400,12 +405,13 @@ $ <span class="token function">docker</span> run <span class="token parameter va
 	EXPOSE <span class="token number">8080</span>
 	EXPOSE <span class="token number">11211</span>/tcp <span class="token number">11211</span>/udp
 <span class="token comment"># 注意</span>
-	EXPOSE 并不会让容器的端口访问到主机，要使其访问，需要再 <span class="token function">docker</span> run 运行容器时 指定 <span class="token parameter variable">-p</span> 来发布端口映射，或通过 <span class="token parameter variable">-P</span> 参数来发布 EXPOSE 导出的所有端口
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></li>
+	EXPOSE 并不会让容器的端口访问到主机
+	要使其访问，需要在 <span class="token function">docker</span> run 运行容器时 指定 <span class="token parameter variable">-p</span> 来发布端口映射
+	或通过 <span class="token parameter variable">-P</span> 参数来发布 EXPOSE 导出的所有端口
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></li>
 </ul>
 <h3 id="_2-2-示例" tabindex="-1"><a class="header-anchor" href="#_2-2-示例" aria-hidden="true">#</a> 2.2 示例</h3>
-<p>构建一个 <a href="https://gitee.com/igarashi/python-demo" target="_blank" rel="noopener noreferrer">blog<ExternalLinkIcon/></a> 的 <code v-pre>py</code> 应用，</p>
-<p><strong>Dockerfile 如下</strong></p>
+<p>构建一个 <a href="https://gitee.com/igarashi/python-demo" target="_blank" rel="noopener noreferrer">blog<ExternalLinkIcon/></a> 的 <strong>Python Web</strong> 应用，<strong>Dockerfile 如下</strong></p>
 <div class="language-docker ext-docker line-numbers-mode"><pre v-pre class="language-docker"><code><span class="token comment"># This is my first django Dockerfile</span>
 <span class="token comment"># Version 1.0</span>
 
@@ -413,7 +419,7 @@ $ <span class="token function">docker</span> run <span class="token parameter va
 <span class="token instruction"><span class="token keyword">FROM</span> centos:centos7.5.1804</span>
 
 <span class="token comment"># MAINTAINER 维护者信息</span>
-<span class="token instruction"><span class="token keyword">MAINTAINER</span> Fuuka Igarashi</span>
+<span class="token instruction"><span class="token keyword">MAINTAINER</span> Igarashi-G</span>
 
 <span class="token comment"># ENV 设置环境变量</span>
 <span class="token instruction"><span class="token keyword">ENV</span> LANG en_US.UTF-8</span>
@@ -468,9 +474,9 @@ $ <span class="token function">docker</span> <span class="token builtin class-na
 <span class="token comment"># 收集静态文件</span>
 <span class="token comment">#$ docker exec -ti myblog python3 manage.py collectstatic</span>
 
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p><strong>访问：</strong> <a href="120.53.122.253:8002/admin">腾讯云地址</a></p>
-<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code><span class="token comment"># 替换 MySQL的默认编码为 UTF-8</span>
-<span class="token comment"># dockerfiles/mysq1/my.cnf</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p><strong>访问：</strong> <a href="http://120.53.122.253:8002/admin" target="_blank" rel="noopener noreferrer">腾讯云地址<ExternalLinkIcon/></a></p>
+<h5 id="替换-mysql的默认编码为-utf-8" tabindex="-1"><a class="header-anchor" href="#替换-mysql的默认编码为-utf-8" aria-hidden="true">#</a> <strong>替换 MySQL的默认编码为 UTF-8</strong></h5>
+<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code> <span class="token comment"># dockerfiles/mysq1/my.cnf</span>
 $ <span class="token function">cat</span> my.cnf
 <span class="token punctuation">[</span>mysqld<span class="token punctuation">]</span>
 <span class="token assign-left variable">user</span><span class="token operator">=</span>root
@@ -484,19 +490,19 @@ default-character-set<span class="token operator">=</span>utf8
 
 <span class="token operator">!</span>includedir /etc/mysql/conf.d/
 <span class="token operator">!</span>includedir /etc/mysql/mysql.conf.d/
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p><strong>重做 MySQL 镜像</strong></p>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p><strong>重做 MySQL 镜像</strong></p>
 <div class="language-docker ext-docker line-numbers-mode"><pre v-pre class="language-docker"><code><span class="token comment"># 基于 mysql5.7 覆盖</span>
 <span class="token instruction"><span class="token keyword">FROM</span> mysql5.7</span>
 <span class="token instruction"><span class="token keyword">COPY</span> my.cnf /etc/mysql/my.cnf</span>
 
 <span class="token comment"># 若不指定 CMD 则会自动继承</span>
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><blockquote>
-<p><strong>注意</strong>：</p>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="custom-container warning">
+<p class="custom-container-title">注意</p>
 <ul>
 <li>通常不会直接写 <strong>FROM</strong> 这种很原生的 <strong>Dockerfile</strong>，因为每次 <code v-pre>build</code> 构建会拖慢整个自动化的速度</li>
-<li>因此将所需的环境，打一个环境所需的 <strong>基础镜像</strong>，方便直接引入</li>
+<li>因此将所需的环境、依赖啥的，打一个 <strong>基础镜像</strong>，方便直接引入</li>
 </ul>
-</blockquote>
+</div>
 </div></template>
 
 

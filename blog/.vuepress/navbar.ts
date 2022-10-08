@@ -3,17 +3,6 @@ import { navbar } from "vuepress-theme-hope";
 export default navbar([
   "/",
   {
-    text: "运维",
-    icon: "shell",
-    prefix: "/unix/",
-    children: [
-      { text: "Linux", link: "Linux/Linux基础指引/计算机概论", icon: "linux"},
-      { text: "CentOS", link: "CentOS/安装/CentOS的安装", icon: "centos"},
-      { text: "Ubuntu", link: "Ubuntu/常用命令/Ubuntu系列操作", icon: "ubuntu"},
-      { text: "虚拟机", link: "虚拟机/PVE/PVE", icon: "snow"},
-    ],
-  },
-  {
     text: "Python",
     icon: "python",
     prefix: "/python/",
@@ -55,10 +44,14 @@ export default navbar([
     ],
   },
   {
-    text: "漫漫全干卷的苦",
+    text: "运维",
+    icon: "shell",
+    prefix: "/unix/",
     children: [
-      { text: "GO", icon: "hot", link: "https://draveness.me/golang/" },
-      { text: "前端内卷不归路", icon: "html", link: "https://notes.fe-mm.com/interview/base/types.html" },
+      { text: "Linux", link: "Linux/Linux基础指引/计算机概论", icon: "linux"},
+      { text: "CentOS", link: "CentOS/安装/CentOS的安装", icon: "centos"},
+      { text: "Ubuntu", link: "Ubuntu/常用命令/Ubuntu系列操作", icon: "ubuntu"},
+      { text: "虚拟机", link: "虚拟机/PVE/PVE", icon: "snow"},
     ],
   },
   {
@@ -67,10 +60,17 @@ export default navbar([
     prefix: "/tool/",
     children: [
       { text: "Git", link: "Git/Git" , icon: "git"},
+      { text: "Nginx", link: "Nginx/Nginx基础" , icon: "nginx"},
       { text: "Docker", link: "Docker/docker容器" , icon: "hot"},
       { text: "Kubernets", link: "Kubernets/K8s基础" , icon: "hot"},
-      { text: "Nginx", link: "Nginx/Nginx基础" , icon: "nginx"},
       { text: "其他", link: "Other/网络代理" , icon: "operate"},
+    ],
+  },
+  {
+    text: "漫漫全干卷的苦",
+    children: [
+      { text: "GO", icon: "hot", link: "https://draveness.me/golang/" },
+      { text: "前端内卷不归路", icon: "html", link: "https://notes.fe-mm.com/interview/base/types.html" },
     ],
   },
   // "/home",

@@ -95,6 +95,10 @@ star: true
 
 推荐参考官方文档：[安装 Docker 引擎（英文）](https://docs.docker.com/engine/install/)
 
+::: tabs
+
+@tab CentOS
+
 ### 2.1 CentOS
 
 #### **卸载**
@@ -216,6 +220,8 @@ sysctl -p /etc/sysctl.d/docker.conf
   journalctl -fu docker
   ```
 
+@tab Debian
+
 ### 2.2 Debian
 
 - 安装必备的基础系统工具
@@ -252,9 +258,11 @@ sysctl -p /etc/sysctl.d/docker.conf
   sudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose-plugin
   ```
 
-- 后续同上 [CentOS 安装](/operations/docker/docker基础#yum-安装配置-docker)
+- 后续同 [CentOS 安装](/igarashi-blog/tool/Docker/docker容器.html#_2-安装)
 
 **注意：** **PVE** 上禁止安装 **Docker** 若需要，开个虚拟机上装
+
+@tab Windows
 
 ### 2.3 Windows
 
@@ -288,7 +296,7 @@ wsl --set-default-version 2
 **安装完成：**
 ![主界面](./img/docker_desktop.jpg)
 
----
+:::
 
 ## 3. 实现原理
 
@@ -299,7 +307,7 @@ wsl --set-default-version 2
 
 ### 3.1 Namespace 资源隔离
 
-命名空间是全局资源的一种抽象，将资源放到不同的命名空间中，各个命名空间中的资源是相互隔离的
+命名空间是全局资源的一种抽象，将资源放到不同的命名空间中，各个 **命名空间中的资源是相互隔离的** 
 
 **Docker 容器** 对操作系统来说是个进程， 实现如下
 
@@ -322,16 +330,16 @@ int clone(int (*child_func)(void *), void *child_stack, int flags, void *arg);
 | Network namespaces | CLONE_NEWNET  | Linux 2.6.24 ~ 29  |
 | User namespaces    | CLONE_NEWUSER | Linux 2.6.23 ~ 3.8 |
 
-- `pid:` 用于进程隔离（`PID`：进程 `ID`）
-- `net:` 管理网络接口（`NET`：网络）
-- `ipc：` 管理对 `IPC` 资源的访问（`IPC`：进程间通信，信号量，消息队列和共享内存）
-- `mnt：` 管理文件系统挂载点（`MNT`： 挂载）
+- `pid:` 用于进程隔离（*PID：进程 ID*）
+- `net:` 管理网络接口（*NET：网络*）
+- `ipc：` 管理对 `IPC` 资源的访问（*IPC：进程间通信，信号量，消息队列和共享内存*）
+- `mnt：` 管理文件系统挂载点（*MNT： 挂载*）
 - `uts：` 隔离主机名和域名
 - `user：` 隔离用户、用户组
 
 实现容器独立的主机名和进程空间
 
-```C
+```c
 #define _GNU_SOURCE
 #include <sys/mount.h>
 #include <sys/types.h>
@@ -391,29 +399,30 @@ echo $$
 通过 `proc` 对比
 
 ```shell
-# 查看子进程
+# 查看子进程(打印出来的)
 pstree -p 11660
 ## container2(11660)───bash(11661)
 
 ll /proc/11661/ns/
 ll /proc/11660/ns/
+# Ctrl + d 退出
 ```
 
 <img src="./img/proc对比.jpg">
 
 发现和父进程不同，故`pid` 和 `uts` 具有不同的命名空间
 
-因此 **Docker** 在启动一个容器的时候，会调用`Linux Kernel Namespace` 的接口，创建一块虚拟空间，`user` 通常相同用一样的，不会新建
+因此 **Docker** 在启动一个容器的时候，会调用 **Linux Kernel Namespace** 的接口，创建一块虚拟空间，`user` 通常相同用一样的，不会新建
 
 ### 3.2 CGroup 资源限制
 
-`namespace` 可以保证容器间的隔离，但无法限制占用资源，若容器中执行 `CPU` 密集型任务，或内存泄漏，此时无法控制，因此需要 `Control Groups`
+**Namespace：** 可以保证容器间的隔离，但无法限制占用资源，若容器中执行 **CPU** 密集型任务，或内存泄漏，此时无法控制，因此需要 **Control Groups**
 
-**CGroup** 可以隔离宿主机上的物理资源：`CPU`、内存、磁盘 `I/O`、网络带宽。每一个 **CGroup** 都是一组被相同标准的参数限制的进程，我们只需把容器和进程加入到中指定的 **CGroup** 中
+**CGroup：** 可以隔离宿主机上的物理资源：**CPU**、内存、磁盘 **I/O**、网络带宽，每一个 **CGroup** 都是一组被相同标准的参数限制的进程，我们只需把容器和进程加入到中指定的 **CGroup** 中
 
 ### 3.3 UnionFS 联合文件系统
 
-每台机器若运行上百容器，若都去全量 `copy` 文件系统，那么再轻量也会占用大量存储空间，这会导致：
+每台机器若运行上百容器，若都去全量 `copy` 文件系统，那么再轻量也会占用大量存储空间，导致
 
 - 运行容器速度慢
 - 占用大量磁盘物理空间
@@ -423,7 +432,7 @@ ll /proc/11660/ns/
 - 镜像分层存储
 - **UnionFS**
 
-每个镜像是有一系列的层组成，一层代表 `Dockerfile` 中的一条指令，如下文件，就包含了 4 条指令
+每个镜像是有一系列的层组成，一层代表 **Dockerfile** 中的一条指令，如下文件，就包含了 **4** 条指令
 
 ```dockerfile
 FROM ubuntu:15.04
@@ -432,20 +441,29 @@ RUN make /app
 CMD python /app/app.py
 ```
 
-每一行就创建一层，`Dockerfile` 构建出来的镜像运行的容器结构如下:
+每一行就创建一层，**Dockerfile** 构建出来的镜像运行的容器结构如下
 
 <img src="./img/unionFS结构.jpg">
 
-镜像就是如上一层层堆叠起来的，而且都是只读的，运行时才会再基础层上添加新的可写层（_容器层_），对于运行中的容器所做的所有更改（`CUD`操作）都将写入容器层
+镜像就是如上一层层堆叠起来的，而且都是只读的，运行时才会在基础层上添加新的可写层（_容器层_），对于运行中的容器所做的所有更改（*CUD操作*）都将写入容器层
 
 ##### 如何写入
 
-<img src="./img/CoW技术.jpg">当写入时，容器层用了写时复制 `CoW` 技术，`copy-on-write`，故所有数据都从 `image` 里读，让容器共享 `image` 的文件系统，写时才去进行复制到自己文件系统上的副本操作，也不会影响到 `image` 的源文件，提高磁盘利用率
+<img src="./img/CoW技术.jpg">当写入时
 
-##### 如何合并层到一起
+- 容器层用了写时复制 **CoW** 技术（*copy-on-write*），故所有数据都从 **image** 里读，让容器共享 **image** 的文件系统
+- 写时才去进行复制到自己文件系统上的副本操作，也不会影响到 **image** 的源文件，提高磁盘利用率
 
-**UnionFS** 是为了 `Linux` 系统设计的，用来把多个文件系统联合到同一个挂载点的文件系统服务。能够将**不同文件夹中的层** 联合 `Union` 到 **同一个文件夹** 中，整个联合的过程成为联合挂载 `Union Mount`
+##### **如何合并层到一起**
+
+**UnionFS** 是为了 **Linux** 系统设计的，用来把多个文件系统联合到同一个挂载点的文件系统服务。能够将**不同文件夹中的层** 联合（*Union*） 到 **同一个文件夹** 中，整个联合的过程成为联合挂载 **Union Mount**
 
 <img src="./img/AUFS实现.jpg">
 
-上述即 **AUFS** （**\*Docker**存储驱动\*）的一种实现，此外还支持不同驱动 `devicemapper` 、 `overlay2`、 `zfs` 和 `Btrfs` 等，新版已经使用 **overlay2** 取代了`AUFS`，但在没有 `overlay2` 驱动的机器上，依然使用 **AUFS**
+::: info 说明
+
+上述即 **AUFS** （*Docker存储驱动*）的一种实现
+
+此外还支持不同驱动 **devicemapper** 、 **overlay2**、 **zfs** 和 **Btrfs** 等... 新版已经使用 **overlay2** 取代了**AUFS**，但在没有 **overlay2** 驱动的机器上，依然使用 **AUFS** 
+
+:::

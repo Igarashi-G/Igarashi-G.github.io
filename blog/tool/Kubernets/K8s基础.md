@@ -29,5 +29,8 @@ star: true
 
 ```shell
 journalctl -fu docker | kubelet
+
+# 也可以用docker 看日志
+docker logs -f + container_id
 ```
 

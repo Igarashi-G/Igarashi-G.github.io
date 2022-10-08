@@ -71,10 +71,64 @@ export default sidebar({
           children: ["vim程序编辑器", "vim 快捷键"],
         },
         {
+          text: "Linux使用者管理",
+          collapsable: true,
+          prefix: "Linux使用者管理/",
+          children: ["账号管理与ACL权限"],
+        },
+        {
+          text: "Linux系统管理员",
+          collapsable: true,
+          prefix: "Linux系统管理员/",
+          children: ["认识系统服务"],
+        },
+        {
+          text: "网络",
+          collapsable: true,
+          prefix: "网络/",
+          children: ["网络基础", "命令", "CURL", "SSL协议", "Restful"],
+        },
+        {
+          text: "NTP",
+          collapsable: true,
+          prefix: "NTP/",
+          children: ["NTP服务"],
+        },
+        {
+          text: "DNS",
+          collapsable: true,
+          prefix: "DNS/",
+          children: ["DNS服务"],
+        },
+        {
+          text: "NFS",
+          collapsable: true,
+          prefix: "NFS/",
+          children: ["NFS服务"],
+        },
+        {
+          text: "SAMBA",
+          collapsable: true,
+          prefix: "SAMBA/",
+          children: ["SAMBA服务"],
+        },
+        {
           text: "LDAP",
           collapsable: true,
           prefix: "LDAP/",
           children: ["LDAP"],
+        },
+        {
+          text: "SNMP",
+          collapsable: true,
+          prefix: "SNMP/",
+          children: ["SNMP服务"],
+        },
+        {
+          text: "备忘命令",
+          collapsable: true,
+          prefix: "备忘命令/",
+          children: ["常复习"],
         },
       ]
     }
@@ -149,12 +203,30 @@ export default sidebar({
               prefix: "进阶/",
               children: ["变量机制", "函数", "模块和包", "装饰器", "迭代器", "生成器", "错误和异常", "面向对象"],
             },
-            // {
-            //   text: "高级",
-            //   collapsable: true,
-            //   prefix: "高级/",
-            //   children: ["设计模式", "垃圾回收", "序列进阶", "映射进阶", "Cpython对象"],
-            // },
+            {
+              text: "重要",
+              collapsable: true,
+              prefix: "重要/",
+              children: ["Cpython对象", "垃圾回收", "序列进阶", "映射进阶", "设计模式"],
+            },
+            {
+              text: "网络编程",
+              collapsable: true,
+              prefix: "网络编程/",
+              children: ["回调", "事件模型", "Socket", "WebSocket"],
+            },
+            {
+              text: "多任务编程",
+              collapsable: true,
+              prefix: "多任务编程/",
+              children: ["进程", "多进程编程", "线程", "多线程编程", "同步队列", "协程"],
+            },
+            {
+              text: "asyncio",
+              collapsable: true,
+              prefix: "asyncio/",
+              children: ["asyncio基础", "asyncio进阶", "底层实现", "事件循环"],
+            },
           ],
         },
         // {

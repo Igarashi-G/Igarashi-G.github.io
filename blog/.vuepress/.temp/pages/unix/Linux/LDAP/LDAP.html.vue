@@ -24,7 +24,7 @@
 <li>一个属性内可以拥有一个 <strong>Type</strong>，以及多个 <strong>Value</strong></li>
 </ul>
 <img src="@source/unix/Linux/LDAP/img/DIT.png">
-:::tip 故这种树形存储结构适用于，查询多、更新少
+::: tip 故这种树形存储结构适用于，查询多、更新少
 <p>:::</p>
 <h3 id="_1-3-分布式-directory" tabindex="-1"><a class="header-anchor" href="#_1-3-分布式-directory" aria-hidden="true">#</a> 1.3 分布式 Directory</h3>
 <p><strong>Directory</strong> 支持分布式操作，此时的服务端组成如下</p>
