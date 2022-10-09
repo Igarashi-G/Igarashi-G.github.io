@@ -1,25 +1,31 @@
 ---
-title: Screen
-order: 1
-
-group:
-  title: 超好用的运维提速小工具
-  order: 30
+title: screen
+date: 2019-05-08
+category:
+  - 工具
+tag:
+  - 服务
 ---
+
+简单云服务器部署工具，用于远程（*ssh*）断掉的请求，也能一直运行，不会被意外原因而杀掉
+
+<!-- more -->
 
 # Screen
 
-<Alert type="info">简单云服务器部署工具，用于远程 `ssh` 断掉的请求，也能一直运行，不会被意外原因而杀掉</Alert>
+::: info 懒得编写 systemd service ，可用该工具代替
 
-**安装 screen 工具**
+:::
 
-- **Ubuntu**
+**安装 screen 工具** 
+
+- **Ubuntu** 
 
   ```shell
   sudo apt-get install screen
   ```
 
-- **CentOS**
+- **CentOS** 
 
   ```shell
   yum install screen
@@ -65,7 +71,7 @@ group:
     ```shell
     # 查看进程id号
     screen -ls
-
+  
     # 进入id为 1805 的 screen 进程
     screen -r -d 1805
     ```

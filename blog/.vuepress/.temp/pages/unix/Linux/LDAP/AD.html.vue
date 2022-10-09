@@ -35,8 +35,8 @@
 </blockquote>
 <p><strong>CN（<em>Common name</em>）：</strong> 通用记录名，也会用 <strong>uid</strong> ，也指记录名/用户唯一标识，又时会共存</p>
 <h1 id="_2-ad-ds" tabindex="-1"><a class="header-anchor" href="#_2-ad-ds" aria-hidden="true">#</a> 2. AD DS</h1>
-<p>Active Directory 的 Directory 则是用来存储用户帐户、计算机帐户、打印机与共享文件等对象，这些对象的存储位置都是目录数据库（Directory Database），而 Active Directory 负责提供目录服务的组件就是 Active Directory 域服务（AD DS），负责操作（增删改查）目录数据库。</p>
-<p>AD DS 可以在一台计算机、一个小型 LAN 或是数个 WAN 的结合中。它包含此范围内所有的对象，如文件、打印机、应用程序、服务器、域控制器与用户帐号等。</p>
+<p><strong>Active Directory</strong> 的 <strong>Directory</strong> 则是用来存储用户帐户、计算机帐户、打印机与共享文件等对象，这些对象的存储位置都是目录数据库（<em>Directory Database</em>），而 <strong>Active Directory</strong> 负责提供目录服务的组件就是 <strong>AD域服务</strong>（<em>AD DS</em>），负责操作（<em>增删改查</em>）目录数据库。</p>
+<p><strong>AD DS</strong> 可以在一台计算机、一个小型 <strong>LAN</strong> 或是数个 <strong>WAN</strong> 的结合中，它包含此范围内所有的对象，如文件、打印机、应用程序、服务器、域控制器与用户帐号等。</p>
 </div></template>
 
 

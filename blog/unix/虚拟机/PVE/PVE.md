@@ -1,33 +1,38 @@
 ---
 title: PVE虚拟机
-order: 1
-group:
-  title: PVE
-  order: 61
+date: 2021-04-21
+category:
+  - 虚拟机
+tag:
+  - PVE
 ---
+
+**PVE** 虚拟机搭建的一些记录
+
+<!-- more -->
 
 # Proxmox
 
 [Proxmox](https://www.proxmox.com/en) 虚拟环境（简称**PVE**）是用于操作来宾操作系统的基于 **Debian Linux** 和 **KVM** 的虚拟化平台，免费提供，也可购买商业支持。
 
-##### 优势
+##### **优势**
 
-- 几乎可以在**所有 `x86` 硬件**上运行
-- 每台主机**不到 5 分钟即可**完成安装
-- 高可用
+- 几乎可以在 **所有 x86 硬件** 上运行
+- 每台主机 **不到 5 分钟即可** 完成安装
+- **高可用**
 - **开源**
 
-##### 缺陷
+##### **缺陷**
 
 - 使用 [corosync](http://corosync.github.io/corosync/) 来管理集群。**最多可以管理或控制 32 个节点**。`Proxmox` 集群的虚拟化和存储主机的最大数量为**32 台物理服务器**。
 
 ### 1. 安装
 
-[安装 wiki](https://pve.proxmox.com/wiki/Installation)
+[安装 wiki](https://pve.proxmox.com/wiki/Installation) 
 
-#### 显卡驱动踩大坑系列
+### 2. 显卡驱动踩大坑
 
-##### 0.下载驱动
+##### **下载驱动**
 
 - 先搜索显卡型号
 
@@ -37,7 +42,7 @@ group:
 
 - 去 [NVDIA 官网](https://www.nvidia.com/Download/index.aspx?lang=zh-cn) 下载对应的显卡驱动 `deb` 包
 
-##### 1. 关闭图形化界面
+##### **关闭图形化界面**
 
 - 若有图形化界面，比如 `X server` 执行如下命令查看
 
@@ -49,13 +54,13 @@ group:
 
   ```shell
   $ init 3
-
+  
   # 若显示 Q_Q_Q@_ 之类的乱码，或光标无响应，需要更改如下
   $ vim /etc/systemd/logind.conf
-
+  
   [Login]
   NAutoVTs=6 # 改为 7
-
+  
   # 修改grub
   $ vim /etc/default/grub
   # 添加 如下一行 注释
@@ -64,17 +69,17 @@ group:
   GRUB_CMDLINE_LINUX="text"
   # 取消 如下一行 注释
   GRUB_TERMINAL=console
-
+  
   # 更新上文修改
   $ update-grub
-
+  
   # 设置下次开机系统默认 multi-user 模式
   $ systemctl set-default multi-user.target
-
+  
   # 再 执行 init3 或 reboot
   ```
 
-##### 2.卸载旧驱动
+##### **卸载旧驱动**
 
 - 添加如下**黑名单**，禁用核显
 
@@ -120,16 +125,16 @@ group:
   $ apt-get remove nvidia* && sudo apt autoremove
   ```
 
-##### 3.下载依赖
+##### **下载依赖**
 
-- 先替换 `Debian` 通用源，见 `linux` 系统换源部分
+- 先替换 **Debian** 通用源，见 **Linux** 系统换源部分
 
   ```shell
   # Debian 的软件源配置文件是
   $ vim /etc/apt/sources.list
   ```
 
-- 替换 `pve` 源，不确定版本尽量用官方源
+- 替换 **pve** 源，不确定版本尽量用官方源
 
   ```shell
   # pve 镜像默认的 pve 软件源配置文件如下：
@@ -200,13 +205,11 @@ group:
 
   ```shell
   # 开启图形化界面，参考 步骤1 逆着来
-
+  
   # 恢复默认启动的图形化
   $ sudo systemctl set-default graphical.target
   ```
 
----
-
-### 2.指南
+### 3. 指南
 
 [Proxmox VE Administration Guide](https://pve.proxmox.com/pve-docs/pve-admin-guide.html)

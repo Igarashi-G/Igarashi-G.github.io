@@ -89,42 +89,6 @@ export default sidebar({
           children: ["网络基础", "命令", "CURL", "SSL协议", "Restful"],
         },
         {
-          text: "NTP",
-          collapsable: true,
-          prefix: "NTP/",
-          children: ["NTP服务"],
-        },
-        {
-          text: "DNS",
-          collapsable: true,
-          prefix: "DNS/",
-          children: ["DNS服务"],
-        },
-        {
-          text: "NFS",
-          collapsable: true,
-          prefix: "NFS/",
-          children: ["NFS服务"],
-        },
-        {
-          text: "SAMBA",
-          collapsable: true,
-          prefix: "SAMBA/",
-          children: ["SAMBA服务"],
-        },
-        {
-          text: "LDAP",
-          collapsable: true,
-          prefix: "LDAP/",
-          children: ["LDAP"],
-        },
-        {
-          text: "SNMP",
-          collapsable: true,
-          prefix: "SNMP/",
-          children: ["SNMP服务"],
-        },
-        {
           text: "备忘命令",
           collapsable: true,
           prefix: "备忘命令/",
@@ -143,7 +107,31 @@ export default sidebar({
           text: "安装",
           collapsable: true,
           prefix: "安装/",
-          children: ["CentOS的安装"],
+          children: ["CentOS的安装", "RPM包管理"],
+        },
+        {
+          text: "UFS",
+          collapsable: true,
+          prefix: "UFS/",
+          children: ["ufs管理平台", "ufs核心组件", "ufscli工具", "uus虚拟机排错"],
+        },
+        {
+          text: "NFS",
+          collapsable: true,
+          prefix: "NFS/",
+          children: ["NFS服务"],
+        },
+        {
+          text: "Samba",
+          collapsable: true,
+          prefix: "Samba/",
+          children: ["Samba服务"],
+        },
+        {
+          text: "LDAP",
+          collapsable: true,
+          prefix: "LDAP/",
+          children: ["AD域", "LDAP", "Python对接AD域"],
         },
       ]
     }
@@ -175,6 +163,12 @@ export default sidebar({
           prefix: "PVE/",
           children: ["PVE"],
         },
+        {
+          text: "VMware",
+          collapsable: true,
+          prefix: "VMware/",
+          children: ["网络配置", "添加磁盘"],
+        },
       ]
     }
   ],
@@ -204,9 +198,9 @@ export default sidebar({
               children: ["变量机制", "函数", "模块和包", "装饰器", "迭代器", "生成器", "错误和异常", "面向对象"],
             },
             {
-              text: "重要",
+              text: "深入",
               collapsable: true,
-              prefix: "重要/",
+              prefix: "深入/",
               children: ["Cpython对象", "垃圾回收", "序列进阶", "映射进阶", "设计模式"],
             },
             {
@@ -288,7 +282,7 @@ export default sidebar({
       icon: "hot",
       prefix: "/tool/Docker/",
       link: "/tool/Docker/",
-      children: ["docker容器", "使用基础", "网络", "命令"]
+      children: ["docker容器", "使用基础", "命令"] // "网络",
     }
   ],
   "/tool/Kubernets": [
@@ -315,7 +309,7 @@ export default sidebar({
       icon: "operate",
       prefix: "/tool/Other/",
       link: "/tool/Other/",
-      children: ["网络代理", "Screen", "rdesktop"]
+      children: ["rdesktop", "screen", "网络代理"]
     }
   ],
   "/book": [

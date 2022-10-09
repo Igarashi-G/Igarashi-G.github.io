@@ -757,3 +757,293 @@ namespace:  20 bytes
 token:      eyJhbGciOiJSUzI1NiIsImtpZCI6Ilo3QTR5ckxaOXZrYUc4emZKTWpFQkNBMEVkaktPeGdTR25rbW41UjluLVUifQ.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2NvdW50Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9uYW1lc3BhY2UiOiJrdWJlcm5ldGVzLWRhc2hib2FyZCIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VjcmV0Lm5hbWUiOiJhZG1pbi10b2tlbi03NjRtNSIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VydmljZS1hY2NvdW50Lm5hbWUiOiJhZG1pbiIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VydmljZS1hY2NvdW50LnVpZCI6ImJlZjZjMWM0LWU0ZDktNGE4OC1hMzdkLTBjMzVlZGQ2ZmZhZSIsInN1YiI6InN5c3RlbTpzZXJ2aWNlYWNjb3VudDprdWJlcm5ldGVzLWRhc2hib2FyZDphZG1pbiJ9.p0_tioIGZShZlsfafLWO2irYSAo6A3FGJSvfk9gbIjj8YP_Wif4lPUv8kDkl_3YgH7k2q15Bw_mcQGShOLMc-KlRp5FizlxT4aJc74lVPntzinAufN4QHX_5a5wj5CIvYiTH-U71ZECY_eDzn0SBlEVctCm3cVpiwxhUMrPKcSzO9hGYm9xI1ZCgo4fkpgsvNyzPD6QLPQjqelAmMpTcujEkIm5DzdzZAgOgU58wx6bUowhBqKt7hrMkDk5nXPJ-o7W8M0_3KxKRJO4fEMAAeanajfJ4RiBrVha9Ln23F_Q5zzroNcnV5vsdUMS3px50u70NaNCVOy32n4aeAFX4Xg
 ```
 
+
+
+## 7. 记录k8s v1.22.3 版本安装
+
+[文档参考](https://kuboard.cn/install/history-k8s/install-k8s-1.22.x.html)
+
+初始化步骤参考 ==1.准备工作== 没有区别，**1.22** 版本的 **k8s** 已经改为支持 **containerd** 容器运行时了，故稍有区别，以下列出注意的点
+
+::: details 
+
+```shell
+# 阿里云 docker hub 镜像
+export REGISTRY_MIRROR=https://registry.aliyuncs.com
+# 在 master 节点和 worker 节点都要执行
+
+# 安装 containerd
+# 参考文档如下
+# https://kubernetes.io/docs/setup/production-environment/container-runtimes/#containerd
+
+cat <<EOF | sudo tee /etc/modules-load.d/containerd.conf
+overlay
+br_netfilter
+EOF
+
+sudo modprobe overlay
+sudo modprobe br_netfilter
+
+# Setup required sysctl params, these persist across reboots.
+cat <<EOF | sudo tee /etc/sysctl.d/99-kubernetes-cri.conf
+net.bridge.bridge-nf-call-iptables  = 1
+net.ipv4.ip_forward                 = 1
+net.bridge.bridge-nf-call-ip6tables = 1
+EOF
+
+# Apply sysctl params without reboot
+sysctl --system
+
+# 卸载旧版本
+yum remove -y containerd.io
+
+# 设置 yum repository
+yum install -y yum-utils device-mapper-persistent-data lvm2
+yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+
+# 安装 containerd
+yum install -y containerd.io-1.4.3
+
+mkdir -p /etc/containerd
+containerd config default > /etc/containerd/config.toml
+
+sed -i "s#k8s.gcr.io#registry.aliyuncs.com/k8sxio#g"  /etc/containerd/config.toml
+sed -i '/containerd.runtimes.runc.options/a\ \ \ \ \ \ \ \ \ \ \ \ SystemdCgroup = true' /etc/containerd/config.toml
+sed -i "s#https://registry-1.docker.io#${REGISTRY_MIRROR}#g"  /etc/containerd/config.toml
+
+
+systemctl daemon-reload
+systemctl enable containerd
+systemctl restart containerd
+
+# 安装 nfs-utils
+# 必须先安装 nfs-utils 才能挂载 nfs 网络存储
+yum install -y nfs-utils
+yum install -y wget
+
+# 关闭 防火墙
+systemctl stop firewalld
+systemctl disable firewalld
+
+# 关闭 SeLinux
+setenforce 0
+sed -i "s/SELINUX=enforcing/SELINUX=disabled/g" /etc/selinux/config
+
+# 关闭 swap
+swapoff -a
+yes | cp /etc/fstab /etc/fstab_bak
+cat /etc/fstab_bak |grep -v swap > /etc/fstab
+
+# 配置K8S的yum源
+cat <<EOF > /etc/yum.repos.d/kubernetes.repo
+[kubernetes]
+name=Kubernetes
+baseurl=http://mirrors.aliyun.com/kubernetes/yum/repos/kubernetes-el7-x86_64
+enabled=1
+gpgcheck=0
+repo_gpgcheck=0
+gpgkey=http://mirrors.aliyun.com/kubernetes/yum/doc/yum-key.gpg
+       http://mirrors.aliyun.com/kubernetes/yum/doc/rpm-package-key.gpg
+EOF
+
+# 卸载旧版本
+yum remove -y kubelet kubeadm kubectl
+
+# 安装kubelet、kubeadm、kubectl
+# 将 ${1} 替换为 kubernetes 版本号，例如 1.20.1
+yum install -y kubelet-1.22.3 kubeadm-1.22.3 kubectl-1.22.3
+
+crictl config runtime-endpoint /run/containerd/containerd.sock
+
+# 重启 docker，并启动 kubelet
+systemctl daemon-reload
+systemctl enable kubelet && systemctl start kubelet
+
+containerd --version
+kubelet --version
+```
+
+:::
+
+
+
+### 7.1 初始化 master 节点
+
+::: danger 重要！
+
+需要先配置 **containerd** 的代理
+
+#### **注意！！所有节点均需要配置，否则 kube-proxy 会 Create失败**
+
+```shell
+vim /usr/lib/systemd/system/containerd.service 
+
+# 添加
+Environment="HTTP_PROXY=http://172.16.70.104:808/"
+Environment="HTTPS_PROXY=http://172.16.70.104:808/"
+Environment="NO_PROXY=10.96.0.0/16,127.0.0.1,172.16.0.0/16,localhost"
+
+# NO_PROXY的设置也是必须的。10.96.0.0与192.168.0.0分别是clusterIP与Pod的内网网段，如果不设置NO_PROXY Pod与Pod之间的通信会出现问题。
+
+
+# 重启
+systemctl daemon-reload
+systemctl restart containerd
+```
+
+然后再去执行下文的拉镜像业务
+
+```shell
+kubeadm config images pull --config=kubeadm-config.yaml
+```
+
+:::
+
+##### **先设置环境变量**
+
+```shell
+# 只在 master 节点执行
+# 替换 x.x.x.x 为 master 节点实际 IP（请使用内网 IP）
+# export 命令只在当前 shell 会话中有效，开启新的 shell 窗口后，如果要继续安装过程，请重新执行此处的 export 命令
+export MASTER_IP=172.16.120.171
+# 替换 apiserver.demo 为 您想要的 dnsName
+export APISERVER_NAME=apiserver.uit
+# Kubernetes 容器组所在的网段，该网段安装完成后，由 kubernetes 创建，事先并不存在于您的物理网络中
+export POD_SUBNET=10.100.0.0/16
+echo "${MASTER_IP}    ${APISERVER_NAME}" >> /etc/hosts
+```
+
+##### **再去通过 kubeadm 初始化**
+
+::: details
+
+```shell
+# 只在 master 节点执行
+
+# 脚本出错时终止执行
+set -e
+
+if [ ${#POD_SUBNET} -eq 0 ] || [ ${#APISERVER_NAME} -eq 0 ]; then
+  echo -e "\033[31;1m请确保您已经设置了环境变量 POD_SUBNET 和 APISERVER_NAME \033[0m"
+  echo 当前POD_SUBNET=$POD_SUBNET
+  echo 当前APISERVER_NAME=$APISERVER_NAME
+  exit 1
+fi
+
+
+# 查看完整配置选项 https://godoc.org/k8s.io/kubernetes/cmd/kubeadm/app/apis/kubeadm/v1beta2
+rm -f ./kubeadm-config.yaml
+cat <<EOF > ./kubeadm-config.yaml
+---
+apiVersion: kubeadm.k8s.io/v1beta2
+kind: ClusterConfiguration
+kubernetesVersion: v1.22.3
+imageRepository: registry.aliyuncs.com/k8sxio
+controlPlaneEndpoint: "apiserver.uit:6443"
+networking:
+  serviceSubnet: "10.96.0.0/16"
+  podSubnet: "10.100.0.0/16"
+  dnsDomain: "cluster.local"
+dns:
+  type: CoreDNS
+  imageRepository: swr.cn-east-2.myhuaweicloud.com/coredns
+  imageTag: 1.8.0
+
+---
+apiVersion: kubelet.config.k8s.io/v1beta1
+kind: KubeletConfiguration
+cgroupDriver: systemd
+EOF
+
+# kubeadm init
+# 根据您服务器网速的情况，您需要等候 3 - 10 分钟
+echo ""
+echo "抓取镜像，请稍候..."
+kubeadm config images pull --config=kubeadm-config.yaml
+# !!此处若是内网环境，需要如上文那样设置 containerd 代理，否则下载报错
+
+echo ""
+echo "初始化 Master 节点"
+kubeadm init --config=kubeadm-config.yaml --upload-certs
+
+# 配置 kubectl
+rm -rf /root/.kube/
+mkdir /root/.kube/
+cp -i /etc/kubernetes/admin.conf /root/.kube/config
+```
+
+:::
+
+**检查 master 初始化结果**
+
+**coredns** 将处于启动失败的状态（*老现象了*），安装网络插件后，**coredns** 将正常启动
+
+```shell
+# 只在 master 节点执行
+
+# 执行如下命令，等待 3-10 分钟，直到所有的容器组处于 Running 状态
+watch kubectl get pod -n kube-system -o wide
+
+# 查看 master 节点初始化结果
+kubectl get nodes -o wide
+```
+
+### 7.2 安装网络插件
+
+网络插件可以选择 **calico** 或者 **flannel**（任意选择其一即可）
+
+::: tabs
+
+@tab Calico
+
+> 如果阿里云上安装，建议使用 **flannel**，有多个案例表明 **calico** 与阿里云存在兼容性问题
+
+```sh
+export POD_SUBNET=10.100.0.0/16
+kubectl apply -f https://kuboard.cn/install-script/v1.22.x/calico-operator.yaml
+wget https://kuboard.cn/install-script/v1.22.x/calico-custom-resources.yaml
+sed -i "s#192.168.0.0/16#${POD_SUBNET}#" calico-custom-resources.yaml
+kubectl apply -f calico-custom-resources.yaml 
+```
+
+@tab Flannel
+
+```shell
+export POD_SUBNET=10.100.0.0/16
+wget https://kuboard.cn/install-script/flannel/flannel-v0.14.0.yaml
+sed -i "s#10.244.0.0/16#${POD_SUBNET}#" flannel-v0.14.0.yaml
+kubectl apply -f ./flannel-v0.14.0.yaml
+```
+
+:::
+
+### 7.3 初始化 worker节点
+
+```sh
+# 只在 master 节点执行,获得 join 命令参数
+kubeadm token create --print-join-command
+
+# 可获取kubeadm join 命令及参数，输出如下
+kubeadm join apiserver.uit:6443 --token jp5cyz.3tcmv8cr8xd8nhj3 --discovery-token-ca-cert-hash sha256:3520937aaab1f2abfd17334b7409ad293b2cc916dcdb33085e18cfa8a08281bf
+```
+
+该 **token** 的有效时间为 2 个小时，**2** 小时内，您可以使用此 **token** 初始化任意数量的 **worker** 节点
+
+```sh
+# 在 worker 节点执行
+# 替换 x.x.x.x 为 master 节点的内网 IP
+export MASTER_IP=x.x.x.x
+# 替换 apiserver.demo 为初始化 master 节点时所使用的 APISERVER_NAME
+export APISERVER_NAME=apiserver.demo
+echo "${MASTER_IP}    ${APISERVER_NAME}" >> /etc/hosts
+
+# 替换为 master 节点上 kubeadm token create 命令的输出
+kubeadm join apiserver.demo:6443 xxxx
+
+# master 节点查看，输出如下表示安装成功
+$ kubectl get nodes
+NAME             STATUS   ROLES                  AGE   VERSION
+k8s-master-171   Ready    control-plane,master   34m   v1.22.3
+k8s-salve-172    Ready    <none>                 24m   v1.22.3
+k8s-salve-173    Ready    <none>                 24m   v1.22.3
+```

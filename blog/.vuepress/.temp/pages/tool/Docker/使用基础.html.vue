@@ -15,7 +15,7 @@
 <li>操作系统基础镜像：CentOS、Ubuntu、suse、alpine</li>
 <li>中间件：Nginx、Redis、MySQL</li>
 <li>语言编译环境：python、go、rust</li>
-<li>业务镜像：breath-for-code</li>
+<li>业务镜像：ufs、igarashi-blog</li>
 </ul>
 <p><strong>私有仓库：</strong> 企业内部搭建</p>
 <ul>

@@ -19,11 +19,13 @@ star: true
 让开发者打包他的应用、及依赖包，到一个轻量级、可移植的容器中，可发布到任何流行的 **Linux** 机器上，也能实现虚拟化，**完全使用沙箱机制**（*隔离*），相互之间不会有任何接口，且 **开销极低**
 :::
 
-## 1. 啥是 Docker
+## 1. Docker概述
 
-- [Docker 官网](https://www.docker.com/)
-- [Docker 官方文档](https://docs.docker.com/)
-- [Docker Hub](https://hub.docker.com/)
+旧金山 **dotCloud** 基于 **Linux** 容器技术 **LXC** 封装的内部工具，**13** 年诞生，**15** 年逐步投入生产，后面开源出来改个名字叫 **Docker** ，目的为了节省资源（*硬件、虚拟机*）
+
+- [Docker 官网](https://www.docker.com/) 
+- [Docker 官方文档](https://docs.docker.com/) 
+- [Docker Hub](https://hub.docker.com/) 
 
 ### 1.1 教程
 
@@ -32,9 +34,7 @@ star: true
 - [Docker 教程 | 菜鸟教程](https://www.runoob.com/docker/docker-tutorial.html)
   - [Docker 安装 Redis | 菜鸟教程](https://www.runoob.com/docker/docker-install-redis.html)
 - [Docker 教程 | w3cschool](https://www.w3cschool.cn/docker/)
-- [Docker 从入门到实践 | w3cschool](https://www.w3cschool.cn/reqsgr/)
-
-> 13 年出现（没人用）15 年才逐步使用，旧金山 `dotCloud` 基于`Linux` 容器技术 **LXC** 封装的内部工具，后面开源出来改个名字叫 `Docker` 这玩意原本目的就是省钱（硬件）、省虚拟机
+- [Docker 从入门到实践 | w3cschool](https://www.w3cschool.cn/reqsgr/) 
 
 ### 1.2 Linux 容器
 
@@ -46,11 +46,11 @@ star: true
 
 <img src="./img/为啥使用容器技术.png">
 
-##### **虚拟机** 
+##### **虚拟机**
 
 如 **VMware** 、**PVE**、**ESXi**、**Workstation** 等，多台虚拟机都虚拟出了一套 **不同** 的 **虚拟机器硬件资源**、**Kernel**（*内核*）、**Lib 库**，然后在上层运行各自的 APP，像是物理机的系统中的子系统一样，从物理虚拟层面进行隔离，占用资源极高
 
-- `Hypervisor:` 一种运行在基础物理服务器和操作系统之间的中间软件层，可允许多个操作系统和应用共享硬件。
+- **Hypervisor：** 一种运行在基础物理服务器和操作系统之间的中间软件层，可允许多个操作系统和应用共享硬件。
 
 ##### **容器** 
 

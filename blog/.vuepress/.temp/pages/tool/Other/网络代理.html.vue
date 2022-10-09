@@ -1,10 +1,11 @@
-<template><div><h1 id="配置-linux-网络代理" tabindex="-1"><a class="header-anchor" href="#配置-linux-网络代理" aria-hidden="true">#</a> 配置 Linux 网络代理</h1>
-<h2 id="配置-linux-通过-windows-上网的网络代理" tabindex="-1"><a class="header-anchor" href="#配置-linux-通过-windows-上网的网络代理" aria-hidden="true">#</a> 配置 linux 通过 Windows 上网的网络代理</h2>
+<template><div><p>配置 <strong>Linux</strong> （<em>内网环境</em>），通过 <strong>Windows</strong> （<em>可访问外网环境</em>），上网的网络代理</p>
+<!-- more -->
+<h1 id="网络代理" tabindex="-1"><a class="header-anchor" href="#网络代理" aria-hidden="true">#</a> 网络代理</h1>
 <blockquote>
 <p><strong>背景：</strong> 由于一些服务器处于安全考虑，只能通过内网访问，且服务器不能够请求外网，此时需要 <code v-pre>Windows</code> 代理让 <strong>Linux 联网</strong> 来安装应用</p>
 </blockquote>
 <h3 id="_1-privoxy" tabindex="-1"><a class="header-anchor" href="#_1-privoxy" aria-hidden="true">#</a> 1. privoxy</h3>
-<p><code v-pre>Windows</code> 上先安装代理工具 <a href="https://www.jianshu.com/p/42a90cf33095" target="_blank" rel="noopener noreferrer">privoxy<ExternalLinkIcon/></a></p>
+<p><strong>Windows</strong> 上先安装代理工具 <a href="https://www.jianshu.com/p/42a90cf33095" target="_blank" rel="noopener noreferrer">privoxy<ExternalLinkIcon/></a></p>
 <p><a href="http://www.privoxy.org/" target="_blank" rel="noopener noreferrer">下载地址<ExternalLinkIcon/></a></p>
 <p>安装软件后，配置启动端口：修改安装目录下的 <code v-pre>config.txt</code> 文件中的 <code v-pre>listen-address</code> （<strong>记得备份</strong>）：</p>
 <img src="@source/tool/Other/img/privoxy配置项.jpg">

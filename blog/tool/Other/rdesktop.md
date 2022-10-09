@@ -1,19 +1,19 @@
 ---
 title: rdesktop
-order: 1
-
-group:
-  title: 远程工具
-  order: 10
+date: 2022-02-21
+category:
+  - 工具
+tag:
+  - 远程
 ---
-
-# rdesktop
-
-### 1. 简介
 
 [rdesktop](https://github.com/rdesktop) 是微软 **RDP** 协议的开源客户端
 
-#### 安装
+<!-- more -->
+
+# rdesktop远程工具
+
+### 1. 安装
 
 ```shell
 apt-get install rdesktop
@@ -67,7 +67,7 @@ apt-get install rdesktop
   ```shell
   # 要找出哪些进程正在访问声音设备
   lsof /dev/snd/*
-
+  
   # 干掉它
   fuser /dev/snd/*
   ```

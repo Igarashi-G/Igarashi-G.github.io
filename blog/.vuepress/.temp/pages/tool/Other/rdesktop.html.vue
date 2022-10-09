@@ -1,7 +1,7 @@
-<template><div><h1 id="rdesktop" tabindex="-1"><a class="header-anchor" href="#rdesktop" aria-hidden="true">#</a> rdesktop</h1>
-<h3 id="_1-简介" tabindex="-1"><a class="header-anchor" href="#_1-简介" aria-hidden="true">#</a> 1. 简介</h3>
-<p><a href="https://github.com/rdesktop" target="_blank" rel="noopener noreferrer">rdesktop<ExternalLinkIcon/></a> 是微软 <strong>RDP</strong> 协议的开源客户端</p>
-<h4 id="安装" tabindex="-1"><a class="header-anchor" href="#安装" aria-hidden="true">#</a> 安装</h4>
+<template><div><p><a href="https://github.com/rdesktop" target="_blank" rel="noopener noreferrer">rdesktop<ExternalLinkIcon/></a> 是微软 <strong>RDP</strong> 协议的开源客户端</p>
+<!-- more -->
+<h1 id="rdesktop远程工具" tabindex="-1"><a class="header-anchor" href="#rdesktop远程工具" aria-hidden="true">#</a> rdesktop远程工具</h1>
+<h3 id="_1-安装" tabindex="-1"><a class="header-anchor" href="#_1-安装" aria-hidden="true">#</a> 1. 安装</h3>
 <div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code><span class="token function">apt-get</span> <span class="token function">install</span> rdesktop
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><h3 id="_2-使用命令" tabindex="-1"><a class="header-anchor" href="#_2-使用命令" aria-hidden="true">#</a> 2. 使用命令</h3>
 <div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code>-d: 域

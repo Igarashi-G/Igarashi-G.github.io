@@ -1,20 +1,22 @@
-<template><div><h1 id="proxmox" tabindex="-1"><a class="header-anchor" href="#proxmox" aria-hidden="true">#</a> Proxmox</h1>
+<template><div><p><strong>PVE</strong> 虚拟机搭建的一些记录</p>
+<!-- more -->
+<h1 id="proxmox" tabindex="-1"><a class="header-anchor" href="#proxmox" aria-hidden="true">#</a> Proxmox</h1>
 <p><a href="https://www.proxmox.com/en" target="_blank" rel="noopener noreferrer">Proxmox<ExternalLinkIcon/></a> 虚拟环境（简称<strong>PVE</strong>）是用于操作来宾操作系统的基于 <strong>Debian Linux</strong> 和 <strong>KVM</strong> 的虚拟化平台，免费提供，也可购买商业支持。</p>
-<h5 id="优势" tabindex="-1"><a class="header-anchor" href="#优势" aria-hidden="true">#</a> 优势</h5>
+<h5 id="优势" tabindex="-1"><a class="header-anchor" href="#优势" aria-hidden="true">#</a> <strong>优势</strong></h5>
 <ul>
-<li>几乎可以在<strong>所有 <code v-pre>x86</code> 硬件</strong>上运行</li>
-<li>每台主机<strong>不到 5 分钟即可</strong>完成安装</li>
-<li>高可用</li>
+<li>几乎可以在 <strong>所有 x86 硬件</strong> 上运行</li>
+<li>每台主机 <strong>不到 5 分钟即可</strong> 完成安装</li>
+<li><strong>高可用</strong></li>
 <li><strong>开源</strong></li>
 </ul>
-<h5 id="缺陷" tabindex="-1"><a class="header-anchor" href="#缺陷" aria-hidden="true">#</a> 缺陷</h5>
+<h5 id="缺陷" tabindex="-1"><a class="header-anchor" href="#缺陷" aria-hidden="true">#</a> <strong>缺陷</strong></h5>
 <ul>
 <li>使用 <a href="http://corosync.github.io/corosync/" target="_blank" rel="noopener noreferrer">corosync<ExternalLinkIcon/></a> 来管理集群。<strong>最多可以管理或控制 32 个节点</strong>。<code v-pre>Proxmox</code> 集群的虚拟化和存储主机的最大数量为<strong>32 台物理服务器</strong>。</li>
 </ul>
 <h3 id="_1-安装" tabindex="-1"><a class="header-anchor" href="#_1-安装" aria-hidden="true">#</a> 1. 安装</h3>
 <p><a href="https://pve.proxmox.com/wiki/Installation" target="_blank" rel="noopener noreferrer">安装 wiki<ExternalLinkIcon/></a></p>
-<h4 id="显卡驱动踩大坑系列" tabindex="-1"><a class="header-anchor" href="#显卡驱动踩大坑系列" aria-hidden="true">#</a> 显卡驱动踩大坑系列</h4>
-<h5 id="_0-下载驱动" tabindex="-1"><a class="header-anchor" href="#_0-下载驱动" aria-hidden="true">#</a> 0.下载驱动</h5>
+<h3 id="_2-显卡驱动踩大坑" tabindex="-1"><a class="header-anchor" href="#_2-显卡驱动踩大坑" aria-hidden="true">#</a> 2. 显卡驱动踩大坑</h3>
+<h5 id="下载驱动" tabindex="-1"><a class="header-anchor" href="#下载驱动" aria-hidden="true">#</a> <strong>下载驱动</strong></h5>
 <ul>
 <li>
 <p>先搜索显卡型号</p>
@@ -24,7 +26,7 @@
 <p>去 <a href="https://www.nvidia.com/Download/index.aspx?lang=zh-cn" target="_blank" rel="noopener noreferrer">NVDIA 官网<ExternalLinkIcon/></a> 下载对应的显卡驱动 <code v-pre>deb</code> 包</p>
 </li>
 </ul>
-<h5 id="_1-关闭图形化界面" tabindex="-1"><a class="header-anchor" href="#_1-关闭图形化界面" aria-hidden="true">#</a> 1. 关闭图形化界面</h5>
+<h5 id="关闭图形化界面" tabindex="-1"><a class="header-anchor" href="#关闭图形化界面" aria-hidden="true">#</a> <strong>关闭图形化界面</strong></h5>
 <ul>
 <li>
 <p>若有图形化界面，比如 <code v-pre>X server</code> 执行如下命令查看</p>
@@ -58,7 +60,7 @@ $ systemctl set-default multi-user.target
 <span class="token comment"># 再 执行 init3 或 reboot</span>
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></li>
 </ul>
-<h5 id="_2-卸载旧驱动" tabindex="-1"><a class="header-anchor" href="#_2-卸载旧驱动" aria-hidden="true">#</a> 2.卸载旧驱动</h5>
+<h5 id="卸载旧驱动" tabindex="-1"><a class="header-anchor" href="#卸载旧驱动" aria-hidden="true">#</a> <strong>卸载旧驱动</strong></h5>
 <ul>
 <li>
 <p>添加如下<strong>黑名单</strong>，禁用核显</p>
@@ -95,15 +97,15 @@ $ lsmod<span class="token operator">|</span><span class="token function">grep</s
 <div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code>$ <span class="token function">apt-get</span> remove nvidia* <span class="token operator">&amp;&amp;</span> <span class="token function">sudo</span> <span class="token function">apt</span> autoremove
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div></li>
 </ul>
-<h5 id="_3-下载依赖" tabindex="-1"><a class="header-anchor" href="#_3-下载依赖" aria-hidden="true">#</a> 3.下载依赖</h5>
+<h5 id="下载依赖" tabindex="-1"><a class="header-anchor" href="#下载依赖" aria-hidden="true">#</a> <strong>下载依赖</strong></h5>
 <ul>
 <li>
-<p>先替换 <code v-pre>Debian</code> 通用源，见 <code v-pre>linux</code> 系统换源部分</p>
+<p>先替换 <strong>Debian</strong> 通用源，见 <strong>Linux</strong> 系统换源部分</p>
 <div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code><span class="token comment"># Debian 的软件源配置文件是</span>
 $ <span class="token function">vim</span> /etc/apt/sources.list
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div></div></div></li>
 <li>
-<p>替换 <code v-pre>pve</code> 源，不确定版本尽量用官方源</p>
+<p>替换 <strong>pve</strong> 源，不确定版本尽量用官方源</p>
 <div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code><span class="token comment"># pve 镜像默认的 pve 软件源配置文件如下：</span>
 $ <span class="token function">vim</span> /etc/apt/sources.list.d/pve-enterprise.list
 
@@ -167,8 +169,7 @@ nvidia-smi
 $ <span class="token function">sudo</span> systemctl set-default graphical.target
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></li>
 </ul>
-<hr>
-<h3 id="_2-指南" tabindex="-1"><a class="header-anchor" href="#_2-指南" aria-hidden="true">#</a> 2.指南</h3>
+<h3 id="_3-指南" tabindex="-1"><a class="header-anchor" href="#_3-指南" aria-hidden="true">#</a> 3. 指南</h3>
 <p><a href="https://pve.proxmox.com/pve-docs/pve-admin-guide.html" target="_blank" rel="noopener noreferrer">Proxmox VE Administration Guide<ExternalLinkIcon/></a></p>
 </div></template>
 

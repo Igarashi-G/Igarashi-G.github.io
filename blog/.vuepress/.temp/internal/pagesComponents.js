@@ -21,14 +21,14 @@ export const pagesComponents = {
   "v-4eaf9f84": defineAsyncComponent(() => import(/* webpackChunkName: "v-4eaf9f84" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/guide/page.html.vue")),
   // path: /guide/
   "v-fffb8e28": defineAsyncComponent(() => import(/* webpackChunkName: "v-fffb8e28" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/guide/index.html.vue")),
-  // path: /python/
-  "v-63cd5dba": defineAsyncComponent(() => import(/* webpackChunkName: "v-63cd5dba" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/python/index.html.vue")),
   // path: /paint/PS%E6%93%8D%E4%BD%9C%E5%9F%BA%E7%A1%80.html
   "v-122beae0": defineAsyncComponent(() => import(/* webpackChunkName: "v-122beae0" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/paint/PS操作基础.html.vue")),
   // path: /paint/
   "v-e377b06c": defineAsyncComponent(() => import(/* webpackChunkName: "v-e377b06c" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/paint/index.html.vue")),
   // path: /paint/SAI%E6%93%8D%E4%BD%9C%E5%9F%BA%E7%A1%80.html
   "v-7a19f208": defineAsyncComponent(() => import(/* webpackChunkName: "v-7a19f208" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/paint/SAI操作基础.html.vue")),
+  // path: /python/
+  "v-63cd5dba": defineAsyncComponent(() => import(/* webpackChunkName: "v-63cd5dba" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/python/index.html.vue")),
   // path: /tool/
   "v-1559ca3e": defineAsyncComponent(() => import(/* webpackChunkName: "v-1559ca3e" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/tool/index.html.vue")),
   // path: /book/python/asyncio_recipes.html
@@ -125,8 +125,8 @@ export const pagesComponents = {
   "v-b74ce008": defineAsyncComponent(() => import(/* webpackChunkName: "v-b74ce008" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/tool/Other/Postman.html.vue")),
   // path: /tool/Other/rdesktop.html
   "v-564ed7d2": defineAsyncComponent(() => import(/* webpackChunkName: "v-564ed7d2" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/tool/Other/rdesktop.html.vue")),
-  // path: /tool/Other/Screen.html
-  "v-d4726ea0": defineAsyncComponent(() => import(/* webpackChunkName: "v-d4726ea0" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/tool/Other/Screen.html.vue")),
+  // path: /tool/Other/screen.html
+  "v-325d20d0": defineAsyncComponent(() => import(/* webpackChunkName: "v-325d20d0" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/tool/Other/screen.html.vue")),
   // path: /tool/Other/tmux.html
   "v-913f3dc0": defineAsyncComponent(() => import(/* webpackChunkName: "v-913f3dc0" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/tool/Other/tmux.html.vue")),
   // path: /tool/Other/%E7%BD%91%E7%BB%9C%E4%BB%A3%E7%90%86.html
@@ -169,6 +169,16 @@ export const pagesComponents = {
   "v-14933c56": defineAsyncComponent(() => import(/* webpackChunkName: "v-14933c56" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/python/语言/多任务编程/线程进程辅助机制.html.vue")),
   // path: /python/%E8%AF%AD%E8%A8%80/%E5%A4%9A%E4%BB%BB%E5%8A%A1%E7%BC%96%E7%A8%8B/%E8%BF%9B%E7%A8%8B.html
   "v-6641d614": defineAsyncComponent(() => import(/* webpackChunkName: "v-6641d614" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/python/语言/多任务编程/进程.html.vue")),
+  // path: /python/%E8%AF%AD%E8%A8%80/%E6%B7%B1%E5%85%A5/Cpython%E5%AF%B9%E8%B1%A1.html
+  "v-38ec5ec9": defineAsyncComponent(() => import(/* webpackChunkName: "v-38ec5ec9" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/python/语言/深入/Cpython对象.html.vue")),
+  // path: /python/%E8%AF%AD%E8%A8%80/%E6%B7%B1%E5%85%A5/%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6.html
+  "v-045c26d2": defineAsyncComponent(() => import(/* webpackChunkName: "v-045c26d2" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/python/语言/深入/垃圾回收.html.vue")),
+  // path: /python/%E8%AF%AD%E8%A8%80/%E6%B7%B1%E5%85%A5/%E5%BA%8F%E5%88%97%E8%BF%9B%E9%98%B6.html
+  "v-2d4d6ff8": defineAsyncComponent(() => import(/* webpackChunkName: "v-2d4d6ff8" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/python/语言/深入/序列进阶.html.vue")),
+  // path: /python/%E8%AF%AD%E8%A8%80/%E6%B7%B1%E5%85%A5/%E6%98%A0%E5%B0%84%E8%BF%9B%E9%98%B6.html
+  "v-aba0f92c": defineAsyncComponent(() => import(/* webpackChunkName: "v-aba0f92c" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/python/语言/深入/映射进阶.html.vue")),
+  // path: /python/%E8%AF%AD%E8%A8%80/%E6%B7%B1%E5%85%A5/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.html
+  "v-163617f8": defineAsyncComponent(() => import(/* webpackChunkName: "v-163617f8" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/python/语言/深入/设计模式.html.vue")),
   // path: /python/%E8%AF%AD%E8%A8%80/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/Socket.html
   "v-7b667df4": defineAsyncComponent(() => import(/* webpackChunkName: "v-7b667df4" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/python/语言/网络编程/Socket.html.vue")),
   // path: /python/%E8%AF%AD%E8%A8%80/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/Websocket.html
@@ -193,46 +203,40 @@ export const pagesComponents = {
   "v-4670bf71": defineAsyncComponent(() => import(/* webpackChunkName: "v-4670bf71" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/python/语言/进阶/错误和异常.html.vue")),
   // path: /python/%E8%AF%AD%E8%A8%80/%E8%BF%9B%E9%98%B6/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1.html
   "v-f6f07338": defineAsyncComponent(() => import(/* webpackChunkName: "v-f6f07338" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/python/语言/进阶/面向对象.html.vue")),
-  // path: /python/%E8%AF%AD%E8%A8%80/%E9%87%8D%E8%A6%81/Cpython%E5%AF%B9%E8%B1%A1.html
-  "v-6e956862": defineAsyncComponent(() => import(/* webpackChunkName: "v-6e956862" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/python/语言/重要/Cpython对象.html.vue")),
-  // path: /python/%E8%AF%AD%E8%A8%80/%E9%87%8D%E8%A6%81/%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6.html
-  "v-3566805e": defineAsyncComponent(() => import(/* webpackChunkName: "v-3566805e" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/python/语言/重要/垃圾回收.html.vue")),
-  // path: /python/%E8%AF%AD%E8%A8%80/%E9%87%8D%E8%A6%81/%E5%BA%8F%E5%88%97%E8%BF%9B%E9%98%B6.html
-  "v-14c84332": defineAsyncComponent(() => import(/* webpackChunkName: "v-14c84332" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/python/语言/重要/序列进阶.html.vue")),
-  // path: /python/%E8%AF%AD%E8%A8%80/%E9%87%8D%E8%A6%81/%E6%98%A0%E5%B0%84%E8%BF%9B%E9%98%B6.html
-  "v-dcab52b8": defineAsyncComponent(() => import(/* webpackChunkName: "v-dcab52b8" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/python/语言/重要/映射进阶.html.vue")),
-  // path: /python/%E8%AF%AD%E8%A8%80/%E9%87%8D%E8%A6%81/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.html
-  "v-049e299c": defineAsyncComponent(() => import(/* webpackChunkName: "v-049e299c" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/python/语言/重要/设计模式.html.vue")),
-  // path: /unix/CentOS/UDS/ufscli%E5%B7%A5%E5%85%B7.html
-  "v-308d30fc": defineAsyncComponent(() => import(/* webpackChunkName: "v-308d30fc" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/unix/CentOS/UDS/ufscli工具.html.vue")),
-  // path: /unix/CentOS/UDS/ufs%E6%A0%B8%E5%BF%83%E7%BB%84%E4%BB%B6.html
-  "v-2d9c4133": defineAsyncComponent(() => import(/* webpackChunkName: "v-2d9c4133" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/unix/CentOS/UDS/ufs核心组件.html.vue")),
-  // path: /unix/CentOS/UDS/ufs%E7%AE%A1%E7%90%86%E5%B9%B3%E5%8F%B0.html
-  "v-cbfef454": defineAsyncComponent(() => import(/* webpackChunkName: "v-cbfef454" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/unix/CentOS/UDS/ufs管理平台.html.vue")),
-  // path: /unix/CentOS/UDS/uus%E8%99%9A%E6%8B%9F%E6%9C%BA%E6%8E%92%E9%94%99.html
-  "v-b955b604": defineAsyncComponent(() => import(/* webpackChunkName: "v-b955b604" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/unix/CentOS/UDS/uus虚拟机排错.html.vue")),
-  // path: /unix/CentOS/%E5%8C%85%E7%AE%A1%E7%90%86/rpm.html
-  "v-5c02b0cc": defineAsyncComponent(() => import(/* webpackChunkName: "v-5c02b0cc" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/unix/CentOS/包管理/rpm.html.vue")),
-  // path: /unix/CentOS/%E5%8C%85%E7%AE%A1%E7%90%86/yum.html
-  "v-3baa132a": defineAsyncComponent(() => import(/* webpackChunkName: "v-3baa132a" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/unix/CentOS/包管理/yum.html.vue")),
+  // path: /unix/CentOS/DNS/bind.html
+  "v-5c699361": defineAsyncComponent(() => import(/* webpackChunkName: "v-5c699361" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/unix/CentOS/DNS/bind.html.vue")),
+  // path: /unix/CentOS/DNS/DNS%E6%9C%8D%E5%8A%A1.html
+  "v-624b2cb2": defineAsyncComponent(() => import(/* webpackChunkName: "v-624b2cb2" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/unix/CentOS/DNS/DNS服务.html.vue")),
+  // path: /unix/CentOS/DNS/linux%20%E6%96%87%E4%BB%B6%E9%94%81.html
+  "v-64199ebc": defineAsyncComponent(() => import(/* webpackChunkName: "v-64199ebc" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/unix/CentOS/DNS/linux 文件锁.html.vue")),
+  // path: /unix/CentOS/DNS/%E8%84%9A%E6%9C%AC%E8%AF%B4%E6%98%8E.html
+  "v-57351656": defineAsyncComponent(() => import(/* webpackChunkName: "v-57351656" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/unix/CentOS/DNS/脚本说明.html.vue")),
+  // path: /unix/CentOS/LDAP/AD%E5%9F%9F.html
+  "v-ee451a0c": defineAsyncComponent(() => import(/* webpackChunkName: "v-ee451a0c" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/unix/CentOS/LDAP/AD域.html.vue")),
+  // path: /unix/CentOS/LDAP/LDAP.html
+  "v-0f96d45f": defineAsyncComponent(() => import(/* webpackChunkName: "v-0f96d45f" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/unix/CentOS/LDAP/LDAP.html.vue")),
+  // path: /unix/CentOS/LDAP/Python%E5%AF%B9%E6%8E%A5AD%E5%9F%9F.html
+  "v-4bd6d1e8": defineAsyncComponent(() => import(/* webpackChunkName: "v-4bd6d1e8" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/unix/CentOS/LDAP/Python对接AD域.html.vue")),
+  // path: /unix/CentOS/NFS/NFS%E6%9C%8D%E5%8A%A1.html
+  "v-7c14d103": defineAsyncComponent(() => import(/* webpackChunkName: "v-7c14d103" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/unix/CentOS/NFS/NFS服务.html.vue")),
+  // path: /unix/CentOS/NTP/NTP%E6%9C%8D%E5%8A%A1.html
+  "v-329fc365": defineAsyncComponent(() => import(/* webpackChunkName: "v-329fc365" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/unix/CentOS/NTP/NTP服务.html.vue")),
+  // path: /unix/CentOS/Samba/Samba%E6%9C%8D%E5%8A%A1.html
+  "v-60d5a3bd": defineAsyncComponent(() => import(/* webpackChunkName: "v-60d5a3bd" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/unix/CentOS/Samba/Samba服务.html.vue")),
+  // path: /unix/CentOS/SNMP/SNMP%E6%9C%8D%E5%8A%A1.html
+  "v-781e127b": defineAsyncComponent(() => import(/* webpackChunkName: "v-781e127b" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/unix/CentOS/SNMP/SNMP服务.html.vue")),
+  // path: /unix/CentOS/UFS/ufscli%E5%B7%A5%E5%85%B7.html
+  "v-0fcc3180": defineAsyncComponent(() => import(/* webpackChunkName: "v-0fcc3180" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/unix/CentOS/UFS/ufscli工具.html.vue")),
+  // path: /unix/CentOS/UFS/ufs%E6%A0%B8%E5%BF%83%E7%BB%84%E4%BB%B6.html
+  "v-18908db5": defineAsyncComponent(() => import(/* webpackChunkName: "v-18908db5" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/unix/CentOS/UFS/ufs核心组件.html.vue")),
+  // path: /unix/CentOS/UFS/ufs%E7%AE%A1%E7%90%86%E5%B9%B3%E5%8F%B0.html
+  "v-f6165b50": defineAsyncComponent(() => import(/* webpackChunkName: "v-f6165b50" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/unix/CentOS/UFS/ufs管理平台.html.vue")),
+  // path: /unix/CentOS/UFS/uus%E8%99%9A%E6%8B%9F%E6%9C%BA%E6%8E%92%E9%94%99.html
+  "v-b47c6a88": defineAsyncComponent(() => import(/* webpackChunkName: "v-b47c6a88" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/unix/CentOS/UFS/uus虚拟机排错.html.vue")),
   // path: /unix/CentOS/%E5%AE%89%E8%A3%85/CentOS%E7%9A%84%E5%AE%89%E8%A3%85.html
   "v-6a9fd4b2": defineAsyncComponent(() => import(/* webpackChunkName: "v-6a9fd4b2" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/unix/CentOS/安装/CentOS的安装.html.vue")),
-  // path: /unix/CentOS/%E5%AE%89%E8%A3%85/%E8%AE%A4%E8%AF%86Linux%E7%B3%BB%E7%BB%9F%E4%B8%80.html
-  "v-898b8e3c": defineAsyncComponent(() => import(/* webpackChunkName: "v-898b8e3c" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/unix/CentOS/安装/认识Linux系统一.html.vue")),
-  // path: /unix/CentOS/%E5%AE%89%E8%A3%85/%E8%AE%A4%E8%AF%86Linux%E7%B3%BB%E7%BB%9F%E4%BA%8C.html
-  "v-120e33b8": defineAsyncComponent(() => import(/* webpackChunkName: "v-120e33b8" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/unix/CentOS/安装/认识Linux系统二.html.vue")),
-  // path: /unix/Linux/DNS/bind.html
-  "v-437327a6": defineAsyncComponent(() => import(/* webpackChunkName: "v-437327a6" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/unix/Linux/DNS/bind.html.vue")),
-  // path: /unix/Linux/DNS/DNS%E6%9C%8D%E5%8A%A1.html
-  "v-7b88c25b": defineAsyncComponent(() => import(/* webpackChunkName: "v-7b88c25b" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/unix/Linux/DNS/DNS服务.html.vue")),
-  // path: /unix/Linux/DNS/linux%20%E6%96%87%E4%BB%B6%E9%94%81.html
-  "v-39d6a720": defineAsyncComponent(() => import(/* webpackChunkName: "v-39d6a720" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/unix/Linux/DNS/linux 文件锁.html.vue")),
-  // path: /unix/Linux/DNS/%E8%84%9A%E6%9C%AC%E8%AF%B4%E6%98%8E.html
-  "v-34cc1da1": defineAsyncComponent(() => import(/* webpackChunkName: "v-34cc1da1" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/unix/Linux/DNS/脚本说明.html.vue")),
-  // path: /unix/Linux/LDAP/AD.html
-  "v-b1980b52": defineAsyncComponent(() => import(/* webpackChunkName: "v-b1980b52" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/unix/Linux/LDAP/AD.html.vue")),
-  // path: /unix/Linux/LDAP/LDAP.html
-  "v-6d55d5da": defineAsyncComponent(() => import(/* webpackChunkName: "v-6d55d5da" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/unix/Linux/LDAP/LDAP.html.vue")),
+  // path: /unix/CentOS/%E5%AE%89%E8%A3%85/RPM%E5%8C%85%E7%AE%A1%E7%90%86.html
+  "v-134751fd": defineAsyncComponent(() => import(/* webpackChunkName: "v-134751fd" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/unix/CentOS/安装/RPM包管理.html.vue")),
   // path: /unix/Linux/Linux%E4%BD%BF%E7%94%A8%E8%80%85%E7%AE%A1%E7%90%86/%E8%B4%A6%E5%8F%B7%E7%AE%A1%E7%90%86%E4%B8%8EACL%E6%9D%83%E9%99%90.html
   "v-09029915": defineAsyncComponent(() => import(/* webpackChunkName: "v-09029915" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/unix/Linux/Linux使用者管理/账号管理与ACL权限.html.vue")),
   // path: /unix/Linux/Linux%E5%9F%BA%E7%A1%80%E6%8C%87%E5%BC%95/Linux%E6%98%AF%E4%BB%80%E4%B9%88%E4%B8%8E%E5%A6%82%E4%BD%95%E5%AD%A6%E4%B9%A0.html
@@ -249,18 +253,10 @@ export const pagesComponents = {
   "v-be9e75a4": defineAsyncComponent(() => import(/* webpackChunkName: "v-be9e75a4" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/unix/Linux/Linux文件/文件权限与目录配置.html.vue")),
   // path: /unix/Linux/Linux%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%86%E5%91%98/%E8%AE%A4%E8%AF%86%E7%B3%BB%E7%BB%9F%E6%9C%8D%E5%8A%A1.html
   "v-4c9aa7f6": defineAsyncComponent(() => import(/* webpackChunkName: "v-4c9aa7f6" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/unix/Linux/Linux系统管理员/认识系统服务.html.vue")),
-  // path: /unix/Linux/NFS/NFS%E6%9C%8D%E5%8A%A1.html
-  "v-28c329b7": defineAsyncComponent(() => import(/* webpackChunkName: "v-28c329b7" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/unix/Linux/NFS/NFS服务.html.vue")),
-  // path: /unix/Linux/NTP/NTP%E6%9C%8D%E5%8A%A1.html
-  "v-4163c7ce": defineAsyncComponent(() => import(/* webpackChunkName: "v-4163c7ce" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/unix/Linux/NTP/NTP服务.html.vue")),
-  // path: /unix/Linux/SAMBA/SAMBA%E6%9C%8D%E5%8A%A1.html
-  "v-094a9271": defineAsyncComponent(() => import(/* webpackChunkName: "v-094a9271" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/unix/Linux/SAMBA/SAMBA服务.html.vue")),
   // path: /unix/Linux/Shell%E8%84%9A%E6%9C%AC/vim%20%E5%BF%AB%E6%8D%B7%E9%94%AE.html
   "v-9e6d40aa": defineAsyncComponent(() => import(/* webpackChunkName: "v-9e6d40aa" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/unix/Linux/Shell脚本/vim 快捷键.html.vue")),
   // path: /unix/Linux/Shell%E8%84%9A%E6%9C%AC/vim%E7%A8%8B%E5%BA%8F%E7%BC%96%E8%BE%91%E5%99%A8.html
   "v-68cc00c6": defineAsyncComponent(() => import(/* webpackChunkName: "v-68cc00c6" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/unix/Linux/Shell脚本/vim程序编辑器.html.vue")),
-  // path: /unix/Linux/SNMP/SNMP%E6%9C%8D%E5%8A%A1.html
-  "v-9acde3a2": defineAsyncComponent(() => import(/* webpackChunkName: "v-9acde3a2" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/unix/Linux/SNMP/SNMP服务.html.vue")),
   // path: /unix/Linux/%E5%A4%87%E5%BF%98%E5%91%BD%E4%BB%A4/%E5%B8%B8%E5%A4%8D%E4%B9%A0.html
   "v-2fdbe955": defineAsyncComponent(() => import(/* webpackChunkName: "v-2fdbe955" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/unix/Linux/备忘命令/常复习.html.vue")),
   // path: /unix/Linux/%E7%BD%91%E7%BB%9C/CURL.html
@@ -275,6 +271,8 @@ export const pagesComponents = {
   "v-800b484a": defineAsyncComponent(() => import(/* webpackChunkName: "v-800b484a" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/unix/Linux/网络/网络基础.html.vue")),
   // path: /unix/Ubuntu/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/Ubuntu%E7%B3%BB%E5%88%97%E6%93%8D%E4%BD%9C.html
   "v-9424ae3c": defineAsyncComponent(() => import(/* webpackChunkName: "v-9424ae3c" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/unix/Ubuntu/常用命令/Ubuntu系列操作.html.vue")),
+  // path: /unix/Ubuntu/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/%E8%AE%A4%E8%AF%86Linux%E7%B3%BB%E7%BB%9F.html
+  "v-585be140": defineAsyncComponent(() => import(/* webpackChunkName: "v-585be140" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/unix/Ubuntu/常用命令/认识Linux系统.html.vue")),
   // path: /unix/%E7%A1%AC%E4%BB%B6%E5%9F%BA%E7%A1%80/CPU/CPU.html
   "v-20cc37a2": defineAsyncComponent(() => import(/* webpackChunkName: "v-20cc37a2" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/unix/硬件基础/CPU/CPU.html.vue")),
   // path: /unix/%E7%A1%AC%E4%BB%B6%E5%9F%BA%E7%A1%80/%E4%B8%BB%E6%9D%BF/%E4%B8%BB%E6%9D%BF.html
@@ -337,10 +335,16 @@ export const pagesComponents = {
   "v-78cbe7bb": defineAsyncComponent(() => import(/* webpackChunkName: "v-78cbe7bb" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/category/python/index.html.vue")),
   // path: /tag/ps/
   "v-0da0e57e": defineAsyncComponent(() => import(/* webpackChunkName: "v-0da0e57e" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/tag/ps/index.html.vue")),
+  // path: /category/ufs/
+  "v-65f62885": defineAsyncComponent(() => import(/* webpackChunkName: "v-65f62885" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/category/ufs/index.html.vue")),
   // path: /tag/docker/
   "v-6106c001": defineAsyncComponent(() => import(/* webpackChunkName: "v-6106c001" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/tag/docker/index.html.vue")),
+  // path: /category/centos/
+  "v-b2aa3dea": defineAsyncComponent(() => import(/* webpackChunkName: "v-b2aa3dea" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/category/centos/index.html.vue")),
   // path: /tag/%E5%B7%A5%E5%85%B7/
   "v-1fdcff68": defineAsyncComponent(() => import(/* webpackChunkName: "v-1fdcff68" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/tag/工具/index.html.vue")),
+  // path: /category/%E8%99%9A%E6%8B%9F%E6%9C%BA/
+  "v-6720de15": defineAsyncComponent(() => import(/* webpackChunkName: "v-6720de15" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/category/虚拟机/index.html.vue")),
   // path: /tag/k8s/
   "v-b30ea152": defineAsyncComponent(() => import(/* webpackChunkName: "v-b30ea152" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/tag/k8s/index.html.vue")),
   // path: /tag/nginx/
@@ -349,6 +353,12 @@ export const pagesComponents = {
   "v-b3026aae": defineAsyncComponent(() => import(/* webpackChunkName: "v-b3026aae" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/tag/web/index.html.vue")),
   // path: /tag/django/
   "v-5863ba26": defineAsyncComponent(() => import(/* webpackChunkName: "v-5863ba26" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/tag/django/index.html.vue")),
+  // path: /tag/%E8%BF%9C%E7%A8%8B/
+  "v-14161ef5": defineAsyncComponent(() => import(/* webpackChunkName: "v-14161ef5" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/tag/远程/index.html.vue")),
+  // path: /tag/%E6%9C%8D%E5%8A%A1/
+  "v-5306531d": defineAsyncComponent(() => import(/* webpackChunkName: "v-5306531d" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/tag/服务/index.html.vue")),
+  // path: /tag/%E4%BB%A3%E7%90%86/
+  "v-2b21fce9": defineAsyncComponent(() => import(/* webpackChunkName: "v-2b21fce9" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/tag/代理/index.html.vue")),
   // path: /tag/pip/
   "v-b308a674": defineAsyncComponent(() => import(/* webpackChunkName: "v-b308a674" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/tag/pip/index.html.vue")),
   // path: /tag/python/
@@ -373,4 +383,18 @@ export const pagesComponents = {
   "v-75abdec8": defineAsyncComponent(() => import(/* webpackChunkName: "v-75abdec8" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/tag/认证/index.html.vue")),
   // path: /tag/ldap/
   "v-28bf17da": defineAsyncComponent(() => import(/* webpackChunkName: "v-28bf17da" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/tag/ldap/index.html.vue")),
+  // path: /tag/ufs/
+  "v-b304308a": defineAsyncComponent(() => import(/* webpackChunkName: "v-b304308a" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/tag/ufs/index.html.vue")),
+  // path: /tag/cli/
+  "v-b3146346": defineAsyncComponent(() => import(/* webpackChunkName: "v-b3146346" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/tag/cli/index.html.vue")),
+  // path: /tag/uus/
+  "v-b303bfec": defineAsyncComponent(() => import(/* webpackChunkName: "v-b303bfec" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/tag/uus/index.html.vue")),
+  // path: /tag/centos/
+  "v-1baf4e15": defineAsyncComponent(() => import(/* webpackChunkName: "v-1baf4e15" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/tag/centos/index.html.vue")),
+  // path: /tag/%E5%8C%85%E7%AE%A1%E7%90%86/
+  "v-91cde54a": defineAsyncComponent(() => import(/* webpackChunkName: "v-91cde54a" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/tag/包管理/index.html.vue")),
+  // path: /tag/pve/
+  "v-b3084784": defineAsyncComponent(() => import(/* webpackChunkName: "v-b3084784" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/tag/pve/index.html.vue")),
+  // path: /tag/vmware/
+  "v-16e2b2ed": defineAsyncComponent(() => import(/* webpackChunkName: "v-16e2b2ed" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/tag/vmware/index.html.vue")),
 }

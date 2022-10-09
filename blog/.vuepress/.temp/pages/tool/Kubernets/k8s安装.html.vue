@@ -565,6 +565,242 @@ Data
 ca.crt:     <span class="token number">1025</span> bytes
 namespace:  <span class="token number">20</span> bytes
 token:      eyJhbGciOiJSUzI1NiIsImtpZCI6Ilo3QTR5ckxaOXZrYUc4emZKTWpFQkNBMEVkaktPeGdTR25rbW41UjluLVUifQ.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2NvdW50Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9uYW1lc3BhY2UiOiJrdWJlcm5ldGVzLWRhc2hib2FyZCIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VjcmV0Lm5hbWUiOiJhZG1pbi10b2tlbi03NjRtNSIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VydmljZS1hY2NvdW50Lm5hbWUiOiJhZG1pbiIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VydmljZS1hY2NvdW50LnVpZCI6ImJlZjZjMWM0LWU0ZDktNGE4OC1hMzdkLTBjMzVlZGQ2ZmZhZSIsInN1YiI6InN5c3RlbTpzZXJ2aWNlYWNjb3VudDprdWJlcm5ldGVzLWRhc2hib2FyZDphZG1pbiJ9.p0_tioIGZShZlsfafLWO2irYSAo6A3FGJSvfk9gbIjj8YP_Wif4lPUv8kDkl_3YgH7k2q15Bw_mcQGShOLMc-KlRp5FizlxT4aJc74lVPntzinAufN4QHX_5a5wj5CIvYiTH-U71ZECY_eDzn0SBlEVctCm3cVpiwxhUMrPKcSzO9hGYm9xI1ZCgo4fkpgsvNyzPD6QLPQjqelAmMpTcujEkIm5DzdzZAgOgU58wx6bUowhBqKt7hrMkDk5nXPJ-o7W8M0_3KxKRJO4fEMAAeanajfJ4RiBrVha9Ln23F_Q5zzroNcnV5vsdUMS3px50u70NaNCVOy32n4aeAFX4Xg
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></div></template>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="_7-记录k8s-v1-22-3-版本安装" tabindex="-1"><a class="header-anchor" href="#_7-记录k8s-v1-22-3-版本安装" aria-hidden="true">#</a> 7. 记录k8s v1.22.3 版本安装</h2>
+<p><a href="https://kuboard.cn/install/history-k8s/install-k8s-1.22.x.html" target="_blank" rel="noopener noreferrer">文档参考<ExternalLinkIcon/></a></p>
+<p>初始化步骤参考 <mark>1.准备工作</mark> 没有区别，<strong>1.22</strong> 版本的 <strong>k8s</strong> 已经改为支持 <strong>containerd</strong> 容器运行时了，故稍有区别，以下列出注意的点</p>
+<details class="custom-container details"><summary>详情</summary>
+<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code><span class="token comment"># 阿里云 docker hub 镜像</span>
+<span class="token builtin class-name">export</span> <span class="token assign-left variable">REGISTRY_MIRROR</span><span class="token operator">=</span>https://registry.aliyuncs.com
+<span class="token comment"># 在 master 节点和 worker 节点都要执行</span>
+
+<span class="token comment"># 安装 containerd</span>
+<span class="token comment"># 参考文档如下</span>
+<span class="token comment"># https://kubernetes.io/docs/setup/production-environment/container-runtimes/#containerd</span>
+
+<span class="token function">cat</span> <span class="token operator">&lt;&lt;</span><span class="token string">EOF<span class="token bash punctuation"> <span class="token operator">|</span> <span class="token function">sudo</span> <span class="token function">tee</span> /etc/modules-load.d/containerd.conf</span>
+overlay
+br_netfilter
+EOF</span>
+
+<span class="token function">sudo</span> modprobe overlay
+<span class="token function">sudo</span> modprobe br_netfilter
+
+<span class="token comment"># Setup required sysctl params, these persist across reboots.</span>
+<span class="token function">cat</span> <span class="token operator">&lt;&lt;</span><span class="token string">EOF<span class="token bash punctuation"> <span class="token operator">|</span> <span class="token function">sudo</span> <span class="token function">tee</span> /etc/sysctl.d/99-kubernetes-cri.conf</span>
+net.bridge.bridge-nf-call-iptables  = 1
+net.ipv4.ip_forward                 = 1
+net.bridge.bridge-nf-call-ip6tables = 1
+EOF</span>
+
+<span class="token comment"># Apply sysctl params without reboot</span>
+<span class="token function">sysctl</span> <span class="token parameter variable">--system</span>
+
+<span class="token comment"># 卸载旧版本</span>
+yum remove <span class="token parameter variable">-y</span> containerd.io
+
+<span class="token comment"># 设置 yum repository</span>
+yum <span class="token function">install</span> <span class="token parameter variable">-y</span> yum-utils device-mapper-persistent-data lvm2
+yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+
+<span class="token comment"># 安装 containerd</span>
+yum <span class="token function">install</span> <span class="token parameter variable">-y</span> containerd.io-1.4.3
+
+<span class="token function">mkdir</span> <span class="token parameter variable">-p</span> /etc/containerd
+containerd config default <span class="token operator">></span> /etc/containerd/config.toml
+
+<span class="token function">sed</span> <span class="token parameter variable">-i</span> <span class="token string">"s#k8s.gcr.io#registry.aliyuncs.com/k8sxio#g"</span>  /etc/containerd/config.toml
+<span class="token function">sed</span> <span class="token parameter variable">-i</span> <span class="token string">'/containerd.runtimes.runc.options/a\ \ \ \ \ \ \ \ \ \ \ \ SystemdCgroup = true'</span> /etc/containerd/config.toml
+<span class="token function">sed</span> <span class="token parameter variable">-i</span> <span class="token string">"s#https://registry-1.docker.io#<span class="token variable">${REGISTRY_MIRROR}</span>#g"</span>  /etc/containerd/config.toml
+
+
+systemctl daemon-reload
+systemctl <span class="token builtin class-name">enable</span> containerd
+systemctl restart containerd
+
+<span class="token comment"># 安装 nfs-utils</span>
+<span class="token comment"># 必须先安装 nfs-utils 才能挂载 nfs 网络存储</span>
+yum <span class="token function">install</span> <span class="token parameter variable">-y</span> nfs-utils
+yum <span class="token function">install</span> <span class="token parameter variable">-y</span> <span class="token function">wget</span>
+
+<span class="token comment"># 关闭 防火墙</span>
+systemctl stop firewalld
+systemctl disable firewalld
+
+<span class="token comment"># 关闭 SeLinux</span>
+setenforce <span class="token number">0</span>
+<span class="token function">sed</span> <span class="token parameter variable">-i</span> <span class="token string">"s/SELINUX=enforcing/SELINUX=disabled/g"</span> /etc/selinux/config
+
+<span class="token comment"># 关闭 swap</span>
+swapoff <span class="token parameter variable">-a</span>
+<span class="token function">yes</span> <span class="token operator">|</span> <span class="token function">cp</span> /etc/fstab /etc/fstab_bak
+<span class="token function">cat</span> /etc/fstab_bak <span class="token operator">|</span><span class="token function">grep</span> <span class="token parameter variable">-v</span> swap <span class="token operator">></span> /etc/fstab
+
+<span class="token comment"># 配置K8S的yum源</span>
+<span class="token function">cat</span> <span class="token operator">&lt;&lt;</span><span class="token string">EOF<span class="token bash punctuation"> <span class="token operator">></span> /etc/yum.repos.d/kubernetes.repo</span>
+[kubernetes]
+name=Kubernetes
+baseurl=http://mirrors.aliyun.com/kubernetes/yum/repos/kubernetes-el7-x86_64
+enabled=1
+gpgcheck=0
+repo_gpgcheck=0
+gpgkey=http://mirrors.aliyun.com/kubernetes/yum/doc/yum-key.gpg
+       http://mirrors.aliyun.com/kubernetes/yum/doc/rpm-package-key.gpg
+EOF</span>
+
+<span class="token comment"># 卸载旧版本</span>
+yum remove <span class="token parameter variable">-y</span> kubelet kubeadm kubectl
+
+<span class="token comment"># 安装kubelet、kubeadm、kubectl</span>
+<span class="token comment"># 将 ${1} 替换为 kubernetes 版本号，例如 1.20.1</span>
+yum <span class="token function">install</span> <span class="token parameter variable">-y</span> kubelet-1.22.3 kubeadm-1.22.3 kubectl-1.22.3
+
+crictl config runtime-endpoint /run/containerd/containerd.sock
+
+<span class="token comment"># 重启 docker，并启动 kubelet</span>
+systemctl daemon-reload
+systemctl <span class="token builtin class-name">enable</span> kubelet <span class="token operator">&amp;&amp;</span> systemctl start kubelet
+
+containerd <span class="token parameter variable">--version</span>
+kubelet <span class="token parameter variable">--version</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></details>
+<h3 id="_7-1-初始化-master-节点" tabindex="-1"><a class="header-anchor" href="#_7-1-初始化-master-节点" aria-hidden="true">#</a> 7.1 初始化 master 节点</h3>
+<div class="custom-container danger">
+<p class="custom-container-title">重要！</p>
+<p>需要先配置 <strong>containerd</strong> 的代理</p>
+<h4 id="注意-所有节点均需要配置-否则-kube-proxy-会-create失败" tabindex="-1"><a class="header-anchor" href="#注意-所有节点均需要配置-否则-kube-proxy-会-create失败" aria-hidden="true">#</a> <strong>注意！！所有节点均需要配置，否则 kube-proxy 会 Create失败</strong></h4>
+<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code><span class="token function">vim</span> /usr/lib/systemd/system/containerd.service 
+
+<span class="token comment"># 添加</span>
+<span class="token assign-left variable">Environment</span><span class="token operator">=</span><span class="token string">"HTTP_PROXY=http://172.16.70.104:808/"</span>
+<span class="token assign-left variable">Environment</span><span class="token operator">=</span><span class="token string">"HTTPS_PROXY=http://172.16.70.104:808/"</span>
+<span class="token assign-left variable">Environment</span><span class="token operator">=</span><span class="token string">"NO_PROXY=10.96.0.0/16,127.0.0.1,172.16.0.0/16,localhost"</span>
+
+<span class="token comment"># NO_PROXY的设置也是必须的。10.96.0.0与192.168.0.0分别是clusterIP与Pod的内网网段，如果不设置NO_PROXY Pod与Pod之间的通信会出现问题。</span>
+
+
+<span class="token comment"># 重启</span>
+systemctl daemon-reload
+systemctl restart containerd
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>然后再去执行下文的拉镜像业务</p>
+<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code>kubeadm config images pull <span class="token parameter variable">--config</span><span class="token operator">=</span>kubeadm-config.yaml
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div></div>
+<h5 id="先设置环境变量" tabindex="-1"><a class="header-anchor" href="#先设置环境变量" aria-hidden="true">#</a> <strong>先设置环境变量</strong></h5>
+<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code><span class="token comment"># 只在 master 节点执行</span>
+<span class="token comment"># 替换 x.x.x.x 为 master 节点实际 IP（请使用内网 IP）</span>
+<span class="token comment"># export 命令只在当前 shell 会话中有效，开启新的 shell 窗口后，如果要继续安装过程，请重新执行此处的 export 命令</span>
+<span class="token builtin class-name">export</span> <span class="token assign-left variable">MASTER_IP</span><span class="token operator">=</span><span class="token number">172.16</span>.120.171
+<span class="token comment"># 替换 apiserver.demo 为 您想要的 dnsName</span>
+<span class="token builtin class-name">export</span> <span class="token assign-left variable">APISERVER_NAME</span><span class="token operator">=</span>apiserver.uit
+<span class="token comment"># Kubernetes 容器组所在的网段，该网段安装完成后，由 kubernetes 创建，事先并不存在于您的物理网络中</span>
+<span class="token builtin class-name">export</span> <span class="token assign-left variable">POD_SUBNET</span><span class="token operator">=</span><span class="token number">10.100</span>.0.0/16
+<span class="token builtin class-name">echo</span> <span class="token string">"<span class="token variable">${MASTER_IP}</span>    <span class="token variable">${APISERVER_NAME}</span>"</span> <span class="token operator">>></span> /etc/hosts
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h5 id="再去通过-kubeadm-初始化" tabindex="-1"><a class="header-anchor" href="#再去通过-kubeadm-初始化" aria-hidden="true">#</a> <strong>再去通过 kubeadm 初始化</strong></h5>
+<details class="custom-container details"><summary>详情</summary>
+<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code><span class="token comment"># 只在 master 节点执行</span>
+
+<span class="token comment"># 脚本出错时终止执行</span>
+<span class="token builtin class-name">set</span> <span class="token parameter variable">-e</span>
+
+<span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token variable">${<span class="token operator">#</span>POD_SUBNET}</span> <span class="token parameter variable">-eq</span> <span class="token number">0</span> <span class="token punctuation">]</span> <span class="token operator">||</span> <span class="token punctuation">[</span> <span class="token variable">${<span class="token operator">#</span>APISERVER_NAME}</span> <span class="token parameter variable">-eq</span> <span class="token number">0</span> <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+  <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token entity" title="\033">\033</span>[31;1m请确保您已经设置了环境变量 POD_SUBNET 和 APISERVER_NAME <span class="token entity" title="\033">\033</span>[0m"</span>
+  <span class="token builtin class-name">echo</span> 当前POD_SUBNET<span class="token operator">=</span><span class="token variable">$POD_SUBNET</span>
+  <span class="token builtin class-name">echo</span> 当前APISERVER_NAME<span class="token operator">=</span><span class="token variable">$APISERVER_NAME</span>
+  <span class="token builtin class-name">exit</span> <span class="token number">1</span>
+<span class="token keyword">fi</span>
+
+
+<span class="token comment"># 查看完整配置选项 https://godoc.org/k8s.io/kubernetes/cmd/kubeadm/app/apis/kubeadm/v1beta2</span>
+<span class="token function">rm</span> <span class="token parameter variable">-f</span> ./kubeadm-config.yaml
+<span class="token function">cat</span> <span class="token operator">&lt;&lt;</span><span class="token string">EOF<span class="token bash punctuation"> <span class="token operator">></span> ./kubeadm-config.yaml</span>
+---
+apiVersion: kubeadm.k8s.io/v1beta2
+kind: ClusterConfiguration
+kubernetesVersion: v1.22.3
+imageRepository: registry.aliyuncs.com/k8sxio
+controlPlaneEndpoint: "apiserver.uit:6443"
+networking:
+  serviceSubnet: "10.96.0.0/16"
+  podSubnet: "10.100.0.0/16"
+  dnsDomain: "cluster.local"
+dns:
+  type: CoreDNS
+  imageRepository: swr.cn-east-2.myhuaweicloud.com/coredns
+  imageTag: 1.8.0
+
+---
+apiVersion: kubelet.config.k8s.io/v1beta1
+kind: KubeletConfiguration
+cgroupDriver: systemd
+EOF</span>
+
+<span class="token comment"># kubeadm init</span>
+<span class="token comment"># 根据您服务器网速的情况，您需要等候 3 - 10 分钟</span>
+<span class="token builtin class-name">echo</span> <span class="token string">""</span>
+<span class="token builtin class-name">echo</span> <span class="token string">"抓取镜像，请稍候..."</span>
+kubeadm config images pull <span class="token parameter variable">--config</span><span class="token operator">=</span>kubeadm-config.yaml
+<span class="token comment"># !!此处若是内网环境，需要如上文那样设置 containerd 代理，否则下载报错</span>
+
+<span class="token builtin class-name">echo</span> <span class="token string">""</span>
+<span class="token builtin class-name">echo</span> <span class="token string">"初始化 Master 节点"</span>
+kubeadm init <span class="token parameter variable">--config</span><span class="token operator">=</span>kubeadm-config.yaml --upload-certs
+
+<span class="token comment"># 配置 kubectl</span>
+<span class="token function">rm</span> <span class="token parameter variable">-rf</span> /root/.kube/
+<span class="token function">mkdir</span> /root/.kube/
+<span class="token function">cp</span> <span class="token parameter variable">-i</span> /etc/kubernetes/admin.conf /root/.kube/config
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></details>
+<p><strong>检查 master 初始化结果</strong></p>
+<p><strong>coredns</strong> 将处于启动失败的状态（<em>老现象了</em>），安装网络插件后，<strong>coredns</strong> 将正常启动</p>
+<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code><span class="token comment"># 只在 master 节点执行</span>
+
+<span class="token comment"># 执行如下命令，等待 3-10 分钟，直到所有的容器组处于 Running 状态</span>
+<span class="token function">watch</span> kubectl get pod <span class="token parameter variable">-n</span> kube-system <span class="token parameter variable">-o</span> wide
+
+<span class="token comment"># 查看 master 节点初始化结果</span>
+kubectl get nodes <span class="token parameter variable">-o</span> wide
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_7-2-安装网络插件" tabindex="-1"><a class="header-anchor" href="#_7-2-安装网络插件" aria-hidden="true">#</a> 7.2 安装网络插件</h3>
+<p>网络插件可以选择 <strong>calico</strong> 或者 <strong>flannel</strong>（任意选择其一即可）</p>
+<Tabs :data='[{"title":"Calico"},{"title":"Flannel"}]'>
+<template #tab0="{ title, value, isActive }">
+<blockquote>
+<p>如果阿里云上安装，建议使用 <strong>flannel</strong>，有多个案例表明 <strong>calico</strong> 与阿里云存在兼容性问题</p>
+</blockquote>
+<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code><span class="token builtin class-name">export</span> <span class="token assign-left variable">POD_SUBNET</span><span class="token operator">=</span><span class="token number">10.100</span>.0.0/16
+kubectl apply <span class="token parameter variable">-f</span> https://kuboard.cn/install-script/v1.22.x/calico-operator.yaml
+<span class="token function">wget</span> https://kuboard.cn/install-script/v1.22.x/calico-custom-resources.yaml
+<span class="token function">sed</span> <span class="token parameter variable">-i</span> <span class="token string">"s#192.168.0.0/16#<span class="token variable">${POD_SUBNET}</span>#"</span> calico-custom-resources.yaml
+kubectl apply <span class="token parameter variable">-f</span> calico-custom-resources.yaml 
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></template>
+<template #tab1="{ title, value, isActive }">
+<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code><span class="token builtin class-name">export</span> <span class="token assign-left variable">POD_SUBNET</span><span class="token operator">=</span><span class="token number">10.100</span>.0.0/16
+<span class="token function">wget</span> https://kuboard.cn/install-script/flannel/flannel-v0.14.0.yaml
+<span class="token function">sed</span> <span class="token parameter variable">-i</span> <span class="token string">"s#10.244.0.0/16#<span class="token variable">${POD_SUBNET}</span>#"</span> flannel-v0.14.0.yaml
+kubectl apply <span class="token parameter variable">-f</span> ./flannel-v0.14.0.yaml
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></template>
+</Tabs>
+<h3 id="_7-3-初始化-worker节点" tabindex="-1"><a class="header-anchor" href="#_7-3-初始化-worker节点" aria-hidden="true">#</a> 7.3 初始化 worker节点</h3>
+<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code><span class="token comment"># 只在 master 节点执行,获得 join 命令参数</span>
+kubeadm token create --print-join-command
+
+<span class="token comment"># 可获取kubeadm join 命令及参数，输出如下</span>
+kubeadm <span class="token function">join</span> apiserver.uit:6443 <span class="token parameter variable">--token</span> jp5cyz.3tcmv8cr8xd8nhj3 --discovery-token-ca-cert-hash sha256:3520937aaab1f2abfd17334b7409ad293b2cc916dcdb33085e18cfa8a08281bf
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>该 <strong>token</strong> 的有效时间为 2 个小时，<strong>2</strong> 小时内，您可以使用此 <strong>token</strong> 初始化任意数量的 <strong>worker</strong> 节点</p>
+<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code><span class="token comment"># 在 worker 节点执行</span>
+<span class="token comment"># 替换 x.x.x.x 为 master 节点的内网 IP</span>
+<span class="token builtin class-name">export</span> <span class="token assign-left variable">MASTER_IP</span><span class="token operator">=</span>x.x.x.x
+<span class="token comment"># 替换 apiserver.demo 为初始化 master 节点时所使用的 APISERVER_NAME</span>
+<span class="token builtin class-name">export</span> <span class="token assign-left variable">APISERVER_NAME</span><span class="token operator">=</span>apiserver.demo
+<span class="token builtin class-name">echo</span> <span class="token string">"<span class="token variable">${MASTER_IP}</span>    <span class="token variable">${APISERVER_NAME}</span>"</span> <span class="token operator">>></span> /etc/hosts
+
+<span class="token comment"># 替换为 master 节点上 kubeadm token create 命令的输出</span>
+kubeadm <span class="token function">join</span> apiserver.demo:6443 xxxx
+
+<span class="token comment"># master 节点查看，输出如下表示安装成功</span>
+$ kubectl get nodes
+NAME             STATUS   ROLES                  AGE   VERSION
+k8s-master-171   Ready    control-plane,master   34m   v1.22.3
+k8s-salve-172    Ready    <span class="token operator">&lt;</span>none<span class="token operator">></span>                 24m   v1.22.3
+k8s-salve-173    Ready    <span class="token operator">&lt;</span>none<span class="token operator">></span>                 24m   v1.22.3
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></div></template>
 
 

@@ -4,7 +4,8 @@
 <p class="custom-container-title">Docker</p>
 <p>让开发者打包他的应用、及依赖包，到一个轻量级、可移植的容器中，可发布到任何流行的 <strong>Linux</strong> 机器上，也能实现虚拟化，<strong>完全使用沙箱机制</strong>（<em>隔离</em>），相互之间不会有任何接口，且 <strong>开销极低</strong></p>
 </div>
-<h2 id="_1-啥是-docker" tabindex="-1"><a class="header-anchor" href="#_1-啥是-docker" aria-hidden="true">#</a> 1. 啥是 Docker</h2>
+<h2 id="_1-docker概述" tabindex="-1"><a class="header-anchor" href="#_1-docker概述" aria-hidden="true">#</a> 1. Docker概述</h2>
+<p>旧金山 <strong>dotCloud</strong> 基于 <strong>Linux</strong> 容器技术 <strong>LXC</strong> 封装的内部工具，<strong>13</strong> 年诞生，<strong>15</strong> 年逐步投入生产，后面开源出来改个名字叫 <strong>Docker</strong> ，目的为了节省资源（<em>硬件、虚拟机</em>）</p>
 <ul>
 <li><a href="https://www.docker.com/" target="_blank" rel="noopener noreferrer">Docker 官网<ExternalLinkIcon/></a></li>
 <li><a href="https://docs.docker.com/" target="_blank" rel="noopener noreferrer">Docker 官方文档<ExternalLinkIcon/></a></li>
@@ -21,9 +22,6 @@
 <li><a href="https://www.w3cschool.cn/docker/" target="_blank" rel="noopener noreferrer">Docker 教程 | w3cschool<ExternalLinkIcon/></a></li>
 <li><a href="https://www.w3cschool.cn/reqsgr/" target="_blank" rel="noopener noreferrer">Docker 从入门到实践 | w3cschool<ExternalLinkIcon/></a></li>
 </ul>
-<blockquote>
-<p>13 年出现（没人用）15 年才逐步使用，旧金山 <code v-pre>dotCloud</code> 基于<code v-pre>Linux</code> 容器技术 <strong>LXC</strong> 封装的内部工具，后面开源出来改个名字叫 <code v-pre>Docker</code> 这玩意原本目的就是省钱（硬件）、省虚拟机</p>
-</blockquote>
 <h3 id="_1-2-linux-容器" tabindex="-1"><a class="header-anchor" href="#_1-2-linux-容器" aria-hidden="true">#</a> 1.2 Linux 容器</h3>
 <p><strong>Docker</strong> 在 <strong>1.8</strong> 版本之前，全部是封装 <strong>Linux</strong> 的 <a href="https://linuxcontainers.org/lxc/introduction/" target="_blank" rel="noopener noreferrer">LXC<ExternalLinkIcon/></a>，一个 <strong>用户态</strong> 使用容器化特性的 <strong>接口</strong>（<em>调用 Kernel</em>），但不具备跨平台能力</p>
 <p>随后为了实现跨平台，抽出了 <a href="https://linuxcontainers.org/lxc/introduction/" target="_blank" rel="noopener noreferrer">libcontainer<ExternalLinkIcon/></a> 项目，把 <strong>namespace</strong>、<strong>cgroup</strong> 的操作封装在该项目里，支持不同的平台类型</p>
@@ -32,7 +30,7 @@
 <h5 id="虚拟机" tabindex="-1"><a class="header-anchor" href="#虚拟机" aria-hidden="true">#</a> <strong>虚拟机</strong></h5>
 <p>如 <strong>VMware</strong> 、<strong>PVE</strong>、<strong>ESXi</strong>、<strong>Workstation</strong> 等，多台虚拟机都虚拟出了一套 <strong>不同</strong> 的 <strong>虚拟机器硬件资源</strong>、<strong>Kernel</strong>（<em>内核</em>）、<strong>Lib 库</strong>，然后在上层运行各自的 APP，像是物理机的系统中的子系统一样，从物理虚拟层面进行隔离，占用资源极高</p>
 <ul>
-<li><code v-pre>Hypervisor:</code> 一种运行在基础物理服务器和操作系统之间的中间软件层，可允许多个操作系统和应用共享硬件。</li>
+<li><strong>Hypervisor：</strong> 一种运行在基础物理服务器和操作系统之间的中间软件层，可允许多个操作系统和应用共享硬件。</li>
 </ul>
 <h5 id="容器" tabindex="-1"><a class="header-anchor" href="#容器" aria-hidden="true">#</a> <strong>容器</strong></h5>
 <p>则是多个容器 <strong>共同使用</strong> 一套物理机 <strong>硬件资源</strong>、<strong>Kernel</strong> 然后从运行所需的 <strong>Lib 库</strong> 层面 进行隔离，因此极大的压榨了物理资源，使物理机物尽其用。</p>

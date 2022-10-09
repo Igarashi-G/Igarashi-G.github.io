@@ -24,15 +24,17 @@
 <li>一个属性内可以拥有一个 <strong>Type</strong>，以及多个 <strong>Value</strong></li>
 </ul>
 <img src="@source/unix/Linux/LDAP/img/DIT.png">
-::: tip 故这种树形存储结构适用于，查询多、更新少
-<p>:::</p>
+<div class="custom-container tip">
+<p class="custom-container-title">提示</p>
+<p>故这种树形存储结构适用于，查询多、更新少</p>
+</div>
 <h3 id="_1-3-分布式-directory" tabindex="-1"><a class="header-anchor" href="#_1-3-分布式-directory" aria-hidden="true">#</a> 1.3 分布式 Directory</h3>
 <p><strong>Directory</strong> 支持分布式操作，此时的服务端组成如下</p>
 <img src="@source/unix/Linux/LDAP/img/分布式.png">
 <p><strong>DSA（<em>Directory System Agent</em>）：</strong> 用来连接服务和 <strong>DUA</strong>。他可以缓存 <strong>Directory</strong> 数据，可以用本地数据直接响应，也可以单纯做一个转发</p>
 <p><strong>LDAP Server</strong>：是 <strong>Directory Service</strong> 的一部分，可以直接使用本地数据，也可以转发到其它 <strong>LDAP Server</strong> 获取数据</p>
 <h2 id="_2-ldap-协议" tabindex="-1"><a class="header-anchor" href="#_2-ldap-协议" aria-hidden="true">#</a> 2. LDAP 协议</h2>
-<p><strong>LDAP 协议：</strong> 就是一个 <strong>轻量级的目录访问协议</strong>，其中</p>
+<p><strong>LDAP 协议：</strong> 是 <strong>轻量级的目录访问协议</strong>，其中</p>
 <ul>
 <li>
 <p><strong>L（<em>LightWeight</em>）：</strong> 轻量级</p>

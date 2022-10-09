@@ -1,14 +1,1 @@
-export const data = JSON.parse("{\"key\":\"v-d4726ea0\",\"path\":\"/tool/Other/Screen.html\",\"title\":\"Screen\",\"lang\":\"zh-CN\",\"frontmatter\":{\"title\":\"Screen\",\"order\":1,\"group\":{\"title\":\"超好用的运维提速小工具\",\"order\":30},\"summary\":\"Screen 简单云服务器部署工具，用于远程 ssh 断掉的请求，也能一直运行，不会被意外原因而杀掉 安装 screen 工具\\rUbuntu; \\rCentOS; 使用简介\\r创建 screen 窗口; \\r退出：; \\r恢复：; \\r查看 screen 进程：; \\r进入进程：; \\r单个 screen 进程：; \\r多个 screen 进程：(通过它的 PID 进入);\",\"head\":[[\"meta\",{\"property\":\"og:url\",\"content\":\"https://igarashi-g.github.io/igarashi-blog/igarashi-blog/tool/Other/Screen.html\"}],[\"meta\",{\"property\":\"og:site_name\",\"content\":\"五十岚呐~\"}],[\"meta\",{\"property\":\"og:title\",\"content\":\"Screen\"}],[\"meta\",{\"property\":\"og:type\",\"content\":\"article\"}],[\"meta\",{\"property\":\"og:locale\",\"content\":\"zh-CN\"}]]},\"excerpt\":\"\",\"headers\":[],\"readingTime\":{\"minutes\":0.68,\"words\":203},\"filePathRelative\":\"tool/Other/Screen.md\"}")
-
-if (import.meta.webpackHot) {
-  import.meta.webpackHot.accept()
-  if (__VUE_HMR_RUNTIME__.updatePageData) {
-    __VUE_HMR_RUNTIME__.updatePageData(data)
-  }
-}
-
-if (import.meta.hot) {
-  import.meta.hot.accept(({ data }) => {
-    __VUE_HMR_RUNTIME__.updatePageData(data)
-  })
-}
+export const data = JSON.parse("{\"key\":\"v-325d20d0\",\"path\":\"/tool/Other/screen.html\",\"title\":\"screen\",\"lang\":\"zh-CN\",\"frontmatter\":{\"title\":\"screen\",\"date\":\"2019-05-08T00:00:00.000Z\",\"category\":[\"工具\"],\"tag\":[\"服务\"],\"summary\":\"简单云服务器部署工具，用于远程（ssh）断掉的请求，也能一直运行，不会被意外原因而杀掉\\n\",\"head\":[[\"meta\",{\"property\":\"og:url\",\"content\":\"https://igarashi-g.github.io/igarashi-blog/igarashi-blog/tool/Other/screen.html\"}],[\"meta\",{\"property\":\"og:site_name\",\"content\":\"五十岚呐~\"}],[\"meta\",{\"property\":\"og:title\",\"content\":\"screen\"}],[\"meta\",{\"property\":\"og:type\",\"content\":\"article\"}],[\"meta\",{\"property\":\"og:locale\",\"content\":\"zh-CN\"}],[\"meta\",{\"property\":\"article:tag\",\"content\":\"服务\"}],[\"meta\",{\"property\":\"article:published_time\",\"content\":\"2019-05-08T00:00:00.000Z\"}]]},\"excerpt\":\"<p>简单云服务器部署工具，用于远程（<em>ssh</em>）断掉的请求，也能一直运行，不会被意外原因而杀掉</p>\\n\",\"headers\":[],\"git\":{\"createdTime\":null,\"updatedTime\":null,\"contributors\":[]},\"readingTime\":{\"minutes\":0.69,\"words\":207},\"filePathRelative\":\"tool/Other/screen.md\",\"localizedDate\":\"2019年5月8日\"}")

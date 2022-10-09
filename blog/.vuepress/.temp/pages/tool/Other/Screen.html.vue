@@ -1,5 +1,10 @@
-<template><div><h1 id="screen" tabindex="-1"><a class="header-anchor" href="#screen" aria-hidden="true">#</a> Screen</h1>
-<Alert type="info">简单云服务器部署工具，用于远程 `ssh` 断掉的请求，也能一直运行，不会被意外原因而杀掉</Alert><p><strong>安装 screen 工具</strong></p>
+<template><div><p>简单云服务器部署工具，用于远程（<em>ssh</em>）断掉的请求，也能一直运行，不会被意外原因而杀掉</p>
+<!-- more -->
+<h1 id="screen" tabindex="-1"><a class="header-anchor" href="#screen" aria-hidden="true">#</a> Screen</h1>
+<div class="custom-container info">
+<p class="custom-container-title">懒得编写 systemd service ，可用该工具代替</p>
+</div>
+<p><strong>安装 screen 工具</strong></p>
 <ul>
 <li>
 <p><strong>Ubuntu</strong></p>
