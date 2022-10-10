@@ -2,7 +2,7 @@
 <h3 id="_1-配置-yum-仓库" tabindex="-1"><a class="header-anchor" href="#_1-配置-yum-仓库" aria-hidden="true">#</a> 1. 配置 yum 仓库</h3>
 <ul>
 <li>
-<p>新建 <code v-pre>/etc/yum.repos.d/gitlab-ce.repo</code> 内容如下：</p>
+<p>新建 <code v-pre>/etc/yum.repos.d/gitlab-ce.repo</code> 内容如下</p>
 <div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code><span class="token punctuation">[</span>gitlab-ce<span class="token punctuation">]</span>
 <span class="token assign-left variable">name</span><span class="token operator">=</span>Gitlab CE Repository
 <span class="token assign-left variable">baseurl</span><span class="token operator">=</span>https://mirrors.tuna.tsinghua.edu.cn/gitlab-ce/yum/el<span class="token variable">$releasever</span>/

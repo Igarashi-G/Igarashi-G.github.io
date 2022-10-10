@@ -1,4 +1,6 @@
-<template><div><h4 id="通用规范" tabindex="-1"><a class="header-anchor" href="#通用规范" aria-hidden="true">#</a> 通用规范：</h4>
+<template><div><p><strong>Git</strong> 代码提交规范</p>
+<!-- more -->
+<h4 id="通用规范" tabindex="-1"><a class="header-anchor" href="#通用规范" aria-hidden="true">#</a> 通用规范：</h4>
 <div class="language-text ext-text line-numbers-mode"><pre v-pre class="language-text"><code>(&lt;scope>): &lt;subject> + &lt;(note|issue|feature),可选>
 // 空一行
 &lt;body>

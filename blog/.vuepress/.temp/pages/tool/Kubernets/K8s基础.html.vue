@@ -12,74 +12,69 @@
 <span class="token function">docker</span> logs <span class="token parameter variable">-f</span> + container_id
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>使用Deployment管理Pod生命周期，实现服务不中断的滚动更新，通过服务发现来实现集群内部的服务间访问，并通过ingress-nginx实现外部使用域名访问集群内部的服务。同时介绍基于EFK如何搭建Kubernetes集群的日志收集系统。</p>
 <h2 id="_1-kubernetes-概述" tabindex="-1"><a class="header-anchor" href="#_1-kubernetes-概述" aria-hidden="true">#</a> 1. Kubernetes 概述</h2>
-<p>纯 <strong>Docker</strong> （<em>容器模式</em>） 的运维管理很难，尤其涉及到跨容器网络通信，故诞生了容器调度管理平台 <strong>Kubernetes</strong></p>
+<p>纯 <strong>Docker</strong> （<em>容器模式</em>） 的运维管理麻烦，尤其涉及到跨容器网络通信，故诞生了容器调度管理平台 <strong>Kubernetes</strong> ，由于功能强大，<strong>17</strong> 年后渐渐成为主流</p>
 <h5 id="架构图如下" tabindex="-1"><a class="header-anchor" href="#架构图如下" aria-hidden="true">#</a> <strong>架构图如下</strong></h5>
 <img src="@source/tool/Kubernets/img/架构图.png">
 <h5 id="包含如下核心组件" tabindex="-1"><a class="header-anchor" href="#包含如下核心组件" aria-hidden="true">#</a> <strong>包含如下核心组件</strong></h5>
 <ul>
 <li>
-<p><strong><a href="">etcd</a>：</strong> 分布式高性能键值数据库，存储整个集群的所有元数据</p>
+<p><strong><a href="">etcd</a>：</strong> 分布式高性能键值 <strong>数据库</strong>，存储整个集群的所有元数据，<strong>只通过 ApiServer 访问</strong></p>
 </li>
 <li>
-<p><strong>ApiServer：</strong> 接口服务器，集群资源访问控制入口，提供 <strong>restful api</strong> 及安全访问控制</p>
+<p><strong>ApiServer：</strong> <strong>接口</strong> 服务器，用来交互的，集群资源访问控制入口，提供 <strong>restful api</strong> 及安全访问控制</p>
 </li>
 <li>
-<p><strong>Scheduler：</strong> 调度器，把业务容器调度到合适节点</p>
+<p><strong>Scheduler：</strong> <strong>调度器</strong>，把业务容器调度到合适节点</p>
 </li>
 <li>
-<p><strong>Controller Manager：</strong> 控制器，确保集群资源 <strong>按照期望的方式运行</strong></p>
-</li>
-<li>
-<p>**Replication Controller **</p>
-</li>
-<li>
-<p><strong>Node controller</strong></p>
-</li>
-<li>
-<p><strong>ResourceQuota Controller</strong></p>
-</li>
-<li>
-<p><strong>Namespace Controller</strong></p>
-</li>
-<li>
-<p><strong>ServiceAccount Controller</strong></p>
-</li>
-<li>
-<p>**Tocken Controller **</p>
-</li>
-<li>
-<p>**Service Controller **</p>
-</li>
-<li>
-<p><strong>Endpoints Controller</strong></p>
-</li>
-<li>
-<p><strong>kubelet：</strong> 节点代理，运行再每个节点上，管节点的</p>
+<p><strong>Controller Manager：</strong> <strong>控制管理器，20来种的统称</strong>，确保集群资源按照期望的方式运行，生成元数据，故在调度之前，<strong>k8s 中最复杂的点</strong></p>
 <ul>
-<li><strong>pod：</strong>  容器的抽象，最小资源调度单位，管容器的，被 <strong>kubelet</strong> 管的</li>
-<li><strong>容器健康检查：</strong> 检查容器是否正常运行，若运行出错，会按照<strong>pod</strong> 设置的重启策略处理</li>
-<li><strong>容器监控：</strong> 监控所在节点资源的，会定时向 <strong>Master</strong> 报告，资源使用数据通过 <strong>cAdvisor</strong> 获取的，对于 <strong>pod</strong> 调度和正常运行至关重要</li>
-<li><strong><a href="https://kubernetes.io/zh-cn/docs/reference/kubectl/" target="_blank" rel="noopener noreferrer">kubectl<ExternalLinkIcon/></a>：</strong> 命令行工具</li>
+<li><strong>Replication Controller</strong></li>
+<li><strong>Node controller</strong></li>
+<li><strong>ResourceQuota Controller</strong></li>
+<li><strong>Namespace Controller</strong></li>
+<li><strong>ServiceAccount Controller</strong></li>
+<li><strong>Tocken Controller</strong></li>
+<li><strong>Service Controller</strong></li>
+<li><strong>Endpoints Controller</strong></li>
 </ul>
+</li>
+<li>
+<p><strong>kubelet：</strong> 节点代理，运行再每个节点上，管节点同时汇报情况给 <strong>Master</strong> 管理节点</p>
+<ul>
+<li><strong>pod管理：</strong>  容器的抽象，最小资源调度单位，管容器的，被 <strong>kubelet</strong> 管的</li>
+<li><strong>容器健康检查：</strong> 检查容器是否正常运行，若运行出错，按照 <strong>pod</strong> 设置的重启策略处理</li>
+<li><strong>容器监控：</strong> 监控容器所在节点资源的使用情况，定时向 <strong>Master</strong> 报告，资源使用数据通过 <strong>cAdvisor</strong> 获取的，对于 <strong>pod</strong> 调度和正常运行至关重要</li>
+</ul>
+</li>
+<li>
+<p><strong>kube-proxy：</strong> 维护节点中的 <strong>iptables</strong> 或 <strong>ipvs</strong> 规则</p>
+</li>
+<li>
+<p><strong><a href="https://kubernetes.io/zh-cn/docs/reference/kubectl/" target="_blank" rel="noopener noreferrer">kubectl<ExternalLinkIcon/></a>：</strong> 命令行工具</p>
 </li>
 <li>
 <p><strong>cni：</strong> 通用网络接口，如 <strong>flannel</strong> 等的网络插件，实现集群跨节点通信</p>
 </li>
 </ul>
-<h5 id="其工作流程" tabindex="-1"><a class="header-anchor" href="#其工作流程" aria-hidden="true">#</a> <strong>其工作流程</strong></h5>
+<h5 id="其工作流程如下" tabindex="-1"><a class="header-anchor" href="#其工作流程如下" aria-hidden="true">#</a> <strong>其工作流程如下</strong></h5>
 <img src="@source/tool/Kubernets/img/工作流程.png">
+<div class="custom-container warning">
+<p class="custom-container-title">关于性能</p>
+<p><strong>ApiServer</strong> 压测 <strong>10w+</strong> 大概才会出现性能问题（<em>应该是普通的企业主机配置</em>）</p>
+</div>
 <p>部署后则生成 <strong>kubelet</strong> 进程，可执行 <strong>kubectl</strong> 二进制命令行工具，其中</p>
 <ul>
-<li><strong>组件：</strong> 为了支撑 <strong>k8s</strong> 平台的运行，安装好的软件</li>
-<li><strong>资源：</strong> 被 <strong>k8s</strong> 管理的</li>
+<li><strong>组件：</strong> 启动的一个进程，为了支撑 <strong>k8s</strong> 平台的运行，安装好的软件</li>
+<li><strong>资源：</strong> <strong>k8s</strong> 提供的能力，被 <strong>k8s</strong> 所管理</li>
 </ul>
 <div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code><span class="token comment"># 查看 systemd 服务</span>
 systemctl status kubelet
 
-<span class="token comment"># 查看 api资源</span>
+<span class="token comment"># 查看 kubernetes的资源，简写</span>
 kubectl api-resources
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h5 id="kubectl的使用" tabindex="-1"><a class="header-anchor" href="#kubectl的使用" aria-hidden="true">#</a> <strong>kubectl</strong>的使用</h5>
-<p>类似于 <strong>docker</strong>，<strong><a href="https://kubernetes.io/zh-cn/docs/reference/kubectl/" target="_blank" rel="noopener noreferrer">kubectl<ExternalLinkIcon/></a></strong> 是命令行工具，用于与APIServer交互，内置了丰富的子命令，功能强大</p>
+<p>类似于 <strong>docker</strong>，<strong><a href="https://kubernetes.io/zh-cn/docs/reference/kubectl/" target="_blank" rel="noopener noreferrer">kubectl<ExternalLinkIcon/></a></strong> 是 <strong>CLI</strong>，用于与 <strong>APIServer</strong> 交互，内置了丰富的子命令，功能强大</p>
 <div class="language-powershell ext-powershell line-numbers-mode"><pre v-pre class="language-powershell"><code>$ kubectl <span class="token operator">-</span>h
 $ kubectl get <span class="token operator">-</span>h
 $ kubectl create <span class="token operator">-</span>h
@@ -88,8 +83,9 @@ $ kubectl create namespace <span class="token operator">-</span>h
 $ kubectl get po <span class="token operator">-</span>v=7
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="_2-资源" tabindex="-1"><a class="header-anchor" href="#_2-资源" aria-hidden="true">#</a> 2. 资源</h2>
 <h3 id="_2-1-namespace" tabindex="-1"><a class="header-anchor" href="#_2-1-namespace" aria-hidden="true">#</a> 2.1. namespace</h3>
-<p>命名空间，集群内一个虚拟的概念，类似于资源池的概念，一个池子里可以有各种资源类型，绝大多数的资源都必须属于某一个namespace。集群初始化安装好之后，会默认有如下几个namespace：</p>
-<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code>$ kubectl get ns	<span class="token comment"># or get namespaces</span>
+<p>命名空间，集群内的虚拟概念，类似于资源池，池中有各种资源，绝大多数的资源都必须属于某一个<strong>namespace</strong></p>
+<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code><span class="token comment"># 集群初始化安装好之后，会默认有如下几个</span>
+$ kubectl get ns	<span class="token comment"># or get namespaces</span>
 
 NAME                   STATUS   AGE
 default                Active   10d
@@ -97,45 +93,48 @@ kube-node-lease        Active   10d
 kube-public            Active   10d
 kube-system            Active   10d
 kubernetes-dashboard   Active   9d
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><ul>
-<li>所有NAMESPACED的资源，在创建的时候都需要指定namespace，若不指定，默认会在default命名空间下</li>
-<li>相同namespace下的同类资源不可以重名，不同类型的资源可以重名</li>
-<li>不同namespace下的同类资源可以重名</li>
-<li>通常在项目使用的时候，我们会创建带有业务含义的namespace来做逻辑上的整合</li>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><ul>
+<li>所有 <strong>namespaces</strong> 资源，创建时都要指定 <code v-pre>-n ns</code>，若不指定，默认为 <strong>default</strong></li>
+<li>同一个 <strong>namespace</strong> 下的同类资源 <strong>不能重名</strong>，不同类型的资源可以重名，不同 <strong>namespace</strong> 也可</li>
+<li>在项目通常创建带有业务含义的 <strong>namespace</strong> 来做逻辑上的整合</li>
 </ul>
+<div class="custom-container tip">
+<p class="custom-container-title">提示</p>
+<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code>kubectl <span class="token parameter variable">-n</span> xxxns get xxx	<span class="token comment"># 命名空间放前面，方便复用</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div></div>
 <h3 id="_2-2-pod" tabindex="-1"><a class="header-anchor" href="#_2-2-pod" aria-hidden="true">#</a> 2.2 Pod</h3>
-<p><strong>最小调度单元</strong>，用来存放多个容器的（<em>豆荚</em>），为了与容器引擎（<em>Docker</em>）解耦，抽象出一层 <strong>Pod</strong> 让 <strong>k8s</strong> 进行调度，被 <strong>kubelet</strong> 定期 <strong>watch</strong> 更新状态写入 <strong>etcd</strong></p>
-<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code><span class="token comment">## 查看命名空间 kube-system 下的 pods</span>
+<p><strong>最小调度单元</strong>，理解为存放多个容器的（<em>豆荚</em>），为和容器引擎（<em>Docker</em>）解耦（<em>如 <strong>1.22.x</strong> 改用 <strong>containerd</strong></em>），抽象出一层 <strong>Pod</strong> 让 <strong>k8s</strong> 进行调度，被 <strong>kubelet</strong> 定期 <strong>watch</strong> ，更新状态并写入 <strong>etcd</strong></p>
+<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code><span class="token comment"># 查看命名空间 kube-system 下的 pods</span>
 $ kubectl <span class="token parameter variable">-n</span> kube-system get po
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div></div></div><h5 id="使用-yaml格式-定义-pod" tabindex="-1"><a class="header-anchor" href="#使用-yaml格式-定义-pod" aria-hidden="true">#</a> <strong>使用 yaml格式 定义 Pod</strong></h5>
-<p><em>myblog/one-pod/pod.yaml</em></p>
+<p><strong>yaml</strong> 工程师，推荐使用<strong>yaml</strong> 而非 <strong>json</strong>，因为大家都使用 <strong>yaml...</strong></p>
 <div class="language-yaml ext-yml line-numbers-mode"><pre v-pre class="language-yaml"><code><span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> v1
 <span class="token key atrule">kind</span><span class="token punctuation">:</span> Pod
 <span class="token key atrule">metadata</span><span class="token punctuation">:</span>
-<span class="token key atrule">name</span><span class="token punctuation">:</span> myblog
-<span class="token key atrule">namespace</span><span class="token punctuation">:</span> demo
-<span class="token key atrule">labels</span><span class="token punctuation">:</span>
-<span class="token key atrule">component</span><span class="token punctuation">:</span> myblog
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> myblog
+  <span class="token key atrule">namespace</span><span class="token punctuation">:</span> uit
+  <span class="token key atrule">labels</span><span class="token punctuation">:</span>
+    <span class="token key atrule">component</span><span class="token punctuation">:</span> myblog
 <span class="token key atrule">spec</span><span class="token punctuation">:</span>
-<span class="token key atrule">containers</span><span class="token punctuation">:</span>
-<span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> myblog
-<span class="token key atrule">image</span><span class="token punctuation">:</span> 172.21.32.6<span class="token punctuation">:</span>5000/myblog
-<span class="token key atrule">env</span><span class="token punctuation">:</span>
-<span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> MYSQL_HOST <span class="token comment"># 指定root用户的用户名</span>
-<span class="token key atrule">value</span><span class="token punctuation">:</span> <span class="token string">"127.0.0.1"</span>
-<span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> MYSQL_PASSWD
-<span class="token key atrule">value</span><span class="token punctuation">:</span> <span class="token string">"123456"</span>
-<span class="token key atrule">ports</span><span class="token punctuation">:</span>
-<span class="token punctuation">-</span> <span class="token key atrule">containerPort</span><span class="token punctuation">:</span> <span class="token number">8002</span>
-<span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> mysql
-<span class="token key atrule">image</span><span class="token punctuation">:</span> 172.21.32.6<span class="token punctuation">:</span>5000/mysql<span class="token punctuation">:</span>5.7<span class="token punctuation">-</span>utf8
-<span class="token key atrule">ports</span><span class="token punctuation">:</span>
-<span class="token punctuation">-</span> <span class="token key atrule">containerPort</span><span class="token punctuation">:</span> <span class="token number">3306</span>
-<span class="token key atrule">env</span><span class="token punctuation">:</span>
-<span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> MYSQL_ROOT_PASSWORD
-<span class="token key atrule">value</span><span class="token punctuation">:</span> <span class="token string">"123456"</span>
-<span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> MYSQL_DATABASE
-<span class="token key atrule">value</span><span class="token punctuation">:</span> <span class="token string">"myblog"</span>
+  <span class="token key atrule">containers</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> myblog
+      <span class="token key atrule">image</span><span class="token punctuation">:</span> 192.168.3.171<span class="token punctuation">:</span>5000/myblog
+      <span class="token key atrule">env</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> MYSQL_HOST <span class="token comment"># 指定root用户的用户名</span>
+        <span class="token key atrule">value</span><span class="token punctuation">:</span> <span class="token string">"127.0.0.1"</span>
+      <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> MYSQL_PASSWD
+        <span class="token key atrule">value</span><span class="token punctuation">:</span> <span class="token string">"123456"</span>
+      <span class="token key atrule">ports</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> <span class="token key atrule">containerPort</span><span class="token punctuation">:</span> <span class="token number">8002</span>
+    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> mysql
+      <span class="token key atrule">image</span><span class="token punctuation">:</span> 192.168.3.171<span class="token punctuation">:</span>5000/mysql<span class="token punctuation">:</span>5.7<span class="token punctuation">-</span>utf8
+      <span class="token key atrule">ports</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> <span class="token key atrule">containerPort</span><span class="token punctuation">:</span> <span class="token number">3306</span>
+      <span class="token key atrule">env</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> MYSQL_ROOT_PASSWORD
+        <span class="token key atrule">value</span><span class="token punctuation">:</span> <span class="token string">"123456"</span>
+      <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> MYSQL_DATABASE
+        <span class="token key atrule">value</span><span class="token punctuation">:</span> <span class="token string">"myblog"</span>
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><table>
 <thead>
 <tr>
@@ -166,7 +165,7 @@ $ kubectl <span class="token parameter variable">-n</span> kube-system get po
 </tr>
 </tbody>
 </table>
-<p>资源类型与 <strong>apiVersion</strong> 对照表</p>
+<p><strong>资源类型</strong> 与 <strong>apiVersion</strong> 的对照表（<em>编写如下资源的 <strong>yaml</strong> 该指定那个 <strong>apiVersion</strong></em>）</p>
 <table>
 <thead>
 <tr>
@@ -245,20 +244,18 @@ $ kubectl <span class="token parameter variable">-n</span> kube-system get po
 </tr>
 </tbody>
 </table>
-<p>快速获得资源和版本</p>
+<p>快速查看 <strong>资源</strong> 对应的 <strong>版本</strong></p>
 <div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code>$ kubectl explain pod
 $ kubectl explain Pod.apiVersion
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div></div></div><h5 id="创建和访问pod" tabindex="-1"><a class="header-anchor" href="#创建和访问pod" aria-hidden="true">#</a> 创建和访问Pod</h5>
-<p><a href="https://blog.51cto.com/u_14691718/5093025" target="_blank" rel="noopener noreferrer">基于Docker和Kubernetes的企业级DevOps实践训练营_51CTO博客_kubernetes和docker关系<ExternalLinkIcon/></a></p>
-<p><a href="https://blog.csdn.net/weixin_43336281/article/details/107431104" target="_blank" rel="noopener noreferrer">基于Docker和Kubernetes的企业级DevOps实践训练营_Alex_996的博客-CSDN博客<ExternalLinkIcon/></a></p>
-<div class="language-powershell ext-powershell line-numbers-mode"><pre v-pre class="language-powershell"><code><span class="token comment">## 创建namespace, namespace是逻辑上的资源池</span>
-$ kubectl create namespace demo
+<div class="language-powershell ext-powershell line-numbers-mode"><pre v-pre class="language-powershell"><code><span class="token comment"># 创建namespace, namespace是逻辑上的资源池</span>
+$ kubectl create namespace uit
 
-<span class="token comment">## 使用指定文件创建Pod</span>
-$ kubectl create <span class="token operator">-</span>f demo-pod<span class="token punctuation">.</span>yaml
+<span class="token comment"># 使用指定文件创建Pod</span>
+$ kubectl create <span class="token operator">-</span>f ufs-pod<span class="token punctuation">.</span>yaml
 
-<span class="token comment">## 查看pod，可以简写po</span>
-<span class="token comment">## 所有的操作都需要指定namespace，如果是在default命名空间下，则可以省略</span>
+<span class="token comment"># 查看pod，可以简写 po</span>
+<span class="token comment"># 所有的操作都需要指定 namespace，如果是在 default 命名空间下可以省略</span>
 $ kubectl <span class="token operator">-</span>n demo get pods <span class="token operator">-</span>o wide
 NAME READY STATUS RESTARTS AGE IP NODE
 myblog 2/2 Running 0 3m 10<span class="token punctuation">.</span>244<span class="token punctuation">.</span>1<span class="token punctuation">.</span>146 k8s-slave1

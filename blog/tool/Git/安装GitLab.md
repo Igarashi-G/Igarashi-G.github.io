@@ -1,13 +1,17 @@
 ---
 title: 安装GitLab
-order: 3
+date: 2022-03-14
+category:
+  - 工具
+tag:
+  - gitlab
 ---
 
 # 安装 GitLab
 
 ### 1. 配置 yum 仓库
 
-- 新建 `/etc/yum.repos.d/gitlab-ce.repo` 内容如下：
+- 新建 `/etc/yum.repos.d/gitlab-ce.repo` 内容如下
 
   ```shell
   [gitlab-ce]

@@ -1,21 +1,21 @@
 ---
-title: Git&Github
-order: 1
-
-group:
-  title: Git代码托管工具
-  order: 1
+title: Git版本管理
+date: 2018-06-27
+category:
+  - 工具
+tag:
+  - git
 ---
 
-# Git 版本管理工具:
+**Git** 是目前世界上最先进的分布式版本控制系统
 
-<Alert type="info">
-  <Font>Git</Font> 是目前世界上最先进的分布式版本控制系统
-</Alert>
+<!-- more -->
 
-> **简介：**
->
-> `Linus Torvalds` 为了帮助管理 Linux 内核开发而花了两周时间用 **C** 写了一个最流行的分布式版本控制系统，2008 年 `GitHub` 网站上线
+# Git 版本管理工具
+
+**简介：**
+
+**Linus Torvalds** 为了帮助管理 **Linux** 内核开发而花了两周时间用 **C** 写了一个最流行的分布式版本控制系统，**2008** 年 **GitHub** 网站上线
 
 |        | 集中式版本控制系统(SVN)          | 分布式版本控制系统                                                               |
 | ------ | -------------------------------- | -------------------------------------------------------------------------------- |
@@ -28,7 +28,7 @@ group:
 
 ### 1.1 安装
 
-**`Window` 下安装**
+**Window 下安装**
 
 [下载 window 版的客户端](http://git-scm.com/download)，以管理员身份运行后，一直选择下一步安装即可，请注意，如果你不熟悉每个选项的意思，请保持默认的选项
 
@@ -326,7 +326,7 @@ $ git help config
   git log # 找到最初想要提交的那一次的 commit id （提交的错误 push）
   git reset # 如上得到的 commit id，得到最初提交前的错误代码
   git push --force # 强推
-
+  
   # reset之后，修改代码。然后正常 add、commit、push 后，前线上错误提交会被删除和覆盖
   ```
 
@@ -361,7 +361,7 @@ $ git help config
 
   ```bash
   $ git clean -df  # 把 Untracked files(未跟踪文件) 进行删除
-
+  
   -d: 删除未被添加到git的路径中的文件
   -f: 强制运行
   -n: 显示将要删除的文件和目录
@@ -437,7 +437,7 @@ $ git help config
 
    > **Git** 怎么合并呢？
    >
-   > ​ 最简单的方法，就是直接把 `master` 指向 `dev` 的当前提交，就完成了合并
+   >  最简单的方法，就是直接把 `master` 指向 `dev` 的当前提交，就完成了合并
 
 7. 所以 **Git** 合并分支也很快，就改改指针，工作区内容也不变
 
@@ -474,7 +474,7 @@ $ git help config
 
   ```bash
   git cherry-pick A..B	# 转移从 commit A 到 commit B的提交，但不包含commit A
-
+  
   git cherry-pick A^..B	# 同上，但包含A
   ```
 
@@ -669,39 +669,39 @@ $ git help config
         你需要把邮件地址换成你自己的邮件地址，然后一路回车，使用默认值即可，由于这个Key也不是用于军事目的，所以也无需设置密码。
         如果一切顺利的话，可以在用户主目录里找到.ssh目录，里面有id_rsa和id_rsa.pub两个文件，这两个就是SSH Key的秘钥对，id_rsa是私钥，不能泄露
         出去，id_rsa.pub是公钥，可以放心地告诉任何人。
-
+    
         第2步：登陆GitHub，打开“Account settings”，“SSH Keys”页面：
         然后，点“Add SSH Key”，填上任意Title，在Key文本框里粘贴id_rsa.pub文件的内容,点“Add Key”，你就应该看到已经添加的Key：
         为什么GitHub需要SSH Key呢？因为GitHub需要识别出你推送的提交确实是你推送的，而不是别人冒充的，而Git支持SSH协议，所以，GitHub只
         要知道了你的公钥，就可以确认只有你自己才能推送。
         当然，GitHub允许你添加多个Key。假定你有若干电脑，你一会儿在公司提交，一会儿在家里提交，只要把每台电脑的Key都添加到GitHub，就可以在
         每台电脑上往GitHub推送了。
-
+    
         点击“Create repository”按钮，就成功地创建了一个新的Git仓库
         目前，在GitHub上的这个新创建的仓库还是空的，GitHub告诉我们，可以从这个仓库克隆出新的仓库，也可以把一个已有的本地仓库与之关联，然后，
         把本地仓库的内容推送到GitHub仓库。
-
+    
         现在，我们根据GitHub的提示，在本地自己的仓库下运行命令：
         $ git remote add origin git@github.com:yourID/yourgit.git   （相当于填写名字）
         添加后，远程库的名字就是origin，这是Git默认的叫法，也可以改成别的，但是origin这个名字一看就知道是远程库。
-
+    
         把本地库的内容推送到远程，用git push命令，实际上是把当前分支master推送到远程。
         由于远程库是空的，我们第一次推送master分支时，加上了-u参数，Git不但会把本地的master分支内容推送的远程新的master分支，还会把本地的master
         分支和远程的master分支关联起来，在以后的推送或者拉取时就可以简化命令。（推送成功后，可以立刻在GitHub页面中看到远程库的内容已经和本地一模一样）
-
+    
         从现在起，只要本地作了提交，就可以通过命令：
         $ git push origin master    把本地master分支的最新修改推送至GitHub，现在，你就拥有了真正的分布式版本库！
-
+    
         SSH警告：
             当你第一次使用Git的clone或者push命令连接GitHub时，会得到一个警告
             这是因为Git使用SSH连接，而SSH连接在第一次验证GitHub服务器的Key时，需要你确认GitHub的Key的指纹信息是否真的来自GitHub的服务器，输入yes回车即可。
             这个警告只会出现一次，后面的操作就不会有任何警告了。
             如果你实在担心有人冒充GitHub服务器，输入yes前可以对照GitHub的RSA Key的指纹信息是否与SSH连接给出的一致。
-
+    
         现在，假设我们从零开发，那么最好的方式是先创建远程库，然后，从远程库克隆。
         首先，登陆GitHub，创建一个新的仓库，勾选Initialize this repository with a README，这样GitHub会自动为我们创建一个README.md文件。
         远程库已经准备好了，下一步是用命令git clone克隆一个本地库：
-
+    
         git clone SSH协议的仓库地址
             如果有多个人协作开发，那么每个人各自从远程克隆一份就可以了。实际上，Git支持多种协议，默认的git://使用ssh，但也可以使用https等其他协议。
             使用https除了速度慢以外，还有个最大的麻烦是每次推送都必须输入口令，但是在某些只开放http端口的公司内部就无法使用ssh协议而只能用https。
@@ -709,81 +709,81 @@ $ git help config
 
 
 
-​
+
 
     gitlab多用户配置：
         1.首先需要  ssh-keygen -t rsa -C "zhengze@uit.com.cn"  生成不一样的另一个key 并修改命名为 id_rsa_gitlab
-
+    
         2.将id_rsa_gitlab.pub 内容分别添加到 公司远程的 gitlab SSH Keys 中
-
+    
         3.运行命令：
             ssh-add ~/.ssh/id_rsa // 将 GitHub 私钥添加到本地
             ssh-add ~/.ssh/id_rsa_gitlab // 将 公司的GitLab 私钥添加到本地
-
+    
             ssh-add -l  // 执行命令测试是否能显示出如下类似结果：
-
+    
                 3072 SHA256:6i2sMMsZf9kWVapDVEP+c2hGRXRNIMxOTX/v2CJqUTE zhengze@uit.com.cn (RSA)
                 3072 SHA256:swyJa6qw6hlXa0Dqe3beuWsUmqUa0R7XGF/YsrmJ+4k 2545369032@qq.com (RSA)
-
+    
         4.打开config配置文件：
             vim ~/.ssh/config
-
+    
             Host github.com //名称随便起
             HostName github.com
             PreferredAuthentications publickey
             IdentityFile ~/.ssh/id_rsa
             User 2545369032@qq.com
-
+    
             Host gitlab
             HostName http://172.18.50.120   //公司ip地址可以，gitlab.com便是指gitlab网站
             User zhengze@uit.com.cn         // 用户名
             PreferredAuthentications publickey
             IdentityFile ~/.ssh/id_rsa_gitlab   //生成的私钥地址
-
+    
         5.运行如下命令，测试是否成功，收到welcome提示则ok
             ssh -T git@172.18.50.120
             ssh -T git@github
-
+    
         注：
              git 的配置分为三级别，System —> Global —>Local
              即对应命令：git config --local user.name/user.email
-
+    
              通过以下命令查看本仓库的所有配置信息：git config --local/--global --list
-
+    
              报：Could not open a connection to your authentication agent.
              请切换到~/.ssh目录下执行ssh-agent bash 然后重复3
-
+    
         若每次重新打开git都需要执行以上操作，那么可以通过以下方法一劳永逸：
-
+    
         那就是把
             eval "$(ssh-agent -s)"
             ssh-add ~/.ssh/helloSSH
-
+    
         放到git的bashrc中：打开git的安装目录，进入到etc/中，使用文本编辑软件（比如Editplus）编辑 bash.bashrc 文件，在末尾添加两行：
-
+    
         eval "$(ssh-agent -s)"
         ssh-add ~/.ssh/helloSSH
-
+    
         这样，在每次新打开git的shell之后，会自动执行这两句话，并在shell中回显出（注：）中的打印
-
+    
     使用码云:
         如果我们希望体验Git飞一般的速度，可以使用国内的Git托管服务——码云（gitee.com）。
         和GitHub相比，码云也提供免费的Git仓库。此外，还集成了代码质量检测、项目演示等功能。对于团队协作开发，码云还提供了项目管理、代码托管、文
         档管理的服务，5人以下小团队免费。(有兴趣自查)
-
+    
     自定义Git：
         我们已经配置了user.name和user.email，实际上，Git还有[很多]可配置项。
         比如，让Git显示颜色，会让命令输出看起来更醒目：
         $ git config --global color.ui true
         这样，Git会适当地显示不同的颜色，比如git status命令
-
+    
         忽略某些文件时，需要编写.gitignore；
         .gitignore文件本身要放到版本库里，并且可以对.gitignore做版本管理！
-
+    
         甚至还有人丧心病狂地把lg配置成了：
         git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
         给Git配置好别名，就可以输入命令时偷个懒。
-
+    
         搭建Git服务器非常简单，通常10分钟即可完成；
         要方便管理公钥，用Gitosis；
         要像SVN那样变态地控制权限，用Gitolite。
@@ -794,5 +794,5 @@ Git 虽然极其强大，命令繁多，但常用的就那么十来个，掌握�
 ssh 用户名@ip 地址： 用于远程连接，win10 目前自带，例：ssh root@59.110.220.5
 
     sftp 用户名@ip地址:  同上，用于文件传输连接
-
+    
         put: put指令，用于传输文件到服务器上。 例： put C:\Users\Fuuka\Desktop\YKB.txt /home/admin

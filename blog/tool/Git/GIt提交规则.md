@@ -1,7 +1,15 @@
 ---
-title: 提交规范
-order: 2
+title: Git提交规范
+date: 2020-11-13
+category:
+  - 工具
+tag:
+  - git
 ---
+
+**Git** 代码提交规范
+
+<!-- more -->
 
 #### 通用规范：
 

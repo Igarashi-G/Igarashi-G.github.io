@@ -100,11 +100,11 @@ CMD <span class="token punctuation">[</span><span class="token string">"/usr/sbi
 <div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code><span class="token comment"># 查看 nginx 页面</span>
 <span class="token function">docker</span> <span class="token builtin class-name">exec</span> <span class="token parameter variable">-ti</span> z-nginx-ubuntu <span class="token function">bash</span>
 <span class="token function">curl</span> localhost
-
+ 
 <span class="token comment"># 移除容器 并 重启设置端口转发再启动</span>
 <span class="token function">docker</span> <span class="token function">rm</span> <span class="token parameter variable">-f</span> z-nginx-ubuntu
 <span class="token function">docker</span> run <span class="token parameter variable">--name</span> z-nginx-ubuntu <span class="token parameter variable">-d</span> <span class="token parameter variable">-p</span> <span class="token number">8080</span>:80 z-nginx:ubuntu
-
+ 
 <span class="token comment"># 查看是否转发（获取到nginx首页）</span>
 <span class="token function">curl</span> localhost:8080
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></li>
@@ -327,7 +327,7 @@ $ <span class="token function">docker</span> run <span class="token parameter va
 	MAINTAINER Fuuka Igarashi <span class="token operator">&lt;</span><span class="token number">2545369032</span>@qq.com<span class="token operator">></span>
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></li>
 <li>
-<p><strong>COPY|ADD</strong> 添加本地源代码到镜像</p>
+<p><strong>COPY|ADD</strong> <mark>添加本地源代码到镜像</mark></p>
 <div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code><span class="token comment"># 格式</span>
 	COPY <span class="token operator">&lt;</span>src<span class="token operator">></span><span class="token punctuation">..</span>. <span class="token operator">&lt;</span>dest<span class="token operator">></span>
 <span class="token comment"># 示例</span>

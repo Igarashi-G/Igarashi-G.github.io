@@ -40,7 +40,7 @@ docker logs -f + container_id
 
 ## 1. Kubernetes 概述
 
-纯 **Docker** （*容器模式*） 的运维管理很难，尤其涉及到跨容器网络通信，故诞生了容器调度管理平台 **Kubernetes** 
+纯 **Docker** （*容器模式*） 的运维管理麻烦，尤其涉及到跨容器网络通信，故诞生了容器调度管理平台 **Kubernetes** ，由于功能强大，**17** 年后渐渐成为主流
 
 ##### **架构图如下**
 
@@ -48,50 +48,53 @@ docker logs -f + container_id
 
 ##### **包含如下核心组件**
 
-- **[etcd]()：** 分布式高性能键值数据库，存储整个集群的所有元数据
+- **[etcd]()：** 分布式高性能键值 **数据库**，存储整个集群的所有元数据，**只通过 ApiServer 访问**
+- **ApiServer：** **接口** 服务器，用来交互的，集群资源访问控制入口，提供 **restful api** 及安全访问控制
+- **Scheduler：** **调度器**，把业务容器调度到合适节点
+- **Controller Manager：** **控制管理器，20来种的统称**，确保集群资源按照期望的方式运行，生成元数据，故在调度之前，**k8s 中最复杂的点** 
+  - **Replication Controller** 
+  - **Node controller** 
+  - **ResourceQuota Controller** 
+  - **Namespace Controller** 
+  - **ServiceAccount Controller** 
+  - **Tocken Controller** 
+  - **Service Controller** 
+  - **Endpoints Controller** 
 
-- **ApiServer：** 接口服务器，集群资源访问控制入口，提供 **restful api** 及安全访问控制
-
-- **Scheduler：** 调度器，把业务容器调度到合适节点
-
-- **Controller Manager：** 控制器，确保集群资源 **按照期望的方式运行**
-- **Replication Controller ** 
-- **Node controller** 
-- **ResourceQuota Controller** 
-- **Namespace Controller** 
-- **ServiceAccount Controller** 
-- **Tocken Controller ** 
-- **Service Controller ** 
-- **Endpoints Controller** 
-
-- **kubelet：** 节点代理，运行再每个节点上，管节点的
-  - **pod：**  容器的抽象，最小资源调度单位，管容器的，被 **kubelet** 管的
-  - **容器健康检查：** 检查容器是否正常运行，若运行出错，会按照**pod** 设置的重启策略处理
-  - **容器监控：** 监控所在节点资源的，会定时向 **Master** 报告，资源使用数据通过 **cAdvisor** 获取的，对于 **pod** 调度和正常运行至关重要
-  - **[kubectl](https://kubernetes.io/zh-cn/docs/reference/kubectl/)：** 命令行工具
-
+- **kubelet：** 节点代理，运行再每个节点上，管节点同时汇报情况给 **Master** 管理节点
+  - **pod管理：**  容器的抽象，最小资源调度单位，管容器的，被 **kubelet** 管的
+  - **容器健康检查：** 检查容器是否正常运行，若运行出错，按照 **pod** 设置的重启策略处理
+  - **容器监控：** 监控容器所在节点资源的使用情况，定时向 **Master** 报告，资源使用数据通过 **cAdvisor** 获取的，对于 **pod** 调度和正常运行至关重要
+- **kube-proxy：** 维护节点中的 **iptables** 或 **ipvs** 规则
+- **[kubectl](https://kubernetes.io/zh-cn/docs/reference/kubectl/)：** 命令行工具
 - **cni：** 通用网络接口，如 **flannel** 等的网络插件，实现集群跨节点通信
 
-##### **其工作流程**
+##### **其工作流程如下**
 
 <img src="./img/工作流程.png">
 
+::: warning 关于性能
+
+**ApiServer** 压测 **10w+** 大概才会出现性能问题（*应该是普通的企业主机配置*）
+
+:::
+
 部署后则生成 **kubelet** 进程，可执行 **kubectl** 二进制命令行工具，其中
 
-- **组件：** 为了支撑 **k8s** 平台的运行，安装好的软件
-- **资源：** 被 **k8s** 管理的
+- **组件：** 启动的一个进程，为了支撑 **k8s** 平台的运行，安装好的软件
+- **资源：** **k8s** 提供的能力，被 **k8s** 所管理
 
 ```shell
 # 查看 systemd 服务
 systemctl status kubelet
 
-# 查看 api资源
+# 查看 kubernetes的资源，简写
 kubectl api-resources
 ```
 
 ##### **kubectl**的使用
 
-类似于 **docker**，**[kubectl](https://kubernetes.io/zh-cn/docs/reference/kubectl/)** 是命令行工具，用于与APIServer交互，内置了丰富的子命令，功能强大
+类似于 **docker**，**[kubectl](https://kubernetes.io/zh-cn/docs/reference/kubectl/)** 是 **CLI**，用于与 **APIServer** 交互，内置了丰富的子命令，功能强大
 
 ```powershell
 $ kubectl -h
@@ -102,15 +105,14 @@ $ kubectl create namespace -h
 $ kubectl get po -v=7
 ```
 
- 
-
 ## 2. 资源
 
 ### 2.1. namespace
 
-命名空间，集群内一个虚拟的概念，类似于资源池的概念，一个池子里可以有各种资源类型，绝大多数的资源都必须属于某一个namespace。集群初始化安装好之后，会默认有如下几个namespace：
+命名空间，集群内的虚拟概念，类似于资源池，池中有各种资源，绝大多数的资源都必须属于某一个**namespace** 
 
 ```shell
+# 集群初始化安装好之后，会默认有如下几个
 $ kubectl get ns	# or get namespaces
 
 NAME                   STATUS   AGE
@@ -121,52 +123,59 @@ kube-system            Active   10d
 kubernetes-dashboard   Active   9d
 ```
 
-- 所有NAMESPACED的资源，在创建的时候都需要指定namespace，若不指定，默认会在default命名空间下
-- 相同namespace下的同类资源不可以重名，不同类型的资源可以重名
-- 不同namespace下的同类资源可以重名
-- 通常在项目使用的时候，我们会创建带有业务含义的namespace来做逻辑上的整合
+- 所有 **namespaces** 资源，创建时都要指定 `-n ns`，若不指定，默认为 **default** 
+- 同一个 **namespace** 下的同类资源 **不能重名**，不同类型的资源可以重名，不同 **namespace** 也可
+- 在项目通常创建带有业务含义的 **namespace** 来做逻辑上的整合
+
+::: tip
+
+```shell
+kubectl -n xxxns get xxx	# 命名空间放前面，方便复用
+```
+
+:::
 
 ### 2.2 Pod
 
-**最小调度单元**，用来存放多个容器的（*豆荚*），为了与容器引擎（*Docker*）解耦，抽象出一层 **Pod** 让 **k8s** 进行调度，被 **kubelet** 定期 **watch** 更新状态写入 **etcd** 
+**最小调度单元**，理解为存放多个容器的（*豆荚*），为和容器引擎（*Docker*）解耦（*如 **1.22.x** 改用 **containerd***），抽象出一层 **Pod** 让 **k8s** 进行调度，被 **kubelet** 定期 **watch** ，更新状态并写入 **etcd** 
 
 ```shell
-## 查看命名空间 kube-system 下的 pods
+# 查看命名空间 kube-system 下的 pods
 $ kubectl -n kube-system get po
 ```
 
 ##### **使用 yaml格式 定义 Pod**
 
-*myblog/one-pod/pod.yaml*
+**yaml** 工程师，推荐使用**yaml** 而非 **json**，因为大家都使用 **yaml...** 
 
 ```yaml
 apiVersion: v1
 kind: Pod
 metadata:
-name: myblog
-namespace: demo
-labels:
-component: myblog
+  name: myblog
+  namespace: uit
+  labels:
+    component: myblog
 spec:
-containers:
-- name: myblog
-image: 172.21.32.6:5000/myblog
-env:
-- name: MYSQL_HOST # 指定root用户的用户名
-value: "127.0.0.1"
-- name: MYSQL_PASSWD
-value: "123456"
-ports:
-- containerPort: 8002
-- name: mysql
-image: 172.21.32.6:5000/mysql:5.7-utf8
-ports:
-- containerPort: 3306
-env:
-- name: MYSQL_ROOT_PASSWORD
-value: "123456"
-- name: MYSQL_DATABASE
-value: "myblog"
+  containers:
+    - name: myblog
+      image: 192.168.3.171:5000/myblog
+      env:
+      - name: MYSQL_HOST # 指定root用户的用户名
+        value: "127.0.0.1"
+      - name: MYSQL_PASSWD
+        value: "123456"
+      ports:
+      - containerPort: 8002
+    - name: mysql
+      image: 192.168.3.171:5000/mysql:5.7-utf8
+      ports:
+      - containerPort: 3306
+      env:
+      - name: MYSQL_ROOT_PASSWORD
+        value: "123456"
+      - name: MYSQL_DATABASE
+        value: "myblog"
 ```
 
 | apiVersion | 含义 |
@@ -177,7 +186,7 @@ value: "myblog"
 | **v1** | **stable** 版本之后的首个版本，包含了更多的核心对象 |
 | **apps/v1** | 使用最广泛的版本，像 **Deployment**，**ReplicaSets** 都已进入该版本 |
 
-资源类型与 **apiVersion** 对照表
+**资源类型** 与 **apiVersion** 的对照表（*编写如下资源的 **yaml** 该指定那个 **apiVersion***）
 
 | Kind | apiVersion |
 | :-------------------- | :-------------------------------------- |
@@ -199,7 +208,7 @@ value: "myblog"
 | **Job** | **batch/v1** |
 | **StatefulSet** | **apps/v1、apps/v1beta1、apps/v1beta2** |
 
-快速获得资源和版本
+快速查看 **资源** 对应的 **版本**
 
 ```shell
 $ kubectl explain pod
@@ -208,19 +217,15 @@ $ kubectl explain Pod.apiVersion
 
 ##### 创建和访问Pod
 
-[基于Docker和Kubernetes的企业级DevOps实践训练营_51CTO博客_kubernetes和docker关系](https://blog.51cto.com/u_14691718/5093025)
-
-[基于Docker和Kubernetes的企业级DevOps实践训练营_Alex_996的博客-CSDN博客](https://blog.csdn.net/weixin_43336281/article/details/107431104)
-
 ```powershell
-## 创建namespace, namespace是逻辑上的资源池
-$ kubectl create namespace demo
+# 创建namespace, namespace是逻辑上的资源池
+$ kubectl create namespace uit
 
-## 使用指定文件创建Pod
-$ kubectl create -f demo-pod.yaml
+# 使用指定文件创建Pod
+$ kubectl create -f ufs-pod.yaml
 
-## 查看pod，可以简写po
-## 所有的操作都需要指定namespace，如果是在default命名空间下，则可以省略
+# 查看pod，可以简写 po
+# 所有的操作都需要指定 namespace，如果是在 default 命名空间下可以省略
 $ kubectl -n demo get pods -o wide
 NAME READY STATUS RESTARTS AGE IP NODE
 myblog 2/2 Running 0 3m 10.244.1.146 k8s-slave1

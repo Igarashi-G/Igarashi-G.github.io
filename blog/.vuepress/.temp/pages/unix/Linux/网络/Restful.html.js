@@ -1,1 +1,14 @@
-export const data = JSON.parse("{\"key\":\"v-0ddcf4e2\",\"path\":\"/unix/Linux/%E7%BD%91%E7%BB%9C/Restful.html\",\"title\":\"RESTful规范\",\"lang\":\"zh-CN\",\"frontmatter\":{\"title\":\"RESTful规范\",\"order\":4,\"summary\":\"RESTful 规范介绍： 初识 RESTful 架构： 越来越多的人开始意识到，网站即软件，而且是一种新型的软件。 5G 的腾空出世，用发展的眼光来看的话。下载一个 2GB 的电影仅需要 1、2 秒，此时往本地方硬盘的意义就不大了。网上读取比本地硬盘还快， 我为什么要放硬盘啊？ 这种\\\"互联网软件\\\"采用浏览器/服务器模式。分布式的体系，通过互联网通信，具有高\",\"head\":[[\"meta\",{\"property\":\"og:url\",\"content\":\"https://igarashi-g.github.io/igarashi-blog/igarashi-blog/unix/Linux/%E7%BD%91%E7%BB%9C/Restful.html\"}],[\"meta\",{\"property\":\"og:site_name\",\"content\":\"五十岚呐~\"}],[\"meta\",{\"property\":\"og:title\",\"content\":\"RESTful规范\"}],[\"meta\",{\"property\":\"og:type\",\"content\":\"article\"}],[\"meta\",{\"property\":\"og:updated_time\",\"content\":\"2022-09-29T14:35:37.000Z\"}],[\"meta\",{\"property\":\"og:locale\",\"content\":\"zh-CN\"}],[\"meta\",{\"property\":\"article:modified_time\",\"content\":\"2022-09-29T14:35:37.000Z\"}]]},\"excerpt\":\"\",\"headers\":[],\"git\":{\"createdTime\":1664462137000,\"updatedTime\":1664462137000,\"contributors\":[{\"name\":\"Igarashi\",\"email\":\"2545369032@qq.com\",\"commits\":1}]},\"readingTime\":{\"minutes\":11.93,\"words\":3578},\"filePathRelative\":\"unix/Linux/网络/Restful.md\",\"localizedDate\":\"2022年9月29日\"}")
+export const data = JSON.parse("{\"key\":\"v-0ddcf4e2\",\"path\":\"/unix/Linux/%E7%BD%91%E7%BB%9C/Restful.html\",\"title\":\"RESTful规范\",\"lang\":\"zh-CN\",\"frontmatter\":{\"title\":\"RESTful规范\",\"order\":4,\"summary\":\"RESTful 规范介绍： 初识 RESTful 架构： 越来越多的人开始意识到，网站即软件，而且是一种新型的软件。 5G 的腾空出世，用发展的眼光来看的话。下载一个 2GB 的电影仅需要 1、2 秒，此时往本地方硬盘的意义就不大了。网上读取比本地硬盘还快， 我为什么要放硬盘啊？ 这种\\\"互联网软件\\\"采用浏览器/服务器模式。分布式的体系，通过互联网通信，具有高\",\"head\":[[\"meta\",{\"property\":\"og:url\",\"content\":\"https://igarashi-g.github.io/igarashi-blog/igarashi-blog/unix/Linux/%E7%BD%91%E7%BB%9C/Restful.html\"}],[\"meta\",{\"property\":\"og:site_name\",\"content\":\"五十岚呐~\"}],[\"meta\",{\"property\":\"og:title\",\"content\":\"RESTful规范\"}],[\"meta\",{\"property\":\"og:type\",\"content\":\"article\"}],[\"meta\",{\"property\":\"og:locale\",\"content\":\"zh-CN\"}]]},\"excerpt\":\"\",\"headers\":[],\"readingTime\":{\"minutes\":11.93,\"words\":3578},\"filePathRelative\":\"unix/Linux/网络/Restful.md\"}")
+
+if (import.meta.webpackHot) {
+  import.meta.webpackHot.accept()
+  if (__VUE_HMR_RUNTIME__.updatePageData) {
+    __VUE_HMR_RUNTIME__.updatePageData(data)
+  }
+}
+
+if (import.meta.hot) {
+  import.meta.hot.accept(({ data }) => {
+    __VUE_HMR_RUNTIME__.updatePageData(data)
+  })
+}
