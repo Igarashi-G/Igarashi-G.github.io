@@ -9,7 +9,7 @@ tag:
   - igarashi
 ---
 
-<img src='https://qpluspicture.oss-cn-beijing.aliyuncs.com/6LjjQA/Hi.gif' alt='Hi' width="24"/>嗨呀~ , 我是 **五十岚 · 寄**<br/>一个干啥啥不行，吃啥啥不够的 **Python** 混子 <img src="https://media.giphy.com/media/WUlplcMpOCEmTGBtBW/giphy.gif" width="30">, 没事也整整前端: [`Vue`, `React`]<br/>热爱开源与分享😄(**Copy**代码一把梭...误 <img src="https://media.giphy.com/media/mGcNjsfWAjY5AEZNw6/giphy.gif" width="50">
+<img src='https://qpluspicture.oss-cn-beijing.aliyuncs.com/6LjjQA/Hi.gif' alt='Hi' width="24"/>Hi呀~ , 我是 **五十岚 · 寄**<br/>一个干啥啥不行，吃啥啥不够的 **Python** 混子<img src="https://media.giphy.com/media/WUlplcMpOCEmTGBtBW/giphy.gif" width="30">;<br/>没事也整整前端: [`Vue`, `React`];<br/>正在努力学 **Go** 中...<br/>热爱开源与分享😄(**Copy**代码一把梭...误 <img src="https://media.giphy.com/media/mGcNjsfWAjY5AEZNw6/giphy.gif" width="50">
 
 <!--
 - 🔭 I’m currently working on ...
@@ -64,7 +64,8 @@ tag:
 </a>
 
 <img src="https://www.deadly-exception.icu:7779/img/qb.gif" alt="魔法少女QB" height="60" align="right"/>
-【邮箱地址】2545369032@qq.com 💌
 
-坐标 **深圳**, 欢迎有空一起来玩呀~ 🎮
+**Email:** igarashifk@gmail.com 💌
+
+坐标 **深圳**, 有空一起玩~ 🎮
 

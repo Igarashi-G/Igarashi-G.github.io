@@ -1,3 +1,193 @@
-<template><div></div></template>
+<template><div><p><strong>UFS</strong> 管理平台 通过<strong>ldap3</strong> 对接 <strong>AD</strong> 域，加入域、退出域、<strong>CIFS</strong> 权限认证等</p>
+<!-- more -->
+<h1 id="python-对接ad域" tabindex="-1"><a class="header-anchor" href="#python-对接ad域" aria-hidden="true">#</a> Python 对接AD域</h1>
+<h2 id="_1-需求分析" tabindex="-1"><a class="header-anchor" href="#_1-需求分析" aria-hidden="true">#</a> 1. 需求分析</h2>
+<blockquote>
+<p>支持所有存储节点加入到 <strong>AD域 / LDAP</strong></p>
+<p><strong>CIFS</strong> 服务（<em>NAS节点</em>）支持 <strong>AD</strong>域 | 本地认证</p>
+</blockquote>
+<h3 id="_1-1-加入-退出域" tabindex="-1"><a class="header-anchor" href="#_1-1-加入-退出域" aria-hidden="true">#</a> 1.1 加入/退出域</h3>
+<h5 id="加入域的场景" tabindex="-1"><a class="header-anchor" href="#加入域的场景" aria-hidden="true">#</a> <strong>加入域的场景</strong></h5>
+<ul>
+<li><strong>添加/扩容节点后：</strong> 提示 <code v-pre>&quot;当前节点尚未加入域&quot;</code>  <strong>手动执行加入域</strong></li>
+<li><strong>加入失败时：</strong> 提示 <code v-pre>&quot;当前节点加入域失败，请检查环境&quot;</code>  <strong>手动执行加入域</strong></li>
+</ul>
+<h5 id="修改域的场景" tabindex="-1"><a class="header-anchor" href="#修改域的场景" aria-hidden="true">#</a> <strong>修改域的场景</strong></h5>
+<ul>
+<li><strong>限制：</strong> 不支持修改 <strong>AD</strong> 服务器 <strong>IP</strong></li>
+</ul>
+<h5 id="退出域的场景" tabindex="-1"><a class="header-anchor" href="#退出域的场景" aria-hidden="true">#</a> <strong>退出域的场景</strong></h5>
+<ul>
+<li><strong>删除节点前：</strong> 删除节点时校验，若该节点依然在域中，提示 &quot;<code v-pre>请先退出AD/LDAP域，再重试删除</code>&quot;
+<ul>
+<li>是否支持强制退出域？ 【支持/不支持】</li>
+</ul>
+</li>
+</ul>
+<h3 id="_1-2-ad-ldap的配置" tabindex="-1"><a class="header-anchor" href="#_1-2-ad-ldap的配置" aria-hidden="true">#</a> 1.2 AD/LDAP的配置</h3>
+<h5 id="ad域配置参数" tabindex="-1"><a class="header-anchor" href="#ad域配置参数" aria-hidden="true">#</a> <strong>AD域配置参数</strong></h5>
+<ul>
+<li><strong>AD域名：</strong> 如 <code v-pre>uit.devops.local</code></li>
+<li><strong>AD DNS IP：</strong> 如 <code v-pre>172.16.70.124</code></li>
+<li><strong>域管理员：</strong> 如 <code v-pre>zhengze</code></li>
+<li><strong>域管理员密码：</strong> 如 <code v-pre>user@dev</code>
+<ul>
+<li>考虑加密</li>
+</ul>
+</li>
+<li>【待定】<strong>过滤器：</strong> 例如 OU、CN 等或自定义的结构，暂不考虑，直接获取所有数据</li>
+<li>【待定】<strong>认证方式选择：</strong> 当前基于 <strong>kerberos</strong> 的 <code v-pre>GSS-API SASL</code> 认证
+<ul>
+<li>其他方式还有 <strong>Simple authentication</strong> 的 <code v-pre>SSL/TLS</code> 认证</li>
+</ul>
+</li>
+<li>【默认内置】<strong>version：</strong> 仅支持 <strong>v3</strong></li>
+<li><strong>测试按钮：</strong> 测试当前 <strong>AD</strong> 域是否连通，未测试通过前无法执行 <strong>“加入域”</strong> 操作
+<ul>
+<li><strong>成功：</strong> 提示 &quot;<code v-pre>连接成功</code>&quot;</li>
+<li><strong>失败：</strong>
+<ul>
+<li><strong>超时 10s 后：</strong> 提示 &quot;<code v-pre>服务器不在工作</code>&quot;</li>
+<li><strong>相同 hostname：</strong> 提示 &quot;<code v-pre>存在相同主机名，无法加入</code>&quot;</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h5 id="ldap配置参数" tabindex="-1"><a class="header-anchor" href="#ldap配置参数" aria-hidden="true">#</a> <strong>LDAP配置参数</strong></h5>
+<ul>
+<li><strong>LDAP基准DN：</strong> 如 <code v-pre>DC=uit,DC=devops,DC=local</code></li>
+<li><strong>LDAP主服务器IP：</strong> 如 <code v-pre>172.16.70.124</code></li>
+<li>【待定】<strong>LDAP从服务器IP：</strong></li>
+<li><strong>LDAP 端口：</strong> 默认 <code v-pre>389</code></li>
+<li>【待定】<strong>LDAP协议：</strong> <code v-pre>LDAP/LDAPS</code></li>
+<li><strong>测试按钮：</strong> 同上</li>
+</ul>
+<h3 id="_1-3-集成到cifs、文件设置、posix" tabindex="-1"><a class="header-anchor" href="#_1-3-集成到cifs、文件设置、posix" aria-hidden="true">#</a> 1.3 集成到CIFS、文件设置、POSIX</h3>
+<p><strong>认证模式：</strong> 支持 <strong>本地认证</strong> 或者 <strong>域认证</strong> （<em>需要增加全局配置文件</em>）</p>
+<ul>
+<li><strong>Samba共享导出：</strong> 增加指定认证模式</li>
+<li><strong>文件高级设置：</strong> 同上</li>
+<li><strong>POSIX共享：</strong> 同上</li>
+</ul>
+<h2 id="_2-加入、退出域的实现" tabindex="-1"><a class="header-anchor" href="#_2-加入、退出域的实现" aria-hidden="true">#</a> 2. 加入、退出域的实现</h2>
+<p>使用 <code v-pre>GSS-API SASL</code> 的方式认证 <strong>realm + kerberos</strong> ，需安装如下软件</p>
+<ul>
+<li><strong>realm：</strong></li>
+<li><strong>kerberos：</strong> 加密 <strong>Ticket</strong> 的网络身份认证协议，由 <strong>Key Distribution Center</strong> (<em>即KDC)</em>、<strong>Client</strong> 和 <strong>Service</strong> 组成，访问<strong>KDC</strong> 两次，拿到 <strong>TGT</strong>，再访问服务器</li>
+</ul>
+<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code>$ yum <span class="token function">install</span> krb5-devel krb5-workstation <span class="token parameter variable">-y</span>
+
+<span class="token comment"># 安装后，客户端会生成 Kerberos 的配置文件</span>
+<span class="token string">"/etc/krb5.conf"</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-ini ext-ini line-numbers-mode"><pre v-pre class="language-ini"><code><span class="token section"><span class="token punctuation">[</span><span class="token section-name selector">logging</span><span class="token punctuation">]</span></span>
+<span class="token key attr-name">default</span> <span class="token punctuation">=</span> <span class="token value attr-value">FILE:/var/log/krb5libs.log</span>
+<span class="token key attr-name">kdc</span> <span class="token punctuation">=</span> <span class="token value attr-value">FILE:/var/log/krb5kdc.log</span>
+<span class="token key attr-name">admin_server</span> <span class="token punctuation">=</span> <span class="token value attr-value">FILE:/var/log/kadmind.log</span>
+
+<span class="token section"><span class="token punctuation">[</span><span class="token section-name selector">libdefaults</span><span class="token punctuation">]</span></span>
+<span class="token key attr-name">default_realm</span> <span class="token punctuation">=</span> <span class="token value attr-value">UIT.DEVOPS.LOCAL</span>
+<span class="token key attr-name">dns_lookup_realm</span> <span class="token punctuation">=</span> <span class="token value attr-value">false</span>
+<span class="token key attr-name">dns_lookup_kdc</span> <span class="token punctuation">=</span> <span class="token value attr-value">false</span>
+
+<span class="token section"><span class="token punctuation">[</span><span class="token section-name selector">realms</span><span class="token punctuation">]</span></span>
+<span class="token key attr-name">UIT.DEVOPS.LOCAL</span> <span class="token punctuation">=</span> <span class="token value attr-value">{</span>
+    <span class="token key attr-name">kdc</span> <span class="token punctuation">=</span> <span class="token value attr-value">172.16.70.104</span>
+    <span class="token key attr-name">admin_server</span> <span class="token punctuation">=</span> <span class="token value attr-value">uit.devops.local</span>
+}
+
+<span class="token section"><span class="token punctuation">[</span><span class="token section-name selector">ad_realm</span><span class="token punctuation">]</span></span>
+<span class="token key attr-name">uit.devops.local</span> <span class="token punctuation">=</span> <span class="token value attr-value">UIT.DEVOPS.LOCAL</span>
+<span class="token key attr-name">.uit.devops.local</span> <span class="token punctuation">=</span> <span class="token value attr-value">UIT.DEVOPS.LOCAL</span>
+
+<span class="token section"><span class="token punctuation">[</span><span class="token section-name selector">kdc</span><span class="token punctuation">]</span></span>
+<span class="token key attr-name">profile</span> <span class="token punctuation">=</span> <span class="token value attr-value">/var/kerberos/krb5kdc/kdc.conf</span>
+
+<span class="token section"><span class="token punctuation">[</span><span class="token section-name selector">appdefaults</span><span class="token punctuation">]</span></span>
+<span class="token key attr-name">pam</span> <span class="token punctuation">=</span> <span class="token value attr-value">{</span>
+    <span class="token key attr-name">debug</span> <span class="token punctuation">=</span> <span class="token value attr-value">false</span>
+    <span class="token key attr-name">ticket_lifetime</span> <span class="token punctuation">=</span> <span class="token value attr-value">36000</span>
+    <span class="token key attr-name">renew_lifetime</span> <span class="token punctuation">=</span> <span class="token value attr-value">36000</span>
+    <span class="token key attr-name">forwardable</span> <span class="token punctuation">=</span> <span class="token value attr-value">true</span>
+    <span class="token key attr-name">krb4_convert</span> <span class="token punctuation">=</span> <span class="token value attr-value">false</span>
+}
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><ul>
+<li><strong>[logging]：</strong> 表示 <strong>Server</strong> 端的日志的打印位置</li>
+<li><strong>[libdefaults]：</strong> 连接默认配置
+<ul>
+<li><code v-pre>default_realm = UIT.DEVOPS.LOCAL</code> 大写，要和下文 <strong>realms</strong> 的一致</li>
+</ul>
+</li>
+<li><strong>[realms]：</strong> 列举使用的 <strong>realm</strong></li>
+<li><code v-pre>kdc</code> 机器的 <strong>hostname</strong> 或 <strong>IP</strong> 地址</li>
+<li><code v-pre>admin_server</code> 机器的 <strong>hostname</strong> 或 <strong>IP</strong> 地址</li>
+<li><code v-pre>default_domain</code> 默认的域名</li>
+<li><strong>[appdefaults]：</strong> 设定一些针对特定应用的配置，覆盖默认配置</li>
+</ul>
+<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code>$ yum <span class="token function">install</span> realmd oddjob oddjob-mkhomedir sssd adcli <span class="token parameter variable">-y</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><h2 id="_3-ldap3" tabindex="-1"><a class="header-anchor" href="#_3-ldap3" aria-hidden="true">#</a> 3. ldap3</h2>
+<p><strong>pip</strong> 安装 <a href="https://ldap3.readthedocs.io/en/latest/welcome.html" target="_blank" rel="noopener noreferrer">ldap3<ExternalLinkIcon/></a> 库</p>
+<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code>$ pip <span class="token function">install</span> ldap3
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p>简单建立同步连接</p>
+<div class="language-python ext-py line-numbers-mode"><pre v-pre class="language-python"><code><span class="token keyword">from</span> ldap3 <span class="token keyword">import</span> Server<span class="token punctuation">,</span> Connection<span class="token punctuation">,</span> ALL
+
+server <span class="token operator">=</span> Server<span class="token punctuation">(</span><span class="token string">"uit.devops.local"</span><span class="token punctuation">,</span> get_info<span class="token operator">=</span>ALL<span class="token punctuation">)</span>	<span class="token comment"># Windows 搭建的AD Server 域名</span>
+conn <span class="token operator">=</span> Connection<span class="token punctuation">(</span>server<span class="token punctuation">,</span> auto_bind<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token builtin">repr</span><span class="token punctuation">(</span>server<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token builtin">repr</span><span class="token punctuation">(</span>server<span class="token punctuation">.</span>info<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token builtin">repr</span><span class="token punctuation">(</span>conn<span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+ret <span class="token operator">=</span> conn<span class="token punctuation">.</span>extend<span class="token punctuation">.</span>standard<span class="token punctuation">.</span>who_am_i<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"who_am_i"</span><span class="token punctuation">,</span> ret<span class="token punctuation">)</span>
+
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<span class="token comment"># who_am_i None</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p><strong>LDAP</strong> 允许无需认证的匿名登入，因为 <strong>DAP</strong> 协议最早是读取电话簿的，任何人都可以阅读（<em>但内容上会部分受限</em>），但若建立身份认证的会话，就需要 <strong>DN</strong> 和 <strong>密码</strong></p>
+<div class="language-python ext-py line-numbers-mode"><pre v-pre class="language-python"><code><span class="token keyword">from</span> ldap3 <span class="token keyword">import</span> Server<span class="token punctuation">,</span> Connection<span class="token punctuation">,</span> ALL
+
+server <span class="token operator">=</span> Server<span class="token punctuation">(</span><span class="token string">"uit.devops.local"</span><span class="token punctuation">,</span> get_info<span class="token operator">=</span>ALL<span class="token punctuation">)</span>
+<span class="token comment"># conn = Connection(server, user="zhengze", password="user@dev", auto_bind=True) # 或使用 DN</span>
+conn <span class="token operator">=</span> Connection<span class="token punctuation">(</span>server<span class="token punctuation">,</span> user<span class="token operator">=</span><span class="token string">'cn=zhengze,cn=Users,dc=uit,dc=devops,dc=local'</span><span class="token punctuation">,</span> password<span class="token operator">=</span><span class="token string">'user@dev'</span><span class="token punctuation">,</span> auto_bind<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+
+ret <span class="token operator">=</span> conn<span class="token punctuation">.</span>extend<span class="token punctuation">.</span>standard<span class="token punctuation">.</span>who_am_i<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>ret<span class="token punctuation">)</span>
+
+<span class="token comment"># u:UIT\zhengze</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_2-1-查询" tabindex="-1"><a class="header-anchor" href="#_2-1-查询" aria-hidden="true">#</a> 2.1 查询</h3>
+<p>可使用 <strong>上下文管理器</strong> 自动绑定，查询操作如下</p>
+<div class="language-python ext-py line-numbers-mode"><pre v-pre class="language-python"><code><span class="token keyword">with</span> Connection<span class="token punctuation">(</span>server<span class="token punctuation">,</span> user<span class="token operator">=</span><span class="token string">'cn=zhengze,cn=Users,dc=uit,dc=devops,dc=local'</span><span class="token punctuation">,</span> password<span class="token operator">=</span><span class="token string">'user@dev'</span><span class="token punctuation">)</span> <span class="token keyword">as</span> conn<span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>conn<span class="token punctuation">.</span>extend<span class="token punctuation">.</span>standard<span class="token punctuation">.</span>who_am_i<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    conn<span class="token punctuation">.</span>search<span class="token punctuation">(</span><span class="token string">'dc=uit,dc=devops,dc=local'</span><span class="token punctuation">,</span> <span class="token string">'(objectclass=user)'</span><span class="token punctuation">,</span>
+                attributes<span class="token operator">=</span><span class="token punctuation">[</span><span class="token string">'name'</span><span class="token punctuation">,</span> <span class="token string">'cn'</span><span class="token punctuation">,</span> <span class="token string">'mail'</span><span class="token punctuation">,</span> <span class="token string">"description"</span><span class="token punctuation">,</span> <span class="token string">"UserAccountControl"</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>conn<span class="token punctuation">.</span>entries<span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">.</span>name<span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>conn<span class="token punctuation">.</span>entries<span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">.</span>entry_to_json<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>使用 <strong>search()</strong> 查询，支持生成器方式如下</p>
+<div class="language-python ext-py line-numbers-mode"><pre v-pre class="language-python"><code><span class="token keyword">def</span> <span class="token function">search_generator</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">with</span> Connection<span class="token punctuation">(</span>server<span class="token punctuation">,</span> user<span class="token operator">=</span><span class="token string">'cn=zhengze,cn=Users,dc=uit,dc=devops,dc=local'</span><span class="token punctuation">,</span> password<span class="token operator">=</span><span class="token string">'user@dev'</span><span class="token punctuation">)</span> <span class="token keyword">as</span> conn<span class="token punctuation">:</span>
+        entry_generator <span class="token operator">=</span> conn<span class="token punctuation">.</span>extend<span class="token punctuation">.</span>standard<span class="token punctuation">.</span>paged_search<span class="token punctuation">(</span>
+            search_base<span class="token operator">=</span><span class="token string">"dc=uit,dc=devops,dc=local"</span><span class="token punctuation">,</span>
+            search_filter<span class="token operator">=</span><span class="token string">'(objectClass=user)'</span><span class="token punctuation">,</span>
+            search_scope<span class="token operator">=</span>SUBTREE<span class="token punctuation">,</span>
+            attributes<span class="token operator">=</span><span class="token punctuation">[</span><span class="token string">'cn'</span><span class="token punctuation">,</span> <span class="token string">'name'</span><span class="token punctuation">,</span> <span class="token string">'mail'</span><span class="token punctuation">,</span> <span class="token string">"description"</span><span class="token punctuation">,</span> <span class="token string">"UserAccountControl"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+            paged_size<span class="token operator">=</span><span class="token number">1000</span><span class="token punctuation">,</span>
+            generator<span class="token operator">=</span><span class="token boolean">True</span>
+        <span class="token punctuation">)</span>
+        <span class="token keyword">for</span> entry <span class="token keyword">in</span> entry_generator<span class="token punctuation">:</span>
+            <span class="token keyword">if</span> <span class="token keyword">not</span> entry<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">"attributes"</span><span class="token punctuation">,</span> <span class="token boolean">None</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+                <span class="token keyword">continue</span>
+            <span class="token keyword">yield</span> entry<span class="token punctuation">[</span><span class="token string">'attributes'</span><span class="token punctuation">]</span>
+
+
+users <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+entry <span class="token operator">=</span> search_generator<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">for</span> item <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">20</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">try</span><span class="token punctuation">:</span>
+        users<span class="token punctuation">.</span>append<span class="token punctuation">(</span><span class="token builtin">next</span><span class="token punctuation">(</span>entry<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token keyword">except</span> StopIteration<span class="token punctuation">:</span>
+        <span class="token keyword">break</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_2-2-增加" tabindex="-1"><a class="header-anchor" href="#_2-2-增加" aria-hidden="true">#</a> 2.2 增加</h3>
+<div class="language-text ext-text line-numbers-mode"><pre v-pre class="language-text"><code>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div></div></template>
 
 

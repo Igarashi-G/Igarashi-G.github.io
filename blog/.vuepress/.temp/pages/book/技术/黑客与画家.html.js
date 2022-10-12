@@ -1,1 +1,14 @@
-export const data = JSON.parse("{\"key\":\"v-2414670c\",\"path\":\"/book/%E6%8A%80%E6%9C%AF/%E9%BB%91%E5%AE%A2%E4%B8%8E%E7%94%BB%E5%AE%B6.html\",\"title\":\"黑客与画家\",\"lang\":\"zh-CN\",\"frontmatter\":{\"title\":\"黑客与画家\",\"date\":\"2022-09-19T00:00:00.000Z\",\"article\":false,\"summary\":\"\",\"head\":[[\"meta\",{\"property\":\"og:url\",\"content\":\"https://igarashi-g.github.io/igarashi-blog/igarashi-blog/book/%E6%8A%80%E6%9C%AF/%E9%BB%91%E5%AE%A2%E4%B8%8E%E7%94%BB%E5%AE%B6.html\"}],[\"meta\",{\"property\":\"og:site_name\",\"content\":\"五十岚呐~\"}],[\"meta\",{\"property\":\"og:title\",\"content\":\"黑客与画家\"}],[\"meta\",{\"property\":\"og:type\",\"content\":\"article\"}],[\"meta\",{\"property\":\"og:updated_time\",\"content\":\"2022-09-20T09:54:04.000Z\"}],[\"meta\",{\"property\":\"og:locale\",\"content\":\"zh-CN\"}],[\"meta\",{\"property\":\"article:published_time\",\"content\":\"2022-09-19T00:00:00.000Z\"}],[\"meta\",{\"property\":\"article:modified_time\",\"content\":\"2022-09-20T09:54:04.000Z\"}]]},\"excerpt\":\"\",\"headers\":[],\"git\":{\"createdTime\":1663654799000,\"updatedTime\":1663667644000,\"contributors\":[{\"name\":\"Igarashi\",\"email\":\"2545369032@qq.com\",\"commits\":2}]},\"readingTime\":{\"minutes\":0.14,\"words\":42},\"filePathRelative\":\"book/技术/黑客与画家.md\",\"localizedDate\":\"2022年9月19日\"}")
+export const data = JSON.parse("{\"key\":\"v-2414670c\",\"path\":\"/book/%E6%8A%80%E6%9C%AF/%E9%BB%91%E5%AE%A2%E4%B8%8E%E7%94%BB%E5%AE%B6.html\",\"title\":\"黑客与画家\",\"lang\":\"zh-CN\",\"frontmatter\":{\"title\":\"黑客与画家\",\"date\":\"2022-09-19T00:00:00.000Z\",\"article\":false,\"summary\":\"\",\"head\":[[\"meta\",{\"property\":\"og:url\",\"content\":\"https://igarashi-g.github.io/igarashi-blog/igarashi-blog/book/%E6%8A%80%E6%9C%AF/%E9%BB%91%E5%AE%A2%E4%B8%8E%E7%94%BB%E5%AE%B6.html\"}],[\"meta\",{\"property\":\"og:site_name\",\"content\":\"五十岚呐~\"}],[\"meta\",{\"property\":\"og:title\",\"content\":\"黑客与画家\"}],[\"meta\",{\"property\":\"og:type\",\"content\":\"article\"}],[\"meta\",{\"property\":\"og:locale\",\"content\":\"zh-CN\"}],[\"meta\",{\"property\":\"article:published_time\",\"content\":\"2022-09-19T00:00:00.000Z\"}]]},\"excerpt\":\"\",\"headers\":[],\"readingTime\":{\"minutes\":0.15,\"words\":44},\"filePathRelative\":\"book/技术/黑客与画家.md\",\"localizedDate\":\"2022年9月19日\"}")
+
+if (import.meta.webpackHot) {
+  import.meta.webpackHot.accept()
+  if (__VUE_HMR_RUNTIME__.updatePageData) {
+    __VUE_HMR_RUNTIME__.updatePageData(data)
+  }
+}
+
+if (import.meta.hot) {
+  import.meta.hot.accept(({ data }) => {
+    __VUE_HMR_RUNTIME__.updatePageData(data)
+  })
+}

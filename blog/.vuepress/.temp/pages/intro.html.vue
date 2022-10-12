@@ -1,4 +1,4 @@
-<template><div><p><img src='https://qpluspicture.oss-cn-beijing.aliyuncs.com/6LjjQA/Hi.gif' alt='Hi' width="24"/>嗨呀~ , 我是 <strong>五十岚 · 寄</strong><br/>一个干啥啥不行，吃啥啥不够的 <strong>Python</strong> 混子 <img src="https://media.giphy.com/media/WUlplcMpOCEmTGBtBW/giphy.gif" width="30">, 没事也整整前端: [<code v-pre>Vue</code>, <code v-pre>React</code>]<br/>热爱开源与分享😄(<strong>Copy</strong>代码一把梭...误 <img src="https://media.giphy.com/media/mGcNjsfWAjY5AEZNw6/giphy.gif" width="50"></p>
+<template><div><p><img src='https://qpluspicture.oss-cn-beijing.aliyuncs.com/6LjjQA/Hi.gif' alt='Hi' width="24"/>Hi呀~ , 我是 <strong>五十岚 · 寄</strong><br/>一个干啥啥不行，吃啥啥不够的 <strong>Python</strong> 混子<img src="https://media.giphy.com/media/WUlplcMpOCEmTGBtBW/giphy.gif" width="30">;<br/>没事也整整前端: [<code v-pre>Vue</code>, <code v-pre>React</code>];<br/>正在努力学 <strong>Go</strong> 中...<br/>热爱开源与分享😄(<strong>Copy</strong>代码一把梭...误 <img src="https://media.giphy.com/media/mGcNjsfWAjY5AEZNw6/giphy.gif" width="50"></p>
 <!--
 - 🔭 I’m currently working on ...
 - 🌱 I’m currently learning ...
@@ -45,8 +45,8 @@
   <img height="156em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=Igarashi-G&hide=html,less&theme=radical&layout=compact" />
 </a>
 <img src="https://www.deadly-exception.icu:7779/img/qb.gif" alt="魔法少女QB" height="60" align="right"/>
-【邮箱地址】2545369032@qq.com 💌
-<p>坐标 <strong>深圳</strong>, 欢迎有空一起来玩呀~ 🎮</p>
+<p><strong>Email:</strong> <a href="mailto:igarashifk@gmail.com">igarashifk@gmail.com</a> 💌</p>
+<p>坐标 <strong>深圳</strong>, 有空一起玩~ 🎮</p>
 </div></template>
 
 

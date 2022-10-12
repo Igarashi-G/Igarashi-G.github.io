@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="generator" content="VuePress 2.0.0-beta.51" />
+    <meta name="theme" content="VuePress Theme Hope" />
+    <meta property="og:url" content="https://igarashi-g.github.io/igarashi-blog/igarashi-blog/database/MySQL/Mysql%E8%B0%83%E4%BC%98.html"><meta property="og:site_name" content="五十岚呐~"><meta property="og:title" content="Mysql调优"><meta property="og:type" content="article"><meta property="og:locale" content="zh-CN"><title>Mysql调优 | 五十岚呐~</title><meta name="description" content="五十岚的博客">
+    <style>
+      :root {
+        --bg-color: #fff;
+      }
+
+      html[data-theme="dark"] {
+        --bg-color: #1d2025;
+      }
+
+      html,
+      body {
+        background-color: var(--bg-color);
+      }
+    </style>
+    <script>
+      const userMode = localStorage.getItem("vuepress-theme-hope-scheme");
+      const systemDarkMode =
+        window.matchMedia &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+      if (userMode === "dark" || (userMode !== "light" && systemDarkMode)) {
+        document.querySelector("html").setAttribute("data-theme", "dark");
+      }
+    </script>
+    <link rel="stylesheet" href="/igarashi-blog/assets/style.5c6ade45.css">
+    <link rel="modulepreload" href="/igarashi-blog/assets/app.875ef4e6.js"><link rel="modulepreload" href="/igarashi-blog/assets/Mysql调优.html.fe093d41.js"><link rel="modulepreload" href="/igarashi-blog/assets/_plugin-vue_export-helper.cdc0426e.js"><link rel="modulepreload" href="/igarashi-blog/assets/Mysql调优.html.23b50542.js"><link rel="prefetch" href="/igarashi-blog/assets/home.html.2fcb85fe.js"><link rel="prefetch" href="/igarashi-blog/assets/intro.html.fcc9a369.js"><link rel="prefetch" href="/igarashi-blog/assets/index.html.474ee5a4.js"><link rel="prefetch" href="/igarashi-blog/assets/slides.html.29261d3d.js"><link rel="prefetch" href="/igarashi-blog/assets/index.html.07df5ca7.js"><link rel="prefetch" href="/igarashi-blog/assets/disable.html.bfb72f82.js"><link rel="prefetch" href="/igarashi-blog/assets/encrypt.html.77e0aa5f.js"><link rel="prefetch" href="/igarashi-blog/assets/markdown.html.df9b5ede.js"><link rel="prefetch" href="/igarashi-blog/assets/page.html.d5efc350.js"><link rel="prefetch" href="/igarashi-blog/assets/index.html.3c8bc129.js"><link rel="prefetch" href="/igarashi-blog/assets/PS操作基础.html.fd4bf22b.js"><link rel="prefetch" href="/igarashi-blog/assets/index.html.ee98a8ec.js"><link rel="prefetch" href="/igarashi-blog/assets/SAI操作基础.html.74dd5b28.js"><link rel="prefetch" href="/igarashi-blog/assets/index.html.a170a1fd.js"><link rel="prefetch" href="/igarashi-blog/assets/index.html.8d281db0.js"><link rel="prefetch" href="/igarashi-blog/assets/asyncio_recipes.html.96526b14.js"><link rel="prefetch" href="/igarashi-blog/assets/devops_in_python.html.570b8159.js"><link rel="prefetch" href="/igarashi-blog/assets/fluent_python.html.7490f3c2.js"><link rel="prefetch" href="/igarashi-blog/assets/index.html.f4c1c825.js"><link rel="prefetch" href="/igarashi-blog/assets/python_cookbook.html.be898d37.js"><link rel="prefetch" href="/igarashi-blog/assets/python源码剖析.html.e89082ed.js"><link rel="prefetch" href="/igarashi-blog/assets/use_asyncio.html.06aa0ffa.js"><link rel="prefetch" href="/igarashi-blog/assets/index.html.be03faab.js"><link rel="prefetch" href="/igarashi-blog/assets/亚动机与人格.html.3756c78a.js"><link rel="prefetch" href="/igarashi-blog/assets/人的潜能和价值.html.96e4b45e.js"><link rel="prefetch" href="/igarashi-blog/assets/好人是如何变成恶魔的.html.6dfb2f28.js"><link rel="prefetch" href="/igarashi-blog/assets/影响力.html.50316b7e.js"><link rel="prefetch" href="/igarashi-blog/assets/性心理学.html.0485d479.js"><link rel="prefetch" href="/igarashi-blog/assets/洗脑心理学.html.48c2a897.js"><link rel="prefetch" href="/igarashi-blog/assets/进化心理学.html.85b9bc99.js"><link rel="prefetch" href="/igarashi-blog/assets/CODE.html.2d78fc56.js"><link rel="prefetch" href="/igarashi-blog/assets/index.html.96caa434.js"><link rel="prefetch" href="/igarashi-blog/assets/成为技术领导者.html.ea9b0304.js"><link rel="prefetch" href="/igarashi-blog/assets/鸟哥的Linux私房菜.html.35c88210.js"><link rel="prefetch" href="/igarashi-blog/assets/鸟哥的Linux私房菜服务器架设篇.html.d8cee25d.js"><link rel="prefetch" href="/igarashi-blog/assets/黑客与画家.html.9ccd632c.js"><link rel="prefetch" href="/igarashi-blog/assets/index.html.159b0ff5.js"><link rel="prefetch" href="/igarashi-blog/assets/中国人的性格.html.a81f7f8a.js"><link rel="prefetch" href="/igarashi-blog/assets/乌合之众.html.6d7fd309.js"><link rel="prefetch" href="/igarashi-blog/assets/娱乐至死.html.4b3d07bc.js"><link rel="prefetch" href="/igarashi-blog/assets/index.html.d48278e0.js"><link rel="prefetch" href="/igarashi-blog/assets/清醒思考的艺术.html.66426d9b.js"><link rel="prefetch" href="/igarashi-blog/assets/index.html.d7137ce2.js"><link rel="prefetch" href="/igarashi-blog/assets/博弈论与经济行为.html.c5f5e5ae.js"><link rel="prefetch" href="/igarashi-blog/assets/就业_利息和货币通论.html.ab85a85c.js"><link rel="prefetch" href="/igarashi-blog/assets/聪明的投资者.html.6c645c4e.js"><link rel="prefetch" href="/igarashi-blog/assets/货币金融学.html.5c507a51.js"><link rel="prefetch" href="/igarashi-blog/assets/非理性繁荣.html.7a44045c.js"><link rel="prefetch" href="/igarashi-blog/assets/aioetcd3.html.fbf9c496.js"><link rel="prefetch" href="/igarashi-blog/assets/etcd.html.a38c67ff.js"><link rel="prefetch" href="/igarashi-blog/assets/进阶.html.deefa37a.js"><link rel="prefetch" href="/igarashi-blog/assets/MySQL.html.7f56535e.js"><link rel="prefetch" href="/igarashi-blog/assets/Mysql进阶.html.2ecbdda9.js"><link rel="prefetch" href="/igarashi-blog/assets/Mysql高阶.html.76a3f2b6.js"><link rel="prefetch" href="/igarashi-blog/assets/Navicat.html.17ac36ca.js"><link rel="prefetch" href="/igarashi-blog/assets/SQLAlchemy.html.d5edd30d.js"><link rel="prefetch" href="/igarashi-blog/assets/PostgreSQL.html.47079df0.js"><link rel="prefetch" href="/igarashi-blog/assets/redis.html.6dc39cde.js"><link rel="prefetch" href="/igarashi-blog/assets/性能分析.html.7dcd0328.js"><link rel="prefetch" href="/igarashi-blog/assets/docker容器.html.c0c5746e.js"><link rel="prefetch" href="/igarashi-blog/assets/使用基础.html.3b0c822d.js"><link rel="prefetch" href="/igarashi-blog/assets/命令.html.58287fd5.js"><link rel="prefetch" href="/igarashi-blog/assets/网络.html.a01b00ad.js"><link rel="prefetch" href="/igarashi-blog/assets/Git.html.0e89de35.js"><link rel="prefetch" href="/igarashi-blog/assets/GIt提交规则.html.fa4755d4.js"><link rel="prefetch" href="/igarashi-blog/assets/安装GitLab.html.839d9359.js"><link rel="prefetch" href="/igarashi-blog/assets/K8s基础.html.75adc1bb.js"><link rel="prefetch" href="/igarashi-blog/assets/k8s安装.html.1ab70aba.js"><link rel="prefetch" href="/igarashi-blog/assets/Nginx基础.html.98aa76cb.js"><link rel="prefetch" href="/igarashi-blog/assets/应用部署.html.583e3f54.js"><link rel="prefetch" href="/igarashi-blog/assets/Fiddler抓包工具.html.9c636623.js"><link rel="prefetch" href="/igarashi-blog/assets/Postman.html.bba64bf1.js"><link rel="prefetch" href="/igarashi-blog/assets/rdesktop.html.eaab0aa2.js"><link rel="prefetch" href="/igarashi-blog/assets/screen.html.369869e4.js"><link rel="prefetch" href="/igarashi-blog/assets/tmux.html.cc3b25b3.js"><link rel="prefetch" href="/igarashi-blog/assets/网络代理.html.3a77ebff.js"><link rel="prefetch" href="/igarashi-blog/assets/APScheduler.html.1b19f64c.js"><link rel="prefetch" href="/igarashi-blog/assets/Celery.html.01efd020.js"><link rel="prefetch" href="/igarashi-blog/assets/Celery使用基础.html.450b5112.js"><link rel="prefetch" href="/igarashi-blog/assets/异步任务概述.html.a83acd42.js"><link rel="prefetch" href="/igarashi-blog/assets/kafka.html.baaad5c3.js"><link rel="prefetch" href="/igarashi-blog/assets/RabbitMQ.html.2a25b23a.js"><link rel="prefetch" href="/igarashi-blog/assets/gRPC.html.dcc38b7c.js"><link rel="prefetch" href="/igarashi-blog/assets/RPC.html.aa4aee3a.js"><link rel="prefetch" href="/igarashi-blog/assets/asyncio Recipes.html.1a1b19a2.js"><link rel="prefetch" href="/igarashi-blog/assets/asyncio基础.html.2cfcb7ce.js"><link rel="prefetch" href="/igarashi-blog/assets/asyncio进阶.html.f88a0b3e.js"><link rel="prefetch" href="/igarashi-blog/assets/事件循环.html.461b6d5a.js"><link rel="prefetch" href="/igarashi-blog/assets/底层实现.html.176924f8.js"><link rel="prefetch" href="/igarashi-blog/assets/异步回溯.html.d95c44f0.js"><link rel="prefetch" href="/igarashi-blog/assets/pip.html.f722da7e.js"><link rel="prefetch" href="/igarashi-blog/assets/字符编码.html.7f040b07.js"><link rel="prefetch" href="/igarashi-blog/assets/数据类型.html.f3a7b82b.js"><link rel="prefetch" href="/igarashi-blog/assets/文件基础.html.8f3d8dbb.js"><link rel="prefetch" href="/igarashi-blog/assets/流程控制.html.a5abcc99.js"><link rel="prefetch" href="/igarashi-blog/assets/环境安装.html.087f2070.js"><link rel="prefetch" href="/igarashi-blog/assets/协程.html.b9daceb2.js"><link rel="prefetch" href="/igarashi-blog/assets/同步队列.html.c15cefe0.js"><link rel="prefetch" href="/igarashi-blog/assets/多线程编程.html.85e7fd4a.js"><link rel="prefetch" href="/igarashi-blog/assets/多进程编程.html.a92ea72b.js"><link rel="prefetch" href="/igarashi-blog/assets/线程.html.97b78900.js"><link rel="prefetch" href="/igarashi-blog/assets/线程进程辅助机制.html.dfa34dd5.js"><link rel="prefetch" href="/igarashi-blog/assets/进程.html.46552b1d.js"><link rel="prefetch" href="/igarashi-blog/assets/Cpython对象.html.a4b983bc.js"><link rel="prefetch" href="/igarashi-blog/assets/垃圾回收.html.836a8a85.js"><link rel="prefetch" href="/igarashi-blog/assets/序列进阶.html.48079ff4.js"><link rel="prefetch" href="/igarashi-blog/assets/映射进阶.html.493f3483.js"><link rel="prefetch" href="/igarashi-blog/assets/设计模式.html.548756ef.js"><link rel="prefetch" href="/igarashi-blog/assets/Socket.html.18084784.js"><link rel="prefetch" href="/igarashi-blog/assets/Websocket.html.d4adfc4a.js"><link rel="prefetch" href="/igarashi-blog/assets/事件模型.html.84733362.js"><link rel="prefetch" href="/igarashi-blog/assets/回调.html.44766ac2.js"><link rel="prefetch" href="/igarashi-blog/assets/函数.html.20b79cef.js"><link rel="prefetch" href="/igarashi-blog/assets/变量机制.html.6f0e7f2f.js"><link rel="prefetch" href="/igarashi-blog/assets/模块和包.html.4f09082f.js"><link rel="prefetch" href="/igarashi-blog/assets/生成器.html.86636e92.js"><link rel="prefetch" href="/igarashi-blog/assets/装饰器.html.bb704e90.js"><link rel="prefetch" href="/igarashi-blog/assets/迭代器.html.75c33e0d.js"><link rel="prefetch" href="/igarashi-blog/assets/错误和异常.html.bd8778b0.js"><link rel="prefetch" href="/igarashi-blog/assets/面向对象.html.2e55bc03.js"><link rel="prefetch" href="/igarashi-blog/assets/bind.html.be3c1ff5.js"><link rel="prefetch" href="/igarashi-blog/assets/DNS服务.html.50fbc086.js"><link rel="prefetch" href="/igarashi-blog/assets/linux 文件锁.html.abd44ac2.js"><link rel="prefetch" href="/igarashi-blog/assets/脚本说明.html.831d9b7a.js"><link rel="prefetch" href="/igarashi-blog/assets/AD域.html.90b327bd.js"><link rel="prefetch" href="/igarashi-blog/assets/LDAP.html.5048cb30.js"><link rel="prefetch" href="/igarashi-blog/assets/Python对接AD域.html.13f1e871.js"><link rel="prefetch" href="/igarashi-blog/assets/NFS服务.html.12e20255.js"><link rel="prefetch" href="/igarashi-blog/assets/NTP服务.html.56a1a801.js"><link rel="prefetch" href="/igarashi-blog/assets/Samba服务.html.a2f44ab2.js"><link rel="prefetch" href="/igarashi-blog/assets/SNMP服务.html.7082d6d8.js"><link rel="prefetch" href="/igarashi-blog/assets/ufscli工具.html.2d0ba4d5.js"><link rel="prefetch" href="/igarashi-blog/assets/ufs核心组件.html.862d15e3.js"><link rel="prefetch" href="/igarashi-blog/assets/ufs管理平台.html.2847e408.js"><link rel="prefetch" href="/igarashi-blog/assets/uus虚拟机排错.html.11864a79.js"><link rel="prefetch" href="/igarashi-blog/assets/CentOS的安装.html.37a4fede.js"><link rel="prefetch" href="/igarashi-blog/assets/RPM包管理.html.5c85c198.js"><link rel="prefetch" href="/igarashi-blog/assets/账号管理与ACL权限.html.0b69d1b3.js"><link rel="prefetch" href="/igarashi-blog/assets/Linux是什么与如何学习.html.3578bcf6.js"><link rel="prefetch" href="/igarashi-blog/assets/主机规划与磁盘分区.html.0785c764.js"><link rel="prefetch" href="/igarashi-blog/assets/计算机概论.html.a3a59024.js"><link rel="prefetch" href="/igarashi-blog/assets/Linux磁盘与文件系统管理.html.c574f286.js"><link rel="prefetch" href="/igarashi-blog/assets/文件与文件系统压缩.html.f2755e6d.js"><link rel="prefetch" href="/igarashi-blog/assets/文件权限与目录配置.html.e715584b.js"><link rel="prefetch" href="/igarashi-blog/assets/认识系统服务.html.b07f97df.js"><link rel="prefetch" href="/igarashi-blog/assets/vim 快捷键.html.c24d4962.js"><link rel="prefetch" href="/igarashi-blog/assets/vim程序编辑器.html.3a1a1e99.js"><link rel="prefetch" href="/igarashi-blog/assets/常复习.html.0e09b1df.js"><link rel="prefetch" href="/igarashi-blog/assets/CURL.html.c17edda2.js"><link rel="prefetch" href="/igarashi-blog/assets/SSL协议.html.da7f8695.js"><link rel="prefetch" href="/igarashi-blog/assets/命令.html.e064d8fc.js"><link rel="prefetch" href="/igarashi-blog/assets/网络基础.html.3421c413.js"><link rel="prefetch" href="/igarashi-blog/assets/Ubuntu系列操作.html.236a0c03.js"><link rel="prefetch" href="/igarashi-blog/assets/认识Linux系统.html.fdd9b3e8.js"><link rel="prefetch" href="/igarashi-blog/assets/CPU.html.834ca801.js"><link rel="prefetch" href="/igarashi-blog/assets/主板.html.84705142.js"><link rel="prefetch" href="/igarashi-blog/assets/内存.html.b2420f0c.js"><link rel="prefetch" href="/igarashi-blog/assets/存储.html.209cdcec.js"><link rel="prefetch" href="/igarashi-blog/assets/扩展卡与接口.html.2c470b16.js"><link rel="prefetch" href="/igarashi-blog/assets/显卡.html.000a05f8.js"><link rel="prefetch" href="/igarashi-blog/assets/PVE.html.efbafc06.js"><link rel="prefetch" href="/igarashi-blog/assets/添加磁盘.html.289075b5.js"><link rel="prefetch" href="/igarashi-blog/assets/网络配置.html.c34155e6.js"><link rel="prefetch" href="/igarashi-blog/assets/404.html.0b21f3d1.js"><link rel="prefetch" href="/igarashi-blog/assets/index.html.3a0eb7d8.js"><link rel="prefetch" href="/igarashi-blog/assets/index.html.95274b4c.js"><link rel="prefetch" href="/igarashi-blog/assets/index.html.7b66b08c.js"><link rel="prefetch" href="/igarashi-blog/assets/index.html.06e45fda.js"><link rel="prefetch" href="/igarashi-blog/assets/index.html.044c7f67.js"><link rel="prefetch" href="/igarashi-blog/assets/index.html.f20bf5e8.js"><link rel="prefetch" href="/igarashi-blog/assets/index.html.f9cbb21d.js"><link rel="prefetch" href="/igarashi-blog/assets/index.html.cd9aace1.js"><link rel="prefetch" href="/igarashi-blog/assets/index.html.578951b7.js"><link rel="prefetch" href="/igarashi-blog/assets/index.html.4d83503c.js"><link rel="prefetch" href="/igarashi-blog/assets/index.html.2784bdf5.js"><link rel="prefetch" href="/igarashi-blog/assets/index.html.0ab66202.js"><link rel="prefetch" href="/igarashi-blog/assets/index.html.edf4d3f8.js"><link rel="prefetch" href="/igarashi-blog/assets/index.html.91409594.js"><link rel="prefetch" href="/igarashi-blog/assets/index.html.252d279c.js"><link rel="prefetch" href="/igarashi-blog/assets/index.html.cfb28f0c.js"><link rel="prefetch" href="/igarashi-blog/assets/index.html.fb80d5e7.js"><link rel="prefetch" href="/igarashi-blog/assets/index.html.0efa5260.js"><link rel="prefetch" href="/igarashi-blog/assets/index.html.f5b73c95.js"><link rel="prefetch" href="/igarashi-blog/assets/index.html.6ad0ebda.js"><link rel="prefetch" href="/igarashi-blog/assets/index.html.0ccdd160.js"><link rel="prefetch" href="/igarashi-blog/assets/index.html.7808f46e.js"><link rel="prefetch" href="/igarashi-blog/assets/index.html.e3ed9021.js"><link rel="prefetch" href="/igarashi-blog/assets/index.html.47a1414d.js"><link rel="prefetch" href="/igarashi-blog/assets/index.html.59d8c4b4.js"><link rel="prefetch" href="/igarashi-blog/assets/index.html.79a7b8dd.js"><link rel="prefetch" href="/igarashi-blog/assets/index.html.078f769a.js"><link rel="prefetch" href="/igarashi-blog/assets/index.html.7e9c4f9e.js"><link rel="prefetch" href="/igarashi-blog/assets/index.html.c699f9f8.js"><link rel="prefetch" href="/igarashi-blog/assets/index.html.d7491f43.js"><link rel="prefetch" href="/igarashi-blog/assets/index.html.3da5c3f2.js"><link rel="prefetch" href="/igarashi-blog/assets/index.html.70568e9f.js"><link rel="prefetch" href="/igarashi-blog/assets/index.html.cbcb1666.js"><link rel="prefetch" href="/igarashi-blog/assets/index.html.8a8cf308.js"><link rel="prefetch" href="/igarashi-blog/assets/index.html.a00a2175.js"><link rel="prefetch" href="/igarashi-blog/assets/index.html.23b03e25.js"><link rel="prefetch" href="/igarashi-blog/assets/index.html.fe2776fe.js"><link rel="prefetch" href="/igarashi-blog/assets/index.html.0d4c9a02.js"><link rel="prefetch" href="/igarashi-blog/assets/index.html.a3ad6b2b.js"><link rel="prefetch" href="/igarashi-blog/assets/index.html.4793317e.js"><link rel="prefetch" href="/igarashi-blog/assets/index.html.9484fb20.js"><link rel="prefetch" href="/igarashi-blog/assets/index.html.079c3e75.js"><link rel="prefetch" href="/igarashi-blog/assets/index.html.fe41e00a.js"><link rel="prefetch" href="/igarashi-blog/assets/index.html.9f33067d.js"><link rel="prefetch" href="/igarashi-blog/assets/index.html.0b7c24a8.js"><link rel="prefetch" href="/igarashi-blog/assets/index.html.5df02379.js"><link rel="prefetch" href="/igarashi-blog/assets/index.html.aca9e65e.js"><link rel="prefetch" href="/igarashi-blog/assets/index.html.ab5735a3.js"><link rel="prefetch" href="/igarashi-blog/assets/index.html.7ed4b026.js"><link rel="prefetch" href="/igarashi-blog/assets/index.html.ea7b327c.js"><link rel="prefetch" href="/igarashi-blog/assets/index.html.27020766.js"><link rel="prefetch" href="/igarashi-blog/assets/index.html.9699eb81.js"><link rel="prefetch" href="/igarashi-blog/assets/index.html.88d0731a.js"><link rel="prefetch" href="/igarashi-blog/assets/index.html.0b777f3c.js"><link rel="prefetch" href="/igarashi-blog/assets/index.html.c72e9ef2.js"><link rel="prefetch" href="/igarashi-blog/assets/index.html.814d67a0.js"><link rel="prefetch" href="/igarashi-blog/assets/index.html.9f672ee9.js"><link rel="prefetch" href="/igarashi-blog/assets/index.html.1fec0c5d.js"><link rel="prefetch" href="/igarashi-blog/assets/index.html.32eb60bd.js"><link rel="prefetch" href="/igarashi-blog/assets/index.html.ef8cb56b.js"><link rel="prefetch" href="/igarashi-blog/assets/index.html.cc4041d3.js"><link rel="prefetch" href="/igarashi-blog/assets/home.html.fa48c0c8.js"><link rel="prefetch" href="/igarashi-blog/assets/intro.html.ecd04808.js"><link rel="prefetch" href="/igarashi-blog/assets/index.html.35fb75bd.js"><link rel="prefetch" href="/igarashi-blog/assets/slides.html.751e31f1.js"><link rel="prefetch" href="/igarashi-blog/assets/index.html.73e16c7d.js"><link rel="prefetch" href="/igarashi-blog/assets/disable.html.659d9ea6.js"><link rel="prefetch" href="/igarashi-blog/assets/encrypt.html.869c714b.js"><link rel="prefetch" href="/igarashi-blog/assets/markdown.html.e8256a6d.js"><link rel="prefetch" href="/igarashi-blog/assets/page.html.fe271bcd.js"><link rel="prefetch" href="/igarashi-blog/assets/index.html.ca10371b.js"><link rel="prefetch" href="/igarashi-blog/assets/PS操作基础.html.5e7275a7.js"><link rel="prefetch" href="/igarashi-blog/assets/index.html.a63ced7d.js"><link rel="prefetch" href="/igarashi-blog/assets/SAI操作基础.html.725c828b.js"><link rel="prefetch" href="/igarashi-blog/assets/index.html.a0e8a47a.js"><link rel="prefetch" href="/igarashi-blog/assets/index.html.ee72a42d.js"><link rel="prefetch" href="/igarashi-blog/assets/asyncio_recipes.html.d9aa91a2.js"><link rel="prefetch" href="/igarashi-blog/assets/devops_in_python.html.5941f9c2.js"><link rel="prefetch" href="/igarashi-blog/assets/fluent_python.html.6cd6b522.js"><link rel="prefetch" href="/igarashi-blog/assets/index.html.e191868f.js"><link rel="prefetch" href="/igarashi-blog/assets/python_cookbook.html.6ecfaa4f.js"><link rel="prefetch" href="/igarashi-blog/assets/python源码剖析.html.a5353f1a.js"><link rel="prefetch" href="/igarashi-blog/assets/use_asyncio.html.060f9d83.js"><link rel="prefetch" href="/igarashi-blog/assets/index.html.06c010df.js"><link rel="prefetch" href="/igarashi-blog/assets/亚动机与人格.html.808aad06.js"><link rel="prefetch" href="/igarashi-blog/assets/人的潜能和价值.html.27c55a5e.js"><link rel="prefetch" href="/igarashi-blog/assets/好人是如何变成恶魔的.html.4dcebd2d.js"><link rel="prefetch" href="/igarashi-blog/assets/影响力.html.3db5dfb9.js"><link rel="prefetch" href="/igarashi-blog/assets/性心理学.html.061cbd65.js"><link rel="prefetch" href="/igarashi-blog/assets/洗脑心理学.html.d728ba7b.js"><link rel="prefetch" href="/igarashi-blog/assets/进化心理学.html.a1a6f16e.js"><link rel="prefetch" href="/igarashi-blog/assets/CODE.html.6b8cfa63.js"><link rel="prefetch" href="/igarashi-blog/assets/index.html.8a6edf1d.js"><link rel="prefetch" href="/igarashi-blog/assets/成为技术领导者.html.399733f8.js"><link rel="prefetch" href="/igarashi-blog/assets/鸟哥的Linux私房菜.html.7bc1fab8.js"><link rel="prefetch" href="/igarashi-blog/assets/鸟哥的Linux私房菜服务器架设篇.html.be4cd2bb.js"><link rel="prefetch" href="/igarashi-blog/assets/黑客与画家.html.1f41fb4f.js"><link rel="prefetch" href="/igarashi-blog/assets/index.html.6d26cd58.js"><link rel="prefetch" href="/igarashi-blog/assets/中国人的性格.html.cb615638.js"><link rel="prefetch" href="/igarashi-blog/assets/乌合之众.html.874055d1.js"><link rel="prefetch" href="/igarashi-blog/assets/娱乐至死.html.b7d8f8cd.js"><link rel="prefetch" href="/igarashi-blog/assets/index.html.fda461b2.js"><link rel="prefetch" href="/igarashi-blog/assets/清醒思考的艺术.html.1dc76e99.js"><link rel="prefetch" href="/igarashi-blog/assets/index.html.f052c292.js"><link rel="prefetch" href="/igarashi-blog/assets/博弈论与经济行为.html.1d1b2d8c.js"><link rel="prefetch" href="/igarashi-blog/assets/就业_利息和货币通论.html.5b5d3a28.js"><link rel="prefetch" href="/igarashi-blog/assets/聪明的投资者.html.65a8a594.js"><link rel="prefetch" href="/igarashi-blog/assets/货币金融学.html.749fe2a8.js"><link rel="prefetch" href="/igarashi-blog/assets/非理性繁荣.html.bfe160f7.js"><link rel="prefetch" href="/igarashi-blog/assets/aioetcd3.html.a6659ec8.js"><link rel="prefetch" href="/igarashi-blog/assets/etcd.html.51b05ab7.js"><link rel="prefetch" href="/igarashi-blog/assets/进阶.html.02faae37.js"><link rel="prefetch" href="/igarashi-blog/assets/MySQL.html.5460faeb.js"><link rel="prefetch" href="/igarashi-blog/assets/Mysql进阶.html.825e981b.js"><link rel="prefetch" href="/igarashi-blog/assets/Mysql高阶.html.82b7c5af.js"><link rel="prefetch" href="/igarashi-blog/assets/Navicat.html.ea529ac9.js"><link rel="prefetch" href="/igarashi-blog/assets/SQLAlchemy.html.7d5543be.js"><link rel="prefetch" href="/igarashi-blog/assets/PostgreSQL.html.aa7e8ee3.js"><link rel="prefetch" href="/igarashi-blog/assets/redis.html.8cefbdc4.js"><link rel="prefetch" href="/igarashi-blog/assets/性能分析.html.ec7e6142.js"><link rel="prefetch" href="/igarashi-blog/assets/docker容器.html.d18308c4.js"><link rel="prefetch" href="/igarashi-blog/assets/使用基础.html.1bbe6d93.js"><link rel="prefetch" href="/igarashi-blog/assets/命令.html.f7254422.js"><link rel="prefetch" href="/igarashi-blog/assets/网络.html.d2c39f91.js"><link rel="prefetch" href="/igarashi-blog/assets/Git.html.d5ab6eb0.js"><link rel="prefetch" href="/igarashi-blog/assets/GIt提交规则.html.db87e6a5.js"><link rel="prefetch" href="/igarashi-blog/assets/安装GitLab.html.8dbba7f2.js"><link rel="prefetch" href="/igarashi-blog/assets/K8s基础.html.995d2eda.js"><link rel="prefetch" href="/igarashi-blog/assets/k8s安装.html.0118a4b6.js"><link rel="prefetch" href="/igarashi-blog/assets/Nginx基础.html.3197cbdd.js"><link rel="prefetch" href="/igarashi-blog/assets/应用部署.html.c975dd83.js"><link rel="prefetch" href="/igarashi-blog/assets/Fiddler抓包工具.html.0622f1ab.js"><link rel="prefetch" href="/igarashi-blog/assets/Postman.html.019544b3.js"><link rel="prefetch" href="/igarashi-blog/assets/rdesktop.html.d9c95cc4.js"><link rel="prefetch" href="/igarashi-blog/assets/screen.html.d862ba91.js"><link rel="prefetch" href="/igarashi-blog/assets/tmux.html.b3a963cc.js"><link rel="prefetch" href="/igarashi-blog/assets/网络代理.html.9fdb4189.js"><link rel="prefetch" href="/igarashi-blog/assets/APScheduler.html.cb7a95ae.js"><link rel="prefetch" href="/igarashi-blog/assets/Celery.html.b567fd37.js"><link rel="prefetch" href="/igarashi-blog/assets/Celery使用基础.html.0359d7ec.js"><link rel="prefetch" href="/igarashi-blog/assets/异步任务概述.html.6ef89db3.js"><link rel="prefetch" href="/igarashi-blog/assets/kafka.html.40af0be9.js"><link rel="prefetch" href="/igarashi-blog/assets/RabbitMQ.html.ef6e7ae3.js"><link rel="prefetch" href="/igarashi-blog/assets/gRPC.html.83bb980a.js"><link rel="prefetch" href="/igarashi-blog/assets/RPC.html.25ccd31f.js"><link rel="prefetch" href="/igarashi-blog/assets/asyncio Recipes.html.532826a4.js"><link rel="prefetch" href="/igarashi-blog/assets/asyncio基础.html.34624dee.js"><link rel="prefetch" href="/igarashi-blog/assets/asyncio进阶.html.163f8c6c.js"><link rel="prefetch" href="/igarashi-blog/assets/事件循环.html.8c587648.js"><link rel="prefetch" href="/igarashi-blog/assets/底层实现.html.0b79284d.js"><link rel="prefetch" href="/igarashi-blog/assets/异步回溯.html.497b90f0.js"><link rel="prefetch" href="/igarashi-blog/assets/pip.html.db463ce7.js"><link rel="prefetch" href="/igarashi-blog/assets/字符编码.html.d2c269c4.js"><link rel="prefetch" href="/igarashi-blog/assets/数据类型.html.61af2b02.js"><link rel="prefetch" href="/igarashi-blog/assets/文件基础.html.7b1dbd46.js"><link rel="prefetch" href="/igarashi-blog/assets/流程控制.html.02cc8814.js"><link rel="prefetch" href="/igarashi-blog/assets/环境安装.html.a25d1ec6.js"><link rel="prefetch" href="/igarashi-blog/assets/协程.html.17dc4a78.js"><link rel="prefetch" href="/igarashi-blog/assets/同步队列.html.c2527e53.js"><link rel="prefetch" href="/igarashi-blog/assets/多线程编程.html.0b290783.js"><link rel="prefetch" href="/igarashi-blog/assets/多进程编程.html.7fe0f789.js"><link rel="prefetch" href="/igarashi-blog/assets/线程.html.317bc901.js"><link rel="prefetch" href="/igarashi-blog/assets/线程进程辅助机制.html.1b9818cc.js"><link rel="prefetch" href="/igarashi-blog/assets/进程.html.bd1e842d.js"><link rel="prefetch" href="/igarashi-blog/assets/Cpython对象.html.3d4b5423.js"><link rel="prefetch" href="/igarashi-blog/assets/垃圾回收.html.a3a2e32d.js"><link rel="prefetch" href="/igarashi-blog/assets/序列进阶.html.7391c8e0.js"><link rel="prefetch" href="/igarashi-blog/assets/映射进阶.html.950ec773.js"><link rel="prefetch" href="/igarashi-blog/assets/设计模式.html.3070418b.js"><link rel="prefetch" href="/igarashi-blog/assets/Socket.html.08c69426.js"><link rel="prefetch" href="/igarashi-blog/assets/Websocket.html.9e578e1a.js"><link rel="prefetch" href="/igarashi-blog/assets/事件模型.html.dd691979.js"><link rel="prefetch" href="/igarashi-blog/assets/回调.html.f18667f3.js"><link rel="prefetch" href="/igarashi-blog/assets/函数.html.7e1475c8.js"><link rel="prefetch" href="/igarashi-blog/assets/变量机制.html.81b1c5fc.js"><link rel="prefetch" href="/igarashi-blog/assets/模块和包.html.6e460f63.js"><link rel="prefetch" href="/igarashi-blog/assets/生成器.html.da5757be.js"><link rel="prefetch" href="/igarashi-blog/assets/装饰器.html.078ab51a.js"><link rel="prefetch" href="/igarashi-blog/assets/迭代器.html.781ebdd2.js"><link rel="prefetch" href="/igarashi-blog/assets/错误和异常.html.493f0bb8.js"><link rel="prefetch" href="/igarashi-blog/assets/面向对象.html.32147838.js"><link rel="prefetch" href="/igarashi-blog/assets/bind.html.23a74780.js"><link rel="prefetch" href="/igarashi-blog/assets/DNS服务.html.e9332d52.js"><link rel="prefetch" href="/igarashi-blog/assets/linux 文件锁.html.dd30f6f0.js"><link rel="prefetch" href="/igarashi-blog/assets/脚本说明.html.33aa2c22.js"><link rel="prefetch" href="/igarashi-blog/assets/AD域.html.09f877bc.js"><link rel="prefetch" href="/igarashi-blog/assets/LDAP.html.a007a1c3.js"><link rel="prefetch" href="/igarashi-blog/assets/Python对接AD域.html.ae53c6d1.js"><link rel="prefetch" href="/igarashi-blog/assets/NFS服务.html.6c8a7e9b.js"><link rel="prefetch" href="/igarashi-blog/assets/NTP服务.html.64737e12.js"><link rel="prefetch" href="/igarashi-blog/assets/Samba服务.html.691b2475.js"><link rel="prefetch" href="/igarashi-blog/assets/SNMP服务.html.7208398a.js"><link rel="prefetch" href="/igarashi-blog/assets/ufscli工具.html.638b3e0c.js"><link rel="prefetch" href="/igarashi-blog/assets/ufs核心组件.html.0e4b5514.js"><link rel="prefetch" href="/igarashi-blog/assets/ufs管理平台.html.4b3c4912.js"><link rel="prefetch" href="/igarashi-blog/assets/uus虚拟机排错.html.f54c174e.js"><link rel="prefetch" href="/igarashi-blog/assets/CentOS的安装.html.c57a964b.js"><link rel="prefetch" href="/igarashi-blog/assets/RPM包管理.html.0115df25.js"><link rel="prefetch" href="/igarashi-blog/assets/账号管理与ACL权限.html.ee598c3f.js"><link rel="prefetch" href="/igarashi-blog/assets/Linux是什么与如何学习.html.96ba119a.js"><link rel="prefetch" href="/igarashi-blog/assets/主机规划与磁盘分区.html.84fb1524.js"><link rel="prefetch" href="/igarashi-blog/assets/计算机概论.html.6defdb17.js"><link rel="prefetch" href="/igarashi-blog/assets/Linux磁盘与文件系统管理.html.751350da.js"><link rel="prefetch" href="/igarashi-blog/assets/文件与文件系统压缩.html.ae357fcc.js"><link rel="prefetch" href="/igarashi-blog/assets/文件权限与目录配置.html.4fc18e9b.js"><link rel="prefetch" href="/igarashi-blog/assets/认识系统服务.html.f77ceb5f.js"><link rel="prefetch" href="/igarashi-blog/assets/vim 快捷键.html.d2258df6.js"><link rel="prefetch" href="/igarashi-blog/assets/vim程序编辑器.html.b9061475.js"><link rel="prefetch" href="/igarashi-blog/assets/常复习.html.20ea41fa.js"><link rel="prefetch" href="/igarashi-blog/assets/CURL.html.af4b9c63.js"><link rel="prefetch" href="/igarashi-blog/assets/SSL协议.html.08ff78ee.js"><link rel="prefetch" href="/igarashi-blog/assets/命令.html.9bb33ca2.js"><link rel="prefetch" href="/igarashi-blog/assets/网络基础.html.ebec8409.js"><link rel="prefetch" href="/igarashi-blog/assets/Ubuntu系列操作.html.28261b1a.js"><link rel="prefetch" href="/igarashi-blog/assets/认识Linux系统.html.0d9d4a61.js"><link rel="prefetch" href="/igarashi-blog/assets/CPU.html.43654a8f.js"><link rel="prefetch" href="/igarashi-blog/assets/主板.html.e8095246.js"><link rel="prefetch" href="/igarashi-blog/assets/内存.html.117aa681.js"><link rel="prefetch" href="/igarashi-blog/assets/存储.html.7f018298.js"><link rel="prefetch" href="/igarashi-blog/assets/扩展卡与接口.html.02239f5e.js"><link rel="prefetch" href="/igarashi-blog/assets/显卡.html.7d927518.js"><link rel="prefetch" href="/igarashi-blog/assets/PVE.html.8272c875.js"><link rel="prefetch" href="/igarashi-blog/assets/添加磁盘.html.639ca586.js"><link rel="prefetch" href="/igarashi-blog/assets/网络配置.html.c761bc73.js"><link rel="prefetch" href="/igarashi-blog/assets/404.html.3d01c03a.js"><link rel="prefetch" href="/igarashi-blog/assets/index.html.cbf47a04.js"><link rel="prefetch" href="/igarashi-blog/assets/index.html.c127cd0e.js"><link rel="prefetch" href="/igarashi-blog/assets/index.html.52a13e83.js"><link rel="prefetch" href="/igarashi-blog/assets/index.html.3ea291ba.js"><link rel="prefetch" href="/igarashi-blog/assets/index.html.688a80e3.js"><link rel="prefetch" href="/igarashi-blog/assets/index.html.d5b43c17.js"><link rel="prefetch" href="/igarashi-blog/assets/index.html.4e67cbde.js"><link rel="prefetch" href="/igarashi-blog/assets/index.html.221b91a5.js"><link rel="prefetch" href="/igarashi-blog/assets/index.html.4cdab0f0.js"><link rel="prefetch" href="/igarashi-blog/assets/index.html.b2dd5f60.js"><link rel="prefetch" href="/igarashi-blog/assets/index.html.a63262f3.js"><link rel="prefetch" href="/igarashi-blog/assets/index.html.a1b7dcdc.js"><link rel="prefetch" href="/igarashi-blog/assets/index.html.542146f8.js"><link rel="prefetch" href="/igarashi-blog/assets/index.html.ef1c8e4d.js"><link rel="prefetch" href="/igarashi-blog/assets/index.html.9c863c38.js"><link rel="prefetch" href="/igarashi-blog/assets/index.html.d809a4dc.js"><link rel="prefetch" href="/igarashi-blog/assets/index.html.7797e286.js"><link rel="prefetch" href="/igarashi-blog/assets/index.html.52592445.js"><link rel="prefetch" href="/igarashi-blog/assets/index.html.b78678d9.js"><link rel="prefetch" href="/igarashi-blog/assets/index.html.c5acfbf5.js"><link rel="prefetch" href="/igarashi-blog/assets/index.html.26ac12b5.js"><link rel="prefetch" href="/igarashi-blog/assets/index.html.9c6b0c49.js"><link rel="prefetch" href="/igarashi-blog/assets/index.html.382bff7f.js"><link rel="prefetch" href="/igarashi-blog/assets/index.html.3d473703.js"><link rel="prefetch" href="/igarashi-blog/assets/index.html.2613216e.js"><link rel="prefetch" href="/igarashi-blog/assets/index.html.a8a07e0c.js"><link rel="prefetch" href="/igarashi-blog/assets/index.html.eaff5fd2.js"><link rel="prefetch" href="/igarashi-blog/assets/index.html.ab74d8b4.js"><link rel="prefetch" href="/igarashi-blog/assets/index.html.3ad7c24e.js"><link rel="prefetch" href="/igarashi-blog/assets/index.html.93551f57.js"><link rel="prefetch" href="/igarashi-blog/assets/index.html.907aae90.js"><link rel="prefetch" href="/igarashi-blog/assets/index.html.ebae4d77.js"><link rel="prefetch" href="/igarashi-blog/assets/index.html.26386485.js"><link rel="prefetch" href="/igarashi-blog/assets/index.html.2f0c082e.js"><link rel="prefetch" href="/igarashi-blog/assets/index.html.61718316.js"><link rel="prefetch" href="/igarashi-blog/assets/index.html.889603e8.js"><link rel="prefetch" href="/igarashi-blog/assets/index.html.6f10ef78.js"><link rel="prefetch" href="/igarashi-blog/assets/index.html.62ece8b4.js"><link rel="prefetch" href="/igarashi-blog/assets/index.html.a48f83fd.js"><link rel="prefetch" href="/igarashi-blog/assets/index.html.5364d783.js"><link rel="prefetch" href="/igarashi-blog/assets/index.html.6a06e22a.js"><link rel="prefetch" href="/igarashi-blog/assets/index.html.ffbd58c5.js"><link rel="prefetch" href="/igarashi-blog/assets/index.html.e245c396.js"><link rel="prefetch" href="/igarashi-blog/assets/index.html.c57f048b.js"><link rel="prefetch" href="/igarashi-blog/assets/index.html.c4df8744.js"><link rel="prefetch" href="/igarashi-blog/assets/index.html.8845c5fb.js"><link rel="prefetch" href="/igarashi-blog/assets/index.html.391517ce.js"><link rel="prefetch" href="/igarashi-blog/assets/index.html.97cf906f.js"><link rel="prefetch" href="/igarashi-blog/assets/index.html.0c8e8c8e.js"><link rel="prefetch" href="/igarashi-blog/assets/index.html.a351d1ca.js"><link rel="prefetch" href="/igarashi-blog/assets/index.html.cc19bfe6.js"><link rel="prefetch" href="/igarashi-blog/assets/index.html.0f3dec63.js"><link rel="prefetch" href="/igarashi-blog/assets/index.html.63664525.js"><link rel="prefetch" href="/igarashi-blog/assets/index.html.fddc9cb9.js"><link rel="prefetch" href="/igarashi-blog/assets/index.html.f892dd0d.js"><link rel="prefetch" href="/igarashi-blog/assets/index.html.24679be9.js"><link rel="prefetch" href="/igarashi-blog/assets/index.html.b7f628b8.js"><link rel="prefetch" href="/igarashi-blog/assets/index.html.7e8eed71.js"><link rel="prefetch" href="/igarashi-blog/assets/index.html.4a6fa9ff.js"><link rel="prefetch" href="/igarashi-blog/assets/index.html.42a2b024.js"><link rel="prefetch" href="/igarashi-blog/assets/index.html.4aec7640.js"><link rel="prefetch" href="/igarashi-blog/assets/giscus.e34d3fcc.js"><link rel="prefetch" href="/igarashi-blog/assets/auto.56c9cb2e.js"><link rel="prefetch" href="/igarashi-blog/assets/index.1f644ee1.js"><link rel="prefetch" href="/igarashi-blog/assets/flowchart.parse.1479ec3f.js"><link rel="prefetch" href="/igarashi-blog/assets/mermaid.esm.min.0e041931.js"><link rel="prefetch" href="/igarashi-blog/assets/highlight.esm.9b852bc5.js"><link rel="prefetch" href="/igarashi-blog/assets/markdown.esm.77e8db25.js"><link rel="prefetch" href="/igarashi-blog/assets/math.esm.cb9d4be3.js"><link rel="prefetch" href="/igarashi-blog/assets/notes.esm.62c5f19d.js"><link rel="prefetch" href="/igarashi-blog/assets/reveal.esm.41ec5d7f.js"><link rel="prefetch" href="/igarashi-blog/assets/search.esm.04894411.js"><link rel="prefetch" href="/igarashi-blog/assets/zoom.esm.78977eba.js"><link rel="prefetch" href="/igarashi-blog/assets/VuePlayground.047b1fec.js"><link rel="prefetch" href="/igarashi-blog/assets/photoswipe.esm.f594e77b.js">
+  </head>
+  <body>
+    <div id="app"><!--[--><!--[--><!--[--><span tabindex="-1"></span><a href="#main-content" class="skip-link sr-only">Skip to content</a><!--]--><div class="theme-container has-toc"><!--[--><!--[--><header class="navbar"><div class="navbar-left"><button class="toggle-sidebar-button" title="Toggle Sidebar"><span class="icon"></span></button><!----><a href="/igarashi-blog/" class="brand"><img class="logo" src="/igarashi-blog/avatar.jpg" alt="五十岚呐~"><!----><span class="site-name hide-in-pad">五十岚呐~</span></a><!----></div><div class="navbar-center"><!----><nav class="nav-links"><div class="nav-item hide-in-mobile"><a href="/igarashi-blog/" class="nav-link" aria-label="主页"><span class="icon iconfont icon-home"></span>主页<!----></a></div><div class="nav-item hide-in-mobile"><div class="dropdown-wrapper"><button class="dropdown-title" type="button" aria-label="Python"><span class="title"><span class="icon iconfont icon-python"></span>Python</span><span class="arrow"></span><ul class="nav-dropdown"><li class="dropdown-item"><h4 class="dropdown-subtitle"><span>语言</span></h4><ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/igarashi-blog/python/%E8%AF%AD%E8%A8%80/%E5%9F%BA%E7%A1%80/%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85.html" class="nav-link" aria-label="基础"><!---->基础<!----></a></li><li class="dropdown-subitem"><a href="/igarashi-blog/python/%E8%AF%AD%E8%A8%80/%E8%BF%9B%E9%98%B6/%E5%8F%98%E9%87%8F%E6%9C%BA%E5%88%B6.html" class="nav-link" aria-label="进阶"><!---->进阶<!----></a></li><li class="dropdown-subitem"><a href="/igarashi-blog/python/%E8%AF%AD%E8%A8%80/%E6%B7%B1%E5%85%A5/%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6.html" class="nav-link" aria-label="深入"><!---->深入<!----></a></li><li class="dropdown-subitem"><a href="/igarashi-blog/python/%E8%AF%AD%E8%A8%80/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/Socket.html" class="nav-link" aria-label="网络编程"><!---->网络编程<!----></a></li><li class="dropdown-subitem"><a href="/igarashi-blog/python/%E8%AF%AD%E8%A8%80/%E5%A4%9A%E4%BB%BB%E5%8A%A1%E7%BC%96%E7%A8%8B/%E8%BF%9B%E7%A8%8B.html" class="nav-link" aria-label="多任务编程"><!---->多任务编程<!----></a></li><li class="dropdown-subitem"><a href="/igarashi-blog/python/%E8%AF%AD%E8%A8%80/asyncio/asyncio%E5%9F%BA%E7%A1%80.html" class="nav-link" aria-label="asyncio"><!---->asyncio<!----></a></li></ul></li><li class="dropdown-item"><h4 class="dropdown-subtitle"><span>生态</span></h4><ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/igarashi-blog/python/%E7%94%9F%E6%80%81/%E8%BF%9C%E7%A8%8B%E8%B0%83%E7%94%A8/gRPC.html" class="nav-link" aria-label="远程调用"><span class="icon iconfont icon-rpc"></span>远程调用<!----></a></li><li class="dropdown-subitem"><a href="/igarashi-blog/python/%E7%94%9F%E6%80%81/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/kafka.html" class="nav-link" aria-label="消息队列"><span class="icon iconfont icon-kafka"></span>消息队列<!----></a></li><li class="dropdown-subitem"><a href="/igarashi-blog/python/%E7%94%9F%E6%80%81/%E5%BC%82%E6%AD%A5%E4%BB%BB%E5%8A%A1/Celery.html" class="nav-link" aria-label="异步任务"><span class="icon iconfont icon-tasks"></span>异步任务<!----></a></li></ul></li></ul></button></div></div><div class="nav-item hide-in-mobile"><div class="dropdown-wrapper"><button class="dropdown-title" type="button" aria-label="数据库"><span class="title"><span class="icon iconfont icon-database"></span>数据库</span><span class="arrow"></span><ul class="nav-dropdown"><li class="dropdown-item"><a href="/igarashi-blog/database/etcd/etcd.html" class="nav-link" aria-label="etcd"><span class="icon iconfont icon-etcd"></span>etcd<!----></a></li><li class="dropdown-item"><a href="/igarashi-blog/database/MySQL/MySQL.html" class="nav-link" aria-label="MySQL"><span class="icon iconfont icon-mysql"></span>MySQL<!----></a></li><li class="dropdown-item"><a href="/igarashi-blog/database/Redis/redis.html" class="nav-link" aria-label="Redis"><span class="icon iconfont icon-redis"></span>Redis<!----></a></li><li class="dropdown-item"><a href="/igarashi-blog/database/PostgreSQL/PostgreSQL.html" class="nav-link" aria-label="PostgreSQL"><span class="icon iconfont icon-postgresql"></span>PostgreSQL<!----></a></li></ul></button></div></div><div class="nav-item hide-in-mobile"><div class="dropdown-wrapper"><button class="dropdown-title" type="button" aria-label="操作系统"><span class="title"><span class="icon iconfont icon-os"></span>操作系统</span><span class="arrow"></span><ul class="nav-dropdown"><li class="dropdown-item"><a href="/igarashi-blog/unix/Linux/Linux%E5%9F%BA%E7%A1%80%E6%8C%87%E5%BC%95/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%A6%82%E8%AE%BA.html" class="nav-link" aria-label="Linux"><span class="icon iconfont icon-linux"></span>Linux<!----></a></li><li class="dropdown-item"><a href="/igarashi-blog/unix/CentOS/%E5%AE%89%E8%A3%85/CentOS%E7%9A%84%E5%AE%89%E8%A3%85.html" class="nav-link" aria-label="CentOS"><span class="icon iconfont icon-centos"></span>CentOS<!----></a></li><li class="dropdown-item"><a href="/igarashi-blog/unix/Ubuntu/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/Ubuntu%E7%B3%BB%E5%88%97%E6%93%8D%E4%BD%9C.html" class="nav-link" aria-label="Ubuntu"><span class="icon iconfont icon-ubuntu"></span>Ubuntu<!----></a></li><li class="dropdown-item"><a href="/igarashi-blog/unix/%E8%99%9A%E6%8B%9F%E6%9C%BA/PVE/PVE.html" class="nav-link" aria-label="虚拟机"><span class="icon iconfont icon-pve"></span>虚拟机<!----></a></li></ul></button></div></div><div class="nav-item hide-in-mobile"><div class="dropdown-wrapper"><button class="dropdown-title" type="button" aria-label="运维工具"><span class="title"><span class="icon iconfont icon-devops"></span>运维工具</span><span class="arrow"></span><ul class="nav-dropdown"><li class="dropdown-item"><a href="/igarashi-blog/tool/Git/Git.html" class="nav-link" aria-label="Git"><span class="icon iconfont icon-git"></span>Git<!----></a></li><li class="dropdown-item"><a href="/igarashi-blog/tool/Nginx/Nginx%E5%9F%BA%E7%A1%80.html" class="nav-link" aria-label="Nginx"><span class="icon iconfont icon-nginx"></span>Nginx<!----></a></li><li class="dropdown-item"><a href="/igarashi-blog/tool/Docker/docker%E5%AE%B9%E5%99%A8.html" class="nav-link" aria-label="Docker"><span class="icon iconfont icon-docker"></span>Docker<!----></a></li><li class="dropdown-item"><a href="/igarashi-blog/tool/Kubernetes/K8s%E5%9F%BA%E7%A1%80.html" class="nav-link" aria-label="Kubernetes"><span class="icon iconfont icon-kubernetes"></span>Kubernetes<!----></a></li><li class="dropdown-item"><a href="/igarashi-blog/tool/Other/%E7%BD%91%E7%BB%9C%E4%BB%A3%E7%90%86.html" class="nav-link" aria-label="工具"><span class="icon iconfont icon-other"></span>工具<!----></a></li></ul></button></div></div><div class="nav-item hide-in-mobile"><div class="dropdown-wrapper"><button class="dropdown-title" type="button" aria-label="漫漫全干卷的苦"><span class="title"><!---->漫漫全干卷的苦</span><span class="arrow"></span><ul class="nav-dropdown"><li class="dropdown-item"><a href="https://draveness.me/golang/" rel="noopener noreferrer" target="_blank" aria-label="GO" class="nav-link"><span class="icon iconfont icon-go"></span>GO<span><svg class="external-link-icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg><span class="external-link-icon-sr-only">open in new window</span></span><!----></a></li><li class="dropdown-item"><a href="https://notes.fe-mm.com/interview/base/types.html" rel="noopener noreferrer" target="_blank" aria-label="前端内卷不归路" class="nav-link"><span class="icon iconfont icon-javascript"></span>前端内卷不归路<span><svg class="external-link-icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg><span class="external-link-icon-sr-only">open in new window</span></span><!----></a></li></ul></button></div></div></nav><!----></div><div class="navbar-right"><!----><!----><div class="nav-item"><a class="repo-link" href="https://github.com/Igarashi-G/igarashi-blog" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><svg xmlns="http://www.w3.org/2000/svg" class="icon github-icon" viewbox="0 0 1024 1024" fill="currentColor" aria-label="github icon" style="width:1.25rem;height:1.25rem;vertical-align:middle;"><path d="M511.957 21.333C241.024 21.333 21.333 240.981 21.333 512c0 216.832 140.544 400.725 335.574 465.664 24.49 4.395 32.256-10.07 32.256-23.083 0-11.69.256-44.245 0-85.205-136.448 29.61-164.736-64.64-164.736-64.64-22.315-56.704-54.4-71.765-54.4-71.765-44.587-30.464 3.285-29.824 3.285-29.824 49.195 3.413 75.179 50.517 75.179 50.517 43.776 75.008 114.816 53.333 142.762 40.79 4.523-31.66 17.152-53.377 31.19-65.537-108.971-12.458-223.488-54.485-223.488-242.602 0-53.547 19.114-97.323 50.517-131.67-5.035-12.33-21.93-62.293 4.779-129.834 0 0 41.258-13.184 134.912 50.346a469.803 469.803 0 0 1 122.88-16.554c41.642.213 83.626 5.632 122.88 16.554 93.653-63.488 134.784-50.346 134.784-50.346 26.752 67.541 9.898 117.504 4.864 129.834 31.402 34.347 50.474 78.123 50.474 131.67 0 188.586-114.73 230.016-224.042 242.09 17.578 15.232 33.578 44.672 33.578 90.454v135.85c0 13.142 7.936 27.606 32.854 22.87C862.25 912.597 1002.667 728.747 1002.667 512c0-271.019-219.648-490.667-490.71-490.667z"></path></svg></a></div><div class="nav-item hide-in-mobile"><button class="outlook-button" tabindex="-1" ariahidden="true"><svg xmlns="http://www.w3.org/2000/svg" class="icon outlook-icon" viewbox="0 0 1024 1024" fill="currentColor" aria-label="outlook icon"><path d="M224 800c0 9.6 3.2 44.8 6.4 54.4 6.4 48-48 76.8-48 76.8s80 41.6 147.2 0 134.4-134.4 38.4-195.2c-22.4-12.8-41.6-19.2-57.6-19.2C259.2 716.8 227.2 761.6 224 800zM560 675.2l-32 51.2c-51.2 51.2-83.2 32-83.2 32 25.6 67.2 0 112-12.8 128 25.6 6.4 51.2 9.6 80 9.6 54.4 0 102.4-9.6 150.4-32l0 0c3.2 0 3.2-3.2 3.2-3.2 22.4-16 12.8-35.2 6.4-44.8-9.6-12.8-12.8-25.6-12.8-41.6 0-54.4 60.8-99.2 137.6-99.2 6.4 0 12.8 0 22.4 0 12.8 0 38.4 9.6 48-25.6 0-3.2 0-3.2 3.2-6.4 0-3.2 3.2-6.4 3.2-6.4 6.4-16 6.4-16 6.4-19.2 9.6-35.2 16-73.6 16-115.2 0-105.6-41.6-198.4-108.8-268.8C704 396.8 560 675.2 560 675.2zM224 419.2c0-28.8 22.4-51.2 51.2-51.2 28.8 0 51.2 22.4 51.2 51.2 0 28.8-22.4 51.2-51.2 51.2C246.4 470.4 224 448 224 419.2zM320 284.8c0-22.4 19.2-41.6 41.6-41.6 22.4 0 41.6 19.2 41.6 41.6 0 22.4-19.2 41.6-41.6 41.6C339.2 326.4 320 307.2 320 284.8zM457.6 208c0-12.8 12.8-25.6 25.6-25.6 12.8 0 25.6 12.8 25.6 25.6 0 12.8-12.8 25.6-25.6 25.6C470.4 233.6 457.6 220.8 457.6 208zM128 505.6C128 592 153.6 672 201.6 736c28.8-60.8 112-60.8 124.8-60.8-16-51.2 16-99.2 16-99.2l316.8-422.4c-48-19.2-99.2-32-150.4-32C297.6 118.4 128 291.2 128 505.6zM764.8 86.4c-22.4 19.2-390.4 518.4-390.4 518.4-22.4 28.8-12.8 76.8 22.4 99.2l9.6 6.4c35.2 22.4 80 12.8 99.2-25.6 0 0 6.4-12.8 9.6-19.2 54.4-105.6 275.2-524.8 288-553.6 6.4-19.2-3.2-32-19.2-32C777.6 76.8 771.2 80 764.8 86.4z"></path></svg><div class="outlook-dropdown"><!----></div></button></div><!----><!----><button class="toggle-navbar-button" aria-label="Toggle Navbar" aria-expanded="false" aria-controls="nav-screen"><span class="button-container"><span class="button-top"></span><span class="button-middle"></span><span class="button-bottom"></span></span></button></div></header><!----><!--]--><!----><div class="toggle-sidebar-wrapper"><span class="arrow left"></span></div><aside class="sidebar"><!--[--><!----><!--]--><ul class="sidebar-links"><li><!--[--><section class="sidebar-group"><p class="sidebar-heading clickable"><span class="icon iconfont icon-mysql"></span><a href="/igarashi-blog/database/MySQL/" class="title">MySQL</a><!----></p><ul class="sidebar-links"><li><!--[--><a href="/igarashi-blog/database/MySQL/MySQL.html" class="nav-link sidebar-link sidebar-page" aria-label="Mysql基础"><!---->Mysql基础<!----></a><ul class="sidebar-sub-headers"></ul><!--]--></li></ul></section><!--]--></li></ul><!--[--><!----><!--]--></aside><!--[--><main class="page" id="main-content"><!--[--><!----><nav class="breadcrumb disable"></nav><div class="page-title"><h1><!---->Mysql调优</h1><div class="page-info"><span class="author-info" aria-label="作者🖊" data-balloon-pos="down" isoriginal="false" pageview="false"><svg xmlns="http://www.w3.org/2000/svg" class="icon author-icon" viewbox="0 0 1024 1024" fill="currentColor" aria-label="author icon"><path d="M649.6 633.6c86.4-48 147.2-144 147.2-249.6 0-160-128-288-288-288s-288 128-288 288c0 108.8 57.6 201.6 147.2 249.6-121.6 48-214.4 153.6-240 288-3.2 9.6 0 19.2 6.4 25.6 3.2 9.6 12.8 12.8 22.4 12.8h704c9.6 0 19.2-3.2 25.6-12.8 6.4-6.4 9.6-16 6.4-25.6-25.6-134.4-121.6-240-243.2-288z"></path></svg><span><a class="author-item" href="https://github.com/Igarashi-G" target="_blank" rel="noopener noreferrer">五十岚</a></span><span property="author" content="五十岚"></span></span><!----><!----><!----><!----><span class="reading-time-info" aria-label="阅读时间⌛" data-balloon-pos="down" isoriginal="false" pageview="false"><svg xmlns="http://www.w3.org/2000/svg" class="icon timer-icon" viewbox="0 0 1024 1024" fill="currentColor" aria-label="timer icon"><path d="M799.387 122.15c4.402-2.978 7.38-7.897 7.38-13.463v-1.165c0-8.933-7.38-16.312-16.312-16.312H256.33c-8.933 0-16.311 7.38-16.311 16.312v1.165c0 5.825 2.977 10.874 7.637 13.592 4.143 194.44 97.22 354.963 220.201 392.763-122.204 37.542-214.893 196.511-220.2 389.397-4.661 5.049-7.638 11.651-7.638 19.03v5.825h566.49v-5.825c0-7.379-2.849-13.981-7.509-18.9-5.049-193.016-97.867-351.985-220.2-389.527 123.24-37.67 216.446-198.453 220.588-392.892zM531.16 450.445v352.632c117.674 1.553 211.787 40.778 211.787 88.676H304.097c0-48.286 95.149-87.382 213.728-88.676V450.445c-93.077-3.107-167.901-81.297-167.901-177.093 0-8.803 6.99-15.793 15.793-15.793 8.803 0 15.794 6.99 15.794 15.793 0 80.261 63.69 145.635 142.01 145.635s142.011-65.374 142.011-145.635c0-8.803 6.99-15.793 15.794-15.793s15.793 6.99 15.793 15.793c0 95.019-73.789 172.82-165.96 177.093z"></path></svg><span>大约 24 分钟</span><meta property="timeRequired" content="PT24M"></span></div><hr></div><!----><!----><div class="theme-hope-content"><h1 id="mysql-调优" tabindex="-1"><a class="header-anchor" href="#mysql-调优" aria-hidden="true">#</a> MYSQL 调优</h1><p><a href="https://www.cnblogs.com/clschao/articles/10463743.html" target="_blank" rel="noopener noreferrer">https://www.cnblogs.com/clschao/articles/10463743.html<span><svg class="external-link-icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg><span class="external-link-icon-sr-only">open in new window</span></span></a></p><pre><code>引擎：
+    InnoDB：插入时按主键排序插入（最常用） -- 聚集
+    MYISAM：按照插入时顺序插入 -- 堆表（数据堆在一起）
+
+
+一、页存储：
+    操作系统中一页的容量为4KB,每一条数据插入时都是插入到页中，
+    innodb_page_size  = 16384 （16kb）
+
+    页结构图：
+                            File Header
+                            Page Header
+                            Infimun + Supremun Records
+                            - User Records
+                            - Free Space
+                            - Page Directory
+                            File Trailer
+
+
+二、InnoDB行格式：一行记录可以以不同形式记录在InnoDB中，格式分别有
+    1.Compact：(紧密)
+        变长字段长度列表 + NULL标志位 + 记录头信息 + 列1~N数据   （格式 外加下文的三个隐藏列）
+
+
+    2.Redundant:
+
+    3.Dynamic:(动态)
+    4.Compressed:(压缩)
+        这两种行格式类似于COMPACT，只不过在处理行溢出数据时有点分歧，不会在记录的真实数据处 存储一部分数据，
+        而是把所有的数据都存储到其他页面中去，只在（本该）记录的真实数据处 存储其他页面的地址。
+        另外Compressed 行格式会采用压缩算法对页面进行压缩。
+
+
+    可以在创建或修改表的语句中指定：
+        CREATED TABLE 表名 （列的信息） ROW_FORMT=行格式名称
+        ALTER TABLE 表名 ROW_FORMT=行格式名称
+
+
+    行大小：
+        定义某一行数据（单个字段）最多有多大，最大长度除开BLOBS这个类型以外的其他字段，最大不能超过65535个字节
+        a varchar（65535） --会报错  变长字段无NOT NULL则会增加3个字节记录从而占用空间（变长字段列表 + NULL标志位）
+
+    行溢出：
+        因此存在行数据这一页都容不下的可能性，便会将一行的数据 分成几个页去存
+
+        方式一： 页存一部分数据 + 下一页的地址
+
+        方式二： 页面不存数据， 只存起始页的地址  + 末尾页地址 （和索引有关，将这一页存多条记录，即多个不同页的地址）
+
+
+    记录的真实数据：
+        除了自定义的列数据以外，还有三个隐藏列:
+
+        列名              是否必须        占用空间            描述
+        row_id              否             6字节         行ID，唯一表示ID
+        transaction_id      是             7字节           事务ID
+        roll_pointer        是             7字节           回滚指针
+
+        实际上真正名称为：DB_ROW_ID、DB_TRX_ID、DB_ROLL_PTR
+        若表没有手动定义主键，则会选取一个Unique键作为主键（即唯一索引），若Unique键都没有定义的话，则会默认为表添加一个名为
+        row_id 的隐藏列作为主键，所以row_id 是在没有自定义主键以及Unique键的情况下才会存在的
+
+
+三、索引：
+    页目录：
+        本质是树，即用一个页 利用二分法进行来记录各数据的地址，每一页会有主键，并把主键提出来作为索引部分
+
+              页号100                       页号200
+            1 -&gt;  1111a                   5 -&gt; 5555e
+                  2222b       -&gt;               6666f
+            3 -&gt;  3333c...                7 -&gt; 7777g ...
+
+    目录页:
+        额外提出一个页，用来存储页号，但每一页的页号可不是相邻的，反而会再用一个 key-value 去存储页号
+                    1                          5            --  主键
+                   100                        200           --  指针
+                    |                          |
+                 页号100                    页号200          --  指针指向的行数据
+
+        key：每页中最小的值， 利用主键都是递增顺序排列
+        value：对应的页号
+
+    因此就是一个B+树结构(根节点的元素总会留一个在叶子节点上) 一个节点也可以存多个元素
+                                 0003 0005
+             |                       |                         |
+           0002                    0004                       0005
+        |         |           |            |              |            |
+    0001   -&gt;    0002   -&gt;   0003    -&gt;   0004   -&gt;    0005    -&gt;    0006 0007
+
+    叶子节点：存数据
+    非叶子节点：存主键 + 指针
+
+    所以插入索引的过程中是生成B+树的过程，这就是为什么有序的原因，是存在了B+树的叶子节点里
+
+    注：
+        1.主键ID不适合太长，若过于长的话一页放不下，再会将树的高度拉长，树的高度越高，查找速度就会下降
+
+        2.mysql 创建过程略微不同，他是当执行创建表命令时，就会创建一个页，当一个页装不下后，不是在创建第二个页，
+          而是将第一个页copy一份，创建第二个页，再将之前的第一页改为目录页
+
+        3.B+树的优势，相比于AVL树（二叉） B+树的优势在于一个节点可以存多个元素，因此会比AVL树高度要低，因此查找
+          时的执行效率要低。虽然数据冗余了，查找 = 等于的条件不明显，但查找&gt; &lt; 条件时则不同
+
+          例如： 查 &gt; 0002 的数据，可以直接利用索引（0002后的链表指针）提取所有数据，而AVL树要先找出右子树
+                的节点，之后还要回归父节点，层层遍历  （SQL范围查询）
+
+          据说 B+树高度等于2 的时候，大约可存 20000多条数据， B+树高度等于3 的时候， 可以存 2千万多条数据
+
+          假设推算：主键用bigint类型 占8字节 指针占6个字节 因此在一页中，可以存多少个非叶子节点
+                   16kb/(8+6)=1170.28... 可以存1170对 键值对（代表下面有多少个叶子节点）
+
+                   此时假设一行数据为1KB，一页存16条数据，那么高度为2的情况下 可存 1170 * 16 = 18724 条数据
+                   因此用B+树找最多找两次就能在2千多万条数据中找到那个页
+
+
+    辅助索引：
+        出了主键索引之外，创建的普通索引。好处在于更方便查找，但走辅助索引会走两次，因为建立辅助索引意味着全表
+        又重新构建了一颗B+树，子节点存的是主键，走辅助索引会先找到主键在去主键表中找数据。
+        例：
+            create index idx_t1_bcd on t1(b,c,d);
+            创建名为idx_t1_bcd的索引，bcd三列必须唯一且会进行排序，并再次生成一个已bcd为 键的B+树
+
+        查找方式：
+        1.辅助索引+ 回表
+        2.全表扫描
+
+        但当一个比较极端的情况，走辅助索引吧全表的主键都找了一遍，此时还不如走全表索引来得快：
+        create index idx_t1_b on t1(b);   -- 此时只建立一个b的索引（上文索引无）
+        explain select * from t1 where b &gt; 0; 此时 若走辅助索引还不如走主键全表扫描来的快
+        因为 b &gt; 0 这个条件吧主键索引都找了出来，又去全表索引再找一遍，这就很慢。
+
+        最左前缀原则：
+            当建立 bcd 三列的索引时，
+            explain select * from t1 where b = 1 and c = 1 and d = 1; -- 命中索引
+            explain select * from t1 where c = 1 and d = 1; -- 未命中
+
+            若数据从 111 到 644  *11 是没有办法进行比较的，第一个值不知道因此未走索引
+                                    111     644
+                                    页号    页号
+                            |                           |
+                     111    235                     322     644
+
+            explain select * from t1 where b like &#39;%101%&#39;;  -- 未命中索引
+            同上 % 在开头也意味着 第一个值是模糊的,开头可以是多个,而 &#39;101%&#39; 则可以
+
+        注：
+            1.用上文的道理，若要查找已.com 为后缀结尾的 用 %com，则会全表扫描，
+                可以将 www.baidu.com 、www.google.com 这样的网站逆序存储，然后利用 %moc 进行查找
+                则可直接命中索引
+
+                select * from t1 order by b,c,d;  -- 走全表
+                select b from t1 order by b,c,d;  -- 命中索引
+                这是因为 只找一个b字段，b字段本身有索引，因此就无须再走一次全表了
+
+
+            2.NULL 值在MYSQL中小于任何值
+
+            3.若其他索引有相同的数据（不是唯一索引），则系统会默认将主键索引也加入B+树的构成中，便于区分
+</code></pre><p>MYSQL 事务：</p><pre><code>一、事务（ACID）
+    场景：小明向小胖转账10块钱
+
+    原子性：转账操作是一个不可分割的操作，要么转账失败，要么转账成功，不可能存在中间状态，也就是转了一半的这种情况
+        我们把要么全做要么不做这种的规则成为原子性规则
+
+    隔离性：
+        另一个场景：小明向小白转账10元钱
+                   小明向小胖转账10元钱
+        隔离性表示上面的两个操作是不能相互影响的
+
+    一致性：
+        每一次转账完成后，都需要保证整个系统余额等于所有账户的收入减去所有账户的支出。
+        若不遵循原子性，也就是如果小明向小胖转账10元，但是只转了一半，小明账户上少了10元，小胖账户上没有增加，
+        这就是不满足一致性原则。
+        同样不满足隔离性，也有可能破坏一致性。因此原子性和隔离性都是保证满足一致性的手段。
+
+        实际上，我们可以对表建立约束来保证一致性。
+
+    持久性：
+        对于转账的交易记录，需要永久保存。
+
+    事务的概念：
+        把需要保证原子性、隔离性、一致性、和持久性的一个或多个数据库操作称之为一个事务。
+
+
+二、自动提交：
+    mysql&gt; SHOW VARIABLES LIKE &#39;autocommit&#39;;   -- 正常情况下，MYSQL默认事务是ON 自动提交的
+
+    自动提交意味着： 当写一个update之类的语句时，
+     - 它会先帮我开启一个事务，
+     - 再去执行我写的SQL
+     - 再去把这个事务提交上去
+
+    1、开启事务
+        mysql&gt; BEGIN;  -- 手动开启一个事务
+
+        mysql&gt; START TRANSACTION;   -- 和BEGIN功效相同，都是开启一个事务
+
+        1.当开启两个MYSQL客户端是，客户端1 执行语句
+        update t1 set c = 2 where  a = 1 ;  -- 目的是把a = 1 这行数据的c字段的值改为 2
+
+        2.此时在客户端2 上执行
+        select * from t1 where a = 1; -- 发现客户端2 中查询到的数据并没有改变
+
+        3.这时在 客户端1 执行 commit; 提交一下，客户端2 中才能真正查到改动后的数据。
+          但客户端1 则自己改的自己可以查到。
+
+        4.若此时客户端1 上执行rollback 则会进行回滚，之前改动的数据则会改回。
+            注：rollback 是我们程序员手动去回滚事务时才去使用的，若事务在执行过程中遇到了某些错误而无法继续执行的
+                话，事务自身会回滚。
+
+三、隐式提交：
+    当使用 begin 或 start transaction 开启一个事务，或者把系统变量autocommit 的值设置为OFF 时，事务就不会进行自动
+    提交，但是我们输入了某些语句之后会悄悄的提交掉，就像我们输入了commit 语句一样，这是因为某些特殊的语句而导致事务
+    提交的情况称为隐式提交。
+
+    导致隐式提交的语句包括：
+    - 定义或修改数据库对象的数据定义语言（Data definition language 缩写：DDL）数据库对象 —— 是指数据库、表、
+      视图、存储过程、等等这些东西。当我们使用 create、alter、drop等语句去修改这些所谓的数据库对象时，就会隐式的
+      提交前边语句所属于的事务。
+
+    - 隐式使用或修改mysql 数据库中的表; 当我们使用 alter user 、create user、drop user、grant、 rename user、
+      set password 等语句时也会隐式的提交前边语句所属于的事务。
+
+    - 事务控制或关于锁定的语句：当我们在一个事务还没提交或者回滚时就又使用start transaction 或者begin 开启了
+      另一个事务时，会隐式的提交上一个事务，或者当前的autocommit 系统变量为OFF，我们手动把它调为ON时，也会隐式
+      的提交前边语句所属的事务，或者用LOCK TABLES、 UNLOCK TABLES 等关于锁定的语句也会隐式的提交前边的语句所属
+      的事务。
+
+    - 加载数据的语句：比如我们使用LOAD DATA 语句来批量往数据库中导入数据时，也会隐式的提交前边语句所属的事务。
+
+    - 其他的一些语句：使用analyze table、 cache index、 check table、flush、 load index into cache、
+      optimize table、 repair table、 reset 等语句也会隐式的提交前边语句所属的事务。
+      （更新查询优化器的统计数据的命令）
+
+四、保存点：
+    mysql&gt; savepoint 保存点名称：
+
+    - 首先，开启一个事务：
+      begin
+
+    - 然后执行更改命令：
+      update t1 set c = 6 where a = 1;
+
+    - 再执行保存点命令：
+      savepoint t123
+
+    - 再改
+      update t1 set c = 7 where a = 1;
+
+    - 执行回滚
+      rollback to t123;  -- rollback [WORK] to [savepoint] 保存点名称；
+      若rollback 后面不跟随保存点名称的话，会直接回滚到事务执行之前的状态。
+
+    - 删除保存点:
+      release savepoint 保存点名称;
+
+
+五、隔离性详解 ！！
+    一共有四种隔离级别：
+    mysql&gt; set session transaction isolation level read uncommitted; -- 修改隔离级别为（读未提交）
+
+    mysql&gt; select @@tx_isolation;
+
+    1.读未提交（read uncommitted）
+        一个事务可以读到其他事务还未提交的数据，会出现脏读。
+        &gt; 一个事务读到了另一个事务修改过但未提交的数据，即为脏读。
+
+        用的少，违背事务的特性，不严谨
+
+    2.读已提交（read committed）
+        一个事务只能读到另一个事务修改过并已提交的数据，并且其他事务每对改数据进行一次修改并提交后，该事务都能查询到
+        最新值，会出现不可重复读、幻读。
+        &gt; 如果一个事务先根据某些条件查询出一些记录，之后另一个事务又向表中插入了符合这些条件的记录（并提交），原先的
+        事务再次按照该条件查询时，能把另一个事务插入的记录也读出来，这就是幻读。
+
+    3.可重复读（repeatable read）
+        一个事务第一次读过某条记录后，即使其他事务修改了该记录的值并且提交，该事务之后再读该条记录时，读到的仍是第一次
+        读到的值，而不是每次都读到不同的数据，这就是可重复读，这种隔离级别解决了不可重复，但是还是会出现幻读。
+
+        也就是客户端1 尽管commit 客户端2 也读不到客户端1 commit 后的值 （其实按理说不会出现幻读了，但也可能发生）
+        （MYSQL默认的隔离级别 就是可重复读）
+
+    4.串行化（serializable）
+        以上三种隔离级别都允许对同一条记录同时进行读-读、 读-写、 写-读、的并发操作，如果我们不允许读-写、 写-读
+        的并发操作，可以使用serializable 隔离级别，这种隔离级别因为对同一条记录都是串行的，所以不会出现脏读、幻读
+        等现象
+
+        这中隔离方式，用的也不多，它会在一个客户端 的事务尚未操作commit 时阻塞其他的事务进行查找
+
+    注：
+        1.这四种隔离级别是SQL定义的标准，不同数据库会有不同的实现，特别需要注意的是 [MYSQL 在 repeatable read 隔离
+            级别下，是可以禁止幻读问题的发生]
+
+        2.幻读：本质和不可重复度差不多，幻读只的是多读出了另一个事务生成的一行记录，而不可重复读，指的是读某个记录的
+            原本字段发生变化
+
+六、事务ID及回滚指针
+    1.事务id：
+        如上文提到，mysql除自定义数据外，还有三个隐藏列，行id、事务id、回滚指针
+        每一次数据进行改动时，都要开启一个事务，因此这行的其中一个隐藏列会记录当时修改的事务id
+
+    2.回滚指针：
+        当修改了一次数据，不仅会修改事务id，还有回滚指针记录上个版本的数据（像链表，存在日志中）
+        如：
+                     数据      事务id       回滚指针
+                1 5 1 1 a2 a3   300    trx_id_roll_pointer  ____
+            ____________________________________________________|
+            |   1 4 1 1 a2 a3   200    trx_id_roll_pointer  ____
+            ____________________________________________________|
+            |——&gt;1 3 1 1 a2 a3   82     trx_id_roll_pointer  ____
+            ____________________________________________________|
+            |——&gt;1 2 1 1 a2 a3   81     trx_id_roll_pointer....
+
+
+    3.版本链：
+        以上为某一行数据的版本链，对于innodb来说，聚簇索引记录中都包含两个必要的隐藏列，（row_id 并不是必要的，我们
+        创建的表中有主键或者非NULL唯一键时都不会包含row_id列）
+        trx_id:每次对某条记录进行改动时，都会把对应的事务id赋值给trx_id 隐藏列
+        roll_pointer:每次对某条记录进行改动时，这个隐藏列会存一个指针，可以通过这个指针找到记录修改前的信息
+
+        注：事务回滚的依据是 undolog （后面提）
+
+    4.read view:
+        场景：A事务（id 300） 读取某一列值为 1   B事务（id 200） 修改某一列值为 2
+        对于A事务在 select 读的时候会生成一个read view (里面会有一个重要属性 m_ids)
+            m_ids:[]   -- 里面保存了活跃的事务id （还未提交的） [82, 200, 300]
+
+            - 当A事务未提交时：
+                会用事务id列表去版本链比对，判断对应事务是否是活跃的，若是，则不去里面找，直到找到不活跃的（已经
+                提交了的事务，因此会把之前提交过的事务 81 对应的数据给找出来）[82, 200, 300]
+
+            - 当A事务已经提交：（读已提交下）
+                和上述类似，但由于A已经提交，则会根据A事务id 300把对应数据读出[82, 300]
+
+            - 当A事务已提交：（可重复读）
+                m_ids = [82, 200, 300]  此时与上面不同，不会把200 去掉，会直接用第一次select 事，算出来的
+                read view 会直接去复用read view 即A事务未提交前的read view 。所以最后还是把81 找出的来。
+
+            区别：在于生成read view 的时机不同，读已提交，是每次select 都会生成新的read view，
+                  可重复读则是，只在第一次生成read view 之后都沿用这个 read view
+
+
+    5.MVCC总结：
+        MVCC（multi-version concurrency control，多版本并发控制）指的是 读已提交、可重复读这两中隔离级别
+        的事务在执行普通的select 访问版本链的过程，可以使不同事务的读-写、写-读操作并发执行，从而提升系统性能。
+        （避免使用锁，等释放的低效率行为）
+
+
+
+七、锁
+    0.概念图：
+                                                                                ———————————————————————  表锁
+            乐观锁 ——————————————                                               |
+                                 ———— 加锁机制                      锁粒度 —————————————————————————————— 行锁
+            悲观锁 ——————————————             |                    |            |
+                                                                                ———————————————————————— 页锁
+                                              ———————— 锁  ————————
+
+            共享锁 ————————————                                               ———Record Lock（单个记录上锁）
+                               |           |                       |         |
+            排他锁 ————————————  ———— 兼容性                         锁算法 ———————Gap Lock（间隙锁，解决幻读）
+                               |                                             |
+            意向锁 ————————————                                               ———Next-Key Lock：Gap Lock+Record Lock
+
+
+    1.读锁和写锁
+        读锁：共享锁，shared locks S锁。
+        写锁：排他锁，exclusive locks X锁。（一个资源上加了写锁，其他若需要加锁则需要排队）
+        select：不加锁（可以跳过锁去访问）
+
+        读操作：对于普通的select 语句，InnoDB不会加任何锁
+
+    2.select ...lock in share mode
+        将查找到的数据加上一个S锁，允许其他事务继续获取这些记录的S锁，不能获取这些记录的X锁（会阻塞）
+
+        场景：读出数据后，其他事务不能修改，但是自己也不一定能修改，因为其他事务也可以使用&quot; select ...lock
+         in share mode&quot; 继续加读锁。
+
+    3.select ...for update
+        将查找到的数据加上一个X锁，不允许其他事务获取这些记录的S锁和X锁。
+
+        使用场景：读出数据后，其他事务既不能写，也不能加读锁，那么就导致只有自己可以修改数据。
+
+
+    4.写操作：
+        DELETE：删除一条记录，会先对记录加X锁，再执行
+        INSERT：插入一条记录，会先加&quot;隐式锁&quot;来保护这条新记录在本事务提交前不被其他事务访问到。
+        UPDATE：
+            - 如果被更新的列，修改前后没有导致存储空间的变化，那么会先给记录加X锁，再直接对记录进行修改。
+            - 如果被更新的列，修改前后导致存储空间发生了变化，那么后先给记录加X锁，然后再将记录删掉，再
+              insert一条新纪录。
+
+        隐式锁：一个事务插入一条记录后，还未提交，这条记录会保存本次事务id，而其他事务如果想来对这个记录加锁
+            时会发现事务id 不对应，这时会产生X锁，所以相当于在插入一条记录时，隐式的给这条记录加了一把隐式的X锁。
+
+        注：
+            &gt; 事务提交或结束后，锁才会自动进行释放。
+            &gt; 锁必须是在事务里面才用的。 因为平时开启是个事务不会手写begin、commit ，而是直接写sql，
+              如：select * from t1 where a = 1 for update ;
+              但要下意识知道，写这些sql的时候，会默认的先开启一个事务，而再来执行这个sql，然后再提交这个sql。
+
+    5.行锁（锁算法）
+        LOCK_REC_NOT_GAP: 单个行记录上的锁
+        LOCK_GAP: 间隙锁，锁定一个范围，但不包括记录本身，GAP锁的目的，是为了防止同一事务的两次当前读，出现幻读
+                    的情况
+        LOCK_ORDINARY: 锁定一个范围，并且锁定记录本身对于行的查询，都是采用该方法，主要目的是解决幻读的问题。
+
+
+    6.read committed 级别下的锁：
+        - 当用主键查询时
+            select * from t1 where a = 1 for update;
+            再开启事务2，进行与上同样对 a = 1 的查询，此时会发现会阻塞。可若进行 a = 2 的主键查询则不会阻塞。
+            这说明，事务1 利用主键查询，只会锁住查出来的这一行数据
+
+        - 当用唯一索引查询时：
+            与上文其实是一致的，
+
+        - 当查询使用普通索引时：
+            select * from t1 where e = &quot;b&quot; for update; -- 此时查出多条e = &quot;b&quot;的数据
+            再开启事务2，但执行 a = 1 的主键查询（a = 1 的那条数据 e也等于&quot;b&quot;）发现事务2也会阻塞，但若找一个
+            a = 6 这种（e 不等于 &quot;b&quot;）的数据，发现没有阻塞。
+            这说明，普通索引，会对他查询出来的结果加锁。
+
+            此时执行 insert t1(b, c, d, e) values(30, 1, 1, &quot;b&quot;); 插入数据，是可以进行插入e = &quot;b&quot;相关数据的。
+
+        - 当全表扫描时：（未使用索引）
+            其实同上，并不会锁住全表，也只会将事务1查询出来的数据锁住。
+
+
+    7.repeatable read 级别下的锁：（mysql 默认的隔离级别 -- 可重复读）
+        - 当使用主键、唯一索引查询时：
+            和RC隔离级别一样，当执行主键 a &gt; 1 for update 条件时，会锁住全表，同样事务2 无法插入任何记录。
+
+        - 当使用普通索引查询时:
+            条件与上文一致，还是e = &quot;b&quot; 之后用事务2 查询事务1 之外的数据，发现还是可以查询到，但若此时执行插入
+            insert t1(b, c, d, e) values(30, 1, 1, &quot;b&quot;);    此时会发现这条记录是插不进去的。
+
+            但好理解的是，这样的目的本质就是为了防止 &quot;幻读&quot; 的发生
+
+        - 当使用全表扫描时：
+            同上，会将全表锁住，哪怕查询条件时 c = 1 for update，也不能更改 c = 10 的记录，因为可能会出现
+            你想把 c = 10 改为 c = 1 的情况，因此锁住，防止幻读现象。
+
+            注：
+                对于可重复读的隔离级别下， 通常会将全表、所有的行、甚至包括间隙都全部锁住。
+
+
+    8.乐观锁和悲观锁：
+                    悲观锁                                         乐观锁
+    概念：查询时直接锁住记录使得其他事务不能查询          提交更新时检查版本或时间戳是否符合
+    语法：select * for update                          使用version 或者 timestamp进行比较
+    实现者：数据库本身                                  开发者
+    适用场景：并发量大                                  并发量小
+
+    悲观锁：
+        悲观的认为数据处理中，肯定会有其他事务进行修改数据，因此就将数据加锁，通常依靠关系型数据库的锁机制。
+        不论是行锁、表锁、读写锁、都是悲观锁
+
+    乐观锁：
+        认为每次自己操作数据，都不会有其他事务来修改它，因此不加锁，但在更新的时候会判断此期间的数据有没有进行修改。需要
+        自己实现，不会发生并发抢占资源，只有在提交的时候检查，是否违反数据完整性。
+        原理出差CAS算法（不懂）但大概就像git一样。
+
+    场景：
+        读操作  远&gt;  写操作 时，此时一个更新操作加锁就会阻塞所有的读操作，降低吞吐量，最后还要释放锁，锁还要开销，因此用乐观锁
+
+        读操作  ==  写操作 都差不多时，或者系统没有响应不及时（阻塞住的情况、吞吐量瓶颈等问题）那就不要使用乐观锁，它增加了
+        复杂度，还带来了额外的业务风险，此时用悲观锁即可。
+
+    python中使用悲乐锁：
+        1.悲观锁的使用：
+            必须关闭mysql的自动提交属性，即执行更改操作时会立即将结果提交。set autocommit = 0
+            由select * from 表名 where id = 1 for update  加X锁这类型的语句衍生
+            ORM中：
+                # 开启事务装饰器 在指定函数前加上
+                @transaction.atomic
+                obj = 模型类名.objects.select_for_update.get(id = 1) # 即可实现悲观锁，若加锁失败则说明记录正在被修改，
+                                                                    # 需要等待或是抛出异常
+
+        2.乐观锁的使用：
+            乐观锁其实并不是锁。通过SQL的where子句中的条件是否满足来判断是否满足更新条件来更新数据库，通过受影响行数判断
+            是否更新成功，如果更新失败可以再次进行尝试，如果多次尝试失败就返回更新失败的结果。
+
+            使用乐观锁时，必须设置数据库的隔离级别是Read Committed(可以读到其他线程已提交的数据)。如果隔离级别是
+            Repeatable Read(可重复读，读到的数据都是开启事务时刻的数据，即使其他线程提交更新数据，该线程读取的数据
+            也是之前读到的数据)，乐观锁如果第一次尝试失败,那么不管尝试多少次都会失败。 (Mysql数据库的默认隔离级别是
+            Repeatable Read，需要修改成Read Committed)。
+
+            # 首先引入
+            from django.db import transaction
+
+            # 以下为乐观锁视图层示例
+            class MyView(View):
+
+                @transaction.atomic
+                def post(self, request):
+                    &#39;&#39;&#39;订单创建&#39;&#39;&#39;
+                    count = 3   # 订购3件商品
+
+                    # 设置事务保存点
+                    s1 = transaction.savepoint()
+
+                    # 乐观锁，最多尝试5次
+                    for i in range(5):
+                        # 查询商品的信息(库存)
+                        try:
+                            sku = GoodsSKU.objects.get(id=1)
+                        except:
+                            # 商品不存在
+                            transaction.savepoint_rollback(s1)
+                            return JsonResponse({&#39;res&#39;: 1, &#39;errmsg&#39;: &#39;商品不存在&#39;})
+
+                        # 判断商品的库存
+                        if count &gt; sku.stock:
+                            transaction.savepoint_rollback(s1)
+                            return JsonResponse({&#39;res&#39;: 2, &#39;errmsg&#39;: &#39;商品库存不足&#39;})
+
+                        # 更新商品的库存和销量
+                        orgin_stock = sku.stock   # 原库存 (数据库隔离级别必须是Read Committed；如果是Repeatable Read,
+                                                  #  那么多次尝试读取的原库存都是一样的,读不到其他线程提交更新后的数据。)
+                        new_stock = orgin_stock - count   # 更新后的库存
+                        new_sales = sku.sales + count   # 更新后的销量
+
+                        # update 商品表 set stock=new_stock, sales=new_sales where id=1 and stock = orgin_stock
+                        # 通过where子句中的条件判断库存是否进行了修改。(并发，乐观锁)
+                        # 返回受影响的行数
+                        res = GoodsSKU.objects.filter(id=1, stock=orgin_stock).update(stock=new_stock, sales=new_sales)
+                        if res == 0:  # 如果修改失败
+                            if i == 4:
+                                # 如果尝试5次都失败
+                                transaction.savepoint_rollback(s1)
+                                return JsonResponse({&#39;res&#39;: 3, &#39;errmsg&#39;: &#39;下单失败&#39;})
+                            continue  # 再次尝试
+
+                        # 否则更新成功
+                        # 跳出尝试循环
+                        break
+
+
+                    # 提交事务
+                    transaction.savepoint_commit(s1)
+
+                    # 返回应答
+                    return JsonResponse({&#39;res&#39;: 4, &#39;message&#39;: &#39;创建成功&#39;})
+
+
+        注：
+            在并发比较少时建议使用乐观锁,减少加锁、释放锁的开销。在并发比较高的时候，建议使用悲观锁。
+
+            如果乐观锁多次尝试的代价比较大，也建议使用悲观锁。
+
+            乐观锁的处理方式可以理解为在进行数据操作时不加锁，在进行数据更新时进行判断，判断更新时的数据和之前的数据是否一致，
+            如果不一致说明已被其他进程先进行操作
+
+
+    9.优化SQL的方法：
+        1.选取最适用的字段属性，尽可能减少定义字段宽度，尽量把字段设置NOTNULL，例如’省份’、&#39;性别’最好适用ENUM
+        2.使用连接(JOIN)来代替子查询（使用多次查询来代替 JOIN）
+        3.适用联合(UNION)来代替手动创建的临时表
+        4.事务处理
+        5.锁定表、优化事务处理
+        6.适用外键，优化锁定表
+        7.建立索引
+</code></pre></div><!----><footer class="page-meta"><!----><!----><!----></footer><!----><div class="giscus-wrapper input-top" style="display:block;"><div style="text-align:center">Loading...</div></div><!----><!--]--></main><!--]--><footer class="footer-wrapper"><div class="footer">默认页脚</div><div class="copyright">Copyright © 2022 五十岚</div></footer><!--]--></div><!--]--><!----><!--]--></div>
+    <script type="module" src="/igarashi-blog/assets/app.875ef4e6.js" defer></script>
+  </body>
+</html>

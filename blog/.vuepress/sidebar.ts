@@ -100,7 +100,7 @@ export default sidebar({
   "/unix/CentOS": [
     {
       text: "CentOS",
-      icon: "centoS",
+      icon: "centos",
       prefix: "/unix/CentOS/",
       children: [
         {
@@ -154,17 +154,19 @@ export default sidebar({
   "/unix/虚拟机": [
     {
       text: "虚拟机",
-      icon: "snow",
+      icon: "pve",
       prefix: "/unix/虚拟机/",
       children: [
         {
           text: "PVE",
+          icon: "pve",
           collapsable: true,
           prefix: "PVE/",
           children: ["PVE"],
         },
         {
           text: "VMware",
+          icon: "vmware",
           collapsable: true,
           prefix: "VMware/",
           children: ["网络配置", "添加磁盘"],
@@ -201,7 +203,7 @@ export default sidebar({
               text: "深入",
               collapsable: true,
               prefix: "深入/",
-              children: ["Cpython对象", "垃圾回收", "序列进阶", "映射进阶", "设计模式"],
+              children: ["垃圾回收", "序列进阶", "映射进阶", "设计模式", "Cpython对象"],
             },
             {
               text: "网络编程",
@@ -263,9 +265,44 @@ export default sidebar({
         //   prefix: "生态/",
         //   children: []
         // },
-
       ],
     },
+  ],
+  "/database/etcd": [
+    {
+      text: "etcd",
+      icon: "etcd",
+      prefix: "/database/etcd/",
+      link: "/database/etcd/",
+      children: ["etcd"]
+    }
+  ],
+  "/database/MySQL": [
+    {
+      text: "MySQL",
+      icon: "mysql",
+      prefix: "/database/MySQL/",
+      link: "/database/MySQL/",
+      children: ["MySQL"]
+    }
+  ],
+  "/database/PostgreSQL": [
+    {
+      text: "PostgreSQL",
+      icon: "postgresql",
+      prefix: "/database/PostgreSQL/",
+      link: "/database/PostgreSQL/",
+      children: ["PostgreSQL"]
+    }
+  ],
+  "/database/Redis": [
+    {
+      text: "Redis",
+      icon: "redis",
+      prefix: "/database/Redis/",
+      link: "/database/Redis/",
+      children: ["redis"]
+    }
   ],
   "/tool/Git": [
     {
@@ -279,18 +316,18 @@ export default sidebar({
   "/tool/Docker": [
     {
       text: "Docker",
-      icon: "hot",
+      icon: "docker",
       prefix: "/tool/Docker/",
       link: "/tool/Docker/",
       children: ["docker容器", "使用基础", "命令"] // "网络",
     }
   ],
-  "/tool/Kubernets": [
+  "/tool/Kubernetes": [
     {
-      text: "Kubernets",
-      icon: "hot",
-      prefix: "/tool/Kubernets/",
-      link: "/tool/Kubernets/",
+      text: "Kubernetes",
+      icon: "kubernetes",
+      prefix: "/tool/Kubernetes/",
+      link: "/tool/Kubernetes/",
       children: ["K8s基础", "k8s安装"]
     }
   ],
@@ -306,7 +343,7 @@ export default sidebar({
   "/tool/Other": [
     {
       text: "Other",
-      icon: "operate",
+      icon: "other",
       prefix: "/tool/Other/",
       link: "/tool/Other/",
       children: ["rdesktop", "screen", "网络代理"]

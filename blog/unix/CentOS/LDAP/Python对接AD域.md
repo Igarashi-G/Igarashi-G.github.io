@@ -34,16 +34,16 @@ sticky: true
 
 ##### **修改域的场景**
 
-- **限制：**不支持修改 **AD** 服务器 **IP**
+- **限制：** 不支持修改 **AD** 服务器 **IP**
 
-##### 退出域的场景
+##### **退出域的场景**
 
 - **删除节点前：** 删除节点时校验，若该节点依然在域中，提示 "`请先退出AD/LDAP域，再重试删除`" 
   - 是否支持强制退出域？ 【支持/不支持】
 
 ### 1.2 AD/LDAP的配置
 
-##### AD域配置参数
+##### **AD域配置参数**
 
 - **AD域名：** 如 `uit.devops.local`
 - **AD DNS IP：** 如 `172.16.70.124`
@@ -60,7 +60,7 @@ sticky: true
     - **超时 10s 后：** 提示 "`服务器不在工作`"
     - **相同 hostname：** 提示 "`存在相同主机名，无法加入`"
 
-##### LDAP配置参数
+##### **LDAP配置参数**
 
 - **LDAP基准DN：** 如 `DC=uit,DC=devops,DC=local`
 - **LDAP主服务器IP：** 如 `172.16.70.124`
@@ -71,21 +71,11 @@ sticky: true
 
 ### 1.3 集成到CIFS、文件设置、POSIX
 
-**认证模式：** 支持 **本地认证** 或者 **域认证** （*验证是否同时支持，是否需要改全局配置文件*）
+**认证模式：** 支持 **本地认证** 或者 **域认证** （*需要增加全局配置文件*）
 
 - **Samba共享导出：** 增加指定认证模式
 - **文件高级设置：** 同上
 - **POSIX共享：** 同上
-
-##### **全局配置文件：** 
-
-- 考虑是否可隐藏于交互逻辑中，而不是单独配置，减少工作量
-
-- **匿名访问：** 若无法减少工作量，考虑是否提升为全局配置
-
-
-
----
 
 
 
@@ -140,7 +130,7 @@ pam = {
 - **[logging]：** 表示 **Server** 端的日志的打印位置
 - **[libdefaults]：** 连接默认配置
   - `default_realm = UIT.DEVOPS.LOCAL` 大写，要和下文 **realms** 的一致　
--  **[realms]：**列举使用的realm
+-  **[realms]：** 列举使用的 **realm**
   - `kdc` 机器的 **hostname** 或 **IP** 地址
   - `admin_server` 机器的 **hostname** 或 **IP** 地址
   - `default_domain` 默认的域名
@@ -159,7 +149,7 @@ $ yum install realmd oddjob oddjob-mkhomedir sssd adcli -y
 **pip** 安装 [ldap3](https://ldap3.readthedocs.io/en/latest/welcome.html) 库
 
 ```shell
-$ pip Install ldap3
+$ pip install ldap3
 ```
 
 简单建立同步连接

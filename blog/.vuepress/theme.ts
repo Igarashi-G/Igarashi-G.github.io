@@ -10,7 +10,7 @@ export default hopeTheme({
     url: "https://github.com/Igarashi-G",
   },
 
-  iconAssets: "iconfont",
+  iconAssets: "//at.alicdn.com/t/c/font_3654399_e6xix4avjkd.css",
 
   logo: "avatar.jpg",
 

@@ -14,9 +14,9 @@
 </ul>
 <h5 id="修改域的场景" tabindex="-1"><a class="header-anchor" href="#修改域的场景" aria-hidden="true">#</a> <strong>修改域的场景</strong></h5>
 <ul>
-<li>**限制：**不支持修改 <strong>AD</strong> 服务器 <strong>IP</strong></li>
+<li><strong>限制：</strong> 不支持修改 <strong>AD</strong> 服务器 <strong>IP</strong></li>
 </ul>
-<h5 id="退出域的场景" tabindex="-1"><a class="header-anchor" href="#退出域的场景" aria-hidden="true">#</a> 退出域的场景</h5>
+<h5 id="退出域的场景" tabindex="-1"><a class="header-anchor" href="#退出域的场景" aria-hidden="true">#</a> <strong>退出域的场景</strong></h5>
 <ul>
 <li><strong>删除节点前：</strong> 删除节点时校验，若该节点依然在域中，提示 &quot;<code v-pre>请先退出AD/LDAP域，再重试删除</code>&quot;
 <ul>
@@ -25,7 +25,7 @@
 </li>
 </ul>
 <h3 id="_1-2-ad-ldap的配置" tabindex="-1"><a class="header-anchor" href="#_1-2-ad-ldap的配置" aria-hidden="true">#</a> 1.2 AD/LDAP的配置</h3>
-<h5 id="ad域配置参数" tabindex="-1"><a class="header-anchor" href="#ad域配置参数" aria-hidden="true">#</a> AD域配置参数</h5>
+<h5 id="ad域配置参数" tabindex="-1"><a class="header-anchor" href="#ad域配置参数" aria-hidden="true">#</a> <strong>AD域配置参数</strong></h5>
 <ul>
 <li><strong>AD域名：</strong> 如 <code v-pre>uit.devops.local</code></li>
 <li><strong>AD DNS IP：</strong> 如 <code v-pre>172.16.70.124</code></li>
@@ -54,7 +54,7 @@
 </ul>
 </li>
 </ul>
-<h5 id="ldap配置参数" tabindex="-1"><a class="header-anchor" href="#ldap配置参数" aria-hidden="true">#</a> LDAP配置参数</h5>
+<h5 id="ldap配置参数" tabindex="-1"><a class="header-anchor" href="#ldap配置参数" aria-hidden="true">#</a> <strong>LDAP配置参数</strong></h5>
 <ul>
 <li><strong>LDAP基准DN：</strong> 如 <code v-pre>DC=uit,DC=devops,DC=local</code></li>
 <li><strong>LDAP主服务器IP：</strong> 如 <code v-pre>172.16.70.124</code></li>
@@ -64,22 +64,12 @@
 <li><strong>测试按钮：</strong> 同上</li>
 </ul>
 <h3 id="_1-3-集成到cifs、文件设置、posix" tabindex="-1"><a class="header-anchor" href="#_1-3-集成到cifs、文件设置、posix" aria-hidden="true">#</a> 1.3 集成到CIFS、文件设置、POSIX</h3>
-<p><strong>认证模式：</strong> 支持 <strong>本地认证</strong> 或者 <strong>域认证</strong> （<em>验证是否同时支持，是否需要改全局配置文件</em>）</p>
+<p><strong>认证模式：</strong> 支持 <strong>本地认证</strong> 或者 <strong>域认证</strong> （<em>需要增加全局配置文件</em>）</p>
 <ul>
 <li><strong>Samba共享导出：</strong> 增加指定认证模式</li>
 <li><strong>文件高级设置：</strong> 同上</li>
 <li><strong>POSIX共享：</strong> 同上</li>
 </ul>
-<h5 id="全局配置文件" tabindex="-1"><a class="header-anchor" href="#全局配置文件" aria-hidden="true">#</a> <strong>全局配置文件：</strong></h5>
-<ul>
-<li>
-<p>考虑是否可隐藏于交互逻辑中，而不是单独配置，减少工作量</p>
-</li>
-<li>
-<p><strong>匿名访问：</strong> 若无法减少工作量，考虑是否提升为全局配置</p>
-</li>
-</ul>
-<hr>
 <h2 id="_2-加入、退出域的实现" tabindex="-1"><a class="header-anchor" href="#_2-加入、退出域的实现" aria-hidden="true">#</a> 2. 加入、退出域的实现</h2>
 <p>使用 <code v-pre>GSS-API SASL</code> 的方式认证 <strong>realm + kerberos</strong> ，需安装如下软件</p>
 <ul>
@@ -128,7 +118,7 @@
 <li><code v-pre>default_realm = UIT.DEVOPS.LOCAL</code> 大写，要和下文 <strong>realms</strong> 的一致</li>
 </ul>
 </li>
-<li>**[realms]：**列举使用的realm</li>
+<li><strong>[realms]：</strong> 列举使用的 <strong>realm</strong></li>
 <li><code v-pre>kdc</code> 机器的 <strong>hostname</strong> 或 <strong>IP</strong> 地址</li>
 <li><code v-pre>admin_server</code> 机器的 <strong>hostname</strong> 或 <strong>IP</strong> 地址</li>
 <li><code v-pre>default_domain</code> 默认的域名</li>
@@ -137,7 +127,7 @@
 <div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code>$ yum <span class="token function">install</span> realmd oddjob oddjob-mkhomedir sssd adcli <span class="token parameter variable">-y</span>
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><h2 id="_3-ldap3" tabindex="-1"><a class="header-anchor" href="#_3-ldap3" aria-hidden="true">#</a> 3. ldap3</h2>
 <p><strong>pip</strong> 安装 <a href="https://ldap3.readthedocs.io/en/latest/welcome.html" target="_blank" rel="noopener noreferrer">ldap3<ExternalLinkIcon/></a> 库</p>
-<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code>$ pip Install ldap3
+<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code>$ pip <span class="token function">install</span> ldap3
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p>简单建立同步连接</p>
 <div class="language-python ext-py line-numbers-mode"><pre v-pre class="language-python"><code><span class="token keyword">from</span> ldap3 <span class="token keyword">import</span> Server<span class="token punctuation">,</span> Connection<span class="token punctuation">,</span> ALL
 
