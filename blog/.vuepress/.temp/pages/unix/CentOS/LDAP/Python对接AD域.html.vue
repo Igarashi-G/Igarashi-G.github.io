@@ -70,17 +70,26 @@
 <li><strong>文件高级设置：</strong> 同上</li>
 <li><strong>POSIX共享：</strong> 同上</li>
 </ul>
+<p><a href="https://access.redhat.com/documentation/zh-cn/red_hat_enterprise_linux/7/html/system_administrators_guide/ch-file_and_print_servers#understanding_id_mapping" target="_blank" rel="noopener noreferrer">RedHat 参考<ExternalLinkIcon/></a></p>
 <h2 id="_2-加入、退出域的实现" tabindex="-1"><a class="header-anchor" href="#_2-加入、退出域的实现" aria-hidden="true">#</a> 2. 加入、退出域的实现</h2>
-<p>使用 <code v-pre>GSS-API SASL</code> 的方式认证 <strong>realm + kerberos</strong> ，需安装如下软件</p>
+<h5 id="加域流程如下" tabindex="-1"><a class="header-anchor" href="#加域流程如下" aria-hidden="true">#</a> <strong>加域流程如下</strong></h5>
+<img src="@source/unix/CentOS/LDAP/img/加域流程.png">
+<h4 id="实现流程如下" tabindex="-1"><a class="header-anchor" href="#实现流程如下" aria-hidden="true">#</a> 实现流程如下：</h4>
+<p>简单认证 <strong>winbind + kerberos</strong> ，需安装如下软件</p>
 <ul>
-<li><strong>realm：</strong></li>
+<li><strong>winbind ：</strong></li>
 <li><strong>kerberos：</strong> 加密 <strong>Ticket</strong> 的网络身份认证协议，由 <strong>Key Distribution Center</strong> (<em>即KDC)</em>、<strong>Client</strong> 和 <strong>Service</strong> 组成，访问<strong>KDC</strong> 两次，拿到 <strong>TGT</strong>，再访问服务器</li>
 </ul>
-<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code>$ yum <span class="token function">install</span> krb5-devel krb5-workstation <span class="token parameter variable">-y</span>
+<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code>$ yum <span class="token function">install</span> realmd oddjob-mkhomedir oddjob samba-winbind-clients samba-winbind samba-common-tools samba-winbind-krb5-locator krb5-devel krb5-workstation <span class="token parameter variable">-y</span>
 
 <span class="token comment"># 安装后，客户端会生成 Kerberos 的配置文件</span>
 <span class="token string">"/etc/krb5.conf"</span>
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-ini ext-ini line-numbers-mode"><pre v-pre class="language-ini"><code><span class="token section"><span class="token punctuation">[</span><span class="token section-name selector">logging</span><span class="token punctuation">]</span></span>
+
+<span class="token comment"># 检查</span>
+$ systemctl status winbind
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>以域 <strong>UIT.DEVOPS.LOCAL</strong> （<em>172.16.70.104</em>）示例：</p>
+<p>备份并修改 <code v-pre>/etc/krb5.conf</code> 配置文件为如下</p>
+<div class="language-ini ext-ini line-numbers-mode"><pre v-pre class="language-ini"><code><span class="token section"><span class="token punctuation">[</span><span class="token section-name selector">logging</span><span class="token punctuation">]</span></span>
 <span class="token key attr-name">default</span> <span class="token punctuation">=</span> <span class="token value attr-value">FILE:/var/log/krb5libs.log</span>
 <span class="token key attr-name">kdc</span> <span class="token punctuation">=</span> <span class="token value attr-value">FILE:/var/log/krb5kdc.log</span>
 <span class="token key attr-name">admin_server</span> <span class="token punctuation">=</span> <span class="token value attr-value">FILE:/var/log/kadmind.log</span>
@@ -93,7 +102,7 @@
 <span class="token section"><span class="token punctuation">[</span><span class="token section-name selector">realms</span><span class="token punctuation">]</span></span>
 <span class="token key attr-name">UIT.DEVOPS.LOCAL</span> <span class="token punctuation">=</span> <span class="token value attr-value">{</span>
     <span class="token key attr-name">kdc</span> <span class="token punctuation">=</span> <span class="token value attr-value">172.16.70.104</span>
-    <span class="token key attr-name">admin_server</span> <span class="token punctuation">=</span> <span class="token value attr-value">uit.devops.local</span>
+    <span class="token key attr-name">default_ad</span> <span class="token punctuation">=</span> <span class="token value attr-value">uit.devops.local</span>
 }
 
 <span class="token section"><span class="token punctuation">[</span><span class="token section-name selector">ad_realm</span><span class="token punctuation">]</span></span>
@@ -115,7 +124,7 @@
 <li><strong>[logging]：</strong> 表示 <strong>Server</strong> 端的日志的打印位置</li>
 <li><strong>[libdefaults]：</strong> 连接默认配置
 <ul>
-<li><code v-pre>default_realm = UIT.DEVOPS.LOCAL</code> 大写，要和下文 <strong>realms</strong> 的一致</li>
+<li><code v-pre>default_realm = UIT.DEVOPS.LOCAL</code> 大写，与下文 <strong>realms</strong> 的一致</li>
 </ul>
 </li>
 <li><strong>[realms]：</strong> 列举使用的 <strong>realm</strong></li>
@@ -124,8 +133,89 @@
 <li><code v-pre>default_domain</code> 默认的域名</li>
 <li><strong>[appdefaults]：</strong> 设定一些针对特定应用的配置，覆盖默认配置</li>
 </ul>
-<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code>$ yum <span class="token function">install</span> realmd oddjob oddjob-mkhomedir sssd adcli <span class="token parameter variable">-y</span>
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><h2 id="_3-ldap3" tabindex="-1"><a class="header-anchor" href="#_3-ldap3" aria-hidden="true">#</a> 3. ldap3</h2>
+<p>备份并修改 <code v-pre>/etc/hosts</code> 文件，加入</p>
+<div class="language-ini ext-ini line-numbers-mode"><pre v-pre class="language-ini"><code>172.16.70.124	server124.uit.devops.local
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p>备份并修改 <code v-pre>/etc/samba/smb.conf</code> 如下</p>
+<div class="language-ini ext-ini line-numbers-mode"><pre v-pre class="language-ini"><code><span class="token section"><span class="token punctuation">[</span><span class="token section-name selector">global</span><span class="token punctuation">]</span></span>
+<span class="token key attr-name">workgroup</span> <span class="token punctuation">=</span> <span class="token value attr-value">UIT</span>
+<span class="token key attr-name">netbios name</span> <span class="token punctuation">=</span> <span class="token value attr-value">node141</span>
+<span class="token key attr-name">server string</span> <span class="token punctuation">=</span> <span class="token value attr-value">Hello UDS</span>
+<span class="token key attr-name">security</span> <span class="token punctuation">=</span> <span class="token value attr-value">ads</span>
+<span class="token key attr-name">realm</span> <span class="token punctuation">=</span> <span class="token value attr-value">UIT.DEVOPS.LOCAL</span>
+<span class="token key attr-name">password server</span> <span class="token punctuation">=</span> <span class="token value attr-value">UIT.DEVOPS.LOCAL</span>
+<span class="token key attr-name">encrypt passwords</span> <span class="token punctuation">=</span> <span class="token value attr-value">yes</span>
+<span class="token key attr-name">local master</span> <span class="token punctuation">=</span> <span class="token value attr-value">no</span>
+<span class="token key attr-name">domain master</span> <span class="token punctuation">=</span> <span class="token value attr-value">no</span>
+<span class="token key attr-name">preferred master</span> <span class="token punctuation">=</span> <span class="token value attr-value">no</span>
+<span class="token key attr-name">idmap config * : backend</span> <span class="token punctuation">=</span> <span class="token value attr-value">tdb</span>
+<span class="token key attr-name">idmap config * : range</span> <span class="token punctuation">=</span> <span class="token value attr-value">100000-999999</span>
+<span class="token key attr-name">idmap config UIT : backend</span> <span class="token punctuation">=</span> <span class="token value attr-value">rid</span>
+<span class="token key attr-name">idmap config UIT : range</span> <span class="token punctuation">=</span> <span class="token value attr-value">1000000-2000000</span>
+<span class="token comment">#idmap config LDAP : backend = rid</span>
+<span class="token comment">#idmap config LDAP : range = 1000000-2000000</span>
+<span class="token key attr-name">winbind use default domain</span> <span class="token punctuation">=</span> <span class="token value attr-value">yes</span>
+<span class="token key attr-name">winbind enum users</span> <span class="token punctuation">=</span> <span class="token value attr-value">yes</span>
+<span class="token key attr-name">winbind enum groups</span> <span class="token punctuation">=</span> <span class="token value attr-value">yes</span>
+<span class="token key attr-name">winbind separator</span> <span class="token punctuation">=</span> <span class="token value attr-value">+</span>
+
+<span class="token comment"># common params</span>
+<span class="token key attr-name">log file</span> <span class="token punctuation">=</span> <span class="token value attr-value">/var/log/samba/%m.log</span>
+<span class="token key attr-name">max log size</span> <span class="token punctuation">=</span> <span class="token value attr-value">50</span>
+<span class="token key attr-name">printcap name</span> <span class="token punctuation">=</span> <span class="token value attr-value">/etc/printcap</span>
+<span class="token key attr-name">load printers</span> <span class="token punctuation">=</span> <span class="token value attr-value">no</span>
+<span class="token key attr-name">socket options</span> <span class="token punctuation">=</span> <span class="token value attr-value">IPTOS_LOWDELAY TCP_NODELAY</span>
+<span class="token key attr-name">wins server</span> <span class="token punctuation">=</span>
+<span class="token key attr-name">unix charset</span> <span class="token punctuation">=</span> <span class="token value attr-value">utf-8</span>
+<span class="token key attr-name">dos charset</span> <span class="token punctuation">=</span> <span class="token value attr-value">cp936</span>
+<span class="token key attr-name">dns proxy</span> <span class="token punctuation">=</span> <span class="token value attr-value">no</span>
+<span class="token key attr-name">sync always</span> <span class="token punctuation">=</span> <span class="token value attr-value">yes</span>
+<span class="token key attr-name">delete readonly</span> <span class="token punctuation">=</span> <span class="token value attr-value">yes</span>
+<span class="token key attr-name">create mask</span> <span class="token punctuation">=</span> <span class="token value attr-value">0777</span>
+<span class="token key attr-name">directory mask</span> <span class="token punctuation">=</span> <span class="token value attr-value">0777</span>
+<span class="token key attr-name">force create mode</span> <span class="token punctuation">=</span> <span class="token value attr-value">0777</span>
+<span class="token key attr-name">force directory mode</span> <span class="token punctuation">=</span> <span class="token value attr-value">0777</span>
+<span class="token key attr-name">template shell</span> <span class="token punctuation">=</span> <span class="token value attr-value">/bin/false</span>
+
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>执行加域命令</p>
+<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code>$ net ads <span class="token function">join</span> <span class="token parameter variable">-U</span> administrator%user@dev <span class="token parameter variable">-S</span> server124.uit.devops.local
+$ net ads testjoin
+
+<span class="token comment"># 重启相关服务</span>
+systemctl restart winbind
+systemctl restart nmb
+systemctl restart smb
+
+<span class="token comment"># 此时通过判断 uid > 100000 获取到对应 域用户 / 组 </span>
+getent <span class="token function">passwd</span>
+
+<span class="token comment"># 类似如下</span>
+local_zz:x:1000:0::/home/local_zz:/usr/sbin/nologin
+xingang:x:1001:1001::/home/xingang:/bin/bash
+administrator:*:10000500:10000513::/home/UIT/administrator:/bin/false
+guest:*:10000501:10000513::/home/UIT/guest:/bin/false
+xingang:*:10001000:10000513::/home/UIT/xingang:/bin/false
+zhengze:*:10001002:10000513::/home/UIT/zhengze:/bin/false
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="custom-container tip">
+<p class="custom-container-title">提示</p>
+<p><strong>Python</strong> 通过引入 <strong>pwd</strong> 、 <strong>grp</strong> 库，直接本地获取，效率比 <strong>ldap3</strong> 高</p>
+</div>
+<p><strong>退出域流程如下</strong></p>
+<img src="@source/unix/CentOS/LDAP/img/退域流程.png">
+<p>执行离开域命令</p>
+<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code>$ net ads leave <span class="token parameter variable">-U</span> administrator%user@dev <span class="token parameter variable">-S</span> server124.uit.devops.local
+
+<span class="token comment"># 重启相关服务</span>
+systemctl restart winbind
+systemctl restart nmb
+systemctl restart smb
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><blockquote>
+<ul>
+<li>还原之前修改的配置文件</li>
+<li>清空缓存</li>
+<li><strong>etcd</strong> 中清空记录的配置信息</li>
+</ul>
+</blockquote>
+<h2 id="_3-ldap3" tabindex="-1"><a class="header-anchor" href="#_3-ldap3" aria-hidden="true">#</a> 3. ldap3</h2>
 <p><strong>pip</strong> 安装 <a href="https://ldap3.readthedocs.io/en/latest/welcome.html" target="_blank" rel="noopener noreferrer">ldap3<ExternalLinkIcon/></a> 库</p>
 <div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code>$ pip <span class="token function">install</span> ldap3
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p>简单建立同步连接</p>
@@ -186,8 +276,6 @@ entry <span class="token operator">=</span> search_generator<span class="token p
         users<span class="token punctuation">.</span>append<span class="token punctuation">(</span><span class="token builtin">next</span><span class="token punctuation">(</span>entry<span class="token punctuation">)</span><span class="token punctuation">)</span>
     <span class="token keyword">except</span> StopIteration<span class="token punctuation">:</span>
         <span class="token keyword">break</span>
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_2-2-增加" tabindex="-1"><a class="header-anchor" href="#_2-2-增加" aria-hidden="true">#</a> 2.2 增加</h3>
-<div class="language-text ext-text line-numbers-mode"><pre v-pre class="language-text"><code>
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div></div></template>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></div></template>
 
 

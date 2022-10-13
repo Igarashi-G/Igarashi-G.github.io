@@ -660,7 +660,17 @@ wget https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.0-rc5/aio/deplo
 ```shell
 vim recommended.yaml
 ...
-#  +45   type: NodePort
+#  +45   type: NodePort 
+
+...
+spec:
+  ports:
+    - port: 443
+      targetPort: 8443
+  selector:
+    k8s-app: kubernetes-dashboard
+  type: NodePort # 注意空格是两个
+---
 ```
 
 部署并查看
@@ -1046,4 +1056,54 @@ NAME             STATUS   ROLES                  AGE   VERSION
 k8s-master-171   Ready    control-plane,master   34m   v1.22.3
 k8s-salve-172    Ready    <none>                 24m   v1.22.3
 k8s-salve-173    Ready    <none>                 24m   v1.22.3
+```
+
+### 7.4 安装Dashboard
+
+安装可同上一致，依然使用 **v2** 版本的 **dashboard**
+
+#### 使用 ServiceAccent 访问有改动
+
+```shell
+# 创建 文件
+vim admin-user.yaml
+
+# 键入如下
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: admin-user
+  namespace: kubernetes-dashboard
+  
+# 执行创建命令
+$ kubectl create -f admin-user.yaml
+# serviceaccount/admin-user created
+
+# 再创建如下
+vim bind.yaml
+
+# 并键入
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: admin-user
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: cluster-admin
+subjects:
+- kind: ServiceAccount
+  name: admin-user
+  namespace: kubernetes-dashboard
+  
+# 添加
+$ kubectl create -f bind.yaml 
+# clusterrolebinding.rbac.authorization.k8s.io/admin-user created
+
+# 创建token
+$ kubectl -n kubernetes-dashboard create token admin-user
+
+# 复制如下 token 即可登入，貌似有时间限制，下次登录是生成即可
+eyJhbGciOiJSUzI1NiIsImtpZCI6IjBnekNxQnRWV2tkUTA2eE5YWFE3VkRQcFh5ZTR5c19JZldZTm94eExqak0i....
+se4BNIbTvZwXY4_D_6bwqU2Y2SbsmHuSkhe5AUc-H7m-sd5jJSojpXA
 ```

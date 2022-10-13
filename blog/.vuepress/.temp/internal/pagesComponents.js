@@ -135,6 +135,8 @@ export const pagesComponents = {
   "v-0b016782": defineAsyncComponent(() => import(/* webpackChunkName: "v-0b016782" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/tool/Git/GIt提交规则.html.vue")),
   // path: /tool/Git/%E5%AE%89%E8%A3%85GitLab.html
   "v-6e39b59c": defineAsyncComponent(() => import(/* webpackChunkName: "v-6e39b59c" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/tool/Git/安装GitLab.html.vue")),
+  // path: /tool/Kubernetes/k8s2.html
+  "v-6d808822": defineAsyncComponent(() => import(/* webpackChunkName: "v-6d808822" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/tool/Kubernetes/k8s2.html.vue")),
   // path: /tool/Kubernetes/K8s%E5%9F%BA%E7%A1%80.html
   "v-10666bc6": defineAsyncComponent(() => import(/* webpackChunkName: "v-10666bc6" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/tool/Kubernetes/K8s基础.html.vue")),
   // path: /tool/Kubernetes/k8s%E5%AE%89%E8%A3%85.html
@@ -387,10 +389,12 @@ export const pagesComponents = {
   "v-0da0d316": defineAsyncComponent(() => import(/* webpackChunkName: "v-0da0d316" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/tag/kv/index.html.vue")),
   // path: /category/centos/
   "v-b2aa3dea": defineAsyncComponent(() => import(/* webpackChunkName: "v-b2aa3dea" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/category/centos/index.html.vue")),
-  // path: /tag/docker/
-  "v-6106c001": defineAsyncComponent(() => import(/* webpackChunkName: "v-6106c001" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/tag/docker/index.html.vue")),
+  // path: /tag/mysql/
+  "v-1bee38ca": defineAsyncComponent(() => import(/* webpackChunkName: "v-1bee38ca" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/tag/mysql/index.html.vue")),
   // path: /category/%E8%99%9A%E6%8B%9F%E6%9C%BA/
   "v-6720de15": defineAsyncComponent(() => import(/* webpackChunkName: "v-6720de15" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/category/虚拟机/index.html.vue")),
+  // path: /tag/docker/
+  "v-6106c001": defineAsyncComponent(() => import(/* webpackChunkName: "v-6106c001" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/tag/docker/index.html.vue")),
   // path: /tag/%E5%B7%A5%E5%85%B7/
   "v-1fdcff68": defineAsyncComponent(() => import(/* webpackChunkName: "v-1fdcff68" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/tag/工具/index.html.vue")),
   // path: /tag/cli/

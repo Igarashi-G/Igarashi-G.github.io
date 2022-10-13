@@ -77,21 +77,34 @@ sticky: true
 - **文件高级设置：** 同上
 - **POSIX共享：** 同上
 
-
+[RedHat 参考](https://access.redhat.com/documentation/zh-cn/red_hat_enterprise_linux/7/html/system_administrators_guide/ch-file_and_print_servers#understanding_id_mapping)
 
 ## 2. 加入、退出域的实现
 
-使用 `GSS-API SASL` 的方式认证 **realm + kerberos** ，需安装如下软件
+##### **加域流程如下**
 
-- **realm：** 
+<img src="./img/加域流程.png">
+
+#### 实现流程如下：
+
+简单认证 **winbind + kerberos** ，需安装如下软件
+
+- **winbind ：** 
 - **kerberos：** 加密 **Ticket** 的网络身份认证协议，由 **Key Distribution Center** (*即KDC)*、**Client** 和 **Service** 组成，访问**KDC** 两次，拿到 **TGT**，再访问服务器
 
 ```shell
-$ yum install krb5-devel krb5-workstation -y
+$ yum install realmd oddjob-mkhomedir oddjob samba-winbind-clients samba-winbind samba-common-tools samba-winbind-krb5-locator krb5-devel krb5-workstation -y
 
 # 安装后，客户端会生成 Kerberos 的配置文件
 "/etc/krb5.conf"
+
+# 检查
+$ systemctl status winbind
 ```
+
+以域 **UIT.DEVOPS.LOCAL** （*172.16.70.104*）示例：
+
+备份并修改 `/etc/krb5.conf` 配置文件为如下
 
 ```ini
 [logging]
@@ -107,7 +120,7 @@ dns_lookup_kdc = false
 [realms]
 UIT.DEVOPS.LOCAL = {
     kdc = 172.16.70.104
-    admin_server = uit.devops.local
+    default_ad = uit.devops.local
 }
 
 [ad_realm]
@@ -127,20 +140,113 @@ pam = {
 }
 ```
 
-- **[logging]：** 表示 **Server** 端的日志的打印位置
-- **[libdefaults]：** 连接默认配置
-  - `default_realm = UIT.DEVOPS.LOCAL` 大写，要和下文 **realms** 的一致　
--  **[realms]：** 列举使用的 **realm**
-  - `kdc` 机器的 **hostname** 或 **IP** 地址
+- **[logging]：** 表示 **Server** 端的日志的打印位置 
+- **[libdefaults]：** 连接默认配置 
+  - `default_realm = UIT.DEVOPS.LOCAL` 大写，与下文 **realms** 的一致　
+-  **[realms]：** 列举使用的 **realm** 
+  - `kdc` 机器的 **hostname** 或 **IP** 地址 
   - `admin_server` 机器的 **hostname** 或 **IP** 地址
   - `default_domain` 默认的域名
 - **[appdefaults]：** 设定一些针对特定应用的配置，覆盖默认配置
 
+备份并修改 `/etc/hosts` 文件，加入
 
+```ini
+172.16.70.124	server124.uit.devops.local
+```
+
+备份并修改 `/etc/samba/smb.conf` 如下
+
+```ini
+[global]
+workgroup = UIT
+netbios name = node141
+server string = Hello UDS
+security = ads
+realm = UIT.DEVOPS.LOCAL
+password server = UIT.DEVOPS.LOCAL
+encrypt passwords = yes
+local master = no
+domain master = no
+preferred master = no
+idmap config * : backend = tdb
+idmap config * : range = 100000-999999
+idmap config UIT : backend = rid
+idmap config UIT : range = 1000000-2000000
+#idmap config LDAP : backend = rid
+#idmap config LDAP : range = 1000000-2000000
+winbind use default domain = yes
+winbind enum users = yes
+winbind enum groups = yes
+winbind separator = +
+
+# common params
+log file = /var/log/samba/%m.log
+max log size = 50
+printcap name = /etc/printcap
+load printers = no
+socket options = IPTOS_LOWDELAY TCP_NODELAY
+wins server =
+unix charset = utf-8
+dos charset = cp936
+dns proxy = no
+sync always = yes
+delete readonly = yes
+create mask = 0777
+directory mask = 0777
+force create mode = 0777
+force directory mode = 0777
+template shell = /bin/false
+
+```
+
+执行加域命令
 
 ```shell
-$ yum install realmd oddjob oddjob-mkhomedir sssd adcli -y
+$ net ads join -U administrator%user@dev -S server124.uit.devops.local
+$ net ads testjoin
+
+# 重启相关服务
+systemctl restart winbind
+systemctl restart nmb
+systemctl restart smb
+
+# 此时通过判断 uid > 100000 获取到对应 域用户 / 组 
+getent passwd
+
+# 类似如下
+local_zz:x:1000:0::/home/local_zz:/usr/sbin/nologin
+xingang:x:1001:1001::/home/xingang:/bin/bash
+administrator:*:10000500:10000513::/home/UIT/administrator:/bin/false
+guest:*:10000501:10000513::/home/UIT/guest:/bin/false
+xingang:*:10001000:10000513::/home/UIT/xingang:/bin/false
+zhengze:*:10001002:10000513::/home/UIT/zhengze:/bin/false
 ```
+
+::: tip
+
+**Python** 通过引入 **pwd** 、 **grp** 库，直接本地获取，效率比 **ldap3** 高 
+
+:::
+
+**退出域流程如下**
+
+<img src="./img/退域流程.png">
+
+执行离开域命令
+
+```shell
+$ net ads leave -U administrator%user@dev -S server124.uit.devops.local
+
+# 重启相关服务
+systemctl restart winbind
+systemctl restart nmb
+systemctl restart smb
+```
+
+> - 还原之前修改的配置文件
+> - 清空缓存
+> - **etcd** 中清空记录的配置信息
 
 
 
@@ -225,11 +331,5 @@ for item in range(0, 20):
         users.append(next(entry))
     except StopIteration:
         break
-```
-
-### 2.2 增加
-
-```
-
 ```
 

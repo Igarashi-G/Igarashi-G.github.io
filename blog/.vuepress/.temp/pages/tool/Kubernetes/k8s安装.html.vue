@@ -490,8 +490,18 @@ test-nginx-5bd8859b98-thscs   <span class="token number">1</span>/1     Running 
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p>添加 <strong>service</strong> 为 <code v-pre>NodePort</code> 类型，变为 <code v-pre>NodePort</code> 类型的服务，文件的 <strong>45</strong> 行上下</p>
 <div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code><span class="token function">vim</span> recommended.yaml
 <span class="token punctuation">..</span>.
-<span class="token comment">#  +45   type: NodePort</span>
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>部署并查看</p>
+<span class="token comment">#  +45   type: NodePort </span>
+
+<span class="token punctuation">..</span>.
+spec:
+  ports:
+    - port: <span class="token number">443</span>
+      targetPort: <span class="token number">8443</span>
+  selector:
+    k8s-app: kubernetes-dashboard
+  type: NodePort <span class="token comment"># 注意空格是两个</span>
+---
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>部署并查看</p>
 <div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code>kubectl create <span class="token parameter variable">-f</span> recommended.yaml
 
 <span class="token comment"># 查看 dashboard 服务</span>
@@ -801,6 +811,50 @@ NAME             STATUS   ROLES                  AGE   VERSION
 k8s-master-171   Ready    control-plane,master   34m   v1.22.3
 k8s-salve-172    Ready    <span class="token operator">&lt;</span>none<span class="token operator">></span>                 24m   v1.22.3
 k8s-salve-173    Ready    <span class="token operator">&lt;</span>none<span class="token operator">></span>                 24m   v1.22.3
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></div></template>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_7-4-安装dashboard" tabindex="-1"><a class="header-anchor" href="#_7-4-安装dashboard" aria-hidden="true">#</a> 7.4 安装Dashboard</h3>
+<p>安装可同上一致，依然使用 <strong>v2</strong> 版本的 <strong>dashboard</strong></p>
+<h4 id="使用-serviceaccent-访问有改动" tabindex="-1"><a class="header-anchor" href="#使用-serviceaccent-访问有改动" aria-hidden="true">#</a> 使用 ServiceAccent 访问有改动</h4>
+<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code><span class="token comment"># 创建 文件</span>
+<span class="token function">vim</span> admin-user.yaml
+
+<span class="token comment"># 键入如下</span>
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: admin-user
+  namespace: kubernetes-dashboard
+  
+<span class="token comment"># 执行创建命令</span>
+$ kubectl create <span class="token parameter variable">-f</span> admin-user.yaml
+<span class="token comment"># serviceaccount/admin-user created</span>
+
+<span class="token comment"># 再创建如下</span>
+<span class="token function">vim</span> bind.yaml
+
+<span class="token comment"># 并键入</span>
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: admin-user
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: cluster-admin
+subjects:
+- kind: ServiceAccount
+  name: admin-user
+  namespace: kubernetes-dashboard
+  
+<span class="token comment"># 添加</span>
+$ kubectl create <span class="token parameter variable">-f</span> bind.yaml 
+<span class="token comment"># clusterrolebinding.rbac.authorization.k8s.io/admin-user created</span>
+
+<span class="token comment"># 创建token</span>
+$ kubectl <span class="token parameter variable">-n</span> kubernetes-dashboard create token admin-user
+
+<span class="token comment"># 复制如下 token 即可登入，貌似有时间限制，下次登录是生成即可</span>
+eyJhbGciOiJSUzI1NiIsImtpZCI6IjBnekNxQnRWV2tkUTA2eE5YWFE3VkRQcFh5ZTR5c19JZldZTm94eExqak0i<span class="token punctuation">..</span><span class="token punctuation">..</span>
+se4BNIbTvZwXY4_D_6bwqU2Y2SbsmHuSkhe5AUc-H7m-sd5jJSojpXA
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></div></template>
 
 

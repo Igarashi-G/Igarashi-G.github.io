@@ -1,7 +1,24 @@
-<template><div><h1 id="数据库-database" tabindex="-1"><a class="header-anchor" href="#数据库-database" aria-hidden="true">#</a> 数据库:(DataBase):</h1>
-<p>这部分参考博客吧，实在是懒得记录，效率太低： <a href="https://www.cnblogs.com/wupeiqi/articles/5713315.html" target="_blank" rel="noopener noreferrer">https://www.cnblogs.com/wupeiqi/articles/5713315.html<ExternalLinkIcon/></a></p>
-<h2 id="mysql-数据库" tabindex="-1"><a class="header-anchor" href="#mysql-数据库" aria-hidden="true">#</a> MySQL 数据库：</h2>
-<h3 id="_1-window-环境" tabindex="-1"><a class="header-anchor" href="#_1-window-环境" aria-hidden="true">#</a> 1.window 环境：</h3>
+<template><div><p><strong>MySQL</strong>，烂大街的关系型数据库，但我依然没有学好</p>
+<!-- more -->
+<h2 id="_1-安装" tabindex="-1"><a class="header-anchor" href="#_1-安装" aria-hidden="true">#</a> 1. 安装</h2>
+<Tabs :data='[{"title":"CentOS"},{"title":"Window"}]'>
+<template #tab0="{ title, value, isActive }">
+<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code><span class="token comment"># 安装</span>
+yum <span class="token function">install</span> mysql-server <span class="token parameter variable">-y</span>
+
+<span class="token comment"># 启动</span>
+systemctl start mysqld
+
+<span class="token comment"># 连接 mysql -h host -u user -p password</span>
+mysql <span class="token parameter variable">-h</span> <span class="token number">127.0</span>.0.1 <span class="token parameter variable">-u</span> root <span class="token parameter variable">-p</span>
+
+<span class="token comment"># 常见错误</span>
+ERROR <span class="token number">2002</span> <span class="token punctuation">(</span>HY000<span class="token punctuation">)</span>: Can<span class="token string">'t connect to local MySQL server through socket '</span>/tmp/mysql.sock' <span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span>, it means that
+the MySQL server daemon <span class="token punctuation">(</span>Unix<span class="token punctuation">)</span> or <span class="token function">service</span> <span class="token punctuation">(</span>Windows<span class="token punctuation">)</span> is not running.
+
+<span class="token comment"># QUIT 或者 Control + D</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></template>
+<template #tab1="{ title, value, isActive }">
 <ul>
 <li>
 <p>在 MYSQL 数据库下的 bin 目录里面的便是 MYSQL 的可执行程序。</p>
@@ -20,67 +37,63 @@
 <p>mysql -u root -p：u 表示用户名，p 表示出 password，root 初始化不设置密码，直接回车即可。</p>
 </li>
 </ul>
-<h4 id="弄-windows-的都明白-为了解决-mysqld-hold-住问题" tabindex="-1"><a class="header-anchor" href="#弄-windows-的都明白-为了解决-mysqld-hold-住问题" aria-hidden="true">#</a> 弄 Windows 的都明白：（为了解决 mysqld hold 住问题）</h4>
-<p>在后台（任务管理器）有 Windows 服务。（比如看片中毒的程序在后台运行篡改数据，这东西怎么制作呢————就制作一个 mysql 服务）若把 mysqld 搞成
-一个 Windows 服务，每次启动则会自动启动。</p>
+<h4 id="" tabindex="-1"><a class="header-anchor" href="#" aria-hidden="true">#</a> </h4>
+<p>任务管理器有个 Windows 服务。若把 mysqld 搞成一个 Windows 服务，每次启动则会自动启动</p>
 <ul>
 <li>
-<p>利用 mysqld --install 命令运行 （我的反馈拒绝，正常的是成功）Install/Remove of the Service Denied!</p>
+<p>利用 mysqld --install 命令运行 Install/Remove of the Service Denied!</p>
 </li>
 <li>
 <p>之后利用 net start/stop mysql 即可启动/关闭</p>
 </li>
 </ul>
-<h3 id="_2-linux-环境" tabindex="-1"><a class="header-anchor" href="#_2-linux-环境" aria-hidden="true">#</a> 2.linux 环境</h3>
-<h4 id="安装" tabindex="-1"><a class="header-anchor" href="#安装" aria-hidden="true">#</a> 安装：</h4>
-<pre><code>yum install mysql-server
-　
-</code></pre>
-<h4 id="服务端启动" tabindex="-1"><a class="header-anchor" href="#服务端启动" aria-hidden="true">#</a> 服务端启动：</h4>
-<pre><code>CentOS7：
-systemctl start mysqld
-</code></pre>
-<h4 id="客户端连接" tabindex="-1"><a class="header-anchor" href="#客户端连接" aria-hidden="true">#</a> 客户端连接：</h4>
-<p>连接：</p>
-<pre><code>mysql -h host -u user -p    # mysql -h 127.0.0.1 -u root -p
-</code></pre>
-<p>常见错误：</p>
-<pre><code>ERROR 2002 (HY000): Can't connect to local MySQL server through socket '/tmp/mysql.sock' (2), it means that
-the MySQL server daemon (Unix) or service (Windows) is not running.
-</code></pre>
-<p>退出：</p>
-<pre><code>QUIT 或者 Control+D
-</code></pre>
-<h2 id="一、数据库操作" tabindex="-1"><a class="header-anchor" href="#一、数据库操作" aria-hidden="true">#</a> 一、数据库操作：</h2>
-<pre><code>默认数据库：
-　　mysql - 用户权限相关数据
-　　test - 用于用户测试数据
-　　information_schema - MySQL本身架构相关数据
+</template>
+</Tabs>
+<h2 id="_2-使用说明" tabindex="-1"><a class="header-anchor" href="#_2-使用说明" aria-hidden="true">#</a> 2. 使用说明</h2>
+<h5 id="默认数据库如下" tabindex="-1"><a class="header-anchor" href="#默认数据库如下" aria-hidden="true">#</a> <strong>默认数据库如下</strong></h5>
+<ul>
+<li><strong>mysql：</strong> 户权限相关数据</li>
+<li><strong>test：</strong> 用于用户测试数据</li>
+<li><strong>information_schema：</strong> <strong>MySQL</strong> 本身架构相关数据</li>
+</ul>
+<h5 id="数据库简单使用" tabindex="-1"><a class="header-anchor" href="#数据库简单使用" aria-hidden="true">#</a> <strong>数据库简单使用</strong></h5>
+<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code><span class="token comment"># 查看 MySQL 有那些数据库</span>
+$ show databases<span class="token punctuation">;</span>
 
-基本操作：
-    show databases;                 #查看MySql都有那些数据库（根目录有那些文件夹）
+<span class="token comment"># #创建数据库 order （通常创建 utf-8 的）</span>
+$ create database order<span class="token punctuation">;</span>
 
-    create database 数据库名;        #创建数据库（创建文件夹）
+<span class="token comment"># 选则进入 order 数据库</span>
+$ use order<span class="token punctuation">;</span>
 
-    use 数据库名;                    #使用选中数据库（进入选中目录）通常创建utf8类型的 参考博客
+<span class="token comment"># 创建 order 数据库中 的 user 表</span>
+$ create table user<span class="token punctuation">(</span>nid int, name varchar<span class="token punctuation">(</span><span class="token number">20</span><span class="token punctuation">)</span>, <span class="token builtin class-name">pwd</span> varchar<span class="token punctuation">(</span><span class="token number">64</span><span class="token punctuation">))</span><span class="token punctuation">;</span>
+	- <span class="token variable"><span class="token variable">`</span>varchar<span class="token punctuation">(</span><span class="token number">20</span><span class="token punctuation">)</span>:<span class="token variable">`</span></span> <span class="token string">"表示最长为20的字符串，超过则截取前20个"</span>
 
-    show tables;                    #查看当前数据库下有那些表（有哪些文件）
+<span class="token comment"># 查看 order 数据库下，有那些表</span>
+$ show tables<span class="token punctuation">;</span>
 
-    create table 表名(nid int,name varchar(20),pwd varchar(64)); varchar:表示字符串。20:表示最长为20个字符，超过则截取前20个
-                                    #创建数据库表
-    select * from 表名;             #查看表中所有数据
 
-    insert into 表名(nid,name,pwd) values(1,&quot;zz&quot;,&quot;123&quot;);   #插入数据
+<span class="token comment"># 查看 user 表中所有数据</span>
+<span class="token keyword">select</span> * from user<span class="token punctuation">;</span>
 
-    drop table tb1;                #直接删除表
+<span class="token comment"># 向 user 表插入一条数据</span>
+insert into user<span class="token punctuation">(</span>nid, name, <span class="token builtin class-name">pwd</span><span class="token punctuation">)</span> values<span class="token punctuation">(</span><span class="token number">1</span>, <span class="token string">"zz"</span>, <span class="token string">"123"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-    delete from tb1;               #清空表内容（对于自增来说，即使清空，也保留了之前的自增号，从下一自增号开始）
+<span class="token comment"># 清空 user 表内容</span>
+<span class="token variable"><span class="token variable">`</span>对于自增来说，即使清空，也保留了之前的自增号，从下一自增号开始<span class="token variable">`</span></span>
+delete from user
 
-    truncate table tb1;            #清空表内容（对于自增，彻底清空，下次插入数据从1开始）
+<span class="token comment"># 清空 user 表内容</span>
+<span class="token variable"><span class="token variable">`</span>对于自增，也彻底清空，下次插入数据从 <span class="token number">1</span> 开始<span class="token variable">`</span></span>
+truncate table user<span class="token punctuation">;</span>            
 
-    show variables like 'max_connections';    #查询数据库的最大连接数
+<span class="token comment"># 删除 user 表</span>
+drop table user<span class="token punctuation">;</span>
 
-用户&amp;授权：
+<span class="token comment"># 查询数据库的最大连接数</span>
+show variables like <span class="token string">'max_connections'</span><span class="token punctuation">;</span>    
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><pre><code>用户&amp;授权：
     MySql数据库下有一个默认创建好的用户表user
     可以利用select * from user;查看user表的所有数据（乱码）。用desc user;查看user表中的各个字段。
     利用select host,user from user;查看user表中的host字段数据和user字段数据。
@@ -238,7 +251,7 @@ the MySQL server daemon (Unix) or service (Windows) is not running.
 
     其他详细参考博客
 </code></pre>
-<h2 id="四、数据表内容操作-重点-精通" tabindex="-1"><a class="header-anchor" href="#四、数据表内容操作-重点-精通" aria-hidden="true">#</a> 四、数据表内容操作：（重点，精通，<strong>***</strong>）</h2>
+<h2 id="四、数据表内容操作" tabindex="-1"><a class="header-anchor" href="#四、数据表内容操作" aria-hidden="true">#</a> 四、数据表内容操作</h2>
 <pre><code>1、增：
     insert into 表 (列名,列名...) values (值,值,值...)
     insert into 表 (列名,列名...) values (值,值,值...),(值,值,值...)（插入多条数据）

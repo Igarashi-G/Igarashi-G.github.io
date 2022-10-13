@@ -1,0 +1,210 @@
+import{_ as a}from"./_plugin-vue_export-helper.cdc0426e.js";import{o as t,c as o,a as e,b as i,w as l,e as p,d as n,f as r,r as c}from"./app.715d80ef.js";const d="/igarashi-blog/assets/yield_from.4e8c9b82.png",u={},k=n("\u6240\u6709\u7684\u751F\u6210\u5668\u90FD\u662F "),m=n("\u8FED\u4EE3\u5668"),v=n("\uFF0C\u56E0\u4E3A\u751F\u6210\u5668 "),_=e("strong",null,"\u5B8C\u5168\u5B9E\u73B0",-1),f=n(" \u4E86\u8FED\u4EE3\u5668\u63A5\u53E3"),b=r(`<h1 id="\u751F\u6210\u5668" tabindex="-1"><a class="header-anchor" href="#\u751F\u6210\u5668" aria-hidden="true">#</a> \u751F\u6210\u5668</h1><p>\u8FED\u4EE3\u5668\u4ECE\u96C6\u5408\u4E2D\u53D6\u5143\u7D20\uFF0C\u800C\u751F\u6210\u5668\u7528\u4E8E <strong>\u51ED\u7A7A</strong> \u751F\u6210\u5143\u7D20</p><div class="custom-container info"><p class="custom-container-title">\u603B\u4E4B</p><p>\u542B\u6709 <strong>yield</strong> \u5173\u952E\u5B57\u7684 <strong>\u51FD\u6570</strong> \u5C31\u662F <strong>\u751F\u6210\u5668\u51FD\u6570</strong></p></div><h3 id="_1-1-\u751F\u6210\u5668\u8868\u8FBE\u5F0F" tabindex="-1"><a class="header-anchor" href="#_1-1-\u751F\u6210\u5668\u8868\u8FBE\u5F0F" aria-hidden="true">#</a> 1.1 \u751F\u6210\u5668\u8868\u8FBE\u5F0F</h3><p><code>genexpr = (\u63A8\u5BFC\u5F0F)</code> \u7684\u8FD9\u79CD\u5F62\u5F0F <strong>\u662F\u751F\u6210\u5668\u7684\u8BED\u6CD5\u7CD6</strong>\uFF0C \u975E\u5143\u7EC4\uFF0C\u8981\u533A\u522B\u4E8E <code>tuple(\u63A8\u5BFC\u5F0F)</code></p><div class="language-python ext-py line-numbers-mode"><pre class="language-python"><code>s <span class="token operator">=</span> <span class="token punctuation">(</span>x <span class="token operator">*</span> <span class="token number">2</span> <span class="token keyword">for</span> x <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span>
+
+<span class="token comment"># &lt;generator object &lt;genexpr&gt; at 0x0000013EF1BF84A0&gt;</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>\u6B64\u65F6\u6253\u5370\u51FA\u4E86 <strong>generator</strong> \u5BF9\u8C61\uFF0C\u5B83\u4FDD\u5B58\u7684\u4E0E\u5217\u8868\u3001\u96C6\u5408\uFF08<em>\u8FD9\u79CD\u5B58\u503C\u7684\u60C5\u51B5</em>\uFF09\u662F\u4E0D\u540C\u7684\uFF0C\u5B58\u4E86\u7A0B\u5E8F\u7684\u4E0A\u4E0B\u6587\u72B6\u6001\uFF0C\u56E0\u6B64\u4E00\u6837\u4E0D\u5360\u5185\u5B58\uFF0C\u8FD8\u53EF\u4EE5\u50CF\u8FED\u4EE3\u5668\u4E00\u6837\uFF0C\u7528 <code>__next__()</code> \u6765\u53D6\u503C\uFF0C\u4F46\u53EA\u80FD\u987A\u5E8F\u53D6</p><div class="language-python ext-py line-numbers-mode"><pre class="language-python"><code>s<span class="token punctuation">.</span>__next__<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token comment"># 0</span>
+
+<span class="token builtin">next</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span>	<span class="token comment"># Python3</span>
+<span class="token comment"># 2</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><pre><code>for\u7684\u5B9E\u8D28:
+    \u751F\u6210\u5668\u53EF\u4EE5\u7528for i in s: print(i)\u8FD9\u6837\u6765\u53D6\u51FA \u8FD9\u79CD\u65B9\u5F0F\u770B\u4F3C\u6CA1\u6709\u7528\u5230next()\u5185\u7F6E\u65B9\u6CD5
+    i\u80FD\u53D6\u5230s\u7684\u503C\u662Ffor\u7684\u529F\u80FD for\u5C31\u662F\u5BF9s\u5185\u90E8\u8FDB\u884C\u4E86\u4E00\u4E2Anext\u7684\u8C03\u7528(for\u5FAA\u73AF\u904D\u5386\u53EF\u8FED\u4EE3\u5BF9\u8C61)
+
+    python\u7684for\u91CC\u9762\u5230\u5E95\u505A\u4E86\u4EC0\u4E48? \u5176\u5B9E\u5B83\u5C31\u662F\u505A\u4E86\u8FD9\u4E48\u4E00\u4EF6\u4E8B\u60C5 \u8C03\u7528\u91CC\u9762\u7684next() \u53D6\u91CC\u9762\u7684\u503C(\u4E0D\u65AD\u7684next\u8D4B\u503C\u7ED9i)
+    \u4E4B\u540E\u6BCF\u6B21\u8C03\u7528\u65B0\u7684\u503C\u8D4B\u7ED9\u4E86i \u4E4B\u524D\u7684\u4FBF\u4F1A\u88AB\u5783\u573E\u56DE\u6536 \u56E0\u6B64\u7A7A\u95F4\u5C31\u51FA\u6765\u4E86(\u56E0\u6B64\u5360\u5185\u5B58\u7684\u53EA\u6709\u8FD9\u4E00\u4E2A\u6570,\u7A7A\u95F4\u6C38\u8FDC\u81EA\u7531)
+
+    \u6309\u7406\u6765\u8BF4\u8C03\u7528\u5230\u6700\u540E\u4E00\u4E2A\u4F1A\u62A5\u5F02\u5E38 \u7136\u800Cfor\u4F1A\u8FDB\u884C\u68C0\u6D4B\u3002 for\u662F\u5229\u7528\u4E86\u5F02\u5E38\u6355\u83B7(except)\u6355\u6349\u5230\u5F02\u5E38(\u8FED\u4EE3\u505C\u6B62)\u76F4\u63A5
+    \u5C31\u8FD4\u56DE\u4E86 \u4E0D\u505A\u4EFB\u4F55\u5176\u4ED6\u5904\u7406
+
+    while True:
+        i = next(\u53EF\u8FED\u4EE3\u5BF9\u8C61)
+        \u6355\u6349\u5F02\u5E38 \u8FDB\u884C\u5904\u7406(\u8FD4\u56DE)
+
+\u3010\u521B\u5EFA\u65B9\u5F0F\u3011:
+    1.(x for x in range(n)) \uFF1A \u751F\u6210\u5668\u8868\u8FBE\u5F0F\uFF08\u6709\u522B\u4E8E\u5217\u8868\u751F\u6210\u5F0F\uFF09
+    2.yield(\u8BED\u6CD5\u7CD6)
+
+\u3010\u7279\u70B9\u3011\uFF1A
+    1.\u901A\u8FC7yield\u66FF\u6362\u8FED\u4EE3\u5668\u4E24\u4E2A\u65B9\u6CD5\u5E76\u6709\u4E2D\u65AD\u529F\u80FD    \u2014\u2014  \u9010\u4E2A\u4F20\u51FA\u6570\u636E
+    2.\u6570\u636E\u9700\u8981\u7684\u65F6\u5019\u624D\u5B58\u50A8\u5230\u5185\u5B58\u4E2D               \u2014\u2014  \u9010\u4E2A\u4F20\u5165\u6570\u636E
+
+yield:(\u6700\u91CD\u8981\u7684\u610F\u4E49\u5728\u4E8E\u534F\u7A0B(\u8DDF\u7EBF\u7A0B\u8FDB\u7A0B\u5E76\u5217\u7684))  \u6307\u7684\u662Fyield\u65AD\u5C42(\u6BCF\u6B21\u6267\u884C\u540E\u7684\u4FDD\u5B58\u72B6\u6001)
+\u5982\u679C\u4E00\u4E2A\u51FD\u6570\u5305\u542Byield \u90A3\u4E48\u5B83\u5C31\u4E0D\u662F\u4E00\u4E2A\u666E\u901A\u7684\u51FD\u6570\u800C\u662F\u4E00\u4E2Agenerator\uFF08\u751F\u6210\u5668\uFF09 --\u89C1fibo \u5305\u542B\u8B66\u544A\u90E8\u5206
+    def foo():
+        yield n #\u8FD9\u6837\u4FBF\u521B\u5EFA\u4E86\u4E00\u4E2A\u751F\u6210\u5668
+    foo()\u4FBF\u662F\u4E00\u4E2A\u751F\u6210\u5668\u5BF9\u8C61 \u65E0\u8BBA\u51FD\u6570\u5185\u90E8\u6709\u4EC0\u4E48 \u53EA\u662F\u653E\u5728\u5185\u5B58\u4E2D \u90FD\u4E0D\u4F1A\u6267\u884C\u3002\u5F53\u7136foo\u8FD8\u662F\u4E00\u4E2A\u51FD\u6570\u4F46foo()\u5C31\u662F\u751F\u6210\u5668\u4E86
+
+    def foo():
+        print(&quot;ok&quot;);yield 3;
+        print(&quot;ok2&quot;);yield 1;#\u65AD\u70B9\u6D4B\u8BD5\u540E\u65E0\u8BBAyield\u540E\u8FD4\u56DE\u4EC0\u4E48\u503C \u90FD\u80FD\u6839\u636Enext()\u8FDB\u884C\u8BB0\u5F55\u4E0A\u4E00\u6D4B\u7A0B\u5E8F\u8FDB\u5165\u65F6\u7684\u4F4D\u7F6E
+    for i in foo():
+        print(i)\u6B64\u65F6\u4F1A\u628A\u8FD4\u56DE\u503C\u4E5F\u4E00\u8D77\u6253\u5370\u51FA\u6765 \u5229\u7528next()\u65F6\u8FD4\u56DE\u503C\u5B9E\u8D28\u4E0A\u8FD4\u56DE\u7ED9\u4E86next
+
+\u4EC0\u4E48\u662F\u53EF\u8FED\u4EE3\u5BF9\u8C61:
+    \u73B0\u8C61:
+        \u4ECE\u73B0\u8C61\u4E0A\u770B\u80FD\u8FDB\u884Cfor\u5FAA\u73AF\u7684\u4FBF\u662F\u53EF\u8FED\u4EE3\u5BF9\u8C61
+    \u672C\u8D28:
+        \u4ECE\u672C\u8D28\u4E0A\u6765\u8BF4 \u5185\u90E8\u6709iter\u65B9\u6CD5\u7684\u624D\u662F\u53EF\u8FED\u4EE3\u5BF9\u8C61.__iter__()
+
+
+\u4EC0\u4E48\u53EB\u540C\u65F6:
+    before, after =after, before + after \u5F53\u78B0\u5230\u8FD9\u79CD\u60C5\u51B5\u5148\u60F3\u60F3\u4EC0\u4E48\u53EB\u540C\u65F6?
+    \u540C\u65F6\u4E5F\u53EF\u4EE5\u8BF4\u662F\u5E76\u884C\u5416
+    \u4EC0\u4E48\u53EB\u5E76\u884C\uFF1F(\u4E00\u4E2ACPU,\u5355\u6838)
+        \u4F60\u60F3\u8BA9before = after after = before + after \u8FD9\u4E24\u4EF6\u4E8B\u540C\u65F6\u5E72 \u90A3\u4E48\u662F\u8C01\u5728\u5E72\u6D3B?-----CPU\u5728\u5E72\u6D3B
+        \u4F46\u76EE\u524D\u5B66\u7684\u90FD\u662F\u5355\u7EBF\u7A0B \u4E00\u4E2A\u6838\u5728\u5E72\u6D3B(\u56E0\u6B64\u5B83\u80FD\u4E0D\u80FD\u8FBE\u5230\u540C\u65F6)\u5B83\u8FBE\u4E0D\u5230\u540C\u65F6
+        \u6240\u4EE5\u626F\u6DE1\u554A,\u600E\u4E48\u4F1A\u6709\u540C\u65F6\u6267\u884C \u5355\u6838\u54EA\u91CC\u80FD\u540C\u65F6(\u9876\u591A\u5206\u7247\u8F6E\u8BE2 \u4F46\u90A3\u90A3\u662F\u540C\u65F6\u554A)
+    \u56E0\u6B64\u6CA1\u5B66\u7EBF\u7A0B\u4E4B\u524D \u80AF\u5B9A\u4E0D\u4F1A\u6D89\u53CA\u5230\u5E76\u53D1 (\u56E0\u6B64\u5355\u6838\u7EDD\u65E0\u540C\u65F6\u7684\u6982\u5FF5)
+
+\u90A3\u4E48\u5982\u4E0A\u662F\u4E2A\u4EC0\u4E48\u64CD\u4F5C?
+    \u662F\u8FD9\u6837,\u4F8B\u5982
+    before = 1;after = 2
+    before,after = after, before + after \u5B9E\u8D28\u4E0A\u662F\u5148\u628A\u5B83\u4EEC\u8FDB\u884C\u8BA1\u7B97\u51FA\u6765 \u4E5F\u5C31\u662F
+    before,after = 2, 3 \u7136\u540E\u518D\u8FDB\u884C\u8D4B\u503C \u4E5F\u5C31\u662F\u8BF4\u662F\u5148\u6267\u884C\u53F3\u8FB9
+
+\u8BB0\u5F97\u4E0A\u6B21\u7406\u89E3\u539F\u7406\u662F\u7684\u4E00\u4E9B\u611F\u609F\u5417?(\u4E0D\u662F\u6807\u7B7E\u54E6 \u867D\u7136\u6587\u6848\u4E0A\u5E76\u6CA1\u5199--\u53BB\u597D\u597D\u56DE\u987E\u5427)
+    \u5F97\u51FA\u7684\u7ED3\u8BBA\u5C31\u662F \u8868\u8FBE\u5F0F\u8D4B\u503C\u90FD\u662F\u5148\u6267\u884C\u53F3\u8FB9\u7684(\u636E\u4E0A\u786E\u5B9A) \u7136\u540E\u624D\u4F1A\u8D4B\u503C\u7ED9\u5DE6\u8FB9
+    \u53F3\u8FB9\u7684\u8868\u8FBE\u5F0F\u8BA1\u7B97\u51FA\u7684\u7ED3\u679C\u624D\u4F1A\u628A\u7ED3\u679C\u7684\u5730\u5740\u6307\u9488\u8D4B\u7ED9\u5DE6\u8FB9\u7684\u6807\u7B7E \u56E0\u6B64\u5982\u4E0A
+
+\u751F\u6210\u5668.send():(\u548Cnext\u4E00\u6837\u90FD\u53EF\u4EE5\u8FDB\u5165\u51FD\u6570\u4F53)
+    \u5F53\u7B2C\u4E00\u6B21send \u524D\u9762\u6CA1\u6709next \u53EA\u80FD\u53D1\u9001\u7A7A\u6570\u636E
+    \u751F\u6210\u5668.send(None) \u7B49\u540C\u4E8Enext(\u751F\u6210\u5668)
+    \u4E4B\u540E\u53D8\u53EF\u4EE5\u4F20\u503C \u751F\u6210\u5668.send(value)
+    \u9996\u5148value \u53EF\u4EE5\u8BBE\u7F6E\u53D8\u91CF\u5229\u7528yield\u8D4B\u503C\u6765\u63A5\u6536
+
+    \u7A0B\u5E8F\u662F\u5982\u4F55\u6267\u884C\u7684:
+        \u5148.send(None) \u5728count=yield 1\u5904 \u5148\u6267\u884C\u53F3\u8FB9\u8868\u8FBE\u5F0F yield 1 \u76F4\u63A5\u8FD4\u56DE(\u51BB\u7ED3\u8BB0\u5F55) \u7136\u540E.send(&quot;hhh&quot;)
+        count\u4ECE\u4E0A\u6B21\u51BB\u7ED3\u5730yield\u63A5\u6536&quot;hhh&quot; \u6B64\u65F6count \u4FBF\u4E5F\u5728\u5185\u5B58\u4E2D\u4F9B\u540E\u7EED\u8C03\u7528\u3002\u4E4B\u540E\u5230yield\u65F6 .send(&quot;&quot;)\u63A5\u6536\u5230\u4E86yield
+        \u7684\u8FD4\u56DE\u503C
+    \u4E3A\u4EC0\u4E48\u751F\u6210\u5668\u7B2C\u4E00\u6B21\u4E0D\u80FD\u4F20\u503C?
+        \u5047\u8BBE\u7528next(g)\u6267\u884C \u8D70\u5230yield 1\u6B64\u65F6\u7A0B\u5E8F\u51BB\u7ED3\u3002\u4E0B\u4E00\u6B21\u4FBF\u53EF\u4EE5\u5229\u7528send\u4F20\u503C\u7ED9yield 1 \u5E76\u7528count\u63A5\u6536
+        \u7B2C\u4E00\u6B21\u5C31\u4F20\u503C\u7684\u8BDD\u751F\u6210\u5668\u6CA1\u6709\u529E\u6CD5\u63A5\u6536 \u56E0\u4E3A\u4E4B\u524D\u5E76\u6CA1\u6709yield\u8BB0\u5F55
+    \u7528\u9014:
+        \u6709\u65F6\u7A0B\u5E8F\u662F\u9700\u8981\u8FDB\u884C\u4EA4\u4E92\u7684 \u9700\u8981\u8C03\u7528\u5B83\u7684\u65F6\u5019\u7ED9\u4E00\u4E9B\u53C2\u6570 \u8FD9\u662F\u5229\u7528send\u4F20\u503C\u4FBF\u53EF\u4EE5\u503C\u5BFC\u5165
+
+\u53EF\u63A7\u5236\u6027:
+    \u666E\u901A\u51FD\u6570\u6267\u884C\u5B8C\u4FBF\u7ED3\u675F\u4E86,\u4F46\u751F\u6210\u5668\u4E0D\u4E00\u6837 \u4EC0\u4E48\u65F6\u5019\u60F3\u8C03\u7528\u5C31\u518D\u6B21next\u4E00\u4E0B \u4FBF\u53EF\u4EE5\u8BA1\u7B97\u4E0B\u4E00\u4E2A\u503C
+</code></pre><p>5.1 \u751F\u6210\u5668\u4E4B\u4F2A\u5E76\u53D1: \u8BBA\u5355\u6838\u5982\u4F55\u5B9E\u73B0(\u4F2A\u7269)\u5E76\u53D1: \u6BD4\u5982\u540C\u65F6\u542C\u6B4C\u548C\u770B\u7535\u5F71 CPU \u8F6E\u8BE2\u5207\u6362\u6267\u884C(\u4E8B\u5B9E\u4E0A\u5C31\u662F\u5148\u770B\u4E00\u6BB5\u7535\u5F71\u5728\u6267\u884C\u4E00\u6BB5\u97F3\u4E50)\u53EA\u662F\u7531\u4E8E CPU \u5207\u6362\u5B9E\u5728\u662F\u592A\u5FEB\u4E86 0.0...0 \u51E0\u79D2 \u56E0\u6B64\u611F\u5B98\u4E0A\u611F\u89C9\u662F\u5728&quot;\u540C\u65F6&quot;\u6267\u884C \u6216\u662F&quot;\u5E76\u53D1&quot;\u7684\u3002(\u4EBA\u773C\u5904\u7406 == \u5F53\u6BCF\u79D2\u5E27\u6570&lt;24 \u5F53\u79D2\u901F\u8D85\u8FC7 24 \u65F6 \u4FBF\u610F\u8BC6\u4E3A\u8FDE\u7EED) \u6240\u4EE5\u662F(\u4F2A)\u6709\u5148\u540E\u7684 \u771F\u6B63\u7684\u5E76\u53D1\u8FD8\u662F\u8981\u6709\u591A\u6838\u591A\u4E2A\u7EBF\u7A0B\u540C\u65F6\u6267\u884C \u4E0B\u9762\u662F\u4E00\u4E2A\u5B98\u65B9\u66F4\u65B0\u7684\u540C\u65F6\u6A21\u62DF\u591A\u4E2A\u7528\u6237\u5728\u7EBF\u770B\u7684\u4F2A\u5E76\u53D1(\u611F\u89C9\u662F\u540C\u65F6\u53D1\u751F\u7684\u5176\u5B9E\u4E0D\u662F) import time</p><pre><code>def consumer(name):
+    print(&quot;%s \u51C6\u5907\u770B\u756A\u5566&quot; % name)
+    while True:
+        animate = yield
+
+        print(&quot;\u65B0\u756A\u7B2C[%s]\u96C6\u51FA\u6765\u5566, [%s]\u70B9\u8FDB\u53BB\u770B\u4E86\u770B\uFF01&quot; % (animate, name))
+
+def producer(name):
+    c = consumer(&quot;\u5C0F\u767D&quot;)
+    c2 = consumer(&quot;\u5C0F\u660E&quot;)#\u4E24\u4E2A\u751F\u6210\u5668\u5BF9\u8C61
+    c.__next__()#\u5728\u8FD9\u91CC\u8FD4\u56DE\u4E4B\u524D\u6253\u5370\u4E86 \u5C0F\u767D\u51C6\u5907\u770B\u756A\u5566
+    c2.__next__()#\u5728\u8FD9\u91CC\u6267\u884C
+    print(&quot;%s\u51C6\u5907\u53D1\u5E03\u65B0\u756A&quot; % name)
+    for i in range(1,13):
+        time.sleep(1)
+        print(&quot;%s\u66F4\u65B0\u4E86\u4E00\u96C6&quot; % name)
+        c.send(i)
+        c2.send(i)
+
+producer(&quot;\u5B98\u65B9&quot;)
+
+\u8FD9\u91CCc \u548Cc2 \u5B9E\u9645\u4E0A\u662F\u62FF\u5230\u4E86\u4E24\u4E2A\u751F\u6210\u5668\u5BF9\u8C61
+\u7B2C\u4E00\u6B21\u6267\u884C__next__()\u65F6\u5148\u662F\u5230\u4E86yield (\u7528next \u548C send(None)\u540C)\u8FDB\u884C\u8FD4\u56DE
+\u4E4B\u540E\u751F\u4EA7\u8005\u8FDB\u884C\u751F\u4EA7(\u4E5F\u5C31\u662F\u6253\u5370\u7B49\u4E00\u7CFB\u5217\u64CD\u4F5C)\u4E4B\u540E\u8C03\u7528\u6D88\u8D39\u8005.send()
+\u5FAA\u73AF\u8C03\u7528\u6D88\u8D39\u8005 \u6BCF\u6B21\u5FAA\u73AF\u8C03\u7528\u4E24\u4E2A\u751F\u6210\u5668\u5BF9\u8C61
+\u7B2C\u4E00\u6B21\u65F6\u6D88\u8D39\u80051 \u4ECEyield\u5F00\u59CB \u628A\u4F20\u5165\u7684i\u5BF9animate\u8D4B\u503C \u6D88\u8D39\u80052 \u4E5F\u4ECE\u4E0A\u6B21\u4E2D\u65AD\u7684yield\u5F00\u59CB \u540C\u65F6\u8D4B\u503C
+\u8FD9\u91CC\u8981\u53E6\u8C08\u7684\u662F: c \u548C c2 \u8FD9\u4E24\u4E2A\u751F\u6210\u5668\u5206\u522B\u662F\u5728\u5185\u5B58\u4E2D\u751F\u6210\u4E24\u4E2A\u5730\u5740\u6BB5(\u5B83\u4EEC\u662F\u4E0D\u540C\u7684)\u6BCF\u6B21\u5206\u522B\u8C03\u7528\u65F6 \u5404\u81EA\u7684\u751F\u6210\u5668\u90FD\u4F1A
+\u8BB0\u5F55\u4E0B\u81EA\u5DF1\u4E0A\u6B21\u8FD4\u56DE\u7684yield
+
+\u4E4B\u6240\u4EE5\u548C\u4E4B\u524D\u7684\u770B\u4E0A\u53BB\u4E00\u6B21\u6B21next()\u4E0D\u540C,\u65E0\u975E\u5C31\u662F\u5229\u7528\u4E86\u5FAA\u73AF\u52A0yield
+\u6709\u70B9\u7C7B\u4F3C\u534F\u4F5C\u5F0F\u7684\u534F\u7A0B \u800C\u4E0D\u662F\u50CF\u62A2\u5360\u5F0F\u7684\u7EBF\u7A0B
+</code></pre><p>6.\u8FED\u4EE3\u5668: \u751F\u6210\u5668\u90FD\u662F\u8FED\u4EE3\u5668,\u8FED\u4EE3\u5668\u4E0D\u4E00\u5B9A\u90FD\u662F\u751F\u6210\u5668 \u4F8B\uFF1A</p><pre><code>    title = [&#39;Python&#39;,&#39;Java&#39;,&#39;C++&#39;] # \u5217\u8868\u662F\u4E00\u4E2A\u53EF\u8FED\u4EE3\u5BF9\u8C61
+    isinstance(title,Iterable)      # True
+    a = iter(title) # \u7531\u53EF\u8FED\u4EE3\u5BF9\u8C61\u7684iter\u65B9\u6CD5\u8FD4\u56DE\u4E00\u4E2A\u8FED\u4EE3\u5668
+    &gt;&gt;&gt; next(a)
+    Python
+    &gt;&gt;&gt; next(a)
+    Java
+    &gt;&gt;&gt; next(a)
+    C++
+    &gt;&gt;&gt; next(a)  # \u629B\u51FAStopIteration\u5F02\u5E38
+
+\u3010\u4EC0\u4E48\u662F\u8FED\u4EE3\u5668\uFF1F\u3011
+    \u5229\u7528\u5185\u7F6E\u65B9\u6CD5 iter() \u628A list \u3001 dict \u3001 str \u7B49 Iterable\uFF08\u53EF\u8FED\u4EE3\u5BF9\u8C61\uFF09 \u8FDB\u884C\u8F6C\u6362\uFF0C\u8FD4\u56DE\u7684\u5BF9\u8C61 Iterator
+
+    Iterator \u8FD9\u4E2A\u5BF9\u8C61\u5C31\u662F\u4E00\u4E2A\u8FED\u4EE3\u5668\u5BF9\u8C61\uFF0C\u4E5F\u5C31\u662F\u8FED\u4EE3\u5668\u4E86
+
+
+str list tuple dict:Iterable (\u53EF\u8FED\u4EE3\u5BF9\u8C61)
+\u4EC0\u4E48\u662F\u8FED\u4EE3\u5668\uFF1F(\u8FED\u4EE3\u5668\u534F\u8BAE)
+    Iterable\u5B9A\u4E49\u4E86\u53EF\u8FD4\u56DE\u8FED\u4EE3\u5668\u7684__iter__()\u65B9\u6CD5\u3001__next__() \u65B9\u6CD5
+        1.\u6709iter\u65B9\u6CD5:__iter__()
+        2.\u6709next\u65B9\u6CD5:__next__()
+
+        \u4E3A\u4EC0\u4E48\u5FC5\u987B\u6709iter\u65B9\u6CD5?
+            \u9996\u5148\u8FD9\u662F\u4E00\u4E2A\u89C4\u5B9A:\u597D\u591Aiter\u65B9\u6CD5return\u7684\u662Fself(\u81EA\u8EAB)\uFF08\u8FD9\u91CC\u662F\u8BF4__iter__()\u5185\u90E8return self \u89C1\u4E0B\uFF1Afor\u5FAA\u73AF\u7684\u7B2C\u4E00\u4EF6\u4E8B\uFF09
+            \u4F46\u60F3for\u5FAA\u73AF\u53EA\u6709next\u65B9\u6CD5\u6CA1\u6709iter\u65B9\u6CD5\u5C31\u4E0D\u80FD\u8FDB\u884C\u5FAA\u73AF(\u5C31\u662F\u81EA\u5B9A\u4E49\u8FED\u4EE3\u5668\u6CA1\u6709iter\u65B9\u6CD5\u7684\u8BDD\u5982\u4F55\u5FAA\u73AF)
+            \u56E0\u6B64\u5185\u7F6E\u7684iter\u65B9\u6CD5\u5B9E\u9645\u662F\u8C03\u7528__iter__()\u65B9\u6CD5 \u5982int\u7C7B\u81EA\u8EAB\u6CA1\u6709__iter__()\u65B9\u6CD5\u5219\u65E0\u6CD5\u8C03\u7528
+            &#39;int&#39; object is not iterable
+
+        \u8FED\u4EE3\u5668\u8C03\u7528next()\u65B9\u6CD5\u8C03\u7528\u505A\u7684\u4E24\u4EF6\u4E8B\uFF1A
+            1.\u4E3A\u4E0B\u4E00\u6B21\u8C03\u7528next()\u65B9\u6CD5\u4FEE\u6539\u72B6\u6001
+            2.\u751F\u6210\u5F53\u524D\u8C03\u7528\u7684\u8FD4\u56DE\u7ED3\u679C
+
+    \u751F\u6210\u5668\u6BD4\u8FED\u4EE3\u5668\u66F4\u4F18\u96C5 \u56E0\u4E3A\u662F\u7528yield\u5B9E\u73B0\u7684(\u6EE1\u8DB3\u8FED\u4EE3\u5668\u534F\u8BAE \u672C\u8EAB\u4E5F\u662F\u4E00\u4E2A\u8FED\u4EE3\u5668\u5BF9\u8C61)
+
+for\u5FAA\u73AF\u63A2\u8BA8\u540E\u7EED:(\u4E09\u4EF6\u4E8B)
+    \u5DF2\u77E5for\u5FAA\u73AFin\u540E\u9762\u63A5\u7684\u662F\u53EF\u8FED\u4EE3\u5BF9\u8C61 \u4F46\u662F\u53EF\u8FED\u4EE3\u5BF9\u8C61\u5E76\u4E0D\u5177\u6709iter\u65B9\u6CD5 \u5982:
+    [1,2,34] \u6211\u4EEC\u4E0D\u80FD\u628A\u5B83next([1,2,34]) \u56E0\u4E3A\u5B83\u662Flist\u5BF9\u8C61\u554A
+    1.\u56E0\u6B64for\u5FAA\u73AF \u7B2C\u4E00\u4EF6\u5E72\u7684\u4E8B\u5C31\u662F\u628A \u201C\u53EF\u8FED\u4EE3\u5BF9\u8C61\u53D8\u6210\u8FED\u4EE3\u5668\u201D ---\u7528\u4E86iter()\u65B9\u6CD5\uFF08\u5B9E\u8D28\u4E0A\u662F\u53BB\u627E\u53EF\u8FED\u4EE3\u5BF9\u8C61\u91CC\u7684__iter__\u65B9\u6CD5\uFF0C\u5F53\u6709for\u5FAA\u73AF\u65F6
+    \u4FBF\u4F1A\u81EA\u52A8\u6267\u884C\u5BF9\u8C61\u4E2D\u7684__iter__\u65B9\u6CD5\uFF0C\u6B64\u65B9\u6CD5\u53EA\u4F1A\u8FD4\u56DE\u8FED\u4EE3\u5668\uFF0C\u8BE6\u60C5\u89C14.3\u7279\u6B8A\u65B9\u6CD5\uFF09
+    2.\u7B2C\u4E8C\u4EF6\u5E72\u7684\u4E8B\u5C31\u662F\u4E0D\u65AD\u8C03\u7528\u8FED\u4EE3\u5668\u5BF9\u8C61\u7684next\u65B9\u6CD5\u8FDB\u884C\u8FED\u4EE3
+    3.\u7B2C\u4E09\u4FBF\u662F\u524D\u9762\u8BF4\u7684\u6355\u83B7\u5F02\u5E38\u5E76\u5904\u7406StopIteration
+
+isinstance(o,t):
+    \u5224\u65AD\u524D\u4E00\u4E2A\u5BF9\u8C61\u662F\u4E0D\u662F\u540E\u9762\u7684\u7C7B\u578B \u8FD4\u56DETrue False
+    \u5BFC\u5165collections\u4E2D\u7684Iterator\u548CIterable\u6A21\u5757\u4FBF\u53EF\u8FDB\u884C\u8FA8\u6790 \u4E3B\u8981\u89C1\u4EE3\u7801
+
+\u73B0\u5728\u5728\u6765\u770B\u6587\u4EF6:
+    f = open(&quot;xx.txt&quot;,r+,encoding=&quot;utf8&quot;)
+    for i in f.readlines(): \u6B64\u65F6\u662F\u628A\u6587\u4EF6\u590D\u5236\u4E4B\u540E\u6BCF\u4E00\u884C\u5F53\u6210\u4E00\u4E2A\u5143\u7D20\u653E\u5230\u5217\u8868\u4E2D\u5B58\u50A8\uFF0C\u518D\u8FD4\u56DE
+    \u82E5\u5229\u7528for i in f:\u5219\u538B\u6839\u6CA1\u6709\u590D\u5236f \u800C\u662F\u628Af\u76F4\u63A5\u5229\u7528iter(f)\u8FD4\u56DE\u4E86\u8FED\u4EE3\u5668\u5BF9\u8C61\uFF0C\u4E4B\u540Ef.read()
+    \u6BCF\u6B21\u8C03\u7528(next)\u65F6\u624D\u5360\u4E00\u884C\u7684\u5185\u5B58 \u56E0\u6B64\u8FD9\u5C31\u662F\u4E0D\u7528readlines\u7684\u539F\u56E0\uFF08\u8FED\u4EE3\u5668\u4E0D\u5360\u5185\u5B58\u7684\u597D\u5904\uFF0C\u7528\u65F6next\u4E00\u6761\uFF09
+</code></pre><p>\u5BB9\u5668\u3001\u8FED\u4EE3\u5668\u3001\u751F\u6210\u5668\u533A\u522B\uFF1A 1.\u5BB9\u5668\uFF1A\u5305\u542B\u5E38\u89C1\u7684\u5217\u8868\u3001\u5143\u7EC4\u3001\u5B57\u5178\u3001\u96C6\u5408\u548C\u5B57\u7B26\u4E32\uFF0C\u5E8F\u5217\u5B58\u50A8\u5728\u5185\u5B58\u4E2D\uFF0C\u9700\u8981\u7684\u65F6\u5019\u53EF\u4EE5\u4E00\u5E76\u53D6\u51FA</p><pre><code>2.\u8FED\u4EE3\u5668\uFF1Aiter(\u5BB9\u5668)\u8FD4\u56DE\u7684\u5BF9\u8C61\uFF0C\u6309\u9700\u5B58\u50A8\uFF0C\u53EF\u4EE5\u901A\u8FC7next()\u8FDB\u884C\u8FED\u4EE3,\u4F46\u5E76\u4E0D\u662F\u628A\u6240\u6709\u5E8F\u5217\u653E\u5728\u5185\u5B58\u4E2D\u518D\u8FED\u4EE3\u53D6\u503C\uFF0C\u800C\u662F\u4EC5\u4EC5\u5C06\u8FED\u4EE3\u5230\u7684\u67D0\u4E2A\u503C\u53D6\u5230\u5185\u5B58\u4E2D
+
+3.\u751F\u6210\u5668\uFF1A\u7B97\u662F\u53E6\u4E00\u4E2A\u8FED\u4EE3\u5668\uFF0C\u4E0D\u4EC5\u53EF\u4EE5\u8FED\u4EE3\u6309\u9700\u53D6\u6570\u636E\uFF0C\u8FD8\u53EF\u4EE5\u901A\u8FC7send()\u4F20\u5165\u6570\u636E\uFF0C\u5E76\u5728\u751F\u6210\u5668\u5185\u90E8\u8BA1\u7B97
+
+\u76F8\u540C\u70B9\uFF1A\u90FD\u662F\u53EF\u8FED\u4EE3\u5BF9\u8C61
+</code></pre><h2 id="yield-from" tabindex="-1"><a class="header-anchor" href="#yield-from" aria-hidden="true">#</a> yield from</h2><h3 id="yield-from-\u548C-yield-\u7684\u533A\u522B" tabindex="-1"><a class="header-anchor" href="#yield-from-\u548C-yield-\u7684\u533A\u522B" aria-hidden="true">#</a> yield from \u548C yield \u7684\u533A\u522B\uFF1A</h3><ul><li><p>\u7B80\u5316\u4E86 yield \u7684\u64CD\u4F5C:</p><div class="language-python ext-py line-numbers-mode"><pre class="language-python"><code><span class="token keyword">for</span> i <span class="token keyword">in</span> titles<span class="token punctuation">:</span>    \u7B49\u4EF7\u4E8E  <span class="token keyword">yield</span> <span class="token keyword">from</span> titles
+    <span class="token keyword">yield</span> title
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div></div></div></li><li><p>\u7701\u53BB\u4E86\u5F88\u591A\u5F02\u5E38\u7684\u5904\u7406:</p><blockquote><p>\u4F8B\u5982<code>send(None)</code> \u4E0D\u4F1A\u62A5\u9519\u7B49</p></blockquote></li><li><p>\u5EFA\u7ACB\u8C03\u7528\u65B9\u548C\u5B50\u751F\u6210\u5668\u7684\u901A\u9053</p></li></ul><div class="language-python ext-py line-numbers-mode"><pre class="language-python"><code><span class="token keyword">def</span> <span class="token function">generator_1</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    total <span class="token operator">=</span> <span class="token number">0</span>
+    <span class="token keyword">while</span> <span class="token boolean">True</span><span class="token punctuation">:</span>
+        x <span class="token operator">=</span> <span class="token keyword">yield</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">&#39;\u52A0&#39;</span><span class="token punctuation">,</span> x<span class="token punctuation">)</span>
+        <span class="token keyword">if</span> <span class="token keyword">not</span> x<span class="token punctuation">:</span>
+            <span class="token keyword">break</span>
+        total <span class="token operator">+=</span> x
+    <span class="token keyword">return</span> total
+
+
+<span class="token keyword">def</span> <span class="token function">generator_2</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>  <span class="token comment"># \u59D4\u6258\u751F\u6210\u5668</span>
+    <span class="token keyword">while</span> <span class="token boolean">True</span><span class="token punctuation">:</span>
+        total <span class="token operator">=</span> <span class="token keyword">yield</span> <span class="token keyword">from</span> generator_1<span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token comment"># \u5B50\u751F\u6210\u5668</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">&#39;\u52A0\u548C\u603B\u6570\u662F:&#39;</span><span class="token punctuation">,</span> total<span class="token punctuation">)</span>
+
+
+<span class="token keyword">def</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>  <span class="token comment"># \u8C03\u7528\u65B9</span>
+    g1 <span class="token operator">=</span> generator_1<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    g1<span class="token punctuation">.</span>send<span class="token punctuation">(</span><span class="token boolean">None</span><span class="token punctuation">)</span>
+    g1<span class="token punctuation">.</span>send<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span>
+    g1<span class="token punctuation">.</span>send<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span>
+    g1<span class="token punctuation">.</span>send<span class="token punctuation">(</span><span class="token boolean">None</span><span class="token punctuation">)</span>
+
+
+<span class="token comment"># g2 = generator_2()</span>
+<span class="token comment"># g2.send(None)</span>
+<span class="token comment"># g2.send(2)</span>
+<span class="token comment"># g2.send(3)</span>
+<span class="token comment"># g2.send(None)</span>
+
+main<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><ul><li><p>\u3010\u5B50\u751F\u6210\u5668\u3011\uFF1Ayield from \u540E\u7684 generator_1()\u751F\u6210\u5668\u51FD\u6570\u662F\u5B50\u751F\u6210\u5668</p></li><li><p>\u3010\u59D4\u6258\u751F\u6210\u5668\u3011\uFF1Agenerator_2()\u662F\u7A0B\u5E8F\u4E2D\u7684\u59D4\u6258\u751F\u6210\u5668\uFF0C\u5B83\u8D1F\u8D23\u59D4\u6258\u5B50\u751F\u6210\u5668\u5B8C\u6210\u5177\u4F53\u4EFB\u52A1\u3002</p></li><li><p>\u3010\u8C03\u7528\u65B9\u3011\uFF1Amain()\u662F\u7A0B\u5E8F\u4E2D\u7684\u8C03\u7528\u65B9\uFF0C\u8D1F\u8D23\u8C03\u7528\u59D4\u6258\u751F\u6210\u5668\u3002</p><ul><li>\u5728\u4E0A\u8FF0\u4EE3\u7801\u4E2D main()\u6BCF\u4E00\u6B21\u5728\u8C03\u7528 send(value)\u65F6\uFF0Cvalue \u4E0D\u662F\u4F20\u9012\u7ED9\u4E86\u59D4\u6258\u751F\u6210\u5668 generator_2()\uFF0C\u800C\u662F\u501F\u52A9 yield from \u4F20\u9012\u7ED9\u4E86\u5B50\u751F\u6210\u5668 generator_1()\u4E2D\u7684 yield</li><li>\u540C\u7406\uFF0C\u5B50\u751F\u6210\u5668\u4E2D\u7684\u6570\u636E\u4E5F\u662F\u901A\u8FC7 yield \u76F4\u63A5\u53D1\u9001\u5230\u8C03\u7528\u65B9 main()\u4E2D\u3002</li></ul></li></ul><img src="`+d+'">',21);function y(g,x){const s=c("RouterLink");return t(),o("div",null,[e("p",null,[k,i(s,{to:"/python/%E8%AF%AD%E8%A8%80/%E8%BF%9B%E9%98%B6/%E8%BF%AD%E4%BB%A3%E5%99%A8.html"},{default:l(()=>[m]),_:1}),v,_,f]),p(" more "),b])}const w=a(u,[["render",y],["__file","\u751F\u6210\u5668.html.vue"]]);export{w as default};
