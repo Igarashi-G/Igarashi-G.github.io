@@ -83,7 +83,7 @@ export default navbar([
       { text: "Git", link: "Git/Git" , icon: "git"},
       { text: "Nginx", link: "Nginx/Nginx基础" , icon: "nginx"},
       { text: "Docker", link: "Docker/docker容器" , icon: "docker"},
-      { text: "Kubernetes", link: "Kubernetes/K8s基础" , icon: "kubernetes"},
+      { text: "Kubernetes", link: "Kubernetes/k8s资源Pod" , icon: "kubernetes"},
       { text: "工具", link: "Other/网络代理" , icon: "other"},
     ],
   },

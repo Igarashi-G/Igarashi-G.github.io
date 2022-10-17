@@ -1,4 +1,725 @@
-<template><div><h5 id="kubernetes认证与授权-录屏" tabindex="-1"><a class="header-anchor" href="#kubernetes认证与授权-录屏" aria-hidden="true">#</a> Kubernetes认证与授权 录屏！！！</h5>
+<template><div><h3 id="_2-3-deployment" tabindex="-1"><a class="header-anchor" href="#_2-3-deployment" aria-hidden="true">#</a> 2.3 Deployment</h3>
+<div class="language-yaml ext-yml line-numbers-mode"><pre v-pre class="language-yaml"><code><span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> apps/v1
+<span class="token key atrule">kind</span><span class="token punctuation">:</span> Deployment
+<span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+<span class="token key atrule">name</span><span class="token punctuation">:</span> mysql
+<span class="token key atrule">namespace</span><span class="token punctuation">:</span> demo
+<span class="token key atrule">spec</span><span class="token punctuation">:</span>
+<span class="token key atrule">replicas</span><span class="token punctuation">:</span> <span class="token number">1</span> <span class="token comment">#指定Pod副本数</span>
+<span class="token key atrule">selector</span><span class="token punctuation">:</span> <span class="token comment">#指定Pod的选择器</span>
+<span class="token key atrule">matchLabels</span><span class="token punctuation">:</span>
+<span class="token key atrule">app</span><span class="token punctuation">:</span> mysql
+<span class="token key atrule">template</span><span class="token punctuation">:</span>
+<span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+<span class="token key atrule">labels</span><span class="token punctuation">:</span> <span class="token comment">#给Pod打label</span>
+<span class="token key atrule">app</span><span class="token punctuation">:</span> mysql
+<span class="token key atrule">spec</span><span class="token punctuation">:</span>
+<span class="token key atrule">hostNetwork</span><span class="token punctuation">:</span> <span class="token boolean important">true</span> <span class="token comment"># 声明pod的网络模式为host模式，效果通docker run --net=host</span>
+<span class="token key atrule">volumes</span><span class="token punctuation">:</span>
+<span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> mysql<span class="token punctuation">-</span>data
+<span class="token key atrule">hostPath</span><span class="token punctuation">:</span>
+<span class="token key atrule">path</span><span class="token punctuation">:</span> /opt/mysql/data
+<span class="token key atrule">nodeSelector</span><span class="token punctuation">:</span> <span class="token comment"># 使用节点选择器将Pod调度到指定label的节点</span>
+<span class="token key atrule">component</span><span class="token punctuation">:</span> mysql
+<span class="token key atrule">containers</span><span class="token punctuation">:</span>
+<span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> mysql
+<span class="token key atrule">image</span><span class="token punctuation">:</span> 172.21.32.15<span class="token punctuation">:</span>5000/mysql<span class="token punctuation">:</span>5.7<span class="token punctuation">-</span>utf8
+<span class="token key atrule">ports</span><span class="token punctuation">:</span>
+<span class="token punctuation">-</span> <span class="token key atrule">containerPort</span><span class="token punctuation">:</span> <span class="token number">3306</span>
+<span class="token key atrule">env</span><span class="token punctuation">:</span>
+<span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> MYSQL_USER
+<span class="token key atrule">valueFrom</span><span class="token punctuation">:</span>
+<span class="token key atrule">secretKeyRef</span><span class="token punctuation">:</span>
+<span class="token key atrule">name</span><span class="token punctuation">:</span> myblog
+<span class="token key atrule">key</span><span class="token punctuation">:</span> MYSQL_USER
+<span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> MYSQL_PASSWD
+<span class="token key atrule">valueFrom</span><span class="token punctuation">:</span>
+<span class="token key atrule">secretKeyRef</span><span class="token punctuation">:</span>
+<span class="token key atrule">name</span><span class="token punctuation">:</span> myblog
+<span class="token key atrule">key</span><span class="token punctuation">:</span> MYSQL_PASSWD
+<span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> MYSQL_DATABASE
+<span class="token key atrule">value</span><span class="token punctuation">:</span> <span class="token string">"myblog"</span>
+<span class="token key atrule">resources</span><span class="token punctuation">:</span>
+<span class="token key atrule">requests</span><span class="token punctuation">:</span>
+<span class="token key atrule">memory</span><span class="token punctuation">:</span> 100Mi
+<span class="token key atrule">cpu</span><span class="token punctuation">:</span> 50m
+<span class="token key atrule">limits</span><span class="token punctuation">:</span>
+<span class="token key atrule">memory</span><span class="token punctuation">:</span> 500Mi
+<span class="token key atrule">cpu</span><span class="token punctuation">:</span> 100m
+<span class="token key atrule">readinessProbe</span><span class="token punctuation">:</span>
+<span class="token key atrule">tcpSocket</span><span class="token punctuation">:</span>
+<span class="token key atrule">port</span><span class="token punctuation">:</span> <span class="token number">3306</span>
+<span class="token key atrule">initialDelaySeconds</span><span class="token punctuation">:</span> <span class="token number">5</span>
+<span class="token key atrule">periodSeconds</span><span class="token punctuation">:</span> <span class="token number">10</span>
+<span class="token key atrule">livenessProbe</span><span class="token punctuation">:</span>
+<span class="token key atrule">tcpSocket</span><span class="token punctuation">:</span>
+<span class="token key atrule">port</span><span class="token punctuation">:</span> <span class="token number">3306</span>
+<span class="token key atrule">initialDelaySeconds</span><span class="token punctuation">:</span> <span class="token number">15</span>
+<span class="token key atrule">periodSeconds</span><span class="token punctuation">:</span> <span class="token number">20</span>
+<span class="token key atrule">volumeMounts</span><span class="token punctuation">:</span>
+<span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> mysql<span class="token punctuation">-</span>data
+<span class="token key atrule">mountPath</span><span class="token punctuation">:</span> /var/lib/mysql
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>deploy-myblog.yaml:</p>
+<div class="language-yaml ext-yml line-numbers-mode"><pre v-pre class="language-yaml"><code><span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> apps/v1
+<span class="token key atrule">kind</span><span class="token punctuation">:</span> Deployment
+<span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+<span class="token key atrule">name</span><span class="token punctuation">:</span> myblog
+<span class="token key atrule">namespace</span><span class="token punctuation">:</span> demo
+<span class="token key atrule">spec</span><span class="token punctuation">:</span>
+<span class="token key atrule">replicas</span><span class="token punctuation">:</span> <span class="token number">1</span> <span class="token comment">#指定Pod副本数</span>
+<span class="token key atrule">selector</span><span class="token punctuation">:</span> <span class="token comment">#指定Pod的选择器</span>
+<span class="token key atrule">matchLabels</span><span class="token punctuation">:</span>
+<span class="token key atrule">app</span><span class="token punctuation">:</span> myblog
+<span class="token key atrule">template</span><span class="token punctuation">:</span>
+<span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+<span class="token key atrule">labels</span><span class="token punctuation">:</span> <span class="token comment">#给Pod打label</span>
+<span class="token key atrule">app</span><span class="token punctuation">:</span> myblog
+<span class="token key atrule">spec</span><span class="token punctuation">:</span>
+<span class="token key atrule">containers</span><span class="token punctuation">:</span>
+<span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> myblog
+<span class="token key atrule">image</span><span class="token punctuation">:</span> 172.21.32.15<span class="token punctuation">:</span>5000/myblog
+<span class="token key atrule">imagePullPolicy</span><span class="token punctuation">:</span> IfNotPresent
+<span class="token key atrule">env</span><span class="token punctuation">:</span>
+<span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> MYSQL_HOST
+<span class="token key atrule">valueFrom</span><span class="token punctuation">:</span>
+<span class="token key atrule">configMapKeyRef</span><span class="token punctuation">:</span>
+<span class="token key atrule">name</span><span class="token punctuation">:</span> myblog
+<span class="token key atrule">key</span><span class="token punctuation">:</span> MYSQL_HOST
+<span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> MYSQL_PORT
+<span class="token key atrule">valueFrom</span><span class="token punctuation">:</span>
+<span class="token key atrule">configMapKeyRef</span><span class="token punctuation">:</span>
+<span class="token key atrule">name</span><span class="token punctuation">:</span> myblog
+<span class="token key atrule">key</span><span class="token punctuation">:</span> MYSQL_PORT
+<span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> MYSQL_USER
+<span class="token key atrule">valueFrom</span><span class="token punctuation">:</span>
+<span class="token key atrule">secretKeyRef</span><span class="token punctuation">:</span>
+<span class="token key atrule">name</span><span class="token punctuation">:</span> myblog
+<span class="token key atrule">key</span><span class="token punctuation">:</span> MYSQL_USER
+<span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> MYSQL_PASSWD
+<span class="token key atrule">valueFrom</span><span class="token punctuation">:</span>
+<span class="token key atrule">secretKeyRef</span><span class="token punctuation">:</span>
+<span class="token key atrule">name</span><span class="token punctuation">:</span> myblog
+<span class="token key atrule">key</span><span class="token punctuation">:</span> MYSQL_PASSWD
+<span class="token key atrule">ports</span><span class="token punctuation">:</span>
+<span class="token punctuation">-</span> <span class="token key atrule">containerPort</span><span class="token punctuation">:</span> <span class="token number">8002</span>
+<span class="token key atrule">resources</span><span class="token punctuation">:</span>
+<span class="token key atrule">requests</span><span class="token punctuation">:</span>
+<span class="token key atrule">memory</span><span class="token punctuation">:</span> 100Mi
+<span class="token key atrule">cpu</span><span class="token punctuation">:</span> 50m
+<span class="token key atrule">limits</span><span class="token punctuation">:</span>
+<span class="token key atrule">memory</span><span class="token punctuation">:</span> 500Mi
+<span class="token key atrule">cpu</span><span class="token punctuation">:</span> 100m
+<span class="token key atrule">livenessProbe</span><span class="token punctuation">:</span>
+<span class="token key atrule">httpGet</span><span class="token punctuation">:</span>
+<span class="token key atrule">path</span><span class="token punctuation">:</span> /blog/index/
+<span class="token key atrule">port</span><span class="token punctuation">:</span> <span class="token number">8002</span>
+<span class="token key atrule">scheme</span><span class="token punctuation">:</span> HTTP
+<span class="token key atrule">initialDelaySeconds</span><span class="token punctuation">:</span> <span class="token number">10</span> <span class="token comment"># 容器启动后第一次执行探测是需要等待多少秒</span>
+<span class="token key atrule">periodSeconds</span><span class="token punctuation">:</span> <span class="token number">15</span> <span class="token comment"># 执行探测的频率</span>
+<span class="token key atrule">timeoutSeconds</span><span class="token punctuation">:</span> <span class="token number">2</span> <span class="token comment"># 探测超时时间</span>
+<span class="token key atrule">readinessProbe</span><span class="token punctuation">:</span>
+<span class="token key atrule">httpGet</span><span class="token punctuation">:</span>
+<span class="token key atrule">path</span><span class="token punctuation">:</span> /blog/index/
+<span class="token key atrule">port</span><span class="token punctuation">:</span> <span class="token number">8002</span>
+<span class="token key atrule">scheme</span><span class="token punctuation">:</span> HTTP
+<span class="token key atrule">initialDelaySeconds</span><span class="token punctuation">:</span> <span class="token number">10</span>
+<span class="token key atrule">timeoutSeconds</span><span class="token punctuation">:</span> <span class="token number">2</span>
+<span class="token key atrule">periodSeconds</span><span class="token punctuation">:</span> <span class="token number">15</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h6 id="创建deployment" tabindex="-1"><a class="header-anchor" href="#创建deployment" aria-hidden="true">#</a> 创建Deployment</h6>
+<div class="language-powershell ext-powershell line-numbers-mode"><pre v-pre class="language-powershell"><code>$ kubectl create <span class="token operator">-</span>f deploy<span class="token punctuation">.</span>yaml
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><h6 id="查看deployment" tabindex="-1"><a class="header-anchor" href="#查看deployment" aria-hidden="true">#</a> 查看Deployment</h6>
+<div class="language-powershell ext-powershell line-numbers-mode"><pre v-pre class="language-powershell"><code><span class="token comment"># kubectl api-resources</span>
+$ kubectl <span class="token operator">-</span>n demo get deploy
+NAME READY UP-TO-DATE AVAILABLE AGE
+myblog 1/1 1 1 2m22s
+mysql 1/1 1 1 2d11h
+
+<span class="token operator">*</span> `NAME` 列出了集群中 Deployments 的名称。
+<span class="token operator">*</span> `READY`显示当前正在运行的副本数<span class="token operator">/</span>期望的副本数。
+<span class="token operator">*</span> `UP-TO-DATE`显示已更新以实现期望状态的副本数。
+<span class="token operator">*</span> `AVAILABLE`显示应用程序可供用户使用的副本数。
+<span class="token operator">*</span> `AGE` 显示应用程序运行的时间量。
+
+<span class="token comment"># 查看pod</span>
+$ kubectl <span class="token operator">-</span>n demo get po
+NAME READY STATUS RESTARTS AGE
+myblog-7c96c9f76b-qbbg7 1/1 Running 0 109s
+mysql-85f4f65f99-w6jkj 1/1 Running 0 2m28s
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h6 id="副本保障机制" tabindex="-1"><a class="header-anchor" href="#副本保障机制" aria-hidden="true">#</a> 副本保障机制</h6>
+<p>controller实时检测pod状态，并保障副本数一直处于期望的值。</p>
+<div class="language-powershell ext-powershell line-numbers-mode"><pre v-pre class="language-powershell"><code><span class="token comment">## 删除pod，观察pod状态变化</span>
+$ kubectl <span class="token operator">-</span>n demo delete pod myblog-7c96c9f76b-qbbg7
+
+<span class="token comment"># 观察pod</span>
+$ kubectl get pods <span class="token operator">-</span>o wide
+
+<span class="token comment">## 设置两个副本, 或者通过kubectl -n demo edit deploy myblog的方式，最好通过修改文件，然后apply的方式，这样yaml文件可以保持同步</span>
+$ kubectl <span class="token operator">-</span>n demo scale deploy myblog <span class="token operator">--</span>replicas=2
+deployment<span class="token punctuation">.</span>extensions/myblog scaled
+
+<span class="token comment"># 观察pod</span>
+$ kubectl get pods <span class="token operator">-</span>o wide
+NAME READY STATUS RESTARTS AGE
+myblog-7c96c9f76b-qbbg7 1/1 Running 0 11m
+myblog-7c96c9f76b-s6brm 1/1 Running 0 55s
+mysql-85f4f65f99-w6jkj 1/1 Running 0 11m
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h6 id="pod驱逐策略" tabindex="-1"><a class="header-anchor" href="#pod驱逐策略" aria-hidden="true">#</a> Pod驱逐策略</h6>
+<p>K8S 有个特色功能叫 pod eviction，它在某些场景下如节点 NotReady，或者资源不足时，把 pod 驱逐至其它节点，这也是出于业务保护的角度去考虑的。</p>
+<ol>
+<li>Kube-controller-manager: 周期性检查所有节点状态，当节点处于 NotReady 状态超过一段时间后，驱逐该节点上所有 pod。停掉kubelet</li>
+</ol>
+<ul>
+<li><code v-pre>pod-eviction-timeout</code>：NotReady 状态节点超过该时间后，执行驱逐，默认 5 min</li>
+</ul>
+<ol start="2">
+<li>Kubelet: 周期性检查本节点资源，当资源不足时，按照优先级驱逐部分 pod</li>
+</ol>
+<ul>
+<li><code v-pre>memory.available</code>：节点可用内存</li>
+<li><code v-pre>nodefs.available</code>：节点根盘可用存储空间</li>
+<li><code v-pre>nodefs.inodesFree</code>：节点inodes可用数量</li>
+<li><code v-pre>imagefs.available</code>：镜像存储盘的可用空间</li>
+<li><code v-pre>imagefs.inodesFree</code>：镜像存储盘的inodes可用数量</li>
+</ul>
+<h6 id="服务更新" tabindex="-1"><a class="header-anchor" href="#服务更新" aria-hidden="true">#</a> 服务更新</h6>
+<p>修改dockerfile，重新打tag模拟服务更新。</p>
+<p>更新方式：</p>
+<ul>
+<li>修改yaml文件，使用<code v-pre>kubectl -n demo apply -f deploy-myblog.yaml</code>来应用更新</li>
+<li><code v-pre>kubectl -n demo edit deploy myblog</code>在线更新</li>
+<li><code v-pre>kubectl set image deploy myblog myblog=172.21.32.6:5000/myblog:v2 --record</code></li>
+</ul>
+<p>修改文件测试：</p>
+<div class="language-powershell ext-powershell line-numbers-mode"><pre v-pre class="language-powershell"><code>$ vi mybolg/blog/template/index<span class="token punctuation">.</span>html
+
+$ docker build <span class="token punctuation">.</span> <span class="token operator">-</span>t 172<span class="token punctuation">.</span>21<span class="token punctuation">.</span>32<span class="token punctuation">.</span>6:5000/myblog:v2 <span class="token operator">-</span>f Dockerfile_optimized
+$ docker push 172<span class="token punctuation">.</span>21<span class="token punctuation">.</span>32<span class="token punctuation">.</span>6:5000/myblog:v2
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h6 id="更新策略" tabindex="-1"><a class="header-anchor" href="#更新策略" aria-hidden="true">#</a> 更新策略</h6>
+<div class="language-yaml ext-yml line-numbers-mode"><pre v-pre class="language-yaml"><code><span class="token punctuation">...</span>
+<span class="token key atrule">spec</span><span class="token punctuation">:</span>
+<span class="token key atrule">replicas</span><span class="token punctuation">:</span> <span class="token number">2</span> <span class="token comment">#指定Pod副本数</span>
+<span class="token key atrule">selector</span><span class="token punctuation">:</span> <span class="token comment">#指定Pod的选择器</span>
+<span class="token key atrule">matchLabels</span><span class="token punctuation">:</span>
+<span class="token key atrule">app</span><span class="token punctuation">:</span> myblog
+<span class="token key atrule">strategy</span><span class="token punctuation">:</span>
+<span class="token key atrule">rollingUpdate</span><span class="token punctuation">:</span>
+<span class="token key atrule">maxSurge</span><span class="token punctuation">:</span> 25%
+<span class="token key atrule">maxUnavailable</span><span class="token punctuation">:</span> 25%
+<span class="token key atrule">type</span><span class="token punctuation">:</span> RollingUpdate <span class="token comment">#指定更新方式为滚动更新，默认策略，通过get deploy yaml查看</span>
+<span class="token punctuation">...</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>策略控制：</p>
+<ul>
+<li>maxSurge：最大激增数, 指更新过程中, 最多可以比replicas预先设定值多出的pod数量, 可以为固定值或百分比,默认为desired Pods数的25%。计算时向上取整(比如3.4，取4)，更新过程中最多会有replicas + maxSurge个pod</li>
+<li>maxUnavailable： 指更新过程中, 最多有几个pod处于无法服务状态 , 可以为固定值或百分比，默认为desired Pods数的25%。计算时向下取整(比如3.6，取3)</li>
+</ul>
+<p><em>在Deployment rollout时，需要保证Available(Ready) Pods数不低于 desired pods number - maxUnavailable; 保证所有的非异常状态Pods数不多于 desired pods number + maxSurge</em>。</p>
+<p>以myblog为例，使用默认的策略，更新过程:</p>
+<ol>
+<li>maxSurge 25%，2个实例，向上取整，则maxSurge为1，意味着最多可以有2+1=3个Pod，那么此时会新创建1个ReplicaSet，RS-new，把副本数置为1，此时呢，副本控制器就去创建这个新的Pod</li>
+<li>同时，maxUnavailable是25%，副本数2*25%，向下取整，则为0，意味着，滚动更新的过程中，不能有少于2个可用的Pod，因此，旧的Replica（RS-old）会先保持不动，等RS-new管理的Pod状态Ready后，此时已经有3个Ready状态的Pod了，那么由于只要保证有2个可用的Pod即可，因此，RS-old的副本数会有2个变成1个，此时，会删掉一个旧的Pod</li>
+<li>删掉旧的Pod的时候，由于总的Pod数量又变成2个了，因此，距离最大的3个还有1个Pod可以创建，所以，RS-new把管理的副本数由1改成2，此时又会创建1个新的Pod，等RS-new管理了2个Pod都ready后，那么就可以把RS-old的副本数由1置为0了，这样就完成了滚动更新</li>
+</ol>
+<div class="language-powershell ext-powershell line-numbers-mode"><pre v-pre class="language-powershell"><code><span class="token comment">#查看滚动更新事件</span>
+$ kubectl <span class="token operator">-</span>n demo describe deploy myblog
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+Events:
+<span class="token function">Type</span> Reason Age <span class="token keyword">From</span> Message
+<span class="token operator">--</span><span class="token operator">--</span> <span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span> <span class="token operator">--</span><span class="token operator">--</span> <span class="token operator">--</span><span class="token operator">--</span> <span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">-</span>
+Normal ScalingReplicaSet 11s deployment-controller Scaled up replica <span class="token function">set</span> myblog-6cf56fc848 to 1
+Normal ScalingReplicaSet 11s deployment-controller Scaled down replica <span class="token function">set</span> myblog-6fdcf98f9 to 1
+Normal ScalingReplicaSet 11s deployment-controller Scaled up replica <span class="token function">set</span> myblog-6cf56fc848 to 2
+Normal ScalingReplicaSet 6s deployment-controller Scaled down replica <span class="token function">set</span> myblog-6fdcf98f9 to 0
+$ kubectl get rs
+NAME DESIRED CURRENT READY AGE
+myblog-6cf56fc848 2 2 2 16h
+myblog-6fdcf98f9 0 0 0 16h
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h6 id="服务回滚" tabindex="-1"><a class="header-anchor" href="#服务回滚" aria-hidden="true">#</a> 服务回滚</h6>
+<p>通过滚动升级的策略可以平滑的升级Deployment，若升级出现问题，需要最快且最好的方式回退到上一次能够提供正常工作的版本。为此K8S提供了回滚机制。</p>
+<p><strong>revision</strong>：更新应用时，K8S都会记录当前的版本号，即为revision，当升级出现问题时，可通过回滚到某个特定的revision，默认配置下，K8S只会保留最近的几个revision，可以通过Deployment配置文件中的spec.revisionHistoryLimit属性增加revision数量，默认是10。</p>
+<p>查看当前：</p>
+<div class="language-powershell ext-powershell line-numbers-mode"><pre v-pre class="language-powershell"><code>$ kubectl <span class="token operator">-</span>n demo rollout history deploy myblog <span class="token comment">##CHANGE-CAUSE为空</span>
+$ kubectl delete <span class="token operator">-</span>f deploy-myblog<span class="token punctuation">.</span>yaml <span class="token comment">## 方便演示到具体效果，删掉已有deployment</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div></div></div><p>记录回滚：</p>
+<div class="language-powershell ext-powershell line-numbers-mode"><pre v-pre class="language-powershell"><code>$ kubectl create <span class="token operator">-</span>f deploy-myblog<span class="token punctuation">.</span>yaml <span class="token operator">--</span>record
+
+$ kubectl <span class="token operator">-</span>n demo <span class="token function">set</span> image deploy myblog myblog=172<span class="token punctuation">.</span>21<span class="token punctuation">.</span>32<span class="token punctuation">.</span>6:5000/myblog:v2 <span class="token operator">--</span>record=true
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>查看deployment更新历史：</p>
+<div class="language-powershell ext-powershell line-numbers-mode"><pre v-pre class="language-powershell"><code>$ kubectl <span class="token operator">-</span>n demo rollout history deploy myblog
+deployment<span class="token punctuation">.</span>extensions/myblog
+REVISION CHANGE-CAUSE
+1 kubectl create <span class="token operator">--</span>filename=deploy-myblog<span class="token punctuation">.</span>yaml <span class="token operator">--</span>record=true
+2 kubectl <span class="token function">set</span> image deploy myblog myblog=172<span class="token punctuation">.</span>21<span class="token punctuation">.</span>32<span class="token punctuation">.</span>6:5000/demo/myblog:v1 <span class="token operator">--</span>record=true
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>回滚到具体的REVISION:</p>
+<div class="language-powershell ext-powershell line-numbers-mode"><pre v-pre class="language-powershell"><code>$ kubectl <span class="token operator">-</span>n demo rollout undo deploy myblog <span class="token operator">--</span>to-revision=1
+deployment<span class="token punctuation">.</span>extensions/myblog rolled back
+
+<span class="token comment"># 访问应用测试</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h5 id="kubernetes调度-录屏" tabindex="-1"><a class="header-anchor" href="#kubernetes调度-录屏" aria-hidden="true">#</a> Kubernetes调度 录屏！！！</h5>
+<h6 id="为何要控制pod应该如何调度" tabindex="-1"><a class="header-anchor" href="#为何要控制pod应该如何调度" aria-hidden="true">#</a> 为何要控制Pod应该如何调度</h6>
+<ul>
+<li>集群中有些机器的配置高（SSD，更好的内存等），我们希望核心的服务（比如说数据库）运行在上面</li>
+<li>某两个服务的网络传输很频繁，我们希望它们最好在同一台机器上</li>
+<li>......</li>
+</ul>
+<h6 id="nodeselector" tabindex="-1"><a class="header-anchor" href="#nodeselector" aria-hidden="true">#</a> NodeSelector</h6>
+<p><code v-pre>label</code>是<code v-pre>kubernetes</code>中一个非常重要的概念，用户可以非常灵活的利用 label 来管理集群中的资源，POD 的调度可以根据节点的 label 进行特定的部署。</p>
+<p>查看节点的label：</p>
+<div class="language-powershell ext-powershell line-numbers-mode"><pre v-pre class="language-powershell"><code>$ kubectl get nodes <span class="token operator">--</span><span class="token function">show-labels</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p>为节点打label：</p>
+<div class="language-powershell ext-powershell line-numbers-mode"><pre v-pre class="language-powershell"><code>$ kubectl label node k8s-master disktype=ssd
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p>当 node 被打上了相关标签后，在调度的时候就可以使用这些标签了，只需要在spec 字段中添加<code v-pre>nodeSelector</code>字段，里面是我们需要被调度的节点的 label。</p>
+<div class="language-yaml ext-yml line-numbers-mode"><pre v-pre class="language-yaml"><code><span class="token punctuation">...</span>
+<span class="token key atrule">spec</span><span class="token punctuation">:</span>
+<span class="token key atrule">hostNetwork</span><span class="token punctuation">:</span> <span class="token boolean important">true</span> <span class="token comment"># 声明pod的网络模式为host模式，效果通docker run --net=host</span>
+<span class="token key atrule">volumes</span><span class="token punctuation">:</span>
+<span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> mysql<span class="token punctuation">-</span>data
+<span class="token key atrule">hostPath</span><span class="token punctuation">:</span>
+<span class="token key atrule">path</span><span class="token punctuation">:</span> /opt/mysql/data
+<span class="token key atrule">nodeSelector</span><span class="token punctuation">:</span> <span class="token comment"># 使用节点选择器将Pod调度到指定label的节点</span>
+<span class="token key atrule">component</span><span class="token punctuation">:</span> mysql
+<span class="token key atrule">containers</span><span class="token punctuation">:</span>
+<span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> mysql
+<span class="token key atrule">image</span><span class="token punctuation">:</span> 172.21.32.6<span class="token punctuation">:</span>5000/demo/mysql<span class="token punctuation">:</span><span class="token number">5.7</span>
+<span class="token punctuation">...</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h6 id="nodeaffinity" tabindex="-1"><a class="header-anchor" href="#nodeaffinity" aria-hidden="true">#</a> nodeAffinity</h6>
+<p>节点亲和性 ， 比上面的<code v-pre>nodeSelector</code>更加灵活，它可以进行一些简单的逻辑组合，不只是简单的相等匹配 。分为两种，软策略和硬策略。</p>
+<p>preferredDuringSchedulingIgnoredDuringExecution：软策略，如果你没有满足调度要求的节点的话，Pod就会忽略这条规则，继续完成调度过程，说白了就是满足条件最好了，没有满足就忽略掉的策略。</p>
+<p>requiredDuringSchedulingIgnoredDuringExecution ： 硬策略，如果没有满足条件的节点的话，就不断重试直到满足条件为止，简单说就是你必须满足我的要求，不然我就不会调度Pod。</p>
+<div class="language-yaml ext-yml line-numbers-mode"><pre v-pre class="language-yaml"><code><span class="token comment">#要求 Pod 不能运行在128和132两个节点上，如果有个节点满足disktype=ssd的话就优先调度到这个节点上</span>
+<span class="token punctuation">...</span>
+<span class="token key atrule">spec</span><span class="token punctuation">:</span>
+<span class="token key atrule">containers</span><span class="token punctuation">:</span>
+<span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> demo
+<span class="token key atrule">image</span><span class="token punctuation">:</span> 172.21.32.6<span class="token punctuation">:</span>5000/demo/myblog
+<span class="token key atrule">ports</span><span class="token punctuation">:</span>
+<span class="token punctuation">-</span> <span class="token key atrule">containerPort</span><span class="token punctuation">:</span> <span class="token number">8002</span>
+<span class="token key atrule">affinity</span><span class="token punctuation">:</span>
+<span class="token key atrule">nodeAffinity</span><span class="token punctuation">:</span>
+<span class="token key atrule">requiredDuringSchedulingIgnoredDuringExecution</span><span class="token punctuation">:</span>
+<span class="token key atrule">nodeSelectorTerms</span><span class="token punctuation">:</span>
+<span class="token punctuation">-</span> <span class="token key atrule">matchExpressions</span><span class="token punctuation">:</span>
+<span class="token punctuation">-</span> <span class="token key atrule">key</span><span class="token punctuation">:</span> kubernetes.io/hostname
+<span class="token key atrule">operator</span><span class="token punctuation">:</span> NotIn
+<span class="token key atrule">values</span><span class="token punctuation">:</span>
+<span class="token punctuation">-</span> 192.168.136.128
+<span class="token punctuation">-</span> 192.168.136.132
+<span class="token key atrule">preferredDuringSchedulingIgnoredDuringExecution</span><span class="token punctuation">:</span>
+<span class="token punctuation">-</span> <span class="token key atrule">weight</span><span class="token punctuation">:</span> <span class="token number">1</span>
+<span class="token key atrule">preference</span><span class="token punctuation">:</span>
+<span class="token key atrule">matchExpressions</span><span class="token punctuation">:</span>
+<span class="token punctuation">-</span> <span class="token key atrule">key</span><span class="token punctuation">:</span> disktype
+<span class="token key atrule">operator</span><span class="token punctuation">:</span> In
+<span class="token key atrule">values</span><span class="token punctuation">:</span>
+<span class="token punctuation">-</span> ssd
+<span class="token punctuation">-</span> sas
+<span class="token punctuation">...</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>这里的匹配逻辑是 label 的值在某个列表中，现在<code v-pre>Kubernetes</code>提供的操作符有下面的几种：</p>
+<ul>
+<li>In：label 的值在某个列表中</li>
+<li>NotIn：label 的值不在某个列表中</li>
+<li>Gt：label 的值大于某个值</li>
+<li>Lt：label 的值小于某个值</li>
+<li>Exists：某个 label 存在</li>
+<li>DoesNotExist：某个 label 不存在</li>
+</ul>
+<p><em>如果nodeSelectorTerms下面有多个选项的话，满足任何一个条件就可以了；如果matchExpressions有多个选项的话，则必须同时满足这些条件才能正常调度 Pod</em></p>
+<h6 id="污点-taints-与容忍-tolerations" tabindex="-1"><a class="header-anchor" href="#污点-taints-与容忍-tolerations" aria-hidden="true">#</a> 污点（Taints）与容忍（tolerations）</h6>
+<p>对于<code v-pre>nodeAffinity</code>无论是硬策略还是软策略方式，都是调度 Pod 到预期节点上，而<code v-pre>Taints</code>恰好与之相反，如果一个节点标记为 Taints ，除非 Pod 也被标识为可以容忍污点节点，否则该 Taints 节点不会被调度Pod。</p>
+<p>Taints(污点)是Node的一个属性，设置了Taints(污点)后，因为有了污点，所以Kubernetes是不会将Pod调度到这个Node上的。于是Kubernetes就给Pod设置了个属性Tolerations(容忍)，只要Pod能够容忍Node上的污点，那么Kubernetes就会忽略Node上的污点，就能够(不是必须)把Pod调度过去。</p>
+<p>比如用户希望把 Master 节点保留给 Kubernetes 系统组件使用，或者把一组具有特殊资源预留给某些 Pod，则污点就很有用了，Pod 不会再被调度到 taint 标记过的节点。taint 标记节点举例如下：</p>
+<p>设置污点：</p>
+<div class="language-powershell ext-powershell line-numbers-mode"><pre v-pre class="language-powershell"><code>$ kubectl taint node <span class="token namespace">[node_name]</span> key=value:<span class="token namespace">[effect]</span>
+其中<span class="token namespace">[effect]</span> 可取值： <span class="token punctuation">[</span> NoSchedule <span class="token punctuation">|</span> PreferNoSchedule <span class="token punctuation">|</span> NoExecute <span class="token punctuation">]</span>
+NoSchedule：一定不能被调度。
+PreferNoSchedule：尽量不要调度。
+NoExecute：不仅不会调度，还会驱逐Node上已有的Pod。
+示例：kubectl taint node k8s-master smoke=true:NoSchedule
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>去除污点：</p>
+<div class="language-powershell ext-powershell line-numbers-mode"><pre v-pre class="language-powershell"><code>去除指定key及其effect：
+kubectl taint nodes <span class="token namespace">[node_name]</span> key:<span class="token namespace">[effect]</span><span class="token operator">-</span> <span class="token comment">#这里的key不用指定value</span>
+
+去除指定key所有的effect:
+kubectl taint nodes node_name key-
+
+示例：
+kubectl taint node k8s-master smoke=true:NoSchedule
+kubectl taint node k8s-master smoke:NoExecute-
+kubectl taint node k8s-master smoke-
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>污点演示：</p>
+<div class="language-powershell ext-powershell line-numbers-mode"><pre v-pre class="language-powershell"><code><span class="token comment">## 给k8s-slave1打上污点，smoke=true:NoSchedule</span>
+$ kubectl taint node k8s-slave1 smoke=true:NoSchedule
+$ kubectl taint node k8s-slave2 drunk=true:NoSchedule
+
+
+<span class="token comment">## 扩容myblog的Pod，观察新Pod的调度情况</span>
+$ kuebctl <span class="token operator">-</span>n demo scale deploy myblog <span class="token operator">--</span>replicas=3
+$ kubectl <span class="token operator">-</span>n demo get po <span class="token operator">-</span>w <span class="token comment">## pending</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>Pod容忍污点示例：<code v-pre>myblog/deployment/deploy-myblog-taint.yaml</code></p>
+<div class="language-powershell ext-powershell line-numbers-mode"><pre v-pre class="language-powershell"><code><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+spec:
+containers:
+<span class="token operator">-</span> name: demo
+image: 172<span class="token punctuation">.</span>21<span class="token punctuation">.</span>32<span class="token punctuation">.</span>6:5000/demo/myblog
+tolerations: <span class="token comment">#设置容忍性</span>
+<span class="token operator">-</span> key: <span class="token string">"smoke"</span>
+operator: <span class="token string">"Equal"</span> <span class="token comment">#如果操作符为Exists，那么value属性可省略,不指定operator，默认为Equal</span>
+value: <span class="token string">"true"</span>
+effect: <span class="token string">"NoSchedule"</span>
+<span class="token operator">-</span> key: <span class="token string">"drunk"</span>
+operator: <span class="token string">"Equal"</span> <span class="token comment">#如果操作符为Exists，那么value属性可省略,不指定operator，默认为Equal</span>
+value: <span class="token string">"true"</span>
+effect: <span class="token string">"NoSchedule"</span>
+<span class="token comment">#意思是这个Pod要容忍的有污点的Node的key是smoke Equal true,效果是NoSchedule，</span>
+<span class="token comment">#tolerations属性下各值必须使用引号，容忍的值都是设置Node的taints时给的值。</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-powershell ext-powershell line-numbers-mode"><pre v-pre class="language-powershell"><code>$ kubectl apply <span class="token operator">-</span>f deploy-myblog-taint<span class="token punctuation">.</span>yaml
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><div class="language-powershell ext-powershell line-numbers-mode"><pre v-pre class="language-powershell"><code>spec:
+containers:
+<span class="token operator">-</span> name: demo
+image: 172<span class="token punctuation">.</span>21<span class="token punctuation">.</span>32<span class="token punctuation">.</span>6:5000/demo/myblog
+tolerations:
+<span class="token operator">-</span> operator: <span class="token string">"Exists"</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h5 id="kubernetes服务访问之service-录屏" tabindex="-1"><a class="header-anchor" href="#kubernetes服务访问之service-录屏" aria-hidden="true">#</a> Kubernetes服务访问之Service 录屏！！！</h5>
+<p>通过以前的学习，我们已经能够通过Deployment来创建一组Pod来提供具有高可用性的服务。虽然每个Pod都会分配一个单独的Pod IP，然而却存在如下两个问题：</p>
+<ul>
+<li>Pod IP仅仅是集群内可见的虚拟IP，外部无法访问。</li>
+<li>Pod IP会随着Pod的销毁而消失，当ReplicaSet对Pod进行动态伸缩时，Pod IP可能随时随地都会变化，这样对于我们访问这个服务带来了难度。</li>
+</ul>
+<h6 id="service-负载均衡之cluster-ip" tabindex="-1"><a class="header-anchor" href="#service-负载均衡之cluster-ip" aria-hidden="true">#</a> Service 负载均衡之Cluster IP</h6>
+<p>service是一组pod的服务抽象，相当于一组pod的LB，负责将请求分发给对应的pod。service会为这个LB提供一个IP，一般称为cluster IP 。使用Service对象，通过selector进行标签选择，找到对应的Pod:</p>
+<p><code v-pre>myblog/deployment/svc-myblog.yaml</code></p>
+<div class="language-yaml ext-yml line-numbers-mode"><pre v-pre class="language-yaml"><code><span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> v1
+<span class="token key atrule">kind</span><span class="token punctuation">:</span> Service
+<span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+<span class="token key atrule">name</span><span class="token punctuation">:</span> myblog
+<span class="token key atrule">namespace</span><span class="token punctuation">:</span> demo
+<span class="token key atrule">spec</span><span class="token punctuation">:</span>
+<span class="token key atrule">ports</span><span class="token punctuation">:</span>
+<span class="token punctuation">-</span> <span class="token key atrule">port</span><span class="token punctuation">:</span> <span class="token number">80</span>
+<span class="token key atrule">protocol</span><span class="token punctuation">:</span> TCP
+<span class="token key atrule">targetPort</span><span class="token punctuation">:</span> <span class="token number">8002</span>
+<span class="token key atrule">selector</span><span class="token punctuation">:</span>
+<span class="token key atrule">app</span><span class="token punctuation">:</span> myblog
+<span class="token key atrule">type</span><span class="token punctuation">:</span> ClusterIP
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>操作演示：</p>
+<div class="language-powershell ext-powershell line-numbers-mode"><pre v-pre class="language-powershell"><code><span class="token comment">## 别名</span>
+$ alias kd=<span class="token string">'kubectl -n demo'</span>
+
+<span class="token comment">## 创建服务</span>
+$ kd create <span class="token operator">-</span>f svc-myblog<span class="token punctuation">.</span>yaml
+$ kd get po <span class="token operator">--</span><span class="token function">show-labels</span>
+NAME READY STATUS RESTARTS AGE LABELS
+myblog-5c97d79cdb-jn7km 1/1 Running 0 6m5s app=myblog
+mysql-85f4f65f99-w6jkj 1/1 Running 0 176m app=mysql
+
+$ kd get svc
+NAME <span class="token function">TYPE</span> CLUSTER-IP EXTERNAL-IP PORT<span class="token punctuation">(</span>S<span class="token punctuation">)</span> AGE
+myblog ClusterIP 10<span class="token punctuation">.</span>99<span class="token punctuation">.</span>174<span class="token punctuation">.</span>93 &lt;none> 80/TCP 7m50s
+
+$ kd describe svc myblog
+Name: myblog
+Namespace: demo
+Labels: &lt;none>
+Annotations: &lt;none>
+Selector: app=myblog
+<span class="token function">Type</span>: ClusterIP
+IP: 10<span class="token punctuation">.</span>99<span class="token punctuation">.</span>174<span class="token punctuation">.</span>93
+Port: &lt;unset> 80/TCP
+TargetPort: 8002/TCP
+Endpoints: 10<span class="token punctuation">.</span>244<span class="token punctuation">.</span>0<span class="token punctuation">.</span>68:8002
+Session Affinity: None
+Events: &lt;none>
+
+<span class="token comment">## 扩容myblog服务</span>
+$ kd scale deploy myblog <span class="token operator">--</span>replicas=2
+deployment<span class="token punctuation">.</span>extensions/myblog scaled
+
+<span class="token comment">## 再次查看</span>
+$ kd describe svc myblog
+Name: myblog
+Namespace: demo
+Labels: &lt;none>
+Annotations: &lt;none>
+Selector: app=myblog
+<span class="token function">Type</span>: ClusterIP
+IP: 10<span class="token punctuation">.</span>99<span class="token punctuation">.</span>174<span class="token punctuation">.</span>93
+Port: &lt;unset> 80/TCP
+TargetPort: 8002/TCP
+Endpoints: 10<span class="token punctuation">.</span>244<span class="token punctuation">.</span>0<span class="token punctuation">.</span>68:8002<span class="token punctuation">,</span>10<span class="token punctuation">.</span>244<span class="token punctuation">.</span>1<span class="token punctuation">.</span>158:8002
+Session Affinity: None
+Events: &lt;none>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>Service与Pod如何关联:</p>
+<p>service对象创建的同时，会创建同名的endpoints对象，若服务设置了readinessProbe, 当readinessProbe检测失败时，endpoints列表中会剔除掉对应的pod_ip，这样流量就不会分发到健康检测失败的Pod中</p>
+<div class="language-powershell ext-powershell line-numbers-mode"><pre v-pre class="language-powershell"><code>$ kd get endpoints myblog
+NAME ENDPOINTS AGE
+myblog 10<span class="token punctuation">.</span>244<span class="token punctuation">.</span>0<span class="token punctuation">.</span>68:8002<span class="token punctuation">,</span>10<span class="token punctuation">.</span>244<span class="token punctuation">.</span>1<span class="token punctuation">.</span>158:8002 7m
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>Service Cluster-IP如何访问:</p>
+<div class="language-powershell ext-powershell line-numbers-mode"><pre v-pre class="language-powershell"><code>$ kd get svc myblog
+NAME <span class="token function">TYPE</span> CLUSTER-IP EXTERNAL-IP PORT<span class="token punctuation">(</span>S<span class="token punctuation">)</span> AGE
+myblog ClusterIP 10<span class="token punctuation">.</span>99<span class="token punctuation">.</span>174<span class="token punctuation">.</span>93 &lt;none> 80/TCP 13m
+$ curl 10<span class="token punctuation">.</span>99<span class="token punctuation">.</span>174<span class="token punctuation">.</span>93/blog/index/
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>为mysql服务创建service：</p>
+<div class="language-yaml ext-yml line-numbers-mode"><pre v-pre class="language-yaml"><code><span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> v1
+<span class="token key atrule">kind</span><span class="token punctuation">:</span> Service
+<span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+<span class="token key atrule">name</span><span class="token punctuation">:</span> mysql
+<span class="token key atrule">namespace</span><span class="token punctuation">:</span> demo
+<span class="token key atrule">spec</span><span class="token punctuation">:</span>
+<span class="token key atrule">ports</span><span class="token punctuation">:</span>
+<span class="token punctuation">-</span> <span class="token key atrule">port</span><span class="token punctuation">:</span> <span class="token number">3306</span>
+<span class="token key atrule">protocol</span><span class="token punctuation">:</span> TCP
+<span class="token key atrule">targetPort</span><span class="token punctuation">:</span> <span class="token number">3306</span>
+<span class="token key atrule">selector</span><span class="token punctuation">:</span>
+<span class="token key atrule">app</span><span class="token punctuation">:</span> mysql
+<span class="token key atrule">type</span><span class="token punctuation">:</span> ClusterIP
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>访问mysql：</p>
+<div class="language-powershell ext-powershell line-numbers-mode"><pre v-pre class="language-powershell"><code>$ kd get svc mysql
+mysql ClusterIP 10<span class="token punctuation">.</span>108<span class="token punctuation">.</span>214<span class="token punctuation">.</span>84 &lt;none> 3306/TCP 3s
+$ curl 10<span class="token punctuation">.</span>108<span class="token punctuation">.</span>214<span class="token punctuation">.</span>84:3306
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>目前使用hostNetwork部署，通过宿主机ip+port访问，弊端：</p>
+<ul>
+<li>服务使用hostNetwork，使得宿主机的端口大量暴漏，存在安全隐患</li>
+<li>容易引发端口冲突</li>
+</ul>
+<p>服务均属于k8s集群，尽可能使用k8s的网络访问，因此可以对目前myblog访问mysql的方式做改造：</p>
+<ul>
+<li>为mysql创建一个固定clusterIp的Service，把clusterIp配置在myblog的环境变量中</li>
+<li>利用集群服务发现的能力，组件之间通过service name来访问</li>
+</ul>
+<h6 id="服务发现" tabindex="-1"><a class="header-anchor" href="#服务发现" aria-hidden="true">#</a> 服务发现</h6>
+<p>在k8s集群中，组件之间可以通过定义的Service名称实现通信。</p>
+<p>演示服务发现：</p>
+<div class="language-powershell ext-powershell line-numbers-mode"><pre v-pre class="language-powershell"><code><span class="token comment">## 演示思路：在myblog的容器中直接通过service名称访问服务，观察是否可以访问通</span>
+
+<span class="token comment"># 先查看服务</span>
+$ kd get svc
+NAME <span class="token function">TYPE</span> CLUSTER-IP EXTERNAL-IP PORT<span class="token punctuation">(</span>S<span class="token punctuation">)</span> AGE
+myblog ClusterIP 10<span class="token punctuation">.</span>99<span class="token punctuation">.</span>174<span class="token punctuation">.</span>93 &lt;none> 80/TCP 59m
+mysql ClusterIP 10<span class="token punctuation">.</span>108<span class="token punctuation">.</span>214<span class="token punctuation">.</span>84 &lt;none> 3306/TCP 35m
+
+<span class="token comment"># 进入myblog容器</span>
+$ kd exec <span class="token operator">-</span>ti myblog-5c97d79cdb-j485f bash
+<span class="token namespace">[root@myblog-5c97d79cdb-j485f myblog]</span><span class="token comment"># curl mysql:3306</span>
+5<span class="token punctuation">.</span>7<span class="token punctuation">.</span>29 <span class="token punctuation">)</span>→ <span class="token punctuation">(</span>mysql_native_password ot packets out of order
+<span class="token namespace">[root@myblog-5c97d79cdb-j485f myblog]</span><span class="token comment"># curl myblog/blog/index/</span>
+我的博客列表
+
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>虽然podip和clusterip都不固定，但是service name是固定的，而且具有完全的跨集群可移植性，因此组件之间调用的同时，完全可以通过service name去通信，这样避免了大量的ip维护成本，使得服务的yaml模板更加简单。因此可以对mysql和myblog的部署进行优化改造：</p>
+<ol>
+<li>mysql可以去掉hostNetwork部署，使得服务只暴漏在k8s集群内部网络</li>
+<li>configMap中数据库地址可以换成Service名称，这样跨环境的时候，配置内容基本上可以保持不用变化</li>
+</ol>
+<p>修改deploy-mysql.yaml</p>
+<div class="language-yaml ext-yml line-numbers-mode"><pre v-pre class="language-yaml"><code><span class="token key atrule">spec</span><span class="token punctuation">:</span>
+<span class="token key atrule">hostNetwork</span><span class="token punctuation">:</span> <span class="token boolean important">true</span> <span class="token comment"># 去掉此行</span>
+<span class="token key atrule">volumes</span><span class="token punctuation">:</span>
+<span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> mysql<span class="token punctuation">-</span>data
+<span class="token key atrule">hostPath</span><span class="token punctuation">:</span>
+<span class="token key atrule">path</span><span class="token punctuation">:</span> /opt/mysql/data
+
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>修改configmap.yaml</p>
+<div class="language-yaml ext-yml line-numbers-mode"><pre v-pre class="language-yaml"><code><span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> v1
+<span class="token key atrule">kind</span><span class="token punctuation">:</span> ConfigMap
+<span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+<span class="token key atrule">name</span><span class="token punctuation">:</span> myblog
+<span class="token key atrule">namespace</span><span class="token punctuation">:</span> demo
+<span class="token key atrule">data</span><span class="token punctuation">:</span>
+<span class="token key atrule">MYSQL_HOST</span><span class="token punctuation">:</span> <span class="token string">"mysql"</span> <span class="token comment"># 此处替换为mysql</span>
+<span class="token key atrule">MYSQL_PORT</span><span class="token punctuation">:</span> <span class="token string">"3306"</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>应用修改：</p>
+<div class="language-powershell ext-powershell line-numbers-mode"><pre v-pre class="language-powershell"><code>$ kubectl apply <span class="token operator">-</span>f configmap<span class="token punctuation">.</span>yaml
+$ kubectl apply <span class="token operator">-</span>f deploy-mysql<span class="token punctuation">.</span>yaml
+
+<span class="token comment">## 重建pod</span>
+$ kubectl <span class="token operator">-</span>n demo delete po mysql-7f747644b8-6npzn
+
+<span class="token comment">#去掉taint</span>
+$ kubectl taint node k8s-slave1 smoke-
+$ kubectl taint node k8s-slave2 drunk-
+
+<span class="token comment">## myblog不用动，会自动因健康检测不过而重启</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>服务发现实现：</p>
+<p><code v-pre>CoreDNS</code>是一个<code v-pre>Go</code>语言实现的链式插件<code v-pre>DNS服务端</code>，是CNCF成员，是一个高性能、易扩展的<code v-pre>DNS服务端</code>。</p>
+<div class="language-powershell ext-powershell line-numbers-mode"><pre v-pre class="language-powershell"><code>$ kubectl <span class="token operator">-</span>n kube-system get po <span class="token operator">-</span>o wide<span class="token punctuation">|</span>grep dns
+coredns-d4475785-2w4hk 1/1 Running 0 4d22h 10<span class="token punctuation">.</span>244<span class="token punctuation">.</span>0<span class="token punctuation">.</span>64
+coredns-d4475785-s49hq 1/1 Running 0 4d22h 10<span class="token punctuation">.</span>244<span class="token punctuation">.</span>0<span class="token punctuation">.</span>65
+
+<span class="token comment"># 查看myblog的pod解析配置</span>
+$ kubectl <span class="token operator">-</span>n demo exec <span class="token operator">-</span>ti myblog-5c97d79cdb-j485f bash
+<span class="token namespace">[root@myblog-5c97d79cdb-j485f myblog]</span><span class="token comment"># cat /etc/resolv.conf</span>
+nameserver 10<span class="token punctuation">.</span>96<span class="token punctuation">.</span>0<span class="token punctuation">.</span>10
+search demo<span class="token punctuation">.</span>svc<span class="token punctuation">.</span>cluster<span class="token punctuation">.</span>local svc<span class="token punctuation">.</span>cluster<span class="token punctuation">.</span>local cluster<span class="token punctuation">.</span>local
+options ndots:5
+
+<span class="token comment">## 10.96.0.10 从哪来</span>
+$ kubectl <span class="token operator">-</span>n kube-system get svc
+NAME <span class="token function">TYPE</span> CLUSTER-IP EXTERNAL-IP PORT<span class="token punctuation">(</span>S<span class="token punctuation">)</span> AGE
+kube-dns ClusterIP 10<span class="token punctuation">.</span>96<span class="token punctuation">.</span>0<span class="token punctuation">.</span>10 &lt;none> 53/UDP<span class="token punctuation">,</span>53/TCP 51d
+
+<span class="token comment">## 启动pod的时候，会把kube-dns服务的cluster-ip地址注入到pod的resolve解析配置中，同时添加对应的namespace的search域。 因此跨namespace通过service name访问的话，需要添加对应的namespace名称，</span>
+service_name<span class="token punctuation">.</span>namespace_name
+$ kubectl get svc
+NAME <span class="token function">TYPE</span> CLUSTER-IP EXTERNAL-IP PORT<span class="token punctuation">(</span>S<span class="token punctuation">)</span> AGE
+kubernetes ClusterIP 10<span class="token punctuation">.</span>96<span class="token punctuation">.</span>0<span class="token punctuation">.</span>1 &lt;none> 443/TCP 26h
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h6 id="service负载均衡之nodeport" tabindex="-1"><a class="header-anchor" href="#service负载均衡之nodeport" aria-hidden="true">#</a> Service负载均衡之NodePort</h6>
+<p>cluster-ip为虚拟地址，只能在k8s集群内部进行访问，集群外部如果访问内部服务，实现方式之一为使用NodePort方式。NodePort会默认在 30000-32767 ，不指定的会随机使用其中一个。</p>
+<p><code v-pre>myblog/deployment/svc-myblog-nodeport.yaml</code></p>
+<div class="language-powershell ext-powershell line-numbers-mode"><pre v-pre class="language-powershell"><code>apiVersion: v1
+kind: Service
+metadata:
+name: myblog-np
+namespace: demo
+spec:
+ports:
+<span class="token operator">-</span> port: 80
+protocol: TCP
+targetPort: 8002
+selector:
+app: myblog
+<span class="token function">type</span>: NodePort
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>查看并访问服务：</p>
+<div class="language-powershell ext-powershell line-numbers-mode"><pre v-pre class="language-powershell"><code>$ kd create <span class="token operator">-</span>f svc-myblog-nodeport<span class="token punctuation">.</span>yaml
+service/myblog-np created
+$ kd get svc
+NAME <span class="token function">TYPE</span> CLUSTER-IP EXTERNAL-IP PORT<span class="token punctuation">(</span>S<span class="token punctuation">)</span> AGE
+myblog ClusterIP 10<span class="token punctuation">.</span>99<span class="token punctuation">.</span>174<span class="token punctuation">.</span>93 &lt;none> 80/TCP 102m
+myblog-np NodePort 10<span class="token punctuation">.</span>105<span class="token punctuation">.</span>228<span class="token punctuation">.</span>101 &lt;none> 80:30647/TCP 4s
+mysql ClusterIP 10<span class="token punctuation">.</span>108<span class="token punctuation">.</span>214<span class="token punctuation">.</span>84 &lt;none> 3306/TCP 77m
+
+<span class="token comment">#集群内每个节点的NodePort端口都会进行监听</span>
+$ curl 192<span class="token punctuation">.</span>168<span class="token punctuation">.</span>136<span class="token punctuation">.</span>128:30647/blog/index/
+我的博客列表
+$ curl 192<span class="token punctuation">.</span>168<span class="token punctuation">.</span>136<span class="token punctuation">.</span>131:30647/blog/index/
+我的博客列表
+<span class="token comment">## 浏览器访问</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>思考：</p>
+<ol>
+<li>
+<p>NodePort的端口监听如何转发到对应的Pod服务？</p>
+</li>
+<li>
+<p>CLUSTER-IP为虚拟IP，集群内如何通过虚拟IP访问到具体的Pod服务？</p>
+</li>
+</ol>
+<h6 id="kube-proxy" tabindex="-1"><a class="header-anchor" href="#kube-proxy" aria-hidden="true">#</a> kube-proxy</h6>
+<p>运行在每个节点上，监听 API Server 中服务对象的变化，再通过创建流量路由规则来实现网络的转发。<a href="https://kubernetes.io/docs/concepts/services-networking/service/#virtual-ips-and-service-proxies" target="_blank" rel="noopener noreferrer">参照<ExternalLinkIcon/></a></p>
+<p>有三种模式：</p>
+<ul>
+<li>User space, 让 Kube-Proxy 在用户空间监听一个端口，所有的 Service 都转发到这个端口，然后 Kube-Proxy 在内部应用层对其进行转发 ， 所有报文都走一遍用户态，性能不高，k8s v1.2版本后废弃。</li>
+<li>Iptables， 当前默认模式，完全由 IPtables 来实现， 通过各个node节点上的iptables规则来实现service的负载均衡，但是随着service数量的增大，iptables模式由于线性查找匹配、全量更新等特点，其性能会显著下降。</li>
+<li>IPVS， 与iptables同样基于Netfilter，但是采用的hash表，因此当service数量达到一定规模时，hash查表的速度优势就会显现出来，从而提高service的服务性能。 k8s 1.8版本开始引入，1.11版本开始稳定，需要开启宿主机的ipvs模块。</li>
+</ul>
+<p>IPtables模式示意图：</p>
+<div class="language-powershell ext-powershell line-numbers-mode"><pre v-pre class="language-powershell"><code>$ iptables-save <span class="token punctuation">|</span>grep <span class="token operator">-</span>v myblog-np<span class="token punctuation">|</span>grep <span class="token string">"demo/myblog"</span>
+<span class="token operator">-</span>A KUBE-SERVICES <span class="token operator">!</span> <span class="token operator">-</span>s 10<span class="token punctuation">.</span>244<span class="token punctuation">.</span>0<span class="token punctuation">.</span>0/16 <span class="token operator">-</span>d 10<span class="token punctuation">.</span>99<span class="token punctuation">.</span>174<span class="token punctuation">.</span>93/32 <span class="token operator">-</span>p tcp <span class="token operator">-</span>m comment <span class="token operator">--</span>comment <span class="token string">"demo/myblog: cluster IP"</span> <span class="token operator">-</span>m tcp <span class="token operator">--</span>dport 80 <span class="token operator">-</span>j KUBE-MARK-MASQ
+<span class="token operator">-</span>A KUBE-SERVICES <span class="token operator">-</span>d 10<span class="token punctuation">.</span>99<span class="token punctuation">.</span>174<span class="token punctuation">.</span>93/32 <span class="token operator">-</span>p tcp <span class="token operator">-</span>m comment <span class="token operator">--</span>comment <span class="token string">"demo/myblog: cluster IP"</span> <span class="token operator">-</span>m tcp <span class="token operator">--</span>dport 80 <span class="token operator">-</span>j KUBE-SVC-WQNGJ7YFZKCTKPZK
+
+$ iptables-save <span class="token punctuation">|</span>grep KUBE-SVC-WQNGJ7YFZKCTKPZK
+<span class="token operator">-</span>A KUBE-SVC-WQNGJ7YFZKCTKPZK <span class="token operator">-</span>m statistic <span class="token operator">--</span>mode random <span class="token operator">--</span>probability 0<span class="token punctuation">.</span>50000000000 <span class="token operator">-</span>j KUBE-SEP-GB5GNOM5CZH7ICXZ
+<span class="token operator">-</span>A KUBE-SVC-WQNGJ7YFZKCTKPZK <span class="token operator">-</span>j KUBE-SEP-7GWC3FN2JI5KLE47
+
+$ iptables-save <span class="token punctuation">|</span>grep KUBE-SEP-GB5GNOM5CZH7ICXZ
+<span class="token operator">-</span>A KUBE-SEP-GB5GNOM5CZH7ICXZ <span class="token operator">-</span>p tcp <span class="token operator">-</span>m tcp <span class="token operator">-</span>j DNAT <span class="token operator">--</span>to-destination 10<span class="token punctuation">.</span>244<span class="token punctuation">.</span>1<span class="token punctuation">.</span>158:8002
+
+$ iptables-save <span class="token punctuation">|</span>grep KUBE-SEP-7GWC3FN2JI5KLE47
+<span class="token operator">-</span>A KUBE-SEP-7GWC3FN2JI5KLE47 <span class="token operator">-</span>p tcp <span class="token operator">-</span>m tcp <span class="token operator">-</span>j DNAT <span class="token operator">--</span>to-destination 10<span class="token punctuation">.</span>244<span class="token punctuation">.</span>1<span class="token punctuation">.</span>159:8002
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h5 id="kubernetes服务访问之ingress" tabindex="-1"><a class="header-anchor" href="#kubernetes服务访问之ingress" aria-hidden="true">#</a> Kubernetes服务访问之Ingress</h5>
+<p>对于Kubernetes的Service，无论是Cluster-Ip和NodePort均是四层的负载，集群内的服务如何实现七层的负载均衡，这就需要借助于Ingress，Ingress控制器的实现方式有很多，比如nginx, Contour, Haproxy, trafik, Istio，我们以nginx的实现为例做演示。</p>
+<p>Ingress-nginx是7层的负载均衡器 ，负责统一管理外部对k8s cluster中service的请求。主要包含：</p>
+<ul>
+<li>ingress-nginx-controller：根据用户编写的ingress规则（创建的ingress的yaml文件），动态的去更改nginx服务的配置文件，并且reload重载使其生效（是自动化的，通过lua脚本来实现）；</li>
+<li>ingress资源对象：将Nginx的配置抽象成一个Ingress对象，每添加一个新的Service资源对象只需写一个新的Ingress规则的yaml文件即可（或修改已存在的ingress规则的yaml文件）</li>
+</ul>
+<h6 id="示意图" tabindex="-1"><a class="header-anchor" href="#示意图" aria-hidden="true">#</a> 示意图：</h6>
+<h6 id="实现逻辑" tabindex="-1"><a class="header-anchor" href="#实现逻辑" aria-hidden="true">#</a> 实现逻辑</h6>
+<p>1）ingress controller通过和kubernetes api交互，动态的去感知集群中ingress规则变化
+2）然后读取ingress规则(规则就是写明了哪个域名对应哪个service)，按照自定义的规则，生成一段nginx配置
+3）再写到nginx-ingress-controller的pod里，这个Ingress controller的pod里运行着一个Nginx服务，控制器把生成的nginx配置写入/etc/nginx.conf文件中
+4）然后reload一下使配置生效。以此达到域名分别配置和动态更新的问题。</p>
+<h6 id="安装" tabindex="-1"><a class="header-anchor" href="#安装" aria-hidden="true">#</a> 安装</h6>
+<p><a href="https://github.com/kubernetes/ingress-nginx/blob/master/docs/deploy/index.md" target="_blank" rel="noopener noreferrer">官方文档<ExternalLinkIcon/></a></p>
+<div class="language-powershell ext-powershell line-numbers-mode"><pre v-pre class="language-powershell"><code>$ wget https:<span class="token operator">/</span><span class="token operator">/</span>raw<span class="token punctuation">.</span>githubusercontent<span class="token punctuation">.</span>com/kubernetes/ingress-nginx/nginx-0<span class="token punctuation">.</span>30<span class="token punctuation">.</span>0/deploy/static/mandatory<span class="token punctuation">.</span>yaml
+<span class="token comment">## 或者使用myblog/deployment/ingress/mandatory.yaml</span>
+<span class="token comment">## 修改部署节点</span>
+$ grep <span class="token operator">-</span>n5 nodeSelector mandatory<span class="token punctuation">.</span>yaml
+212- spec:
+213- hostNetwork: true <span class="token comment">#添加为host模式</span>
+214- <span class="token comment"># wait up to five minutes for the drain of connections</span>
+215- terminationGracePeriodSeconds: 300
+216- serviceAccountName: nginx-ingress-serviceaccount
+217: nodeSelector:
+218- ingress: <span class="token string">"true"</span> <span class="token comment">#替换此处，来决定将ingress部署在哪些机器</span>
+219- containers:
+220- <span class="token operator">-</span> name: nginx-ingress-controller
+221- image: quay<span class="token punctuation">.</span>io/kubernetes-ingress-controller/nginx-ingress-controller:0<span class="token punctuation">.</span>30<span class="token punctuation">.</span>0
+222- args:
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>使用示例：<code v-pre>myblog/deployment/ingress.yaml</code></p>
+<div class="language-yaml ext-yml line-numbers-mode"><pre v-pre class="language-yaml"><code><span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> extensions/v1beta1
+<span class="token key atrule">kind</span><span class="token punctuation">:</span> Ingress
+<span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+<span class="token key atrule">name</span><span class="token punctuation">:</span> myblog
+<span class="token key atrule">namespace</span><span class="token punctuation">:</span> demo
+<span class="token key atrule">spec</span><span class="token punctuation">:</span>
+<span class="token key atrule">rules</span><span class="token punctuation">:</span>
+<span class="token punctuation">-</span> <span class="token key atrule">host</span><span class="token punctuation">:</span> myblog.devops.cn
+<span class="token key atrule">http</span><span class="token punctuation">:</span>
+<span class="token key atrule">paths</span><span class="token punctuation">:</span>
+<span class="token punctuation">-</span> <span class="token key atrule">path</span><span class="token punctuation">:</span> /
+<span class="token key atrule">backend</span><span class="token punctuation">:</span>
+<span class="token key atrule">serviceName</span><span class="token punctuation">:</span> myblog
+<span class="token key atrule">servicePort</span><span class="token punctuation">:</span> <span class="token number">80</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>ingress-nginx动态生成upstream配置：</p>
+<div class="language-yaml ext-yml line-numbers-mode"><pre v-pre class="language-yaml"><code><span class="token punctuation">...</span>
+server_name myblog.devops.cn ;
+
+listen 80 ;
+listen <span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token punctuation">]</span><span class="token punctuation">:</span>80 ;
+listen 443 ssl http2 ;
+listen <span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token punctuation">]</span><span class="token punctuation">:</span>443 ssl http2 ;
+
+set $proxy_upstream_name "<span class="token punctuation">-</span>";
+
+ssl_certificate_by_lua_block <span class="token punctuation">{</span>
+certificate.call()
+<span class="token punctuation">}</span>
+
+location / <span class="token punctuation">{</span>
+
+set $namespace "demo";
+set $ingress_name "myblog";
+<span class="token punctuation">...</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h6 id="访问" tabindex="-1"><a class="header-anchor" href="#访问" aria-hidden="true">#</a> 访问</h6>
+<p>域名解析服务，将 <code v-pre>myblog.devops.cn</code>解析到ingress的地址上。ingress是支持多副本的，高可用的情况下，生产的配置是使用lb服务（内网F5设备，公网elb、slb、clb，解析到各ingress的机器，如何域名指向lb地址）</p>
+<p>本机，添加如下hosts记录来演示效果。</p>
+<div class="language-json ext-json line-numbers-mode"><pre v-pre class="language-json"><code><span class="token number">192.168</span>.<span class="token number">136.128</span> myblog.devops.cn
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p>然后，访问 <a href="http://myblog.devops.cn/blog/index/" target="_blank" rel="noopener noreferrer">http://myblog.devops.cn/blog/index/<ExternalLinkIcon/></a></p>
+<p>HTTPS访问：</p>
+<div class="language-powershell ext-powershell line-numbers-mode"><pre v-pre class="language-powershell"><code><span class="token comment">#自签名证书</span>
+$ openssl req <span class="token operator">-</span>x509 <span class="token operator">-</span>nodes <span class="token operator">-</span>days 2920 <span class="token operator">-</span>newkey rsa:2048 <span class="token operator">-</span>keyout tls<span class="token punctuation">.</span>key <span class="token operator">-</span>out tls<span class="token punctuation">.</span>crt <span class="token operator">-</span>subj <span class="token string">"/CN=*.devops.cn/O=ingress-nginx"</span>
+
+<span class="token comment"># 证书信息保存到secret对象中，ingress-nginx会读取secret对象解析出证书加载到nginx配置中</span>
+$ kubectl <span class="token operator">-</span>n demo create secret tls https-secret <span class="token operator">--</span>key tls<span class="token punctuation">.</span>key <span class="token operator">--</span>cert tls<span class="token punctuation">.</span>crt
+secret/https-secret created
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>修改yaml</p>
+<div class="language-yaml ext-yml line-numbers-mode"><pre v-pre class="language-yaml"><code><span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> extensions/v1beta1
+<span class="token key atrule">kind</span><span class="token punctuation">:</span> Ingress
+<span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+<span class="token key atrule">name</span><span class="token punctuation">:</span> myblog<span class="token punctuation">-</span>tls
+<span class="token key atrule">namespace</span><span class="token punctuation">:</span> demo
+<span class="token key atrule">spec</span><span class="token punctuation">:</span>
+<span class="token key atrule">rules</span><span class="token punctuation">:</span>
+<span class="token punctuation">-</span> <span class="token key atrule">host</span><span class="token punctuation">:</span> myblog.devops.cn
+<span class="token key atrule">http</span><span class="token punctuation">:</span>
+<span class="token key atrule">paths</span><span class="token punctuation">:</span>
+<span class="token punctuation">-</span> <span class="token key atrule">path</span><span class="token punctuation">:</span> /
+<span class="token key atrule">backend</span><span class="token punctuation">:</span>
+<span class="token key atrule">serviceName</span><span class="token punctuation">:</span> myblog
+<span class="token key atrule">servicePort</span><span class="token punctuation">:</span> <span class="token number">80</span>
+<span class="token key atrule">tls</span><span class="token punctuation">:</span>
+<span class="token punctuation">-</span> <span class="token key atrule">hosts</span><span class="token punctuation">:</span>
+<span class="token punctuation">-</span> myblog.devops.cn
+<span class="token key atrule">secretName</span><span class="token punctuation">:</span> https<span class="token punctuation">-</span>secret
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>然后，访问 <a href="https://myblog.devops.cn/blog/index/" target="_blank" rel="noopener noreferrer">https://myblog.devops.cn/blog/index/<ExternalLinkIcon/></a></p>
+<h5 id="kubernetes认证与授权-录屏" tabindex="-1"><a class="header-anchor" href="#kubernetes认证与授权-录屏" aria-hidden="true">#</a> Kubernetes认证与授权 录屏！！！</h5>
 <h6 id="apiservice安全控制" tabindex="-1"><a class="header-anchor" href="#apiservice安全控制" aria-hidden="true">#</a> APIService安全控制</h6>
 <ul>
 <li>Authentication：身份认证</li>

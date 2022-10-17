@@ -215,6 +215,31 @@ systemctl restart smb
 <li><strong>etcd</strong> 中清空记录的配置信息</li>
 </ul>
 </blockquote>
+<h4 id="补充-针对-samba" tabindex="-1"><a class="header-anchor" href="#补充-针对-samba" aria-hidden="true">#</a> 补充（<em>针对 Samba</em> ）</h4>
+<ol>
+<li>
+<p>对于特殊用户，提供了如下简单的映射机制</p>
+<ul>
+<li>
+<p>将 Windows 管理员，如：administrator 映射为本地用户 root</p>
+</li>
+<li>
+<p>将 everyone 这种特殊用户 映射为 nobody</p>
+</li>
+</ul>
+</li>
+<li>
+<p>对于重名限制，界面上开关控制，并显示全称</p>
+<ul>
+<li>
+<p>重名：指存在 <code v-pre>【ad域】张三 &amp; 【本地】：张三</code> 的情况，虽然名称相同，但 id 号不同</p>
+</li>
+<li>
+<p>此时设置访问前，通过开关控制 仅本地 | 所有用户，若所有，则显示前缀</p>
+</li>
+</ul>
+</li>
+</ol>
 <h2 id="_3-ldap3" tabindex="-1"><a class="header-anchor" href="#_3-ldap3" aria-hidden="true">#</a> 3. ldap3</h2>
 <p><strong>pip</strong> 安装 <a href="https://ldap3.readthedocs.io/en/latest/welcome.html" target="_blank" rel="noopener noreferrer">ldap3<ExternalLinkIcon/></a> 库</p>
 <div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code>$ pip <span class="token function">install</span> ldap3

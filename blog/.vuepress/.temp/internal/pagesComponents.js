@@ -137,10 +137,10 @@ export const pagesComponents = {
   "v-6e39b59c": defineAsyncComponent(() => import(/* webpackChunkName: "v-6e39b59c" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/tool/Git/安装GitLab.html.vue")),
   // path: /tool/Kubernetes/k8s2.html
   "v-6d808822": defineAsyncComponent(() => import(/* webpackChunkName: "v-6d808822" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/tool/Kubernetes/k8s2.html.vue")),
-  // path: /tool/Kubernetes/K8s%E5%9F%BA%E7%A1%80.html
-  "v-10666bc6": defineAsyncComponent(() => import(/* webpackChunkName: "v-10666bc6" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/tool/Kubernetes/K8s基础.html.vue")),
   // path: /tool/Kubernetes/k8s%E5%AE%89%E8%A3%85.html
   "v-e2f28566": defineAsyncComponent(() => import(/* webpackChunkName: "v-e2f28566" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/tool/Kubernetes/k8s安装.html.vue")),
+  // path: /tool/Kubernetes/k8s%E8%B5%84%E6%BA%90Pod.html
+  "v-be650688": defineAsyncComponent(() => import(/* webpackChunkName: "v-be650688" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/tool/Kubernetes/k8s资源Pod.html.vue")),
   // path: /tool/Nginx/Nginx%E5%9F%BA%E7%A1%80.html
   "v-379092fa": defineAsyncComponent(() => import(/* webpackChunkName: "v-379092fa" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/tool/Nginx/Nginx基础.html.vue")),
   // path: /tool/Nginx/%E5%BA%94%E7%94%A8%E9%83%A8%E7%BD%B2.html

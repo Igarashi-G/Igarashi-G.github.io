@@ -1,0 +1,14 @@
+export const data = JSON.parse("{\"key\":\"v-09fd2128\",\"path\":\"/tool/Kubernetes/.~k8s%E8%B5%84%E6%BA%90Pod.html\",\"title\":\"Kubernets基础-Pod\",\"lang\":\"zh-CN\",\"frontmatter\":{\"title\":\"Kubernets基础-Pod\",\"date\":\"2022-09-27T00:00:00.000Z\",\"category\":[\"运维\",\"k8s\"],\"tag\":[\"k8s\"],\"star\":true,\"summary\":\"# Kubernets 基础\\n记录 kubernetes 相关文档、基础、使用说明等\\n\",\"head\":[[\"meta\",{\"property\":\"og:url\",\"content\":\"https://igarashi-g.github.io/igarashi-blog/igarashi-blog/tool/Kubernetes/.~k8s%E8%B5%84%E6%BA%90Pod.html\"}],[\"meta\",{\"property\":\"og:site_name\",\"content\":\"五十岚呐~\"}],[\"meta\",{\"property\":\"og:title\",\"content\":\"Kubernets基础-Pod\"}],[\"meta\",{\"property\":\"og:type\",\"content\":\"article\"}],[\"meta\",{\"property\":\"og:locale\",\"content\":\"zh-CN\"}],[\"meta\",{\"property\":\"article:tag\",\"content\":\"k8s\"}],[\"meta\",{\"property\":\"article:published_time\",\"content\":\"2022-09-27T00:00:00.000Z\"}]]},\"excerpt\":\"<h1 id=\\\"kubernets-基础\\\" tabindex=\\\"-1\\\"><a class=\\\"header-anchor\\\" href=\\\"#kubernets-基础\\\" aria-hidden=\\\"true\\\">#</a> Kubernets 基础</h1>\\n<p>记录 <strong>kubernetes</strong> 相关文档、基础、使用说明等</p>\\n\",\"headers\":[{\"level\":2,\"title\":\"k8s 相关文档\",\"slug\":\"k8s-相关文档\",\"link\":\"#k8s-相关文档\",\"children\":[]},{\"level\":2,\"title\":\"1. Kubernetes 概述\",\"slug\":\"_1-kubernetes-概述\",\"link\":\"#_1-kubernetes-概述\",\"children\":[]},{\"level\":2,\"title\":\"2. namespace\",\"slug\":\"_2-namespace\",\"link\":\"#_2-namespace\",\"children\":[]},{\"level\":2,\"title\":\"3. Pod\",\"slug\":\"_3-pod\",\"link\":\"#_3-pod\",\"children\":[{\"level\":3,\"title\":\"3.1 Infra 容器\",\"slug\":\"_3-1-infra-容器\",\"link\":\"#_3-1-infra-容器\",\"children\":[]},{\"level\":3,\"title\":\"3.2 Pod 基本操作\",\"slug\":\"_3-2-pod-基本操作\",\"link\":\"#_3-2-pod-基本操作\",\"children\":[]},{\"level\":3,\"title\":\"3.3 Pod 数据持久化（挂载 ）\",\"slug\":\"_3-3-pod-数据持久化-挂载\",\"link\":\"#_3-3-pod-数据持久化-挂载\",\"children\":[]},{\"level\":3,\"title\":\"3.4 服务健康检查\",\"slug\":\"_3-4-服务健康检查\",\"link\":\"#_3-4-服务健康检查\",\"children\":[]},{\"level\":3,\"title\":\"3.5 Pod 资源限制\",\"slug\":\"_3-5-pod-资源限制\",\"link\":\"#_3-5-pod-资源限制\",\"children\":[]},{\"level\":3,\"title\":\"3.6 优化改造\",\"slug\":\"_3-6-优化改造\",\"link\":\"#_3-6-优化改造\",\"children\":[]},{\"level\":3,\"title\":\"3.7 Pod 状态与生命周期\",\"slug\":\"_3-7-pod-状态与生命周期\",\"link\":\"#_3-7-pod-状态与生命周期\",\"children\":[]}]}],\"readingTime\":{\"minutes\":18.44,\"words\":5533},\"filePathRelative\":\"tool/Kubernetes/.~k8s资源Pod.md\",\"localizedDate\":\"2022年9月27日\"}")
+
+if (import.meta.webpackHot) {
+  import.meta.webpackHot.accept()
+  if (__VUE_HMR_RUNTIME__.updatePageData) {
+    __VUE_HMR_RUNTIME__.updatePageData(data)
+  }
+}
+
+if (import.meta.hot) {
+  import.meta.hot.accept(({ data }) => {
+    __VUE_HMR_RUNTIME__.updatePageData(data)
+  })
+}
