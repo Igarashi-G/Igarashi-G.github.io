@@ -11,7 +11,7 @@ star: true
 
 # Kubernets 基础
 
-记录 **kubernetes** 相关文档、基础、使用说明等
+记录 **kubernetes** 相关文档、基础、**Pod** 的使用说明等
 
 <!-- more -->
 
@@ -602,57 +602,128 @@ docker run -it --cpu-period=50000 --cpu-quota=25000 ubuntu:20.04 /bin/bash
 
 针对环境变量，**k8s** 提供 **configMap** 和 **Secret**，实现业务配置的统一管理， 允许将配置文件与镜像文件分离，以使容器化的应用程序具有可移植性 。
 
-- **configMap：** 通常用来管理应用的配置文件或者环境变量
+#### **ConfigMap（*常用环境变量* ）** 
 
-##### **中间件容器：**
+通常用来管理应用的 **配置文件** 或者 **环境变量** （*非特别敏感* ），可以将环境相关的信息存入 **ConfigMap** 里面， 然后 **Pod** 去其中读，如下创建文件 
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: myblog
+  namespace: uit
+data:
+  MYSQL_HOST: "192.168.3.172"	# 下文会通过 label 将调度指定 k8s-slave-172 节点
+  MYSQL_PORT: "3306"
+```
+
+创建并查看
+
+```shell
+$ kubectl create -f configmap.yaml
+$ kubectl -n uit get cm
+```
+
+另一种创建方式 `configmap.txt` ，好处是灵活、写的少
+
+```shell
+vim configmap.txt
+MYSQL_HOST=192.168.3.172
+MYSQL_PORT=3306
+
+$ kubectl -n uit create configmap ublog --from-env-file=configmap.txt
+```
+
+#### **secret（*密码* ）** 
+
+常用来管理 **敏感类** 的信息，默认会 **base64** 编码存储，有三种类型
+
+- **Service Account ：** 用来访问 **k8s API**，自动创建，且会自动挂载到 **Pod** 上的 `/run/secrets/kubernetes.io/serviceaccount` 目录，之后 **Pod**中指定 **serviceAccount** 自动创建对应的 **secret**
+- **Opaque ：** 是 **base64** 编码格式的 **Secret**，用来 **存储密码、密钥** 等
+- **kubernetes.io/dockerconfigjson ：** 用来存储私有 **docker registry** 的认证信息
+
+如下创建一个 `secret.yaml`
+
+```yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: ublog
+  namespace: uit
+type: Opaque
+data:
+  MYSQL_USER: cm9vdA== 			# 注意加 -n 参数, echo -n root|base64
+  MYSQL_PASSWD: MTIzNDU2
+```
+
+创建并查看：
+
+```shell
+$ kubectl create -f secret.yaml
+$ kubectl -n uit get secret
+```
+
+另一种创建方式 `secret.txt` ，好处同上
+
+```shell
+$ cat secret.txt
+MYSQL_USER=root
+MYSQL_PASSWD=123456
+$ kubectl -n uit create secret generic ublog --from-env-file=secret.txt
+```
+
+##### **中间件容器：（*MySQL*）** 
 
 ```yaml
 apiVersion: v1
 kind: Pod
 metadata:
-hostNetwork: true						# 修改为 host 模式，此时 MySQL运行的IP 为 宿主机IP
   name: mysql
   namespace: uit
   labels:
     component: zz
 spec:
+  hostNetwork: true						# 修改为 host 模式，此时 MySQL运行的IP 为 宿主机IP
   volumes:
   - name: mysql-data
     hostPath:
       path: /opt/mysql/data
   nodeSelector:
-    component: middleware
+    component: zz
   containers:
-    - name: mysql
-      image: 192.168.3.171:5000/mysql:5.7
-      imagePullPolicy: IfNotPresent
-      ports:
-      - containerPort: 3306
-      env:
-      - name: MYSQL_ROOT_PASSWORD
-        value: "123456"
-      - name: MYSQL_DATABASE
-        value: "myblog"
-      resources:
-        requests:
-          memory: 100Mi
-          cpu: 50m
-        limits:
-          memory: 500Mi
-          cpu: 100m
-      readinessProbe:
-        tcpSocket:
-          port: 3306
-          initialDelaySeconds: 5
-          periodSeconds: 10
-      livenessProbe:
-        tcpSocket:
-          port: 3306
-          initialDelaySeconds: 15
-          periodSeconds: 20
-      volumeMounts:
-      - name: mysql-data
-        mountPath: /var/lib/mysql
+  - name: mysql
+    image: 192.168.3.171:5000/mysql:5.7
+    imagePullPolicy: IfNotPresent
+    ports:
+    - containerPort: 3306
+    env:
+    - name: MYSQL_ROOT_PASSWORD
+      valueFrom:						# 映射 secret.txt 中设置的敏感值
+        secretKeyRef:
+          name: ublog
+          key: MYSQL_PASSWD
+    - name: MYSQL_DATABASE
+      value: "myblog"
+    resources:
+      requests:
+        memory: 100Mi
+        cpu: 50m
+      limits:
+        memory: 500Mi
+        cpu: 100m
+    readinessProbe:
+      tcpSocket:
+        port: 3306
+      initialDelaySeconds: 5
+      periodSeconds: 10
+    livenessProbe:
+      tcpSocket:
+        port: 3306
+      initialDelaySeconds: 5
+      periodSeconds: 20
+    volumeMounts:
+    - name: mysql-data
+      mountPath: /var/lib/mysql
 ```
 
 - **hostNetwork：** 声明 **Pod** 的网络模式为 **host** 模式，等同 `docker run --net=host`
@@ -663,23 +734,28 @@ spec:
 apiVersion: v1
 kind: Pod
 metadata:
-hostNetwork: true
   name: ublog
   namespace: uit
   labels:
     component: zz
 spec:
   containers:
-    - name: mysql
-      image: 192.168.3.171:5000/mysql:5.7
+    - name: myblog
+      image: 192.168.3.171:5000/myblog:v1
       imagePullPolicy: IfNotPresent
       ports:
       - containerPort: 8002
       env:
       - name: MYSQL_HOST
-        value: "172.21.32.6"
+        valueFrom:						# 同上 映射配置 configmap.txt 指定的环境变量
+          configMapKeyRef:
+            name: ublog
+            key: MYSQL_HOST
       - name: MYSQL_PASSWD
-        value: "123456"
+        valueFrom:
+          secretKeyRef:
+            name: ublog
+            key: MYSQL_PASSWD
       resources:
         requests:
           memory: 100Mi
@@ -711,115 +787,20 @@ spec:
 $ kubectl create -f mysql.yaml
 $ kubectl create -f ublog.yaml
 
-# 访问myblog服务正常
-$ curl 10.244.1.152:8002/blog/index/
+# 访问 ublog Pod 服务正常
+$ curl 10.244.2.18:8002/blog/index/
 ```
 
- 
+**补充：** `/etc/kubernetes/manifests` 目录下存放  **静态Pod**，即凡是放在这个目录下的 **yaml** 文件，**k8s** 会自动创建，无需执行 `kubectl create -f` ，且删除也会自动拉起，目录下的 **yaml** 可用于编写参考（*同时有这种目录的，一定是 **kubeadm** 搭建起来的集群*）
 
-```yaml
-apiVersion: v1
-kind: ConfigMap
-metadata:
-name: myblog
-namespace: demo
-data:
-MYSQL_HOST: "172.21.32.6"
-MYSQL_PORT: "3306"
-```
+::: tip 注意
 
-- Secret，管理敏感类的信息，默认会base64编码存储，有三种类型
+- 部署不同的环境时，**Pod** 的 **yaml** 无须再变化，只在每套环境中维护一套 **ConfigMap** 和 **Secret** 即可
 
-- Service Account ：用来访问Kubernetes API，由Kubernetes自动创建，并且会自动挂载到Pod的/run/secrets/kubernetes.io/serviceaccount目录中；创建ServiceAccount后，Pod中指定serviceAccount后，自动创建该ServiceAccount对应的secret；
-- Opaque ： base64编码格式的Secret，用来存储密码、密钥等；
-- kubernetes.io/dockerconfigjson ：用来存储私有docker registry的认证信息。
+- **ConfigMap** 和 **secret** 不能跨 **namespace** 使用
+- 更新配置后，**Pod** 内的 **env** 不会自动更新，重建后方可更新
 
-`myblog/two-pod/secret.yaml`
-
-```yaml
-apiVersion: v1
-kind: Secret
-metadata:
-name: myblog
-namespace: demo
-type: Opaque
-data:
-MYSQL_USER: cm9vdA== #注意加-n参数， echo -n root|base64
-MYSQL_PASSWD: MTIzNDU2
-```
-
-创建并查看：
-
-```powershell
-$ kubectl create -f secret.yaml
-$ kubectl -n demo get secret
-```
-
-如果不习惯这种方式，可以通过如下方式：
-
-```powershell
-$ cat secret.txt
-MYSQL_USER=root
-MYSQL_PASSWD=123456
-$ kubectl -n demo create secret generic myblog --from-env-file=secret.txt
-```
-
-修改后的mysql的yaml，资源路径：`myblog/two-pod/mysql-with-config.yaml`
-
-```yaml
-...
-spec:
-containers:
-- name: mysql
-image: 172.21.32.6:5000/mysql:5.7-utf8
-env:
-- name: MYSQL_USER
-valueFrom:
-secretKeyRef:
-name: myblog
-key: MYSQL_USER
-- name: MYSQL_PASSWD
-valueFrom:
-secretKeyRef:
-name: myblog
-key: MYSQL_PASSWD
-- name: MYSQL_DATABASE
-value: "myblog"
-...
-```
-
-修改后的myblog的yaml，资源路径：`myblog/two-pod/myblog-with-config.yaml`
-
-```yaml
-spec:
-containers:
-- name: myblog
-image: 172.21.32.6:5000/myblog
-imagePullPolicy: IfNotPresent
-env:
-- name: MYSQL_HOST
-valueFrom:
-configMapKeyRef:
-name: myblog
-key: MYSQL_HOST
-- name: MYSQL_PORT
-valueFrom:
-configMapKeyRef:
-name: myblog
-key: MYSQL_PORT
-- name: MYSQL_USER
-valueFrom:
-secretKeyRef:
-name: myblog
-key: MYSQL_USER
-- name: MYSQL_PASSWD
-valueFrom:
-secretKeyRef:
-name: myblog
-key: MYSQL_PASSWD
-```
-
-在部署不同的环境时，pod的yaml无须再变化，只需要在每套环境中维护一套ConfigMap和Secret即可。但是注意configmap和secret不能跨namespace使用，且更新后，pod内的env不会自动更新，重建后方可更新。
+::: 
 
 ### 3.7 **Pod 状态与生命周期**
 
@@ -831,96 +812,153 @@ key: MYSQL_PASSWD
 | **Succeeded** | **Pod** 内，所有容器均已成功执行退出，且不再重启 |
 | **Failed** | **Pod** 内，所有容器均已退出，但至少有一个容器退出为失败状态 |
 | **CrashLoopBackOff** | **Pod** 内，有容器启动失败，比如配置文件丢失导致主进程启动失败 |
-| **Unknown** | 由于某种原因无法获取该 **Pod** 的状态，可能由于网络通信不畅导致 |
+| **Unknown** | 由于某种原因无法获取该 **Pod** 的状态，可能由于网络通信不畅导致（*少见*） |
 
-生命周期示意图：
+##### **启动和关闭示意**
 
+<img src="./img/Pod启动和关闭.jpg">
 
+<img src="./img/Pod启动流程.jpg">
 
-启动和关闭示意：
+**init container：** 初始化容器，做一些初始化操作
+
+- 验证业务应用依赖的组件是否均已启动
+- 修改目录权限
+- 调整系统参数
+
+**main container：** 执行的主容器，即 **containers** 下定义的
+
+**lifecycle：** 有如下两个钩子
+
+- **postStart：** 容器启动该做的事情，和 **mainContainer** 不分先后
+- **preStop：** 容器停止之前该做的事情
+
+```yaml
+...
+spec:
+  initContainers:
+  - command:
+    - /sbin/sysctl
+    - -w 
+    - vm.max_map_count=262144
+    image: alpine:3.6
+    imagePullPolicy: IfNotPresent
+    name: elasticsearch-logging-init
+    resources: {}
+    securityContext:
+      privileged: true
+  - name: fix-permissions
+    image:alpine: 3.6
+    command: ["sh", "-c", "chown -R 1000:1000 /usr/share/elasticsearch/data"]
+    securityContext:
+      privileged: true
+    volumeMounts:
+    - name: elasticsearch-logging
+      mountPath: /usr/share/elasticsearch/data
+...
+```
+
+验证 **Pod** 生命周期示例，`demo-pod-start.yaml`
 
 ```yaml
 apiVersion: v1
 kind: Pod
 metadata:
-name: demo-start-stop
-namespace: demo
-labels:
-component: demo-start-stop
+  name: demo-start-stop
+  namespace: uit
+  labels:
+    component: demo-start-stop
 spec:
-initContainers:
-- name: init
-image: busybox
-command: ['sh', '-c', 'echo $(date +%s): INIT >> /loap/timing']
-volumeMounts:
-- mountPath: /loap
-name: timing
-containers:
-- name: main
-image: busybox
-command: ['sh', '-c', 'echo $(date +%s): START >> /loap/timing;
-sleep 10; echo $(date +%s): END >> /loap/timing;']
-volumeMounts:
-- mountPath: /loap
-name: timing
-livenessProbe:
-exec:
-command: ['sh', '-c', 'echo $(date +%s): LIVENESS >> /loap/timing']
-readinessProbe:
-exec:
-command: ['sh', '-c', 'echo $(date +%s): READINESS >> /loap/timing']
-lifecycle:
-postStart:
-exec:
-command: ['sh', '-c', 'echo $(date +%s): POST-START >> /loap/timing']
-preStop:
-exec:
-command: ['sh', '-c', 'echo $(date +%s): PRE-STOP >> /loap/timing']
-volumes:
-- name: timing
-hostPath:
-path: /tmp/loap
+  initContainers:
+  - name: init
+    image: busybox
+    command: ['sh', '-c', 'echo $(date +%s): INIT >> /load/timing']
+    volumeMounts:
+    - mountPath: /load
+      name: timing
+  containers:
+  - name: main
+    image: busybox
+    command: ['sh', '-c', 'echo $(date +%s): START >> /load/timing;sleep 10; echo $(date +%s): END >> /loap/timing;']
+    volumeMounts:
+    - mountPath: /load
+      name: timing
+    livenessProbe:
+      exec:
+        command: ['sh', '-c', 'echo $(date +%s): LIVENESS >> /load/timing']
+    readinessProbe:
+      exec:
+        command: ['sh', '-c', 'echo $(date +%s): READINESS >> /load/timing']
+    lifecycle:
+      postStart:
+        exec:
+          command: ['sh', '-c', 'echo $(date +%s): POST-START >> /load/timing']
+      preStop:
+        exec:
+          command: ['sh', '-c', 'echo $(date +%s): PRE-STOP >> /load/timing']
+  volumes:
+  - name: timing
+    hostPath:
+      path: /tmp/load
 ```
 
-创建pod测试：
+创建 Pod 测试
 
-```powershell
+```shell
 $ kubectl create -f demo-pod-start.yaml
 
-## 查看demo状态
-$ kubectl -n demo get po -o wide -w
+# 查看demo状态
+$ kubectl -n uit get po -o wide -w
 
-## 查看调度节点的/tmp/loap/timing
-$ cat /tmp/loap/timing
-1585424708: INIT
-1585424746: START
-1585424746: POST-START
-1585424754: READINESS
-1585424756: LIVENESS
-1585424756: END
+# 查看调度节点 k8s-slave-172 的/tmp/loap/timing
+$ cat /tmp/load/timing
+1666057181: INIT
+1666057199: START
+1666057199: POST-START
+1666057202: LIVENESS
+1666057206: READINESS
+1666057227: START
+1666057227: POST-START
+1666057232: LIVENESS
+1666057236: READINESS
+1666057272: START
+...
 ```
 
-> 须主动杀掉 Pod 才会触发 `pre-stop hook`，如果是 Pod 自己 Down 掉，则不会执行 `pre-stop hook`
-
-##### Pod控制器 
-
-只使用Pod, 将会面临如下需求:
-
-1. 业务应用启动多个副本
-2. Pod重建后IP会变化，外部如何访问Pod服务
-3. 运行业务Pod的某个节点挂了，可以自动帮我把Pod转移到集群中的可用节点启动起来
-4. 我的业务应用功能是收集节点监控数据,需要把Pod运行在k8集群的各个节点上
-
-###### Workload (工作负载)
-
-控制器又称工作负载是用于实现管理pod的中间层，确保pod资源符合预期的状态，pod的资源出现故障时，会尝试 进行重启，当根据重启策略无效，则会重新新建pod的资源。
+> 须主动杀掉 **Pod** 才会触发 `pre-stop hook`，如果是 **Pod** 自己 **Down** 掉，则不会执行 `pre-stop hook`
 
 
 
-- ReplicaSet: 代用户创建指定数量的pod副本数量，确保pod副本数量符合预期状态，并且支持滚动式自动扩容和缩容功能
-- Deployment：工作在ReplicaSet之上，用于管理无状态应用，目前来说最好的控制器。支持滚动更新和回滚功能，还提供声明式配置
-- DaemonSet：用于确保集群中的每一个节点只运行特定的pod副本，通常用于实现系统级后台任务。比如ELK服务
-- Job：只要完成就立即退出，不需要重启或重建
-- Cronjob：周期性任务控制，不需要持续后台运行
-- StatefulSet：管理有状态应用
+::: warning 
+
+##### **只使用 Pod, 将会面临如下需求难以解决** 
+
+1. 业务应用如何启动多个副本
+2. **Pod** 重建后 **IP** 会变化，如何保证依然能通信
+2. 外部如何访问 **Pod** 服务
+3. 运行业务 **Pod** 的某个节点挂了，如何故障自动转移
+4. 若需求是收集各节点监控数据，如何将 **Pod** 运行在 **k8s** 集群的各个节点上
+
+:::
+
+#### **Pod控制器** - Workload (工作负载)
+
+控制器又称工作负载，是 **管理 Pod 的中间层**，确保 **Pod** 资源符合预期的状态
+
+- 资源出现故障时，会尝试 进行重启
+- 当根据重启策略无效，则会重新创建 **Pod** 资源
+
+简要预览如下控制器
+
+- **ReplicaSet：** 代用户创建指定数量的 **Pod 副本** 数量，确保副本数量符合预期状态，并且 **支持滚动式自动扩容和缩容功能**
+
+- **Deployment：** 工作在 **ReplicaSet** 之上，用于 **管理无状态应用**，目前来说 **最好** 的控制器，**支持滚动更新和回滚** 功能，还提供声明式配置
+
+- **DaemonSet：**用于确保集群中，每一个节点只运行特定的 **Pod** 副本（*通常也就一个*），通常用于**实现系统级后台任务**，比如**ELK** 日志服务、监控服务
+
+- **Job：** 只要完成就立即退出，不需要重启或重建
+
+- **Cronjob：** **周期性任务** 控制，不需要持续后台运行
+
+- **StatefulSet：** 管理 **有状态应用**
 

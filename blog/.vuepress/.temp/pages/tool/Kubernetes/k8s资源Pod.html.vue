@@ -1,5 +1,5 @@
 <template><div><h1 id="kubernets-基础" tabindex="-1"><a class="header-anchor" href="#kubernets-基础" aria-hidden="true">#</a> Kubernets 基础</h1>
-<p>记录 <strong>kubernetes</strong> 相关文档、基础、使用说明等</p>
+<p>记录 <strong>kubernetes</strong> 相关文档、基础、<strong>Pod</strong> 的使用说明等</p>
 <!-- more -->
 <h2 id="k8s-相关文档" tabindex="-1"><a class="header-anchor" href="#k8s-相关文档" aria-hidden="true">#</a> k8s 相关文档</h2>
 <p><a href="https://kubernetes.io/zh-cn/docs/tutorials/kubernetes-basics/" target="_blank" rel="noopener noreferrer">官网 | 学习 Kubernetes 基础知识 | Kubernetes<ExternalLinkIcon/></a></p>
@@ -610,80 +610,129 @@ k8s-slave-172    Ready    <span class="token operator">&lt;</span>none<span clas
 </li>
 </ul>
 <p>针对环境变量，<strong>k8s</strong> 提供 <strong>configMap</strong> 和 <strong>Secret</strong>，实现业务配置的统一管理， 允许将配置文件与镜像文件分离，以使容器化的应用程序具有可移植性 。</p>
+<h4 id="configmap-常用环境变量" tabindex="-1"><a class="header-anchor" href="#configmap-常用环境变量" aria-hidden="true">#</a> <strong>ConfigMap（<em>常用环境变量</em> ）</strong></h4>
+<p>通常用来管理应用的 <strong>配置文件</strong> 或者 <strong>环境变量</strong> （<em>非特别敏感</em> ），可以将环境相关的信息存入 <strong>ConfigMap</strong> 里面， 然后 <strong>Pod</strong> 去其中读，如下创建文件</p>
+<div class="language-yaml ext-yml line-numbers-mode"><pre v-pre class="language-yaml"><code><span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> v1
+<span class="token key atrule">kind</span><span class="token punctuation">:</span> ConfigMap
+<span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> myblog
+  <span class="token key atrule">namespace</span><span class="token punctuation">:</span> uit
+<span class="token key atrule">data</span><span class="token punctuation">:</span>
+  <span class="token key atrule">MYSQL_HOST</span><span class="token punctuation">:</span> <span class="token string">"192.168.3.172"</span>	<span class="token comment"># 下文会通过 label 将调度指定 k8s-slave-172 节点</span>
+  <span class="token key atrule">MYSQL_PORT</span><span class="token punctuation">:</span> <span class="token string">"3306"</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>创建并查看</p>
+<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code>$ kubectl create <span class="token parameter variable">-f</span> configmap.yaml
+$ kubectl <span class="token parameter variable">-n</span> uit get cm
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div></div></div><p>另一种创建方式 <code v-pre>configmap.txt</code> ，好处是灵活、写的少</p>
+<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code><span class="token function">vim</span> configmap.txt
+<span class="token assign-left variable">MYSQL_HOST</span><span class="token operator">=</span><span class="token number">192.168</span>.3.172
+<span class="token assign-left variable">MYSQL_PORT</span><span class="token operator">=</span><span class="token number">3306</span>
+
+$ kubectl <span class="token parameter variable">-n</span> uit create configmap ublog --from-env-file<span class="token operator">=</span>configmap.txt
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h4 id="secret-密码" tabindex="-1"><a class="header-anchor" href="#secret-密码" aria-hidden="true">#</a> <strong>secret（<em>密码</em> ）</strong></h4>
+<p>常用来管理 <strong>敏感类</strong> 的信息，默认会 <strong>base64</strong> 编码存储，有三种类型</p>
 <ul>
-<li><strong>configMap：</strong> 通常用来管理应用的配置文件或者环境变量</li>
+<li><strong>Service Account ：</strong> 用来访问 <strong>k8s API</strong>，自动创建，且会自动挂载到 <strong>Pod</strong> 上的 <code v-pre>/run/secrets/kubernetes.io/serviceaccount</code> 目录，之后 <strong>Pod</strong>中指定 <strong>serviceAccount</strong> 自动创建对应的 <strong>secret</strong></li>
+<li><strong>Opaque ：</strong> 是 <strong>base64</strong> 编码格式的 <strong>Secret</strong>，用来 <strong>存储密码、密钥</strong> 等</li>
+<li><strong><a href="http://kubernetes.io/dockerconfigjson" target="_blank" rel="noopener noreferrer">kubernetes.io/dockerconfigjson<ExternalLinkIcon/></a> ：</strong> 用来存储私有 <strong>docker registry</strong> 的认证信息</li>
 </ul>
-<h5 id="中间件容器" tabindex="-1"><a class="header-anchor" href="#中间件容器" aria-hidden="true">#</a> <strong>中间件容器：</strong></h5>
+<p>如下创建一个 <code v-pre>secret.yaml</code></p>
+<div class="language-yaml ext-yml line-numbers-mode"><pre v-pre class="language-yaml"><code><span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> v1
+<span class="token key atrule">kind</span><span class="token punctuation">:</span> Secret
+<span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> ublog
+  <span class="token key atrule">namespace</span><span class="token punctuation">:</span> uit
+<span class="token key atrule">type</span><span class="token punctuation">:</span> Opaque
+<span class="token key atrule">data</span><span class="token punctuation">:</span>
+  <span class="token key atrule">MYSQL_USER</span><span class="token punctuation">:</span> cm9vdA== 			<span class="token comment"># 注意加 -n 参数, echo -n root|base64</span>
+  <span class="token key atrule">MYSQL_PASSWD</span><span class="token punctuation">:</span> MTIzNDU2
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>创建并查看：</p>
+<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code>$ kubectl create <span class="token parameter variable">-f</span> secret.yaml
+$ kubectl <span class="token parameter variable">-n</span> uit get secret
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div></div></div><p>另一种创建方式 <code v-pre>secret.txt</code> ，好处同上</p>
+<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code>$ <span class="token function">cat</span> secret.txt
+<span class="token assign-left variable">MYSQL_USER</span><span class="token operator">=</span>root
+<span class="token assign-left variable">MYSQL_PASSWD</span><span class="token operator">=</span><span class="token number">123456</span>
+$ kubectl <span class="token parameter variable">-n</span> uit create secret generic ublog --from-env-file<span class="token operator">=</span>secret.txt
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h5 id="中间件容器-mysql" tabindex="-1"><a class="header-anchor" href="#中间件容器-mysql" aria-hidden="true">#</a> <strong>中间件容器：（<em>MySQL</em>）</strong></h5>
 <div class="language-yaml ext-yml line-numbers-mode"><pre v-pre class="language-yaml"><code><span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> v1
 <span class="token key atrule">kind</span><span class="token punctuation">:</span> Pod
 <span class="token key atrule">metadata</span><span class="token punctuation">:</span>
-<span class="token key atrule">hostNetwork</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>						<span class="token comment"># 修改为 host 模式，此时 MySQL运行的IP 为 宿主机IP</span>
   <span class="token key atrule">name</span><span class="token punctuation">:</span> mysql
   <span class="token key atrule">namespace</span><span class="token punctuation">:</span> uit
   <span class="token key atrule">labels</span><span class="token punctuation">:</span>
     <span class="token key atrule">component</span><span class="token punctuation">:</span> zz
 <span class="token key atrule">spec</span><span class="token punctuation">:</span>
+  <span class="token key atrule">hostNetwork</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>						<span class="token comment"># 修改为 host 模式，此时 MySQL运行的IP 为 宿主机IP</span>
   <span class="token key atrule">volumes</span><span class="token punctuation">:</span>
   <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> mysql<span class="token punctuation">-</span>data
     <span class="token key atrule">hostPath</span><span class="token punctuation">:</span>
       <span class="token key atrule">path</span><span class="token punctuation">:</span> /opt/mysql/data
   <span class="token key atrule">nodeSelector</span><span class="token punctuation">:</span>
-    <span class="token key atrule">component</span><span class="token punctuation">:</span> middleware
+    <span class="token key atrule">component</span><span class="token punctuation">:</span> zz
   <span class="token key atrule">containers</span><span class="token punctuation">:</span>
-    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> mysql
-      <span class="token key atrule">image</span><span class="token punctuation">:</span> 192.168.3.171<span class="token punctuation">:</span>5000/mysql<span class="token punctuation">:</span><span class="token number">5.7</span>
-      <span class="token key atrule">imagePullPolicy</span><span class="token punctuation">:</span> IfNotPresent
-      <span class="token key atrule">ports</span><span class="token punctuation">:</span>
-      <span class="token punctuation">-</span> <span class="token key atrule">containerPort</span><span class="token punctuation">:</span> <span class="token number">3306</span>
-      <span class="token key atrule">env</span><span class="token punctuation">:</span>
-      <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> MYSQL_ROOT_PASSWORD
-        <span class="token key atrule">value</span><span class="token punctuation">:</span> <span class="token string">"123456"</span>
-      <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> MYSQL_DATABASE
-        <span class="token key atrule">value</span><span class="token punctuation">:</span> <span class="token string">"myblog"</span>
-      <span class="token key atrule">resources</span><span class="token punctuation">:</span>
-        <span class="token key atrule">requests</span><span class="token punctuation">:</span>
-          <span class="token key atrule">memory</span><span class="token punctuation">:</span> 100Mi
-          <span class="token key atrule">cpu</span><span class="token punctuation">:</span> 50m
-        <span class="token key atrule">limits</span><span class="token punctuation">:</span>
-          <span class="token key atrule">memory</span><span class="token punctuation">:</span> 500Mi
-          <span class="token key atrule">cpu</span><span class="token punctuation">:</span> 100m
-      <span class="token key atrule">readinessProbe</span><span class="token punctuation">:</span>
-        <span class="token key atrule">tcpSocket</span><span class="token punctuation">:</span>
-          <span class="token key atrule">port</span><span class="token punctuation">:</span> <span class="token number">3306</span>
-          <span class="token key atrule">initialDelaySeconds</span><span class="token punctuation">:</span> <span class="token number">5</span>
-          <span class="token key atrule">periodSeconds</span><span class="token punctuation">:</span> <span class="token number">10</span>
-      <span class="token key atrule">livenessProbe</span><span class="token punctuation">:</span>
-        <span class="token key atrule">tcpSocket</span><span class="token punctuation">:</span>
-          <span class="token key atrule">port</span><span class="token punctuation">:</span> <span class="token number">3306</span>
-          <span class="token key atrule">initialDelaySeconds</span><span class="token punctuation">:</span> <span class="token number">15</span>
-          <span class="token key atrule">periodSeconds</span><span class="token punctuation">:</span> <span class="token number">20</span>
-      <span class="token key atrule">volumeMounts</span><span class="token punctuation">:</span>
-      <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> mysql<span class="token punctuation">-</span>data
-        <span class="token key atrule">mountPath</span><span class="token punctuation">:</span> /var/lib/mysql
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><ul>
+  <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> mysql
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> 192.168.3.171<span class="token punctuation">:</span>5000/mysql<span class="token punctuation">:</span><span class="token number">5.7</span>
+    <span class="token key atrule">imagePullPolicy</span><span class="token punctuation">:</span> IfNotPresent
+    <span class="token key atrule">ports</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> <span class="token key atrule">containerPort</span><span class="token punctuation">:</span> <span class="token number">3306</span>
+    <span class="token key atrule">env</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> MYSQL_ROOT_PASSWORD
+      <span class="token key atrule">valueFrom</span><span class="token punctuation">:</span>						<span class="token comment"># 映射 secret.txt 中设置的敏感值</span>
+        <span class="token key atrule">secretKeyRef</span><span class="token punctuation">:</span>
+          <span class="token key atrule">name</span><span class="token punctuation">:</span> ublog
+          <span class="token key atrule">key</span><span class="token punctuation">:</span> MYSQL_PASSWD
+    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> MYSQL_DATABASE
+      <span class="token key atrule">value</span><span class="token punctuation">:</span> <span class="token string">"myblog"</span>
+    <span class="token key atrule">resources</span><span class="token punctuation">:</span>
+      <span class="token key atrule">requests</span><span class="token punctuation">:</span>
+        <span class="token key atrule">memory</span><span class="token punctuation">:</span> 100Mi
+        <span class="token key atrule">cpu</span><span class="token punctuation">:</span> 50m
+      <span class="token key atrule">limits</span><span class="token punctuation">:</span>
+        <span class="token key atrule">memory</span><span class="token punctuation">:</span> 500Mi
+        <span class="token key atrule">cpu</span><span class="token punctuation">:</span> 100m
+    <span class="token key atrule">readinessProbe</span><span class="token punctuation">:</span>
+      <span class="token key atrule">tcpSocket</span><span class="token punctuation">:</span>
+        <span class="token key atrule">port</span><span class="token punctuation">:</span> <span class="token number">3306</span>
+      <span class="token key atrule">initialDelaySeconds</span><span class="token punctuation">:</span> <span class="token number">5</span>
+      <span class="token key atrule">periodSeconds</span><span class="token punctuation">:</span> <span class="token number">10</span>
+    <span class="token key atrule">livenessProbe</span><span class="token punctuation">:</span>
+      <span class="token key atrule">tcpSocket</span><span class="token punctuation">:</span>
+        <span class="token key atrule">port</span><span class="token punctuation">:</span> <span class="token number">3306</span>
+      <span class="token key atrule">initialDelaySeconds</span><span class="token punctuation">:</span> <span class="token number">5</span>
+      <span class="token key atrule">periodSeconds</span><span class="token punctuation">:</span> <span class="token number">20</span>
+    <span class="token key atrule">volumeMounts</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> mysql<span class="token punctuation">-</span>data
+      <span class="token key atrule">mountPath</span><span class="token punctuation">:</span> /var/lib/mysql
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><ul>
 <li><strong>hostNetwork：</strong> 声明 <strong>Pod</strong> 的网络模式为 <strong>host</strong> 模式，等同 <code v-pre>docker run --net=host</code></li>
 </ul>
 <p><strong>业务容器：</strong></p>
 <div class="language-yaml ext-yml line-numbers-mode"><pre v-pre class="language-yaml"><code><span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> v1
 <span class="token key atrule">kind</span><span class="token punctuation">:</span> Pod
 <span class="token key atrule">metadata</span><span class="token punctuation">:</span>
-<span class="token key atrule">hostNetwork</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
   <span class="token key atrule">name</span><span class="token punctuation">:</span> ublog
   <span class="token key atrule">namespace</span><span class="token punctuation">:</span> uit
   <span class="token key atrule">labels</span><span class="token punctuation">:</span>
     <span class="token key atrule">component</span><span class="token punctuation">:</span> zz
 <span class="token key atrule">spec</span><span class="token punctuation">:</span>
   <span class="token key atrule">containers</span><span class="token punctuation">:</span>
-    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> mysql
-      <span class="token key atrule">image</span><span class="token punctuation">:</span> 192.168.3.171<span class="token punctuation">:</span>5000/mysql<span class="token punctuation">:</span><span class="token number">5.7</span>
+    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> myblog
+      <span class="token key atrule">image</span><span class="token punctuation">:</span> 192.168.3.171<span class="token punctuation">:</span>5000/myblog<span class="token punctuation">:</span>v1
       <span class="token key atrule">imagePullPolicy</span><span class="token punctuation">:</span> IfNotPresent
       <span class="token key atrule">ports</span><span class="token punctuation">:</span>
       <span class="token punctuation">-</span> <span class="token key atrule">containerPort</span><span class="token punctuation">:</span> <span class="token number">8002</span>
       <span class="token key atrule">env</span><span class="token punctuation">:</span>
       <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> MYSQL_HOST
-        <span class="token key atrule">value</span><span class="token punctuation">:</span> <span class="token string">"172.21.32.6"</span>
+        <span class="token key atrule">valueFrom</span><span class="token punctuation">:</span>						<span class="token comment"># 同上 映射配置 configmap.txt 指定的环境变量</span>
+          <span class="token key atrule">configMapKeyRef</span><span class="token punctuation">:</span>
+            <span class="token key atrule">name</span><span class="token punctuation">:</span> ublog
+            <span class="token key atrule">key</span><span class="token punctuation">:</span> MYSQL_HOST
       <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> MYSQL_PASSWD
-        <span class="token key atrule">value</span><span class="token punctuation">:</span> <span class="token string">"123456"</span>
+        <span class="token key atrule">valueFrom</span><span class="token punctuation">:</span>
+          <span class="token key atrule">secretKeyRef</span><span class="token punctuation">:</span>
+            <span class="token key atrule">name</span><span class="token punctuation">:</span> ublog
+            <span class="token key atrule">key</span><span class="token punctuation">:</span> MYSQL_PASSWD
       <span class="token key atrule">resources</span><span class="token punctuation">:</span>
         <span class="token key atrule">requests</span><span class="token punctuation">:</span>
           <span class="token key atrule">memory</span><span class="token punctuation">:</span> 100Mi
@@ -707,100 +756,27 @@ k8s-slave-172    Ready    <span class="token operator">&lt;</span>none<span clas
         <span class="token key atrule">initialDelaySeconds</span><span class="token punctuation">:</span> <span class="token number">10</span>
         <span class="token key atrule">timeoutSeconds</span><span class="token punctuation">:</span> <span class="token number">2</span>
         <span class="token key atrule">periodSeconds</span><span class="token punctuation">:</span> <span class="token number">15</span>
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>执行创建</p>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>执行创建</p>
 <div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code>$ kubectl create <span class="token parameter variable">-f</span> mysql.yaml
 $ kubectl create <span class="token parameter variable">-f</span> ublog.yaml
 
-<span class="token comment"># 访问myblog服务正常</span>
-$ <span class="token function">curl</span> <span class="token number">10.244</span>.1.152:8002/blog/index/
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-yaml ext-yml line-numbers-mode"><pre v-pre class="language-yaml"><code><span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> v1
-<span class="token key atrule">kind</span><span class="token punctuation">:</span> ConfigMap
-<span class="token key atrule">metadata</span><span class="token punctuation">:</span>
-<span class="token key atrule">name</span><span class="token punctuation">:</span> myblog
-<span class="token key atrule">namespace</span><span class="token punctuation">:</span> demo
-<span class="token key atrule">data</span><span class="token punctuation">:</span>
-<span class="token key atrule">MYSQL_HOST</span><span class="token punctuation">:</span> <span class="token string">"172.21.32.6"</span>
-<span class="token key atrule">MYSQL_PORT</span><span class="token punctuation">:</span> <span class="token string">"3306"</span>
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><ul>
+<span class="token comment"># 访问 ublog Pod 服务正常</span>
+$ <span class="token function">curl</span> <span class="token number">10.244</span>.2.18:8002/blog/index/
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p><strong>补充：</strong> <code v-pre>/etc/kubernetes/manifests</code> 目录下存放  <strong>静态Pod</strong>，即凡是放在这个目录下的 <strong>yaml</strong> 文件，<strong>k8s</strong> 会自动创建，无需执行 <code v-pre>kubectl create -f</code> ，且删除也会自动拉起，目录下的 <strong>yaml</strong> 可用于编写参考（<em>同时有这种目录的，一定是 <strong>kubeadm</strong> 搭建起来的集群</em>）</p>
+<div class="custom-container tip">
+<p class="custom-container-title">注意</p>
+<ul>
 <li>
-<p>Secret，管理敏感类的信息，默认会base64编码存储，有三种类型</p>
+<p>部署不同的环境时，<strong>Pod</strong> 的 <strong>yaml</strong> 无须再变化，只在每套环境中维护一套 <strong>ConfigMap</strong> 和 <strong>Secret</strong> 即可</p>
 </li>
 <li>
-<p>Service Account ：用来访问Kubernetes API，由Kubernetes自动创建，并且会自动挂载到Pod的/run/secrets/kubernetes.io/serviceaccount目录中；创建ServiceAccount后，Pod中指定serviceAccount后，自动创建该ServiceAccount对应的secret；</p>
+<p><strong>ConfigMap</strong> 和 <strong>secret</strong> 不能跨 <strong>namespace</strong> 使用</p>
 </li>
 <li>
-<p>Opaque ： base64编码格式的Secret，用来存储密码、密钥等；</p>
-</li>
-<li>
-<p><a href="http://kubernetes.io/dockerconfigjson" target="_blank" rel="noopener noreferrer">kubernetes.io/dockerconfigjson<ExternalLinkIcon/></a> ：用来存储私有docker registry的认证信息。</p>
+<p>更新配置后，<strong>Pod</strong> 内的 <strong>env</strong> 不会自动更新，重建后方可更新</p>
 </li>
 </ul>
-<p><code v-pre>myblog/two-pod/secret.yaml</code></p>
-<div class="language-yaml ext-yml line-numbers-mode"><pre v-pre class="language-yaml"><code><span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> v1
-<span class="token key atrule">kind</span><span class="token punctuation">:</span> Secret
-<span class="token key atrule">metadata</span><span class="token punctuation">:</span>
-<span class="token key atrule">name</span><span class="token punctuation">:</span> myblog
-<span class="token key atrule">namespace</span><span class="token punctuation">:</span> demo
-<span class="token key atrule">type</span><span class="token punctuation">:</span> Opaque
-<span class="token key atrule">data</span><span class="token punctuation">:</span>
-<span class="token key atrule">MYSQL_USER</span><span class="token punctuation">:</span> cm9vdA== <span class="token comment">#注意加-n参数， echo -n root|base64</span>
-<span class="token key atrule">MYSQL_PASSWD</span><span class="token punctuation">:</span> MTIzNDU2
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>创建并查看：</p>
-<div class="language-powershell ext-powershell line-numbers-mode"><pre v-pre class="language-powershell"><code>$ kubectl create <span class="token operator">-</span>f secret<span class="token punctuation">.</span>yaml
-$ kubectl <span class="token operator">-</span>n demo get secret
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div></div></div><p>如果不习惯这种方式，可以通过如下方式：</p>
-<div class="language-powershell ext-powershell line-numbers-mode"><pre v-pre class="language-powershell"><code>$ <span class="token function">cat</span> secret<span class="token punctuation">.</span>txt
-MYSQL_USER=root
-MYSQL_PASSWD=123456
-$ kubectl <span class="token operator">-</span>n demo create secret generic myblog <span class="token operator">--</span><span class="token keyword">from</span><span class="token operator">-</span>env-file=secret<span class="token punctuation">.</span>txt
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>修改后的mysql的yaml，资源路径：<code v-pre>myblog/two-pod/mysql-with-config.yaml</code></p>
-<div class="language-yaml ext-yml line-numbers-mode"><pre v-pre class="language-yaml"><code><span class="token punctuation">...</span>
-<span class="token key atrule">spec</span><span class="token punctuation">:</span>
-<span class="token key atrule">containers</span><span class="token punctuation">:</span>
-<span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> mysql
-<span class="token key atrule">image</span><span class="token punctuation">:</span> 172.21.32.6<span class="token punctuation">:</span>5000/mysql<span class="token punctuation">:</span>5.7<span class="token punctuation">-</span>utf8
-<span class="token key atrule">env</span><span class="token punctuation">:</span>
-<span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> MYSQL_USER
-<span class="token key atrule">valueFrom</span><span class="token punctuation">:</span>
-<span class="token key atrule">secretKeyRef</span><span class="token punctuation">:</span>
-<span class="token key atrule">name</span><span class="token punctuation">:</span> myblog
-<span class="token key atrule">key</span><span class="token punctuation">:</span> MYSQL_USER
-<span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> MYSQL_PASSWD
-<span class="token key atrule">valueFrom</span><span class="token punctuation">:</span>
-<span class="token key atrule">secretKeyRef</span><span class="token punctuation">:</span>
-<span class="token key atrule">name</span><span class="token punctuation">:</span> myblog
-<span class="token key atrule">key</span><span class="token punctuation">:</span> MYSQL_PASSWD
-<span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> MYSQL_DATABASE
-<span class="token key atrule">value</span><span class="token punctuation">:</span> <span class="token string">"myblog"</span>
-<span class="token punctuation">...</span>
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>修改后的myblog的yaml，资源路径：<code v-pre>myblog/two-pod/myblog-with-config.yaml</code></p>
-<div class="language-yaml ext-yml line-numbers-mode"><pre v-pre class="language-yaml"><code><span class="token key atrule">spec</span><span class="token punctuation">:</span>
-<span class="token key atrule">containers</span><span class="token punctuation">:</span>
-<span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> myblog
-<span class="token key atrule">image</span><span class="token punctuation">:</span> 172.21.32.6<span class="token punctuation">:</span>5000/myblog
-<span class="token key atrule">imagePullPolicy</span><span class="token punctuation">:</span> IfNotPresent
-<span class="token key atrule">env</span><span class="token punctuation">:</span>
-<span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> MYSQL_HOST
-<span class="token key atrule">valueFrom</span><span class="token punctuation">:</span>
-<span class="token key atrule">configMapKeyRef</span><span class="token punctuation">:</span>
-<span class="token key atrule">name</span><span class="token punctuation">:</span> myblog
-<span class="token key atrule">key</span><span class="token punctuation">:</span> MYSQL_HOST
-<span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> MYSQL_PORT
-<span class="token key atrule">valueFrom</span><span class="token punctuation">:</span>
-<span class="token key atrule">configMapKeyRef</span><span class="token punctuation">:</span>
-<span class="token key atrule">name</span><span class="token punctuation">:</span> myblog
-<span class="token key atrule">key</span><span class="token punctuation">:</span> MYSQL_PORT
-<span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> MYSQL_USER
-<span class="token key atrule">valueFrom</span><span class="token punctuation">:</span>
-<span class="token key atrule">secretKeyRef</span><span class="token punctuation">:</span>
-<span class="token key atrule">name</span><span class="token punctuation">:</span> myblog
-<span class="token key atrule">key</span><span class="token punctuation">:</span> MYSQL_USER
-<span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> MYSQL_PASSWD
-<span class="token key atrule">valueFrom</span><span class="token punctuation">:</span>
-<span class="token key atrule">secretKeyRef</span><span class="token punctuation">:</span>
-<span class="token key atrule">name</span><span class="token punctuation">:</span> myblog
-<span class="token key atrule">key</span><span class="token punctuation">:</span> MYSQL_PASSWD
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>在部署不同的环境时，pod的yaml无须再变化，只需要在每套环境中维护一套ConfigMap和Secret即可。但是注意configmap和secret不能跨namespace使用，且更新后，pod内的env不会自动更新，重建后方可更新。</p>
+</div>
 <h3 id="_3-7-pod-状态与生命周期" tabindex="-1"><a class="header-anchor" href="#_3-7-pod-状态与生命周期" aria-hidden="true">#</a> 3.7 <strong>Pod 状态与生命周期</strong></h3>
 <table>
 <thead>
@@ -836,86 +812,146 @@ $ kubectl <span class="token operator">-</span>n demo create secret generic mybl
 </tr>
 <tr>
 <td><strong>Unknown</strong></td>
-<td>由于某种原因无法获取该 <strong>Pod</strong> 的状态，可能由于网络通信不畅导致</td>
+<td>由于某种原因无法获取该 <strong>Pod</strong> 的状态，可能由于网络通信不畅导致（<em>少见</em>）</td>
 </tr>
 </tbody>
 </table>
-<p>生命周期示意图：</p>
-<p>启动和关闭示意：</p>
+<h5 id="启动和关闭示意" tabindex="-1"><a class="header-anchor" href="#启动和关闭示意" aria-hidden="true">#</a> <strong>启动和关闭示意</strong></h5>
+<img src="@source/tool/Kubernetes/img/Pod启动和关闭.jpg">
+<img src="@source/tool/Kubernetes/img/Pod启动流程.jpg">
+<p><strong>init container：</strong> 初始化容器，做一些初始化操作</p>
+<ul>
+<li>验证业务应用依赖的组件是否均已启动</li>
+<li>修改目录权限</li>
+<li>调整系统参数</li>
+</ul>
+<p><strong>main container：</strong> 执行的主容器，即 <strong>containers</strong> 下定义的</p>
+<p><strong>lifecycle：</strong> 有如下两个钩子</p>
+<ul>
+<li><strong>postStart：</strong> 容器启动该做的事情，和 <strong>mainContainer</strong> 不分先后</li>
+<li><strong>preStop：</strong> 容器停止之前该做的事情</li>
+</ul>
+<div class="language-yaml ext-yml line-numbers-mode"><pre v-pre class="language-yaml"><code><span class="token punctuation">...</span>
+<span class="token key atrule">spec</span><span class="token punctuation">:</span>
+  <span class="token key atrule">initContainers</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> <span class="token key atrule">command</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> /sbin/sysctl
+    <span class="token punctuation">-</span> <span class="token punctuation">-</span>w 
+    <span class="token punctuation">-</span> vm.max_map_count=262144
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> alpine<span class="token punctuation">:</span><span class="token number">3.6</span>
+    <span class="token key atrule">imagePullPolicy</span><span class="token punctuation">:</span> IfNotPresent
+    <span class="token key atrule">name</span><span class="token punctuation">:</span> elasticsearch<span class="token punctuation">-</span>logging<span class="token punctuation">-</span>init
+    <span class="token key atrule">resources</span><span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+    <span class="token key atrule">securityContext</span><span class="token punctuation">:</span>
+      <span class="token key atrule">privileged</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+  <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> fix<span class="token punctuation">-</span>permissions
+    <span class="token key atrule">image:alpine</span><span class="token punctuation">:</span> <span class="token number">3.6</span>
+    <span class="token key atrule">command</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">"sh"</span><span class="token punctuation">,</span> <span class="token string">"-c"</span><span class="token punctuation">,</span> <span class="token string">"chown -R 1000:1000 /usr/share/elasticsearch/data"</span><span class="token punctuation">]</span>
+    <span class="token key atrule">securityContext</span><span class="token punctuation">:</span>
+      <span class="token key atrule">privileged</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+    <span class="token key atrule">volumeMounts</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> elasticsearch<span class="token punctuation">-</span>logging
+      <span class="token key atrule">mountPath</span><span class="token punctuation">:</span> /usr/share/elasticsearch/data
+<span class="token punctuation">...</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>验证 <strong>Pod</strong> 生命周期示例，<code v-pre>demo-pod-start.yaml</code></p>
 <div class="language-yaml ext-yml line-numbers-mode"><pre v-pre class="language-yaml"><code><span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> v1
 <span class="token key atrule">kind</span><span class="token punctuation">:</span> Pod
 <span class="token key atrule">metadata</span><span class="token punctuation">:</span>
-<span class="token key atrule">name</span><span class="token punctuation">:</span> demo<span class="token punctuation">-</span>start<span class="token punctuation">-</span>stop
-<span class="token key atrule">namespace</span><span class="token punctuation">:</span> demo
-<span class="token key atrule">labels</span><span class="token punctuation">:</span>
-<span class="token key atrule">component</span><span class="token punctuation">:</span> demo<span class="token punctuation">-</span>start<span class="token punctuation">-</span>stop
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> demo<span class="token punctuation">-</span>start<span class="token punctuation">-</span>stop
+  <span class="token key atrule">namespace</span><span class="token punctuation">:</span> uit
+  <span class="token key atrule">labels</span><span class="token punctuation">:</span>
+    <span class="token key atrule">component</span><span class="token punctuation">:</span> demo<span class="token punctuation">-</span>start<span class="token punctuation">-</span>stop
 <span class="token key atrule">spec</span><span class="token punctuation">:</span>
-<span class="token key atrule">initContainers</span><span class="token punctuation">:</span>
-<span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> init
-<span class="token key atrule">image</span><span class="token punctuation">:</span> busybox
-<span class="token key atrule">command</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'sh'</span><span class="token punctuation">,</span> <span class="token string">'-c'</span><span class="token punctuation">,</span> <span class="token string">'echo $(date +%s): INIT >> /loap/timing'</span><span class="token punctuation">]</span>
-<span class="token key atrule">volumeMounts</span><span class="token punctuation">:</span>
-<span class="token punctuation">-</span> <span class="token key atrule">mountPath</span><span class="token punctuation">:</span> /loap
-<span class="token key atrule">name</span><span class="token punctuation">:</span> timing
-<span class="token key atrule">containers</span><span class="token punctuation">:</span>
-<span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> main
-<span class="token key atrule">image</span><span class="token punctuation">:</span> busybox
-<span class="token key atrule">command</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'sh'</span><span class="token punctuation">,</span> <span class="token string">'-c'</span><span class="token punctuation">,</span> 'echo $(date +%s)<span class="token punctuation">:</span> START <span class="token punctuation">></span><span class="token punctuation">></span> /loap/timing;
-<span class="token key atrule">sleep 10; echo $(date +%s)</span><span class="token punctuation">:</span> END <span class="token punctuation">></span><span class="token punctuation">></span> /loap/timing;'<span class="token punctuation">]</span>
-<span class="token key atrule">volumeMounts</span><span class="token punctuation">:</span>
-<span class="token punctuation">-</span> <span class="token key atrule">mountPath</span><span class="token punctuation">:</span> /loap
-<span class="token key atrule">name</span><span class="token punctuation">:</span> timing
-<span class="token key atrule">livenessProbe</span><span class="token punctuation">:</span>
-<span class="token key atrule">exec</span><span class="token punctuation">:</span>
-<span class="token key atrule">command</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'sh'</span><span class="token punctuation">,</span> <span class="token string">'-c'</span><span class="token punctuation">,</span> <span class="token string">'echo $(date +%s): LIVENESS >> /loap/timing'</span><span class="token punctuation">]</span>
-<span class="token key atrule">readinessProbe</span><span class="token punctuation">:</span>
-<span class="token key atrule">exec</span><span class="token punctuation">:</span>
-<span class="token key atrule">command</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'sh'</span><span class="token punctuation">,</span> <span class="token string">'-c'</span><span class="token punctuation">,</span> <span class="token string">'echo $(date +%s): READINESS >> /loap/timing'</span><span class="token punctuation">]</span>
-<span class="token key atrule">lifecycle</span><span class="token punctuation">:</span>
-<span class="token key atrule">postStart</span><span class="token punctuation">:</span>
-<span class="token key atrule">exec</span><span class="token punctuation">:</span>
-<span class="token key atrule">command</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'sh'</span><span class="token punctuation">,</span> <span class="token string">'-c'</span><span class="token punctuation">,</span> <span class="token string">'echo $(date +%s): POST-START >> /loap/timing'</span><span class="token punctuation">]</span>
-<span class="token key atrule">preStop</span><span class="token punctuation">:</span>
-<span class="token key atrule">exec</span><span class="token punctuation">:</span>
-<span class="token key atrule">command</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'sh'</span><span class="token punctuation">,</span> <span class="token string">'-c'</span><span class="token punctuation">,</span> <span class="token string">'echo $(date +%s): PRE-STOP >> /loap/timing'</span><span class="token punctuation">]</span>
-<span class="token key atrule">volumes</span><span class="token punctuation">:</span>
-<span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> timing
-<span class="token key atrule">hostPath</span><span class="token punctuation">:</span>
-<span class="token key atrule">path</span><span class="token punctuation">:</span> /tmp/loap
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>创建pod测试：</p>
-<div class="language-powershell ext-powershell line-numbers-mode"><pre v-pre class="language-powershell"><code>$ kubectl create <span class="token operator">-</span>f demo-pod-<span class="token function">start</span><span class="token punctuation">.</span>yaml
+  <span class="token key atrule">initContainers</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> init
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> busybox
+    <span class="token key atrule">command</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'sh'</span><span class="token punctuation">,</span> <span class="token string">'-c'</span><span class="token punctuation">,</span> <span class="token string">'echo $(date +%s): INIT >> /load/timing'</span><span class="token punctuation">]</span>
+    <span class="token key atrule">volumeMounts</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> <span class="token key atrule">mountPath</span><span class="token punctuation">:</span> /load
+      <span class="token key atrule">name</span><span class="token punctuation">:</span> timing
+  <span class="token key atrule">containers</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> main
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> busybox
+    <span class="token key atrule">command</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'sh'</span><span class="token punctuation">,</span> <span class="token string">'-c'</span><span class="token punctuation">,</span> <span class="token string">'echo $(date +%s): START >> /load/timing;sleep 10; echo $(date +%s): END >> /loap/timing;'</span><span class="token punctuation">]</span>
+    <span class="token key atrule">volumeMounts</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> <span class="token key atrule">mountPath</span><span class="token punctuation">:</span> /load
+      <span class="token key atrule">name</span><span class="token punctuation">:</span> timing
+    <span class="token key atrule">livenessProbe</span><span class="token punctuation">:</span>
+      <span class="token key atrule">exec</span><span class="token punctuation">:</span>
+        <span class="token key atrule">command</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'sh'</span><span class="token punctuation">,</span> <span class="token string">'-c'</span><span class="token punctuation">,</span> <span class="token string">'echo $(date +%s): LIVENESS >> /load/timing'</span><span class="token punctuation">]</span>
+    <span class="token key atrule">readinessProbe</span><span class="token punctuation">:</span>
+      <span class="token key atrule">exec</span><span class="token punctuation">:</span>
+        <span class="token key atrule">command</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'sh'</span><span class="token punctuation">,</span> <span class="token string">'-c'</span><span class="token punctuation">,</span> <span class="token string">'echo $(date +%s): READINESS >> /load/timing'</span><span class="token punctuation">]</span>
+    <span class="token key atrule">lifecycle</span><span class="token punctuation">:</span>
+      <span class="token key atrule">postStart</span><span class="token punctuation">:</span>
+        <span class="token key atrule">exec</span><span class="token punctuation">:</span>
+          <span class="token key atrule">command</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'sh'</span><span class="token punctuation">,</span> <span class="token string">'-c'</span><span class="token punctuation">,</span> <span class="token string">'echo $(date +%s): POST-START >> /load/timing'</span><span class="token punctuation">]</span>
+      <span class="token key atrule">preStop</span><span class="token punctuation">:</span>
+        <span class="token key atrule">exec</span><span class="token punctuation">:</span>
+          <span class="token key atrule">command</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'sh'</span><span class="token punctuation">,</span> <span class="token string">'-c'</span><span class="token punctuation">,</span> <span class="token string">'echo $(date +%s): PRE-STOP >> /load/timing'</span><span class="token punctuation">]</span>
+  <span class="token key atrule">volumes</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> timing
+    <span class="token key atrule">hostPath</span><span class="token punctuation">:</span>
+      <span class="token key atrule">path</span><span class="token punctuation">:</span> /tmp/load
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>创建 Pod 测试</p>
+<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code>$ kubectl create <span class="token parameter variable">-f</span> demo-pod-start.yaml
 
-<span class="token comment">## 查看demo状态</span>
-$ kubectl <span class="token operator">-</span>n demo get po <span class="token operator">-</span>o wide <span class="token operator">-</span>w
+<span class="token comment"># 查看demo状态</span>
+$ kubectl <span class="token parameter variable">-n</span> uit get po <span class="token parameter variable">-o</span> wide <span class="token parameter variable">-w</span>
 
-<span class="token comment">## 查看调度节点的/tmp/loap/timing</span>
-$ <span class="token function">cat</span> <span class="token operator">/</span>tmp/loap/timing
-1585424708: INIT
-1585424746: <span class="token function">START</span>
-1585424746: POST-<span class="token function">START</span>
-1585424754: READINESS
-1585424756: LIVENESS
-1585424756: <span class="token keyword">END</span>
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><blockquote>
-<p>须主动杀掉 Pod 才会触发 <code v-pre>pre-stop hook</code>，如果是 Pod 自己 Down 掉，则不会执行 <code v-pre>pre-stop hook</code></p>
+<span class="token comment"># 查看调度节点 k8s-slave-172 的/tmp/loap/timing</span>
+$ <span class="token function">cat</span> /tmp/load/timing
+<span class="token number">1666057181</span>: INIT
+<span class="token number">1666057199</span>: START
+<span class="token number">1666057199</span>: POST-START
+<span class="token number">1666057202</span>: LIVENESS
+<span class="token number">1666057206</span>: READINESS
+<span class="token number">1666057227</span>: START
+<span class="token number">1666057227</span>: POST-START
+<span class="token number">1666057232</span>: LIVENESS
+<span class="token number">1666057236</span>: READINESS
+<span class="token number">1666057272</span>: START
+<span class="token punctuation">..</span>.
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><blockquote>
+<p>须主动杀掉 <strong>Pod</strong> 才会触发 <code v-pre>pre-stop hook</code>，如果是 <strong>Pod</strong> 自己 <strong>Down</strong> 掉，则不会执行 <code v-pre>pre-stop hook</code></p>
 </blockquote>
-<h5 id="pod控制器" tabindex="-1"><a class="header-anchor" href="#pod控制器" aria-hidden="true">#</a> Pod控制器</h5>
-<p>只使用Pod, 将会面临如下需求:</p>
+<div class="custom-container warning">
+<p class="custom-container-title">注意</p>
+<h5 id="只使用-pod-将会面临如下需求难以解决" tabindex="-1"><a class="header-anchor" href="#只使用-pod-将会面临如下需求难以解决" aria-hidden="true">#</a> <strong>只使用 Pod, 将会面临如下需求难以解决</strong></h5>
 <ol>
-<li>业务应用启动多个副本</li>
-<li>Pod重建后IP会变化，外部如何访问Pod服务</li>
-<li>运行业务Pod的某个节点挂了，可以自动帮我把Pod转移到集群中的可用节点启动起来</li>
-<li>我的业务应用功能是收集节点监控数据,需要把Pod运行在k8集群的各个节点上</li>
+<li>业务应用如何启动多个副本</li>
+<li><strong>Pod</strong> 重建后 <strong>IP</strong> 会变化，如何保证依然能通信</li>
+<li>外部如何访问 <strong>Pod</strong> 服务</li>
+<li>运行业务 <strong>Pod</strong> 的某个节点挂了，如何故障自动转移</li>
+<li>若需求是收集各节点监控数据，如何将 <strong>Pod</strong> 运行在 <strong>k8s</strong> 集群的各个节点上</li>
 </ol>
-<h6 id="workload-工作负载" tabindex="-1"><a class="header-anchor" href="#workload-工作负载" aria-hidden="true">#</a> Workload (工作负载)</h6>
-<p>控制器又称工作负载是用于实现管理pod的中间层，确保pod资源符合预期的状态，pod的资源出现故障时，会尝试 进行重启，当根据重启策略无效，则会重新新建pod的资源。</p>
+</div>
+<h4 id="pod控制器-workload-工作负载" tabindex="-1"><a class="header-anchor" href="#pod控制器-workload-工作负载" aria-hidden="true">#</a> <strong>Pod控制器</strong> - Workload (工作负载)</h4>
+<p>控制器又称工作负载，是 <strong>管理 Pod 的中间层</strong>，确保 <strong>Pod</strong> 资源符合预期的状态</p>
 <ul>
-<li>ReplicaSet: 代用户创建指定数量的pod副本数量，确保pod副本数量符合预期状态，并且支持滚动式自动扩容和缩容功能</li>
-<li>Deployment：工作在ReplicaSet之上，用于管理无状态应用，目前来说最好的控制器。支持滚动更新和回滚功能，还提供声明式配置</li>
-<li>DaemonSet：用于确保集群中的每一个节点只运行特定的pod副本，通常用于实现系统级后台任务。比如ELK服务</li>
-<li>Job：只要完成就立即退出，不需要重启或重建</li>
-<li>Cronjob：周期性任务控制，不需要持续后台运行</li>
-<li>StatefulSet：管理有状态应用</li>
+<li>资源出现故障时，会尝试 进行重启</li>
+<li>当根据重启策略无效，则会重新创建 <strong>Pod</strong> 资源</li>
+</ul>
+<p>简要预览如下控制器</p>
+<ul>
+<li>
+<p><strong>ReplicaSet：</strong> 代用户创建指定数量的 <strong>Pod 副本</strong> 数量，确保副本数量符合预期状态，并且 <strong>支持滚动式自动扩容和缩容功能</strong></p>
+</li>
+<li>
+<p><strong>Deployment：</strong> 工作在 <strong>ReplicaSet</strong> 之上，用于 <strong>管理无状态应用</strong>，目前来说 <strong>最好</strong> 的控制器，<strong>支持滚动更新和回滚</strong> 功能，还提供声明式配置</p>
+</li>
+<li>
+<p><strong>DaemonSet：<strong>用于确保集群中，每一个节点只运行特定的 <strong>Pod</strong> 副本（<em>通常也就一个</em>），通常用于</strong>实现系统级后台任务</strong>，比如<strong>ELK</strong> 日志服务、监控服务</p>
+</li>
+<li>
+<p><strong>Job：</strong> 只要完成就立即退出，不需要重启或重建</p>
+</li>
+<li>
+<p><strong>Cronjob：</strong> <strong>周期性任务</strong> 控制，不需要持续后台运行</p>
+</li>
+<li>
+<p><strong>StatefulSet：</strong> 管理 <strong>有状态应用</strong></p>
+</li>
 </ul>
 </div></template>
 
