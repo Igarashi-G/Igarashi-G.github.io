@@ -1,1 +1,14 @@
-export const data = JSON.parse("{\"key\":\"v-c18daba2\",\"path\":\"/tool/Kubernetes/k8%E6%8E%A7%E5%88%B6%E5%99%A8.html\",\"title\":\"Kubernets基础-控制器\",\"lang\":\"zh-CN\",\"frontmatter\":{\"title\":\"Kubernets基础-控制器\",\"date\":\"2022-10-03T00:00:00.000Z\",\"category\":[\"运维\",\"k8s\"],\"tag\":[\"k8s\"],\"star\":true,\"summary\":\"k8s 的控制器等\\n\",\"head\":[[\"meta\",{\"property\":\"og:url\",\"content\":\"https://igarashi-g.github.io/igarashi-blog/igarashi-blog/tool/Kubernetes/k8%E6%8E%A7%E5%88%B6%E5%99%A8.html\"}],[\"meta\",{\"property\":\"og:site_name\",\"content\":\"五十岚呐~\"}],[\"meta\",{\"property\":\"og:title\",\"content\":\"Kubernets基础-控制器\"}],[\"meta\",{\"property\":\"og:type\",\"content\":\"article\"}],[\"meta\",{\"property\":\"og:locale\",\"content\":\"zh-CN\"}],[\"meta\",{\"property\":\"article:tag\",\"content\":\"k8s\"}],[\"meta\",{\"property\":\"article:published_time\",\"content\":\"2022-10-03T00:00:00.000Z\"}]]},\"excerpt\":\"<p><strong>k8s</strong> 的控制器等</p>\\n\",\"headers\":[{\"level\":2,\"title\":\"1. 控制器\",\"slug\":\"_1-控制器\",\"link\":\"#_1-控制器\",\"children\":[{\"level\":3,\"title\":\"Deployment\",\"slug\":\"deployment\",\"link\":\"#deployment\",\"children\":[]}]}],\"git\":{\"createdTime\":null,\"updatedTime\":null,\"contributors\":[]},\"readingTime\":{\"minutes\":39.65,\"words\":11895},\"filePathRelative\":\"tool/Kubernetes/k8控制器.md\",\"localizedDate\":\"2022年10月3日\"}")
+export const data = JSON.parse("{\"key\":\"v-c18daba2\",\"path\":\"/tool/Kubernetes/k8%E6%8E%A7%E5%88%B6%E5%99%A8.html\",\"title\":\"Kubernets基础-控制器\",\"lang\":\"zh-CN\",\"frontmatter\":{\"title\":\"Kubernets基础-控制器\",\"date\":\"2022-10-03T00:00:00.000Z\",\"category\":[\"运维\",\"k8s\"],\"tag\":[\"k8s\"],\"star\":true,\"summary\":\"k8s 的控制器等\\n\",\"head\":[[\"meta\",{\"property\":\"og:url\",\"content\":\"https://igarashi-g.github.io/igarashi-blog/igarashi-blog/tool/Kubernetes/k8%E6%8E%A7%E5%88%B6%E5%99%A8.html\"}],[\"meta\",{\"property\":\"og:site_name\",\"content\":\"五十岚呐~\"}],[\"meta\",{\"property\":\"og:title\",\"content\":\"Kubernets基础-控制器\"}],[\"meta\",{\"property\":\"og:type\",\"content\":\"article\"}],[\"meta\",{\"property\":\"og:locale\",\"content\":\"zh-CN\"}],[\"meta\",{\"property\":\"article:tag\",\"content\":\"k8s\"}],[\"meta\",{\"property\":\"article:published_time\",\"content\":\"2022-10-03T00:00:00.000Z\"}]]},\"excerpt\":\"<p><strong>k8s</strong> 的控制器等</p>\\n\",\"headers\":[{\"level\":2,\"title\":\"1. 控制器\",\"slug\":\"_1-控制器\",\"link\":\"#_1-控制器\",\"children\":[{\"level\":3,\"title\":\"Deployment\",\"slug\":\"deployment\",\"link\":\"#deployment\",\"children\":[]}]}],\"readingTime\":{\"minutes\":39.65,\"words\":11895},\"filePathRelative\":\"tool/Kubernetes/k8控制器.md\",\"localizedDate\":\"2022年10月3日\"}")
+
+if (import.meta.webpackHot) {
+  import.meta.webpackHot.accept()
+  if (__VUE_HMR_RUNTIME__.updatePageData) {
+    __VUE_HMR_RUNTIME__.updatePageData(data)
+  }
+}
+
+if (import.meta.hot) {
+  import.meta.hot.accept(({ data }) => {
+    __VUE_HMR_RUNTIME__.updatePageData(data)
+  })
+}
