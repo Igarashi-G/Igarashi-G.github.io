@@ -927,38 +927,38 @@ $ cat /tmp/load/timing
 
 > 须主动杀掉 **Pod** 才会触发 `pre-stop hook`，如果是 **Pod** 自己 **Down** 掉，则不会执行 `pre-stop hook`
 
+### **3.8 Pod 驱逐策略（*简述*）**
 
+**k8s** 有个特色功能叫 **pod eviction**，它在某些场景下如：节点 **NotPodReady**、或者资源不足时，把 **Pod** 驱逐至其它节点，是出于业务保护的角度去考虑的
 
-::: warning 
+1. **Kube-controller-manager：** 周期性检查所有节点状态，当节点处于 **NotReady** 状态超过一段时间后，驱逐该节点上所有 **pod**，并停掉 **kubelet**
 
-##### **只使用 Pod, 将会面临如下需求难以解决** 
+   - **pod-eviction-timeout：（*controller-manager的一个参数*）** 当 **NotReady** 状态节点超过该时间后，执行驱逐，默认 **5 min**，仅适用于 **1.13** 版本之前
 
-1. 业务应用如何启动多个副本
-2. **Pod** 重建后 **IP** 会变化，如何保证依然能通信
-2. 外部如何访问 **Pod** 服务
-3. 运行业务 **Pod** 的某个节点挂了，如何故障自动转移
-4. 若需求是收集各节点监控数据，如何将 **Pod** 运行在 **k8s** 集群的各个节点上
+     - **1.13** 版本后，集群开启 `TaintBasedEvictions` 与 `TaintNodesByCondition` 功能，若节点失联等异常，**k8s** 会自动为该节点打上 **污点** ，同时为 **Pod** 默认添加如下容忍设置
 
-:::
+       ```yaml
+       tolerations:
+       - effect: NoExecute
+         key: node.kubernetes.io/not-ready
+         operator: Exists
+         tolerationSeconds: 300
+       - effect: NoExecute
+         key: node.kubernetes.io/unreachable
+         operator: Exists
+         tolerationSeconds: 300
+       ```
 
-#### **Pod控制器** - Workload (工作负载)
+       各 **Pod** 可以独立设置驱逐容忍时间
 
-控制器又称工作负载，是 **管理 Pod 的中间层**，确保 **Pod** 资源符合预期的状态
+2. **Kubelet：** 周期性检查本节点资源，当资源不足时，按照优先级驱逐部分 **Pod**
 
-- 资源出现故障时，会尝试 进行重启
-- 当根据重启策略无效，则会重新创建 **Pod** 资源
+   - **memory.available：** 节点可用内存
 
-简要预览如下控制器
+   - **nodefs.available：** 节点根盘可用存储空间
 
-- **ReplicaSet：** 代用户创建指定数量的 **Pod 副本** 数量，确保副本数量符合预期状态，并且 **支持滚动式自动扩容和缩容功能**
+   - **nodefs.inodesFree：** 节点 **inodes** 可用数量
 
-- **Deployment：** 工作在 **ReplicaSet** 之上，用于 **管理无状态应用**，目前来说 **最好** 的控制器，**支持滚动更新和回滚** 功能，还提供声明式配置
+   - **imagefs.available：** 镜像存储盘的可用空间
 
-- **DaemonSet：**用于确保集群中，每一个节点只运行特定的 **Pod** 副本（*通常也就一个*），通常用于**实现系统级后台任务**，比如**ELK** 日志服务、监控服务
-
-- **Job：** 只要完成就立即退出，不需要重启或重建
-
-- **Cronjob：** **周期性任务** 控制，不需要持续后台运行
-
-- **StatefulSet：** 管理 **有状态应用**
-
+   - **imagefs.inodesFree：** 镜像存储盘的 **inodes** 可用数量

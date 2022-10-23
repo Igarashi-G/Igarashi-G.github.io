@@ -1,55 +1,13 @@
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: v1
+kind: Service
 metadata:
-  name: ublog
+  name: svc-np-ublog
   namespace: uit
 spec:
-  replicas: 1 
-  selector:  
-    matchLabels:
-      app: myblog
-  template:
-    metadata:
-      labels:  
-        app: myblog
-    spec:
-      containers:
-      - name: myblog
-        image: 192.168.3.171:5000/myblog:v1
-        imagePullPolicy: IfNotPresent
-        ports:
-        - containerPort: 8002
-        env:
-        - name: MYSQL_HOST
-          valueFrom:						# 同上 映射配置 configmap.txt 指定的环境变量
-            configMapKeyRef:
-              name: ublog
-              key: MYSQL_HOST
-        - name: MYSQL_PASSWD
-          valueFrom:
-            secretKeyRef:
-              name: ublog
-              key: MYSQL_PASSWD
-        resources:
-          requests:
-            memory: 100Mi
-            cpu: 50m
-          limits:
-            memory: 500Mi
-            cpu: 100m
-        livenessProbe:
-          httpGet:
-            path: /blog/index/
-            port: 8002
-            scheme: HTTP
-          initialDelaySeconds: 10 # 容器启动后第一次执行探测是需要等待多少秒
-          periodSeconds: 15 # 执行探测的频率
-          timeoutSeconds: 2 # 探测超时时间
-        readinessProbe:
-          httpGet:
-            path: /blog/index/
-            port: 8002
-            scheme: HTTP
-          initialDelaySeconds: 10
-          timeoutSeconds: 2
-          periodSeconds: 15
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 8002
+  selector:
+    app: myblog
+  type: NodePort

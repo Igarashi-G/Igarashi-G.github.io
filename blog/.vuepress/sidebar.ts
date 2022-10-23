@@ -328,7 +328,7 @@ export default sidebar({
       icon: "kubernetes",
       prefix: "/tool/Kubernetes/",
       link: "/tool/Kubernetes/",
-      children: ["k8s安装", "k8s资源Pod", "k8s控制器",]
+      children: ["k8s安装", "k8s资源Pod", "k8s工作负载", "k8s进阶"]
     }
   ],
   "/tool/Nginx": [

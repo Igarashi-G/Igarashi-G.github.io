@@ -915,44 +915,53 @@ $ <span class="token function">cat</span> /tmp/load/timing
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><blockquote>
 <p>须主动杀掉 <strong>Pod</strong> 才会触发 <code v-pre>pre-stop hook</code>，如果是 <strong>Pod</strong> 自己 <strong>Down</strong> 掉，则不会执行 <code v-pre>pre-stop hook</code></p>
 </blockquote>
-<div class="custom-container warning">
-<p class="custom-container-title">注意</p>
-<h5 id="只使用-pod-将会面临如下需求难以解决" tabindex="-1"><a class="header-anchor" href="#只使用-pod-将会面临如下需求难以解决" aria-hidden="true">#</a> <strong>只使用 Pod, 将会面临如下需求难以解决</strong></h5>
+<h3 id="_3-8-pod-驱逐策略-简述" tabindex="-1"><a class="header-anchor" href="#_3-8-pod-驱逐策略-简述" aria-hidden="true">#</a> <strong>3.8 Pod 驱逐策略（<em>简述</em>）</strong></h3>
+<p><strong>k8s</strong> 有个特色功能叫 <strong>pod eviction</strong>，它在某些场景下如：节点 <strong>NotPodReady</strong>、或者资源不足时，把 <strong>Pod</strong> 驱逐至其它节点，是出于业务保护的角度去考虑的</p>
 <ol>
-<li>业务应用如何启动多个副本</li>
-<li><strong>Pod</strong> 重建后 <strong>IP</strong> 会变化，如何保证依然能通信</li>
-<li>外部如何访问 <strong>Pod</strong> 服务</li>
-<li>运行业务 <strong>Pod</strong> 的某个节点挂了，如何故障自动转移</li>
-<li>若需求是收集各节点监控数据，如何将 <strong>Pod</strong> 运行在 <strong>k8s</strong> 集群的各个节点上</li>
+<li>
+<p><strong>Kube-controller-manager：</strong> 周期性检查所有节点状态，当节点处于 <strong>NotReady</strong> 状态超过一段时间后，驱逐该节点上所有 <strong>pod</strong>，并停掉 <strong>kubelet</strong></p>
+<ul>
+<li>
+<p><strong>pod-eviction-timeout：（<em>controller-manager的一个参数</em>）</strong> 当 <strong>NotReady</strong> 状态节点超过该时间后，执行驱逐，默认 <strong>5 min</strong>，仅适用于 <strong>1.13</strong> 版本之前</p>
+<ul>
+<li>
+<p><strong>1.13</strong> 版本后，集群开启 <code v-pre>TaintBasedEvictions</code> 与 <code v-pre>TaintNodesByCondition</code> 功能，若节点失联等异常，<strong>k8s</strong> 会自动为该节点打上 <strong>污点</strong> ，同时为 <strong>Pod</strong> 默认添加如下容忍设置</p>
+<div class="language-yaml ext-yml line-numbers-mode"><pre v-pre class="language-yaml"><code><span class="token key atrule">tolerations</span><span class="token punctuation">:</span>
+<span class="token punctuation">-</span> <span class="token key atrule">effect</span><span class="token punctuation">:</span> NoExecute
+  <span class="token key atrule">key</span><span class="token punctuation">:</span> node.kubernetes.io/not<span class="token punctuation">-</span>ready
+  <span class="token key atrule">operator</span><span class="token punctuation">:</span> Exists
+  <span class="token key atrule">tolerationSeconds</span><span class="token punctuation">:</span> <span class="token number">300</span>
+<span class="token punctuation">-</span> <span class="token key atrule">effect</span><span class="token punctuation">:</span> NoExecute
+  <span class="token key atrule">key</span><span class="token punctuation">:</span> node.kubernetes.io/unreachable
+  <span class="token key atrule">operator</span><span class="token punctuation">:</span> Exists
+  <span class="token key atrule">tolerationSeconds</span><span class="token punctuation">:</span> <span class="token number">300</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>各 <strong>Pod</strong> 可以独立设置驱逐容忍时间</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Kubelet：</strong> 周期性检查本节点资源，当资源不足时，按照优先级驱逐部分 <strong>Pod</strong></p>
+<ul>
+<li>
+<p><strong>memory.available：</strong> 节点可用内存</p>
+</li>
+<li>
+<p><strong>nodefs.available：</strong> 节点根盘可用存储空间</p>
+</li>
+<li>
+<p><strong>nodefs.inodesFree：</strong> 节点 <strong>inodes</strong> 可用数量</p>
+</li>
+<li>
+<p><strong>imagefs.available：</strong> 镜像存储盘的可用空间</p>
+</li>
+<li>
+<p><strong>imagefs.inodesFree：</strong> 镜像存储盘的 <strong>inodes</strong> 可用数量</p>
+</li>
+</ul>
+</li>
 </ol>
-</div>
-<h4 id="pod控制器-workload-工作负载" tabindex="-1"><a class="header-anchor" href="#pod控制器-workload-工作负载" aria-hidden="true">#</a> <strong>Pod控制器</strong> - Workload (工作负载)</h4>
-<p>控制器又称工作负载，是 <strong>管理 Pod 的中间层</strong>，确保 <strong>Pod</strong> 资源符合预期的状态</p>
-<ul>
-<li>资源出现故障时，会尝试 进行重启</li>
-<li>当根据重启策略无效，则会重新创建 <strong>Pod</strong> 资源</li>
-</ul>
-<p>简要预览如下控制器</p>
-<ul>
-<li>
-<p><strong>ReplicaSet：</strong> 代用户创建指定数量的 <strong>Pod 副本</strong> 数量，确保副本数量符合预期状态，并且 <strong>支持滚动式自动扩容和缩容功能</strong></p>
-</li>
-<li>
-<p><strong>Deployment：</strong> 工作在 <strong>ReplicaSet</strong> 之上，用于 <strong>管理无状态应用</strong>，目前来说 <strong>最好</strong> 的控制器，<strong>支持滚动更新和回滚</strong> 功能，还提供声明式配置</p>
-</li>
-<li>
-<p><strong>DaemonSet：<strong>用于确保集群中，每一个节点只运行特定的 <strong>Pod</strong> 副本（<em>通常也就一个</em>），通常用于</strong>实现系统级后台任务</strong>，比如<strong>ELK</strong> 日志服务、监控服务</p>
-</li>
-<li>
-<p><strong>Job：</strong> 只要完成就立即退出，不需要重启或重建</p>
-</li>
-<li>
-<p><strong>Cronjob：</strong> <strong>周期性任务</strong> 控制，不需要持续后台运行</p>
-</li>
-<li>
-<p><strong>StatefulSet：</strong> 管理 <strong>有状态应用</strong></p>
-</li>
-</ul>
 </div></template>
 
 
