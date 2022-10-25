@@ -9,7 +9,7 @@ tag:
   - igarashi
 ---
 
-<img src='https://qpluspicture.oss-cn-beijing.aliyuncs.com/6LjjQA/Hi.gif' alt='Hi' width="24"/>Hi呀~ , 我是 **五十岚 · 寄**<br/>一个干啥啥不行，吃啥啥不够的 **Python** 混子<img src="https://media.giphy.com/media/WUlplcMpOCEmTGBtBW/giphy.gif" width="30">;<br/>没事也整整前端: [`Vue`, `React`];<br/>正在努力学 **Go** 中...<br/>热爱开源与分享😄(**Copy**代码一把梭...误 <img src="https://media.giphy.com/media/mGcNjsfWAjY5AEZNw6/giphy.gif" width="50">
+**Hi~** <img src='https://qpluspicture.oss-cn-beijing.aliyuncs.com/6LjjQA/Hi.gif' alt='Hi' width="24"/>, **五十岚 ▪ 寄**<br/>干啥啥不行，吃啥啥不够的 **Python** 混子<img src="https://media.giphy.com/media/WUlplcMpOCEmTGBtBW/giphy.gif" width="30">;<br/>没事整整前端 **Vue, React** <br/>干劲满满地学 **Go** 中...<img src="https://media.giphy.com/media/mGcNjsfWAjY5AEZNw6/giphy.gif" width="50"><br/>热爱沟通与交流😄
 
 <!--
 - 🔭 I’m currently working on ...
@@ -21,7 +21,7 @@ tag:
 - 😄 Pronouns: ...
 - ⚡ Fun fact: ...
 -->
-### 语言
+### Language
 
 <a href="https://www.python.org/">
   <img src="https://www.deadly-exception.icu:7779/img/python.png" alt="Python" height="50"/>
@@ -30,7 +30,7 @@ tag:
   <img src="https://www.deadly-exception.icu:7779/img/js.png" alt="JS" height="50"/>
 </a>
 
-### 框架
+### Framework
 <a href="https://fastapi.tiangolo.com/">
   <img src="https://www.deadly-exception.icu:7779/img/fastapi.png" alt="FastApi" height="50"/>
 </a>
@@ -52,11 +52,8 @@ tag:
 <a href="https://facebook.github.io/react/">
   <img src="https://www.deadly-exception.icu:7779/img/react.png" alt="React" height="50"/>
 </a>
-<a href="https://umijs.org/">
-  <img src="https://www.deadly-exception.icu:7779/img/umi.png" alt="umijs" height="50"/>
-</a>
 
-### My profile：
+### My profile
 
 <a href="https://github.com/Igarashi-G">
   <img height="156em" src="https://bad-apple-github-readme.vercel.app/api?show_bg=1&username=Igarashi-G&show_icons=true" alt="Igarashi's GitHub Stats" />

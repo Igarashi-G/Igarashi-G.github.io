@@ -12,13 +12,13 @@ bgImageStyle: {
   "height": "400px"
 }
 heroImage: header.png
-heroText: 五十岚的博客
+heroText: 五十岚の博客
 heroFullScreen: false
 heroImageStyle: {
   "margin-top": "0px",
   "margin-bottom": "76px",
 }
-tagline: 吃的多、睡得香、寄迪快、摆滴溜~
+tagline: 吃的多、睡得香、寄的快、摆滴溜~
 projects:
   - icon: project
     name: UFS
@@ -26,33 +26,33 @@ projects:
     link: https://www.deadly-exception.icu:31443
 
   - icon: link
-    name: PVE链接
-    desc: 自个儿滴虚拟化平台
+    name: PVE
+    desc: 生产力工具
     link: https://www.deadly-exception.icu:8006/
 
   - icon: book
-    name: 好多书
-    desc: 好康的书诶~
+    name: 书籍
+    desc: 一些经典旧书...
     link: book/
 
-  - icon: friend
-    name: 小兴趣
-    desc: 一些小兴趣呀
-    link: paint/
+  # - icon: friend
+  #   name: 小兴趣
+  #   desc: 一些小兴趣呀
+  #   link: paint/
 
-  - icon: article
-    name: 老版本
-    desc: dumi搭的文档，真弟拉胯
-    link: http://www.deadly-exception.icu:8888/
+  # - icon: article
+  #   name: 老版本
+  #   desc: dumi搭的文档，真弟拉胯
+  #   link: http://www.deadly-exception.icu:8888/
 
-  - icon: discover
-    name: 播放器
-    desc: 第三方开源播放器
-    link: https://netease-music.fe-mm.com/#/music/playlist
+  # - icon: discover
+  #   name: 播放器
+  #   desc: 第三方开源播放器
+  #   link: https://netease-music.fe-mm.com/#/music/playlist
 
   - icon: /arknights_logo.png
     name: 五十岚
-    desc: 关于五十岚
+    desc: 关于五十岚~
     link: intro
 
 footer: MIT Licensed | Copyright © 2021-present Igarashi

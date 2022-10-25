@@ -61,7 +61,7 @@ docker logs -f + container_id
   - **Service Controller** 
   - **Endpoints Controller** 
 
-- **kubelet：** 节点代理，运行再每个节点上，管节点同时汇报情况给 **Master** 管理节点
+- **kubelet：** 节点代理，运行在每个节点上，管节点同时汇报情况给 **Master** 管理节点
   - **pod管理：**  容器的抽象，最小资源调度单位，管容器的，被 **kubelet** 管的
   - **容器健康检查：** 检查容器是否正常运行，若运行出错，按照 **pod** 设置的重启策略处理
   - **容器监控：** 监控容器所在节点资源的使用情况，定时向 **Master** 报告，资源使用数据通过 **cAdvisor** 获取的，对于 **pod** 调度和正常运行至关重要
@@ -243,9 +243,7 @@ $ docker ps -a |grep blog
 
 包含了上文编写的 **mysql** 和 **myblog** 两个，但额外多出个 **pause** 状态的容器
 
-::: info
-
-为了实现 **Pod** 内部容器，能通过 **localhost** 通信:
+::: info 为了实现 Pod 内部容器，能通过 localhost 通信:
 
 - 每个 **Pod** 都会启动 **Infra** 容器
 - **Pod** 内部的网络空间会共享 **Infra** 容器的网络空间（*类比 **Docker** 网络的 **container** 模式* ）
@@ -335,7 +333,7 @@ $ docker rm -f <container>
 
 ```shell
 # 查看 Pod 的 明细信息 及 事件
-$ kubectl -n demo describe pod ublog
+$ kubectl -n uit describe pod ublog
 
 # 进入 Pod 内的 容器
 $ kubectl -n <namespace> exec <pod_name> -c <container_name> -ti /bin/sh
@@ -388,11 +386,11 @@ metadata:
   labels:
     component: zzblog
 spec:
-  volumes:								# 上文都是定义 宿主机 的挂载，与 containers 同级
+  volumes:								# 宿主机 的挂载，与 containers 同级
     - name: mysql-data
       hostPath:
         path: /opt/mysql/data			# 宿主机 的挂载点
-  nodeSelector: 						# 使用 节点选择器，将 Pod 调度到上文指定了 label 的节点
+  nodeSelector: 						# 使用 节点选择器，将 Pod 调度到指定 label 的节点
     component: zz
   containers:										
   - name: myblog
@@ -428,9 +426,9 @@ ls /opt/mysql/data/
 .... `发现会多出一堆 pod 上 mysql 的文件`
 ```
 
-::: warning
+::: warning 局限性
 
-**如上方式的局限性：** 只能 **固定在单个节点** 上持久化，若该节点挂了，此时存储的数据也随之而挂
+只能 **固定在单个节点** 上持久化，若该节点挂了，此时存储的数据也随之而挂
 
 因此，可使用 **PV + PVC** 的方式 **对接分布式存储**来解决
 
@@ -440,7 +438,7 @@ ls /opt/mysql/data/
 
 ### 3.4 **服务健康检查**
 
-检测容器服务是否健康的手段，若不健康，会根据设置的重启策略（*restartPolicy*）进行操作，两种检测机制可以分别单独设置，若不设置，默认**Pod** 一直健康
+检测容器服务是否健康的手段，若不健康，会根据设置的 **重启策略**（*restartPolicy*）进行操作，两种检测机制可以分别单独设置，若不设置，默认**Pod** 一直健康
 
 ```yaml
 ...
@@ -482,7 +480,7 @@ ls /opt/mysql/data/
 
 ::: note 举例
 
-按上文配置，意思为 **Pod 的容器** 启动 **5s（*initialDelaySeconds*）** 后，用 **HTTP** 访问 **8002** 端口的 **/blog/index/** 路由，若 **超过2s** 或者返回码不在 **200~399** 内，连续 **failureThreshold** 次，则健康检查失败
+按上文配置，**Pod 的容器** 启动 **5s（*initialDelaySeconds*）** 后，用 **HTTP** 访问 **8002** 端口的 **/blog/index/** 路由，若 **超过2s** 或 返回码不在 **200~399** 内，连续 **failureThreshold** 次，则健康检查失败
 
 :::
 
@@ -610,7 +608,7 @@ docker run -it --cpu-period=50000 --cpu-quota=25000 ubuntu:20.04 /bin/bash
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: myblog
+  name: ublog
   namespace: uit
 data:
   MYSQL_HOST: "192.168.3.172"	# 下文会通过 label 将调度指定 k8s-slave-172 节点
@@ -638,7 +636,7 @@ $ kubectl -n uit create configmap ublog --from-env-file=configmap.txt
 
 常用来管理 **敏感类** 的信息，默认会 **base64** 编码存储，有三种类型
 
-- **Service Account ：** 用来访问 **k8s API**，自动创建，且会自动挂载到 **Pod** 上的 `/run/secrets/kubernetes.io/serviceaccount` 目录，之后 **Pod**中指定 **serviceAccount** 自动创建对应的 **secret**
+- **Service Account ：** 用来访问 **k8s API**，自动创建，且会自动挂载到 **Pod** 上的 `/run/secrets/kubernetes.io/serviceaccount` 目录，之后 **Pod** 指定 **serviceAccount** 自动创建对应的 **secret**
 - **Opaque ：** 是 **base64** 编码格式的 **Secret**，用来 **存储密码、密钥** 等
 - **kubernetes.io/dockerconfigjson ：** 用来存储私有 **docker registry** 的认证信息
 
@@ -793,7 +791,7 @@ $ curl 10.244.2.18:8002/blog/index/
 
 **补充：** `/etc/kubernetes/manifests` 目录下存放  **静态Pod**，即凡是放在这个目录下的 **yaml** 文件，**k8s** 会自动创建，无需执行 `kubectl create -f` ，且删除也会自动拉起，目录下的 **yaml** 可用于编写参考（*同时有这种目录的，一定是 **kubeadm** 搭建起来的集群*）
 
-::: tip 注意
+::: warning 注意
 
 - 部署不同的环境时，**Pod** 的 **yaml** 无须再变化，只在每套环境中维护一套 **ConfigMap** 和 **Secret** 即可
 

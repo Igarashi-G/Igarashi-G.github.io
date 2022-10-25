@@ -854,6 +854,59 @@ $ curl 192.168.3.173:32333/blog/index/
 ### 2.4 Service 实现原理
 
 ```shell
+# 查看 32333 端口的监听，看到如下 kube-proxy 在监听
+$ netstat -ntpl |grep 32333
+tcp6       0      0 :::32333                :::*                    LISTEN      28426/kube-proxy  
+```
+
+#### kube-proxy
+
+[官方文档](https://kubernetes.io/docs/concepts/services-networking/service/#virtual-ips-and-service-proxies)
+
+**运行在每个节点上**，监听 **API Server** 中服务对象的变化，再通过创建流量路由规则来实现网络的转发，有如下模式
+
+- ~~**User space**, 让 Kube-Proxy 在用户空间监听一个端口，所有的 Service 都转发到这个端口，然后 Kube-Proxy 在内部应用层对其进行转发 ， 所有报文都走一遍用户态，性能不高，k8s v1.2版本后废弃~~。
+- **Iptables**， 当前默认模式，**完全由 IPtables 来实现**， 通过各个节点上的 **iptables** 规则来实现 **service** 的负载均衡，但是随着 **service** 数量的增大，**iptables** 模式由于线性查找匹配、全量更新等特点，其性能会显著下降
+- **IPVS**， 与 **iptables** 同样基于 **Netfilter（*iptable内核态的一种实现*）**，采用 **hash** 表，因此当 **service** 数量达到一定规模时，**hash** 查表速度快，从而提高 **service** 的服务性能
+  - **k8s 1.8** 版本开始引入，**1.11** 版本开始稳定，需要开启宿主机的 **ipvs** 模块
+
+
+```shell {9-10,}
+# 查看 svc-np-ublog 的 iptables
+$ iptables-save  |grep svc-np-ublog
+-A KUBE-NODEPORTS -p tcp -m comment --comment "uit/svc-np-ublog:" -m tcp --dport 32333 -j KUBE-MARK-MASQ
+-A KUBE-NODEPORTS -p tcp -m comment --comment "uit/svc-np-ublog:" -m tcp --dport 32333 -j KUBE-SVC-FQQJWIJEBH5A6SF6
+-A KUBE-SERVICES ! -s 10.244.0.0/16 -d 10.107.82.31/32 -p tcp -m comment --comment "uit/svc-np-ublog: cluster IP" -m tcp --dport 80 -j KUBE-MARK-MASQ
+-A KUBE-SERVICES -d 10.107.82.31/32 -p tcp -m comment --comment "uit/svc-np-ublog: cluster IP" -m tcp --dport 80 -j KUBE-SVC-FQQJWIJEBH5A6SF6
+`将IP 10.107.82.31 转发到 80端口，转向 KUBE-SVC-FQQJWIJEBH5A6SF6 这个链`
+
+# 继续抓链
+$ iptables-save|grep KUBE-SVC-FQQJWIJEBH5A6SF6
+:KUBE-SVC-FQQJWIJEBH5A6SF6 - [0:0]
+...
+-A KUBE-SVC-FQQJWIJEBH5A6SF6 -m statistic --mode random --probability 0.50000000000 -j KUBE-SEP-U4JA5WF5RRIRERN5
+-A KUBE-SVC-FQQJWIJEBH5A6SF6 -j KUBE-SEP-ME7MACTOWWVFKRBM
+`静态 模式 随机 50%的可能性 打到 KUBE-SEP-U4JA5WF5RRIRERN5 链上`
+
+# 进一步抓取 KUBE-SEP-U4JA5WF5RRIRERN5
+$ iptables-save|grep KUBE-SEP-U4JA5WF5RRIRERN5
+:KUBE-SEP-U4JA5WF5RRIRERN5 - [0:0]
+-A KUBE-SEP-U4JA5WF5RRIRERN5 -s 10.244.1.35/32 -j KUBE-MARK-MASQ
+-A KUBE-SEP-U4JA5WF5RRIRERN5 -p tcp -m tcp -j DNAT --to-destination 10.244.1.35:8002
+-A KUBE-SVC-FQQJWIJEBH5A6SF6 -m statistic --mode random --probability 0.50000000000 -j KUBE-SEP-U4JA5WF5RRIRERN5
+`此时 DNAT 到了具体的 Pod IP 10.244.1.35:8002 上`
+
+# KUBE-SEP-ME7MACTOWWVFKRBM 也是如此
+iptables-save|grep KUBE-SEP-ME7MACTOWWVFKRBM
+:KUBE-SEP-ME7MACTOWWVFKRBM - [0:0]
+-A KUBE-SEP-ME7MACTOWWVFKRBM -s 10.244.2.32/32 -j KUBE-MARK-MASQ
+-A KUBE-SEP-ME7MACTOWWVFKRBM -p tcp -m tcp -j DNAT --to-destination 10.244.2.32:8002
+-A KUBE-SVC-FQQJWIJEBH5A6SF6 -j KUBE-SEP-ME7MACTOWWVFKRBM
+```
+
+此时发现是按照 **Pod** ，进行流量分配，若要 **灰度发布**，做 **流量分配 / 治理**，此时仍无法实现，需要 **istio**
+
+```shell
 #重建pod
 $ kubectl -n demo delete po mysql-7f747644b8-6npzn
 
@@ -890,34 +943,6 @@ service_name.namespace_name
 $ kubectl get svc
 NAME TYPE CLUSTER-IP EXTERNAL-IP PORT(S) AGE
 kubernetes ClusterIP 10.96.0.1 <none> 443/TCP 26h
-```
-
-#### kube-proxy
-
-[官方文档](https://kubernetes.io/docs/concepts/services-networking/service/#virtual-ips-and-service-proxies)
-
-运行在每个节点上，监听 **API Server** 中服务对象的变化，再通过创建流量路由规则来实现网络的转发，有 两（*三*）种模式
-
-- ~~User space, 让 Kube-Proxy 在用户空间监听一个端口，所有的 Service 都转发到这个端口，然后 Kube-Proxy 在内部应用层对其进行转发 ， 所有报文都走一遍用户态，性能不高，k8s v1.2版本后废弃~~。
-- Iptables， 当前默认模式，完全由 IPtables 来实现， 通过各个node节点上的iptables规则来实现service的负载均衡，但是随着service数量的增大，iptables模式由于线性查找匹配、全量更新等特点，其性能会显著下降。
-- IPVS， 与iptables同样基于Netfilter，但是采用的hash表，因此当service数量达到一定规模时，hash查表的速度优势就会显现出来，从而提高service的服务性能。 k8s 1.8版本开始引入，1.11版本开始稳定，需要开启宿主机的ipvs模块。
-
-IPtables模式示意图：
-
-```shell
-$ iptables-save |grep -v myblog-np|grep "demo/myblog"
--A KUBE-SERVICES ! -s 10.244.0.0/16 -d 10.99.174.93/32 -p tcp -m comment --comment "demo/myblog: cluster IP" -m tcp --dport 80 -j KUBE-MARK-MASQ
--A KUBE-SERVICES -d 10.99.174.93/32 -p tcp -m comment --comment "demo/myblog: cluster IP" -m tcp --dport 80 -j KUBE-SVC-WQNGJ7YFZKCTKPZK
-
-$ iptables-save |grep KUBE-SVC-WQNGJ7YFZKCTKPZK
--A KUBE-SVC-WQNGJ7YFZKCTKPZK -m statistic --mode random --probability 0.50000000000 -j KUBE-SEP-GB5GNOM5CZH7ICXZ
--A KUBE-SVC-WQNGJ7YFZKCTKPZK -j KUBE-SEP-7GWC3FN2JI5KLE47
-
-$ iptables-save |grep KUBE-SEP-GB5GNOM5CZH7ICXZ
--A KUBE-SEP-GB5GNOM5CZH7ICXZ -p tcp -m tcp -j DNAT --to-destination 10.244.1.158:8002
-
-$ iptables-save |grep KUBE-SEP-7GWC3FN2JI5KLE47
--A KUBE-SEP-7GWC3FN2JI5KLE47 -p tcp -m tcp -j DNAT --to-destination 10.244.1.159:8002
 ```
 
 ## 3. Ingress（*流量路由* ）

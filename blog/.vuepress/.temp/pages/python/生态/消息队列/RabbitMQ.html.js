@@ -1,14 +1,1 @@
-export const data = JSON.parse("{\"key\":\"v-2bff1c82\",\"path\":\"/python/%E7%94%9F%E6%80%81/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/RabbitMQ.html\",\"title\":\"RabbitMQ\",\"lang\":\"zh-CN\",\"frontmatter\":{\"title\":\"RabbitMQ\",\"order\":1,\"group\":{\"title\":\"消息队列\",\"order\":33},\"summary\":\"RabbitMQ 队列：（重要组件） 消息队列，非常 nb。通用很多种语言，不同语言之间，不同机器上实现队列。--消息中间件（开发语言是 erlang 爱立信开发，改代码局部生效，热插拔） 线程 q 实现了同一个进程之间的不同线程的交互（两个进程之间的线程 q 不能互相通信） 进程 Q 实现了不同进程之间的数据交互。 异步-实现大并发（专业级别的，甩py几十\",\"head\":[[\"meta\",{\"property\":\"og:url\",\"content\":\"https://igarashi-g.github.io/igarashi-blog/igarashi-blog/python/%E7%94%9F%E6%80%81/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/RabbitMQ.html\"}],[\"meta\",{\"property\":\"og:site_name\",\"content\":\"五十岚呐~\"}],[\"meta\",{\"property\":\"og:title\",\"content\":\"RabbitMQ\"}],[\"meta\",{\"property\":\"og:type\",\"content\":\"article\"}],[\"meta\",{\"property\":\"og:locale\",\"content\":\"zh-CN\"}]]},\"excerpt\":\"\",\"headers\":[],\"readingTime\":{\"minutes\":11.42,\"words\":3426},\"filePathRelative\":\"python/生态/消息队列/RabbitMQ.md\"}")
-
-if (import.meta.webpackHot) {
-  import.meta.webpackHot.accept()
-  if (__VUE_HMR_RUNTIME__.updatePageData) {
-    __VUE_HMR_RUNTIME__.updatePageData(data)
-  }
-}
-
-if (import.meta.hot) {
-  import.meta.hot.accept(({ data }) => {
-    __VUE_HMR_RUNTIME__.updatePageData(data)
-  })
-}
+export const data = JSON.parse("{\"key\":\"v-2bff1c82\",\"path\":\"/python/%E7%94%9F%E6%80%81/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/RabbitMQ.html\",\"title\":\"RabbitMQ\",\"lang\":\"zh-CN\",\"frontmatter\":{\"title\":\"RabbitMQ\",\"order\":1,\"group\":{\"title\":\"消息队列\",\"order\":33},\"summary\":\"RabbitMQ 队列：（重要组件） 消息队列，非常 nb。通用很多种语言，不同语言之间，不同机器上实现队列。--消息中间件（开发语言是 erlang 爱立信开发，改代码局部生效，热插拔） 线程 q 实现了同一个进程之间的不同线程的交互（两个进程之间的线程 q 不能互相通信） 进程 Q 实现了不同进程之间的数据交互。 异步-实现大并发（专业级别的，甩py几十\",\"head\":[[\"meta\",{\"property\":\"og:url\",\"content\":\"https://igarashi-g.github.io/igarashi-blog/igarashi-blog/python/%E7%94%9F%E6%80%81/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/RabbitMQ.html\"}],[\"meta\",{\"property\":\"og:site_name\",\"content\":\"五十岚 ▪ 寄\"}],[\"meta\",{\"property\":\"og:title\",\"content\":\"RabbitMQ\"}],[\"meta\",{\"property\":\"og:type\",\"content\":\"article\"}],[\"meta\",{\"property\":\"og:updated_time\",\"content\":\"2022-10-12T14:58:07.000Z\"}],[\"meta\",{\"property\":\"og:locale\",\"content\":\"zh-CN\"}],[\"meta\",{\"property\":\"article:modified_time\",\"content\":\"2022-10-12T14:58:07.000Z\"}]]},\"excerpt\":\"\",\"headers\":[],\"git\":{\"createdTime\":1665586687000,\"updatedTime\":1665586687000,\"contributors\":[{\"name\":\"Igarashi\",\"email\":\"2545369032@qq.com\",\"commits\":1}]},\"readingTime\":{\"minutes\":11.42,\"words\":3426},\"filePathRelative\":\"python/生态/消息队列/RabbitMQ.md\",\"localizedDate\":\"2022年10月12日\"}")

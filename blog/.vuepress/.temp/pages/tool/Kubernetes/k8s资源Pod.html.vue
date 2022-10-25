@@ -40,7 +40,7 @@
 </ul>
 </li>
 <li>
-<p><strong>kubelet：</strong> 节点代理，运行再每个节点上，管节点同时汇报情况给 <strong>Master</strong> 管理节点</p>
+<p><strong>kubelet：</strong> 节点代理，运行在每个节点上，管节点同时汇报情况给 <strong>Master</strong> 管理节点</p>
 <ul>
 <li><strong>pod管理：</strong>  容器的抽象，最小资源调度单位，管容器的，被 <strong>kubelet</strong> 管的</li>
 <li><strong>容器健康检查：</strong> 检查容器是否正常运行，若运行出错，按照 <strong>pod</strong> 设置的重启策略处理</li>
@@ -268,8 +268,7 @@ $ kubectl explain Pod.apiVersion
 29feb4ab89be   registry.aliyuncs.com/google_containers/pause:3.1   <span class="token string">"/pause"</span>                 About an hour ago   Up About an hour                    k8s_POD_ublog_uit_2905ba41-b03a-4d8d-8fb3-538e962dccbc_0
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>包含了上文编写的 <strong>mysql</strong> 和 <strong>myblog</strong> 两个，但额外多出个 <strong>pause</strong> 状态的容器</p>
 <div class="custom-container info">
-<p class="custom-container-title">相关信息</p>
-<p>为了实现 <strong>Pod</strong> 内部容器，能通过 <strong>localhost</strong> 通信:</p>
+<p class="custom-container-title">为了实现 Pod 内部容器，能通过 localhost 通信:</p>
 <ul>
 <li>每个 <strong>Pod</strong> 都会启动 <strong>Infra</strong> 容器</li>
 <li><strong>Pod</strong> 内部的网络空间会共享 <strong>Infra</strong> 容器的网络空间（<em>类比 <strong>Docker</strong> 网络的 <strong>container</strong> 模式</em> ）</li>
@@ -341,7 +340,7 @@ $ kubectl <span class="token parameter variable">-n</span> <span class="token op
 $ <span class="token function">docker</span> <span class="token function">rm</span> <span class="token parameter variable">-f</span> <span class="token operator">&lt;</span>container<span class="token operator">></span>
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h5 id="troubleshooting-and-debugging" tabindex="-1"><a class="header-anchor" href="#troubleshooting-and-debugging" aria-hidden="true">#</a> <strong>Troubleshooting and Debugging</strong></h5>
 <div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code><span class="token comment"># 查看 Pod 的 明细信息 及 事件</span>
-$ kubectl <span class="token parameter variable">-n</span> demo describe pod ublog
+$ kubectl <span class="token parameter variable">-n</span> uit describe pod ublog
 
 <span class="token comment"># 进入 Pod 内的 容器</span>
 $ kubectl <span class="token parameter variable">-n</span> <span class="token operator">&lt;</span>namespace<span class="token operator">></span> <span class="token builtin class-name">exec</span> <span class="token operator">&lt;</span>pod_name<span class="token operator">></span> <span class="token parameter variable">-c</span> <span class="token operator">&lt;</span>container_name<span class="token operator">></span> <span class="token parameter variable">-ti</span> /bin/sh
@@ -380,11 +379,11 @@ k8s-slave-172    Ready    <span class="token operator">&lt;</span>none<span clas
   <span class="token key atrule">labels</span><span class="token punctuation">:</span>
     <span class="token key atrule">component</span><span class="token punctuation">:</span> zzblog
 <span class="token key atrule">spec</span><span class="token punctuation">:</span>
-  <span class="token key atrule">volumes</span><span class="token punctuation">:</span>								<span class="token comment"># 上文都是定义 宿主机 的挂载，与 containers 同级</span>
+  <span class="token key atrule">volumes</span><span class="token punctuation">:</span>								<span class="token comment"># 宿主机 的挂载，与 containers 同级</span>
     <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> mysql<span class="token punctuation">-</span>data
       <span class="token key atrule">hostPath</span><span class="token punctuation">:</span>
         <span class="token key atrule">path</span><span class="token punctuation">:</span> /opt/mysql/data			<span class="token comment"># 宿主机 的挂载点</span>
-  <span class="token key atrule">nodeSelector</span><span class="token punctuation">:</span> 						<span class="token comment"># 使用 节点选择器，将 Pod 调度到上文指定了 label 的节点</span>
+  <span class="token key atrule">nodeSelector</span><span class="token punctuation">:</span> 						<span class="token comment"># 使用 节点选择器，将 Pod 调度到指定 label 的节点</span>
     <span class="token key atrule">component</span><span class="token punctuation">:</span> zz
   <span class="token key atrule">containers</span><span class="token punctuation">:</span>										
   <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> myblog
@@ -415,15 +414,15 @@ k8s-slave-172    Ready    <span class="token operator">&lt;</span>none<span clas
 <span class="token function">ls</span> /opt/mysql/data/
 <span class="token punctuation">..</span><span class="token punctuation">..</span> <span class="token variable"><span class="token variable">`</span>发现会多出一堆 pod 上 mysql 的文件<span class="token variable">`</span></span>
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="custom-container warning">
-<p class="custom-container-title">注意</p>
-<p><strong>如上方式的局限性：</strong> 只能 <strong>固定在单个节点</strong> 上持久化，若该节点挂了，此时存储的数据也随之而挂</p>
+<p class="custom-container-title">局限性</p>
+<p>只能 <strong>固定在单个节点</strong> 上持久化，若该节点挂了，此时存储的数据也随之而挂</p>
 <p>因此，可使用 <strong>PV + PVC</strong> 的方式 <strong>对接分布式存储</strong>来解决</p>
 <ul>
 <li><strong>分布式存储：</strong> <strong>UFS</strong>、 <strong>ceph</strong> 、<strong>glusterfs</strong>、<strong>nfs</strong>（<em>高可用版</em>）</li>
 </ul>
 </div>
 <h3 id="_3-4-服务健康检查" tabindex="-1"><a class="header-anchor" href="#_3-4-服务健康检查" aria-hidden="true">#</a> 3.4 <strong>服务健康检查</strong></h3>
-<p>检测容器服务是否健康的手段，若不健康，会根据设置的重启策略（<em>restartPolicy</em>）进行操作，两种检测机制可以分别单独设置，若不设置，默认<strong>Pod</strong> 一直健康</p>
+<p>检测容器服务是否健康的手段，若不健康，会根据设置的 <strong>重启策略</strong>（<em>restartPolicy</em>）进行操作，两种检测机制可以分别单独设置，若不设置，默认<strong>Pod</strong> 一直健康</p>
 <div class="language-yaml ext-yml line-numbers-mode"><pre v-pre class="language-yaml"><code><span class="token punctuation">...</span>
   <span class="token key atrule">containers</span><span class="token punctuation">:</span>										
   <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> myblog
@@ -474,7 +473,7 @@ k8s-slave-172    Ready    <span class="token operator">&lt;</span>none<span clas
 </ul>
 <div class="custom-container note">
 <p class="custom-container-title">举例</p>
-<p>按上文配置，意思为 <strong>Pod 的容器</strong> 启动 <strong>5s（<em>initialDelaySeconds</em>）</strong> 后，用 <strong>HTTP</strong> 访问 <strong>8002</strong> 端口的 <strong>/blog/index/</strong> 路由，若 <strong>超过2s</strong> 或者返回码不在 <strong>200~399</strong> 内，连续 <strong>failureThreshold</strong> 次，则健康检查失败</p>
+<p>按上文配置，<strong>Pod 的容器</strong> 启动 <strong>5s（<em>initialDelaySeconds</em>）</strong> 后，用 <strong>HTTP</strong> 访问 <strong>8002</strong> 端口的 <strong>/blog/index/</strong> 路由，若 <strong>超过2s</strong> 或 返回码不在 <strong>200~399</strong> 内，连续 <strong>failureThreshold</strong> 次，则健康检查失败</p>
 </div>
 <h5 id="重启策略-restartpolicy" tabindex="-1"><a class="header-anchor" href="#重启策略-restartpolicy" aria-hidden="true">#</a> <strong>重启策略（<em>RestartPolicy</em>）</strong></h5>
 <div class="language-yaml ext-yml line-numbers-mode"><pre v-pre class="language-yaml"><code><span class="token key atrule">metadata</span><span class="token punctuation">:</span>
@@ -615,7 +614,7 @@ k8s-slave-172    Ready    <span class="token operator">&lt;</span>none<span clas
 <div class="language-yaml ext-yml line-numbers-mode"><pre v-pre class="language-yaml"><code><span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> v1
 <span class="token key atrule">kind</span><span class="token punctuation">:</span> ConfigMap
 <span class="token key atrule">metadata</span><span class="token punctuation">:</span>
-  <span class="token key atrule">name</span><span class="token punctuation">:</span> myblog
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> ublog
   <span class="token key atrule">namespace</span><span class="token punctuation">:</span> uit
 <span class="token key atrule">data</span><span class="token punctuation">:</span>
   <span class="token key atrule">MYSQL_HOST</span><span class="token punctuation">:</span> <span class="token string">"192.168.3.172"</span>	<span class="token comment"># 下文会通过 label 将调度指定 k8s-slave-172 节点</span>
@@ -632,7 +631,7 @@ $ kubectl <span class="token parameter variable">-n</span> uit create configmap 
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h4 id="secret-密码" tabindex="-1"><a class="header-anchor" href="#secret-密码" aria-hidden="true">#</a> <strong>secret（<em>密码</em> ）</strong></h4>
 <p>常用来管理 <strong>敏感类</strong> 的信息，默认会 <strong>base64</strong> 编码存储，有三种类型</p>
 <ul>
-<li><strong>Service Account ：</strong> 用来访问 <strong>k8s API</strong>，自动创建，且会自动挂载到 <strong>Pod</strong> 上的 <code v-pre>/run/secrets/kubernetes.io/serviceaccount</code> 目录，之后 <strong>Pod</strong>中指定 <strong>serviceAccount</strong> 自动创建对应的 <strong>secret</strong></li>
+<li><strong>Service Account ：</strong> 用来访问 <strong>k8s API</strong>，自动创建，且会自动挂载到 <strong>Pod</strong> 上的 <code v-pre>/run/secrets/kubernetes.io/serviceaccount</code> 目录，之后 <strong>Pod</strong> 指定 <strong>serviceAccount</strong> 自动创建对应的 <strong>secret</strong></li>
 <li><strong>Opaque ：</strong> 是 <strong>base64</strong> 编码格式的 <strong>Secret</strong>，用来 <strong>存储密码、密钥</strong> 等</li>
 <li><strong><a href="http://kubernetes.io/dockerconfigjson" target="_blank" rel="noopener noreferrer">kubernetes.io/dockerconfigjson<ExternalLinkIcon/></a> ：</strong> 用来存储私有 <strong>docker registry</strong> 的认证信息</li>
 </ul>
@@ -763,7 +762,7 @@ $ kubectl create <span class="token parameter variable">-f</span> ublog.yaml
 <span class="token comment"># 访问 ublog Pod 服务正常</span>
 $ <span class="token function">curl</span> <span class="token number">10.244</span>.2.18:8002/blog/index/
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p><strong>补充：</strong> <code v-pre>/etc/kubernetes/manifests</code> 目录下存放  <strong>静态Pod</strong>，即凡是放在这个目录下的 <strong>yaml</strong> 文件，<strong>k8s</strong> 会自动创建，无需执行 <code v-pre>kubectl create -f</code> ，且删除也会自动拉起，目录下的 <strong>yaml</strong> 可用于编写参考（<em>同时有这种目录的，一定是 <strong>kubeadm</strong> 搭建起来的集群</em>）</p>
-<div class="custom-container tip">
+<div class="custom-container warning">
 <p class="custom-container-title">注意</p>
 <ul>
 <li>
