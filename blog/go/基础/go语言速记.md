@@ -92,10 +92,12 @@ d = int(c)					// 发生精度丢失，小数后的被自动舍弃
 
 // 字符串转数字
 
-// 字符串 转 字符数组
+// 字符串 转 字符数组，直接转
 []byte(string)
 string([]byte)
 
+// 字符串 转 布尔
+ret, err := strconv.ParseBool("True")
 ```
 
 #### **整型**
@@ -124,9 +126,30 @@ string([]byte)
 
 遵从**IEEE754** 标准有 `float32/64` 可用常量定义 `math.MaxFloat32/64` 
 
+**64位为例：** **1** 位 **sign** 表正负，**11**位 **exponent** 表 **-1023~1024** ，**52** 位 表小数
+
 ##### **精度问题**
 
+浮点存在 **小数 \* 2 = 1** 精度不准问题，可用 **decimal** 解决
 
+```shell
+# 下载
+$ go get github.com/shopspring/decimal
+```
+
+使用
+
+```go
+var v1 = decimal.NewFromFloat(0.00000018)
+var v2 = decimal.NewFromFloat(0.29)
+
+// 加减乘除
+var ret = v1.Add(v2)	// .Sub(v2)  .Mul(v2)  .Div(v2)
+
+// 保留
+var v3 = v2.Round(1)		// 四舍五入
+var v4 = v2.Truncate(1)		// 直接保留
+```
 
 #### 布尔
 

@@ -1,61 +1,48 @@
-<template><div><h1 id="kubernets-基础" tabindex="-1"><a class="header-anchor" href="#kubernets-基础" aria-hidden="true">#</a> Kubernets 基础</h1>
-<p>记录 <strong>kubernetes</strong> 相关文档、基础、<strong>Pod</strong> 的使用说明等</p>
+<template><div><p>记录 <strong>kubernetes</strong> 相关文档、基础、<strong>Pod</strong> 的使用说明等</p>
 <!-- more -->
-<h2 id="k8s-相关文档" tabindex="-1"><a class="header-anchor" href="#k8s-相关文档" aria-hidden="true">#</a> k8s 相关文档</h2>
+<h2 id="kubernetes-相关文档" tabindex="-1"><a class="header-anchor" href="#kubernetes-相关文档" aria-hidden="true">#</a> Kubernetes 相关文档</h2>
 <p><a href="https://kubernetes.io/zh-cn/docs/tutorials/kubernetes-basics/" target="_blank" rel="noopener noreferrer">官网 | 学习 Kubernetes 基础知识 | Kubernetes<ExternalLinkIcon/></a></p>
 <p><a href="https://kubespray.io/#/" target="_blank" rel="noopener noreferrer">kubespray.io<ExternalLinkIcon/></a></p>
 <p><a href="https://kuboard.cn/learning/" target="_blank" rel="noopener noreferrer">Kubernetes教程 | Kuboard<ExternalLinkIcon/></a></p>
-<p>查看k8s 或docker 日志</p>
+<div class="custom-container warning">
+<p class="custom-container-title">重要：查看 k8s 或 docker 日志</p>
 <div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code>journalctl <span class="token parameter variable">-fu</span> <span class="token function">docker</span> <span class="token operator">|</span> kubelet
 
 <span class="token comment"># 也可以用docker 看日志</span>
 <span class="token function">docker</span> logs <span class="token parameter variable">-f</span> + container_id
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>使用Deployment管理Pod生命周期，实现服务不中断的滚动更新，通过服务发现来实现集群内部的服务间访问，并通过ingress-nginx实现外部使用域名访问集群内部的服务。同时介绍基于EFK如何搭建Kubernetes集群的日志收集系统。</p>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></div>
 <h2 id="_1-kubernetes-概述" tabindex="-1"><a class="header-anchor" href="#_1-kubernetes-概述" aria-hidden="true">#</a> 1. Kubernetes 概述</h2>
-<p>纯 <strong>Docker</strong> （<em>容器模式</em>） 的运维管理麻烦，尤其涉及到跨容器网络通信，故诞生了容器调度管理平台 <strong>Kubernetes</strong> ，由于功能强大，<strong>17</strong> 年后渐渐成为主流</p>
+<p><strong>Docker</strong> （<em>纯容器模式</em>） 的运维管理麻烦，尤其涉及到跨容器网络通信及其复杂、难管理，故诞生了容器调度管理平台 <strong>Kubernetes</strong> ，由于功能强大，<strong>17</strong> 年后渐渐成为主流</p>
 <h5 id="架构图如下" tabindex="-1"><a class="header-anchor" href="#架构图如下" aria-hidden="true">#</a> <strong>架构图如下</strong></h5>
 <img src="@source/tool/Kubernetes/img/架构图.png">
+<p>分为 <strong>Master</strong> 节点和 <strong>Node</strong> 节点</p>
 <h5 id="包含如下核心组件" tabindex="-1"><a class="header-anchor" href="#包含如下核心组件" aria-hidden="true">#</a> <strong>包含如下核心组件</strong></h5>
 <ul>
-<li>
-<p><strong><a href="">etcd</a>：</strong> 分布式高性能键值 <strong>数据库</strong>，存储整个集群的所有元数据，<strong>只通过 ApiServer 访问</strong></p>
-</li>
-<li>
-<p><strong>ApiServer：</strong> <strong>接口</strong> 服务器，用来交互的，集群资源访问控制入口，提供 <strong>restful api</strong> 及安全访问控制</p>
-</li>
-<li>
-<p><strong>Scheduler：</strong> <strong>调度器</strong>，把业务容器调度到合适节点</p>
-</li>
-<li>
-<p><strong>Controller Manager：</strong> <strong>控制管理器，20来种的统称</strong>，确保集群资源按照期望的方式运行，生成元数据，故在调度之前，<strong>k8s 中最复杂的点</strong></p>
+<li><strong><a href="">etcd</a>：</strong> 分布式高性能键值 <strong>数据库</strong>，存储整个集群的所有元数据，<strong>只通过 ApiServer 访问</strong></li>
+<li><strong>ApiServer：</strong> <strong>接口</strong> 服务器，用来交互的，集群资源访问控制入口，提供 <strong>restful api</strong> 及安全访问控制</li>
+<li><strong>Scheduler：</strong> <strong>调度器</strong>，把业务容器调度到合适节点</li>
+<li><strong>Controller Manager：</strong> <strong>控制管理器，20来种的统称</strong>，确保集群资源按照期望的方式运行，生成元数据，故在调度之前，<strong>k8s 中最复杂的点</strong>
 <ul>
-<li><strong>Replication Controller</strong></li>
+<li><strong>ReplicaSet</strong></li>
+<li><strong>Service Controller</strong></li>
+<li><strong>ServiceAccount Controller</strong></li>
 <li><strong>Node controller</strong></li>
 <li><strong>ResourceQuota Controller</strong></li>
 <li><strong>Namespace Controller</strong></li>
-<li><strong>ServiceAccount Controller</strong></li>
 <li><strong>Tocken Controller</strong></li>
-<li><strong>Service Controller</strong></li>
 <li><strong>Endpoints Controller</strong></li>
 </ul>
 </li>
-<li>
-<p><strong>kubelet：</strong> 节点代理，运行在每个节点上，管节点同时汇报情况给 <strong>Master</strong> 管理节点</p>
+<li><strong>kubelet：</strong> 节点代理，运行在每个节点上，管节点同时汇报情况给 <strong>Master</strong> 管理节点
 <ul>
 <li><strong>pod管理：</strong>  容器的抽象，最小资源调度单位，管容器的，被 <strong>kubelet</strong> 管的</li>
 <li><strong>容器健康检查：</strong> 检查容器是否正常运行，若运行出错，按照 <strong>pod</strong> 设置的重启策略处理</li>
 <li><strong>容器监控：</strong> 监控容器所在节点资源的使用情况，定时向 <strong>Master</strong> 报告，资源使用数据通过 <strong>cAdvisor</strong> 获取的，对于 <strong>pod</strong> 调度和正常运行至关重要</li>
 </ul>
 </li>
-<li>
-<p><strong>kube-proxy：</strong> 维护节点中的 <strong>iptables</strong> 或 <strong>ipvs</strong> 规则</p>
-</li>
-<li>
-<p><strong><a href="https://kubernetes.io/zh-cn/docs/reference/kubectl/" target="_blank" rel="noopener noreferrer">kubectl<ExternalLinkIcon/></a>：</strong> 命令行工具</p>
-</li>
-<li>
-<p><strong>cni：</strong> 通用网络接口，如 <strong>flannel</strong> 等的网络插件，实现集群跨节点通信</p>
-</li>
+<li><strong>kube-proxy：</strong> 负责 <strong>Pod</strong> 间的通信和负载均衡 <strong>iptables</strong> 或 <strong>ipvs</strong> 规则</li>
+<li><strong><a href="https://kubernetes.io/zh-cn/docs/reference/kubectl/" target="_blank" rel="noopener noreferrer">kubectl<ExternalLinkIcon/></a>：</strong> 命令行工具</li>
+<li><strong>CNI：</strong> 通用网络接口，如 <strong>flannel</strong> 等的网络插件，实现集群跨节点通信</li>
 </ul>
 <h5 id="其工作流程如下" tabindex="-1"><a class="header-anchor" href="#其工作流程如下" aria-hidden="true">#</a> <strong>其工作流程如下</strong></h5>
 <img src="@source/tool/Kubernetes/img/工作流程.png">

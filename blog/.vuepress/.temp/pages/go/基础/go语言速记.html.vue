@@ -62,11 +62,13 @@ d <span class="token operator">=</span> <span class="token function">int</span><
 
 <span class="token comment">// 字符串转数字</span>
 
-<span class="token comment">// 字符串 转 字符数组</span>
+<span class="token comment">// 字符串 转 字符数组，直接转</span>
 <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token function">byte</span><span class="token punctuation">(</span><span class="token builtin">string</span><span class="token punctuation">)</span>
 <span class="token function">string</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token builtin">byte</span><span class="token punctuation">)</span>
 
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h4 id="整型" tabindex="-1"><a class="header-anchor" href="#整型" aria-hidden="true">#</a> <strong>整型</strong></h4>
+<span class="token comment">// 字符串 转 布尔</span>
+ret<span class="token punctuation">,</span> err <span class="token operator">:=</span> strconv<span class="token punctuation">.</span><span class="token function">ParseBool</span><span class="token punctuation">(</span><span class="token string">"True"</span><span class="token punctuation">)</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h4 id="整型" tabindex="-1"><a class="header-anchor" href="#整型" aria-hidden="true">#</a> <strong>整型</strong></h4>
 <p>两大类，对应 <strong>C</strong></p>
 <ul>
 <li>按长度分类： <code v-pre>int8/16/32/64</code>、<code v-pre>int</code>
@@ -91,8 +93,22 @@ d <span class="token operator">=</span> <span class="token function">int</span><
 </div>
 <h4 id="浮点型" tabindex="-1"><a class="header-anchor" href="#浮点型" aria-hidden="true">#</a> <strong>浮点型</strong></h4>
 <p>遵从<strong>IEEE754</strong> 标准有 <code v-pre>float32/64</code> 可用常量定义 <code v-pre>math.MaxFloat32/64</code></p>
+<p><strong>64位为例：</strong> <strong>1</strong> 位 <strong>sign</strong> 表正负，<strong>11</strong>位 <strong>exponent</strong> 表 <strong>-1023~1024</strong> ，<strong>52</strong> 位 表小数</p>
 <h5 id="精度问题" tabindex="-1"><a class="header-anchor" href="#精度问题" aria-hidden="true">#</a> <strong>精度问题</strong></h5>
-<h4 id="布尔" tabindex="-1"><a class="header-anchor" href="#布尔" aria-hidden="true">#</a> 布尔</h4>
+<p>浮点存在 <strong>小数 * 2 = 1</strong> 精度不准问题，可用 <strong>decimal</strong> 解决</p>
+<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code><span class="token comment"># 下载</span>
+$ go get github.com/shopspring/decimal
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div></div></div><p>使用</p>
+<div class="language-go ext-go line-numbers-mode"><pre v-pre class="language-go"><code><span class="token keyword">var</span> v1 <span class="token operator">=</span> decimal<span class="token punctuation">.</span><span class="token function">NewFromFloat</span><span class="token punctuation">(</span><span class="token number">0.00000018</span><span class="token punctuation">)</span>
+<span class="token keyword">var</span> v2 <span class="token operator">=</span> decimal<span class="token punctuation">.</span><span class="token function">NewFromFloat</span><span class="token punctuation">(</span><span class="token number">0.29</span><span class="token punctuation">)</span>
+
+<span class="token comment">// 加减乘除</span>
+<span class="token keyword">var</span> ret <span class="token operator">=</span> v1<span class="token punctuation">.</span><span class="token function">Add</span><span class="token punctuation">(</span>v2<span class="token punctuation">)</span>	<span class="token comment">// .Sub(v2)  .Mul(v2)  .Div(v2)</span>
+
+<span class="token comment">// 保留</span>
+<span class="token keyword">var</span> v3 <span class="token operator">=</span> v2<span class="token punctuation">.</span><span class="token function">Round</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>		<span class="token comment">// 四舍五入</span>
+<span class="token keyword">var</span> v4 <span class="token operator">=</span> v2<span class="token punctuation">.</span><span class="token function">Truncate</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>		<span class="token comment">// 直接保留</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h4 id="布尔" tabindex="-1"><a class="header-anchor" href="#布尔" aria-hidden="true">#</a> 布尔</h4>
 <p>分 <code v-pre>ture/flase</code> ，<strong>不允许 整型 强转 布尔</strong> ，无法参加数值运算</p>
 <h4 id="字符串" tabindex="-1"><a class="header-anchor" href="#字符串" aria-hidden="true">#</a> 字符串</h4>
 <p><strong>Go</strong> 中为原生类型</p>

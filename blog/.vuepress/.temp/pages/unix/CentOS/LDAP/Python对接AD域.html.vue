@@ -72,9 +72,9 @@
 </ul>
 <p><a href="https://access.redhat.com/documentation/zh-cn/red_hat_enterprise_linux/7/html/system_administrators_guide/ch-file_and_print_servers#understanding_id_mapping" target="_blank" rel="noopener noreferrer">RedHat 参考<ExternalLinkIcon/></a></p>
 <h2 id="_2-加入、退出域的实现" tabindex="-1"><a class="header-anchor" href="#_2-加入、退出域的实现" aria-hidden="true">#</a> 2. 加入、退出域的实现</h2>
-<h5 id="加域流程如下" tabindex="-1"><a class="header-anchor" href="#加域流程如下" aria-hidden="true">#</a> <strong>加域流程如下</strong></h5>
+<h3 id="_2-1-加域流程" tabindex="-1"><a class="header-anchor" href="#_2-1-加域流程" aria-hidden="true">#</a> 2.1 加域流程</h3>
 <img src="@source/unix/CentOS/LDAP/img/加域流程.png">
-<h4 id="实现流程如下" tabindex="-1"><a class="header-anchor" href="#实现流程如下" aria-hidden="true">#</a> 实现流程如下：</h4>
+<h4 id="ad域加入流程" tabindex="-1"><a class="header-anchor" href="#ad域加入流程" aria-hidden="true">#</a> AD域加入流程</h4>
 <p>简单认证 <strong>winbind + kerberos</strong> ，需安装如下软件</p>
 <ul>
 <li><strong>winbind ：</strong></li>
@@ -199,7 +199,11 @@ zhengze:*:10001002:10000513::/home/UIT/zhengze:/bin/false
 <p class="custom-container-title">提示</p>
 <p><strong>Python</strong> 通过引入 <strong>pwd</strong> 、 <strong>grp</strong> 库，直接本地获取，效率比 <strong>ldap3</strong> 高</p>
 </div>
-<p><strong>退出域流程如下</strong></p>
+<h4 id="ldap加入流程" tabindex="-1"><a class="header-anchor" href="#ldap加入流程" aria-hidden="true">#</a> LDAP加入流程</h4>
+<p>除了无需配置 <strong>kerberos</strong> 之外，大致流程一致，变化如下</p>
+<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code><span class="token comment"># 安装加入 ldap 所需工具</span>
+$ yum <span class="token parameter variable">-y</span> <span class="token function">install</span> nss-pam-ldapd pam_ldap openldap-clients oddjob oddjob-mkhomedir
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_2-2-退域流程" tabindex="-1"><a class="header-anchor" href="#_2-2-退域流程" aria-hidden="true">#</a> 2.2 退域流程</h3>
 <img src="@source/unix/CentOS/LDAP/img/退域流程.png">
 <p>执行离开域命令</p>
 <div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code>$ net ads leave <span class="token parameter variable">-U</span> administrator%user@dev <span class="token parameter variable">-S</span> server124.uit.devops.local
@@ -277,15 +281,26 @@ ret <span class="token operator">=</span> conn<span class="token punctuation">.<
                 attributes<span class="token operator">=</span><span class="token punctuation">[</span><span class="token string">'name'</span><span class="token punctuation">,</span> <span class="token string">'cn'</span><span class="token punctuation">,</span> <span class="token string">'mail'</span><span class="token punctuation">,</span> <span class="token string">"description"</span><span class="token punctuation">,</span> <span class="token string">"UserAccountControl"</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
     <span class="token keyword">print</span><span class="token punctuation">(</span>conn<span class="token punctuation">.</span>entries<span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">.</span>name<span class="token punctuation">)</span>
     <span class="token keyword">print</span><span class="token punctuation">(</span>conn<span class="token punctuation">.</span>entries<span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">.</span>entry_to_json<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>使用 <strong>search()</strong> 查询，支持生成器方式如下</p>
-<div class="language-python ext-py line-numbers-mode"><pre v-pre class="language-python"><code><span class="token keyword">def</span> <span class="token function">search_generator</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">with</span> Connection<span class="token punctuation">(</span>server<span class="token punctuation">,</span> user<span class="token operator">=</span><span class="token string">'cn=zhengze,cn=Users,dc=uit,dc=devops,dc=local'</span><span class="token punctuation">,</span> password<span class="token operator">=</span><span class="token string">'user@dev'</span><span class="token punctuation">)</span> <span class="token keyword">as</span> conn<span class="token punctuation">:</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p><strong>AD</strong> 域 &amp; <strong>LDAP</strong> 查询器，使用 <strong>search()</strong> 查询，支持生成器方式如下</p>
+<div class="language-python ext-py line-numbers-mode"><pre v-pre class="language-python"><code><span class="token keyword">import</span> pprint
+
+<span class="token comment"># 注释部分为 AD 域</span>
+<span class="token keyword">def</span> <span class="token function">search_generator</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token comment"># server = Server(host="172.16.70.124", port=389)</span>
+    <span class="token comment"># with Connection(server, user="uit.devops.local\\administrator", password="user@dev", authentication=NTLM) as conn:</span>
+    server <span class="token operator">=</span> Server<span class="token punctuation">(</span>host<span class="token operator">=</span><span class="token string">"172.16.120.145"</span><span class="token punctuation">,</span> port<span class="token operator">=</span><span class="token number">389</span><span class="token punctuation">)</span>
+    <span class="token keyword">with</span> Connection<span class="token punctuation">(</span>server<span class="token punctuation">,</span> user<span class="token operator">=</span><span class="token string">'uid=ldapuser1,ou=people,dc=uit,dc=ldevops,dc=local'</span><span class="token punctuation">,</span> password<span class="token operator">=</span><span class="token string">'123456'</span><span class="token punctuation">)</span> <span class="token keyword">as</span> conn<span class="token punctuation">:</span>
+        conn<span class="token punctuation">.</span><span class="token builtin">open</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        conn<span class="token punctuation">.</span>bind<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"bound result"</span><span class="token punctuation">,</span> conn<span class="token punctuation">.</span>bound<span class="token punctuation">)</span>
         entry_generator <span class="token operator">=</span> conn<span class="token punctuation">.</span>extend<span class="token punctuation">.</span>standard<span class="token punctuation">.</span>paged_search<span class="token punctuation">(</span>
-            search_base<span class="token operator">=</span><span class="token string">"dc=uit,dc=devops,dc=local"</span><span class="token punctuation">,</span>
-            search_filter<span class="token operator">=</span><span class="token string">'(objectClass=user)'</span><span class="token punctuation">,</span>
+            <span class="token comment"># search_base="dc=uit,dc=devops,dc=local",</span>
+            <span class="token comment"># attributes=['cn', 'name', 'mail', "description", "UserAccountControl", "uid", "sn", "gidNumber"],</span>
+            search_base<span class="token operator">=</span><span class="token string">"dc=uit,dc=ldevops,dc=local"</span><span class="token punctuation">,</span>
+            attributes<span class="token operator">=</span><span class="token punctuation">[</span><span class="token string">'cn'</span><span class="token punctuation">,</span> <span class="token string">'name'</span><span class="token punctuation">,</span> <span class="token string">'mail'</span><span class="token punctuation">,</span> <span class="token string">"description"</span><span class="token punctuation">,</span> <span class="token string">"uid"</span><span class="token punctuation">,</span> <span class="token string">"sn"</span><span class="token punctuation">,</span> <span class="token string">"gidNumber"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>  <span class="token comment"># "UserAccountControl",</span>
+            search_filter<span class="token operator">=</span><span class="token string">'(objectclass=organizationalPerson)'</span><span class="token punctuation">,</span>
             search_scope<span class="token operator">=</span>SUBTREE<span class="token punctuation">,</span>
-            attributes<span class="token operator">=</span><span class="token punctuation">[</span><span class="token string">'cn'</span><span class="token punctuation">,</span> <span class="token string">'name'</span><span class="token punctuation">,</span> <span class="token string">'mail'</span><span class="token punctuation">,</span> <span class="token string">"description"</span><span class="token punctuation">,</span> <span class="token string">"UserAccountControl"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
-            paged_size<span class="token operator">=</span><span class="token number">1000</span><span class="token punctuation">,</span>
+            paged_size<span class="token operator">=</span><span class="token number">100</span><span class="token punctuation">,</span>
             generator<span class="token operator">=</span><span class="token boolean">True</span>
         <span class="token punctuation">)</span>
         <span class="token keyword">for</span> entry <span class="token keyword">in</span> entry_generator<span class="token punctuation">:</span>
@@ -301,6 +316,9 @@ entry <span class="token operator">=</span> search_generator<span class="token p
         users<span class="token punctuation">.</span>append<span class="token punctuation">(</span><span class="token builtin">next</span><span class="token punctuation">(</span>entry<span class="token punctuation">)</span><span class="token punctuation">)</span>
     <span class="token keyword">except</span> StopIteration<span class="token punctuation">:</span>
         <span class="token keyword">break</span>
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></div></template>
+
+        
+pprint<span class="token punctuation">.</span>pprint<span class="token punctuation">(</span>users<span class="token punctuation">)</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></div></template>
 
 

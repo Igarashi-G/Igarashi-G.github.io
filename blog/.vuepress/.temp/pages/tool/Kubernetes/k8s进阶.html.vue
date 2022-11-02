@@ -2,6 +2,7 @@
 <!-- more -->
 <h1 id="kubernetes-进阶" tabindex="-1"><a class="header-anchor" href="#kubernetes-进阶" aria-hidden="true">#</a> Kubernetes 进阶</h1>
 <h2 id="_1-etcd" tabindex="-1"><a class="header-anchor" href="#_1-etcd" aria-hidden="true">#</a> 1. etcd</h2>
+<h4 id="查看etcd数据" tabindex="-1"><a class="header-anchor" href="#查看etcd数据" aria-hidden="true">#</a> 查看etcd数据</h4>
 <p>拷贝etcdctl命令行工具：</p>
 <div class="language-powershell ext-powershell line-numbers-mode"><pre v-pre class="language-powershell"><code>$ docker exec <span class="token operator">-</span>ti etcd_container which etcdctl
 $ docker <span class="token function">cp</span> etcd_container:<span class="token operator">/</span>usr/local/bin/etcdctl <span class="token operator">/</span>usr/bin/etcdctl
@@ -16,8 +17,23 @@ $ docker <span class="token function">cp</span> etcd_container:<span class="toke
 <li>某两个服务的网络传输很频繁，我们希望它们最好在同一台机器上</li>
 <li>......</li>
 </ul>
-<h6 id="nodeselector" tabindex="-1"><a class="header-anchor" href="#nodeselector" aria-hidden="true">#</a> NodeSelector</h6>
-<p><code v-pre>label</code>是<code v-pre>kubernetes</code>中一个非常重要的概念，用户可以非常灵活的利用 label 来管理集群中的资源，POD 的调度可以根据节点的 label 进行特定的部署。</p>
+<h5 id="调度的过程" tabindex="-1"><a class="header-anchor" href="#调度的过程" aria-hidden="true">#</a> 调度的过程</h5>
+<p>Scheduler提供的调度流程分为预选（Predicates）和优选（Priorities）两个步骤：</p>
+<ul>
+<li>
+<p>预选，K8S会遍历当前集群中的所有Node，筛选出其中符合要求的Node作为候选</p>
+</li>
+<li>
+<p>优选，K8S将对候选的Node进行打分</p>
+</li>
+</ul>
+<p>经过预选筛选和优选打分之后，K8S选择分数最高的Node来运行Pod，如果最终有多个Node的分数最高，那么
+Scheduler将从当中随机选择一个Node来运行Pod</p>
+<h5 id="cordon" tabindex="-1"><a class="header-anchor" href="#cordon" aria-hidden="true">#</a> Cordon</h5>
+<div class="language-text ext-text line-numbers-mode"><pre v-pre class="language-text"><code>$ kubectl cordon k8s-slave2
+$ kubectl drain k8s-slave2
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div></div></div><h6 id="nodeselector" tabindex="-1"><a class="header-anchor" href="#nodeselector" aria-hidden="true">#</a> NodeSelector</h6>
+<p><code v-pre>label</code> 是 <strong>k8s</strong> 中一个非常重要的概念，用户可以非常灵活的利用 label 来管理集群中的资源，POD 的调度可以根据节点的 label 进行特定的部署。</p>
 <p>查看节点的label：</p>
 <div class="language-powershell ext-powershell line-numbers-mode"><pre v-pre class="language-powershell"><code>$ kubectl get nodes <span class="token operator">--</span><span class="token function">show-labels</span>
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p>为节点打label：</p>
@@ -134,6 +150,7 @@ image: 172<span class="token punctuation">.</span>21<span class="token punctuati
 tolerations:
 <span class="token operator">-</span> operator: <span class="token string">"Exists"</span>
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="_3-kubernetes认证与授权" tabindex="-1"><a class="header-anchor" href="#_3-kubernetes认证与授权" aria-hidden="true">#</a> 3. Kubernetes认证与授权</h2>
+<p><a href="https://github.com/kubernetes/dashboard/blob/master/docs/user/access-control/creating-sample-user.md" target="_blank" rel="noopener noreferrer">创建用户<ExternalLinkIcon/></a></p>
 <h6 id="apiservice安全控制" tabindex="-1"><a class="header-anchor" href="#apiservice安全控制" aria-hidden="true">#</a> APIService安全控制</h6>
 <ul>
 <li>Authentication：身份认证</li>
@@ -299,12 +316,12 @@ Resources Non-Resource URLs Resource Names Verbs
 <span class="token operator">*</span><span class="token punctuation">.</span><span class="token operator">*</span> <span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token punctuation">[</span><span class="token operator">*</span><span class="token punctuation">]</span>
 <span class="token punctuation">[</span><span class="token operator">*</span><span class="token punctuation">]</span> <span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token punctuation">[</span><span class="token operator">*</span><span class="token punctuation">]</span>
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>非资源类，如查看集群健康状态。</p>
-<h6 id="rbac" tabindex="-1"><a class="header-anchor" href="#rbac" aria-hidden="true">#</a> RBAC</h6>
-<p>Role-Based Access Control，基于角色的访问控制， apiserver启动参数添加--authorization-mode=RBAC 来启用RBAC认证模式，kubeadm安装的集群默认已开启。<a href="https://kubernetes.io/docs/reference/access-authn-authz/rbac/" target="_blank" rel="noopener noreferrer">官方介绍<ExternalLinkIcon/></a></p>
-<p>查看开启：</p>
-<div class="language-powershell ext-powershell line-numbers-mode"><pre v-pre class="language-powershell"><code><span class="token comment"># master节点查看apiserver进程</span>
-$ <span class="token function">ps</span> aux <span class="token punctuation">|</span>grep apiserver
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div></div></div><p>RBAC模式引入了4个资源：</p>
+<h4 id="rbac" tabindex="-1"><a class="header-anchor" href="#rbac" aria-hidden="true">#</a> RBAC</h4>
+<p><strong>Role-Based Access Control</strong>，基于角色的访问控制， <strong>apiserver</strong> 启动参数添加 <code v-pre>--authorization-mode=RBAC</code> 来启用 <strong>RBAC</strong> 认证模式，用 <strong>kubeadm</strong> 安装的 <strong>k8s</strong> 集群默认开启</p>
+<p><a href="https://kubernetes.io/zh-cn/docs/reference/access-authn-authz/rbac/" target="_blank" rel="noopener noreferrer">官方文档<ExternalLinkIcon/></a></p>
+<p>在 <strong>k8s-master</strong> 节点查看 <strong>apiserver</strong> 进程是否开启</p>
+<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code>$ <span class="token function">ps</span> aux <span class="token operator">|</span><span class="token function">grep</span> apiserver
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p><strong>RBAC</strong> 模式引入了 <strong>4</strong> 个资源</p>
 <ul>
 <li>Role，角色</li>
 </ul>
@@ -554,15 +571,7 @@ token: eyJhbGciOiJSUzI1NiIsImtpZCI6IiJ9<span class="token punctuation">.</span>e
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><ol start="2">
 <li>postman</li>
 </ol>
-<h4 id="查看etcd数据" tabindex="-1"><a class="header-anchor" href="#查看etcd数据" aria-hidden="true">#</a> 查看etcd数据</h4>
-<p>拷贝etcdctl命令行工具：</p>
-<div class="language-powershell ext-powershell line-numbers-mode"><pre v-pre class="language-powershell"><code>$ docker exec <span class="token operator">-</span>ti etcd_container which etcdctl
-$ docker <span class="token function">cp</span> etcd_container:<span class="token operator">/</span>usr/local/bin/etcdctl <span class="token operator">/</span>usr/bin/etcdctl
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div></div></div><p>查看所有key值：</p>
-<div class="language-powershell ext-powershell line-numbers-mode"><pre v-pre class="language-powershell"><code>$ ETCDCTL_API=3 etcdctl <span class="token operator">--</span>endpoints=https:<span class="token operator">/</span><span class="token operator">/</span><span class="token punctuation">[</span>127<span class="token punctuation">.</span>0<span class="token punctuation">.</span>0<span class="token punctuation">.</span>1<span class="token punctuation">]</span>:2379 <span class="token operator">--</span>cacert=<span class="token operator">/</span>etc/kubernetes/pki/etcd/ca<span class="token punctuation">.</span>crt <span class="token operator">--</span>cert=<span class="token operator">/</span>etc/kubernetes/pki/etcd/healthcheck-client<span class="token punctuation">.</span>crt <span class="token operator">--</span>key=<span class="token operator">/</span>etc/kubernetes/pki/etcd/healthcheck-client<span class="token punctuation">.</span>key get <span class="token operator">/</span> <span class="token operator">--</span>prefix <span class="token operator">--</span>keys-only
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p>查看具体的key对应的数据：</p>
-<div class="language-powershell ext-powershell line-numbers-mode"><pre v-pre class="language-powershell"><code>$ ETCDCTL_API=3 etcdctl <span class="token operator">--</span>endpoints=https:<span class="token operator">/</span><span class="token operator">/</span><span class="token punctuation">[</span>127<span class="token punctuation">.</span>0<span class="token punctuation">.</span>0<span class="token punctuation">.</span>1<span class="token punctuation">]</span>:2379 <span class="token operator">--</span>cacert=<span class="token operator">/</span>etc/kubernetes/pki/etcd/ca<span class="token punctuation">.</span>crt <span class="token operator">--</span>cert=<span class="token operator">/</span>etc/kubernetes/pki/etcd/healthcheck-client<span class="token punctuation">.</span>crt <span class="token operator">--</span>key=<span class="token operator">/</span>etc/kubernetes/pki/etcd/healthcheck-client<span class="token punctuation">.</span>key get <span class="token operator">/</span>registry/pods/jenkins/sonar-postgres-7fc5d748b6-gtmsb
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><h4 id="基于efk实现kubernetes集群的日志平台-扩展-录屏" tabindex="-1"><a class="header-anchor" href="#基于efk实现kubernetes集群的日志平台-扩展-录屏" aria-hidden="true">#</a> 基于EFK实现kubernetes集群的日志平台（扩展） 录屏！！！</h4>
+<h4 id="基于efk实现kubernetes集群的日志平台-扩展-录屏" tabindex="-1"><a class="header-anchor" href="#基于efk实现kubernetes集群的日志平台-扩展-录屏" aria-hidden="true">#</a> 基于EFK实现kubernetes集群的日志平台（扩展） 录屏！！！</h4>
 <h5 id="efk介绍" tabindex="-1"><a class="header-anchor" href="#efk介绍" aria-hidden="true">#</a> EFK介绍</h5>
 <p>EFK工作示意</p>
 <ul>

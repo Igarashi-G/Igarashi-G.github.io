@@ -81,11 +81,11 @@ sticky: true
 
 ## 2. 加入、退出域的实现
 
-##### **加域流程如下**
+### 2.1 加域流程
 
 <img src="./img/加域流程.png">
 
-#### 实现流程如下：
+#### AD域加入流程
 
 简单认证 **winbind + kerberos** ，需安装如下软件
 
@@ -229,7 +229,18 @@ zhengze:*:10001002:10000513::/home/UIT/zhengze:/bin/false
 
 :::
 
-**退出域流程如下**
+#### LDAP加入流程
+
+除了无需配置 **kerberos** 之外，大致流程一致，变化如下
+
+```shell
+# 安装加入 ldap 所需工具
+$ yum -y install nss-pam-ldapd pam_ldap openldap-clients oddjob oddjob-mkhomedir
+```
+
+
+
+### 2.2 退域流程
 
 <img src="./img/退域流程.png">
 
@@ -317,17 +328,28 @@ with Connection(server, user='cn=zhengze,cn=Users,dc=uit,dc=devops,dc=local', pa
     print(conn.entries[3].entry_to_json())
 ```
 
-使用 **search()** 查询，支持生成器方式如下
+**AD** 域 & **LDAP** 查询器，使用 **search()** 查询，支持生成器方式如下
 
 ```python
+import pprint
+
+# 注释部分为 AD 域
 def search_generator():
-    with Connection(server, user='cn=zhengze,cn=Users,dc=uit,dc=devops,dc=local', password='user@dev') as conn:
+    # server = Server(host="172.16.70.124", port=389)
+    # with Connection(server, user="uit.devops.local\\administrator", password="user@dev", authentication=NTLM) as conn:
+    server = Server(host="172.16.120.145", port=389)
+    with Connection(server, user='uid=ldapuser1,ou=people,dc=uit,dc=ldevops,dc=local', password='123456') as conn:
+        conn.open()
+        conn.bind()
+        print("bound result", conn.bound)
         entry_generator = conn.extend.standard.paged_search(
-            search_base="dc=uit,dc=devops,dc=local",
-            search_filter='(objectClass=user)',
+            # search_base="dc=uit,dc=devops,dc=local",
+            # attributes=['cn', 'name', 'mail', "description", "UserAccountControl", "uid", "sn", "gidNumber"],
+            search_base="dc=uit,dc=ldevops,dc=local",
+            attributes=['cn', 'name', 'mail', "description", "uid", "sn", "gidNumber"],  # "UserAccountControl",
+            search_filter='(objectclass=organizationalPerson)',
             search_scope=SUBTREE,
-            attributes=['cn', 'name', 'mail', "description", "UserAccountControl"],
-            paged_size=1000,
+            paged_size=100,
             generator=True
         )
         for entry in entry_generator:
@@ -343,5 +365,8 @@ for item in range(0, 20):
         users.append(next(entry))
     except StopIteration:
         break
+
+        
+pprint.pprint(users)
 ```
 

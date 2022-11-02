@@ -1,5 +1,5 @@
 ---
-title: Kubernets基础-Pod
+title: Kubernets - Pod
 date: 2022-09-27
 category:
   - 运维
@@ -9,13 +9,11 @@ tag:
 star: true
 ---
 
-# Kubernets 基础
-
 记录 **kubernetes** 相关文档、基础、**Pod** 的使用说明等
 
 <!-- more -->
 
-## k8s 相关文档
+## Kubernetes 相关文档
 
 [官网 | 学习 Kubernetes 基础知识 | Kubernetes](https://kubernetes.io/zh-cn/docs/tutorials/kubernetes-basics/)
 
@@ -23,9 +21,7 @@ star: true
 
 [Kubernetes教程 | Kuboard](https://kuboard.cn/learning/)
 
-
-
-查看k8s 或docker 日志
+::: warning 重要：查看 k8s 或 docker 日志
 
 ```shell
 journalctl -fu docker | kubelet
@@ -34,17 +30,17 @@ journalctl -fu docker | kubelet
 docker logs -f + container_id
 ```
 
-使用Deployment管理Pod生命周期，实现服务不中断的滚动更新，通过服务发现来实现集群内部的服务间访问，并通过ingress-nginx实现外部使用域名访问集群内部的服务。同时介绍基于EFK如何搭建Kubernetes集群的日志收集系统。
-
-
+:::
 
 ## 1. Kubernetes 概述
 
-纯 **Docker** （*容器模式*） 的运维管理麻烦，尤其涉及到跨容器网络通信，故诞生了容器调度管理平台 **Kubernetes** ，由于功能强大，**17** 年后渐渐成为主流
+**Docker** （*纯容器模式*） 的运维管理麻烦，尤其涉及到跨容器网络通信及其复杂、难管理，故诞生了容器调度管理平台 **Kubernetes** ，由于功能强大，**17** 年后渐渐成为主流 
 
-##### **架构图如下**
+##### **架构图如下** 
 
 <img src="./img/架构图.png">
+
+分为 **Master** 节点和 **Node** 节点
 
 ##### **包含如下核心组件**
 
@@ -52,24 +48,23 @@ docker logs -f + container_id
 - **ApiServer：** **接口** 服务器，用来交互的，集群资源访问控制入口，提供 **restful api** 及安全访问控制
 - **Scheduler：** **调度器**，把业务容器调度到合适节点
 - **Controller Manager：** **控制管理器，20来种的统称**，确保集群资源按照期望的方式运行，生成元数据，故在调度之前，**k8s 中最复杂的点** 
-  - **Replication Controller** 
+  - **ReplicaSet** 
+  - **Service Controller**
+  - **ServiceAccount Controller**  
   - **Node controller** 
   - **ResourceQuota Controller** 
   - **Namespace Controller** 
-  - **ServiceAccount Controller** 
   - **Tocken Controller** 
-  - **Service Controller** 
   - **Endpoints Controller** 
-
 - **kubelet：** 节点代理，运行在每个节点上，管节点同时汇报情况给 **Master** 管理节点
   - **pod管理：**  容器的抽象，最小资源调度单位，管容器的，被 **kubelet** 管的
   - **容器健康检查：** 检查容器是否正常运行，若运行出错，按照 **pod** 设置的重启策略处理
   - **容器监控：** 监控容器所在节点资源的使用情况，定时向 **Master** 报告，资源使用数据通过 **cAdvisor** 获取的，对于 **pod** 调度和正常运行至关重要
-- **kube-proxy：** 维护节点中的 **iptables** 或 **ipvs** 规则
+- **kube-proxy：** 负责 **Pod** 间的通信和负载均衡 **iptables** 或 **ipvs** 规则
 - **[kubectl](https://kubernetes.io/zh-cn/docs/reference/kubectl/)：** 命令行工具
-- **cni：** 通用网络接口，如 **flannel** 等的网络插件，实现集群跨节点通信
+- **CNI：** 通用网络接口，如 **flannel** 等的网络插件，实现集群跨节点通信
 
-##### **其工作流程如下**
+##### **其工作流程如下** 
 
 <img src="./img/工作流程.png">
 

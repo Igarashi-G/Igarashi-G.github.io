@@ -17,6 +17,8 @@ star: true
 
 ## 1. etcd
 
+#### 查看etcd数据
+
 拷贝etcdctl命令行工具：
 
 ```powershell
@@ -44,9 +46,31 @@ $ ETCDCTL_API=3 etcdctl --endpoints=https://[127.0.0.1]:2379 --cacert=/etc/kuber
 - 某两个服务的网络传输很频繁，我们希望它们最好在同一台机器上
 - ......
 
+##### 调度的过程
+
+Scheduler提供的调度流程分为预选（Predicates）和优选（Priorities）两个步骤：
+
+- 预选，K8S会遍历当前集群中的所有Node，筛选出其中符合要求的Node作为候选
+
+- 优选，K8S将对候选的Node进行打分
+
+经过预选筛选和优选打分之后，K8S选择分数最高的Node来运行Pod，如果最终有多个Node的分数最高，那么
+Scheduler将从当中随机选择一个Node来运行Pod
+
+
+
+##### Cordon
+
+```
+$ kubectl cordon k8s-slave2
+$ kubectl drain k8s-slave2
+```
+
+
+
 ###### NodeSelector
 
-`label`是`kubernetes`中一个非常重要的概念，用户可以非常灵活的利用 label 来管理集群中的资源，POD 的调度可以根据节点的 label 进行特定的部署。
+`label` 是 **k8s** 中一个非常重要的概念，用户可以非常灵活的利用 label 来管理集群中的资源，POD 的调度可以根据节点的 label 进行特定的部署。
 
 查看节点的label：
 
@@ -213,6 +237,8 @@ tolerations:
 
 ## 3. Kubernetes认证与授权
 
+[创建用户](https://github.com/kubernetes/dashboard/blob/master/docs/user/access-control/creating-sample-user.md) 
+
 ###### APIService安全控制
 
 - Authentication：身份认证
@@ -361,18 +387,19 @@ Resources Non-Resource URLs Resource Names Verbs
 
 非资源类，如查看集群健康状态。
 
-###### RBAC
+#### RBAC
 
-Role-Based Access Control，基于角色的访问控制， apiserver启动参数添加--authorization-mode=RBAC 来启用RBAC认证模式，kubeadm安装的集群默认已开启。[官方介绍](https://kubernetes.io/docs/reference/access-authn-authz/rbac/)
+**Role-Based Access Control**，基于角色的访问控制， **apiserver** 启动参数添加 `--authorization-mode=RBAC` 来启用 **RBAC** 认证模式，用 **kubeadm** 安装的 **k8s** 集群默认开启
 
-查看开启：
+[官方文档](https://kubernetes.io/zh-cn/docs/reference/access-authn-authz/rbac/)
 
-```powershell
-# master节点查看apiserver进程
+在 **k8s-master** 节点查看 **apiserver** 进程是否开启
+
+```shell
 $ ps aux |grep apiserver
 ```
 
-RBAC模式引入了4个资源：
+**RBAC** 模式引入了 **4** 个资源
 
 - Role，角色
 
@@ -657,27 +684,6 @@ $ curl -k -H "Authorization: Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IiJ9.eyJpc3MiOiJ
 ```
 
 2. postman
-
-#### 查看etcd数据
-
-拷贝etcdctl命令行工具：
-
-```powershell
-$ docker exec -ti etcd_container which etcdctl
-$ docker cp etcd_container:/usr/local/bin/etcdctl /usr/bin/etcdctl
-```
-
-查看所有key值：
-
-```powershell
-$ ETCDCTL_API=3 etcdctl --endpoints=https://[127.0.0.1]:2379 --cacert=/etc/kubernetes/pki/etcd/ca.crt --cert=/etc/kubernetes/pki/etcd/healthcheck-client.crt --key=/etc/kubernetes/pki/etcd/healthcheck-client.key get / --prefix --keys-only
-```
-
-查看具体的key对应的数据：
-
-```powershell
-$ ETCDCTL_API=3 etcdctl --endpoints=https://[127.0.0.1]:2379 --cacert=/etc/kubernetes/pki/etcd/ca.crt --cert=/etc/kubernetes/pki/etcd/healthcheck-client.crt --key=/etc/kubernetes/pki/etcd/healthcheck-client.key get /registry/pods/jenkins/sonar-postgres-7fc5d748b6-gtmsb
-```
 
 #### 基于EFK实现kubernetes集群的日志平台（扩展） 录屏！！！
 

@@ -1,4 +1,4 @@
-<template><div><p><strong>k8s</strong> 的工作负载、服务</p>
+<template><div><p><strong>k8s</strong> 的工作负载、各种控制器</p>
 <!-- more -->
 <h1 id="workload-工作负载" tabindex="-1"><a class="header-anchor" href="#workload-工作负载" aria-hidden="true">#</a> Workload （<em>工作负载</em>）</h1>
 <div class="custom-container warning">
@@ -11,7 +11,7 @@
 <li>若需求是收集各节点监控数据，如何将 <strong>Pod</strong> 运行在 <strong>k8s</strong> 集群的各个节点上</li>
 </ol>
 </div>
-<h2 id="_1-控制器-controller" tabindex="-1"><a class="header-anchor" href="#_1-控制器-controller" aria-hidden="true">#</a> 1. 控制器 <em>Controller</em></h2>
+<h4 id="控制器-controller" tabindex="-1"><a class="header-anchor" href="#控制器-controller" aria-hidden="true">#</a> 控制器 <em>Controller</em></h4>
 <p>控制器又称 <strong>工作负载</strong>，是 <strong>管理 Pod 的中间层</strong>，确保 <strong>Pod</strong> 资源符合预期的状态</p>
 <ul>
 <li>资源出现故障时，会尝试 进行重启</li>
@@ -38,8 +38,9 @@
 <p><strong>StatefulSet：</strong> 管理 <strong>有状态应用</strong></p>
 </li>
 </ul>
-<h3 id="_1-1-deployments" tabindex="-1"><a class="header-anchor" href="#_1-1-deployments" aria-hidden="true">#</a> 1.1 Deployments</h3>
-<p><strong>Deployments</strong> 是管理 <strong>Pod</strong> 的控制器，工作在 <strong>ReplicaSet</strong> 之上，用于 <strong>管理无状态应用</strong>，之前 <strong>Pod</strong> 的配置，会指定在 <code v-pre>template:</code> 之下</p>
+<h2 id="_1-deployments-无状态" tabindex="-1"><a class="header-anchor" href="#_1-deployments-无状态" aria-hidden="true">#</a> 1. Deployments（<em>无状态</em>）</h2>
+<p><strong>Deployments</strong> 是管理 <strong>Pod</strong> 的控制器，用于 <strong>管理无状态应用</strong>，工作在 <strong>ReplicaSet</strong> 之上，之前 <strong>Pod</strong> 的配置，会指定在 <code v-pre>template:</code> 之下</p>
+<p><a href="https://kubernetes.io/zh-cn/docs/concepts/workloads/controllers/deployment/" target="_blank" rel="noopener noreferrer">官方文档<ExternalLinkIcon/></a></p>
 <h5 id="中间件容器" tabindex="-1"><a class="header-anchor" href="#中间件容器" aria-hidden="true">#</a> <strong>中间件容器：</strong></h5>
 <div class="language-yaml ext-yml line-numbers-mode"><pre v-pre class="language-yaml"><code><span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> apps/v1
 <span class="token key atrule">kind</span><span class="token punctuation">:</span> Deployment            <span class="token comment"># 此时为控制器 Deployment</span>
@@ -196,7 +197,8 @@ $ kubectl <span class="token builtin class-name">set</span> image deploy ublog <
 
 <span class="token comment"># 推荐：直接在线编辑</span>
 $ kubectl <span class="token parameter variable">-n</span> uit edit deploy ublog
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_1-2-replicaset-副本保障机制" tabindex="-1"><a class="header-anchor" href="#_1-2-replicaset-副本保障机制" aria-hidden="true">#</a> 1.2 Replicaset（<em>副本保障机制</em>）</h3>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="_2-replicaset-副本保障机制" tabindex="-1"><a class="header-anchor" href="#_2-replicaset-副本保障机制" aria-hidden="true">#</a> 2. ReplicaSet（<em>副本保障机制</em>）</h2>
+<p>前身是 <strong><s>Replication Controller（已废弃）</s></strong>  ，现配合 <strong>Deployment</strong> 自动管理，和之前的唯一区别是 <strong>支持标签选择器</strong></p>
 <p><a href="https://kubernetes.io/zh-cn/docs/concepts/workloads/controllers/replicaset/" target="_blank" rel="noopener noreferrer">官方文档<ExternalLinkIcon/></a></p>
 <div class="language-yaml ext-yml line-numbers-mode"><pre v-pre class="language-yaml"><code><span class="token comment"># 修改 yaml 文件的副本数</span>
 <span class="token punctuation">...</span>
@@ -227,8 +229,8 @@ ublog-5ff678657f-m42hz   <span class="token number">1</span>/1     Running   <sp
 <p class="custom-container-title">其他方式</p>
 <p>当然，还可通过 <code v-pre>kubectl -n uit edit deploy mysql</code> 的方式，但最好还是上文改 <strong>yaml</strong> 文件然后 <code v-pre>apply</code> 的方式，有迹可循</p>
 </div>
-<h5 id="replicasets-高可用" tabindex="-1"><a class="header-anchor" href="#replicasets-高可用" aria-hidden="true">#</a> <strong>Replicasets 高可用</strong></h5>
-<p><strong>Replicasets controller</strong> 实时检测 <strong>Pod</strong> 状态，并保障副本数一直处于期望的值，此时是无法通过普通的指定来删除 <strong>Pod</strong> 的，由于要保证预期副本数，执行删除，也会被 <strong>Replicasets</strong> 自动拉起</p>
+<h5 id="replicaset-高可用" tabindex="-1"><a class="header-anchor" href="#replicaset-高可用" aria-hidden="true">#</a> <strong>ReplicaSet 高可用</strong></h5>
+<p><strong>ReplicaSet</strong> 会实时检测 <strong>Pod</strong> 状态，并保障副本数一直处于期望的值，此时是无法通过普通的指定来删除 <strong>Pod</strong> 的，由于要保证预期副本数，执行删除，也会被 <strong>ReplicaSet</strong> 自动拉起</p>
 <div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code><span class="token comment"># 删除 Pod，观察 Pod 状态变化</span>
 $ kubectl <span class="token parameter variable">-n</span> uit delete pod ublog-5ff678657f-m42hz
 
@@ -247,7 +249,7 @@ ublog-5ff678657f-nbs77   <span class="token number">0</span>/1     Terminating  
 <span class="token comment"># 最后 恢复如初</span>
 mysql-6fbb5cc967-48dfd   <span class="token number">1</span>/1     Running   <span class="token number">0</span>          35m
 ublog-5ff678657f-8xcp7   <span class="token number">1</span>/1     Running   <span class="token number">0</span>          41s
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h4 id="_1-2-1-replicaset-服务更新" tabindex="-1"><a class="header-anchor" href="#_1-2-1-replicaset-服务更新" aria-hidden="true">#</a> <strong>1.2.1 Replicaset  服务更新</strong></h4>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_2-1-replicaset-服务更新" tabindex="-1"><a class="header-anchor" href="#_2-1-replicaset-服务更新" aria-hidden="true">#</a> 2.1 Replicaset  服务更新</h3>
 <p>修改 <strong>Dockerfile</strong>，重新打 <strong>tag</strong> 可以模拟服务更新（<em>v1 -&gt; v2</em>）</p>
 <div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code><span class="token comment"># 修改前端的显示文案</span>
 $ <span class="token function">vim</span> ./python-demo/blog/templates/index.html
@@ -365,7 +367,7 @@ mysql-6fbb5cc967   <span class="token number">1</span>         <span class="toke
 ublog-5f55c5568b   <span class="token number">0</span>         <span class="token number">0</span>         <span class="token number">0</span>       37h
 ublog-5ff678657f   <span class="token number">3</span>         <span class="token number">3</span>         <span class="token number">3</span>       2d
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p><strong>replicaset</strong> 会创建不同的名称的 <strong>rs</strong> 副本，然后仅调节对应的副本数更新即可，默认会缓存 <strong>10</strong> 个历史版本数便于回滚</p>
-<h4 id="_1-2-2-replicaset-服务回滚" tabindex="-1"><a class="header-anchor" href="#_1-2-2-replicaset-服务回滚" aria-hidden="true">#</a> <strong>1.2.2 Replicaset 服务回滚</strong></h4>
+<h3 id="_2-2-replicaset-服务回滚" tabindex="-1"><a class="header-anchor" href="#_2-2-replicaset-服务回滚" aria-hidden="true">#</a> 2.2 Replicaset 服务回滚</h3>
 <p>通过滚动升级策略，可平滑升级 <strong>Deployment</strong>，但升级出现问题，需要最快、最好的方式回退到上个正常版本，就需要回滚机制</p>
 <p><strong>revision</strong>：</p>
 <ul>
@@ -434,462 +436,71 @@ REVISION  CHANGE-CAUSE
 
 <span class="token comment"># 此时访问应用，查看输出版本，此时又变回 v1</span>
 <span class="token function">curl</span> <span class="token number">10.244</span>.1.35:8002/blog/index/
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="_2-service-服务" tabindex="-1"><a class="header-anchor" href="#_2-service-服务" aria-hidden="true">#</a> 2. Service 服务</h2>
-<p>此时，已能通过 <strong>Deployment</strong> 创建带副本的 <strong>Pod</strong> 提供高可用性的服务了，但即使每个 <strong>Pod</strong> 都会分配单独 <strong>IP</strong>，却存在如下问题</p>
-<ul>
-<li><strong>Pod IP</strong> 仅仅是集群内可见的虚拟 <strong>IP</strong>，外部无法访问</li>
-<li><strong>Pod IP</strong> 会随着 <strong>Pod</strong> 销毁而消失，当 <strong>ReplicaSet</strong> 对 <strong>Pod</strong> 进行动态伸缩时，<strong>Pod IP</strong> 可能随时随地都会变化，对于访问服务带来了难度</li>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>后续见</p>
+<h2 id="_3-statefulset" tabindex="-1"><a class="header-anchor" href="#_3-statefulset" aria-hidden="true">#</a> 3. StatefulSet</h2>
+<p><strong>StatefulSet</strong> 同上也是管 <strong>Pod</strong> 的，区别是用来管理 <strong>有状态应用</strong> 的，且为每个 <strong>Pod</strong> 维护一个 <strong>有粘性、永久不变</strong> 的 <strong>ID</strong> ，常用来弄中间件，需持久化数据的应用</p>
+<p><a href="https://kubernetes.io/zh-cn/docs/concepts/workloads/controllers/statefulset/" target="_blank" rel="noopener noreferrer">官方文档<ExternalLinkIcon/></a></p>
+<div class="custom-container info">
+<p class="custom-container-title">命名</p>
+<p>每个 <strong>Pod</strong> 在重新调度时依然会保留持久的标识符，格式为 <strong>StatefulSetName-Number</strong> ，如创建名字是 <strong>Redis-Sentinel</strong> 的 <strong>StatefulSet</strong> 起 <strong>3</strong> 个 <strong>Pod</strong> ，名字通常为 <strong>Redis-Sentinel-0 / 1 / 2</strong>，一般格式如下</p>
+<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code><span class="token string">"statefulSetName-{0..N-1}.serviceName.namespace.svc.cluster.local"</span> 
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><ul>
+<li><strong>serviceName</strong> 是 <strong>Headless Service</strong> 的名字，必须指定</li>
+<li><strong>0..N-1</strong> 为 <strong>Pod</strong> 序号</li>
+<li><strong>.cluster.local</strong> 是 <strong>Cluster Domain（<em>集群域</em> ）</strong></li>
+<li>同一命名空间下，<strong>namespace.svc.cluster.local</strong> 可省略</li>
 </ul>
-<h3 id="_2-1-cluster-ip-负载均衡" tabindex="-1"><a class="header-anchor" href="#_2-1-cluster-ip-负载均衡" aria-hidden="true">#</a> 2.1 Cluster IP 负载均衡</h3>
-<p><strong>Service</strong> 是一组 <strong>Pod</strong> 的服务抽象，相当于一组 <strong>Pod</strong> 的 <strong>LB（<em>Load Balance</em>）</strong>，负责将请求分发给对应的<strong>Pod</strong></p>
-<p><strong>Service</strong> 会为这个 <strong>LB</strong> 提供一个 <strong>Cluster IP</strong> ，使用 <strong>Service</strong> 对象，通过 <strong>selector 进行标签选择</strong>，即可找到对应的 <strong>Pod</strong></p>
-<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code><span class="token comment"># 每次都输入一串 kubectl xxx太累，可以起别名</span>
-$ <span class="token builtin class-name">alias</span> <span class="token assign-left variable">kd</span><span class="token operator">=</span><span class="token string">'kubectl -n uit'</span>
-
-<span class="token comment"># 此时查看 pod 标签，在 deploy 配置中曾指定了 app=myblog</span>
-$ kd get po --show-labels
-NAME                     READY   STATUS    RESTARTS   AGE     LABELS
-mysql-6fbb5cc967-48dfd   <span class="token number">1</span>/1     Running   <span class="token number">0</span>          2d12h   <span class="token assign-left variable">app</span><span class="token operator">=</span>mysql,pod-template-hash<span class="token operator">=</span>6fbb5cc967
-ublog-5ff678657f-7qx5z   <span class="token number">1</span>/1     Running   <span class="token number">0</span>          42m     <span class="token assign-left variable">app</span><span class="token operator">=</span>myblog,pod-template-hash<span class="token operator">=</span>5ff678657f
-ublog-5ff678657f-rk92z   <span class="token number">1</span>/1     Running   <span class="token number">0</span>          43m     <span class="token assign-left variable">app</span><span class="token operator">=</span>myblog,pod-template-hash<span class="token operator">=</span>5ff678657f
-ublog-5ff678657f-tzspj   <span class="token number">1</span>/1     Running   <span class="token number">0</span>          42m     <span class="token assign-left variable">app</span><span class="token operator">=</span>myblog,pod-template-hash<span class="token operator">=</span>5ff678657f
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p><strong>Service</strong> 的 <strong>yaml</strong> 文件如下</p>
+</div>
+<p><strong>StatefulSet</strong> 启动时，只有 <strong>当前一个容器完全启动，后一个容器才会被调度</strong>，并且每个容器的标识符固定，可以根据标识符来断定当前 <strong>Pod</strong> 的角色，因此可以配置集群应用</p>
+<div class="custom-container tip">
+<p class="custom-container-title">如配置主从 **redis**，名为 **redis-ms**，使用 **StatefulSet** 进行部署</p>
+<ul>
+<li>启动第一个容器，标识符为 <strong>redis-ms-0</strong> ，此时就可以根据 <strong>0</strong> 来认为它是 <strong>Master</strong> 节点</li>
+<li>后面再启动第二个 <strong>redis</strong> 就可以通过标识符来连接 <strong>Master</strong> 节点</li>
+<li>第二个启动后则为 <strong>Slave</strong> 节点 <strong>redis-ms-1</strong></li>
+</ul>
+</div>
+<p><strong>StatefulSet</strong> 使用 <strong>Headless Service（<em>无头服务</em> ）</strong> 进行通信，即没有 <strong>Cluster IP</strong> ，而是用 <strong>Endpoint</strong> 来通信，但 <strong>yaml</strong> 中必须要指定一个 <strong>serviceName</strong> 进行绑定，因此通常和 <strong>Service</strong> 放一起，结构如下</p>
 <div class="language-yaml ext-yml line-numbers-mode"><pre v-pre class="language-yaml"><code><span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> v1
 <span class="token key atrule">kind</span><span class="token punctuation">:</span> Service
 <span class="token key atrule">metadata</span><span class="token punctuation">:</span>
-  <span class="token key atrule">name</span><span class="token punctuation">:</span> ublog<span class="token punctuation">-</span>svc
-  <span class="token key atrule">namespace</span><span class="token punctuation">:</span> uit
-<span class="token key atrule">spec</span><span class="token punctuation">:</span>
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> nignx
+  <span class="token key atrule">namespace</span><span class="token punctuation">:</span> dev
+  <span class="token key atrule">labels</span><span class="token punctuation">:</span>
+    <span class="token key atrule">app</span><span class="token punctuation">:</span> nginx
+<span class="token key atrule">spce</span><span class="token punctuation">:</span>
   <span class="token key atrule">ports</span><span class="token punctuation">:</span>
   <span class="token punctuation">-</span> <span class="token key atrule">port</span><span class="token punctuation">:</span> <span class="token number">80</span>
-    <span class="token key atrule">protocol</span><span class="token punctuation">:</span> TCP
-    <span class="token key atrule">targetPort</span><span class="token punctuation">:</span> <span class="token number">8002</span>
+    <span class="token key atrule">name</span><span class="token punctuation">:</span> web
+  <span class="token key atrule">clusterIP</span><span class="token punctuation">:</span> None
   <span class="token key atrule">selector</span><span class="token punctuation">:</span>
-    <span class="token key atrule">app</span><span class="token punctuation">:</span> myblog
-  <span class="token key atrule">type</span><span class="token punctuation">:</span> ClusterIP
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>创建 <strong>Service</strong> 并查看</p>
-<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code><span class="token comment"># 创建 svc</span>
-$ kubectl create <span class="token parameter variable">-f</span> svc-ublog.yaml 
-service/svc-ublog created
-
-<span class="token comment"># 查看 svc，此时已经创建了 CLUSTER-IP 10.105.146.135 80 端口的服务</span>
-$ kubectl <span class="token parameter variable">-nuit</span> get svc
-NAME        TYPE        CLUSTER-IP       EXTERNAL-IP   PORT<span class="token punctuation">(</span>S<span class="token punctuation">)</span>   AGE
-svc-ublog   ClusterIP   <span class="token number">10.105</span>.146.135   <span class="token operator">&lt;</span>none<span class="token operator">></span>        <span class="token number">80</span>/TCP    7m51s
-
-
-<span class="token comment"># 查看详情，此时发现 endpoints 已经代理了对应的 app = myblog</span>
-$ kubectl <span class="token parameter variable">-nuit</span> describe svc
-Name:              svc-ublog
-Namespace:         uit
-Labels:            <span class="token operator">&lt;</span>none<span class="token operator">></span>
-Annotations:       <span class="token operator">&lt;</span>none<span class="token operator">></span>
-Selector:          <span class="token assign-left variable">app</span><span class="token operator">=</span>myblog
-Type:              ClusterIP
-IP:                <span class="token number">10.105</span>.146.135
-Port:              <span class="token operator">&lt;</span>unset<span class="token operator">></span>  <span class="token number">80</span>/TCP
-TargetPort:        <span class="token number">8002</span>/TCP
-Endpoints:         <span class="token number">10.244</span>.1.35:8002,10.244.2.32:8002,10.244.2.33:8002
-Session Affinity:  None
-Events:            <span class="token operator">&lt;</span>none<span class="token operator">></span>
-
-<span class="token comment"># 此时访问 80 端口，服务正常</span>
-<span class="token function">curl</span> <span class="token number">10.105</span>.146.135/blog/index/
-
-<span class="token comment"># 缩容 ublog 服务</span>
-$ kubectl <span class="token parameter variable">-n</span> uit scale deploy ublog <span class="token parameter variable">--replicas</span><span class="token operator">=</span><span class="token number">2</span>
-deployment.apps/ublog scaled
-
-<span class="token comment"># 查看svc详情，此时发现 endpoints 自动减一</span>
-$ kubectl <span class="token parameter variable">-n</span> uit describe svc
-Name:              svc-ublog
-Namespace:         uit
-Labels:            <span class="token operator">&lt;</span>none<span class="token operator">></span>
-Annotations:       <span class="token operator">&lt;</span>none<span class="token operator">></span>
-Selector:          <span class="token assign-left variable">app</span><span class="token operator">=</span>myblog
-Type:              ClusterIP
-IP:                <span class="token number">10.105</span>.146.135
-Port:              <span class="token operator">&lt;</span>unset<span class="token operator">></span>  <span class="token number">80</span>/TCP
-TargetPort:        <span class="token number">8002</span>/TCP
-Endpoints:         <span class="token number">10.244</span>.1.35:8002,10.244.2.32:8002
-Session Affinity:  None
-Events:            <span class="token operator">&lt;</span>none<span class="token operator">></span>
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="custom-container tip">
-<p class="custom-container-title">提示</p>
-<p>创建 <strong>Service</strong>时，会创建同名的 <strong>endpoints</strong> 对象，若 <strong>Pod</strong> 上配置了 <code v-pre>readinessProbe</code>，检测失败时，<strong>endpoints</strong> 列表会剔除掉对应的 <strong>Pod IP</strong>，这样流量就不会分发到健康检测失败的 <strong>Pod</strong> 上</p>
-<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code>$ kubectl <span class="token parameter variable">-n</span> uit get endpoints svc-ublog
-NAME        ENDPOINTS                           AGE
-svc-ublog   <span class="token number">10.244</span>.1.35:8002,10.244.2.32:8002   21m
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></div>
-<p>再次改造 <strong>MySQL</strong>，创建 <strong>Service</strong></p>
-<div class="language-yaml ext-yml line-numbers-mode"><pre v-pre class="language-yaml"><code><span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> v1
-<span class="token key atrule">kind</span><span class="token punctuation">:</span> Service
+    <span class="token key atrule">app</span><span class="token punctuation">:</span> nginx
+<span class="token punctuation">---</span>
+<span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> apps/v1
+<span class="token key atrule">kind</span><span class="token punctuation">:</span> StatefulSet
 <span class="token key atrule">metadata</span><span class="token punctuation">:</span>
-  <span class="token key atrule">name</span><span class="token punctuation">:</span> svc<span class="token punctuation">-</span>mysql
-  <span class="token key atrule">namespace</span><span class="token punctuation">:</span> uit
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> web
+  <span class="token key atrule">namespace</span><span class="token punctuation">:</span> dev
 <span class="token key atrule">spec</span><span class="token punctuation">:</span>
-  <span class="token key atrule">ports</span><span class="token punctuation">:</span>
-  <span class="token punctuation">-</span> <span class="token key atrule">port</span><span class="token punctuation">:</span> <span class="token number">3306</span>
-    <span class="token key atrule">protocol</span><span class="token punctuation">:</span> TCP
-    <span class="token key atrule">targetPort</span><span class="token punctuation">:</span> <span class="token number">3306</span>
+  <span class="token key atrule">serviceName</span><span class="token punctuation">:</span> <span class="token string">"nginx"</span>
+  <span class="token key atrule">replicas</span><span class="token punctuation">:</span> <span class="token number">2</span>
   <span class="token key atrule">selector</span><span class="token punctuation">:</span>
-    <span class="token key atrule">app</span><span class="token punctuation">:</span> mysql
-  <span class="token key atrule">type</span><span class="token punctuation">:</span> ClusterIP
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>创建并访问</p>
-<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code>$ kubectl create <span class="token parameter variable">-f</span> svc-mysql.yaml 
-service/mysql created
-
-$ kubectl <span class="token parameter variable">-n</span> uit get svc-mysql
-NAME        TYPE        CLUSTER-IP     EXTERNAL-IP   PORT<span class="token punctuation">(</span>S<span class="token punctuation">)</span>    AGE
-svc-mysql   ClusterIP   <span class="token number">10.98</span>.22.166   <span class="token operator">&lt;</span>none<span class="token operator">></span>        <span class="token number">3306</span>/TCP   21s
-
-$ <span class="token function">curl</span> <span class="token number">10.98</span>.22.166:3306
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="custom-container warning">
-<p class="custom-container-title">hostNetwork 部署，通过宿主机 ip:port 形式访问，有如下弊端</p>
-<ul>
-<li>服务使用 <strong>hostNetwork</strong>，使得宿主机的端口大量暴漏，<strong>存在安全隐患</strong></li>
-<li>容易引发端口冲突</li>
-</ul>
-<p>因此，应该为 <strong>MySQL</strong> 创建固定 <strong>Cluster IP</strong> 的 <strong>Service</strong>，并配到 <strong>ublog</strong> 的环境变量中，利用集群服务发现的能力，组件间通过 <strong>service name</strong> 访问</p>
-</div>
-<h3 id="_2-2-服务发现-环境变量去-ip-化" tabindex="-1"><a class="header-anchor" href="#_2-2-服务发现-环境变量去-ip-化" aria-hidden="true">#</a> 2.2 服务发现（<em>环境变量去 IP 化</em> ）</h3>
-<p><strong>k8s</strong> 集群中，组件间可以通过 <strong>service name</strong> 实现通信，<strong>Pods</strong> 间，无需通过 <strong>固定环境变量 IP</strong> 的形式</p>
-<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code><span class="token comment"># 查看上文创建的 svc</span>
-$ kubectl <span class="token parameter variable">-n</span> uit get svc svc-mysql
-NAME        TYPE        CLUSTER-IP     EXTERNAL-IP   PORT<span class="token punctuation">(</span>S<span class="token punctuation">)</span>    AGE
-svc-mysql   ClusterIP   <span class="token number">10.98</span>.22.166   <span class="token operator">&lt;</span>none<span class="token operator">></span>        <span class="token number">3306</span>/TCP   151m
-
-<span class="token comment"># 访问任意一个业务 pod ublog</span>
-$ kubectl <span class="token parameter variable">-n</span> uit <span class="token builtin class-name">exec</span> <span class="token parameter variable">-ti</span> ublog-5ff678657f-rk92z /bin/bash
-
-<span class="token comment"># curl cluster ip，可正常连通 MySQL</span>
-<span class="token function">curl</span> <span class="token number">10.98</span>.22.166:3306
-
-<span class="token comment"># curl svc-mysql，发现依然可正常连通 MySQL，</span>
-<span class="token function">curl</span> svc-mysql:3306
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>尽管 <strong>Pod IP</strong> 和 <strong>Cluster IP</strong> 都不固定，但 <strong>service name</strong> 是固定的，且完全具有跨集群的可移植性，实现原理如下</p>
-<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code><span class="token comment"># 查看当前的 DNS 配置，发现有个 10.96.0.10 的 IP</span>
-<span class="token function">cat</span> /etc/resolv.conf 
-nameserver <span class="token number">10.96</span>.0.10
-search uit.svc.cluster.local svc.cluster.local cluster.local
-options ndots:5
-
-<span class="token comment"># 退出容器，并查看所有命名空间，发现 kube-system 下有个 kube-dns，它的 IP 刚好同上</span>
-$ kubectl get svc --all-namespaces
-NAMESPACE              NAME                        TYPE        CLUSTER-IP       EXTERNAL-IP   PORT<span class="token punctuation">(</span>S<span class="token punctuation">)</span>                  AGE
-default                kubernetes                  ClusterIP   <span class="token number">10.96</span>.0.1        <span class="token operator">&lt;</span>none<span class="token operator">></span>        <span class="token number">443</span>/TCP                  23d
-kube-system            kube-dns                    ClusterIP   <span class="token number">10.96</span>.0.10       <span class="token operator">&lt;</span>none<span class="token operator">></span>        <span class="token number">53</span>/UDP,53/TCP,9153/TCP   23d
-kubernetes-dashboard   dashboard-metrics-scraper   ClusterIP   <span class="token number">10.96</span>.54.184     <span class="token operator">&lt;</span>none<span class="token operator">></span>        <span class="token number">8000</span>/TCP                 22d
-kubernetes-dashboard   kubernetes-dashboard        NodePort    <span class="token number">10.97</span>.63.15      <span class="token operator">&lt;</span>none<span class="token operator">></span>        <span class="token number">443</span>:30100/TCP            22d
-uit                    svc-mysql                   ClusterIP   <span class="token number">10.98</span>.22.166     <span class="token operator">&lt;</span>none<span class="token operator">></span>        <span class="token number">3306</span>/TCP                 157m
-uit                    svc-ublog                   ClusterIP   <span class="token number">10.105</span>.146.135   <span class="token operator">&lt;</span>none<span class="token operator">></span>        <span class="token number">80</span>/TCP                   3h5m
-
-<span class="token comment"># 查看 kube-dns 这个 service，查找选择器 Selector 是 k8s-app=kube-dns 这个标签</span>
-$ kubectl <span class="token parameter variable">-n</span> kube-system describe svc kube-dns
-Name:              kube-dns
-Namespace:         kube-system
-Labels:            k8s-app<span class="token operator">=</span>kube-dns
-                   kubernetes.io/cluster-service<span class="token operator">=</span>true
-                   kubernetes.io/name<span class="token operator">=</span>KubeDNS
-Annotations:       prometheus.io/port: <span class="token number">9153</span>
-                   prometheus.io/scrape: <span class="token boolean">true</span>
-Selector:          k8s-app<span class="token operator">=</span>kube-dns
-Type:              ClusterIP
-IP:                <span class="token number">10.96</span>.0.10
-Port:              dns  <span class="token number">53</span>/UDP
-TargetPort:        <span class="token number">53</span>/UDP
-Endpoints:         <span class="token number">10.244</span>.0.5:53,10.244.0.6:53
-Port:              dns-tcp  <span class="token number">53</span>/TCP
-TargetPort:        <span class="token number">53</span>/TCP
-Endpoints:         <span class="token number">10.244</span>.0.5:53,10.244.0.6:53
-Port:              metrics  <span class="token number">9153</span>/TCP
-TargetPort:        <span class="token number">9153</span>/TCP
-Endpoints:         <span class="token number">10.244</span>.0.5:9153,10.244.0.6:9153
-Session Affinity:  None
-Events:            <span class="token operator">&lt;</span>none<span class="token operator">></span>
-
-<span class="token comment"># 根据 选择器 找Pod，发现是初始化时 coredns 用的</span>
-$ kubectl <span class="token parameter variable">-n</span> kube-system get po <span class="token parameter variable">-l</span> k8s-app<span class="token operator">=</span>kube-dns <span class="token parameter variable">-o</span> wide
-NAME                       READY   STATUS    RESTARTS   AGE   IP           NODE             NOMINATED NODE   READINESS GATES
-coredns-58cc8c89f4-hzprn   <span class="token number">1</span>/1     Running   <span class="token number">1</span>          23d   <span class="token number">10.244</span>.0.5   k8s-master-171   <span class="token operator">&lt;</span>none<span class="token operator">></span>           <span class="token operator">&lt;</span>none<span class="token operator">></span>
-coredns-58cc8c89f4-vvj77   <span class="token number">1</span>/1     Running   <span class="token number">2</span>          23d   <span class="token number">10.244</span>.0.6   k8s-master-171   <span class="token operator">&lt;</span>none<span class="token operator">></span>           <span class="token operator">&lt;</span>none<span class="token operator">></span>
-
-<span class="token string">"初始化时创建了 coredns 然后建立 kube-dns 这个service（固定的IP），然后新建 Pod 就可注入到 DNS 配置中，最终解析的就是 coredns 的IP，"</span>
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>故容器内部组件间调用，完全可以通过 <strong>service name</strong>（类似域名）来解析 <strong>IP</strong> 通信，避免了大量 <strong>IP</strong> 维护的成本，因此再次对部署进行优化改造</p>
-<ol>
-<li>
-<p><strong>MySQL</strong> 去掉 <strong>hostNetwork</strong> 部署，使得服务只暴露在 <strong>k8s</strong> 集群内部网络环境中</p>
-<div class="language-yaml ext-yml line-numbers-mode"><pre v-pre class="language-yaml"><code><span class="token punctuation">...</span>
-<span class="token key atrule">hostNetwork</span><span class="token punctuation">:</span> <span class="token boolean important">false</span>			<span class="token comment"># 去掉此行 或 改为false</span>
-<span class="token punctuation">...</span>
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></li>
-<li>
-<p><strong>configMap</strong> 中的数据库固定 <strong>IP</strong> 地址换成 <strong>service name</strong>，这样跨环境的时候，配置内容基本上可以保持不用变化</p>
-<div class="language-yaml ext-yml line-numbers-mode"><pre v-pre class="language-yaml"><code><span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> v1
-<span class="token key atrule">kind</span><span class="token punctuation">:</span> ConfigMap
-<span class="token key atrule">metadata</span><span class="token punctuation">:</span>
-  <span class="token key atrule">name</span><span class="token punctuation">:</span> ublog
-  <span class="token key atrule">namespace</span><span class="token punctuation">:</span> uit
-<span class="token key atrule">data</span><span class="token punctuation">:</span>
-  <span class="token key atrule">MYSQL_HOST</span><span class="token punctuation">:</span> <span class="token string">"svc-mysql"</span>     <span class="token comment"># 此处替换为mysql</span>
-  <span class="token key atrule">MYSQL_PORT</span><span class="token punctuation">:</span> <span class="token string">"3306"</span>
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>重新执行</p>
-<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code>$ kubectl apply <span class="token parameter variable">-f</span> configmap.yaml
-$ kubectl apply <span class="token parameter variable">-f</span> deploy-mysql.yaml
-
-<span class="token comment"># 也可以删除 configmap 再通过 .txt 重建</span>
-$ kubectl <span class="token parameter variable">-n</span> uit delete cm ublog
-$ kubectl <span class="token parameter variable">-n</span> uit create configmap ublog --from-env-file<span class="token operator">=</span>configmap.txt
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></li>
-</ol>
-<h3 id="_2-3-nodeport-外部访问" tabindex="-1"><a class="header-anchor" href="#_2-3-nodeport-外部访问" aria-hidden="true">#</a> 2.3 NodePort（<em>外部访问</em> ）</h3>
-<p><strong>Cluster IP</strong> 为虚拟地址，只能在 <strong>k8s</strong> 集群内部进行访问，集群外部如果访问内部服务，可以配置 <strong>NodePort</strong></p>
-<ul>
-<li>若不指定 <strong>NodePort</strong> 端口，则会默认在 <strong>30000-32767（<em>端口号</em> ）</strong> 中随机使用其中一个</li>
-</ul>
-<div class="language-yaml ext-yml line-numbers-mode"><pre v-pre class="language-yaml"><code><span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> v1
-<span class="token key atrule">kind</span><span class="token punctuation">:</span> Service
-<span class="token key atrule">metadata</span><span class="token punctuation">:</span>
-  <span class="token key atrule">name</span><span class="token punctuation">:</span> svc<span class="token punctuation">-</span>np<span class="token punctuation">-</span>ublog
-  <span class="token key atrule">namespace</span><span class="token punctuation">:</span> uit
-<span class="token key atrule">spec</span><span class="token punctuation">:</span>
-  <span class="token key atrule">ports</span><span class="token punctuation">:</span>
-  <span class="token punctuation">-</span> <span class="token key atrule">port</span><span class="token punctuation">:</span> <span class="token number">80</span>
-    <span class="token key atrule">protocol</span><span class="token punctuation">:</span> TCP
-    <span class="token key atrule">targetPort</span><span class="token punctuation">:</span> <span class="token number">8002</span>
-    <span class="token key atrule">nodePort</span><span class="token punctuation">:</span> <span class="token number">32333</span>				<span class="token comment"># 这里还是手动指定了端口 32333 看效果</span>
-  <span class="token key atrule">selector</span><span class="token punctuation">:</span>
-    <span class="token key atrule">app</span><span class="token punctuation">:</span> myblog
-  <span class="token key atrule">type</span><span class="token punctuation">:</span> NodePort				<span class="token comment"># 只需将之前的 Cluster IP 改为 NodePort 即可</span>
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>创建并查看服务</p>
-<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code><span class="token comment"># 创建 svc</span>
-$ kubectl create <span class="token parameter variable">-f</span> svc-np-ublog.yaml
-service/svc-np-ublog created
-
-<span class="token comment"># 查看当前服务</span>
-$ kubectl <span class="token parameter variable">-n</span> uit get svc
-NAME           TYPE        CLUSTER-IP       EXTERNAL-IP   PORT<span class="token punctuation">(</span>S<span class="token punctuation">)</span>        AGE
-svc-mysql      ClusterIP   <span class="token number">10.98</span>.22.166     <span class="token operator">&lt;</span>none<span class="token operator">></span>        <span class="token number">3306</span>/TCP       2d11h
-svc-np-ublog   NodePort    <span class="token number">10.107</span>.82.31     <span class="token operator">&lt;</span>none<span class="token operator">></span>        <span class="token number">80</span>:32543/TCP   4m57s
-svc-ublog      ClusterIP   <span class="token number">10.105</span>.146.135   <span class="token operator">&lt;</span>none<span class="token operator">></span>        <span class="token number">80</span>/TCP         2d11h
-
-<span class="token comment"># 查看详情</span>
-$ kubectl <span class="token parameter variable">-n</span> uit describe svc svc-np-ublog 
-Name:                     svc-np-ublog
-Namespace:                uit
-Labels:                   <span class="token operator">&lt;</span>none<span class="token operator">></span>
-Annotations:              <span class="token operator">&lt;</span>none<span class="token operator">></span>
-Selector:                 <span class="token assign-left variable">app</span><span class="token operator">=</span>myblog
-Type:                     NodePort
-IP:                       <span class="token number">10.107</span>.82.31
-Port:                     <span class="token operator">&lt;</span>unset<span class="token operator">></span>  <span class="token number">80</span>/TCP
-TargetPort:               <span class="token number">8002</span>/TCP
-NodePort:                 <span class="token operator">&lt;</span>unset<span class="token operator">></span>  <span class="token number">32543</span>/TCP
-Endpoints:                <span class="token number">10.244</span>.1.35:8002,10.244.2.32:8002
-Session Affinity:         None
-External Traffic Policy:  Cluster
-Events:                   <span class="token operator">&lt;</span>none<span class="token operator">></span>
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>此时发现类型变为 <code v-pre>Type: NodePort</code> ，且多了随机的端口 <code v-pre>NodePort: &lt;unset&gt; 32543/TCP</code>，但 <strong>CLUSTER-IP</strong> 和 <strong>Endpoints</strong> 依然没变</p>
-<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code><span class="token comment"># 故可删除之前的 svc</span>
-kubectl delete <span class="token parameter variable">-f</span> svc-ublog.yaml 
-<span class="token function">service</span> <span class="token string">"svc-ublog"</span> deleted
-
-<span class="token comment"># 同时发现，集群内每个节点的 NodePort 端口都会进行监听</span>
-$ <span class="token function">curl</span> <span class="token number">192.168</span>.3.171:32333/blog/index/
-$ <span class="token function">curl</span> <span class="token number">192.168</span>.3.172:32333/blog/index/
-$ <span class="token function">curl</span> <span class="token number">192.168</span>.3.173:32333/blog/index/
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p><strong>k8s</strong> 集群的 <strong>业务 Pod</strong> 变为类似 <strong>高可用</strong> 一样，都能在浏览器上，通过每个节点的 <strong>IP</strong>，对服务进行外部访问（<em>即使该节点未跑对应的业务 Pod</em> ）</p>
-<ul>
-<li><a href="http://192.168.3.171:32333/blog/index/" target="_blank" rel="noopener noreferrer">http://192.168.3.171:32333/blog/index/<ExternalLinkIcon/></a></li>
-<li><a href="http://192.168.3.172:32333/blog/index/" target="_blank" rel="noopener noreferrer">http://192.168.3.172:32333/blog/index/<ExternalLinkIcon/></a></li>
-<li><a href="http://192.168.3.173:32333/blog/index/" target="_blank" rel="noopener noreferrer">http://192.168.3.173:32333/blog/index/<ExternalLinkIcon/></a></li>
-</ul>
-<div class="custom-container note">
-<p class="custom-container-title">此时会有如下疑惑？</p>
-<ol>
-<li><strong>NodePort</strong> 的端口监听，是如何转发到对应的 <strong>Pod</strong> 服务的？</li>
-<li><strong>CLUSTER-IP</strong> 是  <strong>虚拟 IP</strong>，集群内是如何通过这个 <strong>虚拟 IP</strong> 访问到具体的 <strong>Pod</strong> 服务的？</li>
-</ol>
-</div>
-<h3 id="_2-4-service-实现原理" tabindex="-1"><a class="header-anchor" href="#_2-4-service-实现原理" aria-hidden="true">#</a> 2.4 Service 实现原理</h3>
-<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code><span class="token comment"># 查看 32333 端口的监听，看到如下 kube-proxy 在监听</span>
-$ <span class="token function">netstat</span> <span class="token parameter variable">-ntpl</span> <span class="token operator">|</span><span class="token function">grep</span> <span class="token number">32333</span>
-tcp6       <span class="token number">0</span>      <span class="token number">0</span> :::32333                :::*                    LISTEN      <span class="token number">28426</span>/kube-proxy  
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h4 id="kube-proxy" tabindex="-1"><a class="header-anchor" href="#kube-proxy" aria-hidden="true">#</a> kube-proxy</h4>
-<p><a href="https://kubernetes.io/docs/concepts/services-networking/service/#virtual-ips-and-service-proxies" target="_blank" rel="noopener noreferrer">官方文档<ExternalLinkIcon/></a></p>
-<p><strong>运行在每个节点上</strong>，监听 <strong>API Server</strong> 中服务对象的变化，再通过创建流量路由规则来实现网络的转发，有如下模式</p>
-<ul>
-<li><s><strong>User space</strong>, 让 Kube-Proxy 在用户空间监听一个端口，所有的 Service 都转发到这个端口，然后 Kube-Proxy 在内部应用层对其进行转发 ， 所有报文都走一遍用户态，性能不高，k8s v1.2版本后废弃</s>。</li>
-<li><strong>Iptables</strong>， 当前默认模式，<strong>完全由 IPtables 来实现</strong>， 通过各个节点上的 <strong>iptables</strong> 规则来实现 <strong>service</strong> 的负载均衡，但是随着 <strong>service</strong> 数量的增大，<strong>iptables</strong> 模式由于线性查找匹配、全量更新等特点，其性能会显著下降</li>
-<li><strong>IPVS</strong>， 与 <strong>iptables</strong> 同样基于 <strong>Netfilter（<em>iptable内核态的一种实现</em>）</strong>，采用 <strong>hash</strong> 表，因此当 <strong>service</strong> 数量达到一定规模时，<strong>hash</strong> 查表速度快，从而提高 <strong>service</strong> 的服务性能
-<ul>
-<li><strong>k8s 1.8</strong> 版本开始引入，<strong>1.11</strong> 版本开始稳定，需要开启宿主机的 <strong>ipvs</strong> 模块</li>
-</ul>
-</li>
-</ul>
-<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code><span class="token comment"># 查看 svc-np-ublog 的 iptables</span>
-$ iptables-save  <span class="token operator">|</span><span class="token function">grep</span> svc-np-ublog
-<span class="token parameter variable">-A</span> KUBE-NODEPORTS <span class="token parameter variable">-p</span> tcp <span class="token parameter variable">-m</span> comment <span class="token parameter variable">--comment</span> <span class="token string">"uit/svc-np-ublog:"</span> <span class="token parameter variable">-m</span> tcp <span class="token parameter variable">--dport</span> <span class="token number">32333</span> <span class="token parameter variable">-j</span> KUBE-MARK-MASQ
-<span class="token parameter variable">-A</span> KUBE-NODEPORTS <span class="token parameter variable">-p</span> tcp <span class="token parameter variable">-m</span> comment <span class="token parameter variable">--comment</span> <span class="token string">"uit/svc-np-ublog:"</span> <span class="token parameter variable">-m</span> tcp <span class="token parameter variable">--dport</span> <span class="token number">32333</span> <span class="token parameter variable">-j</span> KUBE-SVC-FQQJWIJEBH5A6SF6
-<span class="token parameter variable">-A</span> KUBE-SERVICES <span class="token operator">!</span> <span class="token parameter variable">-s</span> <span class="token number">10.244</span>.0.0/16 <span class="token parameter variable">-d</span> <span class="token number">10.107</span>.82.31/32 <span class="token parameter variable">-p</span> tcp <span class="token parameter variable">-m</span> comment <span class="token parameter variable">--comment</span> <span class="token string">"uit/svc-np-ublog: cluster IP"</span> <span class="token parameter variable">-m</span> tcp <span class="token parameter variable">--dport</span> <span class="token number">80</span> <span class="token parameter variable">-j</span> KUBE-MARK-MASQ
-<span class="token parameter variable">-A</span> KUBE-SERVICES <span class="token parameter variable">-d</span> <span class="token number">10.107</span>.82.31/32 <span class="token parameter variable">-p</span> tcp <span class="token parameter variable">-m</span> comment <span class="token parameter variable">--comment</span> <span class="token string">"uit/svc-np-ublog: cluster IP"</span> <span class="token parameter variable">-m</span> tcp <span class="token parameter variable">--dport</span> <span class="token number">80</span> <span class="token parameter variable">-j</span> KUBE-SVC-FQQJWIJEBH5A6SF6
-<span class="token variable"><span class="token variable">`</span>将IP <span class="token number">10.107</span>.82.31 转发到 <span class="token number">80</span>端口，转向 KUBE-SVC-FQQJWIJEBH5A6SF6 这个链<span class="token variable">`</span></span>
-
-<span class="token comment"># 继续抓链</span>
-$ iptables-save<span class="token operator">|</span><span class="token function">grep</span> KUBE-SVC-FQQJWIJEBH5A6SF6
-:KUBE-SVC-FQQJWIJEBH5A6SF6 - <span class="token punctuation">[</span><span class="token number">0</span>:0<span class="token punctuation">]</span>
-<span class="token punctuation">..</span>.
-<span class="token parameter variable">-A</span> KUBE-SVC-FQQJWIJEBH5A6SF6 <span class="token parameter variable">-m</span> statistic <span class="token parameter variable">--mode</span> random <span class="token parameter variable">--probability</span> <span class="token number">0.50000000000</span> <span class="token parameter variable">-j</span> KUBE-SEP-U4JA5WF5RRIRERN5
-<span class="token parameter variable">-A</span> KUBE-SVC-FQQJWIJEBH5A6SF6 <span class="token parameter variable">-j</span> KUBE-SEP-ME7MACTOWWVFKRBM
-<span class="token variable"><span class="token variable">`</span>静态 模式 随机 <span class="token number">50</span>%的可能性 打到 KUBE-SEP-U4JA5WF5RRIRERN5 链上<span class="token variable">`</span></span>
-
-<span class="token comment"># 进一步抓取 KUBE-SEP-U4JA5WF5RRIRERN5</span>
-$ iptables-save<span class="token operator">|</span><span class="token function">grep</span> KUBE-SEP-U4JA5WF5RRIRERN5
-:KUBE-SEP-U4JA5WF5RRIRERN5 - <span class="token punctuation">[</span><span class="token number">0</span>:0<span class="token punctuation">]</span>
-<span class="token parameter variable">-A</span> KUBE-SEP-U4JA5WF5RRIRERN5 <span class="token parameter variable">-s</span> <span class="token number">10.244</span>.1.35/32 <span class="token parameter variable">-j</span> KUBE-MARK-MASQ
-<span class="token parameter variable">-A</span> KUBE-SEP-U4JA5WF5RRIRERN5 <span class="token parameter variable">-p</span> tcp <span class="token parameter variable">-m</span> tcp <span class="token parameter variable">-j</span> DNAT --to-destination <span class="token number">10.244</span>.1.35:8002
-<span class="token parameter variable">-A</span> KUBE-SVC-FQQJWIJEBH5A6SF6 <span class="token parameter variable">-m</span> statistic <span class="token parameter variable">--mode</span> random <span class="token parameter variable">--probability</span> <span class="token number">0.50000000000</span> <span class="token parameter variable">-j</span> KUBE-SEP-U4JA5WF5RRIRERN5
-<span class="token variable"><span class="token variable">`</span>此时 DNAT 到了具体的 Pod IP <span class="token number">10.244</span>.1.35:8002 上<span class="token variable">`</span></span>
-
-<span class="token comment"># KUBE-SEP-ME7MACTOWWVFKRBM 也是如此</span>
-iptables-save<span class="token operator">|</span><span class="token function">grep</span> KUBE-SEP-ME7MACTOWWVFKRBM
-:KUBE-SEP-ME7MACTOWWVFKRBM - <span class="token punctuation">[</span><span class="token number">0</span>:0<span class="token punctuation">]</span>
-<span class="token parameter variable">-A</span> KUBE-SEP-ME7MACTOWWVFKRBM <span class="token parameter variable">-s</span> <span class="token number">10.244</span>.2.32/32 <span class="token parameter variable">-j</span> KUBE-MARK-MASQ
-<span class="token parameter variable">-A</span> KUBE-SEP-ME7MACTOWWVFKRBM <span class="token parameter variable">-p</span> tcp <span class="token parameter variable">-m</span> tcp <span class="token parameter variable">-j</span> DNAT --to-destination <span class="token number">10.244</span>.2.32:8002
-<span class="token parameter variable">-A</span> KUBE-SVC-FQQJWIJEBH5A6SF6 <span class="token parameter variable">-j</span> KUBE-SEP-ME7MACTOWWVFKRBM
-</code></pre><div class="highlight-lines"><br><br><br><br><br><br><br><br><div class="highlight-line">&nbsp;</div><div class="highlight-line">&nbsp;</div><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br></div><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>此时发现是按照 <strong>Pod</strong> ，进行流量分配，若要 <strong>灰度发布</strong>，做 <strong>流量分配 / 治理</strong>，此时仍无法实现，需要 <strong>istio</strong></p>
-<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code><span class="token comment">#重建pod</span>
-$ kubectl <span class="token parameter variable">-n</span> demo delete po mysql-7f747644b8-6npzn
-
-<span class="token comment">#去掉taint</span>
-$ kubectl taint <span class="token function">node</span> k8s-slave1 smoke-
-$ kubectl taint <span class="token function">node</span> k8s-slave2 drunk-
-
-<span class="token comment">## myblog不用动，会自动因健康检测不过而重启</span>
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>服务发现实现：</p>
-<p><code v-pre>CoreDNS</code>是一个<code v-pre>Go</code>语言实现的链式插件<code v-pre>DNS服务端</code>，是CNCF成员，是一个高性能、易扩展的<code v-pre>DNS服务端</code>。</p>
-<div class="language-powershell ext-powershell line-numbers-mode"><pre v-pre class="language-powershell"><code>$ kubectl <span class="token operator">-</span>n kube-system get po <span class="token operator">-</span>o wide<span class="token punctuation">|</span>grep dns
-coredns-d4475785-2w4hk 1/1 Running 0 4d22h 10<span class="token punctuation">.</span>244<span class="token punctuation">.</span>0<span class="token punctuation">.</span>64
-coredns-d4475785-s49hq 1/1 Running 0 4d22h 10<span class="token punctuation">.</span>244<span class="token punctuation">.</span>0<span class="token punctuation">.</span>65
-
-<span class="token comment"># 查看myblog的pod解析配置</span>
-$ kubectl <span class="token operator">-</span>n demo exec <span class="token operator">-</span>ti myblog-5c97d79cdb-j485f bash
-<span class="token namespace">[root@myblog-5c97d79cdb-j485f myblog]</span><span class="token comment"># cat /etc/resolv.conf</span>
-nameserver 10<span class="token punctuation">.</span>96<span class="token punctuation">.</span>0<span class="token punctuation">.</span>10
-search demo<span class="token punctuation">.</span>svc<span class="token punctuation">.</span>cluster<span class="token punctuation">.</span>local svc<span class="token punctuation">.</span>cluster<span class="token punctuation">.</span>local cluster<span class="token punctuation">.</span>local
-options ndots:5
-
-<span class="token comment">## 10.96.0.10 从哪来</span>
-$ kubectl <span class="token operator">-</span>n kube-system get svc
-NAME <span class="token function">TYPE</span> CLUSTER-IP EXTERNAL-IP PORT<span class="token punctuation">(</span>S<span class="token punctuation">)</span> AGE
-kube-dns ClusterIP 10<span class="token punctuation">.</span>96<span class="token punctuation">.</span>0<span class="token punctuation">.</span>10 &lt;none> 53/UDP<span class="token punctuation">,</span>53/TCP 51d
-
-<span class="token comment">## 启动pod的时候，会把kube-dns服务的cluster-ip地址注入到pod的resolve解析配置中，同时添加对应的namespace的search域。 因此跨namespace通过service name访问的话，需要添加对应的namespace名称，</span>
-service_name<span class="token punctuation">.</span>namespace_name
-$ kubectl get svc
-NAME <span class="token function">TYPE</span> CLUSTER-IP EXTERNAL-IP PORT<span class="token punctuation">(</span>S<span class="token punctuation">)</span> AGE
-kubernetes ClusterIP 10<span class="token punctuation">.</span>96<span class="token punctuation">.</span>0<span class="token punctuation">.</span>1 &lt;none> 443/TCP 26h
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="_3-ingress-流量路由" tabindex="-1"><a class="header-anchor" href="#_3-ingress-流量路由" aria-hidden="true">#</a> 3. Ingress（<em>流量路由</em> ）</h2>
-<p><a href="https://kubernetes.io/zh-cn/docs/concepts/services-networking/ingress/" target="_blank" rel="noopener noreferrer">官方文档<ExternalLinkIcon/></a></p>
-<p>对于 <strong>k8s</strong> 的 <strong>Service</strong>，无论是 <strong>Cluster IP</strong> 还是 <strong>NodePort</strong>，都是 <strong>四层负载</strong>，要让集群内的服务实现 <strong>七层负载均衡</strong>，要借助于 <strong>Ingress</strong>，<strong>Ingress</strong>控制器的实现方式有很多，比如 <strong>Nginx</strong>, <strong>Contour</strong>, <strong>Haproxy</strong>, <strong>trafik</strong>, <strong>Istio</strong>，下文<strong>Nginx</strong> 实现为例</p>
-<h3 id="_3-1-ingress-nginx" tabindex="-1"><a class="header-anchor" href="#_3-1-ingress-nginx" aria-hidden="true">#</a> 3.1 Ingress-nginx</h3>
-<p><strong>Ingress-nginx</strong> 是 <strong>7层的负载均衡器</strong> ，负责统一管理外部对 <strong>k8s cluster</strong> 中 <strong>Service</strong> 的请求，包含如下</p>
-<ul>
-<li><strong>ingress-nginx-controller：</strong> 根据用户编写的 <strong>ingress</strong> 规则（<em>创建的 ingress 的 yaml 文件</em> ），动态的去更改<strong>nginx</strong> 服务的配置文件，并且 <strong>reload</strong> 重载使其生效（<em>是自动化的，通过 lua 脚本来实现</em> ）</li>
-<li><strong>ingress资源对象：</strong> 将 <strong>Nginx</strong> 的配置抽象成一个 <strong>Ingress</strong> 对象，每添加一个新的 <strong>Service</strong> 资源对象只需写一个新的 <strong>Ingress</strong> 规则的 <strong>yaml</strong> 文件即可（<em>或修改已存在的 ingress 规则的 yaml 文件</em> ）</li>
-</ul>
-<h6 id="示意图" tabindex="-1"><a class="header-anchor" href="#示意图" aria-hidden="true">#</a> 示意图：</h6>
-<h6 id="实现逻辑" tabindex="-1"><a class="header-anchor" href="#实现逻辑" aria-hidden="true">#</a> 实现逻辑</h6>
-<p>1）ingress controller通过和kubernetes api交互，动态的去感知集群中ingress规则变化
-2）然后读取ingress规则(规则就是写明了哪个域名对应哪个service)，按照自定义的规则，生成一段nginx配置
-3）再写到nginx-ingress-controller的pod里，这个Ingress controller的pod里运行着一个Nginx服务，控制器把生成的nginx配置写入/etc/nginx.conf文件中
-4）然后reload一下使配置生效。以此达到域名分别配置和动态更新的问题。</p>
-<h6 id="安装" tabindex="-1"><a class="header-anchor" href="#安装" aria-hidden="true">#</a> 安装</h6>
-<p><a href="https://github.com/kubernetes/ingress-nginx/blob/master/docs/deploy/index.md" target="_blank" rel="noopener noreferrer">官方文档<ExternalLinkIcon/></a></p>
-<div class="language-powershell ext-powershell line-numbers-mode"><pre v-pre class="language-powershell"><code>$ wget https:<span class="token operator">/</span><span class="token operator">/</span>raw<span class="token punctuation">.</span>githubusercontent<span class="token punctuation">.</span>com/kubernetes/ingress-nginx/nginx-0<span class="token punctuation">.</span>30<span class="token punctuation">.</span>0/deploy/static/mandatory<span class="token punctuation">.</span>yaml
-<span class="token comment">## 或者使用myblog/deployment/ingress/mandatory.yaml</span>
-<span class="token comment">## 修改部署节点</span>
-$ grep <span class="token operator">-</span>n5 nodeSelector mandatory<span class="token punctuation">.</span>yaml
-212- spec:
-213- hostNetwork: true <span class="token comment">#添加为host模式</span>
-214- <span class="token comment"># wait up to five minutes for the drain of connections</span>
-215- terminationGracePeriodSeconds: 300
-216- serviceAccountName: nginx-ingress-serviceaccount
-217: nodeSelector:
-218- ingress: <span class="token string">"true"</span> <span class="token comment">#替换此处，来决定将ingress部署在哪些机器</span>
-219- containers:
-220- <span class="token operator">-</span> name: nginx-ingress-controller
-221- image: quay<span class="token punctuation">.</span>io/kubernetes-ingress-controller/nginx-ingress-controller:0<span class="token punctuation">.</span>30<span class="token punctuation">.</span>0
-222- args:
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>使用示例：<code v-pre>myblog/deployment/ingress.yaml</code></p>
-<div class="language-yaml ext-yml line-numbers-mode"><pre v-pre class="language-yaml"><code><span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> extensions/v1beta1
-<span class="token key atrule">kind</span><span class="token punctuation">:</span> Ingress
-<span class="token key atrule">metadata</span><span class="token punctuation">:</span>
-<span class="token key atrule">name</span><span class="token punctuation">:</span> myblog
-<span class="token key atrule">namespace</span><span class="token punctuation">:</span> demo
-<span class="token key atrule">spec</span><span class="token punctuation">:</span>
-<span class="token key atrule">rules</span><span class="token punctuation">:</span>
-<span class="token punctuation">-</span> <span class="token key atrule">host</span><span class="token punctuation">:</span> myblog.devops.cn
-<span class="token key atrule">http</span><span class="token punctuation">:</span>
-<span class="token key atrule">paths</span><span class="token punctuation">:</span>
-<span class="token punctuation">-</span> <span class="token key atrule">path</span><span class="token punctuation">:</span> /
-<span class="token key atrule">backend</span><span class="token punctuation">:</span>
-<span class="token key atrule">serviceName</span><span class="token punctuation">:</span> myblog
-<span class="token key atrule">servicePort</span><span class="token punctuation">:</span> <span class="token number">80</span>
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>ingress-nginx动态生成upstream配置：</p>
-<div class="language-yaml ext-yml line-numbers-mode"><pre v-pre class="language-yaml"><code><span class="token punctuation">...</span>
-server_name myblog.devops.cn ;
-
-listen 80 ;
-listen <span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token punctuation">]</span><span class="token punctuation">:</span>80 ;
-listen 443 ssl http2 ;
-listen <span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token punctuation">]</span><span class="token punctuation">:</span>443 ssl http2 ;
-
-set $proxy_upstream_name "<span class="token punctuation">-</span>";
-
-ssl_certificate_by_lua_block <span class="token punctuation">{</span>
-certificate.call()
-<span class="token punctuation">}</span>
-
-location / <span class="token punctuation">{</span>
-
-set $namespace "demo";
-set $ingress_name "myblog";
-<span class="token punctuation">...</span>
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h6 id="访问" tabindex="-1"><a class="header-anchor" href="#访问" aria-hidden="true">#</a> 访问</h6>
-<p>域名解析服务，将 <code v-pre>myblog.devops.cn</code>解析到ingress的地址上。ingress是支持多副本的，高可用的情况下，生产的配置是使用lb服务（内网F5设备，公网elb、slb、clb，解析到各ingress的机器，如何域名指向lb地址）</p>
-<p>本机，添加如下hosts记录来演示效果。</p>
-<div class="language-json ext-json line-numbers-mode"><pre v-pre class="language-json"><code><span class="token number">192.168</span>.<span class="token number">136.128</span> myblog.devops.cn
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p>然后，访问 <a href="http://myblog.devops.cn/blog/index/" target="_blank" rel="noopener noreferrer">http://myblog.devops.cn/blog/index/<ExternalLinkIcon/></a></p>
-<p>HTTPS访问：</p>
-<div class="language-powershell ext-powershell line-numbers-mode"><pre v-pre class="language-powershell"><code><span class="token comment">#自签名证书</span>
-$ openssl req <span class="token operator">-</span>x509 <span class="token operator">-</span>nodes <span class="token operator">-</span>days 2920 <span class="token operator">-</span>newkey rsa:2048 <span class="token operator">-</span>keyout tls<span class="token punctuation">.</span>key <span class="token operator">-</span>out tls<span class="token punctuation">.</span>crt <span class="token operator">-</span>subj <span class="token string">"/CN=*.devops.cn/O=ingress-nginx"</span>
-
-<span class="token comment"># 证书信息保存到secret对象中，ingress-nginx会读取secret对象解析出证书加载到nginx配置中</span>
-$ kubectl <span class="token operator">-</span>n demo create secret tls https-secret <span class="token operator">--</span>key tls<span class="token punctuation">.</span>key <span class="token operator">--</span>cert tls<span class="token punctuation">.</span>crt
-secret/https-secret created
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>修改yaml</p>
-<div class="language-yaml ext-yml line-numbers-mode"><pre v-pre class="language-yaml"><code><span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> extensions/v1beta1
-<span class="token key atrule">kind</span><span class="token punctuation">:</span> Ingress
-<span class="token key atrule">metadata</span><span class="token punctuation">:</span>
-<span class="token key atrule">name</span><span class="token punctuation">:</span> myblog<span class="token punctuation">-</span>tls
-<span class="token key atrule">namespace</span><span class="token punctuation">:</span> demo
-<span class="token key atrule">spec</span><span class="token punctuation">:</span>
-<span class="token key atrule">rules</span><span class="token punctuation">:</span>
-<span class="token punctuation">-</span> <span class="token key atrule">host</span><span class="token punctuation">:</span> myblog.devops.cn
-<span class="token key atrule">http</span><span class="token punctuation">:</span>
-<span class="token key atrule">paths</span><span class="token punctuation">:</span>
-<span class="token punctuation">-</span> <span class="token key atrule">path</span><span class="token punctuation">:</span> /
-<span class="token key atrule">backend</span><span class="token punctuation">:</span>
-<span class="token key atrule">serviceName</span><span class="token punctuation">:</span> myblog
-<span class="token key atrule">servicePort</span><span class="token punctuation">:</span> <span class="token number">80</span>
-<span class="token key atrule">tls</span><span class="token punctuation">:</span>
-<span class="token punctuation">-</span> <span class="token key atrule">hosts</span><span class="token punctuation">:</span>
-<span class="token punctuation">-</span> myblog.devops.cn
-<span class="token key atrule">secretName</span><span class="token punctuation">:</span> https<span class="token punctuation">-</span>secret
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>然后，访问 <a href="https://myblog.devops.cn/blog/index/" target="_blank" rel="noopener noreferrer">https://myblog.devops.cn/blog/index/<ExternalLinkIcon/></a></p>
-<h4 id="" tabindex="-1"><a class="header-anchor" href="#" aria-hidden="true">#</a> </h4>
-<h5 id="-1" tabindex="-1"><a class="header-anchor" href="#-1" aria-hidden="true">#</a> </h5>
+    <span class="token key atrule">matchLabels</span><span class="token punctuation">:</span>
+      <span class="token key atrule">app</span><span class="token punctuation">:</span> nginx
+    <span class="token key atrule">template</span><span class="token punctuation">:</span>
+      <span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+        <span class="token key atrule">labels</span><span class="token punctuation">:</span>
+          <span class="token key atrule">app</span><span class="token punctuation">:</span> nginx
+      <span class="token key atrule">spce</span><span class="token punctuation">:</span>
+        <span class="token key atrule">containers</span><span class="token punctuation">:</span>
+        <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> nginx
+          <span class="token key atrule">image</span><span class="token punctuation">:</span> <span class="token key atrule">nginx</span><span class="token punctuation">:</span> 1.15.2
+          <span class="token key atrule">ports</span><span class="token punctuation">:</span>
+          <span class="token punctuation">-</span> <span class="token key atrule">containerPort</span><span class="token punctuation">:</span> <span class="token number">80</span>
+            <span class="token key atrule">name</span><span class="token punctuation">:</span> web
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="_4-daemonset" tabindex="-1"><a class="header-anchor" href="#_4-daemonset" aria-hidden="true">#</a> 4. DaemonSet</h2>
+<p><strong>DaemonSet</strong> 同上也是管 <strong>Pod</strong> 的，区别是用来管理 <strong>有状态应用</strong> 的</p>
+<h2 id="_5-job" tabindex="-1"><a class="header-anchor" href="#_5-job" aria-hidden="true">#</a> 5. Job</h2>
 </div></template>
 
 
