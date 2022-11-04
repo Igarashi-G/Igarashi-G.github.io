@@ -1,1 +1,0 @@
-import{_ as o}from"./_plugin-vue_export-helper.cdc0426e.js";import{o as t,c as n,b as c,r}from"./app.03722760.js";const _={};function p(l,s){const e=r("PDF");return t(),n("div",null,[c(e,{url:"https://www.deadly-exception.icu:7779/pdf/python/Python%20Cookbook.pdf",height:"880px"})])}const h=o(_,[["render",p],["__file","fluent_python.html.vue"]]);export{h as default};
