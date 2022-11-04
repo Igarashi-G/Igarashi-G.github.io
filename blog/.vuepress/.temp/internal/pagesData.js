@@ -291,12 +291,6 @@ export const pagesData = {
   "v-4d83becc": () => import(/* webpackChunkName: "v-4d83becc" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/unix/Linux/Linux基础指引/主机规划与磁盘分区.html.js").then(({ data }) => data),
   // path: /unix/Linux/Linux%E5%9F%BA%E7%A1%80%E6%8C%87%E5%BC%95/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%A6%82%E8%AE%BA.html
   "v-476b0669": () => import(/* webpackChunkName: "v-476b0669" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/unix/Linux/Linux基础指引/计算机概论.html.js").then(({ data }) => data),
-  // path: /unix/Linux/Linux%E6%96%87%E4%BB%B6/Linux%E7%A3%81%E7%9B%98%E4%B8%8E%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%86.html
-  "v-0bb94898": () => import(/* webpackChunkName: "v-0bb94898" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/unix/Linux/Linux文件/Linux磁盘与文件系统管理.html.js").then(({ data }) => data),
-  // path: /unix/Linux/Linux%E6%96%87%E4%BB%B6/%E6%96%87%E4%BB%B6%E4%B8%8E%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E5%8E%8B%E7%BC%A9.html
-  "v-64f4a5c8": () => import(/* webpackChunkName: "v-64f4a5c8" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/unix/Linux/Linux文件/文件与文件系统压缩.html.js").then(({ data }) => data),
-  // path: /unix/Linux/Linux%E6%96%87%E4%BB%B6/%E6%96%87%E4%BB%B6%E6%9D%83%E9%99%90%E4%B8%8E%E7%9B%AE%E5%BD%95%E9%85%8D%E7%BD%AE.html
-  "v-be9e75a4": () => import(/* webpackChunkName: "v-be9e75a4" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/unix/Linux/Linux文件/文件权限与目录配置.html.js").then(({ data }) => data),
   // path: /unix/Linux/Linux%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%86%E5%91%98/%E8%AE%A4%E8%AF%86%E7%B3%BB%E7%BB%9F%E6%9C%8D%E5%8A%A1.html
   "v-4c9aa7f6": () => import(/* webpackChunkName: "v-4c9aa7f6" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/unix/Linux/Linux系统管理员/认识系统服务.html.js").then(({ data }) => data),
   // path: /unix/Linux/Shell%E8%84%9A%E6%9C%AC/vim%20%E5%BF%AB%E6%8D%B7%E9%94%AE.html
@@ -323,6 +317,12 @@ export const pagesData = {
   "v-625906d8": () => import(/* webpackChunkName: "v-625906d8" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/unix/硬件基础/主板/主板.html.js").then(({ data }) => data),
   // path: /unix/%E7%A1%AC%E4%BB%B6%E5%9F%BA%E7%A1%80/%E5%86%85%E5%AD%98/%E5%86%85%E5%AD%98.html
   "v-839497d8": () => import(/* webpackChunkName: "v-839497d8" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/unix/硬件基础/内存/内存.html.js").then(({ data }) => data),
+  // path: /unix/Linux/Linux%E6%96%87%E4%BB%B6/Linux%E7%A3%81%E7%9B%98%E4%B8%8E%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%86.html
+  "v-0bb94898": () => import(/* webpackChunkName: "v-0bb94898" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/unix/Linux/Linux文件/Linux磁盘与文件系统管理.html.js").then(({ data }) => data),
+  // path: /unix/Linux/Linux%E6%96%87%E4%BB%B6/%E6%96%87%E4%BB%B6%E4%B8%8E%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E5%8E%8B%E7%BC%A9.html
+  "v-64f4a5c8": () => import(/* webpackChunkName: "v-64f4a5c8" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/unix/Linux/Linux文件/文件与文件系统压缩.html.js").then(({ data }) => data),
+  // path: /unix/Linux/Linux%E6%96%87%E4%BB%B6/%E6%96%87%E4%BB%B6%E6%9D%83%E9%99%90%E4%B8%8E%E7%9B%AE%E5%BD%95%E9%85%8D%E7%BD%AE.html
+  "v-be9e75a4": () => import(/* webpackChunkName: "v-be9e75a4" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/unix/Linux/Linux文件/文件权限与目录配置.html.js").then(({ data }) => data),
   // path: /unix/%E7%A1%AC%E4%BB%B6%E5%9F%BA%E7%A1%80/%E5%AD%98%E5%82%A8/%E5%AD%98%E5%82%A8.html
   "v-d4964ad8": () => import(/* webpackChunkName: "v-d4964ad8" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/unix/硬件基础/存储/存储.html.js").then(({ data }) => data),
   // path: /unix/%E7%A1%AC%E4%BB%B6%E5%9F%BA%E7%A1%80/%E6%89%A9%E5%B1%95%E5%8D%A1%E4%B8%8E%E6%8E%A5%E5%8F%A3/%E6%89%A9%E5%B1%95%E5%8D%A1%E4%B8%8E%E6%8E%A5%E5%8F%A3.html
