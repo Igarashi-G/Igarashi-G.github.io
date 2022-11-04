@@ -179,18 +179,6 @@ export const pagesComponents = {
   "v-07bdfbed": defineAsyncComponent(() => import(/* webpackChunkName: "v-07bdfbed" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/python/生态/远程调用/gRPC.html.vue")),
   // path: /python/%E7%94%9F%E6%80%81/%E8%BF%9C%E7%A8%8B%E8%B0%83%E7%94%A8/RPC.html
   "v-0a4287a2": defineAsyncComponent(() => import(/* webpackChunkName: "v-0a4287a2" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/python/生态/远程调用/RPC.html.vue")),
-  // path: /python/%E8%AF%AD%E8%A8%80/asyncio/asyncio%20Recipes.html
-  "v-96e1e418": defineAsyncComponent(() => import(/* webpackChunkName: "v-96e1e418" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/python/语言/asyncio/asyncio Recipes.html.vue")),
-  // path: /python/%E8%AF%AD%E8%A8%80/asyncio/asyncio%E5%9F%BA%E7%A1%80.html
-  "v-7eb18144": defineAsyncComponent(() => import(/* webpackChunkName: "v-7eb18144" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/python/语言/asyncio/asyncio基础.html.vue")),
-  // path: /python/%E8%AF%AD%E8%A8%80/asyncio/asyncio%E8%BF%9B%E9%98%B6.html
-  "v-235c5c25": defineAsyncComponent(() => import(/* webpackChunkName: "v-235c5c25" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/python/语言/asyncio/asyncio进阶.html.vue")),
-  // path: /python/%E8%AF%AD%E8%A8%80/asyncio/%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF.html
-  "v-1cdaf394": defineAsyncComponent(() => import(/* webpackChunkName: "v-1cdaf394" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/python/语言/asyncio/事件循环.html.vue")),
-  // path: /python/%E8%AF%AD%E8%A8%80/asyncio/%E5%BA%95%E5%B1%82%E5%AE%9E%E7%8E%B0.html
-  "v-73f86a11": defineAsyncComponent(() => import(/* webpackChunkName: "v-73f86a11" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/python/语言/asyncio/底层实现.html.vue")),
-  // path: /python/%E8%AF%AD%E8%A8%80/asyncio/%E5%BC%82%E6%AD%A5%E5%9B%9E%E6%BA%AF.html
-  "v-0fc44286": defineAsyncComponent(() => import(/* webpackChunkName: "v-0fc44286" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/python/语言/asyncio/异步回溯.html.vue")),
   // path: /python/%E8%AF%AD%E8%A8%80/%E5%9F%BA%E7%A1%80/pip.html
   "v-6d8029f2": defineAsyncComponent(() => import(/* webpackChunkName: "v-6d8029f2" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/python/语言/基础/pip.html.vue")),
   // path: /python/%E8%AF%AD%E8%A8%80/%E5%9F%BA%E7%A1%80/%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81.html
@@ -203,6 +191,18 @@ export const pagesComponents = {
   "v-7126c988": defineAsyncComponent(() => import(/* webpackChunkName: "v-7126c988" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/python/语言/基础/流程控制.html.vue")),
   // path: /python/%E8%AF%AD%E8%A8%80/%E5%9F%BA%E7%A1%80/%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85.html
   "v-14e723b3": defineAsyncComponent(() => import(/* webpackChunkName: "v-14e723b3" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/python/语言/基础/环境安装.html.vue")),
+  // path: /python/%E8%AF%AD%E8%A8%80/asyncio/asyncio%20Recipes.html
+  "v-96e1e418": defineAsyncComponent(() => import(/* webpackChunkName: "v-96e1e418" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/python/语言/asyncio/asyncio Recipes.html.vue")),
+  // path: /python/%E8%AF%AD%E8%A8%80/asyncio/asyncio%E5%9F%BA%E7%A1%80.html
+  "v-7eb18144": defineAsyncComponent(() => import(/* webpackChunkName: "v-7eb18144" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/python/语言/asyncio/asyncio基础.html.vue")),
+  // path: /python/%E8%AF%AD%E8%A8%80/asyncio/asyncio%E8%BF%9B%E9%98%B6.html
+  "v-235c5c25": defineAsyncComponent(() => import(/* webpackChunkName: "v-235c5c25" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/python/语言/asyncio/asyncio进阶.html.vue")),
+  // path: /python/%E8%AF%AD%E8%A8%80/asyncio/%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF.html
+  "v-1cdaf394": defineAsyncComponent(() => import(/* webpackChunkName: "v-1cdaf394" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/python/语言/asyncio/事件循环.html.vue")),
+  // path: /python/%E8%AF%AD%E8%A8%80/asyncio/%E5%BA%95%E5%B1%82%E5%AE%9E%E7%8E%B0.html
+  "v-73f86a11": defineAsyncComponent(() => import(/* webpackChunkName: "v-73f86a11" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/python/语言/asyncio/底层实现.html.vue")),
+  // path: /python/%E8%AF%AD%E8%A8%80/asyncio/%E5%BC%82%E6%AD%A5%E5%9B%9E%E6%BA%AF.html
+  "v-0fc44286": defineAsyncComponent(() => import(/* webpackChunkName: "v-0fc44286" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/python/语言/asyncio/异步回溯.html.vue")),
   // path: /python/%E8%AF%AD%E8%A8%80/%E5%A4%9A%E4%BB%BB%E5%8A%A1%E7%BC%96%E7%A8%8B/%E5%8D%8F%E7%A8%8B.html
   "v-34872aee": defineAsyncComponent(() => import(/* webpackChunkName: "v-34872aee" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/python/语言/多任务编程/协程.html.vue")),
   // path: /python/%E8%AF%AD%E8%A8%80/%E5%A4%9A%E4%BB%BB%E5%8A%A1%E7%BC%96%E7%A8%8B/%E5%90%8C%E6%AD%A5%E9%98%9F%E5%88%97.html
@@ -325,10 +325,10 @@ export const pagesComponents = {
   "v-625906d8": defineAsyncComponent(() => import(/* webpackChunkName: "v-625906d8" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/unix/硬件基础/主板/主板.html.vue")),
   // path: /unix/%E7%A1%AC%E4%BB%B6%E5%9F%BA%E7%A1%80/%E5%86%85%E5%AD%98/%E5%86%85%E5%AD%98.html
   "v-839497d8": defineAsyncComponent(() => import(/* webpackChunkName: "v-839497d8" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/unix/硬件基础/内存/内存.html.vue")),
-  // path: /unix/%E7%A1%AC%E4%BB%B6%E5%9F%BA%E7%A1%80/%E6%89%A9%E5%B1%95%E5%8D%A1%E4%B8%8E%E6%8E%A5%E5%8F%A3/%E6%89%A9%E5%B1%95%E5%8D%A1%E4%B8%8E%E6%8E%A5%E5%8F%A3.html
-  "v-0510ac58": defineAsyncComponent(() => import(/* webpackChunkName: "v-0510ac58" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/unix/硬件基础/扩展卡与接口/扩展卡与接口.html.vue")),
   // path: /unix/%E7%A1%AC%E4%BB%B6%E5%9F%BA%E7%A1%80/%E5%AD%98%E5%82%A8/%E5%AD%98%E5%82%A8.html
   "v-d4964ad8": defineAsyncComponent(() => import(/* webpackChunkName: "v-d4964ad8" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/unix/硬件基础/存储/存储.html.vue")),
+  // path: /unix/%E7%A1%AC%E4%BB%B6%E5%9F%BA%E7%A1%80/%E6%89%A9%E5%B1%95%E5%8D%A1%E4%B8%8E%E6%8E%A5%E5%8F%A3/%E6%89%A9%E5%B1%95%E5%8D%A1%E4%B8%8E%E6%8E%A5%E5%8F%A3.html
+  "v-0510ac58": defineAsyncComponent(() => import(/* webpackChunkName: "v-0510ac58" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/unix/硬件基础/扩展卡与接口/扩展卡与接口.html.vue")),
   // path: /unix/%E7%A1%AC%E4%BB%B6%E5%9F%BA%E7%A1%80/%E6%98%BE%E5%8D%A1/%E6%98%BE%E5%8D%A1.html
   "v-478e7b54": defineAsyncComponent(() => import(/* webpackChunkName: "v-478e7b54" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/unix/硬件基础/显卡/显卡.html.vue")),
   // path: /unix/%E8%99%9A%E6%8B%9F%E6%9C%BA/PVE/PVE.html

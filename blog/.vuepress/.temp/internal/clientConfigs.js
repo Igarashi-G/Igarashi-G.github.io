@@ -4,11 +4,11 @@ import clientConfig2 from 'D:/Program/igarashi-blog/node_modules/.pnpm/@vuepress
 import clientConfig3 from 'D:/Program/igarashi-blog/node_modules/.pnpm/@vuepress+plugin-external-link-icon@2.0.0-beta.51/node_modules/@vuepress/plugin-external-link-icon/lib/client/config.js'
 import clientConfig4 from 'D:/Program/igarashi-blog/node_modules/.pnpm/@vuepress+plugin-nprogress@2.0.0-beta.51/node_modules/@vuepress/plugin-nprogress/lib/client/config.js'
 import clientConfig5 from 'D:/Program/igarashi-blog/node_modules/.pnpm/@vuepress+plugin-theme-data@2.0.0-beta.51/node_modules/@vuepress/plugin-theme-data/lib/client/config.js'
-import clientConfig6 from 'D:/Program/igarashi-blog/node_modules/.pnpm/vuepress-plugin-comment2@2.0.0-beta.100/node_modules/vuepress-plugin-comment2/lib/client/config.js'
-import clientConfig7 from 'D:/Program/igarashi-blog/node_modules/.pnpm/vuepress-plugin-copy-code2@2.0.0-beta.100/node_modules/vuepress-plugin-copy-code2/lib/client/config.js'
-import clientConfig8 from 'D:/Program/igarashi-blog/blog/.vuepress/.temp/md-enhance/config.js'
-import clientConfig9 from 'D:/Program/igarashi-blog/node_modules/.pnpm/vuepress-plugin-photo-swipe@2.0.0-beta.100/node_modules/vuepress-plugin-photo-swipe/lib/client/config.js'
-import clientConfig10 from 'D:/Program/igarashi-blog/blog/.vuepress/.temp/theme-hope/config.js'
+import clientConfig6 from 'D:/Program/igarashi-blog/node_modules/.pnpm/vuepress-plugin-copy-code2@2.0.0-beta.100/node_modules/vuepress-plugin-copy-code2/lib/client/config.js'
+import clientConfig7 from 'D:/Program/igarashi-blog/blog/.vuepress/.temp/md-enhance/config.js'
+import clientConfig8 from 'D:/Program/igarashi-blog/node_modules/.pnpm/vuepress-plugin-photo-swipe@2.0.0-beta.100/node_modules/vuepress-plugin-photo-swipe/lib/client/config.js'
+import clientConfig9 from 'D:/Program/igarashi-blog/blog/.vuepress/.temp/theme-hope/config.js'
+import clientConfig10 from 'D:/Program/igarashi-blog/node_modules/.pnpm/@vuepress+plugin-search@2.0.0-beta.51/node_modules/@vuepress/plugin-search/lib/client/config.js'
 
 export const clientConfigs = [
   clientConfig0,

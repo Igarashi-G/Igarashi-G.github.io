@@ -1,16 +1,17 @@
 import { defineUserConfig } from "vuepress";
 import theme from "./theme.js";
 import { viteBundler } from 'vuepress'
+import { searchPlugin } from "@vuepress/plugin-search";
 
 const INVALID_CHAR_REGEX = /[\x00-\x1F\x7F<>*#"{}|^[\]`;?:&=+$,]/g;
 const DRIVE_LETTER_REGEX = /^[a-z]:/i;
 
 export default defineUserConfig({
+  base: "/",
+
   lang: "zh-CN",
   title: "五十岚 ▪ 寄",
   description: "五十岚の博客",
-
-  base: "/",
 
   head: [
     [
@@ -23,6 +24,25 @@ export default defineUserConfig({
   ],
 
   theme,
+  
+  //是否开启页面预拉取，如果服务器宽带足够，可改为 true，会提升其他页面加载速度
+  shouldPrefetch: true,
+  
+  plugins: [
+    // algolia 全文搜索：没设置爬虫的话，需删除 docsearchPlugin 区块以使用节点搜索
+    // docsearchPlugin({
+    // }),
+    // 本地搜索：默认情况下，该插件会将页面标题和小标题作为搜索索引。
+    searchPlugin({
+      // 你的选项
+      locales: {
+        '/': {
+          placeholder: 'Search',
+        },
+      },
+    }),
+  ],
+
   pagePatterns: [
     "**/*.md",
     "!**/*.snippet.md",
@@ -30,8 +50,6 @@ export default defineUserConfig({
     "!node_modules",
   ],
 
-  shouldPrefetch: false,
-  
   define: () => ({
     IS_NETLIFY: "NETLIFY" in process.env,
   }),
