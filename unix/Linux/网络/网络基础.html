@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="generator" content="VuePress 2.0.0-beta.51" />
+    <meta name="theme" content="VuePress Theme Hope" />
+    <meta property="og:url" content="https://igarashi-g.github.io/unix/Linux/%E7%BD%91%E7%BB%9C/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80.html"><meta property="og:site_name" content="五十岚 ▪ 寄"><meta property="og:title" content="Linux网络基础"><meta property="og:type" content="article"><meta property="og:updated_time" content="2022-09-29T14:35:37.000Z"><meta property="og:locale" content="zh-CN"><meta property="article:modified_time" content="2022-09-29T14:35:37.000Z"><title>Linux网络基础 | 五十岚 ▪ 寄</title><meta name="description" content="五十岚の博客">
+    <style>
+      :root {
+        --bg-color: #fff;
+      }
+
+      html[data-theme="dark"] {
+        --bg-color: #1d2025;
+      }
+
+      html,
+      body {
+        background-color: var(--bg-color);
+      }
+    </style>
+    <script>
+      const userMode = localStorage.getItem("vuepress-theme-hope-scheme");
+      const systemDarkMode =
+        window.matchMedia &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+      if (userMode === "dark" || (userMode !== "light" && systemDarkMode)) {
+        document.querySelector("html").setAttribute("data-theme", "dark");
+      }
+    </script>
+    <link rel="stylesheet" href="/assets/style.31ae6679.css">
+    <link rel="modulepreload" href="/assets/app.03722760.js"><link rel="modulepreload" href="/assets/网络基础.html.d88ce7ae.js"><link rel="modulepreload" href="/assets/_plugin-vue_export-helper.cdc0426e.js"><link rel="modulepreload" href="/assets/网络基础.html.3f0d2ad9.js"><link rel="prefetch" href="/assets/index.html.84515c4d.js"><link rel="prefetch" href="/assets/home.html.5a08a41a.js"><link rel="prefetch" href="/assets/intro.html.a3abc21e.js"><link rel="prefetch" href="/assets/slides.html.be530558.js"><link rel="prefetch" href="/assets/index.html.94e75599.js"><link rel="prefetch" href="/assets/index.html.2616f9e7.js"><link rel="prefetch" href="/assets/disable.html.e5c6b2d4.js"><link rel="prefetch" href="/assets/encrypt.html.a9dc5b86.js"><link rel="prefetch" href="/assets/markdown.html.6c71d675.js"><link rel="prefetch" href="/assets/page.html.420ce2a4.js"><link rel="prefetch" href="/assets/PS操作基础.html.f33208ce.js"><link rel="prefetch" href="/assets/index.html.3de1b61a.js"><link rel="prefetch" href="/assets/SAI操作基础.html.34f3130b.js"><link rel="prefetch" href="/assets/index.html.241f593a.js"><link rel="prefetch" href="/assets/index.html.5951c66f.js"><link rel="prefetch" href="/assets/asyncio_recipes.html.ebf94d80.js"><link rel="prefetch" href="/assets/devops_in_python.html.dfef3bf0.js"><link rel="prefetch" href="/assets/fluent_python.html.4e0ceb79.js"><link rel="prefetch" href="/assets/index.html.ee931f7a.js"><link rel="prefetch" href="/assets/python_cookbook.html.7019a229.js"><link rel="prefetch" href="/assets/python源码剖析.html.c7855182.js"><link rel="prefetch" href="/assets/use_asyncio.html.a14b57ff.js"><link rel="prefetch" href="/assets/index.html.bd5e83b6.js"><link rel="prefetch" href="/assets/亚动机与人格.html.3a368f30.js"><link rel="prefetch" href="/assets/人的潜能和价值.html.a0342cee.js"><link rel="prefetch" href="/assets/好人是如何变成恶魔的.html.24920c45.js"><link rel="prefetch" href="/assets/影响力.html.de751fba.js"><link rel="prefetch" href="/assets/性心理学.html.7d90e547.js"><link rel="prefetch" href="/assets/洗脑心理学.html.d0f71f8a.js"><link rel="prefetch" href="/assets/进化心理学.html.6eaa9043.js"><link rel="prefetch" href="/assets/CODE.html.3423e072.js"><link rel="prefetch" href="/assets/index.html.076c260e.js"><link rel="prefetch" href="/assets/成为技术领导者.html.416740ca.js"><link rel="prefetch" href="/assets/鸟哥的Linux私房菜.html.313b2073.js"><link rel="prefetch" href="/assets/鸟哥的Linux私房菜服务器架设篇.html.8a6ebb9f.js"><link rel="prefetch" href="/assets/黑客与画家.html.c51996a7.js"><link rel="prefetch" href="/assets/index.html.cf0592b7.js"><link rel="prefetch" href="/assets/中国人的性格.html.7351181c.js"><link rel="prefetch" href="/assets/乌合之众.html.6ae759af.js"><link rel="prefetch" href="/assets/娱乐至死.html.9ea40086.js"><link rel="prefetch" href="/assets/index.html.cbca1670.js"><link rel="prefetch" href="/assets/清醒思考的艺术.html.13bdcbad.js"><link rel="prefetch" href="/assets/index.html.e3b7c376.js"><link rel="prefetch" href="/assets/博弈论与经济行为.html.dc5050ce.js"><link rel="prefetch" href="/assets/就业_利息和货币通论.html.d5958861.js"><link rel="prefetch" href="/assets/聪明的投资者.html.af08bc8d.js"><link rel="prefetch" href="/assets/货币金融学.html.6ad25057.js"><link rel="prefetch" href="/assets/非理性繁荣.html.3f3d5cb2.js"><link rel="prefetch" href="/assets/MySQL.html.e388cdc4.js"><link rel="prefetch" href="/assets/Mysql调优.html.97e4f341.js"><link rel="prefetch" href="/assets/Mysql进阶.html.27f9908e.js"><link rel="prefetch" href="/assets/Mysql高阶.html.383f9ec6.js"><link rel="prefetch" href="/assets/Navicat.html.b57adb1b.js"><link rel="prefetch" href="/assets/SQLAlchemy.html.05704fc2.js"><link rel="prefetch" href="/assets/PostgreSQL.html.b489b540.js"><link rel="prefetch" href="/assets/redis.html.60d74794.js"><link rel="prefetch" href="/assets/性能分析.html.56438664.js"><link rel="prefetch" href="/assets/aioetcd3.html.9a68abb5.js"><link rel="prefetch" href="/assets/etcd.html.7f601ff8.js"><link rel="prefetch" href="/assets/进阶.html.74a14dae.js"><link rel="prefetch" href="/assets/go语言速记.html.b114508d.js"><link rel="prefetch" href="/assets/docker容器.html.789e680f.js"><link rel="prefetch" href="/assets/使用基础.html.56406bb9.js"><link rel="prefetch" href="/assets/命令.html.cc326fd5.js"><link rel="prefetch" href="/assets/网络.html.20accbae.js"><link rel="prefetch" href="/assets/GIt提交规则.html.b61995d7.js"><link rel="prefetch" href="/assets/Git.html.0d5fce44.js"><link rel="prefetch" href="/assets/安装GitLab.html.64dc66fd.js"><link rel="prefetch" href="/assets/k8s安装.html.f345126e.js"><link rel="prefetch" href="/assets/k8s工作负载.html.3e3d7dbe.js"><link rel="prefetch" href="/assets/k8s服务.html.310833cd.js"><link rel="prefetch" href="/assets/k8s资源Pod.html.1083c626.js"><link rel="prefetch" href="/assets/k8s进阶.html.9f8285c9.js"><link rel="prefetch" href="/assets/Nginx基础.html.882aead1.js"><link rel="prefetch" href="/assets/应用部署.html.d3cba08a.js"><link rel="prefetch" href="/assets/Fiddler抓包工具.html.2e0eaa4e.js"><link rel="prefetch" href="/assets/Postman.html.ab4864db.js"><link rel="prefetch" href="/assets/Screen.html.d5a3041f.js"><link rel="prefetch" href="/assets/rdesktop.html.920ddeb3.js"><link rel="prefetch" href="/assets/tmux.html.02a7fcb6.js"><link rel="prefetch" href="/assets/网络代理.html.ec01359e.js"><link rel="prefetch" href="/assets/APScheduler.html.263f1926.js"><link rel="prefetch" href="/assets/Celery.html.13320b39.js"><link rel="prefetch" href="/assets/Celery使用基础.html.cda56b19.js"><link rel="prefetch" href="/assets/异步任务概述.html.22435050.js"><link rel="prefetch" href="/assets/RabbitMQ.html.4cc2d825.js"><link rel="prefetch" href="/assets/kafka.html.f0317fdf.js"><link rel="prefetch" href="/assets/RPC.html.5e382878.js"><link rel="prefetch" href="/assets/gRPC.html.7d04590d.js"><link rel="prefetch" href="/assets/asyncio Recipes.html.8e28c2d4.js"><link rel="prefetch" href="/assets/asyncio基础.html.967262da.js"><link rel="prefetch" href="/assets/asyncio进阶.html.f9a79d6d.js"><link rel="prefetch" href="/assets/事件循环.html.ccc0dca2.js"><link rel="prefetch" href="/assets/底层实现.html.948a7f68.js"><link rel="prefetch" href="/assets/异步回溯.html.19a9e196.js"><link rel="prefetch" href="/assets/pip.html.786da363.js"><link rel="prefetch" href="/assets/字符编码.html.62c5c8ab.js"><link rel="prefetch" href="/assets/数据类型.html.8611832a.js"><link rel="prefetch" href="/assets/文件基础.html.8b023d93.js"><link rel="prefetch" href="/assets/流程控制.html.d185267c.js"><link rel="prefetch" href="/assets/环境安装.html.0a3744ab.js"><link rel="prefetch" href="/assets/协程.html.c4604095.js"><link rel="prefetch" href="/assets/同步队列.html.8a638e16.js"><link rel="prefetch" href="/assets/多线程编程.html.b6a1d1fe.js"><link rel="prefetch" href="/assets/多进程编程.html.fc59ec56.js"><link rel="prefetch" href="/assets/线程.html.6b48a511.js"><link rel="prefetch" href="/assets/线程进程辅助机制.html.bfd51d9e.js"><link rel="prefetch" href="/assets/进程.html.638192b5.js"><link rel="prefetch" href="/assets/Cpython对象.html.e63dd9d4.js"><link rel="prefetch" href="/assets/垃圾回收.html.c0f20ca3.js"><link rel="prefetch" href="/assets/序列进阶.html.2d06813a.js"><link rel="prefetch" href="/assets/映射进阶.html.2b995404.js"><link rel="prefetch" href="/assets/设计模式.html.d23369e7.js"><link rel="prefetch" href="/assets/Socket.html.48f0d65b.js"><link rel="prefetch" href="/assets/Websocket.html.2184fee7.js"><link rel="prefetch" href="/assets/事件模型.html.87334d53.js"><link rel="prefetch" href="/assets/回调.html.fa7100b8.js"><link rel="prefetch" href="/assets/函数.html.98eca835.js"><link rel="prefetch" href="/assets/变量机制.html.a5c01f07.js"><link rel="prefetch" href="/assets/模块和包.html.f7126264.js"><link rel="prefetch" href="/assets/生成器.html.bbc3e2b6.js"><link rel="prefetch" href="/assets/装饰器.html.c196db44.js"><link rel="prefetch" href="/assets/迭代器.html.82a222fb.js"><link rel="prefetch" href="/assets/错误和异常.html.1fd3fea1.js"><link rel="prefetch" href="/assets/面向对象.html.aad02caa.js"><link rel="prefetch" href="/assets/DNS服务.html.eed32b92.js"><link rel="prefetch" href="/assets/bind.html.4d359edc.js"><link rel="prefetch" href="/assets/linux 文件锁.html.e18e8d20.js"><link rel="prefetch" href="/assets/脚本说明.html.8f656de9.js"><link rel="prefetch" href="/assets/AD域.html.1b000bfd.js"><link rel="prefetch" href="/assets/LDAP.html.6b72d1f8.js"><link rel="prefetch" href="/assets/Python对接AD域.html.ad08d2bd.js"><link rel="prefetch" href="/assets/NFS服务.html.bf70ba65.js"><link rel="prefetch" href="/assets/NTP服务.html.aae0cea3.js"><link rel="prefetch" href="/assets/SNMP服务.html.d0a8f318.js"><link rel="prefetch" href="/assets/Samba服务.html.9761e33c.js"><link rel="prefetch" href="/assets/ufscli工具.html.2202541c.js"><link rel="prefetch" href="/assets/ufs核心组件.html.3038dfb8.js"><link rel="prefetch" href="/assets/ufs管理平台.html.5955fdb4.js"><link rel="prefetch" href="/assets/uus虚拟机排错.html.c191ab65.js"><link rel="prefetch" href="/assets/CentOS的安装.html.c88ee896.js"><link rel="prefetch" href="/assets/RPM包管理.html.f8c286d2.js"><link rel="prefetch" href="/assets/账号管理与ACL权限.html.45629df2.js"><link rel="prefetch" href="/assets/Linux是什么与如何学习.html.42f1edf5.js"><link rel="prefetch" href="/assets/主机规划与磁盘分区.html.e98f9782.js"><link rel="prefetch" href="/assets/计算机概论.html.8b78efb5.js"><link rel="prefetch" href="/assets/Linux磁盘与文件系统管理.html.f2e83970.js"><link rel="prefetch" href="/assets/文件与文件系统压缩.html.fbe9151b.js"><link rel="prefetch" href="/assets/文件权限与目录配置.html.1345de0d.js"><link rel="prefetch" href="/assets/认识系统服务.html.b0a77c03.js"><link rel="prefetch" href="/assets/vim 快捷键.html.8fb26319.js"><link rel="prefetch" href="/assets/vim程序编辑器.html.653dc7c5.js"><link rel="prefetch" href="/assets/常复习.html.5f762ed9.js"><link rel="prefetch" href="/assets/CURL.html.a58ba046.js"><link rel="prefetch" href="/assets/SSL协议.html.a0b3818a.js"><link rel="prefetch" href="/assets/命令.html.c0818570.js"><link rel="prefetch" href="/assets/Ubuntu系列操作.html.2d3284d7.js"><link rel="prefetch" href="/assets/认识Linux系统.html.92fbea05.js"><link rel="prefetch" href="/assets/CPU.html.624ffdd7.js"><link rel="prefetch" href="/assets/主板.html.eba6fab1.js"><link rel="prefetch" href="/assets/内存.html.f4a9bfa2.js"><link rel="prefetch" href="/assets/存储.html.7c0b40ac.js"><link rel="prefetch" href="/assets/扩展卡与接口.html.20ee9dfd.js"><link rel="prefetch" href="/assets/显卡.html.c6223e27.js"><link rel="prefetch" href="/assets/PVE.html.8fcfa6f1.js"><link rel="prefetch" href="/assets/添加磁盘.html.d7dd97c0.js"><link rel="prefetch" href="/assets/网络配置.html.3ea84e90.js"><link rel="prefetch" href="/assets/404.html.19a9275b.js"><link rel="prefetch" href="/assets/index.html.02b98117.js"><link rel="prefetch" href="/assets/index.html.870d4e9a.js"><link rel="prefetch" href="/assets/index.html.412710b6.js"><link rel="prefetch" href="/assets/index.html.9ee6b029.js"><link rel="prefetch" href="/assets/index.html.f3068f3a.js"><link rel="prefetch" href="/assets/index.html.b3a4f791.js"><link rel="prefetch" href="/assets/index.html.1056e0a4.js"><link rel="prefetch" href="/assets/index.html.31a36b3e.js"><link rel="prefetch" href="/assets/index.html.4e1002d7.js"><link rel="prefetch" href="/assets/index.html.01c4efbe.js"><link rel="prefetch" href="/assets/index.html.45ee99c8.js"><link rel="prefetch" href="/assets/index.html.874a5c84.js"><link rel="prefetch" href="/assets/index.html.4533878d.js"><link rel="prefetch" href="/assets/index.html.8af94d91.js"><link rel="prefetch" href="/assets/index.html.d43aa8c3.js"><link rel="prefetch" href="/assets/index.html.0b7b82ea.js"><link rel="prefetch" href="/assets/index.html.3d4d77df.js"><link rel="prefetch" href="/assets/index.html.8e4c790e.js"><link rel="prefetch" href="/assets/index.html.6bda7342.js"><link rel="prefetch" href="/assets/index.html.88e2aac2.js"><link rel="prefetch" href="/assets/index.html.6ce24497.js"><link rel="prefetch" href="/assets/index.html.f72678dd.js"><link rel="prefetch" href="/assets/index.html.618bf277.js"><link rel="prefetch" href="/assets/index.html.d4f7c8f9.js"><link rel="prefetch" href="/assets/index.html.5aaa2dd5.js"><link rel="prefetch" href="/assets/index.html.453514a6.js"><link rel="prefetch" href="/assets/index.html.4e6cdf36.js"><link rel="prefetch" href="/assets/index.html.5da75686.js"><link rel="prefetch" href="/assets/index.html.3d48d8f9.js"><link rel="prefetch" href="/assets/index.html.dbdaad5d.js"><link rel="prefetch" href="/assets/index.html.5007e26a.js"><link rel="prefetch" href="/assets/index.html.b9a27fd4.js"><link rel="prefetch" href="/assets/index.html.a9eea0b5.js"><link rel="prefetch" href="/assets/index.html.f1f3922c.js"><link rel="prefetch" href="/assets/index.html.0784e604.js"><link rel="prefetch" href="/assets/index.html.ec6d48d5.js"><link rel="prefetch" href="/assets/index.html.b8ea12bb.js"><link rel="prefetch" href="/assets/index.html.44dbc329.js"><link rel="prefetch" href="/assets/index.html.06bf30d7.js"><link rel="prefetch" href="/assets/index.html.4a730a25.js"><link rel="prefetch" href="/assets/index.html.c7b03af4.js"><link rel="prefetch" href="/assets/index.html.602b6388.js"><link rel="prefetch" href="/assets/index.html.f78500e1.js"><link rel="prefetch" href="/assets/index.html.92daadff.js"><link rel="prefetch" href="/assets/index.html.139eb784.js"><link rel="prefetch" href="/assets/index.html.eaecfcd4.js"><link rel="prefetch" href="/assets/index.html.ca07c027.js"><link rel="prefetch" href="/assets/index.html.58081c32.js"><link rel="prefetch" href="/assets/index.html.767c76a9.js"><link rel="prefetch" href="/assets/index.html.e08cba86.js"><link rel="prefetch" href="/assets/index.html.d659acd3.js"><link rel="prefetch" href="/assets/index.html.57f0932f.js"><link rel="prefetch" href="/assets/index.html.697fb868.js"><link rel="prefetch" href="/assets/index.html.1de089f2.js"><link rel="prefetch" href="/assets/index.html.1af47f8e.js"><link rel="prefetch" href="/assets/index.html.4b6c4718.js"><link rel="prefetch" href="/assets/index.html.c91236b5.js"><link rel="prefetch" href="/assets/index.html.37209720.js"><link rel="prefetch" href="/assets/index.html.a6c3c8ce.js"><link rel="prefetch" href="/assets/index.html.1da6b71a.js"><link rel="prefetch" href="/assets/index.html.065bcbcd.js"><link rel="prefetch" href="/assets/index.html.5e8e94aa.js"><link rel="prefetch" href="/assets/index.html.6816f1eb.js"><link rel="prefetch" href="/assets/index.html.38c68190.js"><link rel="prefetch" href="/assets/index.html.a2a1dac6.js"><link rel="prefetch" href="/assets/home.html.d3d84934.js"><link rel="prefetch" href="/assets/intro.html.a8e9193e.js"><link rel="prefetch" href="/assets/slides.html.ccb88bfb.js"><link rel="prefetch" href="/assets/index.html.03e186a4.js"><link rel="prefetch" href="/assets/index.html.bbdf150d.js"><link rel="prefetch" href="/assets/disable.html.c767612a.js"><link rel="prefetch" href="/assets/encrypt.html.bf02702d.js"><link rel="prefetch" href="/assets/markdown.html.04926460.js"><link rel="prefetch" href="/assets/page.html.9c210ee4.js"><link rel="prefetch" href="/assets/PS操作基础.html.ba07b377.js"><link rel="prefetch" href="/assets/index.html.6aea3194.js"><link rel="prefetch" href="/assets/SAI操作基础.html.5dae02db.js"><link rel="prefetch" href="/assets/index.html.5050cbc6.js"><link rel="prefetch" href="/assets/index.html.9493668a.js"><link rel="prefetch" href="/assets/asyncio_recipes.html.252a3fb5.js"><link rel="prefetch" href="/assets/devops_in_python.html.5b84d63b.js"><link rel="prefetch" href="/assets/fluent_python.html.51051fa1.js"><link rel="prefetch" href="/assets/index.html.4f7728a0.js"><link rel="prefetch" href="/assets/python_cookbook.html.7b397d80.js"><link rel="prefetch" href="/assets/python源码剖析.html.27a3ddb9.js"><link rel="prefetch" href="/assets/use_asyncio.html.d01d5941.js"><link rel="prefetch" href="/assets/index.html.9744f774.js"><link rel="prefetch" href="/assets/亚动机与人格.html.d16ab1c9.js"><link rel="prefetch" href="/assets/人的潜能和价值.html.273e5f6c.js"><link rel="prefetch" href="/assets/好人是如何变成恶魔的.html.792bd371.js"><link rel="prefetch" href="/assets/影响力.html.8b63cb6c.js"><link rel="prefetch" href="/assets/性心理学.html.7254bcfd.js"><link rel="prefetch" href="/assets/洗脑心理学.html.ec1b0279.js"><link rel="prefetch" href="/assets/进化心理学.html.7a4dbe37.js"><link rel="prefetch" href="/assets/CODE.html.06445f5b.js"><link rel="prefetch" href="/assets/index.html.caeaa234.js"><link rel="prefetch" href="/assets/成为技术领导者.html.6c652eac.js"><link rel="prefetch" href="/assets/鸟哥的Linux私房菜.html.3f244416.js"><link rel="prefetch" href="/assets/鸟哥的Linux私房菜服务器架设篇.html.ca4f6de4.js"><link rel="prefetch" href="/assets/黑客与画家.html.7900f3d4.js"><link rel="prefetch" href="/assets/index.html.9dbfa368.js"><link rel="prefetch" href="/assets/中国人的性格.html.86dbf36d.js"><link rel="prefetch" href="/assets/乌合之众.html.a0014e60.js"><link rel="prefetch" href="/assets/娱乐至死.html.2d1eb0c1.js"><link rel="prefetch" href="/assets/index.html.6b552f7e.js"><link rel="prefetch" href="/assets/清醒思考的艺术.html.c8f273df.js"><link rel="prefetch" href="/assets/index.html.04986659.js"><link rel="prefetch" href="/assets/博弈论与经济行为.html.e185ab0e.js"><link rel="prefetch" href="/assets/就业_利息和货币通论.html.092b6958.js"><link rel="prefetch" href="/assets/聪明的投资者.html.689f1337.js"><link rel="prefetch" href="/assets/货币金融学.html.9b211c70.js"><link rel="prefetch" href="/assets/非理性繁荣.html.cbd7ac8e.js"><link rel="prefetch" href="/assets/MySQL.html.9e3e6cdd.js"><link rel="prefetch" href="/assets/Mysql调优.html.9bf3872d.js"><link rel="prefetch" href="/assets/Mysql进阶.html.b1a9c896.js"><link rel="prefetch" href="/assets/Mysql高阶.html.2ea3a099.js"><link rel="prefetch" href="/assets/Navicat.html.079dd6f0.js"><link rel="prefetch" href="/assets/SQLAlchemy.html.c0b988bc.js"><link rel="prefetch" href="/assets/PostgreSQL.html.3003d6b3.js"><link rel="prefetch" href="/assets/redis.html.ed1c7df2.js"><link rel="prefetch" href="/assets/性能分析.html.53189784.js"><link rel="prefetch" href="/assets/aioetcd3.html.bbe52413.js"><link rel="prefetch" href="/assets/etcd.html.219eb476.js"><link rel="prefetch" href="/assets/进阶.html.25e5551f.js"><link rel="prefetch" href="/assets/go语言速记.html.c2eab0c6.js"><link rel="prefetch" href="/assets/docker容器.html.f35c35e6.js"><link rel="prefetch" href="/assets/使用基础.html.98eb356b.js"><link rel="prefetch" href="/assets/命令.html.c494779d.js"><link rel="prefetch" href="/assets/网络.html.cc4faf8f.js"><link rel="prefetch" href="/assets/GIt提交规则.html.21a3168e.js"><link rel="prefetch" href="/assets/Git.html.30b43b3a.js"><link rel="prefetch" href="/assets/安装GitLab.html.029afee0.js"><link rel="prefetch" href="/assets/k8s安装.html.0f5e55ac.js"><link rel="prefetch" href="/assets/k8s工作负载.html.8c46fb58.js"><link rel="prefetch" href="/assets/k8s服务.html.f365696a.js"><link rel="prefetch" href="/assets/k8s资源Pod.html.00e1ae1d.js"><link rel="prefetch" href="/assets/k8s进阶.html.de9df972.js"><link rel="prefetch" href="/assets/Nginx基础.html.ee0ee710.js"><link rel="prefetch" href="/assets/应用部署.html.e56036cc.js"><link rel="prefetch" href="/assets/Fiddler抓包工具.html.a701f580.js"><link rel="prefetch" href="/assets/Postman.html.68e14995.js"><link rel="prefetch" href="/assets/Screen.html.a0cdb305.js"><link rel="prefetch" href="/assets/rdesktop.html.d97769c8.js"><link rel="prefetch" href="/assets/tmux.html.83aaf106.js"><link rel="prefetch" href="/assets/网络代理.html.66e418e8.js"><link rel="prefetch" href="/assets/APScheduler.html.a1733db3.js"><link rel="prefetch" href="/assets/Celery.html.b9999b3d.js"><link rel="prefetch" href="/assets/Celery使用基础.html.d61cb326.js"><link rel="prefetch" href="/assets/异步任务概述.html.d084a74c.js"><link rel="prefetch" href="/assets/RabbitMQ.html.c42ea67d.js"><link rel="prefetch" href="/assets/kafka.html.8b8288bf.js"><link rel="prefetch" href="/assets/RPC.html.0b86f78e.js"><link rel="prefetch" href="/assets/gRPC.html.55edd184.js"><link rel="prefetch" href="/assets/asyncio Recipes.html.f80611f7.js"><link rel="prefetch" href="/assets/asyncio基础.html.1edc0370.js"><link rel="prefetch" href="/assets/asyncio进阶.html.1d86f2bf.js"><link rel="prefetch" href="/assets/事件循环.html.3312d421.js"><link rel="prefetch" href="/assets/底层实现.html.63bddafe.js"><link rel="prefetch" href="/assets/异步回溯.html.7f8eadf1.js"><link rel="prefetch" href="/assets/pip.html.7fbec4af.js"><link rel="prefetch" href="/assets/字符编码.html.08d66138.js"><link rel="prefetch" href="/assets/数据类型.html.70d12d74.js"><link rel="prefetch" href="/assets/文件基础.html.d66b4a02.js"><link rel="prefetch" href="/assets/流程控制.html.f63a1a7b.js"><link rel="prefetch" href="/assets/环境安装.html.55b76dbe.js"><link rel="prefetch" href="/assets/协程.html.2571535d.js"><link rel="prefetch" href="/assets/同步队列.html.6b650340.js"><link rel="prefetch" href="/assets/多线程编程.html.11490527.js"><link rel="prefetch" href="/assets/多进程编程.html.2b31983d.js"><link rel="prefetch" href="/assets/线程.html.4a51bfbb.js"><link rel="prefetch" href="/assets/线程进程辅助机制.html.47f7e61c.js"><link rel="prefetch" href="/assets/进程.html.8d69e06d.js"><link rel="prefetch" href="/assets/Cpython对象.html.71653431.js"><link rel="prefetch" href="/assets/垃圾回收.html.d774d5a8.js"><link rel="prefetch" href="/assets/序列进阶.html.d5679dc7.js"><link rel="prefetch" href="/assets/映射进阶.html.ff193e6f.js"><link rel="prefetch" href="/assets/设计模式.html.54850124.js"><link rel="prefetch" href="/assets/Socket.html.2d69816c.js"><link rel="prefetch" href="/assets/Websocket.html.c8b2cbfe.js"><link rel="prefetch" href="/assets/事件模型.html.32159c27.js"><link rel="prefetch" href="/assets/回调.html.e9960515.js"><link rel="prefetch" href="/assets/函数.html.4643eb2c.js"><link rel="prefetch" href="/assets/变量机制.html.1506d7b0.js"><link rel="prefetch" href="/assets/模块和包.html.6a5b44c1.js"><link rel="prefetch" href="/assets/生成器.html.85db8dbb.js"><link rel="prefetch" href="/assets/装饰器.html.fd696c03.js"><link rel="prefetch" href="/assets/迭代器.html.4f4fa800.js"><link rel="prefetch" href="/assets/错误和异常.html.ebe76897.js"><link rel="prefetch" href="/assets/面向对象.html.2f89ad6f.js"><link rel="prefetch" href="/assets/DNS服务.html.564673fb.js"><link rel="prefetch" href="/assets/bind.html.25a47253.js"><link rel="prefetch" href="/assets/linux 文件锁.html.8a4c0488.js"><link rel="prefetch" href="/assets/脚本说明.html.97d341cc.js"><link rel="prefetch" href="/assets/AD域.html.803df2dc.js"><link rel="prefetch" href="/assets/LDAP.html.e315a954.js"><link rel="prefetch" href="/assets/Python对接AD域.html.9f1453db.js"><link rel="prefetch" href="/assets/NFS服务.html.5a29a109.js"><link rel="prefetch" href="/assets/NTP服务.html.2efd5d10.js"><link rel="prefetch" href="/assets/SNMP服务.html.9bda1af5.js"><link rel="prefetch" href="/assets/Samba服务.html.b84bc4ec.js"><link rel="prefetch" href="/assets/ufscli工具.html.5e7f3e65.js"><link rel="prefetch" href="/assets/ufs核心组件.html.ce3aebf4.js"><link rel="prefetch" href="/assets/ufs管理平台.html.5959efc0.js"><link rel="prefetch" href="/assets/uus虚拟机排错.html.6262d50b.js"><link rel="prefetch" href="/assets/CentOS的安装.html.ad9473e7.js"><link rel="prefetch" href="/assets/RPM包管理.html.de25cd69.js"><link rel="prefetch" href="/assets/账号管理与ACL权限.html.b2680c83.js"><link rel="prefetch" href="/assets/Linux是什么与如何学习.html.75da598c.js"><link rel="prefetch" href="/assets/主机规划与磁盘分区.html.80226f96.js"><link rel="prefetch" href="/assets/计算机概论.html.a9b1ae84.js"><link rel="prefetch" href="/assets/Linux磁盘与文件系统管理.html.1a2e32a1.js"><link rel="prefetch" href="/assets/文件与文件系统压缩.html.75f8a35e.js"><link rel="prefetch" href="/assets/文件权限与目录配置.html.e78db4f1.js"><link rel="prefetch" href="/assets/认识系统服务.html.1e4820a1.js"><link rel="prefetch" href="/assets/vim 快捷键.html.6c2fd611.js"><link rel="prefetch" href="/assets/vim程序编辑器.html.12d04d62.js"><link rel="prefetch" href="/assets/常复习.html.186cfbe2.js"><link rel="prefetch" href="/assets/CURL.html.3a750221.js"><link rel="prefetch" href="/assets/SSL协议.html.52884ae5.js"><link rel="prefetch" href="/assets/命令.html.0b096baf.js"><link rel="prefetch" href="/assets/Ubuntu系列操作.html.a7aa339f.js"><link rel="prefetch" href="/assets/认识Linux系统.html.a4f63ac8.js"><link rel="prefetch" href="/assets/CPU.html.cb78f867.js"><link rel="prefetch" href="/assets/主板.html.309fdb17.js"><link rel="prefetch" href="/assets/内存.html.abd819eb.js"><link rel="prefetch" href="/assets/存储.html.cd41e27c.js"><link rel="prefetch" href="/assets/扩展卡与接口.html.313349ed.js"><link rel="prefetch" href="/assets/显卡.html.575d7878.js"><link rel="prefetch" href="/assets/PVE.html.b6004c1e.js"><link rel="prefetch" href="/assets/添加磁盘.html.06e0efc1.js"><link rel="prefetch" href="/assets/网络配置.html.e104631e.js"><link rel="prefetch" href="/assets/404.html.744bcf6a.js"><link rel="prefetch" href="/assets/index.html.cc31788d.js"><link rel="prefetch" href="/assets/index.html.c5e2142e.js"><link rel="prefetch" href="/assets/index.html.b9a622f5.js"><link rel="prefetch" href="/assets/index.html.bec51b8e.js"><link rel="prefetch" href="/assets/index.html.f0450a2b.js"><link rel="prefetch" href="/assets/index.html.8ad6775d.js"><link rel="prefetch" href="/assets/index.html.1d5a1a56.js"><link rel="prefetch" href="/assets/index.html.4d1ed2a0.js"><link rel="prefetch" href="/assets/index.html.c3500bbb.js"><link rel="prefetch" href="/assets/index.html.bd87ad6d.js"><link rel="prefetch" href="/assets/index.html.188c3c18.js"><link rel="prefetch" href="/assets/index.html.cf26b5d8.js"><link rel="prefetch" href="/assets/index.html.44eb8d29.js"><link rel="prefetch" href="/assets/index.html.8ae60b3e.js"><link rel="prefetch" href="/assets/index.html.bfc2bbc8.js"><link rel="prefetch" href="/assets/index.html.6915a747.js"><link rel="prefetch" href="/assets/index.html.b2777812.js"><link rel="prefetch" href="/assets/index.html.c8011f3e.js"><link rel="prefetch" href="/assets/index.html.f9da2041.js"><link rel="prefetch" href="/assets/index.html.fb95cf90.js"><link rel="prefetch" href="/assets/index.html.17547733.js"><link rel="prefetch" href="/assets/index.html.4453ba59.js"><link rel="prefetch" href="/assets/index.html.de6d1fa9.js"><link rel="prefetch" href="/assets/index.html.0510e293.js"><link rel="prefetch" href="/assets/index.html.c08d4086.js"><link rel="prefetch" href="/assets/index.html.5e291e06.js"><link rel="prefetch" href="/assets/index.html.dcb8a8af.js"><link rel="prefetch" href="/assets/index.html.20613185.js"><link rel="prefetch" href="/assets/index.html.d996b03c.js"><link rel="prefetch" href="/assets/index.html.79a765c3.js"><link rel="prefetch" href="/assets/index.html.af03c420.js"><link rel="prefetch" href="/assets/index.html.0a2820b6.js"><link rel="prefetch" href="/assets/index.html.231ba73e.js"><link rel="prefetch" href="/assets/index.html.fc26706d.js"><link rel="prefetch" href="/assets/index.html.7184acbf.js"><link rel="prefetch" href="/assets/index.html.fc591ecc.js"><link rel="prefetch" href="/assets/index.html.39545ff2.js"><link rel="prefetch" href="/assets/index.html.c34b1dd4.js"><link rel="prefetch" href="/assets/index.html.7600701d.js"><link rel="prefetch" href="/assets/index.html.4ff4ac45.js"><link rel="prefetch" href="/assets/index.html.653d28d1.js"><link rel="prefetch" href="/assets/index.html.7c78c2d8.js"><link rel="prefetch" href="/assets/index.html.1b8c1fbf.js"><link rel="prefetch" href="/assets/index.html.5a291683.js"><link rel="prefetch" href="/assets/index.html.0f0e5004.js"><link rel="prefetch" href="/assets/index.html.a82f46be.js"><link rel="prefetch" href="/assets/index.html.8491d48a.js"><link rel="prefetch" href="/assets/index.html.7a8b38be.js"><link rel="prefetch" href="/assets/index.html.5bda9542.js"><link rel="prefetch" href="/assets/index.html.58b51cb1.js"><link rel="prefetch" href="/assets/index.html.fc9ade65.js"><link rel="prefetch" href="/assets/index.html.f7335c5a.js"><link rel="prefetch" href="/assets/index.html.5938598c.js"><link rel="prefetch" href="/assets/index.html.e66133dc.js"><link rel="prefetch" href="/assets/index.html.97d8ab8c.js"><link rel="prefetch" href="/assets/index.html.5a1452a5.js"><link rel="prefetch" href="/assets/index.html.ea7d5699.js"><link rel="prefetch" href="/assets/index.html.be207a5a.js"><link rel="prefetch" href="/assets/index.html.fb269c2f.js"><link rel="prefetch" href="/assets/index.html.e4b41348.js"><link rel="prefetch" href="/assets/index.html.5244445c.js"><link rel="prefetch" href="/assets/index.html.ccfaa67b.js"><link rel="prefetch" href="/assets/index.html.37f964ef.js"><link rel="prefetch" href="/assets/index.html.d9dff75f.js"><link rel="prefetch" href="/assets/giscus.e34d3fcc.js"><link rel="prefetch" href="/assets/auto.56c9cb2e.js"><link rel="prefetch" href="/assets/index.1f644ee1.js"><link rel="prefetch" href="/assets/flowchart.parse.1479ec3f.js"><link rel="prefetch" href="/assets/mermaid.esm.min.0e041931.js"><link rel="prefetch" href="/assets/highlight.esm.9b852bc5.js"><link rel="prefetch" href="/assets/markdown.esm.77e8db25.js"><link rel="prefetch" href="/assets/math.esm.cb9d4be3.js"><link rel="prefetch" href="/assets/notes.esm.62c5f19d.js"><link rel="prefetch" href="/assets/reveal.esm.41ec5d7f.js"><link rel="prefetch" href="/assets/search.esm.04894411.js"><link rel="prefetch" href="/assets/zoom.esm.78977eba.js"><link rel="prefetch" href="/assets/VuePlayground.5506c818.js"><link rel="prefetch" href="/assets/photoswipe.esm.f594e77b.js">
+  </head>
+  <body>
+    <div id="app"><!--[--><!--[--><!--[--><span tabindex="-1"></span><a href="#main-content" class="skip-link sr-only">Skip to content</a><!--]--><div class="theme-container has-toc"><!--[--><!--[--><header class="navbar"><div class="navbar-left"><button class="toggle-sidebar-button" title="Toggle Sidebar"><span class="icon"></span></button><!----><a href="/" class="brand"><img class="logo" src="/avatar.jpg" alt="五十岚 ▪ 寄"><!----><span class="site-name hide-in-pad">五十岚 ▪ 寄</span></a><!----></div><div class="navbar-center"><!----><nav class="nav-links"><div class="nav-item hide-in-mobile"><a href="/" class="nav-link" aria-label="主页"><span class="icon iconfont icon-home"></span>主页<!----></a></div><div class="nav-item hide-in-mobile"><div class="dropdown-wrapper"><button class="dropdown-title" type="button" aria-label="Python"><span class="title"><span class="icon iconfont icon-python"></span>Python</span><span class="arrow"></span><ul class="nav-dropdown"><li class="dropdown-item"><h4 class="dropdown-subtitle"><span>语言</span></h4><ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/python/%E8%AF%AD%E8%A8%80/%E5%9F%BA%E7%A1%80/%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85.html" class="nav-link" aria-label="基础"><!---->基础<!----></a></li><li class="dropdown-subitem"><a href="/python/%E8%AF%AD%E8%A8%80/%E8%BF%9B%E9%98%B6/%E5%8F%98%E9%87%8F%E6%9C%BA%E5%88%B6.html" class="nav-link" aria-label="进阶"><!---->进阶<!----></a></li><li class="dropdown-subitem"><a href="/python/%E8%AF%AD%E8%A8%80/%E6%B7%B1%E5%85%A5/%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6.html" class="nav-link" aria-label="深入"><!---->深入<!----></a></li><li class="dropdown-subitem"><a href="/python/%E8%AF%AD%E8%A8%80/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/Socket.html" class="nav-link" aria-label="网络编程"><!---->网络编程<!----></a></li><li class="dropdown-subitem"><a href="/python/%E8%AF%AD%E8%A8%80/%E5%A4%9A%E4%BB%BB%E5%8A%A1%E7%BC%96%E7%A8%8B/%E8%BF%9B%E7%A8%8B.html" class="nav-link" aria-label="多任务编程"><!---->多任务编程<!----></a></li><li class="dropdown-subitem"><a href="/python/%E8%AF%AD%E8%A8%80/asyncio/asyncio%E5%9F%BA%E7%A1%80.html" class="nav-link" aria-label="asyncio"><!---->asyncio<!----></a></li></ul></li><li class="dropdown-item"><h4 class="dropdown-subtitle"><span>生态</span></h4><ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/python/%E7%94%9F%E6%80%81/%E8%BF%9C%E7%A8%8B%E8%B0%83%E7%94%A8/gRPC.html" class="nav-link" aria-label="远程调用"><span class="icon iconfont icon-rpc"></span>远程调用<!----></a></li><li class="dropdown-subitem"><a href="/python/%E7%94%9F%E6%80%81/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/kafka.html" class="nav-link" aria-label="消息队列"><span class="icon iconfont icon-kafka"></span>消息队列<!----></a></li><li class="dropdown-subitem"><a href="/python/%E7%94%9F%E6%80%81/%E5%BC%82%E6%AD%A5%E4%BB%BB%E5%8A%A1/Celery.html" class="nav-link" aria-label="异步任务"><span class="icon iconfont icon-tasks"></span>异步任务<!----></a></li></ul></li></ul></button></div></div><div class="nav-item hide-in-mobile"><div class="dropdown-wrapper"><button class="dropdown-title" type="button" aria-label="数据库"><span class="title"><span class="icon iconfont icon-database"></span>数据库</span><span class="arrow"></span><ul class="nav-dropdown"><li class="dropdown-item"><a href="/database/etcd/etcd.html" class="nav-link" aria-label="etcd"><span class="icon iconfont icon-etcd"></span>etcd<!----></a></li><li class="dropdown-item"><a href="/database/MySQL/MySQL.html" class="nav-link" aria-label="MySQL"><span class="icon iconfont icon-mysql"></span>MySQL<!----></a></li><li class="dropdown-item"><a href="/database/Redis/redis.html" class="nav-link" aria-label="Redis"><span class="icon iconfont icon-redis"></span>Redis<!----></a></li><li class="dropdown-item"><a href="/database/PostgreSQL/PostgreSQL.html" class="nav-link" aria-label="PostgreSQL"><span class="icon iconfont icon-postgresql"></span>PostgreSQL<!----></a></li></ul></button></div></div><div class="nav-item hide-in-mobile"><div class="dropdown-wrapper"><button class="dropdown-title" type="button" aria-label="操作系统"><span class="title"><span class="icon iconfont icon-os"></span>操作系统</span><span class="arrow"></span><ul class="nav-dropdown"><li class="dropdown-item"><a href="/unix/Linux/Linux%E5%9F%BA%E7%A1%80%E6%8C%87%E5%BC%95/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%A6%82%E8%AE%BA.html" class="nav-link" aria-label="Linux"><span class="icon iconfont icon-linux"></span>Linux<!----></a></li><li class="dropdown-item"><a href="/unix/CentOS/%E5%AE%89%E8%A3%85/CentOS%E7%9A%84%E5%AE%89%E8%A3%85.html" class="nav-link" aria-label="CentOS"><span class="icon iconfont icon-centos"></span>CentOS<!----></a></li><li class="dropdown-item"><a href="/unix/Ubuntu/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/Ubuntu%E7%B3%BB%E5%88%97%E6%93%8D%E4%BD%9C.html" class="nav-link" aria-label="Ubuntu"><span class="icon iconfont icon-ubuntu"></span>Ubuntu<!----></a></li><li class="dropdown-item"><a href="/unix/%E8%99%9A%E6%8B%9F%E6%9C%BA/PVE/PVE.html" class="nav-link" aria-label="虚拟机"><span class="icon iconfont icon-pve"></span>虚拟机<!----></a></li></ul></button></div></div><div class="nav-item hide-in-mobile"><div class="dropdown-wrapper"><button class="dropdown-title" type="button" aria-label="运维工具"><span class="title"><span class="icon iconfont icon-devops"></span>运维工具</span><span class="arrow"></span><ul class="nav-dropdown"><li class="dropdown-item"><a href="/tool/Git/Git.html" class="nav-link" aria-label="Git"><span class="icon iconfont icon-git"></span>Git<!----></a></li><li class="dropdown-item"><a href="/tool/Nginx/Nginx%E5%9F%BA%E7%A1%80.html" class="nav-link" aria-label="Nginx"><span class="icon iconfont icon-nginx"></span>Nginx<!----></a></li><li class="dropdown-item"><a href="/tool/Docker/docker%E5%AE%B9%E5%99%A8.html" class="nav-link" aria-label="Docker"><span class="icon iconfont icon-docker"></span>Docker<!----></a></li><li class="dropdown-item"><a href="/tool/Kubernetes/k8s%E8%B5%84%E6%BA%90Pod.html" class="nav-link" aria-label="Kubernetes"><span class="icon iconfont icon-kubernetes"></span>Kubernetes<!----></a></li><li class="dropdown-item"><a href="/tool/Other/%E7%BD%91%E7%BB%9C%E4%BB%A3%E7%90%86.html" class="nav-link" aria-label="工具"><span class="icon iconfont icon-other"></span>工具<!----></a></li></ul></button></div></div><div class="nav-item hide-in-mobile"><div class="dropdown-wrapper"><button class="dropdown-title" type="button" aria-label="漫漫全干卷的苦"><span class="title"><!---->漫漫全干卷的苦</span><span class="arrow"></span><ul class="nav-dropdown"><li class="dropdown-item"><a href="https://draveness.me/golang/" rel="noopener noreferrer" target="_blank" aria-label="GO" class="nav-link"><span class="icon iconfont icon-go"></span>GO<span><svg class="external-link-icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg><span class="external-link-icon-sr-only">open in new window</span></span><!----></a></li><li class="dropdown-item"><a href="https://notes.fe-mm.com/interview/base/types.html" rel="noopener noreferrer" target="_blank" aria-label="前端内卷不归路" class="nav-link"><span class="icon iconfont icon-javascript"></span>前端内卷不归路<span><svg class="external-link-icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg><span class="external-link-icon-sr-only">open in new window</span></span><!----></a></li></ul></button></div></div></nav><!----></div><div class="navbar-right"><!----><!----><div class="nav-item"><a class="repo-link" href="https://github.com/Igarashi-G" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><svg xmlns="http://www.w3.org/2000/svg" class="icon github-icon" viewbox="0 0 1024 1024" fill="currentColor" aria-label="github icon" style="width:1.25rem;height:1.25rem;vertical-align:middle;"><path d="M511.957 21.333C241.024 21.333 21.333 240.981 21.333 512c0 216.832 140.544 400.725 335.574 465.664 24.49 4.395 32.256-10.07 32.256-23.083 0-11.69.256-44.245 0-85.205-136.448 29.61-164.736-64.64-164.736-64.64-22.315-56.704-54.4-71.765-54.4-71.765-44.587-30.464 3.285-29.824 3.285-29.824 49.195 3.413 75.179 50.517 75.179 50.517 43.776 75.008 114.816 53.333 142.762 40.79 4.523-31.66 17.152-53.377 31.19-65.537-108.971-12.458-223.488-54.485-223.488-242.602 0-53.547 19.114-97.323 50.517-131.67-5.035-12.33-21.93-62.293 4.779-129.834 0 0 41.258-13.184 134.912 50.346a469.803 469.803 0 0 1 122.88-16.554c41.642.213 83.626 5.632 122.88 16.554 93.653-63.488 134.784-50.346 134.784-50.346 26.752 67.541 9.898 117.504 4.864 129.834 31.402 34.347 50.474 78.123 50.474 131.67 0 188.586-114.73 230.016-224.042 242.09 17.578 15.232 33.578 44.672 33.578 90.454v135.85c0 13.142 7.936 27.606 32.854 22.87C862.25 912.597 1002.667 728.747 1002.667 512c0-271.019-219.648-490.667-490.71-490.667z"></path></svg></a></div><div class="nav-item hide-in-mobile"><button class="outlook-button" tabindex="-1" ariahidden="true"><svg xmlns="http://www.w3.org/2000/svg" class="icon outlook-icon" viewbox="0 0 1024 1024" fill="currentColor" aria-label="outlook icon"><path d="M224 800c0 9.6 3.2 44.8 6.4 54.4 6.4 48-48 76.8-48 76.8s80 41.6 147.2 0 134.4-134.4 38.4-195.2c-22.4-12.8-41.6-19.2-57.6-19.2C259.2 716.8 227.2 761.6 224 800zM560 675.2l-32 51.2c-51.2 51.2-83.2 32-83.2 32 25.6 67.2 0 112-12.8 128 25.6 6.4 51.2 9.6 80 9.6 54.4 0 102.4-9.6 150.4-32l0 0c3.2 0 3.2-3.2 3.2-3.2 22.4-16 12.8-35.2 6.4-44.8-9.6-12.8-12.8-25.6-12.8-41.6 0-54.4 60.8-99.2 137.6-99.2 6.4 0 12.8 0 22.4 0 12.8 0 38.4 9.6 48-25.6 0-3.2 0-3.2 3.2-6.4 0-3.2 3.2-6.4 3.2-6.4 6.4-16 6.4-16 6.4-19.2 9.6-35.2 16-73.6 16-115.2 0-105.6-41.6-198.4-108.8-268.8C704 396.8 560 675.2 560 675.2zM224 419.2c0-28.8 22.4-51.2 51.2-51.2 28.8 0 51.2 22.4 51.2 51.2 0 28.8-22.4 51.2-51.2 51.2C246.4 470.4 224 448 224 419.2zM320 284.8c0-22.4 19.2-41.6 41.6-41.6 22.4 0 41.6 19.2 41.6 41.6 0 22.4-19.2 41.6-41.6 41.6C339.2 326.4 320 307.2 320 284.8zM457.6 208c0-12.8 12.8-25.6 25.6-25.6 12.8 0 25.6 12.8 25.6 25.6 0 12.8-12.8 25.6-25.6 25.6C470.4 233.6 457.6 220.8 457.6 208zM128 505.6C128 592 153.6 672 201.6 736c28.8-60.8 112-60.8 124.8-60.8-16-51.2 16-99.2 16-99.2l316.8-422.4c-48-19.2-99.2-32-150.4-32C297.6 118.4 128 291.2 128 505.6zM764.8 86.4c-22.4 19.2-390.4 518.4-390.4 518.4-22.4 28.8-12.8 76.8 22.4 99.2l9.6 6.4c35.2 22.4 80 12.8 99.2-25.6 0 0 6.4-12.8 9.6-19.2 54.4-105.6 275.2-524.8 288-553.6 6.4-19.2-3.2-32-19.2-32C777.6 76.8 771.2 80 764.8 86.4z"></path></svg><div class="outlook-dropdown"><!----></div></button></div><!----><!----><button class="toggle-navbar-button" aria-label="Toggle Navbar" aria-expanded="false" aria-controls="nav-screen"><span class="button-container"><span class="button-top"></span><span class="button-middle"></span><span class="button-bottom"></span></span></button></div></header><!----><!--]--><!----><div class="toggle-sidebar-wrapper"><span class="arrow left"></span></div><aside class="sidebar"><!--[--><!----><!--]--><ul class="sidebar-links"><li><!--[--><section class="sidebar-group"><p class="sidebar-heading active"><span class="icon iconfont icon-linux"></span><span class="title">Linux</span><!----></p><ul class="sidebar-links"><li><!--[--><section class="sidebar-group"><button class="sidebar-heading clickable"><!----><span class="title">Linux基础指引</span><span class="arrow right"></span></button><!----></section><!--]--></li><li><!--[--><section class="sidebar-group"><button class="sidebar-heading clickable"><!----><span class="title">Linux文件</span><span class="arrow right"></span></button><!----></section><!--]--></li><li><!--[--><section class="sidebar-group"><button class="sidebar-heading clickable"><!----><span class="title">Shell脚本</span><span class="arrow right"></span></button><!----></section><!--]--></li><li><!--[--><section class="sidebar-group"><button class="sidebar-heading clickable"><!----><span class="title">Linux使用者管理</span><span class="arrow right"></span></button><!----></section><!--]--></li><li><!--[--><section class="sidebar-group"><button class="sidebar-heading clickable"><!----><span class="title">Linux系统管理员</span><span class="arrow right"></span></button><!----></section><!--]--></li><li><!--[--><section class="sidebar-group"><button class="sidebar-heading clickable active"><!----><span class="title">网络</span><span class="arrow down"></span></button><ul class="sidebar-links"><li><!--[--><a aria-current="page" href="/unix/Linux/%E7%BD%91%E7%BB%9C/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80.html" class="router-link-active router-link-exact-active nav-link active sidebar-link sidebar-page active" aria-label="Linux网络基础"><!---->Linux网络基础<!----></a><ul class="sidebar-sub-headers"></ul><!--]--></li><li><!--[--><a href="/unix/Linux/%E7%BD%91%E7%BB%9C/%E5%91%BD%E4%BB%A4.html" class="nav-link sidebar-link sidebar-page" aria-label="CentOS网络命令"><!---->CentOS网络命令<!----></a><ul class="sidebar-sub-headers"></ul><!--]--></li><li><!--[--><a href="/unix/Linux/%E7%BD%91%E7%BB%9C/CURL.html" class="nav-link sidebar-link sidebar-page" aria-label="CURL 用法指北"><!---->CURL 用法指北<!----></a><ul class="sidebar-sub-headers"></ul><!--]--></li><li><!--[--><a href="/unix/Linux/%E7%BD%91%E7%BB%9C/SSL%E5%8D%8F%E8%AE%AE.html" class="nav-link sidebar-link sidebar-page" aria-label="SSL/TLS协议"><!---->SSL/TLS协议<!----></a><ul class="sidebar-sub-headers"></ul><!--]--></li><li><!--[--><a href="/unix/Linux/网络/Restful" class="nav-link sidebar-link sidebar-page" aria-label="/unix/Linux/网络/Restful"><!---->/unix/Linux/网络/Restful<!----></a><ul class="sidebar-sub-headers"></ul><!--]--></li></ul></section><!--]--></li><li><!--[--><section class="sidebar-group"><button class="sidebar-heading clickable"><!----><span class="title">备忘命令</span><span class="arrow right"></span></button><!----></section><!--]--></li></ul></section><!--]--></li></ul><!--[--><!----><!--]--></aside><!--[--><main class="page" id="main-content"><!--[--><!----><nav class="breadcrumb disable"></nav><div class="page-title"><h1><!---->Linux网络基础</h1><div class="page-info"><span class="author-info" aria-label="作者🖊" data-balloon-pos="down" localizeddate="2022年9月29日" isoriginal="false" pageview="false"><svg xmlns="http://www.w3.org/2000/svg" class="icon author-icon" viewbox="0 0 1024 1024" fill="currentColor" aria-label="author icon"><path d="M649.6 633.6c86.4-48 147.2-144 147.2-249.6 0-160-128-288-288-288s-288 128-288 288c0 108.8 57.6 201.6 147.2 249.6-121.6 48-214.4 153.6-240 288-3.2 9.6 0 19.2 6.4 25.6 3.2 9.6 12.8 12.8 22.4 12.8h704c9.6 0 19.2-3.2 25.6-12.8 6.4-6.4 9.6-16 6.4-25.6-25.6-134.4-121.6-240-243.2-288z"></path></svg><span><a class="author-item" href="https://github.com/Igarashi-G" target="_blank" rel="noopener noreferrer">五十岚</a></span><span property="author" content="五十岚"></span></span><!----><span class="date-info" aria-label="写作日期📅" data-balloon-pos="down" isoriginal="false" pageview="false"><svg xmlns="http://www.w3.org/2000/svg" class="icon calendar-icon" viewbox="0 0 1024 1024" fill="currentColor" aria-label="calendar icon"><path d="M716.4 110.137c0-18.753-14.72-33.473-33.472-33.473-18.753 0-33.473 14.72-33.473 33.473v33.473h66.993v-33.473zm-334.87 0c0-18.753-14.72-33.473-33.473-33.473s-33.52 14.72-33.52 33.473v33.473h66.993v-33.473zm468.81 33.52H716.4v100.465c0 18.753-14.72 33.473-33.472 33.473a33.145 33.145 0 01-33.473-33.473V143.657H381.53v100.465c0 18.753-14.72 33.473-33.473 33.473a33.145 33.145 0 01-33.473-33.473V143.657H180.6A134.314 134.314 0 0046.66 277.595v535.756A134.314 134.314 0 00180.6 947.289h669.74a134.36 134.36 0 00133.94-133.938V277.595a134.314 134.314 0 00-133.94-133.938zm33.473 267.877H147.126a33.145 33.145 0 01-33.473-33.473c0-18.752 14.72-33.473 33.473-33.473h736.687c18.752 0 33.472 14.72 33.472 33.473a33.145 33.145 0 01-33.472 33.473z"></path></svg><span>2022年9月29日</span><meta property="datePublished" content="2022-09-29T14:35:37.000Z"></span><!----><!----><span class="reading-time-info" aria-label="阅读时间⌛" data-balloon-pos="down" localizeddate="2022年9月29日" isoriginal="false" pageview="false"><svg xmlns="http://www.w3.org/2000/svg" class="icon timer-icon" viewbox="0 0 1024 1024" fill="currentColor" aria-label="timer icon"><path d="M799.387 122.15c4.402-2.978 7.38-7.897 7.38-13.463v-1.165c0-8.933-7.38-16.312-16.312-16.312H256.33c-8.933 0-16.311 7.38-16.311 16.312v1.165c0 5.825 2.977 10.874 7.637 13.592 4.143 194.44 97.22 354.963 220.201 392.763-122.204 37.542-214.893 196.511-220.2 389.397-4.661 5.049-7.638 11.651-7.638 19.03v5.825h566.49v-5.825c0-7.379-2.849-13.981-7.509-18.9-5.049-193.016-97.867-351.985-220.2-389.527 123.24-37.67 216.446-198.453 220.588-392.892zM531.16 450.445v352.632c117.674 1.553 211.787 40.778 211.787 88.676H304.097c0-48.286 95.149-87.382 213.728-88.676V450.445c-93.077-3.107-167.901-81.297-167.901-177.093 0-8.803 6.99-15.793 15.793-15.793 8.803 0 15.794 6.99 15.794 15.793 0 80.261 63.69 145.635 142.01 145.635s142.011-65.374 142.011-145.635c0-8.803 6.99-15.793 15.794-15.793s15.793 6.99 15.793 15.793c0 95.019-73.789 172.82-165.96 177.093z"></path></svg><span>大约 45 分钟</span><meta property="timeRequired" content="PT45M"></span></div><hr></div><!----><!----><div class="theme-hope-content"><p>网络基础：（后面，简单记记，都知道，不清楚就见博客） 一、操作系统基础： 计算机（硬件）---&gt;os(操作系统)---&gt;应用软件 应用软件通过和操作系统来和硬件打交道</p><pre><code>二、网络通信原理:
+    2.1 互联网的本质就是一系列网络协议
+        每个人都有一台机器(软件、操作系统、硬件)然而彼此孤立...
+
+        如何能大家一块玩耍？    ————————通过网络（Internet）
+
+        然而Internet为何物？
+
+        其实两台计算机之间的通信和打电话通信的原理一致：
+            底层必须要建立物理链接：如电话线、网线、路由器等等    之后两台计算机通过网线连接到路由器，多个路由经过七转八转的，最后再一根网线
+            连到另一台计算机上，这两台计算机底层的物理链接就建立好了
+
+        然而要通信就要有一个标准，例如，中国人和中国人通信用普通话，日本人和日本人交流用日语。   互联网间的通信也要有标准，双方才能“听懂”
+
+        这个标准便称之为————协议
+
+    2.2 OSI七层协议：
+        互联网协议按照功能不同分为：
+
+        tcp/ip四层   tcp/ip五层     osi七层
+
+        应用层 ---&gt;    应用层 ---&gt;  { 应用层、
+                                  表示层
+                                  会话层 }
+        传输层 ---&gt;    传输层
+        网络层 ---&gt;    网络层
+        网络接口层 ---&gt;      [ 数据链路层、
+                               物理层 ]
+
+        每层运行常见物理设备：
+            传输层     ————&gt;   四层交换机、四层路由器
+            网络层     ————&gt;   路由器、三层交换机
+            数据链路层  ————&gt;   网桥、以太网交换机、网卡
+            物理层     ————&gt;   中继器、集线器、双绞线
+
+    2.3 tcp/ip五层模型讲解：
+        我们将应用层，表示层，会话层并作应用层，从tcp／ip五层协议的角度来阐述每层的由来与功能，搞清楚了每层的主要协议
+
+        就理解了整个互联网通信的原理。
+
+        首先，用户感知到的只是最上面一层应用层，自上而下每层都依赖于下一层，所以我们从最下一层开始切入，比较好理解
+
+        每层都运行特定的协议，越往上越靠近用户，越往下越靠近硬件
+
+        2.3.1 物理层：
+            物理层由来：上面提到，孤立的计算机之间要想一起玩，就必须接入internet，言外之意就是计算机之间必须完成组网
+
+            物理层功能：主要是基于电器特性发送高低电压(电信号)，高电压对应数字1，低电压对应数字0
+
+        2.3.2 数据链路层：
+            数据链路层由来：单纯的电信号0和1没有任何意义，必须规定电信号多少位一组，每组什么意思
+
+            数据链路层的功能：定义了电信号的分组方式
+
+            以太网协议：
+                早期的时候各个公司都有自己的分组方式，后来形成了统一的标准，即以太网协议ethernet
+
+            ethernet规定
+
+            一组电信号构成一个数据包，叫做‘帧’（根据以太网协议）
+            每一数据帧分成：报头head和数据data两部分
+                   head	                       data
+
+            head包含：(固定18个字节)（以太网头）
+                发送者／源地址，6个字节 （源mac）
+                接收者／目标地址，6个字节 （目标mac）
+                数据类型，6个字节 （data）
+
+            data包含：(最短46字节，最长1500字节)
+
+            数据包的具体内容
+            head长度＋data长度＝最短64字节，最长1518字节，超过最大限制就分片发送
+
+            mac地址：
+                出厂时定义死的，你不能改 mac地址：每块网卡出厂时都被烧制上一个世界唯一的mac地址，长度为48位2进制，通常由12位16进
+                制数表示（前六位是厂商编号，后六位是流水线号）————身份证
+                那么为什么要48位呢？————————字节：即6个字节   在python中ord()可以查看对应的ASCII码
+                48位表示趋于无尽的扩展，位数越多代表的变换越多，保证流水线独一无二
+
+            广播：
+                有了mac地址，同一网络内的两台主机就可以通信了（一台主机通过arp协议(ip层的mac层的是以太协议)获取另外一台主机的mac地址）
+                ethernet采用最原始的方式，广播的方式进行通信，即计算机通信基本靠吼
+
+                也就是说，先告诉所有人我是快递员，我找Igarashi，有他的快递。源地址：快递员、目标地址：Igarashi、数据：有他的快递
+                其他人拿到数据报进行分析、丢弃，Igarashi分析接收
+
+        2.3.3 网络层:
+            网络层由来：有了ethernet、mac地址、广播的发送方式，世界上的计算机就可以彼此通信了，问题是世界范围的互联网是由
+            一个个彼此隔离的小的局域网组成的，那么如果所有的通信都采用以太网的广播方式，那么一台机器发送的包全世界都会收到，
+            这就不仅仅是效率低的问题了，这会是一种灾难
+
+            因此，就必须找出一种方法来区分哪些计算机属于同一广播域，哪些不是，如果是就采用广播的方式发送，如果不是，就采用路由的方式
+            （向不同广播域／子网分发数据包），mac地址是无法区分的，它只跟厂商有关
+
+            网络层功能：引入一套新的地址用来区分不同的广播域／子网，这套地址即网络地址
+
+        IP协议：
+            规定网络地址的协议叫ip协议，它定义的地址称之为ip地址，广泛采用的v4版本即ipv4，它规定网络地址由32位2进制表示
+            范围0.0.0.0-255.255.255.255
+            一个ip地址通常写成四段十进制数(每一段八位)，例：172.16.10.1
+            利用bin()将点分十进制的每一段转化为二进制数据
+
+        ip地址分成两部分：
+            网络部分：标识子网
+            主机部分：标识主机
+            注意：单纯的ip地址段只是标识了ip地址的种类，从网络部分或主机部分都无法辨识一个ip所处的子网
+
+            例：172.16.10.1与172.16.10.2并不能确定二者处于同一子网
+
+        子网掩码：
+            就是划分那几位是网络部分（网段），那几位是主机部分。规定网络部分为1，主机部分为0
+
+            比如，已知IP地址172.16.10.1和172.16.10.2的子网掩码都是255.255.255.0，请问它们是否在同一个子网络？两者与子网掩码分别进行AND运算，
+            172.16.10.1：10101100.00010000.00001010.000000001
+            255.255.255.0:11111111.11111111.11111111.00000000
+            AND运算得网络地址结果：10101100.00010000.00001010.000000001-&gt;172.16.10.0
+
+            172.16.10.2：10101100.00010000.00001010.000000010
+            255.255.255.0:11111111.11111111.11111111.00000000
+            AND运算得网络地址结果：10101100.00010000.00001010.000000010-&gt;172.16.10.2
+
+            结果都是172.16.10.0，因此它们在同一个子网络。
+        总结一下，IP协议的作用主要有两个，一个是为每一台计算机分配IP地址，另一个是确定哪些地址在同一个子网络。
+
+        ip数据包：
+            ip数据包也分为head和data部分，无须为ip包定义单独的栏位，直接放入以太网包的data部分
+            head：长度为20到60字节
+
+            data：最长为65,515字节。
+
+            而以太网数据包的”数据”部分，最长只有1500字节。因此，如果IP数据包超过了1500字节，它就需要分割成几个以太网数据包，分开发送了。
+
+            以太网头   	            ip 头 	                                   ip数据
+            （以太网头就是之前含源和目的mac的head）
+        ARP协议：
+            arp协议由来：计算机通信基本靠吼，即广播的方式，所有上层的包到最后都要封装上以太网头，然后通过以太网协议发送，在谈及以
+            太网协议时候，我门了解到：
+                通信是基于mac的广播方式实现，计算机在发包时，获取自身的mac是容易的，如何获取目标主机的mac，就需要通过arp协议
+
+            例如：主机172.16.10.10/24访问172.16.10.11/24
+
+            执行过程：
+                1.网络层先计算它们的网络地址，得出的地址是172.16.10.0(证明它们在同一个网段里面，即同一广播域)。
+                2.第一次发包，先用arp封装。arp封装格式:[有自己的mac，目标mac不知道就用广播喊一下，有自己的ip和目标的ip（这是发包之前就肯定
+                    知道的，你不知道发给谁，那还发什么包？），还有封装好的数据]
+                3.广播发送给在这个网段下的所有人，之后它们接收并拆包。当拆到FFF时它们就知道了是来要自己的mac地址的，但是给不给呢，它们便向下读
+                    读到ip地址，当看到目标地址是11时知道是给自己的，便把自己的mac地址写入目标mac中（回给他）
+                4.此时回给它的这个数据包就利用以太网广播出去啦。重复2、3 源主机得到后把之前FFF的mac地址再重新替换为目标mac
+                ##之后两台主机就可以正常发包啦
+
+            若两台主机不再同一网段（跨网络通信）则底层光吼没有用啊（在隔壁教室），此时就要借助网关。
+                网关：负责跨网络通信，发包的。配置到本地的配置死的，貌似通常254结尾。
+
+            执行过程：
+                1.因此需要找网关的mac地址。
+                2.网关识别ip的网关是否对应自己的网关。
+                3.对应后把网关的mac地址返回给发送端，此时的发送端改目的mac就是返回的网关mac
+                4.之后每次数据包发送给网关，网关接收后再在网段里进行上面的转发
+            *：网关不是路由，网关之间的通信工具才是路由
+
+            arp协议功能：广播的方式发送数据包，获取目标主机的mac地址
+
+            协议工作方式：每台主机ip都是已知的
+
+            一：首先通过ip地址和子网掩码区分出自己所处的子网
+            场景      	数据包地址
+            同一子网	    目标主机mac，目标主机ip
+            不同子网    	网关mac，目标主机ip
+
+            二：分析172.16.10.10/24与172.16.10.11/24处于同一网络(如果不是同一网络，那么下表中目标ip为172.16.10.1,通过arp获取的是网关的mac)
+
+                        源mac	    目标mac	            源ip         	 目标ip	            数据部分
+            发送端主机	发送端mac	FF:FF:FF:FF:FF:FF	172.16.10.10/24	 172.16.10.11/24	数据
+
+            三：这个包会以广播的方式在发送端所处的自网内传输，所有主机接收后拆开包，发现目标ip为自己的，就响应，返回自己的mac
+
+            ##Tips：假设两台交换机处于不同网段，一堆计算机通过交换机连接起来（这堆计算机在一个网段中，吼也是靠交换机吼），交换机通过路
+                由器进行转发（路由器即是桥梁），不然不同网段下（子网划分的）是不能像直连那样进行通信的
+
+
+        ICMP协议：
+            （Internet Control Message Protocol）Internet控制报文协议。它是TCP/IP协议簇的一个子协议，
+            用于在IP主机、路由器之间传递控制消息。控制消息是指网络通不通、主机是否可达、路由是否可用等网络本身的消息。
+            这些控制消息虽然并不传输用户数据，但是对于用户数据的传递起着重要的作用。
+
+            1.使用场景
+                - 我们经常使用的用于检查网络通不通的Ping命令的过程，实际上就是ICMP协议工作的过程
+                - 路由分析诊断程序 tracert 使用了 ICMP时间超过报文。tracert 命令主要用来显示数据包到达目的主机所经过的路径。
+                  通过执行一个 tracert 到对方主机的命令，返回数据包到达目的主机所经历的路径详细信息，并显示每个路径所消耗的时间。
+
+
+            2.ICMP攻击与抵御方法：
+                可以利用操作系统规定的ICMP数据包最大尺寸不超过64KB这一规定，向主机发起“Ping of Death”（死亡之Ping）攻击。
+                如果ICMP数据包的尺寸超过64KB上限时，主机就会出现内存分配错误，导致TCP/IP堆栈崩溃，致使主机死机。
+
+                对于“Ping of Death”攻击，可以采取两种方法进行防范：
+                第一种：方法是在路由器上对ICMP数据包进行带宽限制，将ICMP占用的带宽控制在一定的范围内，这样即使有ICMP攻击，
+                    它所占用的带宽也是非常有限的，对整个网络的影响非常少；
+
+                第二种：方法就是在主机上设置ICMP数据包的处理规则，最好是设定拒绝所有的ICMP数据包。（安装防火墙）
+
+
+    2.3.4 传输层:
+        传输层的由来：1.网络层的ip：帮我们区分子网。2.以太网层的mac帮我们找到具体那一台主机。然后大家使用的都是应用程序，你的电脑上可能同时开启
+        qq，暴风影音，等多个应用程序，（也就是说前两层撑死只能帮我们在不同子网下定位到某一主机，若想要Wechat之类的则需要传输层）
+
+        那么我们通过ip和mac找到了一台特定的主机，如何标识这台主机上的应用程序，答案就是端口，端口即应用程序与网卡关联的编号。
+
+        端口是个啥：
+            假设现在有两台机器，两台机器都要有网卡（在linux下通常叫eth0[ethernet：以太网协议0]）网卡走的是以太网。
+            端口范围0-65535，0-1023为系统占用端口（因此传输层都是基于端口的）。后面的就是各个应用程序的唯一的编号，这个编号做的事就是和网卡
+            绑定起来了（网卡会绑定一堆端口号）因此开启的每一个程序在网卡上都有自己唯一的一个端口号。因此左边机器上通过端口号发到右边机器的对
+            应端口号既可以实现两个应用之间的通信。那么源端口和目的端口是谁负责的？————传输层
+
+        传输层功能：建立端口到端口的通信（规定：一个端口号标识一台机器上的一个网络服务）
+
+        （若有两个应用端口号相同，则会产生冲突，必定有一个应用启动不了，毕竟只到65535，这台机器上只能有一个程序去占用这个端口）
+        不拿QQ举例了（不同于两台主机通信），因为QQ有服务器，所有的QQ软件都是客户端，全都连到了腾讯的服务端去了（因此只要服务端没改端口就没问题）
+
+        tcp协议：
+            可靠传输，TCP数据包没有长度限制，理论上可以无限长，但是为了保证网络的效率，通常TCP数据包的长度不会超过IP数据包的
+            长度，以确保单个TCP数据包不必再分割。（面向连接的，需要应答，稳定）
+
+            以太网头	    ip头              	tcp头              	数据
+
+            tcp报文：
+                头（TCP首部）：源端口和目标端口（占32位，后同以&quot;|&quot;分割）
+                序号（此包的ID号）|
+                确认号（对方包序号+1，左边计算机收到右边的包+1的确认号了便确认了确实收到自己刚刚发的包了，基于之前报的基础之上的响应操作）|
+                数据偏移（告诉计算机哪一位代表什么，从&quot;头&quot;数多少位才到数据部分）
+                保留位（留着TCP协议扩展来用的）
+                六个标志位（确定包的一个状态，或是功能，通常需掌握三个SYN：为1时请求发起新连接、ACK：代表确认[通常左边发起时SYN为1 右边
+                    回ACK为1连接就建立了，一个请求一个相应]、FIN：请求断开连接[与前同]）
+                窗口（规定发时按多大尺寸发）|
+                校验和（哈希校验 防止篡改）
+                紧急指针（URE为1，此包会被优先处理）|
+                选项和填充（不管）|数据（不管）|
+
+            以上就是TCP的报文结构
+
+            tcp三次握手和四次挥手：（链接是双向建立的）
+                1.左边发一个包过来，此时syn = 1 seq（序列号）= x
+                2.右边收到以后相应这个包，回应一个ack = 1（ack就是等于1，同意建立连接，但通常也会给它加一个x，为了让左边明白发的包确实收到了）
+                3.右边再发一个syn = 1 seq = y
+                4.左边接收再ack = 1 + y（再加个y）
+                此时是四次握手，然而2、3次握手时右边响应了一个请求，不喘气又发起了一个新的连接，多不多余？非常多余，因此2、3合并，一次即可
+                2、3：响应的同时发起一个新的连接，ack = 1+x syn = 1 seq = y
+
+                左边即是客户端：开始时即SYN_SENT状态（connect()）。然后右边即服务端：接收前为监听LISTEN 状态（listen()）,并回复SYN_RCVD。
+                客户端收到后为ESTABLISHED（建立成功）状态，在发给服务端。随后服务端收到也为ESTABLISHED（建立成功）状态。
+
+                1.之后数据传输：客户端write（写）状态seq = x+1 ack = y+1
+                2.服务端read（读）状态ack = x+2
+
+                断链接四次挥手：（左边的没法决定右边断不断，左边只能决定左边和右边的断，不能决定右边是否和左边断，双向！）
+                1.客户端发送fin = 1 seq = x+2 ack = y+1 ————FIN_WAIT1（close()）状态
+                2.服务器收到后响应 ack = 1  （ack = x+3）——————CLOSE_WAIT、客户端变为FIN_WAIT2
+                3.服务器发送 fin = 1  seq = y+1         ——————LAST_ACK（close()）状态
+                4.客户端接收后响应 ack = 1  （ack = y+2）——————TIME_WAIT
+                为什么建立建立用三次，而断开连接用四次呢？
+                    因为TCP在建立连接（三次握手）之前没有数据再传，为了节省效率4步并作3步，把通路先建好。但是若用三次握手的方式去断
+                    会有什么效果？客户端发一个fin，服务端收到响应ack同时在发送fin。看似没错，但左边发完了的时候，右边一定发完数据了么，
+                    没有。因此需要等右边发完了数据给客户端后，服务器再开始断开连接。所以断开链接一定要用四次
+
+                    数据通道是两条双向的，客户端说我不想和你通信了，然后把客户端对服务端发送信息的通道关闭了。然后服务端总不能
+                    被迫就在回答我知道的时候，就必须和客户端断开连接吧，服务端也是有自主选择权的，会在不想和客户端通信的时候
+                    再去告诉客户端，我不和你通信了。而不是被迫再客户端不和服务端通信时，就立即响应自己也不和客户端通信。
+
+            抓包过程：（参考python_RPC.md）
+             三次握手：
+                 [SYN] Seq=0 Win=8192 Len=0 MSS=65495 WS=256 SACK_PERM=1
+                 [SYN, ACK] Seq=0 Ack =1 Win=8192 Len=0 MSS=65495 WS=256 SACK_PERM=1
+                 [ACK] Seq=1 ACK=1 Win=8192 Len=0
+
+             socket交互过程：
+                 [PSH, ACK] Seq=1 Ack=1 Win=8192 Len=5   （hello）
+                 [ACK] Seq=1 Ack=6 Win=7936 Len=0         (win的进程号吗？改变了)
+                 [PSH, ACK] Seq=1 Ack=6 Win=7936 Len=5
+                 [ACK] Seq=6 Ack=6 Win=7936 Len=0
+
+
+             四次挥手
+                 [FIN, ACK] Seq=6 Ack=6 Win=7936 Len=0
+                 [ACK] Seq=6 Ack=7 Win=7936 Len=0
+                 [FIN, ACK] Seq=6 Ack=7 Win=7936 Len=0
+                 [ACK] Seq=7 Ack=7 Win=7936 Len=0
+
+        udp协议：
+            不可靠传输，”报头”部分一共只有8个字节，总长度不超过65,535字节，正好放进一个IP数据包。（无连接的，只负责不停的发）
+
+            以太网头	    ip头                 udp头               数据
+
+       （光这个TCP协议就辣么厚一本书才入门，学个两三年python再一换代，还玩不玩了）因此python有很多库（别人封装好的一大堆接口）因此一调用
+            接口就ok了。套接字（Socket抽象层）：就是TCP和UDP的封装。因此只要遵循套接字的规范就相当于遵循了TC/UDP、网络层、链路层的规范了
+
+    2.3.5 应用层:
+        应用层由来：用户使用的都是应用程序，均工作于应用层，互联网是开放的，大家都可以开发自己的应用程序，数据多种多样，必须规定好数据的组织形式
+
+        应用层功能：规定应用程序的数据格式。
+
+        例：TCP协议可以为各种各样的程序传递数据，比如Email、WWW、FTP等等。那么，必须有不同协议规定电子邮件、网页、FTP数据的格式，这些
+        应用程序协议就构成了&quot;应用层&quot;。
+
+        应用层也有应用头，封装了用户数据。之后把这个（应用层首部+用户数据）封装成应用数据交给第四层协议
+
+    2.3.6 socket:（套接字起源于Unix 即ip地址+端口）
+        我们知道两个进程如果需要进行通讯最基本的一个前提能能够唯一的标示一个进程，在本地进程通讯中我们可以使用PID来唯一标示一个进程，但PID只在
+        本地唯一，网络中的两个进程PID冲突几率很大，这时候我们需要另辟它径了，我们知道IP层的ip地址可以唯一标示主机，而TCP层协议和端口号可以唯
+        一标示主机的一个进程，这样我们可以利用ip地址＋协议＋端口号唯一标示网络中的一个进程。
+
+        能够唯一标识网络中的进程后，它们就可以利用socket进行通信了，什么是socket呢？我们经常把socket翻译为套接字，socket是在应用层和传输
+        层之间的一个抽象层，它把TCP/IP层复杂的操作抽象为几个简单的接口供应用层调用已实现进程在网络中通信。
+
+
+        socket起源于UNIX，在Unix一切皆文件哲学的思想下，socket是一种&quot;打开—读/写—关闭&quot;模式的实现，服务器和客户端各自维护一个&quot;文件&quot;，在建
+        立连接打开后，可以向自己文件写入内容供对方读取或者读取对方内容，通讯结束时关闭文件。
+
+三.网络通信实现
+    一台机器想上网（实现网络通信）访问网站，需具备四要素：
+        本机的IP地址、
+        子网掩码、
+        网关的IP地址、
+        DNS的IP地址
+
+    获取这四要素分两种方式：
+
+    1.静态获取：
+        即手动配置（如手动到ipv4，改DNS为114.114.114.114等等）
+
+    2.动态获取：
+        通过dhcp（协议）获取：
+        以太网头	        ip头	        udp头	    dhcp数据包
+
+        通常有装dhcp软件，负责分配网络信息的。首先它是基于UDP协议的。
+
+        （1）最前面的”以太网标头”，设置发出方（本机）的MAC地址和接收方（DHCP服务器）的MAC地址。前者就是本机网卡的MAC地址，后者这时
+            不知道，就填入一个广播地址：FF-FF-FF-FF-FF-FF。
+
+        （2）后面的”IP标头”，设置发出方的IP地址和接收方的IP地址。这时（由于是电脑刚开启还未获取），因此对于这两者，本机都不知道。于
+            是，发出方的IP地址就设为0.0.0.0，接收方的IP地址设为255.255.255.255。
+
+        （3）最后的”UDP标头”，设置发出方的端口和接收方的端口。这一部分是DHCP协议规定好的，发出方是68端口，接收方是67端口。（这个是软件定义死的）
+
+        这个数据包构造完成后，就可以发出了。以太网是广播发送，同一个子网络的每台计算机都收到了这个包。因为接收方的MAC地址是
+        FF-FF-FF-FF-FF-FF，看不出是发给谁的，所以每台收到这个包的计算机，还必须分析这个包的IP地址，才能确定是不是发给自己的。当
+        看到发出方IP地址是0.0.0.0，接收方是255.255.255.255，于是DHCP服务器知道”这个包是发给我的”，而其他计算机就可以丢弃这个包。
+        （因为网络当中全是0的你不能用，全是255的也不能用，为什么？就是为了干这个事的）因此只有dhcp响应了
+
+        接下来，DHCP服务器读出这个包的数据内容，分配好IP地址，发送回去一个”DHCP响应”数据包。这个响应包的结构也是类似的，以太网标
+        头的MAC地址是双方的网卡地址，IP标头的IP地址是DHCP服务器的IP地址（发出方）和255.255.255.255（接收方），UDP标头的端口是67（发
+        出方）和68（接收方），分配给请求端的IP地址和本网络的具体参数则包含在Data部分。
+
+         新加入的计算机收到这个响应包，于是就知道了自己的IP地址、子网掩码、网关地址、DNS服务器等等参数
+
+         还有租约过期时间：因为你申请的IP地址是跟我租的（因为你是一个动态的，每次机器连上网线，ip地址都不是固定的，可能偶尔有段时间
+         会固定，因为他有一个租约时间，一旦过期了就又无效了，只能再重新通过dhcp协议申请获取）
+
+    那么dhcp在哪？
+        1.可以单独拿一台机器，值台机器上面装好dhcp软件，这个软件里面你定义好一堆地址池， 如172.16.10.2~172.16.10.254这中间这一对地址。
+            来人就从这堆地址里面分。
+        2.通常网络设备都集成这个功能，平时在家上网，你的ip地址也是动态的，因此肯定会有一个dhcp服务，那么这个dhcp集成在哪里————路由器上，还
+            有交换机也分成二层交换机（基于mac地址传输的，工作在数据链路层的————这种特别2B的这种，相当便宜）比较高端的公司用的三层交换机，它
+            集成了路由的功能（可以路由转发）。还有四层交换机（基于端口，但很少）
+
+四.网络通信流程：
+    大体上经历过程如下：（见网络请求过程.png）
+        重定向 → 拉取缓存 → DNS 查询 → 建立 TCP 链接 → 发起请求 → 接收响应 → 处理 HTML 元素 → 元素加载完成
+    1.本机获取：
+        本机的IP地址：192.168.1.100
+        子网掩码：255.255.255.0
+        网关的IP地址：192.168.1.1
+        DNS的IP地址：8.8.8.8
+
+    2.打开浏览器，想要访问Google，在地址栏输入了网址：www.google.com。
+     2.1：浏览器缓存：（见浏览器缓存机制.jpg）
+            浏览器在向服务器发起请求前，会先查询本地是否有相同的文件，如果有，就会直接拉取本地缓存，这和我们在后台部属的 Redis
+            和 Memcache 等类似，都是起到了中间缓冲的作用。
+
+            在我们进行缓存调试时，需要去除 network 面板顶部的Disable cache 勾选项，否则浏览器将始终不会从缓存中拉取数据。
+
+        &lt;1&gt;内存：
+                浏览器默认的缓存是放在内存内的，但我们知道，内存里的缓存会因为进程的结束或者说浏览器的关闭而被清除，而存在硬盘
+                里的缓存才能够被长期保留下去。
+
+            在 network 面板中各请求的 size 项里，会看到两种不同的状态：from memory cache 和 from disk cache。
+            - from memory cache：
+                指缓存来自内存。是浏览器为了加快读取缓存速度而进行的自身的优化行为，不受开发者控制，也不受 HTTP 协议头的约束，
+                算是一个黑盒。
+
+                一般脚本、字体、图片会存在内存当中。快速读取，一旦关闭就会清除。
+
+                1.preloader：
+                    浏览器的预加载器。打开网页时会预先请求html资源解析。若发现了css、js等资源就调度cpu执行。07年前，多是利用
+                    cpu串行解析的，此时网络请求是空闲的，因此出来了perloader（不同浏览器不同）因此在加载的同时，perloader请求
+                    下一批待加载的网络资源，放入memory cache。
+                2.preload：
+                    &lt;link rel=&quot;preload&quot;&gt;，显式的指定预加载资源，也放入memory cache
+
+                memory的机制保证了一个页面若有两个相同的请求，都实际只请求一次，避免浪费。
+                memory获取缓存时会忽视例如 max-age=0（不要在下次浏览时使用）, no-cache 等头部配置。这是因为 memory cache
+                    只是短期使用，大部分情况生命周期只有一次浏览而已。
+                如果站长是真心不想让一个资源进入缓存，就连短期也不行，那就需要使用 no-store。
+
+            - from disk cache：
+                指缓存来自硬盘。disk cache 会严格根据 HTTP 头信息中的各类字段 来判定哪些资源可以缓存、哪些资源不可以缓存、哪些
+                资源是仍然可用的，哪些资源是过时需要重新请求的。当命中缓存之后，浏览器会从硬盘中读取资源（比网络快）。
+
+                一般非脚本会存在硬盘中，如HTTP协议开头、css、mp4等，因为css样式加载一次即可渲染出网页。
+                脚本不在硬盘，是因为加载的IO开销较大，导致浏览器失去响应。（不同浏览器有差异，快慢原因）
+
+            - Service Worker：
+                由开发者编写的额外的脚本，可以绕过浏览器判断，自行设置。Chrome 的 F12 中，Application -&gt; Cache Storage找到。
+                这个缓存是永久性的。只有手动调用清除api或容量上限才会清空。通过fetch()来获取资源若没有命中走的网络，也会标注
+                为 from ServiceWorker。
+
+            优先级：
+                Service Worker &gt;  Memory Cache &gt; Disk Cache &gt; 网络请求
+
+        &lt;2&gt;强制缓存：（见8.2 其他响应头）
+            强制缓存直接减少请求数，是提升最大的缓存策略。 它的优化覆盖了文章开头提到过的请求数据的全部三个步骤。
+            如果考虑使用缓存来优化网页性能的话，强制缓存应该是首先被考虑的。
+
+        &lt;3&gt;对比缓存：
+            当强制缓存失效(超过规定时间)时，就需要使用对比缓存，由服务器决定缓存内容是否失效。
+            流程：
+                1.浏览器先请求缓存数据库，返回一个缓存标识。
+                2.浏览器拿这个标识和服务器通讯。
+                3.如果缓存未失效，则返回 HTTP 状态码 304 表示继续使用，于是客户端继续使用缓存
+                4.如果失效，则返回新的数据和缓存规则，浏览器响应数据后，再把规则写入到缓存数据库。
+
+            对比缓存在请求数上和没有缓存是一致的，但如果是 304 的话，返回的仅仅是一个状态码而已，并没有实际的文件内容，因此
+            在响应体体积上的节省是它的优化点。（优化的是响应部分，通过减少响应体体积，来缩短网络传输时间，相比提升幅度较小）
+
+            - Last-Modified &amp; If-Modified-Since：
+                1.服务器通过 Last-Modified 字段告知客户端，资源最后一次被修改的时间，例如
+                    Last-Modified: Mon, 10 Nov 2018 09:10:11 GMT
+                2.浏览器将这个值和内容一起记录在缓存数据库中。
+                3.下一次请求相同资源时时，浏览器从自己的缓存中找出“不确定是否过期的”缓存。因此在请求头中将上次的 Last-Modified
+                    的值写入到请求头的 If-Modified-Since 字段
+                4.服务器会将 If-Modified-Since 的值与 Last-Modified 字段进行对比。如果相等，则表示未修改，响应 304；反之，
+                    则表示修改了，响应 200 状态码，并返回数据。
+                缺陷：
+                    1.如果资源更新的速度是秒以下单位，那么该缓存是不能被使用的，因为它的时间单位最低是秒。
+                    2.如果文件是通过服务器动态生成的，那么该方法的更新时间永远是生成的时间，尽管文件可能没有变化，所以起不到缓存的作用。
+
+            - Etag &amp;  If-None-Match：
+                Etag为了解决上述缺陷，流程和 Last-Modified 一致。控制缓存存放位置的，不是别人，就是我们在服务器上设置的 Etag 字段。
+                资源的内容标识。（不唯一，通常为文件的md5或者一段hash值，只要保证写入和验证时的方法一致即可）
+                在浏览器接收到服务器响应后，会检测响应头部（Header），如果有 Etag 字段，那么浏览器就会将本次缓存写入硬盘中。
+
+                Etag 的优先级高于 Last-Modified
+
+        缓存小结：
+            1.调用 Service Worker 的 fetch 事件响应
+            2.查看 memory cache
+            3.查看 disk cache。这里又细分：
+            4.如果有强制缓存且未失效，则使用强制缓存，不请求服务器。这时的状态码全部是 200
+            5.如果有强制缓存但已失效，使用对比缓存，比较后确定 304 还是 200
+            6.发送网络请求，等待网络响应
+            7.把响应内容存入 disk cache (如果 HTTP 头信息配置可以存的话)
+            8.把响应内容 的引用 存入 memory cache (无视 HTTP 头信息的配置)
+            9.把响应内容存入 Service Worker 的 Cache Storage (如果 Service Worker 的脚本调用了 cache.put())
+
+
+    3.dns协议(基于udp协议)：
+        若想在网络上通信，则需要解析域名（用DNS），Domain Name System，专门用来解析域的。实际上是一个翻译者（域名--&gt;ip）
+    13台根dns：
+        A.root-servers.net198.41.0.4美国
+        B.root-servers.net192.228.79.201美国（另支持IPv6）
+        C.root-servers.net192.33.4.12法国
+        D.root-servers.net128.8.10.90美国
+        E.root-servers.net192.203.230.10美国
+        F.root-servers.net192.5.5.241美国（另支持IPv6）
+        G.root-servers.net192.112.36.4美国
+        H.root-servers.net128.63.2.53美国（另支持IPv6）
+        I.root-servers.net192.36.148.17瑞典
+        J.root-servers.net192.58.128.30美国
+        K.root-servers.net193.0.14.129英国（另支持IPv6）
+        L.root-servers.net198.32.64.12美国
+        M.root-servers.net202.12.27.33日本（另支持IPv6）
+
+        因此若想攻击全世界的网络，只需要攻击DNS根域（DNS攻击事件）一般一个done掉了，其他的也都要done。（现在没人这么干）
+        注意：因为dns已经重要到忽略的一个东西。没有它就上不了网，除非能记住全世界的网址，那么你就成为一个dns了
+
+    域名定义：http://jingyan.baidu.com/article/1974b289a649daf4b1f774cb.html
+    uri地址：https://github.com/IgarashiToure
+    url地址：https://github.com/
+    协议部分：http://
+    域名部分：github.com     其实所有的域名部分最后都省略了一个点如 xx.com. 根域：. ，根域下授权分配顶级域（掌管着全世界的顶级域）
+    资源部分：/IgarashiToure
+
+    顶级域名：以.com,.net,.org,.cn等等属于国际顶级域名，根据目前的国际互联网域名体系，国际顶级域名分为两类：类别顶级域名(gTLD)和地
+       理顶级域名(ccTLD)两种。类别顶级域名是以&quot;COM&quot;、&quot;NET&quot;、&quot;ORG&quot;、&quot;BIZ&quot;、&quot;INFO&quot;等结尾的域名，均由国外公司负责管理。地理顶级域名
+       是以国家或地区代码为结尾的域名，如&quot;CN&quot;代表中国，&quot;UK&quot;代表英国。地理顶级域名一般由各个国家或地区负责管理。
+
+    二级域名：二级域名是以顶级域名为基础的地理域名，比喻中国的二级域有，.com.cn,.net.cn,.org.cn,.gd.cn等.子域名是其父域名的子域名，比
+        喻父域名是abc.com,子域名就是www.abc.com或者*.abc.com. 一般来说，二级域名是域名的一条记录，比如alidiedie.com是一个域名，
+        www.alidiedie.com是其中比较常用的记录，一般默认是用这个，但是类似*.alidiedie.com的域名全部称作是alidiedie.com的二级
+
+    若申请域名，根域先授权一个顶级域名（com），顶级再授权给（cnblogs），二级再授权给（www），诸如此类
+
+    DNS的解析过程：
+        1.输入网址后，在解析时，首先会解析uri地址的域名部分（知道域名对应的ip地址是谁），发送到本地的DNS服务器（向服务器寻求要访问ip地址）。
+        2.此时会在本地服务器的缓存中去寻找（DNS的递归查询），（本地服务器会有一堆解析记录）每访问一个网址都会有一条正向解析记录（把网址翻
+        译为一个具体的地址，并把ip地址返回主机）客户端便把其当做ip地址进行通信。若不知道ip地址则（进行迭代查询）
+        3.访问13个根服务器（如M.root-servers.net）询问域名（日本网速比中国快很多的原因，因为它有根DNS服务器）
+        4.根服务器返回是由.com顶级域名管理（根服务器只解析到顶级域名）
+        5.访问顶级域名服务器 .com域服务器
+        6.顶级域名只解析到二级域名，它返回cnblogs.com二级域名
+        7.向cnblogs.com二级域名的DNS服务器访问
+        8.cnblogs.com的DNS服务器返回给它自己的ip地址是1.1.1.1（www就是这个地址下域名，因此可以直接解析，www就是为了好记之类的）
+        9.解析成功，本地服务器告诉网络客户端（主机）ip为1.1.1.1。同时写入缓存以便后续递归查询。
+
+    还有主从dns，主的在工作，从的做备份。主从DNS之间互相同步数据是基于TCP协议做的
+
+    当本地服务器进行迭代查询时，要先访问13台根域DNS
+        那么它怎么知道13台根域服务器地址在哪，封装到了UDP协议里面了。而13台根域服务器地址已经是极限了，这也就是为啥只有13台根DNS服务器的缘故
+    换个协议？————那么你相当于把全世界的网络都摧毁了，毁了在建？（等你统一全世界了再这么干）
+
+    4.HTTP部分的内容，类似于下面这样：（它是应用层协议，封装好后就会交给下一层）
+        GET / HTTP/1.1
+        Host: www.google.com
+        Connection: keep-alive
+        User-Agent: Mozilla/5.0 (Windows NT 6.1) ……
+        Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+        Accept-Encoding: gzip,deflate,sdch
+        Accept-Language: zh-CN,zh;q=0.8
+        Accept-Charset: GBK,utf-8;q=0.7,*;q=0.3
+        Cookie: … …
+
+    我们假定这个部分的长度为4960字节，它会被嵌在TCP数据包之中。
+
+    5 TCP协议：
+        TCP数据包需要设置端口，接收方（Google）的HTTP端口默认是80，发送方（本机）的端口是一个随机生成的1024-65535之间的整数，假定为51775。
+
+        TCP数据包的标头长度为20字节，加上嵌入HTTP的数据包，总长度变为4980字节。
+
+    6 IP协议：
+        然后，TCP数据包再嵌入IP数据包。IP数据包需要设置双方的IP地址，这是已知的，发送方是192.168.1.100（本机），接收方是172.194.72.105（Google）。
+
+        IP数据包的标头长度为20字节，加上嵌入的TCP数据包，总长度变为5000字节。
+
+    7 以太网协议：
+        最后，IP数据包嵌入以太网数据包。以太网数据包需要设置双方的MAC地址，发送方为本机的网卡MAC地址，接收方为网关192.168.1.1的MAC地
+            址（通过ARP协议得到）。
+
+        当到以太网时，前面封装的放于以太网的Data部分，因此要进行分片。（以太网有效传输数据最大是1500字节）linux上ifconfig信息的网卡上面有
+        一个MTU值（网卡的最大传输单元，默认1500字节）
+        以太网数据包的数据部分，最大长度为1500字节，而现在的IP数据包长度为5000字节。因此，IP数据包必须分割成四个包。因为每个包都有自
+            己的IP标头（20字节），所以四个包的IP数据包的长度分别为1500、1500、1500、560。
+
+    8 服务器端响应：
+        经过多个网关的转发，Google的服务器172.194.72.105，收到了这四个以太网数据包。
+
+        根据IP标头的序号，Google将四个包拼起来，取出完整的TCP数据包，然后读出里面的”HTTP请求”，接着做出”HTTP响应”，再用TCP协议发回来。
+
+        本机收到HTTP响应以后，就可以将网页显示出来，完成一次网络通信。
+</code></pre><hr><pre><code>因此每次浏览器输入域名后。它就解析完，相当于根文件夹下面的Igarashi目录，把Igarashi文件夹下面所有的信息都会返回回来，然后就相当于
+你把所有文件（就Igarashi写的这些垃圾博客、文件）全部下载到本地来看。也就是说上网，全都是一个下载的过程。
+</code></pre><p>一.ip 地址基本知识 1.1 ip 地址的结构和分类： 根据 tcp／ip 协议，连接在 internet 上的每个设备都必须有一个 ip 地址，他是一个 32 位二进制数，也可以用点分十进制表示，每八位一组，用一个十 进制表示即 0 ～ 255，每组用&quot;.&quot;分隔开，例如 172.16.45.10</p><pre><code>ip地址表示：
+    一个ip地址包含两方面的信息（网络号 + 主机号）4*8位表示
+
+将ip地址中的网络位和主机位固定下来后，ip地址被分成了不同的积累：A类，B类，C类，D类，E类
+A类：网络位前八位，开头0固定（1~126）127表示本地回环地址（开头结尾不能要）
+B类：网络位前十六位，开头10固定（128—~191）
+C类：网络位前二十四位，开头110固定（192~223）
+D类：开头1110固定（224~239）————组播使用
+E类：开头11110固定（240~255）————保留试验使用
+
+1.2 特殊ip地址
+    网络地址：用于表示网络本身，具有正常的网络号部分，而主机号部分全部为0的ip地址称之为网络地址，如172.16.45.0就是一个B类网络地址
+
+    广播地址：用于向网络中的所有的设备进行广播。具有正常的网络号部分，而主机号部分全为1(即255)的ip地址称之为广播地址，如172.16.45.255就是
+        一个B类的网络地址
+
+    有限广播地址：指的是32位全位1(即255.255.255.255)的ip地址，用于本网广播
+
+    回送地址：网络地址不能以十进制的127作为开头，在地址中数字127保留给系统作为诊断用，称为欢送地址，如127.0.0.1用于回路测试
+
+    私有地址：只能在局域网内使用，不能在internet上使用的ip地址称为私有ip地址，私有ip地址有：
+    10.0.0.0～10.255.255.255，表示一个A类地址
+    172.16.0.0~172.31.255.255,表示16个B类地址
+    192.168.0.0～192.168.255.255，表示256个C类地址
+    0.0.0.0:指已经不是真正意义上的ip地址，它表示的是所有不清楚主机和目的网络，这里的不清楚指的是在本机路由表里没有特定条目指明如何到达
+
+若想公司内网pc想访问百度（跨子网通信）先会进行判断（DNS解析判断目的ip），若目的ip不在同一个子网下就会把包交给网关（网关这个地方都会有一个
+公网ip，还有NAT）。互联网上跑的都是公网地址，是看不到子网的。当你发包出去了时，另一个子网的网关会接收（两个网关通过路由器交换机）。查找路由
+表，SNAT这步就是把私网地址的源地址的私有地址换成了网关地址的公有地址。另一边的网关接收后负责把数据转发给内网的服务器（DNAT这步把目标ip换了）
+
+若只想在公司的内网通讯的话，就使用内网IP地址，不要使用公网的ip地址，不然最后在NAT转换会产生冲突
+
+1.3 子网掩码
+    子网掩码用于识别ip地址中的网络地址和主机地址。
+    子网掩码也是32位二进制数字，在子网掩码中，对应于网络地址部分全用1表示，主机部分全用0表示
+    还可以用网络前缀表示子网掩码，即&quot;／&lt;网络地址位数&gt;&quot;，如172.16.45.0/24表示B类网络172.16.45.0的子网掩码为255.255.255.0
+
+1.4 ip地址申请
+    https://www.processon.com/mindmap/57fdad47e4b08d4fe9b3d7e2
+    全球IANA：有三个地区（北美、欧洲、亚太：APNIC）————CNNIC————ISP运营商
+
+二.子网划分
+    2.1 子网划分概念：
+        子网划分是通过借用ip地址的若干位主机位来充当子网地址的从而将原来的网络分为若干个彼此隔离的子网实现的（简言：借主机位充当网络位）
+    注意：
+        arp协议通过ip地址获取目标主机的mac地址这一过程使用的是广播的方式，这个广播地址就是通过子网地址于子网掩码计算而来的，只有计算出
+        的这一子网内的主机才能收到这个arp广播包
+        子网划分与vlan都可以做到隔离广播域，只是子网划分是三层隔离，vlan是二层（二层隔离，物理层面上进行隔离，如10接口连载一台交换机的valn1）
+
+    2.2 c类子网划分初探：
+        若有C类网11111111 11111111 11111111 11000000 ————借了两位主机位给网络位 则每个子网的主机数为62（254-192）（此时有00/10/11/01四种变化）
+        因此可以分成四个子网，因此依次类推 八个子网每个子网主机数为30（254-224），16个为14（254-240）。。。
+
+    2.3 子网划分步骤：
+        确定要划分的子网数以及每个子网的主机数
+        求出子网数目对应的二进制的位数N及主机数目对应的二进制数的位数M
+        对该ip地址的原子网掩码，将其主机地址部分的前N位置1(其余全部置0)或后M位置0(其余全置1)即得出该ip地址划分子网后的子网掩码
+
+    2.4 子网划分案例：（先理解2.3）
+        给C类网络211.168.10.0划分5个子网
+
+        2**2-2&lt;5&lt;2**3-2所以需要3位网络号，主机号为8-3=5
+
+        子网掩码为255.255.255.224
+
+        每个子网可容纳2**5-2=30台主机
+
+    2.5 划分子网注意事项：
+        在子网划分时不仅需要考虑目前需要，还应该了解将来需要多说子网和主机。子网掩码使用较多的主机位，可以得到更多子网，节约了ip地址
+        资源，若将来需要更多的子网时，不用再重新分配ip地址，但每个子网的主机数量有限；反之，子网掩码使用较少的主机位，每个子网的主机数
+        允许有更大的增长，但可用子网数有限
+
+        一般来说，一个网络中的节点数太多，网络会因为广播通信而饱和，所以网络中的主机数量的增长是有限的，也就是说，在条件允许的情况下，应
+        将更多的主机位用于子网位
+
+    2.6 为何要子网划分及其优点：
+        2.6.1 为什么要子网划分：
+            Internet组织机构定义了五种IP地址，用于主机的有A、B、C三类地址。其中A类网络有126个，每个A类网络可能有16，777，214台主机，它们
+            处于同一广播域。而在同一广播域中有这么多结点是不可能的，网络会因为广播通信而饱和，结果造成16，777，214个地址大部分没有分配出去，
+            形成了浪费。而另一方面，随着互连网应用的不断扩大，IP地址资源越来越少。为了实现更小的广播域并更好地利用主机地址中的每一位，可以把
+            基于类的IP网络进一步分成更小的网络，每个子网由路由器界定并分配一个新的子网网络地址,子网地址是借用基于类的网络地址的主机部分创建的。
+            划分子网后，通过使用掩码，把子网隐藏起来，使得从外部看网络没有变化，这就是子网掩码。
+
+            很简单的说  就是，一个公司不可能使用254个公网地址，A公司想用6个地址，B公司也想用6个地址，如果把这两个公司的地址都放在一个大网
+            段里面，这两个公司的地址就能够直接互通
+
+        2.6.2 子网划分优点：
+            减少网络流量（广播包发送，减少了广播包流量）
+            提高网络性能
+            简化管理
+            易于扩大地理范围
+</code></pre><p>网络编程： 网络通信三要素: 若要通信，只要根据 ip 地址和端口号，则可以确定是对某个机器的某个进程（指应用）进行通信。通常操作系统是会开辟 65535 个进程提供使用， 那么每个应用都会有相对应的进程 ID 进程 ID（PID）是由操作系统内核进行分配和管理的，而端口号是由通讯协议内核分配并进行管理的。 （网络服务的程序会需要打开端口监听，此时你看到的则是进程打开一个端口。其实进程和端口间无联系，可以通过进程查看开启的那些端口）</p><pre><code>    A.IP地址：
+    （1）标识网络上的一台独立的主机（在网络上每台主机的IP地址肯定不一样）
+    （2） IP地址 = 网络地址 + 主机地址（网络号：用于识别主机所在的网络/网段。主机号：用于识别该网络中的主机）
+    （3） 特殊的IP地址：127.0.0.1（本地回环地址、保留地址，点分十进制）可用于简单的测试网卡是否故障。表示本机。
+
+    B:端口号:（cmd下netstat -nao开查看PID进程号对应的端口号，linux下sudo netstat -antup）
+    （1） 用于标识进程的逻辑地址。不同的进程都有不同的端口标识（端口号不一样）。
+    （2） 端口：要将数据发送到对方指定的应用程序上，为了标识这些应用程序，所以给这些网络应用程序都用数字进行标识。
+            为了方便称呼这些数字，则将这些数字称为端口。（此端口是一个逻辑端口）
+
+    C: 传输协议：
+      通讯的规则。例如：TCP、UDP协议（好比两个人得用同一种语言进行交流）
+
+    ①、UDP：User Datagram Protocol用户数据报协议
+        特点：
+        面向无连接：传输数据之前源端和目的端不需要建立连接。
+        每个数据报的大小都限制在64K（8个字节）以内。
+        面向报文的不可靠协议。（即：发送出去的数据不一定会接收得到）
+        传输速率快，效率高。
+        现实生活实例：邮局寄件、实时在线聊天（要求速度，例如QQ）、视频会议…等。（一般都是求效率不求不安全）
+
+    ②、TCP：Transmission Control Protocol传输控制协议
+        特点：
+        面向连接：传输数据之前需要建立连接。
+        在连接过程中进行大量数据传输。
+        通过“三次握手”的方式完成连接，是安全可靠协议。
+        传输速度慢，效率低。（求安全不求效率）
+        注意：在TCP/IP协议中，TCP协议通过三次握手建立一个可靠的连接（TCP协议已经封装好，可以直接调接口）
+
+         # “我能给你讲个关于tcp的笑话吗?”
+         #   “行,给我讲个tcp笑话.”
+         #   “好吧那我就给你讲个tcp笑话.”
+
+        A ——————&gt;B syn:（我要给你发送信息了）
+        B ——————&gt;A ack:应答（我知道了）
+        A ——————&gt;B （我知道 你知道我要给你发送信息了）
+
+网络通讯步骤：
+    知道对方的IP地址 → 知道通信对象的程序端口 →  确定通讯协议(重点)
+
+     总结：网络通讯的过程其实就是一个（源端）不断封装数据包和（目的端）不断拆数据包的过程。
+
+     简单来说就是：发送方利用应用软件将上层应用程序产生的数据前后加上相应的层标识不断的往下层传输（封包过程），最终到达物理层通过看
+     得见摸得着的物理层设备，例如：网线、光纤…等将数据包传输到数据接收方，然后接收方则通过完全相反的操作不断的读取和去除每一层的标识
+     信息（拆包过程），最终将数据传递到最高层的指定的应用程序端口，并进行处理。
+</code></pre></div><!----><footer class="page-meta"><!----><div class="meta-item update-time"><span class="label">上次编辑于: </span><span class="info">2022/9/29 14:35:37</span></div><!----></footer><nav class="page-nav"><!----><a href="/unix/Linux/%E7%BD%91%E7%BB%9C/%E5%91%BD%E4%BB%A4.html" class="nav-link next" aria-label="CentOS网络命令"><div class="hint">下一页<span class="arrow right"></span></div><div class="link">CentOS网络命令<!----></div></a></nav><div class="giscus-wrapper input-top" style="display:block;"><div style="text-align:center">Loading...</div></div><!----><!--]--></main><!--]--><footer class="footer-wrapper"><div class="footer">默认页脚</div><div class="copyright">Copyright © 2022 五十岚</div></footer><!--]--></div><!--]--><!----><!--]--></div>
+    <script type="module" src="/assets/app.03722760.js" defer></script>
+  </body>
+</html>
