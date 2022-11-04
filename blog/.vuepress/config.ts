@@ -8,5 +8,25 @@ export default defineUserConfig({
 
   base: "/",
 
+  head: [
+    [
+      "link",
+      {
+        rel: "stylesheet",
+        href: "//at.alicdn.com/t/c/font_3654399_e6xix4avjkd.css",
+      },
+    ],
+  ],
+
   theme,
+  pagePatterns: [
+    "**/*.md",
+    "!**/*.snippet.md",
+    "!.vuepress",
+    "!node_modules",
+  ],
+  shouldPrefetch: false,
+  define: () => ({
+    IS_NETLIFY: "NETLIFY" in process.env,
+  }),
 });

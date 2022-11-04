@@ -1,1 +1,1 @@
-export const siteData = JSON.parse("{\"base\":\"/\",\"lang\":\"zh-CN\",\"title\":\"五十岚 ▪ 寄\",\"description\":\"五十岚の博客\",\"head\":[],\"locales\":{}}")
+export const siteData = JSON.parse("{\"base\":\"/\",\"lang\":\"zh-CN\",\"title\":\"五十岚 ▪ 寄\",\"description\":\"五十岚の博客\",\"head\":[[\"link\",{\"rel\":\"stylesheet\",\"href\":\"//at.alicdn.com/t/c/font_3654399_e6xix4avjkd.css\"}]],\"locales\":{}}")

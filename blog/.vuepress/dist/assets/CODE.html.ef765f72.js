@@ -1,0 +1,1 @@
+import{_ as t}from"./_plugin-vue_export-helper.cdc0426e.js";import{o,c,d as n,r}from"./app.3e57035c.js";const s={};function _(a,l){const e=r("PDF");return o(),c("div",null,[n(e,{url:"https://www.deadly-exception.icu:7779/pdf/%E6%8A%80%E6%9C%AF/CODE.pdf",height:"880px"})])}const f=t(s,[["render",_],["__file","CODE.html.vue"]]);export{f as default};
