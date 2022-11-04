@@ -334,7 +334,7 @@ $ python <span class="token parameter variable">-m</span> etutorservice <span cl
 <p><code v-pre>setup.py</code> 安装、部署、打包的脚本，项目必须，为了 <strong>快速部署 &amp; run</strong> 起来</p>
 <ul>
 <li>过去常用 <strong>setuptools</strong> 打包工具，如 <a href="https://github.com/pallets/flask/blob/main/setup.py" target="_blank" rel="noopener noreferrer">flask<ExternalLinkIcon/></a></li>
-<li>目前主流则是 <a href="/operations/docker/docker%E5%9F%BA%E7%A1%80" target="_blank" rel="noopener noreferrer">Docker<ExternalLinkIcon/></a></li>
+<li>目前主流则是 <a href="/operations/docker/docker%E5%9F%BA%E7%A1%80">Docker</a></li>
 </ul>
 </li>
 <li>

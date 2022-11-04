@@ -3,7 +3,7 @@ import navbar from "./navbar.js"
 import sidebar from "./sidebar.js"
 
 export default hopeTheme({
-  hostname: "https://igarashi-g.github.io/igarashi-blog/",
+  hostname: "https://igarashi-g.github.io/",
 
   author: {
     name: "五十岚",
@@ -14,7 +14,7 @@ export default hopeTheme({
 
   logo: "avatar.jpg",
 
-  repo: "Igarashi-G/igarashi-blog",
+  repo: "Igarashi-G",
 
   docsDir: "demo/src",
 

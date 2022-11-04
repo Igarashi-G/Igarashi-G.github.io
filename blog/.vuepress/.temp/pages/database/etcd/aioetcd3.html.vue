@@ -5,7 +5,7 @@
 <ul>
 <li>地址: <a href="https://github.com/gaopeiliang/aioetcd3" target="_blank" rel="noopener noreferrer">github|aioetcd3<ExternalLinkIcon/></a></li>
 <li>引用库 <a href="https://github.com/hubo1016/aiogrpc" target="_blank" rel="noopener noreferrer">aiogrpc<ExternalLinkIcon/></a> 使用 <code v-pre>__anext__</code>、<code v-pre>loop.call_soon_threadsafe</code> 、<code v-pre>run_in_executor</code> 等实现</li>
-<li>新版本官方已推出异步 <strong>gRPC</strong> <a href="/back_end/python/%E7%94%9F%E6%80%81/rpc/grpc" target="_blank" rel="noopener noreferrer">grpc.aio<ExternalLinkIcon/></a></li>
+<li>新版本官方已推出异步 <strong>gRPC</strong> <a href="/back_end/python/%E7%94%9F%E6%80%81/rpc/grpc">grpc.aio</a></li>
 </ul>
 <h3 id="安装" tabindex="-1"><a class="header-anchor" href="#安装" aria-hidden="true">#</a> 安装</h3>
 <div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code>$ pip <span class="token function">install</span> aioetcd3

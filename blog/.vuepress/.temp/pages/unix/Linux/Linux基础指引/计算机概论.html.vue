@@ -1,10 +1,10 @@
 <template><div><h1 id="快速指引" tabindex="-1"><a class="header-anchor" href="#快速指引" aria-hidden="true">#</a> 快速指引</h1>
 <p><a href="http://cn.linux.vbird.org/linux_basic/linux_basic.php" target="_blank" rel="noopener noreferrer">鸟哥私房菜<ExternalLinkIcon/></a></p>
 <h3 id="_1-认识计算机" tabindex="-1"><a class="header-anchor" href="#_1-认识计算机" aria-hidden="true">#</a> 1. 认识计算机</h3>
-<p><a href="/unix-like/%E7%A1%AC%E4%BB%B6%E5%9F%BA%E7%A1%80/cpu/cpu" target="_blank" rel="noopener noreferrer">计算机硬件基础<ExternalLinkIcon/></a></p>
+<p><a href="/unix-like/%E7%A1%AC%E4%BB%B6%E5%9F%BA%E7%A1%80/cpu/cpu">计算机硬件基础</a></p>
 <h3 id="_2-数据表示方式" tabindex="-1"><a class="header-anchor" href="#_2-数据表示方式" aria-hidden="true">#</a> 2. 数据表示方式</h3>
-<p><a href="/back_end/python/base/%E5%88%9D%E8%AF%86/%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81" target="_blank" rel="noopener noreferrer">字符编码 (Python)<ExternalLinkIcon/></a></p>
-<p><a href="/soul/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E8%A7%A3%E6%9E%84cpu" target="_blank" rel="noopener noreferrer">进制&amp;编码与通信 (CPU 解构)<ExternalLinkIcon/></a></p>
+<p><a href="/back_end/python/base/%E5%88%9D%E8%AF%86/%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81">字符编码 (Python)</a></p>
+<p><a href="/soul/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E8%A7%A3%E6%9E%84cpu">进制&amp;编码与通信 (CPU 解构)</a></p>
 <h3 id="_3-计算机上面常用的计算单位" tabindex="-1"><a class="header-anchor" href="#_3-计算机上面常用的计算单位" aria-hidden="true">#</a> 3. 计算机上面常用的计算单位</h3>
 <h5 id="容量单位" tabindex="-1"><a class="header-anchor" href="#容量单位" aria-hidden="true">#</a> <strong>容量单位：</strong></h5>
 <p>计算机用高低电平来模拟 0/1，使用的最小单位是 <strong>位(bit)</strong></p>

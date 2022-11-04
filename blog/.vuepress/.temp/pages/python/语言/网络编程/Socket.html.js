@@ -1,1 +1,14 @@
-export const data = JSON.parse("{\"key\":\"v-7b667df4\",\"path\":\"/python/%E8%AF%AD%E8%A8%80/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/Socket.html\",\"title\":\"Socket编程\",\"lang\":\"zh-CN\",\"frontmatter\":{\"title\":\"Socket编程\",\"order\":3,\"group\":{\"title\":\"网络编程\",\"order\":4},\"summary\":\"Socket 编程: 请先参考：网络基础 Socket:(套接字) 我们可以利用ip地址 + 协议 + 端口号唯一标示网络中的一个进程。能够唯一标示网络中的进程后，它们就可以利用socket 进行通信了，我们经常把socket翻译为套接字，socket是在应用层和传输层(TCP/IP协议族通信)之间的一个抽象层，是一组接口，它把 TCP/IP层复杂的操作抽象\",\"head\":[[\"meta\",{\"property\":\"og:url\",\"content\":\"https://igarashi-g.github.io/igarashi-blog/igarashi-blog/python/%E8%AF%AD%E8%A8%80/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/Socket.html\"}],[\"meta\",{\"property\":\"og:site_name\",\"content\":\"五十岚 ▪ 寄\"}],[\"meta\",{\"property\":\"og:title\",\"content\":\"Socket编程\"}],[\"meta\",{\"property\":\"og:type\",\"content\":\"article\"}],[\"meta\",{\"property\":\"og:updated_time\",\"content\":\"2022-10-08T01:58:06.000Z\"}],[\"meta\",{\"property\":\"og:locale\",\"content\":\"zh-CN\"}],[\"meta\",{\"property\":\"article:modified_time\",\"content\":\"2022-10-08T01:58:06.000Z\"}]]},\"excerpt\":\"\",\"headers\":[],\"git\":{\"createdTime\":1663517244000,\"updatedTime\":1665194286000,\"contributors\":[{\"name\":\"Igarashi\",\"email\":\"2545369032@qq.com\",\"commits\":3}]},\"readingTime\":{\"minutes\":7.66,\"words\":2299},\"filePathRelative\":\"python/语言/网络编程/Socket.md\",\"localizedDate\":\"2022年9月19日\"}")
+export const data = JSON.parse("{\"key\":\"v-7b667df4\",\"path\":\"/python/%E8%AF%AD%E8%A8%80/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/Socket.html\",\"title\":\"Socket编程\",\"lang\":\"zh-CN\",\"frontmatter\":{\"title\":\"Socket编程\",\"order\":3,\"group\":{\"title\":\"网络编程\",\"order\":4},\"summary\":\"Socket 编程: 请先参考：网络基础 Socket:(套接字) 我们可以利用ip地址 + 协议 + 端口号唯一标示网络中的一个进程。能够唯一标示网络中的进程后，它们就可以利用socket 进行通信了，我们经常把socket翻译为套接字，socket是在应用层和传输层(TCP/IP协议族通信)之间的一个抽象层，是一组接口，它把 TCP/IP层复杂的操作抽象\",\"head\":[[\"meta\",{\"property\":\"og:url\",\"content\":\"https://igarashi-g.github.io/python/%E8%AF%AD%E8%A8%80/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/Socket.html\"}],[\"meta\",{\"property\":\"og:site_name\",\"content\":\"五十岚 ▪ 寄\"}],[\"meta\",{\"property\":\"og:title\",\"content\":\"Socket编程\"}],[\"meta\",{\"property\":\"og:type\",\"content\":\"article\"}],[\"meta\",{\"property\":\"og:locale\",\"content\":\"zh-CN\"}]]},\"excerpt\":\"\",\"headers\":[],\"readingTime\":{\"minutes\":7.66,\"words\":2299},\"filePathRelative\":\"python/语言/网络编程/Socket.md\"}")
+
+if (import.meta.webpackHot) {
+  import.meta.webpackHot.accept()
+  if (__VUE_HMR_RUNTIME__.updatePageData) {
+    __VUE_HMR_RUNTIME__.updatePageData(data)
+  }
+}
+
+if (import.meta.hot) {
+  import.meta.hot.accept(({ data }) => {
+    __VUE_HMR_RUNTIME__.updatePageData(data)
+  })
+}

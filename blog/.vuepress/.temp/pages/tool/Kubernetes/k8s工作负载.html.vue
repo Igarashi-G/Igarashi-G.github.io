@@ -453,7 +453,8 @@ REVISION  CHANGE-CAUSE
 </div>
 <p><strong>StatefulSet</strong> 启动时，只有 <strong>当前一个容器完全启动，后一个容器才会被调度</strong>，并且每个容器的标识符固定，可以根据标识符来断定当前 <strong>Pod</strong> 的角色，因此可以配置集群应用</p>
 <div class="custom-container tip">
-<p class="custom-container-title">如配置主从 **redis**，名为 **redis-ms**，使用 **StatefulSet** 进行部署</p>
+<p class="custom-container-title">说明</p>
+<p>如配置主从 <strong>redis</strong>，名为 <strong>redis-ms</strong>，使用 <strong>StatefulSet</strong> 进行部署</p>
 <ul>
 <li>启动第一个容器，标识符为 <strong>redis-ms-0</strong> ，此时就可以根据 <strong>0</strong> 来认为它是 <strong>Master</strong> 节点</li>
 <li>后面再启动第二个 <strong>redis</strong> 就可以通过标识符来连接 <strong>Master</strong> 节点</li>
@@ -498,7 +499,13 @@ REVISION  CHANGE-CAUSE
           <span class="token key atrule">ports</span><span class="token punctuation">:</span>
           <span class="token punctuation">-</span> <span class="token key atrule">containerPort</span><span class="token punctuation">:</span> <span class="token number">80</span>
             <span class="token key atrule">name</span><span class="token punctuation">:</span> web
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="_4-daemonset" tabindex="-1"><a class="header-anchor" href="#_4-daemonset" aria-hidden="true">#</a> 4. DaemonSet</h2>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_3-1-扩容缩容" tabindex="-1"><a class="header-anchor" href="#_3-1-扩容缩容" aria-hidden="true">#</a> 3.1 扩容缩容</h3>
+<p><strong>扩容：</strong> 原则同启动，只有 <strong>当前一个容器完全启动，后一个容器才会接着启动</strong> 若，中途前面的容器异常，后续容器的启动会等待前一个恢复</p>
+<p><strong>缩容：</strong> 与扩容相反</p>
+<h3 id="_3-2-更新策略" tabindex="-1"><a class="header-anchor" href="#_3-2-更新策略" aria-hidden="true">#</a> 3.2 更新策略</h3>
+<p>默认的更新策略为 <strong>RollingUpdate</strong>，与 <strong>Deployment</strong> 区别的是，<strong>StatefulSet</strong> 更新是有顺序的，为 <strong>Pod</strong> 序号逆序更新，当前面序号的容器异常时，同样会停止更新动作直到正常为止</p>
+<p><strong>OnDelete：</strong></p>
+<h2 id="_4-daemonset" tabindex="-1"><a class="header-anchor" href="#_4-daemonset" aria-hidden="true">#</a> 4. DaemonSet</h2>
 <p><strong>DaemonSet</strong> 同上也是管 <strong>Pod</strong> 的，区别是用来管理 <strong>有状态应用</strong> 的</p>
 <h2 id="_5-job" tabindex="-1"><a class="header-anchor" href="#_5-job" aria-hidden="true">#</a> 5. Job</h2>
 </div></template>

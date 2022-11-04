@@ -10,7 +10,7 @@
 <h5 id="_1-3-重试策略" tabindex="-1"><a class="header-anchor" href="#_1-3-重试策略" aria-hidden="true">#</a> 1.3 重试策略</h5>
 <p><a href="https://github.com/grpc/grpc/blob/master/doc/grpc_xds_features.md" target="_blank" rel="noopener noreferrer">what is xDS<ExternalLinkIcon/></a></p>
 <h5 id="_1-4-开源引用" tabindex="-1"><a class="header-anchor" href="#_1-4-开源引用" aria-hidden="true">#</a> 1.4 开源引用</h5>
-<p><a href="/data-base/etcd/aioetcd3" target="_blank" rel="noopener noreferrer">aioetcd3:<ExternalLinkIcon/></a> 版本较老，非 <code v-pre>asyncio</code> 是基于线程实现的库</p>
+<p><a href="/data-base/etcd/aioetcd3">aioetcd3:</a> 版本较老，非 <code v-pre>asyncio</code> 是基于线程实现的库</p>
 <h5 id="_1-5-python-文档" tabindex="-1"><a class="header-anchor" href="#_1-5-python-文档" aria-hidden="true">#</a> 1.5 Python 文档</h5>
 <p><a href="https://grpc.github.io/grpc/python/index.html" target="_blank" rel="noopener noreferrer">gRPC Python’s documentation<ExternalLinkIcon/></a> 此 <strong>API 是稳定</strong> 的</p>
 <p><a href="https://github.com/grpc/grpc/tree/master/src/python/grpcio" target="_blank" rel="noopener noreferrer">grpc (github.com)<ExternalLinkIcon/></a> 需要 <code v-pre>python &gt;= 3.6</code></p>

@@ -3,7 +3,7 @@
 <h3 id="_1-cpu-级别的线程" tabindex="-1"><a class="header-anchor" href="#_1-cpu-级别的线程" aria-hidden="true">#</a> 1. CPU 级别的线程：</h3>
 <p><strong>此线程非彼线程</strong>：</p>
 <p>我们买硬件时常说如：<code v-pre>CPU 酷睿i9-11900K 8核16线程</code>，这里的线程，<strong>意味着是能够同时<Font>并行执行</Font> 16 个程序</strong> 的意思</p>
-<p>我们知道，程序的多道执行，是被操作系统封装代码为了进程，给了上下文，再分配内存，最后靠 PBC 来实现调度执行的，见<a href="/back_end/python/base/%E8%B5%84%E6%BA%90%E8%B0%83%E5%BA%A6/%E8%BF%9B%E7%A8%8B#%E8%BF%9B%E7%A8%8B%E7%9B%B8%E5%85%B3%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5" target="_blank" rel="noopener noreferrer">进程<ExternalLinkIcon/></a></p>
+<p>我们知道，程序的多道执行，是被操作系统封装代码为了进程，给了上下文，再分配内存，最后靠 PBC 来实现调度执行的，见<a href="/back_end/python/base/%E8%B5%84%E6%BA%90%E8%B0%83%E5%BA%A6/%E8%BF%9B%E7%A8%8B#%E8%BF%9B%E7%A8%8B%E7%9B%B8%E5%85%B3%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5">进程</a></p>
 <blockquote>
 <p>因此，多道程序的执行，就是利用 CPU 多核、多线程，来同时并发、分片轮询执行进程的过程</p>
 </blockquote>

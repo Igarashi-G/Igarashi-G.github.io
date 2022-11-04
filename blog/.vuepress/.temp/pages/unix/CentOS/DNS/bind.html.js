@@ -1,1 +1,14 @@
-export const data = JSON.parse("{\"key\":\"v-5c699361\",\"path\":\"/unix/CentOS/DNS/bind.html\",\"title\":\"DNS-BIND\",\"lang\":\"zh-CN\",\"frontmatter\":{\"title\":\"DNS-BIND\",\"order\":2,\"summary\":\"DNS BIND DNS 主配置文件： vim /etc/named.conf // // named.conf // // Provided by Red Hat bind package to configure the ISC BIND named(8) DNS // server as a caching only nameserver (as a \",\"head\":[[\"meta\",{\"property\":\"og:url\",\"content\":\"https://igarashi-g.github.io/igarashi-blog/igarashi-blog/unix/CentOS/DNS/bind.html\"}],[\"meta\",{\"property\":\"og:site_name\",\"content\":\"五十岚 ▪ 寄\"}],[\"meta\",{\"property\":\"og:title\",\"content\":\"DNS-BIND\"}],[\"meta\",{\"property\":\"og:type\",\"content\":\"article\"}],[\"meta\",{\"property\":\"og:updated_time\",\"content\":\"2022-10-09T12:42:17.000Z\"}],[\"meta\",{\"property\":\"og:locale\",\"content\":\"zh-CN\"}],[\"meta\",{\"property\":\"article:modified_time\",\"content\":\"2022-10-09T12:42:17.000Z\"}]]},\"excerpt\":\"\",\"headers\":[{\"level\":2,\"title\":\"DNS 主配置文件：\",\"slug\":\"dns-主配置文件\",\"link\":\"#dns-主配置文件\",\"children\":[{\"level\":3,\"title\":\"bind 作为名称服务器\",\"slug\":\"bind-作为名称服务器\",\"link\":\"#bind-作为名称服务器\",\"children\":[]}]},{\"level\":2,\"title\":\"\",\"slug\":\"\",\"link\":\"#\",\"children\":[]}],\"git\":{\"createdTime\":1665319337000,\"updatedTime\":1665319337000,\"contributors\":[{\"name\":\"Igarashi\",\"email\":\"2545369032@qq.com\",\"commits\":1}]},\"readingTime\":{\"minutes\":12.46,\"words\":3739},\"filePathRelative\":\"unix/CentOS/DNS/bind.md\",\"localizedDate\":\"2022年10月9日\"}")
+export const data = JSON.parse("{\"key\":\"v-5c699361\",\"path\":\"/unix/CentOS/DNS/bind.html\",\"title\":\"DNS-BIND\",\"lang\":\"zh-CN\",\"frontmatter\":{\"title\":\"DNS-BIND\",\"order\":2,\"summary\":\"DNS BIND DNS 主配置文件： vim /etc/named.conf // // named.conf // // Provided by Red Hat bind package to configure the ISC BIND named(8) DNS // server as a caching only nameserver (as a \",\"head\":[[\"meta\",{\"property\":\"og:url\",\"content\":\"https://igarashi-g.github.io/unix/CentOS/DNS/bind.html\"}],[\"meta\",{\"property\":\"og:site_name\",\"content\":\"五十岚 ▪ 寄\"}],[\"meta\",{\"property\":\"og:title\",\"content\":\"DNS-BIND\"}],[\"meta\",{\"property\":\"og:type\",\"content\":\"article\"}],[\"meta\",{\"property\":\"og:locale\",\"content\":\"zh-CN\"}]]},\"excerpt\":\"\",\"headers\":[{\"level\":2,\"title\":\"DNS 主配置文件：\",\"slug\":\"dns-主配置文件\",\"link\":\"#dns-主配置文件\",\"children\":[{\"level\":3,\"title\":\"bind 作为名称服务器\",\"slug\":\"bind-作为名称服务器\",\"link\":\"#bind-作为名称服务器\",\"children\":[]}]},{\"level\":2,\"title\":\"\",\"slug\":\"\",\"link\":\"#\",\"children\":[]}],\"readingTime\":{\"minutes\":12.46,\"words\":3739},\"filePathRelative\":\"unix/CentOS/DNS/bind.md\"}")
+
+if (import.meta.webpackHot) {
+  import.meta.webpackHot.accept()
+  if (__VUE_HMR_RUNTIME__.updatePageData) {
+    __VUE_HMR_RUNTIME__.updatePageData(data)
+  }
+}
+
+if (import.meta.hot) {
+  import.meta.hot.accept(({ data }) => {
+    __VUE_HMR_RUNTIME__.updatePageData(data)
+  })
+}

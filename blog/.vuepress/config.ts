@@ -6,7 +6,7 @@ export default defineUserConfig({
   title: "五十岚 ▪ 寄",
   description: "五十岚の博客",
 
-  base: "/igarashi-blog/",
+  base: "/",
 
   theme,
 });

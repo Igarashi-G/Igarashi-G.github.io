@@ -2,4 +2,4 @@
 User-agent:*
 Disallow:
 
-Sitemap: https://igarashi-g.github.io/igarashi-blog/igarashi-blog/sitemap.xml
+Sitemap: https://igarashi-g.github.io/sitemap.xml

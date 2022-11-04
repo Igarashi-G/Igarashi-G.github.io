@@ -258,7 +258,7 @@ sysctl -p /etc/sysctl.d/docker.conf
   sudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose-plugin
   ```
 
-- 后续同 [CentOS 安装](/igarashi-blog/tool/Docker/docker容器.html#_2-安装)
+- 后续同 [CentOS 安装](/tool/Docker/docker容器.html#_2-安装)
 
 **注意：** **PVE** 上禁止安装 **Docker** 若需要，开个虚拟机上装
 

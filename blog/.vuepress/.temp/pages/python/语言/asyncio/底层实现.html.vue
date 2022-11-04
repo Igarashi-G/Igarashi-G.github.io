@@ -110,7 +110,7 @@ b <span class="token operator">=</span> gen<span class="token punctuation">.</sp
 <li>3.恢复上下文</li>
 <li>4.重新进入程序。</li>
 </ul>
-<h3 id="_2-2-python-上下文源码" tabindex="-1"><a class="header-anchor" href="#_2-2-python-上下文源码" aria-hidden="true">#</a> 2.2 python 上下文<a href="/back_end/python/base/%E8%BF%9B%E9%98%B6%E6%A6%82%E5%BF%B5/cpython%E5%AF%B9%E8%B1%A1%E6%8F%AD%E7%A7%98" target="_blank" rel="noopener noreferrer">源码<ExternalLinkIcon/></a></h3>
+<h3 id="_2-2-python-上下文源码" tabindex="-1"><a class="header-anchor" href="#_2-2-python-上下文源码" aria-hidden="true">#</a> 2.2 python 上下文<a href="/back_end/python/base/%E8%BF%9B%E9%98%B6%E6%A6%82%E5%BF%B5/cpython%E5%AF%B9%E8%B1%A1%E6%8F%AD%E7%A7%98">源码</a></h3>
 <p>python 中的上下文，被封装成了一个叫做 PyFrameObject 的结构，又称之为栈帧，看一下他的源码。</p>
 <div class="language-c ext-c line-numbers-mode"><pre v-pre class="language-c"><code><span class="token keyword">typedef</span> <span class="token keyword">struct</span> <span class="token class-name">_frame</span> <span class="token punctuation">{</span>   <span class="token comment">/*这玩意即是栈帧，*f_back就存着上一个栈帧，构成类似链表的形式*/</span>
     PyObject_VAR_HEAD

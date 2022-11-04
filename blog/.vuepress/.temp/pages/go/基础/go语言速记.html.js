@@ -1,1 +1,14 @@
-export const data = JSON.parse("{\"key\":\"v-7023325e\",\"path\":\"/go/%E5%9F%BA%E7%A1%80/go%E8%AF%AD%E8%A8%80%E9%80%9F%E8%AE%B0.html\",\"title\":\"Go语言速记\",\"lang\":\"zh-CN\",\"frontmatter\":{\"title\":\"Go语言速记\",\"date\":\"2022-10-25T00:00:00.000Z\",\"category\":[\"Go\"],\"tag\":[\"速记\"],\"star\":true,\"summary\":\"Golang 特性、API、差异点等备忘速记\\n\",\"head\":[[\"meta\",{\"property\":\"og:url\",\"content\":\"https://igarashi-g.github.io/igarashi-blog/igarashi-blog/go/%E5%9F%BA%E7%A1%80/go%E8%AF%AD%E8%A8%80%E9%80%9F%E8%AE%B0.html\"}],[\"meta\",{\"property\":\"og:site_name\",\"content\":\"五十岚 ▪ 寄\"}],[\"meta\",{\"property\":\"og:title\",\"content\":\"Go语言速记\"}],[\"meta\",{\"property\":\"og:type\",\"content\":\"article\"}],[\"meta\",{\"property\":\"og:updated_time\",\"content\":\"2022-10-25T16:03:04.000Z\"}],[\"meta\",{\"property\":\"og:locale\",\"content\":\"zh-CN\"}],[\"meta\",{\"property\":\"article:tag\",\"content\":\"速记\"}],[\"meta\",{\"property\":\"article:published_time\",\"content\":\"2022-10-25T00:00:00.000Z\"}],[\"meta\",{\"property\":\"article:modified_time\",\"content\":\"2022-10-25T16:03:04.000Z\"}]]},\"excerpt\":\"<p><strong>Golang</strong> 特性、API、差异点等备忘速记</p>\\n\",\"headers\":[{\"level\":3,\"title\":\"变量类型\",\"slug\":\"变量类型\",\"link\":\"#变量类型\",\"children\":[]}],\"git\":{\"createdTime\":1666713784000,\"updatedTime\":1666713784000,\"contributors\":[{\"name\":\"Igarashi\",\"email\":\"2545369032@qq.com\",\"commits\":1}]},\"readingTime\":{\"minutes\":4.41,\"words\":1322},\"filePathRelative\":\"go/基础/go语言速记.md\",\"localizedDate\":\"2022年10月25日\"}")
+export const data = JSON.parse("{\"key\":\"v-7023325e\",\"path\":\"/go/%E5%9F%BA%E7%A1%80/go%E8%AF%AD%E8%A8%80%E9%80%9F%E8%AE%B0.html\",\"title\":\"Go语言速记\",\"lang\":\"zh-CN\",\"frontmatter\":{\"title\":\"Go语言速记\",\"date\":\"2022-10-25T00:00:00.000Z\",\"category\":[\"Go\"],\"tag\":[\"速记\"],\"star\":true,\"summary\":\"Golang 特性、API、差异点等备忘速记\\n\",\"head\":[[\"meta\",{\"property\":\"og:url\",\"content\":\"https://igarashi-g.github.io/go/%E5%9F%BA%E7%A1%80/go%E8%AF%AD%E8%A8%80%E9%80%9F%E8%AE%B0.html\"}],[\"meta\",{\"property\":\"og:site_name\",\"content\":\"五十岚 ▪ 寄\"}],[\"meta\",{\"property\":\"og:title\",\"content\":\"Go语言速记\"}],[\"meta\",{\"property\":\"og:type\",\"content\":\"article\"}],[\"meta\",{\"property\":\"og:locale\",\"content\":\"zh-CN\"}],[\"meta\",{\"property\":\"article:tag\",\"content\":\"速记\"}],[\"meta\",{\"property\":\"article:published_time\",\"content\":\"2022-10-25T00:00:00.000Z\"}]]},\"excerpt\":\"<p><strong>Golang</strong> 特性、API、差异点等备忘速记</p>\\n\",\"headers\":[{\"level\":3,\"title\":\"变量类型\",\"slug\":\"变量类型\",\"link\":\"#变量类型\",\"children\":[]}],\"readingTime\":{\"minutes\":4.41,\"words\":1322},\"filePathRelative\":\"go/基础/go语言速记.md\",\"localizedDate\":\"2022年10月25日\"}")
+
+if (import.meta.webpackHot) {
+  import.meta.webpackHot.accept()
+  if (__VUE_HMR_RUNTIME__.updatePageData) {
+    __VUE_HMR_RUNTIME__.updatePageData(data)
+  }
+}
+
+if (import.meta.hot) {
+  import.meta.hot.accept(({ data }) => {
+    __VUE_HMR_RUNTIME__.updatePageData(data)
+  })
+}

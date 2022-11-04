@@ -60,12 +60,12 @@ future <span class="token operator">=</span> tasks<span class="token punctuation
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div></div></div><h5 id="什么是协程对象" tabindex="-1"><a class="header-anchor" href="#什么是协程对象" aria-hidden="true">#</a> <strong>什么是协程对象？</strong></h5>
 <ul>
 <li>执行 <code v-pre>协成函数()</code> 得到的即是 <code v-pre>协成对象</code>, 一个协程对象就是一个原生可被挂起的函数</li>
-<li>属于 <a href="/back_end/python/base/%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B/asyncio%E5%9F%BA%E7%A1%80#23-await" target="_blank" rel="noopener noreferrer"><em>awaitable</em><ExternalLinkIcon/></a> 对象，<strong>协程的执行</strong> 可通过调用 <code v-pre>__await__()</code> 并迭代其结果来控制
+<li>属于 <a href="/back_end/python/base/%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B/asyncio%E5%9F%BA%E7%A1%80#23-await"><em>awaitable</em></a> 对象，<strong>协程的执行</strong> 可通过调用 <code v-pre>__await__()</code> 并迭代其结果来控制
 <ul>
 <li>迭代结束会引发 <a href="https://docs.python.org/zh-cn/3/library/exceptions.html#StopIteration" target="_blank" rel="noopener noreferrer"><code v-pre>StopIteration</code><ExternalLinkIcon/></a>，该异常的 <code v-pre>value</code> 属性将存放返回值</li>
 </ul>
 </li>
-<li>协程也具有生成器的 <code v-pre>send</code>、<code v-pre>throw</code>、<code v-pre>close</code> 方法，可参考 <a href="/back_end/python/base/%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/%E7%94%9F%E6%88%90%E5%99%A8" target="_blank" rel="noopener noreferrer">生成器<ExternalLinkIcon/></a>，但区别是 <strong>协程不直接支持迭代</strong>（<code v-pre>for</code> 循环需使用 <a href="/back_end/python/base/%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B/asyncio%E5%9F%BA%E7%A1%80#51-%E5%BC%82%E6%AD%A5%E8%BF%AD%E4%BB%A3%E5%99%A8" target="_blank" rel="noopener noreferrer">异步迭代器<ExternalLinkIcon/></a>）</li>
+<li>协程也具有生成器的 <code v-pre>send</code>、<code v-pre>throw</code>、<code v-pre>close</code> 方法，可参考 <a href="/back_end/python/base/%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/%E7%94%9F%E6%88%90%E5%99%A8">生成器</a>，但区别是 <strong>协程不直接支持迭代</strong>（<code v-pre>for</code> 循环需使用 <a href="/back_end/python/base/%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B/asyncio%E5%9F%BA%E7%A1%80#51-%E5%BC%82%E6%AD%A5%E8%BF%AD%E4%BB%A3%E5%99%A8">异步迭代器</a>）</li>
 </ul>
 <div class="language-python ext-py line-numbers-mode"><pre v-pre class="language-python"><code>ret <span class="token operator">=</span> foo<span class="token punctuation">(</span><span class="token punctuation">)</span>
 <span class="token keyword">print</span><span class="token punctuation">(</span>ret<span class="token punctuation">)</span>
@@ -96,7 +96,7 @@ loop<span class="token punctuation">.</span>run_until_complete<span class="token
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><ul>
 <li>管理 <code v-pre>asyncio</code> 事件循环，<strong>终结异步生成器，并关闭线程池</strong></li>
 <li>总会创建一个新的事件循环，并在结束时关闭，用于 <code v-pre>asyncio</code> 程序的<strong>入口</strong></li>
-<li>本质还是调用了 <code v-pre>loop.run_until_complete(main)</code>，直到 <a href="/back_end/python/base/%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B/asyncio%E5%9F%BA%E7%A1%80#4-future%E5%AF%B9%E8%B1%A1" target="_blank" rel="noopener noreferrer">Future<ExternalLinkIcon/></a> 对象执行完成</li>
+<li>本质还是调用了 <code v-pre>loop.run_until_complete(main)</code>，直到 <a href="/back_end/python/base/%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B/asyncio%E5%9F%BA%E7%A1%80#4-future%E5%AF%B9%E8%B1%A1">Future</a> 对象执行完成</li>
 </ul>
 <blockquote>
 <p>注：<code v-pre>asyncio.run()</code> 本质上和声明 <strong>loop</strong> 再执行相同，只是<code v-pre>简化写法</code>而已，理想情况应该只被调用一次</p>
@@ -105,7 +105,7 @@ loop<span class="token punctuation">.</span>run_until_complete<span class="token
 <h4 id="可等待对象-awaitable" tabindex="-1"><a class="header-anchor" href="#可等待对象-awaitable" aria-hidden="true">#</a> <strong>可等待对象(<code v-pre>awaitable</code>)</strong></h4>
 <Alert type="info">_可等待_ 对象有**三种:** <Badge>**协程**</Badge><Badge>**任务** </Badge><Badge>**Future**</Badge></Alert><ul>
 <li>
-<p>能在 <a href="/back_end/python/base/%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B/asyncio%E5%9F%BA%E7%A1%80#23-await" target="_blank" rel="noopener noreferrer">await<ExternalLinkIcon/></a> 表达式中使用的对象</p>
+<p>能在 <a href="/back_end/python/base/%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B/asyncio%E5%9F%BA%E7%A1%80#23-await">await</a> 表达式中使用的对象</p>
 </li>
 <li>
 <p>可等待对象 主要实现了 <code v-pre>__await__()</code>方法</p>
@@ -119,7 +119,7 @@ loop<span class="token punctuation">.</span>run_until_complete<span class="token
 </ul>
 <p><strong><code v-pre>object.__await__(self)</code></strong></p>
 <blockquote>
-<p>用来实现可迭代对象，如：<a href="/back_end/python/base/%E8%B5%84%E6%BA%90%E8%B0%83%E5%BA%A6/%E5%8D%8F%E7%A8%8B#35-future%E5%AF%B9%E8%B1%A1" target="_blank" rel="noopener noreferrer">asyncio.Future<ExternalLinkIcon/></a> 对象实现了此方法，从而可以和 <code v-pre>await</code> 表达式兼容</p>
+<p>用来实现可迭代对象，如：<a href="/back_end/python/base/%E8%B5%84%E6%BA%90%E8%B0%83%E5%BA%A6/%E5%8D%8F%E7%A8%8B#35-future%E5%AF%B9%E8%B1%A1">asyncio.Future</a> 对象实现了此方法，从而可以和 <code v-pre>await</code> 表达式兼容</p>
 </blockquote>
 <ul>
 <li>
@@ -177,7 +177,7 @@ asyncio<span class="token punctuation">.</span>run<span class="token punctuation
 </blockquote>
 <h2 id="_3-task-对象" tabindex="-1"><a class="header-anchor" href="#_3-task-对象" aria-hidden="true">#</a> 3. Task 对象</h2>
 <h5 id="class-asyncio-task-coro-loop-none-name-none-py3-9" tabindex="-1"><a class="header-anchor" href="#class-asyncio-task-coro-loop-none-name-none-py3-9" aria-hidden="true">#</a> <Font type="dark">class asyncio.Task(<em>coro</em>, *, loop=None, name=None)</Font><Badge>py3.9</Badge></h5>
-<p><code v-pre>Task</code> 任务，是 <code v-pre>Future</code> 类的子类，对 <code v-pre>coroutine</code> 的进一步封装，相比 <a href="/back_end/python/base/%E8%B5%84%E6%BA%90%E8%B0%83%E5%BA%A6/%E5%8D%8F%E7%A8%8B" target="_blank" rel="noopener noreferrer">协程<ExternalLinkIcon/></a>，保存了协程运行后的状态，用于来获取协程的结果</p>
+<p><code v-pre>Task</code> 任务，是 <code v-pre>Future</code> 类的子类，对 <code v-pre>coroutine</code> 的进一步封装，相比 <a href="/back_end/python/base/%E8%B5%84%E6%BA%90%E8%B0%83%E5%BA%A6/%E5%8D%8F%E7%A8%8B">协程</a>，保存了协程运行后的状态，用于来获取协程的结果</p>
 <ul>
 <li><code v-pre>Pending</code>: 创建时</li>
 <li><code v-pre>Running</code>: 调用执行时</li>
@@ -192,7 +192,7 @@ asyncio<span class="token punctuation">.</span>run<span class="token punctuation
 <h3 id="_3-1-创建任务" tabindex="-1"><a class="header-anchor" href="#_3-1-创建任务" aria-hidden="true">#</a> 3.1 创建任务</h3>
 <h5 id="asyncio-ensure-future-obj-loop-none" tabindex="-1"><a class="header-anchor" href="#asyncio-ensure-future-obj-loop-none" aria-hidden="true">#</a> <Font type="dark">asyncio.ensure_future(obj, *, loop=None)</Font></h5>
 <blockquote>
-<p>将 <code v-pre>coroutine </code>封装成一个 <code v-pre>task任务</code> 对象，<Font type="info" size="ss">低版本的创建方式，在所有版本有效，但可读性差</Font>，推荐使用下文 <a href="/back_end/python/base/%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B/asyncio%E5%9F%BA%E7%A1%80#-1" target="_blank" rel="noopener noreferrer">asyncio.create_task<ExternalLinkIcon/></a></p>
+<p>将 <code v-pre>coroutine </code>封装成一个 <code v-pre>task任务</code> 对象，<Font type="info" size="ss">低版本的创建方式，在所有版本有效，但可读性差</Font>，推荐使用下文 <a href="/back_end/python/base/%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B/asyncio%E5%9F%BA%E7%A1%80#-1">asyncio.create_task</a></p>
 </blockquote>
 <ul>
 <li>
@@ -302,7 +302,7 @@ asyncio<span class="token punctuation">.</span>run<span class="token punctuation
 <h3 id="_3-2-执行任务" tabindex="-1"><a class="header-anchor" href="#_3-2-执行任务" aria-hidden="true">#</a> 3.2 执行任务</h3>
 <h5 id="asyncio-wait-aws-loop-none-timeout-none-return-when-all-completed" tabindex="-1"><a class="header-anchor" href="#asyncio-wait-aws-loop-none-timeout-none-return-when-all-completed" aria-hidden="true">#</a> <Font type="dark">asyncio.wait(aws, *, loop=None, timeout=None, return_when=ALL_COMPLETED)</Font></h5>
 <blockquote>
-<p>并发地运行 <em>fs</em> 可迭代对象中的 <a href="/back_end/python/base/%E8%B5%84%E6%BA%90%E8%B0%83%E5%BA%A6/%E5%8D%8F%E7%A8%8B#33-await" target="_blank" rel="noopener noreferrer">可等待对象<ExternalLinkIcon/></a> 并进入阻塞状态直到满足 <em>return_when</em> 所指定的条件。</p>
+<p>并发地运行 <em>fs</em> 可迭代对象中的 <a href="/back_end/python/base/%E8%B5%84%E6%BA%90%E8%B0%83%E5%BA%A6/%E5%8D%8F%E7%A8%8B#33-await">可等待对象</a> 并进入阻塞状态直到满足 <em>return_when</em> 所指定的条件。</p>
 </blockquote>
 <ul>
 <li>
@@ -347,7 +347,7 @@ asyncio<span class="token punctuation">.</span>run<span class="token punctuation
 </ul>
 <Alert type="info">返回的 **结果集** 是按照事件循环中的 **任务完成顺序** 排列的，所以和原始任务顺序可能不同 </Alert><h5 id="asyncio-gather-aws-loop-none-return-exceptions-false" tabindex="-1"><a class="header-anchor" href="#asyncio-gather-aws-loop-none-return-exceptions-false" aria-hidden="true">#</a> <Font type="dark">asyncio.gather(*aws, loop=None, return_exceptions=False)</Font></h5>
 <blockquote>
-<p><em>并发</em> 运行 <Font fsize="ss">*aws</Font> 序列中的 <a href="/back_end/python/base/%E8%B5%84%E6%BA%90%E8%B0%83%E5%BA%A6/%E5%8D%8F%E7%A8%8B#33-await" target="_blank" rel="noopener noreferrer">可等待对象<ExternalLinkIcon/></a>，协程并发运行后会顺序返回，<strong>适合有序结果集</strong></p>
+<p><em>并发</em> 运行 <Font fsize="ss">*aws</Font> 序列中的 <a href="/back_end/python/base/%E8%B5%84%E6%BA%90%E8%B0%83%E5%BA%A6/%E5%8D%8F%E7%A8%8B#33-await">可等待对象</a>，协程并发运行后会顺序返回，<strong>适合有序结果集</strong></p>
 </blockquote>
 <ul>
 <li>
@@ -404,7 +404,7 @@ asyncio<span class="token punctuation">.</span>run<span class="token punctuation
 </ul>
 <Alert type="info">不仅通过 `await` 返回仅一个 **结果集**，且顺序是 **传入任务的原始顺序** </Alert><h5 id="asyncio-ascompleted-aws-loop-none-timeout-none" tabindex="-1"><a class="header-anchor" href="#asyncio-ascompleted-aws-loop-none-timeout-none" aria-hidden="true">#</a> <Font type="dark"><a href="http://asyncio.as" target="_blank" rel="noopener noreferrer">asyncio.as<ExternalLinkIcon/></a><em>completed`(_aws</em>, *, <em>loop=None</em>, *timeout=None*)</Font></h5>
 <blockquote>
-<p><em>并发</em> 运行 <Font fsize="ss">aws</Font> 可迭代对象中的 <a href="/back_end/python/base/%E8%B5%84%E6%BA%90%E8%B0%83%E5%BA%A6/%E5%8D%8F%E7%A8%8B#33-await" target="_blank" rel="noopener noreferrer">可等待对象<ExternalLinkIcon/></a>，返回一个协程的 <strong>迭代器</strong>，会优先 <strong>得到最快执行完的任务结果</strong></p>
+<p><em>并发</em> 运行 <Font fsize="ss">aws</Font> 可迭代对象中的 <a href="/back_end/python/base/%E8%B5%84%E6%BA%90%E8%B0%83%E5%BA%A6/%E5%8D%8F%E7%A8%8B#33-await">可等待对象</a>，返回一个协程的 <strong>迭代器</strong>，会优先 <strong>得到最快执行完的任务结果</strong></p>
 </blockquote>
 <ul>
 <li>
@@ -601,7 +601,7 @@ main<span class="token punctuation">(</span><span class="token punctuation">)</s
 <h3 id="_4-1-创建-future" tabindex="-1"><a class="header-anchor" href="#_4-1-创建-future" aria-hidden="true">#</a> 4.1 创建 Future</h3>
 <p><strong>loop.create_future()</strong></p>
 <blockquote>
-<p>创建一个 <strong>附加到事件循环中</strong> 的 <a href="/back_end/python/base/%E8%B5%84%E6%BA%90%E8%B0%83%E5%BA%A6/%E5%8D%8F%E7%A8%8B#35-future%E5%AF%B9%E8%B1%A1" target="_blank" rel="noopener noreferrer">asyncio.Future<ExternalLinkIcon/></a> 对象，创建 Futures 的<strong>首选方式</strong>。</p>
+<p>创建一个 <strong>附加到事件循环中</strong> 的 <a href="/back_end/python/base/%E8%B5%84%E6%BA%90%E8%B0%83%E5%BA%A6/%E5%8D%8F%E7%A8%8B#35-future%E5%AF%B9%E8%B1%A1">asyncio.Future</a> 对象，创建 Futures 的<strong>首选方式</strong>。</p>
 </blockquote>
 <p>示例：</p>
 <div class="language-python ext-py line-numbers-mode"><pre v-pre class="language-python"><code><span class="token keyword">async</span> <span class="token keyword">def</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -674,7 +674,7 @@ asyncio<span class="token punctuation">.</span>run<span class="token punctuation
 <li>
 <p>返回值：</p>
 <ul>
-<li><code v-pre>协程对象: &lt;class '_asyncio.Future'&gt;</code>: 返回了 <a href="/back_end/python/base/%E8%B5%84%E6%BA%90%E8%B0%83%E5%BA%A6/%E5%8D%8F%E7%A8%8B#%E5%8F%AF%E7%AD%89%E5%BE%85%E5%AF%B9%E8%B1%A1awaitable" target="_blank" rel="noopener noreferrer"><em>awaitable</em><ExternalLinkIcon/></a> 的 Future 对象</li>
+<li><code v-pre>协程对象: &lt;class '_asyncio.Future'&gt;</code>: 返回了 <a href="/back_end/python/base/%E8%B5%84%E6%BA%90%E8%B0%83%E5%BA%A6/%E5%8D%8F%E7%A8%8B#%E5%8F%AF%E7%AD%89%E5%BE%85%E5%AF%B9%E8%B1%A1awaitable"><em>awaitable</em></a> 的 Future 对象</li>
 </ul>
 </li>
 <li>
@@ -802,13 +802,13 @@ asyncio<span class="token punctuation">.</span>run<span class="token punctuation
 </ul>
 <Alert type="info">如果 `gather()` _被取消_，所有被提交 (尚未完成) 的可等待对象也会 _被取消_</Alert><h2 id="_5-异步迭代器" tabindex="-1"><a class="header-anchor" href="#_5-异步迭代器" aria-hidden="true">#</a> 5. 异步迭代器</h2>
 <h3 id="_5-1-异步迭代器" tabindex="-1"><a class="header-anchor" href="#_5-1-异步迭代器" aria-hidden="true">#</a> 5.1 异步迭代器</h3>
-<p><strong>回顾</strong>：什么是 <a href="/back_end/python/base/%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/%E8%BF%AD%E4%BB%A3%E5%99%A8" target="_blank" rel="noopener noreferrer">迭代器<ExternalLinkIcon/></a></p>
+<p><strong>回顾</strong>：什么是 <a href="/back_end/python/base/%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/%E8%BF%AD%E4%BB%A3%E5%99%A8">迭代器</a></p>
 <h5 id="什么是异步迭代器" tabindex="-1"><a class="header-anchor" href="#什么是异步迭代器" aria-hidden="true">#</a> <strong>什么是异步迭代器</strong></h5>
 <ul>
 <li>实现了<code v-pre>__aiter__()</code> 和 <code v-pre>__anext__()</code> 方法的对象
 <ul>
 <li><code v-pre>__aiter__()</code> 必须返回一个 <em>异步迭代器</em> 对象</li>
-<li><code v-pre>__anext__()</code> 必须返回一个 <a href="/back_end/python/base/%E8%B5%84%E6%BA%90%E8%B0%83%E5%BA%A6/%E5%8D%8F%E7%A8%8B#%E5%8F%AF%E7%AD%89%E5%BE%85%E5%AF%B9%E8%B1%A1awaitable" target="_blank" rel="noopener noreferrer"><em>awaitable</em><ExternalLinkIcon/></a> 对象输出迭代器下一结果的值，迭代结束会引发 <code v-pre>StopAsyncIteration</code> 异常</li>
+<li><code v-pre>__anext__()</code> 必须返回一个 <a href="/back_end/python/base/%E8%B5%84%E6%BA%90%E8%B0%83%E5%BA%A6/%E5%8D%8F%E7%A8%8B#%E5%8F%AF%E7%AD%89%E5%BE%85%E5%AF%B9%E8%B1%A1awaitable"><em>awaitable</em></a> 对象输出迭代器下一结果的值，迭代结束会引发 <code v-pre>StopAsyncIteration</code> 异常</li>
 </ul>
 </li>
 <li><code v-pre>async_for</code> 会处理异步迭代器的 <code v-pre>__anext__()</code> 方法所返回的可等待对象，直到其引发一个 <code v-pre>StopAsyncIteration</code> 异常</li>

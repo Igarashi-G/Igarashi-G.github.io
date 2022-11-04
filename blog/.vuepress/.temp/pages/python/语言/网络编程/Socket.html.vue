@@ -1,5 +1,5 @@
 <template><div><h1 id="socket-编程" tabindex="-1"><a class="header-anchor" href="#socket-编程" aria-hidden="true">#</a> Socket 编程:</h1>
-<p>请先参考：<a href="/unix_like/cent-os/%E7%BD%91%E7%BB%9C/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80" target="_blank" rel="noopener noreferrer">网络基础<ExternalLinkIcon/></a></p>
+<p>请先参考：<a href="/unix_like/cent-os/%E7%BD%91%E7%BB%9C/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80">网络基础</a></p>
 <pre><code>    Socket:(套接字)
             我们可以利用ip地址 + 协议 + 端口号唯一标示网络中的一个进程。能够唯一标示网络中的进程后，它们就可以利用socket
             进行通信了，我们经常把socket翻译为套接字，socket是在应用层和传输层(TCP/IP协议族通信)之间的一个抽象层，是一组接口，它把

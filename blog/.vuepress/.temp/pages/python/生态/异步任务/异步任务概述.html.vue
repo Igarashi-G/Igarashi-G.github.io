@@ -3,12 +3,12 @@
 <ul>
 <li>
 <ol>
-<li><a href="/back_end/python/base/%E8%B5%84%E6%BA%90%E8%B0%83%E5%BA%A6/%E5%BC%82%E6%AD%A5%E6%A6%82%E8%BF%B0" target="_blank" rel="noopener noreferrer">异步概述<ExternalLinkIcon/></a></li>
+<li><a href="/back_end/python/base/%E8%B5%84%E6%BA%90%E8%B0%83%E5%BA%A6/%E5%BC%82%E6%AD%A5%E6%A6%82%E8%BF%B0">异步概述</a></li>
 </ol>
 </li>
 <li>
 <ol start="2">
-<li><a href="/back_end/python/base/%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B/%E5%BC%82%E6%AD%A5%E5%B9%B6%E5%8F%91%E5%BA%93asyncio" target="_blank" rel="noopener noreferrer">异步编程<ExternalLinkIcon/></a></li>
+<li><a href="/back_end/python/base/%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B/%E5%BC%82%E6%AD%A5%E5%B9%B6%E5%8F%91%E5%BA%93asyncio">异步编程</a></li>
 </ol>
 </li>
 </ul>
@@ -38,7 +38,7 @@
 <img src="@source/python/生态/异步任务/img/仿celery模型.png">
 <Alert type="info">其实就是一个任务**序列化存储**与**反序列化获取**的过程</Alert><h4 id="_1-broker-类" tabindex="-1"><a class="header-anchor" href="#_1-broker-类" aria-hidden="true">#</a> 1.Broker 类</h4>
 <p>消息中间件，即：<Badge>队列(Queue)</Badge> ，应在此类存 <code v-pre>任务</code> 并定义队列 <code v-pre>优先级</code> 等规则.</p>
-<p>这里使用了 <a href="/data-base/etcd/etcd" target="_blank" rel="noopener noreferrer">etcd<ExternalLinkIcon/></a> 构建：<a href="/data-base/etcd/aioetcd3#%E7%AE%80%E5%8D%95%E5%B0%81%E8%A3%85" target="_blank" rel="noopener noreferrer">db 源码<ExternalLinkIcon/></a></p>
+<p>这里使用了 <a href="/data-base/etcd/etcd">etcd</a> 构建：<a href="/data-base/etcd/aioetcd3#%E7%AE%80%E5%8D%95%E5%B0%81%E8%A3%85">db 源码</a></p>
 <p><strong><a href="http://borker.py" target="_blank" rel="noopener noreferrer">borker.py<ExternalLinkIcon/></a></strong></p>
 <div class="language-python ext-py line-numbers-mode"><pre v-pre class="language-python"><code><span class="token keyword">import</span> json
 <span class="token keyword">from</span> typing <span class="token keyword">import</span> List<span class="token punctuation">,</span> Optional
