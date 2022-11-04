@@ -325,10 +325,10 @@ export const pagesComponents = {
   "v-625906d8": defineAsyncComponent(() => import(/* webpackChunkName: "v-625906d8" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/unix/硬件基础/主板/主板.html.vue")),
   // path: /unix/%E7%A1%AC%E4%BB%B6%E5%9F%BA%E7%A1%80/%E5%86%85%E5%AD%98/%E5%86%85%E5%AD%98.html
   "v-839497d8": defineAsyncComponent(() => import(/* webpackChunkName: "v-839497d8" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/unix/硬件基础/内存/内存.html.vue")),
-  // path: /unix/%E7%A1%AC%E4%BB%B6%E5%9F%BA%E7%A1%80/%E5%AD%98%E5%82%A8/%E5%AD%98%E5%82%A8.html
-  "v-d4964ad8": defineAsyncComponent(() => import(/* webpackChunkName: "v-d4964ad8" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/unix/硬件基础/存储/存储.html.vue")),
   // path: /unix/%E7%A1%AC%E4%BB%B6%E5%9F%BA%E7%A1%80/%E6%89%A9%E5%B1%95%E5%8D%A1%E4%B8%8E%E6%8E%A5%E5%8F%A3/%E6%89%A9%E5%B1%95%E5%8D%A1%E4%B8%8E%E6%8E%A5%E5%8F%A3.html
   "v-0510ac58": defineAsyncComponent(() => import(/* webpackChunkName: "v-0510ac58" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/unix/硬件基础/扩展卡与接口/扩展卡与接口.html.vue")),
+  // path: /unix/%E7%A1%AC%E4%BB%B6%E5%9F%BA%E7%A1%80/%E5%AD%98%E5%82%A8/%E5%AD%98%E5%82%A8.html
+  "v-d4964ad8": defineAsyncComponent(() => import(/* webpackChunkName: "v-d4964ad8" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/unix/硬件基础/存储/存储.html.vue")),
   // path: /unix/%E7%A1%AC%E4%BB%B6%E5%9F%BA%E7%A1%80/%E6%98%BE%E5%8D%A1/%E6%98%BE%E5%8D%A1.html
   "v-478e7b54": defineAsyncComponent(() => import(/* webpackChunkName: "v-478e7b54" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/unix/硬件基础/显卡/显卡.html.vue")),
   // path: /unix/%E8%99%9A%E6%8B%9F%E6%9C%BA/PVE/PVE.html
