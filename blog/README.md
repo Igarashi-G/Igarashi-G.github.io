@@ -27,7 +27,7 @@ projects:
 
   - icon: link
     name: PVE
-    desc: 生产力工具
+    desc: 虚拟化
     link: https://www.deadly-exception.icu:8006/
 
   - icon: book

@@ -840,3 +840,43 @@ dn:uid=ldapuser1,ou=People,dc=lework,dc=com
 
 也可以使用邮件找回，或者短信找回
 
+
+
+## 5. 管理软件
+
+### 5.1 smbldap-tools
+
+是数据库管理软件，方便进行用户端的管理，但 **smbldap-tools** 有个缺点，不管你本地用户是否有相同的 **UID** 或则 **GID** 都会直接添加用户，故可能会引起冲突
+
+> **smbldap-tools** 的软件包在 **epel** 库，可能需先安装 **epel** 源
+
+```shell
+$ yum Install -y smbldap-tools
+```
+
+**smbldap** 会从 `/etc/samba/smb.conf` 读取部分信息，使用如下命令配置
+
+```shell
+$ smbldap-config
+
+# 初始化配置 OPENldap 数据库
+$ smbldap-populate    
+```
+
+创建用户如下
+
+```shell
+# 添加用户User2
+$ smbldap-useradd -a -m igarashi -u 100001
+    -a： 指定添加的用户类型为 Windows，这样 samba 才能识别到该用户
+    -m： 指定创建该用户的家目录
+
+# 修改该用户的密码
+$ smbldap-passwd igarashi 
+```
+
+### 5.2 其他 Windows 管理工具
+
+- **apache Directory Studio**
+
+- **ldapadmin**

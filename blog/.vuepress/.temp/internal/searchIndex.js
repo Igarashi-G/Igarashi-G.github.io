@@ -1629,6 +1629,122 @@ export const searchIndex = [
     "extraFields": []
   },
   {
+    "title": "Fiddler",
+    "headers": [],
+    "path": "/tool/Other/Fiddler%E6%8A%93%E5%8C%85%E5%B7%A5%E5%85%B7.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "Postman",
+    "headers": [
+      {
+        "level": 3,
+        "title": "1. 基本操作",
+        "slug": "_1-基本操作",
+        "link": "#_1-基本操作",
+        "children": []
+      },
+      {
+        "level": 3,
+        "title": "2. 测试",
+        "slug": "_2-测试",
+        "link": "#_2-测试",
+        "children": []
+      }
+    ],
+    "path": "/tool/Other/Postman.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "rdesktop",
+    "headers": [
+      {
+        "level": 3,
+        "title": "1. 安装",
+        "slug": "_1-安装",
+        "link": "#_1-安装",
+        "children": []
+      },
+      {
+        "level": 3,
+        "title": "2. 使用命令",
+        "slug": "_2-使用命令",
+        "link": "#_2-使用命令",
+        "children": []
+      },
+      {
+        "level": 3,
+        "title": "3. 问题",
+        "slug": "_3-问题",
+        "link": "#_3-问题",
+        "children": []
+      }
+    ],
+    "path": "/tool/Other/rdesktop.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "screen",
+    "headers": [],
+    "path": "/tool/Other/screen.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "Tmux",
+    "headers": [
+      {
+        "level": 2,
+        "title": "Tmux",
+        "slug": "tmux",
+        "link": "#tmux",
+        "children": []
+      }
+    ],
+    "path": "/tool/Other/tmux.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "网络代理",
+    "headers": [
+      {
+        "level": 3,
+        "title": "1. privoxy",
+        "slug": "_1-privoxy",
+        "link": "#_1-privoxy",
+        "children": []
+      },
+      {
+        "level": 3,
+        "title": "2. 在 linux 中配置代理",
+        "slug": "_2-在-linux-中配置代理",
+        "link": "#_2-在-linux-中配置代理",
+        "children": []
+      },
+      {
+        "level": 3,
+        "title": "3. 配置映射",
+        "slug": "_3-配置映射",
+        "link": "#_3-配置映射",
+        "children": []
+      },
+      {
+        "level": 3,
+        "title": "4. 快捷配置",
+        "slug": "_4-快捷配置",
+        "link": "#_4-快捷配置",
+        "children": []
+      }
+    ],
+    "path": "/tool/Other/%E7%BD%91%E7%BB%9C%E4%BB%A3%E7%90%86.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
     "title": "Nginx基础",
     "headers": [
       {
@@ -1771,122 +1887,6 @@ export const searchIndex = [
       }
     ],
     "path": "/tool/Nginx/%E5%BA%94%E7%94%A8%E9%83%A8%E7%BD%B2.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "Fiddler",
-    "headers": [],
-    "path": "/tool/Other/Fiddler%E6%8A%93%E5%8C%85%E5%B7%A5%E5%85%B7.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "Postman",
-    "headers": [
-      {
-        "level": 3,
-        "title": "1. 基本操作",
-        "slug": "_1-基本操作",
-        "link": "#_1-基本操作",
-        "children": []
-      },
-      {
-        "level": 3,
-        "title": "2. 测试",
-        "slug": "_2-测试",
-        "link": "#_2-测试",
-        "children": []
-      }
-    ],
-    "path": "/tool/Other/Postman.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "rdesktop",
-    "headers": [
-      {
-        "level": 3,
-        "title": "1. 安装",
-        "slug": "_1-安装",
-        "link": "#_1-安装",
-        "children": []
-      },
-      {
-        "level": 3,
-        "title": "2. 使用命令",
-        "slug": "_2-使用命令",
-        "link": "#_2-使用命令",
-        "children": []
-      },
-      {
-        "level": 3,
-        "title": "3. 问题",
-        "slug": "_3-问题",
-        "link": "#_3-问题",
-        "children": []
-      }
-    ],
-    "path": "/tool/Other/rdesktop.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "screen",
-    "headers": [],
-    "path": "/tool/Other/screen.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "Tmux",
-    "headers": [
-      {
-        "level": 2,
-        "title": "Tmux",
-        "slug": "tmux",
-        "link": "#tmux",
-        "children": []
-      }
-    ],
-    "path": "/tool/Other/tmux.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "网络代理",
-    "headers": [
-      {
-        "level": 3,
-        "title": "1. privoxy",
-        "slug": "_1-privoxy",
-        "link": "#_1-privoxy",
-        "children": []
-      },
-      {
-        "level": 3,
-        "title": "2. 在 linux 中配置代理",
-        "slug": "_2-在-linux-中配置代理",
-        "link": "#_2-在-linux-中配置代理",
-        "children": []
-      },
-      {
-        "level": 3,
-        "title": "3. 配置映射",
-        "slug": "_3-配置映射",
-        "link": "#_3-配置映射",
-        "children": []
-      },
-      {
-        "level": 3,
-        "title": "4. 快捷配置",
-        "slug": "_4-快捷配置",
-        "link": "#_4-快捷配置",
-        "children": []
-      }
-    ],
-    "path": "/tool/Other/%E7%BD%91%E7%BB%9C%E4%BB%A3%E7%90%86.html",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -2170,353 +2170,6 @@ export const searchIndex = [
     "title": "",
     "headers": [],
     "path": "/python/%E7%94%9F%E6%80%81/%E8%BF%9C%E7%A8%8B%E8%B0%83%E7%94%A8/RPC.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "pip",
-    "headers": [
-      {
-        "level": 2,
-        "title": "1. 使用基础",
-        "slug": "_1-使用基础",
-        "link": "#_1-使用基础",
-        "children": [
-          {
-            "level": 3,
-            "title": "1.1 换源",
-            "slug": "_1-1-换源",
-            "link": "#_1-1-换源",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "1.2 下载 wheel",
-            "slug": "_1-2-下载-wheel",
-            "link": "#_1-2-下载-wheel",
-            "children": []
-          }
-        ]
-      }
-    ],
-    "path": "/python/%E8%AF%AD%E8%A8%80/%E5%9F%BA%E7%A1%80/pip.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "字符编码",
-    "headers": [
-      {
-        "level": 2,
-        "title": "1. 字符",
-        "slug": "_1-字符",
-        "link": "#_1-字符",
-        "children": [
-          {
-            "level": 3,
-            "title": "1.1 编码中的字符串",
-            "slug": "_1-1-编码中的字符串",
-            "link": "#_1-1-编码中的字符串",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "1.2 Python 编码发展史",
-            "slug": "_1-2-python-编码发展史",
-            "link": "#_1-2-python-编码发展史",
-            "children": []
-          }
-        ]
-      },
-      {
-        "level": 2,
-        "title": "2. 常见问题",
-        "slug": "_2-常见问题",
-        "link": "#_2-常见问题",
-        "children": [
-          {
-            "level": 3,
-            "title": "2.1 操作系统编码",
-            "slug": "_2-1-操作系统编码",
-            "link": "#_2-1-操作系统编码",
-            "children": []
-          }
-        ]
-      }
-    ],
-    "path": "/python/%E8%AF%AD%E8%A8%80/%E5%9F%BA%E7%A1%80/%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "数据类型",
-    "headers": [
-      {
-        "level": 2,
-        "title": "1. 数字类（Number）",
-        "slug": "_1-数字类-number",
-        "link": "#_1-数字类-number",
-        "children": [
-          {
-            "level": 3,
-            "title": "1.1 整型（int）—— numbers.Integral",
-            "slug": "_1-1-整型-int-——-numbers-integral",
-            "link": "#_1-1-整型-int-——-numbers-integral",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "1.2 布尔值（bool）—— numbers.Integral",
-            "slug": "_1-2-布尔值-bool-——-numbers-integral",
-            "link": "#_1-2-布尔值-bool-——-numbers-integral",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "1.3 浮点型（float）—— numbers.Real",
-            "slug": "_1-3-浮点型-float-——-numbers-real",
-            "link": "#_1-3-浮点型-float-——-numbers-real",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "1.4 复数（complex）—— numbers.Complex",
-            "slug": "_1-4-复数-complex-——-numbers-complex",
-            "link": "#_1-4-复数-complex-——-numbers-complex",
-            "children": []
-          }
-        ]
-      },
-      {
-        "level": 2,
-        "title": "2. 序列 —— 不可变序列",
-        "slug": "_2-序列-——-不可变序列",
-        "link": "#_2-序列-——-不可变序列",
-        "children": [
-          {
-            "level": 3,
-            "title": "2.1 字节串（bytes 二进制序列）",
-            "slug": "_2-1-字节串-bytes-二进制序列",
-            "link": "#_2-1-字节串-bytes-二进制序列",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "2.2 字符串（str 文本序列）",
-            "slug": "_2-2-字符串-str-文本序列",
-            "link": "#_2-2-字符串-str-文本序列",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "2.3 元组（tuple）",
-            "slug": "_2-3-元组-tuple",
-            "link": "#_2-3-元组-tuple",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "2.4 range 对象",
-            "slug": "_2-4-range-对象",
-            "link": "#_2-4-range-对象",
-            "children": []
-          }
-        ]
-      },
-      {
-        "level": 2,
-        "title": "3. 可变序列",
-        "slug": "_3-可变序列",
-        "link": "#_3-可变序列",
-        "children": [
-          {
-            "level": 3,
-            "title": "3.1 列表（list）",
-            "slug": "_3-1-列表-list",
-            "link": "#_3-1-列表-list",
-            "children": []
-          }
-        ]
-      },
-      {
-        "level": 2,
-        "title": "4. 集合类型",
-        "slug": "_4-集合类型",
-        "link": "#_4-集合类型",
-        "children": [
-          {
-            "level": 3,
-            "title": "4.1 集合（set）",
-            "slug": "_4-1-集合-set",
-            "link": "#_4-1-集合-set",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "4.2 冻结集合（frozenset）",
-            "slug": "_4-2-冻结集合-frozenset",
-            "link": "#_4-2-冻结集合-frozenset",
-            "children": []
-          }
-        ]
-      },
-      {
-        "level": 2,
-        "title": "5. 映射",
-        "slug": "_5-映射",
-        "link": "#_5-映射",
-        "children": [
-          {
-            "level": 3,
-            "title": "5.1 字典（dict）",
-            "slug": "_5-1-字典-dict",
-            "link": "#_5-1-字典-dict",
-            "children": []
-          }
-        ]
-      }
-    ],
-    "path": "/python/%E8%AF%AD%E8%A8%80/%E5%9F%BA%E7%A1%80/%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "文件基础",
-    "headers": [
-      {
-        "level": 2,
-        "title": "1. 文件基础",
-        "slug": "_1-文件基础",
-        "link": "#_1-文件基础",
-        "children": [
-          {
-            "level": 3,
-            "title": "1.1 文件操作",
-            "slug": "_1-1-文件操作",
-            "link": "#_1-1-文件操作",
-            "children": []
-          }
-        ]
-      },
-      {
-        "level": 2,
-        "title": "2. 上下文管理器",
-        "slug": "_2-上下文管理器",
-        "link": "#_2-上下文管理器",
-        "children": [
-          {
-            "level": 3,
-            "title": "2.1 管理协议",
-            "slug": "_2-1-管理协议",
-            "link": "#_2-1-管理协议",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "2.2 with 语句",
-            "slug": "_2-2-with-语句",
-            "link": "#_2-2-with-语句",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "2.3 自定义上下文管理器",
-            "slug": "_2-3-自定义上下文管理器",
-            "link": "#_2-3-自定义上下文管理器",
-            "children": []
-          }
-        ]
-      },
-      {
-        "level": 2,
-        "title": "3. 进阶",
-        "slug": "_3-进阶",
-        "link": "#_3-进阶",
-        "children": []
-      }
-    ],
-    "path": "/python/%E8%AF%AD%E8%A8%80/%E5%9F%BA%E7%A1%80/%E6%96%87%E4%BB%B6%E5%9F%BA%E7%A1%80.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "流程控制",
-    "headers": [
-      {
-        "level": 2,
-        "title": "1. 条件判断",
-        "slug": "_1-条件判断",
-        "link": "#_1-条件判断",
-        "children": [
-          {
-            "level": 3,
-            "title": "1.1 if 语句",
-            "slug": "_1-1-if-语句",
-            "link": "#_1-1-if-语句",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "1.2 判断运算符",
-            "slug": "_1-2-判断运算符",
-            "link": "#_1-2-判断运算符",
-            "children": []
-          }
-        ]
-      },
-      {
-        "level": 2,
-        "title": "2. 循环",
-        "slug": "_2-循环",
-        "link": "#_2-循环",
-        "children": [
-          {
-            "level": 3,
-            "title": "2.1 for 语句",
-            "slug": "_2-1-for-语句",
-            "link": "#_2-1-for-语句",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "2.2 while 语句",
-            "slug": "_2-2-while-语句",
-            "link": "#_2-2-while-语句",
-            "children": []
-          }
-        ]
-      }
-    ],
-    "path": "/python/%E8%AF%AD%E8%A8%80/%E5%9F%BA%E7%A1%80/%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "环境安装",
-    "headers": [
-      {
-        "level": 3,
-        "title": "1. 环境安装",
-        "slug": "_1-环境安装",
-        "link": "#_1-环境安装",
-        "children": []
-      },
-      {
-        "level": 3,
-        "title": "2. python 风格指南",
-        "slug": "_2-python-风格指南",
-        "link": "#_2-python-风格指南",
-        "children": []
-      },
-      {
-        "level": 3,
-        "title": "3. Pycharm",
-        "slug": "_3-pycharm",
-        "link": "#_3-pycharm",
-        "children": []
-      }
-    ],
-    "path": "/python/%E8%AF%AD%E8%A8%80/%E5%9F%BA%E7%A1%80/%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85.html",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -3002,6 +2655,353 @@ export const searchIndex = [
     "extraFields": []
   },
   {
+    "title": "pip",
+    "headers": [
+      {
+        "level": 2,
+        "title": "1. 使用基础",
+        "slug": "_1-使用基础",
+        "link": "#_1-使用基础",
+        "children": [
+          {
+            "level": 3,
+            "title": "1.1 换源",
+            "slug": "_1-1-换源",
+            "link": "#_1-1-换源",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "1.2 下载 wheel",
+            "slug": "_1-2-下载-wheel",
+            "link": "#_1-2-下载-wheel",
+            "children": []
+          }
+        ]
+      }
+    ],
+    "path": "/python/%E8%AF%AD%E8%A8%80/%E5%9F%BA%E7%A1%80/pip.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "字符编码",
+    "headers": [
+      {
+        "level": 2,
+        "title": "1. 字符",
+        "slug": "_1-字符",
+        "link": "#_1-字符",
+        "children": [
+          {
+            "level": 3,
+            "title": "1.1 编码中的字符串",
+            "slug": "_1-1-编码中的字符串",
+            "link": "#_1-1-编码中的字符串",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "1.2 Python 编码发展史",
+            "slug": "_1-2-python-编码发展史",
+            "link": "#_1-2-python-编码发展史",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "2. 常见问题",
+        "slug": "_2-常见问题",
+        "link": "#_2-常见问题",
+        "children": [
+          {
+            "level": 3,
+            "title": "2.1 操作系统编码",
+            "slug": "_2-1-操作系统编码",
+            "link": "#_2-1-操作系统编码",
+            "children": []
+          }
+        ]
+      }
+    ],
+    "path": "/python/%E8%AF%AD%E8%A8%80/%E5%9F%BA%E7%A1%80/%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "数据类型",
+    "headers": [
+      {
+        "level": 2,
+        "title": "1. 数字类（Number）",
+        "slug": "_1-数字类-number",
+        "link": "#_1-数字类-number",
+        "children": [
+          {
+            "level": 3,
+            "title": "1.1 整型（int）—— numbers.Integral",
+            "slug": "_1-1-整型-int-——-numbers-integral",
+            "link": "#_1-1-整型-int-——-numbers-integral",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "1.2 布尔值（bool）—— numbers.Integral",
+            "slug": "_1-2-布尔值-bool-——-numbers-integral",
+            "link": "#_1-2-布尔值-bool-——-numbers-integral",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "1.3 浮点型（float）—— numbers.Real",
+            "slug": "_1-3-浮点型-float-——-numbers-real",
+            "link": "#_1-3-浮点型-float-——-numbers-real",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "1.4 复数（complex）—— numbers.Complex",
+            "slug": "_1-4-复数-complex-——-numbers-complex",
+            "link": "#_1-4-复数-complex-——-numbers-complex",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "2. 序列 —— 不可变序列",
+        "slug": "_2-序列-——-不可变序列",
+        "link": "#_2-序列-——-不可变序列",
+        "children": [
+          {
+            "level": 3,
+            "title": "2.1 字节串（bytes 二进制序列）",
+            "slug": "_2-1-字节串-bytes-二进制序列",
+            "link": "#_2-1-字节串-bytes-二进制序列",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "2.2 字符串（str 文本序列）",
+            "slug": "_2-2-字符串-str-文本序列",
+            "link": "#_2-2-字符串-str-文本序列",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "2.3 元组（tuple）",
+            "slug": "_2-3-元组-tuple",
+            "link": "#_2-3-元组-tuple",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "2.4 range 对象",
+            "slug": "_2-4-range-对象",
+            "link": "#_2-4-range-对象",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "3. 可变序列",
+        "slug": "_3-可变序列",
+        "link": "#_3-可变序列",
+        "children": [
+          {
+            "level": 3,
+            "title": "3.1 列表（list）",
+            "slug": "_3-1-列表-list",
+            "link": "#_3-1-列表-list",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "4. 集合类型",
+        "slug": "_4-集合类型",
+        "link": "#_4-集合类型",
+        "children": [
+          {
+            "level": 3,
+            "title": "4.1 集合（set）",
+            "slug": "_4-1-集合-set",
+            "link": "#_4-1-集合-set",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "4.2 冻结集合（frozenset）",
+            "slug": "_4-2-冻结集合-frozenset",
+            "link": "#_4-2-冻结集合-frozenset",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "5. 映射",
+        "slug": "_5-映射",
+        "link": "#_5-映射",
+        "children": [
+          {
+            "level": 3,
+            "title": "5.1 字典（dict）",
+            "slug": "_5-1-字典-dict",
+            "link": "#_5-1-字典-dict",
+            "children": []
+          }
+        ]
+      }
+    ],
+    "path": "/python/%E8%AF%AD%E8%A8%80/%E5%9F%BA%E7%A1%80/%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "文件基础",
+    "headers": [
+      {
+        "level": 2,
+        "title": "1. 文件基础",
+        "slug": "_1-文件基础",
+        "link": "#_1-文件基础",
+        "children": [
+          {
+            "level": 3,
+            "title": "1.1 文件操作",
+            "slug": "_1-1-文件操作",
+            "link": "#_1-1-文件操作",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "2. 上下文管理器",
+        "slug": "_2-上下文管理器",
+        "link": "#_2-上下文管理器",
+        "children": [
+          {
+            "level": 3,
+            "title": "2.1 管理协议",
+            "slug": "_2-1-管理协议",
+            "link": "#_2-1-管理协议",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "2.2 with 语句",
+            "slug": "_2-2-with-语句",
+            "link": "#_2-2-with-语句",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "2.3 自定义上下文管理器",
+            "slug": "_2-3-自定义上下文管理器",
+            "link": "#_2-3-自定义上下文管理器",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "3. 进阶",
+        "slug": "_3-进阶",
+        "link": "#_3-进阶",
+        "children": []
+      }
+    ],
+    "path": "/python/%E8%AF%AD%E8%A8%80/%E5%9F%BA%E7%A1%80/%E6%96%87%E4%BB%B6%E5%9F%BA%E7%A1%80.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "流程控制",
+    "headers": [
+      {
+        "level": 2,
+        "title": "1. 条件判断",
+        "slug": "_1-条件判断",
+        "link": "#_1-条件判断",
+        "children": [
+          {
+            "level": 3,
+            "title": "1.1 if 语句",
+            "slug": "_1-1-if-语句",
+            "link": "#_1-1-if-语句",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "1.2 判断运算符",
+            "slug": "_1-2-判断运算符",
+            "link": "#_1-2-判断运算符",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "2. 循环",
+        "slug": "_2-循环",
+        "link": "#_2-循环",
+        "children": [
+          {
+            "level": 3,
+            "title": "2.1 for 语句",
+            "slug": "_2-1-for-语句",
+            "link": "#_2-1-for-语句",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "2.2 while 语句",
+            "slug": "_2-2-while-语句",
+            "link": "#_2-2-while-语句",
+            "children": []
+          }
+        ]
+      }
+    ],
+    "path": "/python/%E8%AF%AD%E8%A8%80/%E5%9F%BA%E7%A1%80/%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "环境安装",
+    "headers": [
+      {
+        "level": 3,
+        "title": "1. 环境安装",
+        "slug": "_1-环境安装",
+        "link": "#_1-环境安装",
+        "children": []
+      },
+      {
+        "level": 3,
+        "title": "2. python 风格指南",
+        "slug": "_2-python-风格指南",
+        "link": "#_2-python-风格指南",
+        "children": []
+      },
+      {
+        "level": 3,
+        "title": "3. Pycharm",
+        "slug": "_3-pycharm",
+        "link": "#_3-pycharm",
+        "children": []
+      }
+    ],
+    "path": "/python/%E8%AF%AD%E8%A8%80/%E5%9F%BA%E7%A1%80/%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
     "title": "协程",
     "headers": [
       {
@@ -3256,6 +3256,28 @@ export const searchIndex = [
       }
     ],
     "path": "/python/%E8%AF%AD%E8%A8%80/%E5%A4%9A%E4%BB%BB%E5%8A%A1%E7%BC%96%E7%A8%8B/%E8%BF%9B%E7%A8%8B.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "标准库链接",
+    "headers": [
+      {
+        "level": 3,
+        "title": "标准库",
+        "slug": "标准库",
+        "link": "#标准库",
+        "children": []
+      },
+      {
+        "level": 3,
+        "title": "其他第三方库",
+        "slug": "其他第三方库",
+        "link": "#其他第三方库",
+        "children": []
+      }
+    ],
+    "path": "/python/%E8%AF%AD%E8%A8%80/%E5%BA%93/%E6%A0%87%E5%87%86%E5%BA%93%E9%93%BE%E6%8E%A5.html",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -3831,19 +3853,11 @@ export const searchIndex = [
         "children": []
       },
       {
-        "level": 2,
+        "level": 3,
         "title": "yield from",
         "slug": "yield-from",
         "link": "#yield-from",
-        "children": [
-          {
-            "level": 3,
-            "title": "yield from 和 yield 的区别：",
-            "slug": "yield-from-和-yield-的区别",
-            "link": "#yield-from-和-yield-的区别",
-            "children": []
-          }
-        ]
+        "children": []
       }
     ],
     "path": "/python/%E8%AF%AD%E8%A8%80/%E8%BF%9B%E9%98%B6/%E7%94%9F%E6%88%90%E5%99%A8.html",
@@ -4225,6 +4239,28 @@ export const searchIndex = [
             "children": []
           }
         ]
+      },
+      {
+        "level": 2,
+        "title": "5. 管理软件",
+        "slug": "_5-管理软件",
+        "link": "#_5-管理软件",
+        "children": [
+          {
+            "level": 3,
+            "title": "5.1 smbldap-tools",
+            "slug": "_5-1-smbldap-tools",
+            "link": "#_5-1-smbldap-tools",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "5.2 其他 Windows 管理工具",
+            "slug": "_5-2-其他-windows-管理工具",
+            "link": "#_5-2-其他-windows-管理工具",
+            "children": []
+          }
+        ]
       }
     ],
     "path": "/unix/CentOS/LDAP/LDAP.html",
@@ -4232,7 +4268,7 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "Python对接AD域",
+    "title": "Python对接域认证",
     "headers": [
       {
         "level": 2,
@@ -4265,9 +4301,9 @@ export const searchIndex = [
       },
       {
         "level": 2,
-        "title": "2. 加入、退出域的实现",
-        "slug": "_2-加入、退出域的实现",
-        "link": "#_2-加入、退出域的实现",
+        "title": "2. 加域、退域实现",
+        "slug": "_2-加域、退域实现",
+        "link": "#_2-加域、退域实现",
         "children": [
           {
             "level": 3,
@@ -5607,27 +5643,6 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "Nginx 标签",
-    "headers": [],
-    "path": "/tag/nginx/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "Web 标签",
-    "headers": [],
-    "path": "/tag/web/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "Django 标签",
-    "headers": [],
-    "path": "/tag/django/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
     "title": "远程 标签",
     "headers": [],
     "path": "/tag/%E8%BF%9C%E7%A8%8B/",
@@ -5645,6 +5660,27 @@ export const searchIndex = [
     "title": "代理 标签",
     "headers": [],
     "path": "/tag/%E4%BB%A3%E7%90%86/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "Nginx 标签",
+    "headers": [],
+    "path": "/tag/nginx/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "Web 标签",
+    "headers": [],
+    "path": "/tag/web/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "Django 标签",
+    "headers": [],
+    "path": "/tag/django/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -5680,6 +5716,13 @@ export const searchIndex = [
     "title": "Pycharm 标签",
     "headers": [],
     "path": "/tag/pycharm/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "标准库 标签",
+    "headers": [],
+    "path": "/tag/%E6%A0%87%E5%87%86%E5%BA%93/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -5789,3 +5832,16 @@ export const searchIndex = [
     "extraFields": []
   }
 ]
+
+if (import.meta.webpackHot) {
+  import.meta.webpackHot.accept()
+  if (__VUE_HMR_RUNTIME__.updateSearchIndex) {
+    __VUE_HMR_RUNTIME__.updateSearchIndex(searchIndex)
+  }
+}
+
+if (import.meta.hot) {
+  import.meta.hot.accept(({ searchIndex }) => {
+    __VUE_HMR_RUNTIME__.updateSearchIndex(searchIndex)
+  })
+}

@@ -51,6 +51,78 @@ s <span class="token operator">=</span> Sentence<span class="token punctuation">
 <li>默认情况下 <a href="">reprlib.repr()</a> 生成的字符串最多有 30 个字符，此处给 <code v-pre>__repr__</code> 使用</li>
 </ul>
 <p>首次使用 reprlib 在 109 页</p>
-</div></template>
+<p>6.迭代器:
+生成器都是迭代器,迭代器不一定都是生成器
+例：</p>
+<div class="language-text ext-text line-numbers-mode"><pre v-pre class="language-text"><code> title = ['Python','Java','C++'] # 列表是一个可迭代对象
+ isinstance(title,Iterable)      # True
+ a = iter(title) # 由可迭代对象的iter方法返回一个迭代器
+ >>> next(a)
+ Python
+ >>> next(a)
+ Java
+ >>> next(a)
+ C++
+ >>> next(a)  # 抛出StopIteration异常
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>【什么是迭代器？】
+利用内置方法 iter() 把 list 、 dict 、 str 等 Iterable（可迭代对象） 进行转换，返回的对象 Iterator</p>
+<pre><code>Iterator 这个对象就是一个迭代器对象，也就是迭代器了
+str list tuple dict:Iterable (可迭代对象)
+什么是迭代器？(迭代器协议)
+    Iterable定义了可返回迭代器的__iter__()方法、__next__() 方法
+        1.有iter方法:__iter__()
+        2.有next方法:__next__()
+
+        为什么必须有iter方法?
+            首先这是一个规定:好多iter方法return的是self(自身)（这里是说__iter__()内部return self 见下：for循环的第一件事）
+            但想for循环只有next方法没有iter方法就不能进行循环(就是自定义迭代器没有iter方法的话如何循环)
+            因此内置的iter方法实际是调用__iter__()方法 如int类自身没有__iter__()方法则无法调用
+            'int' object is not iterable
+
+        迭代器调用next()方法调用做的两件事：
+            1.为下一次调用next()方法修改状态
+            2.生成当前调用的返回结果
+
+    生成器比迭代器更优雅 因为是用yield实现的(满足迭代器协议 本身也是一个迭代器对象)
+
+for循环探讨后续:(三件事)
+    已知for循环in后面接的是可迭代对象 但是可迭代对象并不具有iter方法 如:
+    [1,2,34] 我们不能把它next([1,2,34]) 因为它是list对象啊
+    1.因此for循环 第一件干的事就是把 “可迭代对象变成迭代器” ---用了iter()方法（实质上是去找可迭代对象里的__iter__方法，当有for循环时
+    便会自动执行对象中的__iter__方法，此方法只会返回迭代器，详情见4.3特殊方法）
+    2.第二件干的事就是不断调用迭代器对象的next方法进行迭代
+    3.第三便是前面说的捕获异常并处理StopIteration
+
+isinstance(o,t):
+    判断前一个对象是不是后面的类型 返回True False
+    导入collections中的Iterator和Iterable模块便可进行辨析 主要见代码
+
+现在在来看文件:
+    f = open(&quot;xx.txt&quot;,r+,encoding=&quot;utf8&quot;)
+    for i in f.readlines(): 此时是把文件复制之后每一行当成一个元素放到列表中存储，再返回
+    若利用for i in f:则压根没有复制f 而是把f直接利用iter(f)返回了迭代器对象，之后f.read()
+    每次调用(next)时才占一行的内存 因此这就是不用readlines的原因（迭代器不占内存的好处，用时next一条）
+</code></pre>
+<div class="language-text ext-text line-numbers-mode"><pre v-pre class="language-text"><code>for的实质:
+    生成器可以用for i in s: print(i)这样来取出 这种方式看似没有用到next()内置方法
+    i能取到s的值是for的功能 for就是对s内部进行了一个next的调用(for循环遍历可迭代对象)
+
+    python的for里面到底做了什么? 其实它就是做了这么一件事情 调用里面的next() 取里面的值(不断的next赋值给i)
+    之后每次调用新的值赋给了i 之前的便会被垃圾回收 因此空间就出来了(因此占内存的只有这一个数,空间永远自由)
+
+    按理来说调用到最后一个会报异常 然而for会进行检测。 for是利用了异常捕获(except)捕捉到异常(迭代停止)直接
+    就返回了 不做任何其他处理
+
+    while True:
+        i = next(可迭代对象)
+        捕捉异常 进行处理(返回)
+
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>容器、迭代器、生成器区别： 1.容器：包含常见的列表、元组、字典、集合和字符串，序列存储在内存中，需要的时候可以一并取出</p>
+<div class="language-text ext-text line-numbers-mode"><pre v-pre class="language-text"><code>2.迭代器：iter(容器)返回的对象，按需存储，可以通过next()进行迭代,但并不是把所有序列放在内存中再迭代取值，而是仅仅将迭代到的某个值取到内存中
+
+3.生成器：算是另一个迭代器，不仅可以迭代按需取数据，还可以通过send()传入数据，并在生成器内部计算
+
+相同点：都是可迭代对象
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></div></template>
 
 

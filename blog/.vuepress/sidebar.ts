@@ -223,34 +223,14 @@ export default sidebar({
               prefix: "asyncio/",
               children: ["asyncio基础", "asyncio进阶", "底层实现", "事件循环"],
             },
+            {
+              text: "库",
+              collapsable: true,
+              prefix: "库/",
+              children: ["标准库链接"],
+            },
           ],
         },
-        // {
-        //   text: "库",
-        //   icon: "customize",
-        //   collapsable: true,
-        //   prefix: "库/",
-        //   children: [
-        //     {
-        //       text: "标准库基础",
-        //       collapsable: true,
-        //       prefix: "标准库基础/",
-        //       children: ["时间", "系统相关", "序列化", "文本处理", "日志", "其他"],
-        //     },
-        //     {
-        //       text: "标准库进阶",
-        //       collapsable: true,
-        //       prefix: "标准库进阶/",
-        //       children: ["数据类型", "函数式编程", "文件操作", "运行时服务", "国际化", "SMTP", "其他"],
-        //     },
-        //     {
-        //       text: "开源库",
-        //       collapsable: true,
-        //       prefix: "开源库/",
-        //       children: ["arrow", "psutil"],
-        //     },
-        //   ]
-        // },
         // {
         //   text: "框架",
         //   icon: "frame",

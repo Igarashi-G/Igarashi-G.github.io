@@ -18,6 +18,7 @@ export default navbar([
           { text: "网络编程", link: "网络编程/Socket" },
           { text: "多任务编程", link: "多任务编程/进程" },
           { text: "asyncio", link: "asyncio/asyncio基础" },
+          { text: "库", link: "库/标准库链接" },
         ],
       },
       // {

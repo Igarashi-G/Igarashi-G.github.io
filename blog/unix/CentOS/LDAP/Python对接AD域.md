@@ -1,5 +1,5 @@
 ---
-title: Python对接AD域
+title: Python对接域认证
 date: 2022-10-08
 category:
   - 运维
@@ -11,13 +11,13 @@ star: true
 sticky: true
 ---
 
-**UFS** 管理平台 通过**ldap3** 对接 **AD** 域，加入域、退出域、**CIFS** 权限认证等 
+**UFS** 管理平台 通过 **ldap3** 等 **Python** 工具，对接域相关的认证 
 
 
 
 <!-- more -->
 
-# Python 对接AD域
+# Python 对接域认证
 
 ## 1. 需求分析
 
@@ -29,26 +29,26 @@ sticky: true
 
 ##### **加入域的场景**
 
-- **添加/扩容节点后：** 提示 `"当前节点尚未加入域"`  **手动执行加入域**
-- **加入失败时：** 提示 `"当前节点加入域失败，请检查环境"`  **手动执行加入域**
+- **添加/扩容节点后：** 提示 `"当前节点尚未加入域"`  **手动执行单节点加入域**
+- **加入失败时：** 提示 `"当前节点加入域失败，请检查环境"`  **手动执行单节点加入域**
 
-##### **修改域的场景**
+##### **修改域的场景** 
 
-- **限制：** 不支持修改 **AD** 服务器 **IP**
+- 暂不支持
 
-##### **退出域的场景**
+##### **退出域的场景** 
 
 - **删除节点前：** 删除节点时校验，若该节点依然在域中，提示 "`请先退出AD/LDAP域，再重试删除`" 
   - 是否支持强制退出域？ 【支持/不支持】
 
 ### 1.2 AD/LDAP的配置
 
-##### **AD域配置参数**
+##### **AD域配置参数** 
 
 - **AD域名：** 如 `uit.devops.local`
 - **AD DNS IP：** 如 `172.16.70.124`
-- **域管理员：** 如 `zhengze`
-- **域管理员密码：** 如 `user@dev`
+- **管理员账号** 
+- **管理员密码：** 
   - 考虑加密
 - 【待定】**过滤器：** 例如 OU、CN 等或自定义的结构，暂不考虑，直接获取所有数据
 - 【待定】**认证方式选择：** 当前基于 **kerberos** 的 `GSS-API SASL` 认证
@@ -62,12 +62,16 @@ sticky: true
 
 ##### **LDAP配置参数**
 
-- **LDAP基准DN：** 如 `DC=uit,DC=devops,DC=local`
+- **LDAP基准DN：** 如 `DC=uit,DC=ldevops,DC=local`
 - **LDAP主服务器IP：** 如 `172.16.70.124`
-- 【待定】**LDAP从服务器IP：** 
+  - 【待定】**LDAP从服务器IP：** 
+
 - **LDAP 端口：** 默认 `389`
 - 【待定】**LDAP协议：** `LDAP/LDAPS` 
+- **管理员账号** 
+- **管理员密码** 
 - **测试按钮：** 同上
+- **高级参数：** 对象 `Objectclass=*`
 
 ### 1.3 集成到CIFS、文件设置、POSIX
 
@@ -79,7 +83,7 @@ sticky: true
 
 [RedHat 参考](https://access.redhat.com/documentation/zh-cn/red_hat_enterprise_linux/7/html/system_administrators_guide/ch-file_and_print_servers#understanding_id_mapping)
 
-## 2. 加入、退出域的实现
+## 2. 加域、退域实现
 
 ### 2.1 加域流程
 
@@ -89,7 +93,7 @@ sticky: true
 
 简单认证 **winbind + kerberos** ，需安装如下软件
 
-- **winbind ：** 
+- **winbind ：** 允许 **Unix** 系统利用 **Windows NT** 的用户帐号信息来解析 **AD** 域 的程序
 - **kerberos：** 加密 **Ticket** 的网络身份认证协议，由 **Key Distribution Center** (*即KDC)*、**Client** 和 **Service** 组成，访问**KDC** 两次，拿到 **TGT**，再访问服务器
 
 ```shell
@@ -104,6 +108,145 @@ $ systemctl status winbind
 
 以域 **UIT.DEVOPS.LOCAL** （*172.16.70.104*）示例：
 
+使用 **Jinjia** 模板
+
+```python
+from jinja2 import Environment, FileSystemLoader, Template
+from pathlib import Path
+
+
+class JinJaConfig(object):
+    def __init__(self, path: str):
+        self.env_path = Path.joinpath(Path(__file__).parent.parent.parent, "etc")
+        self._config_file = path
+        self.template = ""
+        self._parse_data()
+
+    def _parse_data(self):
+        env = Environment(loader=FileSystemLoader(self.env_path))
+        self.template = env.get_template(self._config_file)
+
+    def reload(self):
+        self._parse_data()
+
+    def render_str(self, **kwargs) -> str:
+        data = ""
+        if isinstance(self.template, Template):
+            data = self.template.render(**kwargs)
+        return data
+
+    
+async def render_action(path: str, **kwargs) -> str:
+    conf = jinja_config.JinJaConfig(path)
+    render_data = conf.render_str(**kwargs)
+    return render_data
+
+
+async def gen_krb5_config(
+        realm: str,
+        server_ip: str,
+) -> str:
+    upper_realm = str(realm).upper()
+
+    path = "krb5/krb5.cfg"
+    data = {
+        "realm": realm,
+        "server_ip": server_ip,
+        "upper_realm": upper_realm,
+    }
+    return await render_action(path, **data)
+
+
+async def gen_local_smb_config(
+        smb_path: str,
+        smb_shares_file: str,
+):
+    path = "smb/smb.cfg"
+    data = {
+        "smb_shares_file": smb_shares_file,
+    }
+    smb_local_share = await render_action(path, **data)
+
+    await write_action(smb_path, smb_local_share)
+    await aiofiles.open(smb_shares_file, "w")
+
+
+async def gen_ad_smb_config(
+        host_name: str,
+        realm: str,
+        server_ip: str,
+        workgroup: str,
+        id_map_range: str,
+        id_map_ad_range: str,
+        smb_shares_file: str,
+) -> str:
+    upper_realm = str(realm).upper()
+
+    # FIXME: smb_domain.cfg 中，将 security = domain 暂时替换为 ads
+    path = "smb/smb_ad.cfg"
+    data = {
+        "host_name": host_name,
+        "realm": realm,
+        "server_ip": server_ip,
+        "workgroup": workgroup,
+        "id_map_range": id_map_range,
+        "id_map_ad_range": id_map_ad_range,
+        "upper_realm": upper_realm,
+        "smb_shares_file": smb_shares_file,
+    }
+    return await render_action(path, **data)
+
+
+async def gen_ldap_smb_config(
+        host_name: str,
+        server_ip: str,
+        workgroup: str,
+        base_dn: str,
+        bind_dn: str,
+        smb_shares_file: str,
+) -> str:
+    path = "smb/smb_ldap.cfg"
+    data = {
+        "host_name": host_name,
+        "server_ip": server_ip,
+        "workgroup": workgroup,
+        "base_dn": base_dn,
+        "bind_dn": bind_dn,
+        "smb_shares_file": smb_shares_file,
+    }
+    return await render_action(path, **data)
+
+
+async def gen_ad_nsswitch_config() -> str:
+    path = "nsswitch/nsswitch_ad.cfg"
+    return await render_action(path, **{})
+
+
+async def gen_ldap_nsswitch_config() -> str:
+    path = "nsswitch/nsswitch_ldap.cfg"
+    return await render_action(path, **{})
+
+
+async def gen_ldap_nslcd_config(
+        server_ip: str,
+        base_dn: str,
+        bind_dn: str,
+        admin_pwd: str,
+        userObjclass: str,
+        groupObjclass: str,
+) -> str:
+    path = "nslcd/nslcd.cfg"
+    data = {
+        "server_ip": server_ip,
+        "base_dn": base_dn,
+        "bind_dn": bind_dn,
+        "admin_pwd": admin_pwd,
+        "userObjclass": userObjclass,
+        "groupObjclass": groupObjclass,
+    }
+    return await render_action(path, **data)
+```
+
 备份并修改 `/etc/krb5.conf` 配置文件为如下
 
 ```ini
@@ -113,19 +256,19 @@ kdc = FILE:/var/log/krb5kdc.log
 admin_server = FILE:/var/log/kadmind.log
 
 [libdefaults]
-default_realm = UIT.DEVOPS.LOCAL
+default_realm = {{upper_realm}}
 dns_lookup_realm = false
 dns_lookup_kdc = false
 
 [realms]
-UIT.DEVOPS.LOCAL = {
-    kdc = 172.16.70.104
-    default_ad = uit.devops.local
+{{upper_realm}} = {
+    kdc = {{server_ip}}
+    default_ad = {{upper_realm}}
 }
 
 [ad_realm]
-uit.devops.local = UIT.DEVOPS.LOCAL
-.uit.devops.local = UIT.DEVOPS.LOCAL
+.{{upper_realm}} = {{upper_realm}}
+{{upper_realm}} = {{upper_realm}}
 
 [kdc]
 profile = /var/kerberos/krb5kdc/kdc.conf
@@ -159,45 +302,70 @@ pam = {
 
 ```ini
 [global]
-workgroup = UIT
-netbios name = node141
-server string = Hello UDS
+workgroup = {{workgroup}}
+netbios name = {{host_name}}
+server string =
 security = ads
-realm = UIT.DEVOPS.LOCAL
-password server = UIT.DEVOPS.LOCAL
+realm = {{upper_realm}}
+password server = {{upper_realm}}
 encrypt passwords = yes
 local master = no
 domain master = no
 preferred master = no
 idmap config * : backend = tdb
-idmap config * : range = 100000-999999
-idmap config UIT : backend = rid
-idmap config UIT : range = 1000000-2000000
-#idmap config LDAP : backend = rid
-#idmap config LDAP : range = 1000000-2000000
+idmap config * : range = {{id_map_range}}
+idmap config {{workgroup}} : backend = rid
+idmap config {{workgroup}} : range = {{id_map_ad_range}}
 winbind use default domain = yes
 winbind enum users = yes
 winbind enum groups = yes
 winbind separator = +
 
-# common params
+# optimization
+sync always = no
+write cache size = 10485760
+socket options = TCP_NODELAY IPTOS_LOWDELAY SO_RCVBUF=131072 SO_SNDBUF=131072
+use sendfile = yes
+min receivefile size = 131072
+
+# ad common params
 log file = /var/log/samba/%m.log
 max log size = 50
 printcap name = /etc/printcap
 load printers = no
-socket options = IPTOS_LOWDELAY TCP_NODELAY
 wins server =
 unix charset = utf-8
 dos charset = cp936
 dns proxy = no
-sync always = yes
 delete readonly = yes
 create mask = 0777
 directory mask = 0777
 force create mode = 0777
 force directory mode = 0777
 template shell = /bin/false
+map to guest = bad user
+null passwords = yes
+usershare allow guests = yes
+include = {{smb_shares_file}}
+```
 
+备份并修改 `/etc/nsswitch.conf` 如下
+
+```ini
+passwd:        files winbind
+shadow:        files winbind
+group:         files winbind
+hosts:         files dns winbind
+bootparams:    files
+ethers:        files
+networks:      files
+protocols:     files
+rpc:           files
+services:      files
+netgroup:      files
+publickey:     files
+automount:     files
+aliases:       files
 ```
 
 执行加域命令
@@ -207,6 +375,7 @@ $ net ads join -U administrator%user@dev -S server124.uit.devops.local
 $ net ads testjoin
 
 # 重启相关服务
+systemctl enable winbind
 systemctl restart winbind
 systemctl restart nmb
 systemctl restart smb
@@ -219,35 +388,157 @@ local_zz:x:1000:0::/home/local_zz:/usr/sbin/nologin
 xingang:x:1001:1001::/home/xingang:/bin/bash
 administrator:*:10000500:10000513::/home/UIT/administrator:/bin/false
 guest:*:10000501:10000513::/home/UIT/guest:/bin/false
-xingang:*:10001000:10000513::/home/UIT/xingang:/bin/false
 zhengze:*:10001002:10000513::/home/UIT/zhengze:/bin/false
 ```
 
 ::: tip
 
-**Python** 通过引入 **pwd** 、 **grp** 库，直接本地获取，效率比 **ldap3** 高 
+**Python** 通过引入 **pwd** 、 **grp** 库，直接本地获取，效率比 **ldap3** 高，但会有缓存，重启服务或改 **C** 源码，或直接调用命令行解析
 
 :::
 
 #### LDAP加入流程
 
-除了无需配置 **kerberos** 之外，大致流程一致，变化如下
+使用 **nslcd** 进行认证 ，与 **AD** 域大致流程差不多，不需要命令，直接改配置文件启动即可
+
+- **nslcd：** 加入 **LDAP** 的程序
 
 ```shell
 # 安装加入 ldap 所需工具
 $ yum -y install nss-pam-ldapd pam_ldap openldap-clients oddjob oddjob-mkhomedir
 ```
 
+备份并修改 `/etc/nslcd.conf` 如下
 
+```ini
+uid nslcd
+gid ldap
+uri ldap://{{server_ip}}/
+base {{base_dn}}
+ssl no
+binddn {{bind_dn}}
+bindpw {{admin_pwd}}
+filter passwd {{userObjclass}}
+filter shadow {{userObjclass}}
+filter group  {{groupObjclass}}
+```
+
+需要修改该配置文件权限，否则无法启动服务
+
+```shell
+chmod 600 /etc/nslcd.conf
+```
+
+备份并修改 `/etc/hosts` 文件，加入
+
+```ini
+172.16.120.145	uit.ldevops.local
+```
+
+备份并修改 `/etc/samba/smb.conf` 如下
+
+```ini
+[global]
+workgroup = {{workgroup}}
+netbios name = {{host_name}}
+security = user
+passdb backend = ldapsam:ldap://{{server_ip}}
+ldap suffix = "{{base_dn}}"
+ldap group suffix = "cn=group"
+ldap user suffix = "ou=people"
+ldap admin dn = "{{bind_dn}}"
+ldap delete dn = no
+pam password change = yes
+ldap passwd sync = yes
+ldap ssl = no
+
+# optimization
+sync always = no
+write cache size = 10485760
+socket options = TCP_NODELAY IPTOS_LOWDELAY SO_RCVBUF=131072 SO_SNDBUF=131072
+use sendfile = yes
+min receivefile size = 131072
+
+# ldap common params
+log file = /var/log/samba/%m.log
+max log size = 50
+printcap name = /etc/printcap
+load printers = no
+wins server =
+unix charset = utf-8
+dos charset = cp936
+dns proxy = no
+delete readonly = yes
+create mask = 0777
+directory mask = 0777
+force create mode = 0777
+force directory mode = 0777
+template shell = /bin/false
+map to guest = bad user
+null passwords = yes
+usershare allow guests = yes
+include = {{smb_shares_file}}
+```
+
+备份并修改 `/etc/nsswitch.conf` 如下
+
+```ini
+passwd:        files ldap
+shadow:        files ldap
+group:         files ldap
+hosts:         files dns ldap
+bootparams:    files
+ethers:        files
+networks:      files
+protocols:     files
+rpc:           files
+services:      files
+netgroup:      files
+publickey:     files
+automount:     files
+aliases:       files
+```
+
+执行加域命令
+
+```shell
+# 重启相关服务，正常启动即可
+systemctl restart nmb
+systemctl enable nslcd
+systemctl restart nslcd
+systemctl restart smb
+
+# 与 AD 域不同，没有映射ID，此时获取的用户、组存在 uid、gid 冲突
+getent passwd
+
+# 类似如下，且有些非能加域的用户
+ldapuser1:x:1002:1002:ldapuser1:/home/ldapuser1:/bin/bash
+ldapuser2:x:1003:1003:ldapuser2:/home/ldapuser2:/bin/bash
+root:x:0:0:Netbios Domain Administrator:/home/root:/bin/false
+nobody:x:999:514:nobody:/nonexistent:/bin/false
+User1:x:1005:513:System User:/home/User1:/bin/bash
+igarashi:x:1000001:513:System User:/home/igarashi:/bin/bash
+jackson:x:150001:513:System User:/home/jackson:/bin/bash
+```
+
+::: warning 注意
+
+通常需含有 `(objectclass=sambaSamAccount)` 、`(objectclass=sambaGroupMapping)` 等一系列 **samba** 相关的类，才具有访问 **CIFS** 的能力，建议使用 **sabldap** 工具（*详见 LDAP* ）来添加用户，示例如下
+
+```shell
+smbldap-useradd -a -m jackson -u 150000
+```
+
+:::
 
 ### 2.2 退域流程
 
 <img src="./img/退域流程.png">
 
-执行离开域命令
+离开 **AD** 域，执行如下命令，**LDAP** 只需还原配置文件重启即可 
 
 ```shell
-$ net ads leave -U administrator%user@dev -S server124.uit.devops.local
+$ net ads leave -U administrator%管理员密码 -S server124.uit.devops.local
 
 # 重启相关服务
 systemctl restart winbind
@@ -336,9 +627,9 @@ import pprint
 # 注释部分为 AD 域
 def search_generator():
     # server = Server(host="172.16.70.124", port=389)
-    # with Connection(server, user="uit.devops.local\\administrator", password="user@dev", authentication=NTLM) as conn:
+    # with Connection(server, user="uit.devops.local\\administrator", password="xxxxxx", authentication=NTLM) as conn:
     server = Server(host="172.16.120.145", port=389)
-    with Connection(server, user='uid=ldapuser1,ou=people,dc=uit,dc=ldevops,dc=local', password='123456') as conn:
+    with Connection(server, user='cn=cloud,dc=uit,dc=ldevops,dc=local', password='xxxxxx') as conn:
         conn.open()
         conn.bind()
         print("bound result", conn.bound)
