@@ -20,9 +20,13 @@ star: true
 - **Pod IP** 仅仅是集群内可见的虚拟 **IP**，外部无法访问
 - **Pod IP** 会随着 **Pod** 销毁而消失，当 **ReplicaSet** 对 **Pod** 进行动态伸缩时，**Pod IP** 可能随时随地都会变化，对于访问服务带来了难度
 
-### 1.1 Cluster IP 负载均衡
+#### 那么什么是 Serveice ？
 
-**Service** 是一组 **Pod** 的服务抽象，相当于一组 **Pod** 的 **LB（*Load Balance*）**，负责将请求分发给对应的**Pod**
+**Service** 是一组 **Pod** 的服务抽象（*一种可以访问 **Pod** 的策略* ），也可以简单理解为逻辑上一组 **Pod** 的 **LB（*Load Balance*）**，负责将请求分发给对应的 **Pod** ，用来给 **Pod** 通信的
+
+**svc** 一旦创建，即使重建，名称也不会改变 
+
+### 1.1 Cluster IP 负载均衡
 
 **Service** 会为这个 **LB** 提供一个 **Cluster IP** ，使用 **Service** 对象，通过 **selector 进行标签选择**，即可找到对应的 **Pod** 
 
@@ -48,14 +52,16 @@ metadata:
   name: ublog-svc
   namespace: uit
 spec:
-  ports:
-  - port: 80
-    protocol: TCP
-    targetPort: 8002
+  ports:					# 若如 Nginx 有 80、443 则可以指定多个端口
+  - port: 80				# Service 的端口 
+    protocol: TCP			# 协议: UDP、TCP、SCTP  default: TCP
+    targetPort: 8002		# 后端应用的端口
   selector:
-    app: myblog
+    app: myblog				# 通过标签过滤并选择应用
   type: ClusterIP
 ```
+
+如上配置端口，**ServiceA** 访问 **ServiceB** 可利用  `servicea --> serviceb http://serviceb`，若端口非 **80**  , 假如是 **8080** 则通过  `http://serviceb:8080` 即可
 
 创建 **Service** 并查看
 
@@ -64,7 +70,7 @@ spec:
 $ kubectl create -f svc-ublog.yaml 
 service/svc-ublog created
 
-# 查看 svc，此时已经创建了 CLUSTER-IP 10.105.146.135 80 端口的服务
+# 查看 svc，此时已创建了 CLUSTER-IP 10.105.146.135 80 端口的服务（建议自动生成 ClusterIP 而非指定）
 $ kubectl -nuit get svc
 NAME        TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)   AGE
 svc-ublog   ClusterIP   10.105.146.135   <none>        80/TCP    7m51s
@@ -110,7 +116,7 @@ Events:            <none>
 
 ::: tip 
 
-创建 **Service**时，会创建同名的 **endpoints** 对象，若 **Pod** 上配置了 `readinessProbe`，检测失败时，**endpoints** 列表会剔除掉对应的 **Pod IP**，这样流量就不会分发到健康检测失败的 **Pod** 上
+创建 **Service**时，会创建同名的 **endpoints** 对象，若 **Pod** 上配置了 **readinessProbe**，检测失败时，**endpoints** 列表会剔除掉对应的 **Pod IP**，这样流量就不会分发到健康检测失败的 **Pod** 上
 
 ```shell
 $ kubectl -n uit get endpoints svc-ublog
@@ -151,18 +157,18 @@ svc-mysql   ClusterIP   10.98.22.166   <none>        3306/TCP   21s
 $ curl 10.98.22.166:3306
 ```
 
-::: warning hostNetwork 部署，通过宿主机 ip:port 形式访问，有如下弊端
+::: warning 若用 hostNetwork 部署，通过宿主机 ip:port 形式访问，会有如下弊端
 
 - 服务使用 **hostNetwork**，使得宿主机的端口大量暴漏，**存在安全隐患** 
 - 容易引发端口冲突
 
-因此，应该为 **MySQL** 创建固定 **Cluster IP** 的 **Service**，并配到 **ublog** 的环境变量中，利用集群服务发现的能力，组件间通过 **service name** 访问
+因此，应该为 **MySQL** 创建 **Service**，并配到 **ublog** 的环境变量中，利用集群服务发现的能力，组件间通过 **Service Name** 访问
 
 ::: 
 
 ### 1.2 服务发现（*环境变量去 IP 化* ）
 
-**k8s** 集群中，组件间可以通过 **service name** 实现通信，**Pods** 间，无需通过 **固定环境变量 IP** 的形式
+**k8s** 集群中，组件间可以通过 **Service Name** 实现通信，**Pods** 间，无需通过 **固定环境变量 IP** 的形式
 
 ```shell
 # 查看上文创建的 svc
@@ -180,7 +186,7 @@ curl 10.98.22.166:3306
 curl svc-mysql:3306
 ```
 
-尽管 **Pod IP** 和 **Cluster IP** 都不固定，但 **service name** 是固定的，且完全具有跨集群的可移植性，实现原理如下
+尽管 **Pod IP** 和 **Cluster IP** 都不固定（***重启会变更*** ），但 **service name** 是固定的，且完全具有跨集群的可移植性，实现原理如下
 
 ```shell
 # 查看当前的 DNS 配置，发现有个 10.96.0.10 的 IP
@@ -199,7 +205,7 @@ kubernetes-dashboard   kubernetes-dashboard        NodePort    10.97.63.15      
 uit                    svc-mysql                   ClusterIP   10.98.22.166     <none>        3306/TCP                 157m
 uit                    svc-ublog                   ClusterIP   10.105.146.135   <none>        80/TCP                   3h5m
 
-# 查看 kube-dns 这个 service，查找选择器 Selector 是 k8s-app=kube-dns 这个标签
+# 查看 kube-dns 这个 service 详情，发现选择器 Selector 选了 k8s-app=kube-dns 这个标签
 $ kubectl -n kube-system describe svc kube-dns
 Name:              kube-dns
 Namespace:         kube-system
@@ -223,13 +229,13 @@ Endpoints:         10.244.0.5:9153,10.244.0.6:9153
 Session Affinity:  None
 Events:            <none>
 
-# 根据 选择器 找Pod，发现是初始化时 coredns 用的
-$ kubectl -n kube-system get po -l k8s-app=kube-dns -o wide
+# 根据 选择器的标签过滤 找Pod，发现是初始化时的 coredns 
+$ kubectl -n kube-system get po -l k8s-app=kube-dns -owide
 NAME                       READY   STATUS    RESTARTS   AGE   IP           NODE             NOMINATED NODE   READINESS GATES
 coredns-58cc8c89f4-hzprn   1/1     Running   1          23d   10.244.0.5   k8s-master-171   <none>           <none>
 coredns-58cc8c89f4-vvj77   1/1     Running   2          23d   10.244.0.6   k8s-master-171   <none>           <none>
 
-"初始化时创建了 coredns 然后建立 kube-dns 这个service（固定IP），然后新建 Pod 就可注入到 DNS 配置中，最终解析的就是 coredns 的 IP, coredns 见 2.4"
+`初始化时创建了 coredns 然后建立 kube-dns 这个service（固定IP），后续新建 Pod 便可注入到 DNS 配置中，最终解析的就是 coredns 的 IP, coredns 见 2.4`
 ```
 
 故容器内部组件间调用，完全可以通过 **service name**（类似域名）来解析 **IP** 通信，避免了大量 **IP** 维护的成本，因此再次对部署进行优化改造
@@ -242,7 +248,7 @@ coredns-58cc8c89f4-vvj77   1/1     Running   2          23d   10.244.0.6   k8s-m
    ...
    ```
 
-2. **configMap** 中的数据库固定 **IP** 地址换成 **service name**，这样跨环境的时候，配置内容基本上可以保持不用变化
+2. **configMap** 中的数据库 **HOST** 固定的 **IP** 地址换成 **Service Name**，这样跨环境时，配置内容可保持不变
 
    ```yaml
    apiVersion: v1
@@ -251,7 +257,7 @@ coredns-58cc8c89f4-vvj77   1/1     Running   2          23d   10.244.0.6   k8s-m
      name: ublog
      namespace: uit
    data:
-     MYSQL_HOST: "svc-mysql"     # 此处替换为mysql
+     MYSQL_HOST: "svc-mysql"     # 此处替换为上文给 MySQL 创建的 Service
      MYSQL_PORT: "3306"
    ```
 

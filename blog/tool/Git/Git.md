@@ -24,7 +24,7 @@ tag:
 
 ---
 
-## 1. 基础部分
+## 1. 使用安装
 
 ### 1.1 安装
 
@@ -32,45 +32,49 @@ tag:
 
 [下载 window 版的客户端](http://git-scm.com/download)，以管理员身份运行后，一直选择下一步安装即可，请注意，如果你不熟悉每个选项的意思，请保持默认的选项
 
-**`Ubuntu` 下安装**
+::: tabs
 
-```bash
+@tab Ubuntu
+
+```shell
 apt-get install git
 ```
 
-**`Centos/Redhat` 下安装**
+@tab CentOS
 
-```bash
+```shell
 yum install git
 ```
 
-**`Fedora23` 下安装**
+@tab Fedora23
 
-```bash
+```shell
 dnf install git
 ```
 
-**`Fedora22/21` 下安装**
+@tab Fedora22/21
 
-```bash
+```shell
 yum install git
 ```
 
-**`SUSE/OPENSUSE` 下安装**
+@tab SUSE/OPENSUSE
 
-```bash
+```shell
 sudo zypper install git
 ```
 
-**`Mac OS X` 下安装**
+@tab Mac OS X
 
-```bash
+```shell
 brew install git	# 注:请自行解决环境变量以及Brew工具的问题
 ```
 
-**编译安装(注: 仅适合非 window 系统)**
+@tab  编译安装 
 
-[选取一个版本下载](https://github.com/git/git/releases)，解压缩后进入到 Git 的目录然后依次执行以下代码:
+仅适合非  **Windows** 系统
+
+ [选取一个版本下载](https://github.com/git/git/releases)，解压缩后进入到 Git 的目录然后依次执行以下代码:
 
 ```bash
 make configure
@@ -81,11 +85,13 @@ sudo make install
 
 > **注意:** 如果遇上无法编译的问题，请自行通过搜索引擎来查找 Git 所需的依赖
 
-**`pycharm`下安装**
+@tab Pycharm
 
-```bash
+```shell
 # setting-Version -> Control
 ```
+
+::: 
 
 如果以上一切正常，打开终端 输入 `git --version ` 应该会显示如下类似的信息
 
@@ -97,9 +103,9 @@ git version 2.5.0
 
 ### **1.2 配置**
 
-在新的系统上，我们一般都需要先配置下自己的 Git 工作环境。配置工作只需一次，以后升级时还会沿用现在的配置。当然，如果需要，你随时可以用相同的命令修改已有的配置。
+在新的系统上，我们一般都需要先配置下自己的 **Git** 工作环境。配置工作只需一次，以后升级时还会沿用现在的配置。当然，如果需要，你随时可以用相同的命令修改已有的配置。
 
-Git 提供了一个叫做 `git config` 的工具（译注：实际是 git-config 命令，只不过可以通过 git 加一个名字来呼叫此命令。），专门用来配置或读取相应的工作环境变量。而正是由这些环境变量，决定了 Git 在各个环节的具体工作方式和行为。这些变量可以存放在以下三个不同的地方：
+**Git** 提供了一个叫做 `git config` 的工具（译注：实际是 git-config 命令，只不过可以通过 git 加一个名字来呼叫此命令。），专门用来配置或读取相应的工作环境变量。而正是由这些环境变量，决定了 Git 在各个环节的具体工作方式和行为。这些变量可以存放在以下三个不同的地方：
 
 > - /etc/gitconfig 文件：系统中对所有用户都普遍适用的配置。若使用 git config 时用 --system 选项，读写的就是这个文件。
 > - ~/.gitconfig 文件：用户目录下的配置文件只适用于该用户。若使用 git config 时用 --global 选项，读写的就是这个文件。
@@ -166,6 +172,19 @@ $ git config --list
 ```bash
 $ git config user.name
 # Scott Chacon
+```
+
+#### 网络443
+
+若使用是经常出现 **443** 等网络问题，可执行如下命令尝试
+
+```shell
+git config --global http.proxy http://127.0.0.1:1080
+git config --global https.proxy https://127.0.0.1:1080
+git config --global --unset http.proxy
+git config --global --unset https.proxy
+
+# 若写入/etc/hosts, 备份删除重试
 ```
 
 ### 1.3. 获取 Git 帮助
@@ -274,7 +293,7 @@ $ git help config
 
 ---
 
-## 2 进阶部分
+## 2. 常用
 
 ### 2.1 撤销
 

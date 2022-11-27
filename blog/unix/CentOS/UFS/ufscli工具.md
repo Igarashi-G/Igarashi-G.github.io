@@ -6,8 +6,6 @@ category:
 tag:
   - UFS
   - CLI
-star: true
-sticky: true
 ---
 
 本文档提供 **UFS** 存储系统中 **CLI** 工具的使用方法

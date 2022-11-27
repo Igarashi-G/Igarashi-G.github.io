@@ -25,23 +25,31 @@
 </tbody>
 </table>
 <hr>
-<h2 id="_1-基础部分" tabindex="-1"><a class="header-anchor" href="#_1-基础部分" aria-hidden="true">#</a> 1. 基础部分</h2>
+<h2 id="_1-使用安装" tabindex="-1"><a class="header-anchor" href="#_1-使用安装" aria-hidden="true">#</a> 1. 使用安装</h2>
 <h3 id="_1-1-安装" tabindex="-1"><a class="header-anchor" href="#_1-1-安装" aria-hidden="true">#</a> 1.1 安装</h3>
 <p><strong>Window 下安装</strong></p>
 <p><a href="http://git-scm.com/download" target="_blank" rel="noopener noreferrer">下载 window 版的客户端<ExternalLinkIcon/></a>，以管理员身份运行后，一直选择下一步安装即可，请注意，如果你不熟悉每个选项的意思，请保持默认的选项</p>
-<p><strong><code v-pre>Ubuntu</code> 下安装</strong></p>
+<Tabs :data='[{"title":"Ubuntu"},{"title":"CentOS"},{"title":"Fedora23"},{"title":"Fedora22/21"},{"title":"SUSE/OPENSUSE"},{"title":"Mac OS X"},{"title":"编译安装"},{"title":"Pycharm"}]'>
+<template #tab0="{ title, value, isActive }">
 <div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code><span class="token function">apt-get</span> <span class="token function">install</span> <span class="token function">git</span>
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p><strong><code v-pre>Centos/Redhat</code> 下安装</strong></p>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div></template>
+<template #tab1="{ title, value, isActive }">
 <div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code>yum <span class="token function">install</span> <span class="token function">git</span>
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p><strong><code v-pre>Fedora23</code> 下安装</strong></p>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div></template>
+<template #tab2="{ title, value, isActive }">
 <div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code>dnf <span class="token function">install</span> <span class="token function">git</span>
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p><strong><code v-pre>Fedora22/21</code> 下安装</strong></p>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div></template>
+<template #tab3="{ title, value, isActive }">
 <div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code>yum <span class="token function">install</span> <span class="token function">git</span>
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p><strong><code v-pre>SUSE/OPENSUSE</code> 下安装</strong></p>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div></template>
+<template #tab4="{ title, value, isActive }">
 <div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code><span class="token function">sudo</span> <span class="token function">zypper</span> <span class="token function">install</span> <span class="token function">git</span>
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p><strong><code v-pre>Mac OS X</code> 下安装</strong></p>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div></template>
+<template #tab5="{ title, value, isActive }">
 <div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code>brew <span class="token function">install</span> <span class="token function">git</span>	<span class="token comment"># 注:请自行解决环境变量以及Brew工具的问题</span>
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p><strong>编译安装(注: 仅适合非 window 系统)</strong></p>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div></template>
+<template #tab6="{ title, value, isActive }">
+<p>仅适合非  <strong>Windows</strong> 系统</p>
 <p><a href="https://github.com/git/git/releases" target="_blank" rel="noopener noreferrer">选取一个版本下载<ExternalLinkIcon/></a>，解压缩后进入到 Git 的目录然后依次执行以下代码:</p>
 <div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code><span class="token function">make</span> configure
 ./configure
@@ -50,16 +58,19 @@
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><blockquote>
 <p><strong>注意:</strong> 如果遇上无法编译的问题，请自行通过搜索引擎来查找 Git 所需的依赖</p>
 </blockquote>
-<p><strong><code v-pre>pycharm</code>下安装</strong></p>
+</template>
+<template #tab7="{ title, value, isActive }">
 <div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code><span class="token comment"># setting-Version -> Control</span>
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p>如果以上一切正常，打开终端 输入 <code v-pre>git --version </code> 应该会显示如下类似的信息</p>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div></template>
+</Tabs>
+<p>如果以上一切正常，打开终端 输入 <code v-pre>git --version </code> 应该会显示如下类似的信息</p>
 <blockquote>
 <p>Window 下请打开安装 <code v-pre>git</code> 时一并安装的 <code v-pre>bash</code></p>
 </blockquote>
 <div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code><span class="token function">git</span> version <span class="token number">2.5</span>.0
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><h3 id="_1-2-配置" tabindex="-1"><a class="header-anchor" href="#_1-2-配置" aria-hidden="true">#</a> <strong>1.2 配置</strong></h3>
-<p>在新的系统上，我们一般都需要先配置下自己的 Git 工作环境。配置工作只需一次，以后升级时还会沿用现在的配置。当然，如果需要，你随时可以用相同的命令修改已有的配置。</p>
-<p>Git 提供了一个叫做 <code v-pre>git config</code> 的工具（译注：实际是 git-config 命令，只不过可以通过 git 加一个名字来呼叫此命令。），专门用来配置或读取相应的工作环境变量。而正是由这些环境变量，决定了 Git 在各个环节的具体工作方式和行为。这些变量可以存放在以下三个不同的地方：</p>
+<p>在新的系统上，我们一般都需要先配置下自己的 <strong>Git</strong> 工作环境。配置工作只需一次，以后升级时还会沿用现在的配置。当然，如果需要，你随时可以用相同的命令修改已有的配置。</p>
+<p><strong>Git</strong> 提供了一个叫做 <code v-pre>git config</code> 的工具（译注：实际是 git-config 命令，只不过可以通过 git 加一个名字来呼叫此命令。），专门用来配置或读取相应的工作环境变量。而正是由这些环境变量，决定了 Git 在各个环节的具体工作方式和行为。这些变量可以存放在以下三个不同的地方：</p>
 <blockquote>
 <ul>
 <li>/etc/gitconfig 文件：系统中对所有用户都普遍适用的配置。若使用 git config 时用 --system 选项，读写的就是这个文件。</li>
@@ -106,7 +117,15 @@
 <p>也可以直接查阅某个环境变量的设定，需把特定的名字跟在后面即可，像这样：</p>
 <div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code>$ <span class="token function">git</span> config user.name
 <span class="token comment"># Scott Chacon</span>
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_1-3-获取-git-帮助" tabindex="-1"><a class="header-anchor" href="#_1-3-获取-git-帮助" aria-hidden="true">#</a> 1.3. 获取 Git 帮助</h3>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div></div></div><h4 id="网络443" tabindex="-1"><a class="header-anchor" href="#网络443" aria-hidden="true">#</a> 网络443</h4>
+<p>若使用是经常出现 <strong>443</strong> 等网络问题，可执行如下命令尝试</p>
+<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code><span class="token function">git</span> config <span class="token parameter variable">--global</span> http.proxy http://127.0.0.1:1080
+<span class="token function">git</span> config <span class="token parameter variable">--global</span> https.proxy https://127.0.0.1:1080
+<span class="token function">git</span> config <span class="token parameter variable">--global</span> <span class="token parameter variable">--unset</span> http.proxy
+<span class="token function">git</span> config <span class="token parameter variable">--global</span> <span class="token parameter variable">--unset</span> https.proxy
+
+<span class="token comment"># 若写入/etc/hosts, 备份删除重试</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_1-3-获取-git-帮助" tabindex="-1"><a class="header-anchor" href="#_1-3-获取-git-帮助" aria-hidden="true">#</a> 1.3. 获取 Git 帮助</h3>
 <p>想了解 <strong>Git</strong> 的各式工具该怎么用，可以阅读它们的使用帮助，方法有三：</p>
 <div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code>$ <span class="token function">git</span> <span class="token builtin class-name">help</span> <span class="token operator">&lt;</span>verb<span class="token operator">></span>
 $ <span class="token function">git</span> <span class="token operator">&lt;</span>verb<span class="token operator">></span> <span class="token parameter variable">--help</span>
@@ -220,7 +239,7 @@ revert 之后你的本地代码会回滚到指定的历史版本,这时你再 gi
 <p>提交后，用 git diff HEAD -- &quot;file&quot;命令可以查看工作区和版本库里面最新版本的区别：</p>
 </blockquote>
 <hr>
-<h2 id="_2-进阶部分" tabindex="-1"><a class="header-anchor" href="#_2-进阶部分" aria-hidden="true">#</a> 2 进阶部分</h2>
+<h2 id="_2-常用" tabindex="-1"><a class="header-anchor" href="#_2-常用" aria-hidden="true">#</a> 2. 常用</h2>
 <h3 id="_2-1-撤销" tabindex="-1"><a class="header-anchor" href="#_2-1-撤销" aria-hidden="true">#</a> 2.1 撤销</h3>
 <ul>
 <li>

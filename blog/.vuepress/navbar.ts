@@ -92,6 +92,7 @@ export default navbar([
     text: "漫漫全干卷的苦",
     children: [
       { text: "GO", icon: "go", link: "https://draveness.me/golang/" },
+      { text: "GO备忘", icon: "go", link: "https://pegasuswang.github.io/LetsGo/basics/01_go_basic_types/basic_types/" },
       { text: "前端内卷不归路", icon: "javascript", link: "https://notes.fe-mm.com/interview/base/types.html" },
     ],
   },

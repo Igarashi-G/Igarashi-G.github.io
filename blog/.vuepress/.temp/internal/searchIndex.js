@@ -1076,9 +1076,9 @@ export const searchIndex = [
     "headers": [
       {
         "level": 2,
-        "title": "1. 基础部分",
-        "slug": "_1-基础部分",
-        "link": "#_1-基础部分",
+        "title": "1. 使用安装",
+        "slug": "_1-使用安装",
+        "link": "#_1-使用安装",
         "children": [
           {
             "level": 3,
@@ -1112,9 +1112,9 @@ export const searchIndex = [
       },
       {
         "level": 2,
-        "title": "2 进阶部分",
-        "slug": "_2-进阶部分",
-        "link": "#_2-进阶部分",
+        "title": "2. 常用",
+        "slug": "_2-常用",
+        "link": "#_2-常用",
         "children": [
           {
             "level": 3,
@@ -1629,122 +1629,6 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "Fiddler",
-    "headers": [],
-    "path": "/tool/Other/Fiddler%E6%8A%93%E5%8C%85%E5%B7%A5%E5%85%B7.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "Postman",
-    "headers": [
-      {
-        "level": 3,
-        "title": "1. 基本操作",
-        "slug": "_1-基本操作",
-        "link": "#_1-基本操作",
-        "children": []
-      },
-      {
-        "level": 3,
-        "title": "2. 测试",
-        "slug": "_2-测试",
-        "link": "#_2-测试",
-        "children": []
-      }
-    ],
-    "path": "/tool/Other/Postman.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "rdesktop",
-    "headers": [
-      {
-        "level": 3,
-        "title": "1. 安装",
-        "slug": "_1-安装",
-        "link": "#_1-安装",
-        "children": []
-      },
-      {
-        "level": 3,
-        "title": "2. 使用命令",
-        "slug": "_2-使用命令",
-        "link": "#_2-使用命令",
-        "children": []
-      },
-      {
-        "level": 3,
-        "title": "3. 问题",
-        "slug": "_3-问题",
-        "link": "#_3-问题",
-        "children": []
-      }
-    ],
-    "path": "/tool/Other/rdesktop.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "screen",
-    "headers": [],
-    "path": "/tool/Other/screen.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "Tmux",
-    "headers": [
-      {
-        "level": 2,
-        "title": "Tmux",
-        "slug": "tmux",
-        "link": "#tmux",
-        "children": []
-      }
-    ],
-    "path": "/tool/Other/tmux.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "网络代理",
-    "headers": [
-      {
-        "level": 3,
-        "title": "1. privoxy",
-        "slug": "_1-privoxy",
-        "link": "#_1-privoxy",
-        "children": []
-      },
-      {
-        "level": 3,
-        "title": "2. 在 linux 中配置代理",
-        "slug": "_2-在-linux-中配置代理",
-        "link": "#_2-在-linux-中配置代理",
-        "children": []
-      },
-      {
-        "level": 3,
-        "title": "3. 配置映射",
-        "slug": "_3-配置映射",
-        "link": "#_3-配置映射",
-        "children": []
-      },
-      {
-        "level": 3,
-        "title": "4. 快捷配置",
-        "slug": "_4-快捷配置",
-        "link": "#_4-快捷配置",
-        "children": []
-      }
-    ],
-    "path": "/tool/Other/%E7%BD%91%E7%BB%9C%E4%BB%A3%E7%90%86.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
     "title": "Nginx基础",
     "headers": [
       {
@@ -1887,6 +1771,137 @@ export const searchIndex = [
       }
     ],
     "path": "/tool/Nginx/%E5%BA%94%E7%94%A8%E9%83%A8%E7%BD%B2.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "Fiddler",
+    "headers": [],
+    "path": "/tool/Other/Fiddler%E6%8A%93%E5%8C%85%E5%B7%A5%E5%85%B7.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "Postman",
+    "headers": [
+      {
+        "level": 3,
+        "title": "1. 基本操作",
+        "slug": "_1-基本操作",
+        "link": "#_1-基本操作",
+        "children": []
+      },
+      {
+        "level": 3,
+        "title": "2. 测试",
+        "slug": "_2-测试",
+        "link": "#_2-测试",
+        "children": []
+      }
+    ],
+    "path": "/tool/Other/Postman.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "rdesktop",
+    "headers": [
+      {
+        "level": 3,
+        "title": "1. 安装",
+        "slug": "_1-安装",
+        "link": "#_1-安装",
+        "children": []
+      },
+      {
+        "level": 3,
+        "title": "2. 使用命令",
+        "slug": "_2-使用命令",
+        "link": "#_2-使用命令",
+        "children": []
+      },
+      {
+        "level": 3,
+        "title": "3. 问题",
+        "slug": "_3-问题",
+        "link": "#_3-问题",
+        "children": []
+      }
+    ],
+    "path": "/tool/Other/rdesktop.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "screen",
+    "headers": [],
+    "path": "/tool/Other/screen.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "Tmux",
+    "headers": [
+      {
+        "level": 2,
+        "title": "Tmux",
+        "slug": "tmux",
+        "link": "#tmux",
+        "children": []
+      }
+    ],
+    "path": "/tool/Other/tmux.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "网络代理",
+    "headers": [
+      {
+        "level": 3,
+        "title": "1. privoxy",
+        "slug": "_1-privoxy",
+        "link": "#_1-privoxy",
+        "children": []
+      },
+      {
+        "level": 3,
+        "title": "2. 在 linux 中配置代理",
+        "slug": "_2-在-linux-中配置代理",
+        "link": "#_2-在-linux-中配置代理",
+        "children": []
+      },
+      {
+        "level": 3,
+        "title": "3. 配置映射",
+        "slug": "_3-配置映射",
+        "link": "#_3-配置映射",
+        "children": []
+      },
+      {
+        "level": 3,
+        "title": "4. 快捷配置",
+        "slug": "_4-快捷配置",
+        "link": "#_4-快捷配置",
+        "children": []
+      }
+    ],
+    "path": "/tool/Other/%E7%BD%91%E7%BB%9C%E4%BB%A3%E7%90%86.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "kube-prometheus安装使用",
+    "headers": [
+      {
+        "level": 2,
+        "title": "安装 kube-prometheus",
+        "slug": "安装-kube-prometheus",
+        "link": "#安装-kube-prometheus",
+        "children": []
+      }
+    ],
+    "path": "/tool/prometheus/%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8.html",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -4118,17 +4133,39 @@ export const searchIndex = [
     "headers": [
       {
         "level": 2,
-        "title": "1.1 核心概念",
-        "slug": "_1-1-核心概念",
-        "link": "#_1-1-核心概念",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "1.2 关键字",
-        "slug": "_1-2-关键字",
-        "link": "#_1-2-关键字",
-        "children": []
+        "title": "1. AD",
+        "slug": "_1-ad",
+        "link": "#_1-ad",
+        "children": [
+          {
+            "level": 3,
+            "title": "1.1 核心概念",
+            "slug": "_1-1-核心概念",
+            "link": "#_1-1-核心概念",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "1.2 关键字",
+            "slug": "_1-2-关键字",
+            "link": "#_1-2-关键字",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "1.3 AD DS",
+            "slug": "_1-3-ad-ds",
+            "link": "#_1-3-ad-ds",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "1.4 加域配置",
+            "slug": "_1-4-加域配置",
+            "link": "#_1-4-加域配置",
+            "children": []
+          }
+        ]
       }
     ],
     "path": "/unix/CentOS/LDAP/AD%E5%9F%9F.html",
@@ -4469,6 +4506,28 @@ export const searchIndex = [
       }
     ],
     "path": "/unix/CentOS/SNMP/SNMP%E6%9C%8D%E5%8A%A1.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "UDS-ISO构建及发布",
+    "headers": [
+      {
+        "level": 2,
+        "title": "1. RPM打包",
+        "slug": "_1-rpm打包",
+        "link": "#_1-rpm打包",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "2. iso打包",
+        "slug": "_2-iso打包",
+        "link": "#_2-iso打包",
+        "children": []
+      }
+    ],
+    "path": "/unix/CentOS/UFS/iso%E6%9E%84%E5%BB%BA%E4%BB%A5%E5%8F%8A%E5%8F%91%E5%B8%83.html",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -5538,9 +5597,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "远程调用 分类",
+    "title": "prometheus 分类",
     "headers": [],
-    "path": "/category/%E8%BF%9C%E7%A8%8B%E8%B0%83%E7%94%A8/",
+    "path": "/category/prometheus/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -5552,9 +5611,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "Python 分类",
+    "title": "远程调用 分类",
     "headers": [],
-    "path": "/category/python/",
+    "path": "/category/%E8%BF%9C%E7%A8%8B%E8%B0%83%E7%94%A8/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -5566,9 +5625,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "UFS 分类",
+    "title": "Python 分类",
     "headers": [],
-    "path": "/category/ufs/",
+    "path": "/category/python/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -5580,9 +5639,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "CentOS 分类",
+    "title": "UDS 分类",
     "headers": [],
-    "path": "/category/centos/",
+    "path": "/category/uds/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -5594,9 +5653,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "虚拟机 分类",
+    "title": "UFS 分类",
     "headers": [],
-    "path": "/category/%E8%99%9A%E6%8B%9F%E6%9C%BA/",
+    "path": "/category/ufs/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -5608,9 +5667,23 @@ export const searchIndex = [
     "extraFields": []
   },
   {
+    "title": "CentOS 分类",
+    "headers": [],
+    "path": "/category/centos/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
     "title": "工具 标签",
     "headers": [],
     "path": "/tag/%E5%B7%A5%E5%85%B7/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "虚拟机 分类",
+    "headers": [],
+    "path": "/category/%E8%99%9A%E6%8B%9F%E6%9C%BA/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -5643,6 +5716,27 @@ export const searchIndex = [
     "extraFields": []
   },
   {
+    "title": "Nginx 标签",
+    "headers": [],
+    "path": "/tag/nginx/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "Web 标签",
+    "headers": [],
+    "path": "/tag/web/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "Django 标签",
+    "headers": [],
+    "path": "/tag/django/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
     "title": "远程 标签",
     "headers": [],
     "path": "/tag/%E8%BF%9C%E7%A8%8B/",
@@ -5664,23 +5758,16 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "Nginx 标签",
+    "title": "prometheus 标签",
     "headers": [],
-    "path": "/tag/nginx/",
+    "path": "/tag/prometheus/",
     "pathLocale": "/",
     "extraFields": []
   },
   {
-    "title": "Web 标签",
+    "title": "监控 标签",
     "headers": [],
-    "path": "/tag/web/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "Django 标签",
-    "headers": [],
-    "path": "/tag/django/",
+    "path": "/tag/%E7%9B%91%E6%8E%A7/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -5786,6 +5873,20 @@ export const searchIndex = [
     "title": "LDAP 标签",
     "headers": [],
     "path": "/tag/ldap/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "UDS 标签",
+    "headers": [],
+    "path": "/tag/uds/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "打包 标签",
+    "headers": [],
+    "path": "/tag/%E6%89%93%E5%8C%85/",
     "pathLocale": "/",
     "extraFields": []
   },

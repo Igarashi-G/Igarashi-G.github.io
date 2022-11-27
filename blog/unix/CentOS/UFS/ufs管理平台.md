@@ -6,8 +6,6 @@ category:
 tag:
   - UFS
   - CLI
-star: true
-sticky: true
 ---
 
 **UFS** 管理平台常用快捷命令

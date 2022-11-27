@@ -585,7 +585,7 @@ dn:uid<span class="token operator">=</span>ldapuser1,ou<span class="token operat
 <blockquote>
 <p><strong>smbldap-tools</strong> 的软件包在 <strong>epel</strong> 库，可能需先安装 <strong>epel</strong> 源</p>
 </blockquote>
-<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code>$ yum Install <span class="token parameter variable">-y</span> smbldap-tools
+<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code>$ yum <span class="token function">install</span> <span class="token parameter variable">-y</span> smbldap-tools
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p><strong>smbldap</strong> 会从 <code v-pre>/etc/samba/smb.conf</code> 读取部分信息，使用如下命令配置</p>
 <div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code>$ smbldap-config
 
@@ -599,7 +599,10 @@ $ smbldap-useradd <span class="token parameter variable">-a</span> <span class="
 
 <span class="token comment"># 修改该用户的密码</span>
 $ smbldap-passwd igarashi 
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_5-2-其他-windows-管理工具" tabindex="-1"><a class="header-anchor" href="#_5-2-其他-windows-管理工具" aria-hidden="true">#</a> 5.2 其他 Windows 管理工具</h3>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><blockquote>
+<p><strong>注意：</strong> 如上方式加入用户，会默认使用客户端的 <strong>SID</strong> ，认证时需确认加入的节点同属于一个 <strong>SID</strong> （<em>服务端修改</em> ）</p>
+</blockquote>
+<h3 id="_5-2-其他-windows-管理工具" tabindex="-1"><a class="header-anchor" href="#_5-2-其他-windows-管理工具" aria-hidden="true">#</a> 5.2 其他 Windows 管理工具</h3>
 <ul>
 <li>
 <p><strong>apache Directory Studio</strong></p>

@@ -113,7 +113,7 @@ export default sidebar({
           text: "UFS",
           collapsable: true,
           prefix: "UFS/",
-          children: ["ufs管理平台", "ufs核心组件", "ufscli工具", "uus虚拟机排错"],
+          children: ["ufs管理平台", "ufs核心组件", "ufscli工具", "uus虚拟机排错", "iso构建以及发布"],
         },
         {
           text: "NFS",
@@ -246,6 +246,30 @@ export default sidebar({
         //   children: []
         // },
       ],
+    },
+  ],
+  "/go": [
+    {
+      text: "go",
+      icon: "go",
+      prefix: "/go/",
+      link: "/go/",
+      children: [
+        {
+          text: "基础",
+          icon: "guide",
+          collapsable: true,
+          prefix: "基础/",
+          children: [
+            {
+              text: "基础",
+              collapsable: true,
+              prefix: "基础/",
+              children: ["go语言速记"],
+            },
+          ]
+        },
+      ]
     },
   ],
   "/database/etcd": [

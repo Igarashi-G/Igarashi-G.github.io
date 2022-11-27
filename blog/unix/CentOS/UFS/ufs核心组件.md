@@ -5,8 +5,6 @@ category:
   - UFS
 tag:
   - UFS
-star: true
-sticky: true
 ---
 
 本文档提供 **UFS** 存储系统核心组件的配置说明

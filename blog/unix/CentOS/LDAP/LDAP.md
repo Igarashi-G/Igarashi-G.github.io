@@ -851,7 +851,7 @@ dn:uid=ldapuser1,ou=People,dc=lework,dc=com
 > **smbldap-tools** 的软件包在 **epel** 库，可能需先安装 **epel** 源
 
 ```shell
-$ yum Install -y smbldap-tools
+$ yum install -y smbldap-tools
 ```
 
 **smbldap** 会从 `/etc/samba/smb.conf` 读取部分信息，使用如下命令配置
@@ -874,6 +874,8 @@ $ smbldap-useradd -a -m igarashi -u 100001
 # 修改该用户的密码
 $ smbldap-passwd igarashi 
 ```
+
+> **注意：** 如上方式加入用户，会默认使用客户端的 **SID** ，认证时需确认加入的节点同属于一个 **SID** （*服务端修改* ） 
 
 ### 5.2 其他 Windows 管理工具
 

@@ -6,8 +6,10 @@
 <li><strong>Pod IP</strong> 仅仅是集群内可见的虚拟 <strong>IP</strong>，外部无法访问</li>
 <li><strong>Pod IP</strong> 会随着 <strong>Pod</strong> 销毁而消失，当 <strong>ReplicaSet</strong> 对 <strong>Pod</strong> 进行动态伸缩时，<strong>Pod IP</strong> 可能随时随地都会变化，对于访问服务带来了难度</li>
 </ul>
+<h4 id="那么什么是-serveice" tabindex="-1"><a class="header-anchor" href="#那么什么是-serveice" aria-hidden="true">#</a> 那么什么是 Serveice ？</h4>
+<p><strong>Service</strong> 是一组 <strong>Pod</strong> 的服务抽象（<em>一种可以访问 <strong>Pod</strong> 的策略</em> ），也可以简单理解为逻辑上一组 <strong>Pod</strong> 的 <strong>LB（<em>Load Balance</em>）</strong>，负责将请求分发给对应的 <strong>Pod</strong> ，用来给 <strong>Pod</strong> 通信的</p>
+<p><strong>svc</strong> 一旦创建，即使重建，名称也不会改变</p>
 <h3 id="_1-1-cluster-ip-负载均衡" tabindex="-1"><a class="header-anchor" href="#_1-1-cluster-ip-负载均衡" aria-hidden="true">#</a> 1.1 Cluster IP 负载均衡</h3>
-<p><strong>Service</strong> 是一组 <strong>Pod</strong> 的服务抽象，相当于一组 <strong>Pod</strong> 的 <strong>LB（<em>Load Balance</em>）</strong>，负责将请求分发给对应的<strong>Pod</strong></p>
 <p><strong>Service</strong> 会为这个 <strong>LB</strong> 提供一个 <strong>Cluster IP</strong> ，使用 <strong>Service</strong> 对象，通过 <strong>selector 进行标签选择</strong>，即可找到对应的 <strong>Pod</strong></p>
 <div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code><span class="token comment"># 每次都输入一串 kubectl xxx太累，可以起别名</span>
 $ <span class="token builtin class-name">alias</span> <span class="token assign-left variable">kd</span><span class="token operator">=</span><span class="token string">'kubectl -n uit'</span>
@@ -26,19 +28,20 @@ ublog-5ff678657f-tzspj   <span class="token number">1</span>/1     Running   <sp
   <span class="token key atrule">name</span><span class="token punctuation">:</span> ublog<span class="token punctuation">-</span>svc
   <span class="token key atrule">namespace</span><span class="token punctuation">:</span> uit
 <span class="token key atrule">spec</span><span class="token punctuation">:</span>
-  <span class="token key atrule">ports</span><span class="token punctuation">:</span>
-  <span class="token punctuation">-</span> <span class="token key atrule">port</span><span class="token punctuation">:</span> <span class="token number">80</span>
-    <span class="token key atrule">protocol</span><span class="token punctuation">:</span> TCP
-    <span class="token key atrule">targetPort</span><span class="token punctuation">:</span> <span class="token number">8002</span>
+  <span class="token key atrule">ports</span><span class="token punctuation">:</span>					<span class="token comment"># 若如 Nginx 有 80、443 则可以指定多个端口</span>
+  <span class="token punctuation">-</span> <span class="token key atrule">port</span><span class="token punctuation">:</span> <span class="token number">80</span>				<span class="token comment"># Service 的端口 </span>
+    <span class="token key atrule">protocol</span><span class="token punctuation">:</span> TCP			<span class="token comment"># 协议: UDP、TCP、SCTP  default: TCP</span>
+    <span class="token key atrule">targetPort</span><span class="token punctuation">:</span> <span class="token number">8002</span>		<span class="token comment"># 后端应用的端口</span>
   <span class="token key atrule">selector</span><span class="token punctuation">:</span>
-    <span class="token key atrule">app</span><span class="token punctuation">:</span> myblog
+    <span class="token key atrule">app</span><span class="token punctuation">:</span> myblog				<span class="token comment"># 通过标签过滤并选择应用</span>
   <span class="token key atrule">type</span><span class="token punctuation">:</span> ClusterIP
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>创建 <strong>Service</strong> 并查看</p>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>如上配置端口，<strong>ServiceA</strong> 访问 <strong>ServiceB</strong> 可利用  <code v-pre>servicea --&gt; serviceb http://serviceb</code>，若端口非 <strong>80</strong>  , 假如是 <strong>8080</strong> 则通过  <code v-pre>http://serviceb:8080</code> 即可</p>
+<p>创建 <strong>Service</strong> 并查看</p>
 <div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code><span class="token comment"># 创建 svc</span>
 $ kubectl create <span class="token parameter variable">-f</span> svc-ublog.yaml 
 service/svc-ublog created
 
-<span class="token comment"># 查看 svc，此时已经创建了 CLUSTER-IP 10.105.146.135 80 端口的服务</span>
+<span class="token comment"># 查看 svc，此时已创建了 CLUSTER-IP 10.105.146.135 80 端口的服务（建议自动生成 ClusterIP 而非指定）</span>
 $ kubectl <span class="token parameter variable">-nuit</span> get svc
 NAME        TYPE        CLUSTER-IP       EXTERNAL-IP   PORT<span class="token punctuation">(</span>S<span class="token punctuation">)</span>   AGE
 svc-ublog   ClusterIP   <span class="token number">10.105</span>.146.135   <span class="token operator">&lt;</span>none<span class="token operator">></span>        <span class="token number">80</span>/TCP    7m51s
@@ -82,7 +85,7 @@ Session Affinity:  None
 Events:            <span class="token operator">&lt;</span>none<span class="token operator">></span>
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="custom-container tip">
 <p class="custom-container-title">提示</p>
-<p>创建 <strong>Service</strong>时，会创建同名的 <strong>endpoints</strong> 对象，若 <strong>Pod</strong> 上配置了 <code v-pre>readinessProbe</code>，检测失败时，<strong>endpoints</strong> 列表会剔除掉对应的 <strong>Pod IP</strong>，这样流量就不会分发到健康检测失败的 <strong>Pod</strong> 上</p>
+<p>创建 <strong>Service</strong>时，会创建同名的 <strong>endpoints</strong> 对象，若 <strong>Pod</strong> 上配置了 <strong>readinessProbe</strong>，检测失败时，<strong>endpoints</strong> 列表会剔除掉对应的 <strong>Pod IP</strong>，这样流量就不会分发到健康检测失败的 <strong>Pod</strong> 上</p>
 <div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code>$ kubectl <span class="token parameter variable">-n</span> uit get endpoints svc-ublog
 NAME        ENDPOINTS                           AGE
 svc-ublog   <span class="token number">10.244</span>.1.35:8002,10.244.2.32:8002   21m
@@ -111,15 +114,15 @@ svc-mysql   ClusterIP   <span class="token number">10.98</span>.22.166   <span c
 
 $ <span class="token function">curl</span> <span class="token number">10.98</span>.22.166:3306
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="custom-container warning">
-<p class="custom-container-title">hostNetwork 部署，通过宿主机 ip:port 形式访问，有如下弊端</p>
+<p class="custom-container-title">若用 hostNetwork 部署，通过宿主机 ip:port 形式访问，会有如下弊端</p>
 <ul>
 <li>服务使用 <strong>hostNetwork</strong>，使得宿主机的端口大量暴漏，<strong>存在安全隐患</strong></li>
 <li>容易引发端口冲突</li>
 </ul>
-<p>因此，应该为 <strong>MySQL</strong> 创建固定 <strong>Cluster IP</strong> 的 <strong>Service</strong>，并配到 <strong>ublog</strong> 的环境变量中，利用集群服务发现的能力，组件间通过 <strong>service name</strong> 访问</p>
+<p>因此，应该为 <strong>MySQL</strong> 创建 <strong>Service</strong>，并配到 <strong>ublog</strong> 的环境变量中，利用集群服务发现的能力，组件间通过 <strong>Service Name</strong> 访问</p>
 </div>
 <h3 id="_1-2-服务发现-环境变量去-ip-化" tabindex="-1"><a class="header-anchor" href="#_1-2-服务发现-环境变量去-ip-化" aria-hidden="true">#</a> 1.2 服务发现（<em>环境变量去 IP 化</em> ）</h3>
-<p><strong>k8s</strong> 集群中，组件间可以通过 <strong>service name</strong> 实现通信，<strong>Pods</strong> 间，无需通过 <strong>固定环境变量 IP</strong> 的形式</p>
+<p><strong>k8s</strong> 集群中，组件间可以通过 <strong>Service Name</strong> 实现通信，<strong>Pods</strong> 间，无需通过 <strong>固定环境变量 IP</strong> 的形式</p>
 <div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code><span class="token comment"># 查看上文创建的 svc</span>
 $ kubectl <span class="token parameter variable">-n</span> uit get svc svc-mysql
 NAME        TYPE        CLUSTER-IP     EXTERNAL-IP   PORT<span class="token punctuation">(</span>S<span class="token punctuation">)</span>    AGE
@@ -133,7 +136,7 @@ $ kubectl <span class="token parameter variable">-n</span> uit <span class="toke
 
 <span class="token comment"># curl svc-mysql，发现依然可正常连通 MySQL，</span>
 <span class="token function">curl</span> svc-mysql:3306
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>尽管 <strong>Pod IP</strong> 和 <strong>Cluster IP</strong> 都不固定，但 <strong>service name</strong> 是固定的，且完全具有跨集群的可移植性，实现原理如下</p>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>尽管 <strong>Pod IP</strong> 和 <strong>Cluster IP</strong> 都不固定（<em><strong>重启会变更</strong></em> ），但 <strong>service name</strong> 是固定的，且完全具有跨集群的可移植性，实现原理如下</p>
 <div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code><span class="token comment"># 查看当前的 DNS 配置，发现有个 10.96.0.10 的 IP</span>
 <span class="token function">cat</span> /etc/resolv.conf 
 nameserver <span class="token number">10.96</span>.0.10
@@ -150,7 +153,7 @@ kubernetes-dashboard   kubernetes-dashboard        NodePort    <span class="toke
 uit                    svc-mysql                   ClusterIP   <span class="token number">10.98</span>.22.166     <span class="token operator">&lt;</span>none<span class="token operator">></span>        <span class="token number">3306</span>/TCP                 157m
 uit                    svc-ublog                   ClusterIP   <span class="token number">10.105</span>.146.135   <span class="token operator">&lt;</span>none<span class="token operator">></span>        <span class="token number">80</span>/TCP                   3h5m
 
-<span class="token comment"># 查看 kube-dns 这个 service，查找选择器 Selector 是 k8s-app=kube-dns 这个标签</span>
+<span class="token comment"># 查看 kube-dns 这个 service 详情，发现选择器 Selector 选了 k8s-app=kube-dns 这个标签</span>
 $ kubectl <span class="token parameter variable">-n</span> kube-system describe svc kube-dns
 Name:              kube-dns
 Namespace:         kube-system
@@ -174,13 +177,13 @@ Endpoints:         <span class="token number">10.244</span>.0.5:9153,10.244.0.6:
 Session Affinity:  None
 Events:            <span class="token operator">&lt;</span>none<span class="token operator">></span>
 
-<span class="token comment"># 根据 选择器 找Pod，发现是初始化时 coredns 用的</span>
-$ kubectl <span class="token parameter variable">-n</span> kube-system get po <span class="token parameter variable">-l</span> k8s-app<span class="token operator">=</span>kube-dns <span class="token parameter variable">-o</span> wide
+<span class="token comment"># 根据 选择器的标签过滤 找Pod，发现是初始化时的 coredns </span>
+$ kubectl <span class="token parameter variable">-n</span> kube-system get po <span class="token parameter variable">-l</span> k8s-app<span class="token operator">=</span>kube-dns <span class="token parameter variable">-owide</span>
 NAME                       READY   STATUS    RESTARTS   AGE   IP           NODE             NOMINATED NODE   READINESS GATES
 coredns-58cc8c89f4-hzprn   <span class="token number">1</span>/1     Running   <span class="token number">1</span>          23d   <span class="token number">10.244</span>.0.5   k8s-master-171   <span class="token operator">&lt;</span>none<span class="token operator">></span>           <span class="token operator">&lt;</span>none<span class="token operator">></span>
 coredns-58cc8c89f4-vvj77   <span class="token number">1</span>/1     Running   <span class="token number">2</span>          23d   <span class="token number">10.244</span>.0.6   k8s-master-171   <span class="token operator">&lt;</span>none<span class="token operator">></span>           <span class="token operator">&lt;</span>none<span class="token operator">></span>
 
-<span class="token string">"初始化时创建了 coredns 然后建立 kube-dns 这个service（固定IP），然后新建 Pod 就可注入到 DNS 配置中，最终解析的就是 coredns 的 IP, coredns 见 2.4"</span>
+<span class="token variable"><span class="token variable">`</span>初始化时创建了 coredns 然后建立 kube-dns 这个service（固定IP），后续新建 Pod 便可注入到 DNS 配置中，最终解析的就是 coredns 的 IP, coredns 见 <span class="token number">2.4</span><span class="token variable">`</span></span>
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>故容器内部组件间调用，完全可以通过 <strong>service name</strong>（类似域名）来解析 <strong>IP</strong> 通信，避免了大量 <strong>IP</strong> 维护的成本，因此再次对部署进行优化改造</p>
 <ol>
 <li>
@@ -190,14 +193,14 @@ coredns-58cc8c89f4-vvj77   <span class="token number">1</span>/1     Running   <
 <span class="token punctuation">...</span>
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></li>
 <li>
-<p><strong>configMap</strong> 中的数据库固定 <strong>IP</strong> 地址换成 <strong>service name</strong>，这样跨环境的时候，配置内容基本上可以保持不用变化</p>
+<p><strong>configMap</strong> 中的数据库 <strong>HOST</strong> 固定的 <strong>IP</strong> 地址换成 <strong>Service Name</strong>，这样跨环境时，配置内容可保持不变</p>
 <div class="language-yaml ext-yml line-numbers-mode"><pre v-pre class="language-yaml"><code><span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> v1
 <span class="token key atrule">kind</span><span class="token punctuation">:</span> ConfigMap
 <span class="token key atrule">metadata</span><span class="token punctuation">:</span>
   <span class="token key atrule">name</span><span class="token punctuation">:</span> ublog
   <span class="token key atrule">namespace</span><span class="token punctuation">:</span> uit
 <span class="token key atrule">data</span><span class="token punctuation">:</span>
-  <span class="token key atrule">MYSQL_HOST</span><span class="token punctuation">:</span> <span class="token string">"svc-mysql"</span>     <span class="token comment"># 此处替换为mysql</span>
+  <span class="token key atrule">MYSQL_HOST</span><span class="token punctuation">:</span> <span class="token string">"svc-mysql"</span>     <span class="token comment"># 此处替换为上文给 MySQL 创建的 Service</span>
   <span class="token key atrule">MYSQL_PORT</span><span class="token punctuation">:</span> <span class="token string">"3306"</span>
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>重新执行</p>
 <div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code>$ kubectl apply <span class="token parameter variable">-f</span> configmap.yaml
