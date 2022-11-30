@@ -584,9 +584,9 @@ docker run -it --cpu-period=50000 --cpu-quota=25000 ubuntu:20.04 /bin/bash
 
 :::
 
-### 3.6 优化改造
+### 3.6 ConfigMap 和 Secret（*配置* ）
 
- 在真实使用场景中，上述 **Pod** 存在如下问题需要优化
+ 在真实使用场景中，上述 **Pod** 存在如下问题需要 **优化**
 
 - **中间件应作为公共资源** （*数据库、MQ、Cache 等* ），为多个项目提供服务
   - 不适合与业务容器绑定同一 **Pod** ，因为业务容器往往经常变更，而中间件则很少迭代
@@ -627,7 +627,7 @@ MYSQL_PORT=3306
 $ kubectl -n uit create configmap ublog --from-env-file=configmap.txt
 ```
 
-#### **secret（*密码* ）** 
+#### **Secret（*密码* ）** 
 
 常用来管理 **敏感类** 的信息，默认会 **base64** 编码存储，有三种类型
 

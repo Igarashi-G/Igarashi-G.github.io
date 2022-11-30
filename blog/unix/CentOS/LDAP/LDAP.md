@@ -879,6 +879,151 @@ $ smbldap-passwd igarashi
 
 ### 5.2 其他 Windows 管理工具
 
+- **ldapadmin**
 - **apache Directory Studio**
 
-- **ldapadmin**
+
+
+## 6. 加域配置
+
+以上述搭建环境 **uit.ldevops.local** 为例 ，现有目标节点 **172.16.120.141** 待加入域
+
+- **ip: 172.16.120.145** 
+- **域管理员: cloud**
+- **绑定DN：cn=cloud,dc=uit,dc=ldevops,dc=local**
+
+修改 **Samba** 配置文件
+
+```ini
+$ vim /etc/samba/smb.conf
+
+[global]
+workgroup = UIT
+netbios name = node141
+security = user
+passdb backend = ldapsam:ldap://172.16.120.145
+ldap suffix = "dc=uit,dc=ldevops,dc=local"
+ldap group suffix = "cn=group"
+ldap user suffix = "ou=people"
+ldap admin dn = "cn=cloud,dc=uit,dc=ldevops,dc=local"
+ldap delete dn = no
+pam password change = yes
+ldap passwd sync = yes
+ldap ssl = no
+
+# optimization
+sync always = no
+write cache size = 10485760
+socket options = TCP_NODELAY IPTOS_LOWDELAY SO_RCVBUF=131072 SO_SNDBUF=131072
+use sendfile = yes
+min receivefile size = 131072
+
+# common params
+log file = /var/log/samba/%m.log
+max log size = 50
+printcap name = /etc/printcap
+load printers = no
+wins server =
+unix charset = utf-8
+dos charset = cp936
+dns proxy = no
+delete readonly = yes
+create mask = 0777
+directory mask = 0777
+force create mode = 0777
+force directory mode = 0777
+template shell = /bin/false
+map to guest = bad user
+null passwords = yes
+usershare allow guests = yes
+include = /etc/samba/smb_shares.conf
+```
+
+::: danger 特别注意
+
+**include** 共享文件路径参数，必须放在最后
+
+:::
+
+修改 **nsswitch**
+
+```ini
+$ vim /etc/nsswitch
+
+passwd:        files ldap
+shadow:        files ldap
+group:         files ldap
+hosts:         files dns ldap
+bootparams:    files
+ethers:        files
+networks:      files
+protocols:     files
+rpc:           files
+services:      files
+netgroup:      files
+publickey:     files
+automount:     files
+aliases:       files
+```
+
+修改 **nslcd**
+
+```ini
+$ vim /etc/nslcd.conf
+
+uid nslcd
+gid ldap
+uri ldap://172.16.120.145/
+base dc=uit,dc=ldevops,dc=local
+ssl no
+binddn cn=cloud,dc=uit,dc=ldevops,dc=local
+bindpw user@dev
+filter passwd (objectclass=*)
+filter shadow (objectclass=*)
+filter group  (objectclass=*)
+```
+
+修改 **hosts**
+
+```ini
+$ vim /etc/hosts
+
+172.16.120.145 uit.ldevops.local
+```
+
+加域验证操作
+
+```shell
+# 重启一系列服务
+systemctl restart nmb
+systemctl restart nslcd
+systemctl restart smb
+
+# 重启成功此时应该可以列出域用户
+$ getent passwd
+
+# 若有问题，先查看 Samba 配置文件是否正确
+$ testparm 
+
+# 验证 Samba DB 是否能显示域用户的 SID
+$ pdbedit -L
+igarashi:1000001:igarashi
+jackson:150001:jackson
+sasaki:100002:sasaki
+jack:200041:jack
+sid S-1-5-21-336872314-1070286693-535668972-1001 does not belong to our domain
+
+`最后一个 sid 则表示非域内用户，若Samba访问会显示 安全ID 结构无效，解决方式参考如下`
+```
+
+**成功加入域的检测方式：** 上述步骤正确，服务正常，且在 **ldap** 服务端可以查看到加入节点的域名，则表示成功（*加入域后，服务端会自动注册节点的 **hostname** 信息* ）
+
+<img src="./img/ldap加域节点信息.png">
+
+::: info 注意
+
+若连接多个域，可能需要在服务端将每个节点自动生成的 **SID** 都改为域用户一致的 **SID**（*可用上述工具  **smbldap-tool** 方便的生成域用户* ）
+
+若用户有（*不在服务端改写数据*）的需求，获取考虑获取域用户的 **SID**，然后重新对加域节点的 **SID** 进行改写一致操作，这一开始也许是为了多个域的不同域用户而设计的，实际需根据客户现场环境考虑
+
+:::

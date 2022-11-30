@@ -604,13 +604,125 @@ $ smbldap-passwd igarashi
 </blockquote>
 <h3 id="_5-2-其他-windows-管理工具" tabindex="-1"><a class="header-anchor" href="#_5-2-其他-windows-管理工具" aria-hidden="true">#</a> 5.2 其他 Windows 管理工具</h3>
 <ul>
-<li>
-<p><strong>apache Directory Studio</strong></p>
-</li>
-<li>
-<p><strong>ldapadmin</strong></p>
-</li>
+<li><strong>ldapadmin</strong></li>
+<li><strong>apache Directory Studio</strong></li>
 </ul>
+<h2 id="_6-加域配置" tabindex="-1"><a class="header-anchor" href="#_6-加域配置" aria-hidden="true">#</a> 6. 加域配置</h2>
+<p>以上述搭建环境 <strong>uit.ldevops.local</strong> 为例 ，现有目标节点 <strong>172.16.120.141</strong> 待加入域</p>
+<ul>
+<li><strong>ip: 172.16.120.145</strong></li>
+<li><strong>域管理员: cloud</strong></li>
+<li><strong>绑定DN：cn=cloud,dc=uit,dc=ldevops,dc=local</strong></li>
+</ul>
+<p>修改 <strong>Samba</strong> 配置文件</p>
+<div class="language-ini ext-ini line-numbers-mode"><pre v-pre class="language-ini"><code>$ vim /etc/samba/smb.conf
+
+<span class="token section"><span class="token punctuation">[</span><span class="token section-name selector">global</span><span class="token punctuation">]</span></span>
+<span class="token key attr-name">workgroup</span> <span class="token punctuation">=</span> <span class="token value attr-value">UIT</span>
+<span class="token key attr-name">netbios name</span> <span class="token punctuation">=</span> <span class="token value attr-value">node141</span>
+<span class="token key attr-name">security</span> <span class="token punctuation">=</span> <span class="token value attr-value">user</span>
+<span class="token key attr-name">passdb backend</span> <span class="token punctuation">=</span> <span class="token value attr-value">ldapsam:ldap://172.16.120.145</span>
+<span class="token key attr-name">ldap suffix</span> <span class="token punctuation">=</span> <span class="token value attr-value">"<span class="token inner-value">dc=uit,dc=ldevops,dc=local</span>"</span>
+<span class="token key attr-name">ldap group suffix</span> <span class="token punctuation">=</span> <span class="token value attr-value">"<span class="token inner-value">cn=group</span>"</span>
+<span class="token key attr-name">ldap user suffix</span> <span class="token punctuation">=</span> <span class="token value attr-value">"<span class="token inner-value">ou=people</span>"</span>
+<span class="token key attr-name">ldap admin dn</span> <span class="token punctuation">=</span> <span class="token value attr-value">"<span class="token inner-value">cn=cloud,dc=uit,dc=ldevops,dc=local</span>"</span>
+<span class="token key attr-name">ldap delete dn</span> <span class="token punctuation">=</span> <span class="token value attr-value">no</span>
+<span class="token key attr-name">pam password change</span> <span class="token punctuation">=</span> <span class="token value attr-value">yes</span>
+<span class="token key attr-name">ldap passwd sync</span> <span class="token punctuation">=</span> <span class="token value attr-value">yes</span>
+<span class="token key attr-name">ldap ssl</span> <span class="token punctuation">=</span> <span class="token value attr-value">no</span>
+
+<span class="token comment"># optimization</span>
+<span class="token key attr-name">sync always</span> <span class="token punctuation">=</span> <span class="token value attr-value">no</span>
+<span class="token key attr-name">write cache size</span> <span class="token punctuation">=</span> <span class="token value attr-value">10485760</span>
+<span class="token key attr-name">socket options</span> <span class="token punctuation">=</span> <span class="token value attr-value">TCP_NODELAY IPTOS_LOWDELAY SO_RCVBUF=131072 SO_SNDBUF=131072</span>
+<span class="token key attr-name">use sendfile</span> <span class="token punctuation">=</span> <span class="token value attr-value">yes</span>
+<span class="token key attr-name">min receivefile size</span> <span class="token punctuation">=</span> <span class="token value attr-value">131072</span>
+
+<span class="token comment"># common params</span>
+<span class="token key attr-name">log file</span> <span class="token punctuation">=</span> <span class="token value attr-value">/var/log/samba/%m.log</span>
+<span class="token key attr-name">max log size</span> <span class="token punctuation">=</span> <span class="token value attr-value">50</span>
+<span class="token key attr-name">printcap name</span> <span class="token punctuation">=</span> <span class="token value attr-value">/etc/printcap</span>
+<span class="token key attr-name">load printers</span> <span class="token punctuation">=</span> <span class="token value attr-value">no</span>
+<span class="token key attr-name">wins server</span> <span class="token punctuation">=</span>
+<span class="token key attr-name">unix charset</span> <span class="token punctuation">=</span> <span class="token value attr-value">utf-8</span>
+<span class="token key attr-name">dos charset</span> <span class="token punctuation">=</span> <span class="token value attr-value">cp936</span>
+<span class="token key attr-name">dns proxy</span> <span class="token punctuation">=</span> <span class="token value attr-value">no</span>
+<span class="token key attr-name">delete readonly</span> <span class="token punctuation">=</span> <span class="token value attr-value">yes</span>
+<span class="token key attr-name">create mask</span> <span class="token punctuation">=</span> <span class="token value attr-value">0777</span>
+<span class="token key attr-name">directory mask</span> <span class="token punctuation">=</span> <span class="token value attr-value">0777</span>
+<span class="token key attr-name">force create mode</span> <span class="token punctuation">=</span> <span class="token value attr-value">0777</span>
+<span class="token key attr-name">force directory mode</span> <span class="token punctuation">=</span> <span class="token value attr-value">0777</span>
+<span class="token key attr-name">template shell</span> <span class="token punctuation">=</span> <span class="token value attr-value">/bin/false</span>
+<span class="token key attr-name">map to guest</span> <span class="token punctuation">=</span> <span class="token value attr-value">bad user</span>
+<span class="token key attr-name">null passwords</span> <span class="token punctuation">=</span> <span class="token value attr-value">yes</span>
+<span class="token key attr-name">usershare allow guests</span> <span class="token punctuation">=</span> <span class="token value attr-value">yes</span>
+<span class="token key attr-name">include</span> <span class="token punctuation">=</span> <span class="token value attr-value">/etc/samba/smb_shares.conf</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="custom-container danger">
+<p class="custom-container-title">特别注意</p>
+<p><strong>include</strong> 共享文件路径参数，必须放在最后</p>
+</div>
+<p>修改 <strong>nsswitch</strong></p>
+<div class="language-ini ext-ini line-numbers-mode"><pre v-pre class="language-ini"><code>$ vim /etc/nsswitch
+
+passwd:        files ldap
+shadow:        files ldap
+group:         files ldap
+hosts:         files dns ldap
+bootparams:    files
+ethers:        files
+networks:      files
+protocols:     files
+rpc:           files
+services:      files
+netgroup:      files
+publickey:     files
+automount:     files
+aliases:       files
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>修改 <strong>nslcd</strong></p>
+<div class="language-ini ext-ini line-numbers-mode"><pre v-pre class="language-ini"><code>$ vim /etc/nslcd.conf
+
+uid nslcd
+gid ldap
+uri ldap://172.16.120.145/
+<span class="token key attr-name">base dc</span><span class="token punctuation">=</span><span class="token value attr-value">uit,dc=ldevops,dc=local</span>
+ssl no
+<span class="token key attr-name">binddn cn</span><span class="token punctuation">=</span><span class="token value attr-value">cloud,dc=uit,dc=ldevops,dc=local</span>
+bindpw user@dev
+<span class="token key attr-name">filter passwd (objectclass</span><span class="token punctuation">=</span><span class="token value attr-value">*)</span>
+<span class="token key attr-name">filter shadow (objectclass</span><span class="token punctuation">=</span><span class="token value attr-value">*)</span>
+<span class="token key attr-name">filter group  (objectclass</span><span class="token punctuation">=</span><span class="token value attr-value">*)</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>修改 <strong>hosts</strong></p>
+<div class="language-ini ext-ini line-numbers-mode"><pre v-pre class="language-ini"><code>$ vim /etc/hosts
+
+172.16.120.145 uit.ldevops.local
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>加域验证操作</p>
+<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code><span class="token comment"># 重启一系列服务</span>
+systemctl restart nmb
+systemctl restart nslcd
+systemctl restart smb
+
+<span class="token comment"># 重启成功此时应该可以列出域用户</span>
+$ getent <span class="token function">passwd</span>
+
+<span class="token comment"># 若有问题，先查看 Samba 配置文件是否正确</span>
+$ testparm 
+
+<span class="token comment"># 验证 Samba DB 是否能显示域用户的 SID</span>
+$ pdbedit <span class="token parameter variable">-L</span>
+igarashi:1000001:igarashi
+jackson:150001:jackson
+sasaki:100002:sasaki
+jack:200041:jack
+sid S-1-5-21-336872314-1070286693-535668972-1001 does not belong to our domain
+
+<span class="token variable"><span class="token variable">`</span>最后一个 sid 则表示非域内用户，若Samba访问会显示 安全ID 结构无效，解决方式参考如下<span class="token variable">`</span></span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p><strong>成功加入域的检测方式：</strong> 上述步骤正确，服务正常，且在 <strong>ldap</strong> 服务端可以查看到加入节点的域名，则表示成功（<em>加入域后，服务端会自动注册节点的 <strong>hostname</strong> 信息</em> ）</p>
+<img src="@source/unix/CentOS/LDAP/img/ldap加域节点信息.png">
+<div class="custom-container info">
+<p class="custom-container-title">注意</p>
+<p>若连接多个域，可能需要在服务端将每个节点自动生成的 <strong>SID</strong> 都改为域用户一致的 <strong>SID</strong>（<em>可用上述工具  <strong>smbldap-tool</strong> 方便的生成域用户</em> ）</p>
+<p>若用户有（<em>不在服务端改写数据</em>）的需求，获取考虑获取域用户的 <strong>SID</strong>，然后重新对加域节点的 <strong>SID</strong> 进行改写一致操作，这一开始也许是为了多个域的不同域用户而设计的，实际需根据客户现场环境考虑</p>
+</div>
 </div></template>
 
 

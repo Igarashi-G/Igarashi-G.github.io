@@ -20,13 +20,25 @@ star: true
 - **Pod IP** 仅仅是集群内可见的虚拟 **IP**，外部无法访问
 - **Pod IP** 会随着 **Pod** 销毁而消失，当 **ReplicaSet** 对 **Pod** 进行动态伸缩时，**Pod IP** 可能随时随地都会变化，对于访问服务带来了难度
 
+
+
 #### 那么什么是 Serveice ？
 
 **Service** 是一组 **Pod** 的服务抽象（*一种可以访问 **Pod** 的策略* ），也可以简单理解为逻辑上一组 **Pod** 的 **LB（*Load Balance*）**，负责将请求分发给对应的 **Pod** ，用来给 **Pod** 通信的
 
 **svc** 一旦创建，即使重建，名称也不会改变 
 
-### 1.1 Cluster IP 负载均衡
+
+
+#### 类型如下
+
+- **Cluster IP：** 集群内部使用，默认值，用于负载
+- **ExternalName：** 返回定义的 **CNAME** 别名，用于反代域名
+- **NodePort：** 在所有安装了 **kube-proxy** 的节点上，打开一个可供外部访问 **pod** 的端口
+- **loadBalancer：** 使用云提供商的负载均衡器公开服务
+  - 如：阿里、腾讯云支持该格式，发请求并生成 **IP** 地址
+
+### 1.1 Cluster IP（*负载均衡* ）
 
 **Service** 会为这个 **LB** 提供一个 **Cluster IP** ，使用 **Service** 对象，通过 **selector 进行标签选择**，即可找到对应的 **Pod** 
 
@@ -55,7 +67,7 @@ spec:
   ports:					# 若如 Nginx 有 80、443 则可以指定多个端口
   - port: 80				# Service 的端口 
     protocol: TCP			# 协议: UDP、TCP、SCTP  default: TCP
-    targetPort: 8002		# 后端应用的端口
+    targetPort: 8002		# 后端应用的端口（容器服务的）
   selector:
     app: myblog				# 通过标签过滤并选择应用
   type: ClusterIP
@@ -116,7 +128,7 @@ Events:            <none>
 
 ::: tip 
 
-创建 **Service**时，会创建同名的 **endpoints** 对象，若 **Pod** 上配置了 **readinessProbe**，检测失败时，**endpoints** 列表会剔除掉对应的 **Pod IP**，这样流量就不会分发到健康检测失败的 **Pod** 上
+创建 **Service** 时，若配置标签选择 **pod** ，会收集其 **IP**，自动创建同名的 **endpoints** 对象，若 **Pod** 上配置了 **readinessProbe**，检测失败时，**endpoints** 列表会剔除掉对应的 **Pod IP**，这样流量就不会分发到健康检测失败的 **Pod** 上
 
 ```shell
 $ kubectl -n uit get endpoints svc-ublog
@@ -186,7 +198,7 @@ curl 10.98.22.166:3306
 curl svc-mysql:3306
 ```
 
-尽管 **Pod IP** 和 **Cluster IP** 都不固定（***重启会变更*** ），但 **service name** 是固定的，且完全具有跨集群的可移植性，实现原理如下
+尽管 **Pod IP** 和 **Cluster IP** 都不固定（***重启会变更*** ），但 **Service Name** 是固定的，且完全具有跨集群的可移植性，实现原理如下
 
 ```shell
 # 查看当前的 DNS 配置，发现有个 10.96.0.10 的 IP
@@ -205,7 +217,7 @@ kubernetes-dashboard   kubernetes-dashboard        NodePort    10.97.63.15      
 uit                    svc-mysql                   ClusterIP   10.98.22.166     <none>        3306/TCP                 157m
 uit                    svc-ublog                   ClusterIP   10.105.146.135   <none>        80/TCP                   3h5m
 
-# 查看 kube-dns 这个 service 详情，发现选择器 Selector 选了 k8s-app=kube-dns 这个标签
+# 查看 kube-dns 这个 Service 详情，发现选择器 Selector 选了 k8s-app=kube-dns 这个标签
 $ kubectl -n kube-system describe svc kube-dns
 Name:              kube-dns
 Namespace:         kube-system
@@ -238,7 +250,7 @@ coredns-58cc8c89f4-vvj77   1/1     Running   2          23d   10.244.0.6   k8s-m
 `初始化时创建了 coredns 然后建立 kube-dns 这个service（固定IP），后续新建 Pod 便可注入到 DNS 配置中，最终解析的就是 coredns 的 IP, coredns 见 2.4`
 ```
 
-故容器内部组件间调用，完全可以通过 **service name**（类似域名）来解析 **IP** 通信，避免了大量 **IP** 维护的成本，因此再次对部署进行优化改造
+故容器内部组件间调用，完全可以通过 **Service Name**（类似域名）来解析 **IP** 通信，避免了大量 **IP** 维护的成本，因此再次对部署进行优化改造
 
 1. **MySQL** 去掉 **hostNetwork** 部署，使得服务只暴露在 **k8s** 集群内部网络环境中
 
@@ -272,11 +284,24 @@ coredns-58cc8c89f4-vvj77   1/1     Running   2          23d   10.244.0.6   k8s-m
    $ kubectl -n uit create configmap ublog --from-env-file=configmap.txt
    ```
 
+::: tip
+
+同一个 **NameSpace** 下，可以直接通过 **ServiceName** 来进行访问，而跨 **NameSpace** 访问，需要 **ServiceName + 后缀 .namespace** 的方式访问
+
+:::
+
 ### 1.3 NodePort（*外部访问* ）
 
 **Cluster IP** 为虚拟地址，只能在 **k8s** 集群内部进行访问，集群外部如果访问内部服务，可以配置 **NodePort**
 
-- 若不指定 **NodePort** 端口，则会默认在 **30000-32767（*端口号* ）** 中随机使用其中一个
+若不指定 **NodePort** 端口，则会默认在 **30000-32767（*端口号* ）** 中随机使用其中一个
+
+#### 使用场景
+
+通常用于 **临时** 需要访问 **MySQL** 之类的中间件才使用，性能差，**不推荐使用**
+
+- **Service** 一旦变多，其性能也随之大幅下降
+- 维护各种端口的成本过高、太复杂，推荐使用 **ingress**
 
 ```yaml
 apiVersion: v1
@@ -472,15 +497,156 @@ $ kubectl taint node k8s-slave2 drunk-
 # myblog不用动，会自动因健康检测不过而重启
 ```
 
+### 1.5 Endpoints 代理外部应用（*代理* ）
+
+经常有需要代理 **k8s** 外部应用的需求，**应用场景如下** 
+
+- 希望在生产环境上使用固定名称（*如：服务名* ），而非通过 **IP** 地址去访问外部的中间件服务
+  - 如: 不希望各团队维护不同 **k8s** 集群时，还维护各种中间件的配置文件，此时可以直接通过 **svc** 反代来统一配置文件
+- 希望 **Service** 指向另一个**NameSpace** 中或 **其他集群** 中的服务
+  - 比如: **一些外部的存储集群的管理平台** 不去部署于 **k8s** 中，此时也可通过 **k8s** 的服务进行代理  
+  - 跨命名空间时不想使用 **.namespace** 后缀形式访问（*不推荐* ）
+- 某个项目正在迁移至 **k8s** 集群，但一部分服务依然在集群外，此时可使用 **Service** 代理至 **k8s** 集群外部的服务（*避免迁移重启* ）
+  - 比如：之前 **Web** 通过 **172.16.120.111** 形式访问数据库，**Web** 迁过来改为通过 **Service 代理形式** 访问，再将数据库迁移过来时无需重启 **Web** 服务
+
+#### 反代 IP
+
+以代理百度为例，先编写 **svc** 文件
+
+```ini
+$ kubectl -n dev get svc -o yaml > svc-proxy.yaml
+$ vim svc-proxy.yaml
+
+----------------------------
+apiVersion: v1
+kind: Services
+metadata:
+  label:
+    app: svc-poroxy
+  name: svc-proxy
+  namespace: dev
+spce:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 80
+  sessionAffinity: None
+  type: ClusterIP
+
+----------------------------
+
+$ kubectl create -f svc-proxy.yaml
+$ kubectl -n dev get svc
+
+NAME        TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)   AGE
+svc-nignx   ClusterIP   None             <none>        80/TCP    29d
+svc-proxy   ClusterIP   10.100.128.239   <none>        80/TCP    11h
+```
+
+此时查看 **svc** 可获取自动分配的 **IP**，接下来编写 **endpoints** 来关联代理
+
+```ini
+# 先获取百度目前的IP
+$ ping www.baidu.com
+64 bytes from 14.215.177.38 (14.215.177.38): icmp_seq=1 ttl=56 time=6.87 ms
+
+# 编写 endpoints
+$ vim ep-proxy.yaml
+
+----------------------------
+apiVersion: v1
+kind: Endpoints
+metadata:
+  label:
+    app: svc-poroxy		# 需和 svc 的一致来进行关联
+  name: svc-proxy
+  namespace: dev
+subsets:				# 
+- addresses:
+  - ip: 14.215.177.38	# 填写代理的IP地址
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP		# 协议需和 svc 的一致
+    
+----------------------------
+
+$ kubectl apply -f ep-proxy.yaml
+#此时 svc 关联的 ep 已生成，且会随着 svc 的消失而消失
+$ kubectl -n dev get ep
+
+# curl svc 的 IP 此时发现有相应
+$ curl 10.100.128.239 -I
+```
+
+若更换了 **IP** 无需重启应用程序，只需要改动 **endpoints** 文件的 `ip` ，然后 `kubectl replace -f` 即可
+
+#### ExternalName（*反代域名* ）
+
+若需反代域名，则需要更改 **svc** 的类型为 **ExternalName** 
+
+```ini
+vim svc-proxyName.yaml
+----------------------------
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: svc-proxy-name
+  name: svc-proxy-name
+  namespace: dev
+spec:
+  type: ExternalName
+  externalName: www.baidu.com
+----------------------------
+$ kubectl apply -f svc-proxyName.yaml
+```
+
+此时进入 **busybox** 中尝试通过代理的服务名访问
+
+```shell
+$ kubectl -ndev exec -ti busybox -- sh
+
+# 通过代理的域名请求资源，访问不通是由于跨域造成的
+$ wget svc-proxy-name
+Connecting to svc-proxy-name (14.215.177.38:80)
+wget: server returned error: HTTP/1.1 403 Forbidden
+
+# 域名解析
+$ nslookup svc-proxy-name
+Server:    10.96.0.10
+Address 1: 10.96.0.10 kube-dns.kube-system.svc.cluster.local
+
+Name:      svc-proxy-name
+Address 1: 14.215.177.38
+Address 2: 14.215.177.39
+
+# 直接请求，则可通过
+$ wget 14.215.177.38
+Connecting to 14.215.177.38 (14.215.177.38:80)
+index.html           100% |*****************************]
+```
+
+由于跨域问题，该场景使用较少
+
 ## 2. Ingress（*流量路由* ）
 
 [官方文档](https://kubernetes.io/zh-cn/docs/concepts/services-networking/ingress/)
 
-对于 **k8s** 的 **Service**，无论是 **Cluster IP** 还是 **NodePort**，都是 **四层负载**，要让集群内的服务实现 **七层负载均衡**，要借助于 **Ingress**，**Ingress**控制器的实现方式有很多，比如 **Nginx**, **Contour**, **Haproxy**, **trafik**, **Istio**，下文**Nginx** 实现为例
+同 **k8s** 的资源类型，对于 **k8s** 的 **Service**，无论是 **Cluster IP** 还是 **NodePort**，都是 **四层负载**，要让集群内的服务实现 **七层负载均衡**，要借助于 **Ingress** 
+
+- **Ingress 控制器：** 其实现方式很多，比如 **Nginx**, **Contour**, **Haproxy**, **trafik**, **Istio**，后续 **Nginx** 实现为例
+- **发布方式：** 
+  - 它既可以实现 **端口** 的方式，同时可以实现 **域名** 的方式访问 **k8s** 内部应用 
+  - 通常内部通过域名，反代到业务节点，**ingress** 上层可能还有 **F5**，**LVS**，**SLB**，**ELB** 等作为入口再反代到**ingress** 上，然后 **将购买的 域名 解析到 F5、阿里云等LB上** 
+  - 由于是 **k8s** 中通过 **IPVS** 实现的一种 **内核级** 的转发，因此还是很快的，今后可能还使用 **EBPF** 等东西，速度更快
 
 ### 2.1 Ingress-nginx
 
-**Ingress-nginx** 是 **7层的负载均衡器** ，负责统一管理外部对 **k8s cluster** 中 **Service** 的请求，包含如下
+是 **k8s** 官方维护的控制器（*同步更新* ）[官方文档](https://kubernetes.github.io/ingress-nginx/) 
+
+**Ingress-nginx** 是 **7 层的负载均衡器** ，负责统一管理外部对 **k8s cluster** 中 **Service** 的请求，包含如下
 
 - **ingress-nginx-controller：** 根据用户编写的 **ingress** 规则（*创建的 ingress 的 yaml 文件* ），动态的去更改**nginx** 服务的配置文件，并且 **reload** 重载使其生效（*是自动化的，通过 lua 脚本来实现* ）
 - **ingress资源对象：** 将 **Nginx** 的配置抽象成一个 **Ingress** 对象，每添加一个新的 **Service** 资源对象只需写一个新的 **Ingress** 规则的 **yaml** 文件即可（*或修改已存在的 ingress 规则的 yaml 文件* ）
@@ -494,9 +660,44 @@ $ kubectl taint node k8s-slave2 drunk-
 3）再写到nginx-ingress-controller的pod里，这个Ingress controller的pod里运行着一个Nginx服务，控制器把生成的nginx配置写入/etc/nginx.conf文件中
 4）然后reload一下使配置生效。以此达到域名分别配置和动态更新的问题。
 
-###### 安装
+### 安装
 
-[官方文档](https://github.com/kubernetes/ingress-nginx/blob/master/docs/deploy/index.md)
+[ingress-nginx 官方文档](https://kubernetes.github.io/ingress-nginx/deploy/) ，推荐使用 **Helm** 安装
+
+#### 安装 helm
+
+ [Helm 官方文档](https://helm.sh/) ，仓库推荐用 [bitnami](https://github.com/bitnami/charts) 可以方便部署 **kafuka** 和 **zk** 
+
+1. Download your [desired version](https://github.com/helm/helm/releases)
+2. Unpack it (**tar -zxvf helm-v3.0.0-linux-amd64.tar.gz**)
+3. Find the helm binary in the unpacked directory, and move it to its desired destination (**mv linux-amd64/helm /usr/local/bin/helm**)
+
+```shell
+# helm 安装 bitnami 
+$ helm repo add bitnami https://charts.bitnami.com/bitnami
+	# - add 仓库名称 地址
+"bitnami" has been added to your repositories
+	
+# 搜索并安装 harbor 私有仓库
+$ helm search repo harbor
+$ helm install my-harbor bitnami/harbor
+
+** Please be patient while the chart is being deployed **
+
+1. Get the Harbor URL:
+
+  NOTE: It may take a few minutes for the LoadBalancer IP to be available.
+        Watch the status with: 'kubectl get svc --namespace default -w my-harbor'
+    export SERVICE_IP=$(kubectl get svc --namespace default my-harbor --template "{{ range (index .status.loadBalancer.ingress 0) }}{{ . }}{{ end }}")
+    echo "Harbor URL: http://$SERVICE_IP/"
+
+2. Login with the following credentials to see your Harbor application
+
+  echo Username: "admin"
+  echo Password: $(kubectl get secret --namespace default my-harbor-core-envvars -o jsonpath="{.data.HARBOR_ADMIN_PASSWORD}" | base64 -d)
+```
+
+
 
 ```powershell
 $ wget https://raw.githubusercontent.com/kubernetes/ingress-nginx/nginx-0.30.0/deploy/static/mandatory.yaml

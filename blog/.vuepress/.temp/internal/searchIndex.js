@@ -441,6 +441,28 @@ export const searchIndex = [
     "extraFields": []
   },
   {
+    "title": "艺术书籍",
+    "headers": [
+      {
+        "level": 2,
+        "title": "目录",
+        "slug": "目录",
+        "link": "#目录",
+        "children": []
+      }
+    ],
+    "path": "/book/%E8%89%BA%E6%9C%AF/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "清醒思考的艺术",
+    "headers": [],
+    "path": "/book/%E8%89%BA%E6%9C%AF/%E6%B8%85%E9%86%92%E6%80%9D%E8%80%83%E7%9A%84%E8%89%BA%E6%9C%AF.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
     "title": "社会学书籍",
     "headers": [
       {
@@ -473,28 +495,6 @@ export const searchIndex = [
     "title": "娱乐至死",
     "headers": [],
     "path": "/book/%E7%A4%BE%E4%BC%9A%E5%AD%A6/%E5%A8%B1%E4%B9%90%E8%87%B3%E6%AD%BB.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "艺术书籍",
-    "headers": [
-      {
-        "level": 2,
-        "title": "目录",
-        "slug": "目录",
-        "link": "#目录",
-        "children": []
-      }
-    ],
-    "path": "/book/%E8%89%BA%E6%9C%AF/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "清醒思考的艺术",
-    "headers": [],
-    "path": "/book/%E8%89%BA%E6%9C%AF/%E6%B8%85%E9%86%92%E6%80%9D%E8%80%83%E7%9A%84%E8%89%BA%E6%9C%AF.html",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -1458,7 +1458,7 @@ export const searchIndex = [
         "children": [
           {
             "level": 3,
-            "title": "1.1 Cluster IP 负载均衡",
+            "title": "1.1 Cluster IP（负载均衡 ）",
             "slug": "_1-1-cluster-ip-负载均衡",
             "link": "#_1-1-cluster-ip-负载均衡",
             "children": []
@@ -1483,6 +1483,13 @@ export const searchIndex = [
             "slug": "_1-4-service-实现原理",
             "link": "#_1-4-service-实现原理",
             "children": []
+          },
+          {
+            "level": 3,
+            "title": "1.5 Endpoints 代理外部应用（代理 ）",
+            "slug": "_1-5-endpoints-代理外部应用-代理",
+            "link": "#_1-5-endpoints-代理外部应用-代理",
+            "children": []
           }
         ]
       },
@@ -1497,6 +1504,13 @@ export const searchIndex = [
             "title": "2.1 Ingress-nginx",
             "slug": "_2-1-ingress-nginx",
             "link": "#_2-1-ingress-nginx",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "安装",
+            "slug": "安装",
+            "link": "#安装",
             "children": []
           }
         ]
@@ -1573,9 +1587,9 @@ export const searchIndex = [
           },
           {
             "level": 3,
-            "title": "3.6 优化改造",
-            "slug": "_3-6-优化改造",
-            "link": "#_3-6-优化改造",
+            "title": "3.6 ConfigMap 和 Secret（配置 ）",
+            "slug": "_3-6-configmap-和-secret-配置",
+            "link": "#_3-6-configmap-和-secret-配置",
             "children": []
           },
           {
@@ -4157,15 +4171,15 @@ export const searchIndex = [
             "slug": "_1-3-ad-ds",
             "link": "#_1-3-ad-ds",
             "children": []
-          },
-          {
-            "level": 3,
-            "title": "1.4 加域配置",
-            "slug": "_1-4-加域配置",
-            "link": "#_1-4-加域配置",
-            "children": []
           }
         ]
+      },
+      {
+        "level": 2,
+        "title": "2. 加域配置",
+        "slug": "_2-加域配置",
+        "link": "#_2-加域配置",
+        "children": []
       }
     ],
     "path": "/unix/CentOS/LDAP/AD%E5%9F%9F.html",
@@ -4298,6 +4312,13 @@ export const searchIndex = [
             "children": []
           }
         ]
+      },
+      {
+        "level": 2,
+        "title": "6. 加域配置",
+        "slug": "_6-加域配置",
+        "link": "#_6-加域配置",
+        "children": []
       }
     ],
     "path": "/unix/CentOS/LDAP/LDAP.html",

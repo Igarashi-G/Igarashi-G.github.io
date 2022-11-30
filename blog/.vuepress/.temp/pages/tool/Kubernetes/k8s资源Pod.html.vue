@@ -582,8 +582,8 @@ k8s-slave-172    Ready    <span class="token operator">&lt;</span>none<span clas
 <div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code><span class="token function">docker</span> run <span class="token parameter variable">-it</span> --cpu-period<span class="token operator">=</span><span class="token number">50000</span> --cpu-quota<span class="token operator">=</span><span class="token number">25000</span> ubuntu:20.04 /bin/bash
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p>将调度的周期设为 <strong>50000</strong>，容器在每个周期内的 <strong>CPU</strong> 配额设置为 <strong>25000</strong>，表示该容器每 <strong>50ms</strong> 可以得到 <strong>50%</strong> 的 <strong>CPU</strong> 运行时间</p>
 </div>
-<h3 id="_3-6-优化改造" tabindex="-1"><a class="header-anchor" href="#_3-6-优化改造" aria-hidden="true">#</a> 3.6 优化改造</h3>
-<p>在真实使用场景中，上述 <strong>Pod</strong> 存在如下问题需要优化</p>
+<h3 id="_3-6-configmap-和-secret-配置" tabindex="-1"><a class="header-anchor" href="#_3-6-configmap-和-secret-配置" aria-hidden="true">#</a> 3.6 ConfigMap 和 Secret（<em>配置</em> ）</h3>
+<p>在真实使用场景中，上述 <strong>Pod</strong> 存在如下问题需要 <strong>优化</strong></p>
 <ul>
 <li>
 <p><strong>中间件应作为公共资源</strong> （<em>数据库、MQ、Cache 等</em> ），为多个项目提供服务</p>
@@ -615,7 +615,7 @@ $ kubectl <span class="token parameter variable">-n</span> uit get cm
 <span class="token assign-left variable">MYSQL_PORT</span><span class="token operator">=</span><span class="token number">3306</span>
 
 $ kubectl <span class="token parameter variable">-n</span> uit create configmap ublog --from-env-file<span class="token operator">=</span>configmap.txt
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h4 id="secret-密码" tabindex="-1"><a class="header-anchor" href="#secret-密码" aria-hidden="true">#</a> <strong>secret（<em>密码</em> ）</strong></h4>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h4 id="secret-密码" tabindex="-1"><a class="header-anchor" href="#secret-密码" aria-hidden="true">#</a> <strong>Secret（<em>密码</em> ）</strong></h4>
 <p>常用来管理 <strong>敏感类</strong> 的信息，默认会 <strong>base64</strong> 编码存储，有三种类型</p>
 <ul>
 <li><strong>Service Account ：</strong> 用来访问 <strong>k8s API</strong>，自动创建，且会自动挂载到 <strong>Pod</strong> 上的 <code v-pre>/run/secrets/kubernetes.io/serviceaccount</code> 目录，之后 <strong>Pod</strong> 指定 <strong>serviceAccount</strong> 自动创建对应的 <strong>secret</strong></li>

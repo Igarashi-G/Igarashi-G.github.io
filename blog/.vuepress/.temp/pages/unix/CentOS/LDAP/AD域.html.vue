@@ -37,7 +37,7 @@
 <h3 id="_1-3-ad-ds" tabindex="-1"><a class="header-anchor" href="#_1-3-ad-ds" aria-hidden="true">#</a> 1.3 AD DS</h3>
 <p><strong>Active Directory</strong> 的 <strong>Directory</strong> 则是用来存储用户帐户、计算机帐户、打印机与共享文件等对象，这些对象的存储位置都是目录数据库（<em>Directory Database</em>），而 <strong>Active Directory</strong> 负责提供目录服务的组件就是 <strong>AD域服务</strong>（<em>AD DS</em>），负责操作（<em>增删改查</em>）目录数据库。</p>
 <p><strong>AD DS</strong> 可以在一台计算机、一个小型 <strong>LAN</strong> 或是数个 <strong>WAN</strong> 的结合中，它包含此范围内所有的对象，如文件、打印机、应用程序、服务器、域控制器与用户帐号等</p>
-<h3 id="_1-4-加域配置" tabindex="-1"><a class="header-anchor" href="#_1-4-加域配置" aria-hidden="true">#</a> 1.4 加域配置</h3>
+<h2 id="_2-加域配置" tabindex="-1"><a class="header-anchor" href="#_2-加域配置" aria-hidden="true">#</a> 2. 加域配置</h2>
 <p>以内部自建环境 <strong>uit.devops.local</strong> 为例 ，现有目标节点 <strong>172.16.120.141</strong> 需要加入域</p>
 <ul>
 <li><strong>ip: 172.16.70.124</strong></li>
@@ -92,7 +92,11 @@
 <span class="token key attr-name">null passwords</span> <span class="token punctuation">=</span> <span class="token value attr-value">yes</span>
 <span class="token key attr-name">usershare allow guests</span> <span class="token punctuation">=</span> <span class="token value attr-value">yes</span>
 <span class="token key attr-name">include</span> <span class="token punctuation">=</span> <span class="token value attr-value">smb_shares.conf</span>
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>修改 <strong>nsswitch</strong></p>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="custom-container danger">
+<p class="custom-container-title">特别注意</p>
+<p><strong>include</strong> 共享文件路径参数，必须放在最后</p>
+</div>
+<p>修改 <strong>nsswitch</strong></p>
 <div class="language-ini ext-ini line-numbers-mode"><pre v-pre class="language-ini"><code>$ vim /etc/nsswitch
 
 passwd:        files winbind
@@ -160,14 +164,10 @@ $ net ads leave <span class="token parameter variable">-U</span> administrator%u
 <span class="token comment"># 可以检测是否加域成功 </span>
 $ net ads testjoin
 
-<span class="token comment"># 重启一系列服务</span>
-systemctl restart winbind
-systemctl restart nmb
-systemctl restart smb
-getent <span class="token function">passwd</span>
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="custom-container warning">
+
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="custom-container warning">
 <p class="custom-container-title">登入</p>
-<p>加入域后，客户端登入 <strong>Samba</strong> ，<strong>cmd</strong> 访问 <strong>\\172.16.120.141\Users</strong> 后，输入用户 需要使用 <strong>用户@域</strong> 形式，如： <strong>zhengze@UIT</strong></p>
+<p>加入域后，客户端登入 <strong>Samba</strong> ，<strong>cmd</strong> 访问 <strong>\\172.16.120.141\Users</strong> 后，输入用户 需要使用 <strong>用户@域</strong> 形式，如： <strong>igarashi@UIT</strong></p>
 </div>
 </div></template>
 

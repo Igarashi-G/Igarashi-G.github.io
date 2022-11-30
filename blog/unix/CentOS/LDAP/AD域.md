@@ -78,7 +78,9 @@ star: true
 
 **AD DS** 可以在一台计算机、一个小型 **LAN** 或是数个 **WAN** 的结合中，它包含此范围内所有的对象，如文件、打印机、应用程序、服务器、域控制器与用户帐号等
 
-### 1.4 加域配置
+
+
+## 2. 加域配置
 
 以内部自建环境 **uit.devops.local** 为例 ，现有目标节点 **172.16.120.141** 需要加入域
 
@@ -137,6 +139,12 @@ null passwords = yes
 usershare allow guests = yes
 include = smb_shares.conf
 ```
+
+::: danger 特别注意
+
+**include** 共享文件路径参数，必须放在最后
+
+:::
 
 修改 **nsswitch**
 
@@ -220,15 +228,11 @@ $ net ads leave -U administrator%user@dev -S server124.uit.devops.local
 # 可以检测是否加域成功 
 $ net ads testjoin
 
-# 重启一系列服务
-systemctl restart winbind
-systemctl restart nmb
-systemctl restart smb
-getent passwd
+
 ```
 
 ::: warning 登入
 
-加入域后，客户端登入 **Samba** ，**cmd** 访问 **\\\\172.16.120.141\Users** 后，输入用户 需要使用 **用户@域** 形式，如： **zhengze@UIT** 
+加入域后，客户端登入 **Samba** ，**cmd** 访问 **\\\\172.16.120.141\Users** 后，输入用户 需要使用 **用户@域** 形式，如： **igarashi@UIT** 
 
 :::
