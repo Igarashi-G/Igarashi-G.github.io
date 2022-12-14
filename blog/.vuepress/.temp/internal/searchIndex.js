@@ -441,28 +441,6 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "艺术书籍",
-    "headers": [
-      {
-        "level": 2,
-        "title": "目录",
-        "slug": "目录",
-        "link": "#目录",
-        "children": []
-      }
-    ],
-    "path": "/book/%E8%89%BA%E6%9C%AF/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "清醒思考的艺术",
-    "headers": [],
-    "path": "/book/%E8%89%BA%E6%9C%AF/%E6%B8%85%E9%86%92%E6%80%9D%E8%80%83%E7%9A%84%E8%89%BA%E6%9C%AF.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
     "title": "社会学书籍",
     "headers": [
       {
@@ -495,6 +473,28 @@ export const searchIndex = [
     "title": "娱乐至死",
     "headers": [],
     "path": "/book/%E7%A4%BE%E4%BC%9A%E5%AD%A6/%E5%A8%B1%E4%B9%90%E8%87%B3%E6%AD%BB.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "艺术书籍",
+    "headers": [
+      {
+        "level": 2,
+        "title": "目录",
+        "slug": "目录",
+        "link": "#目录",
+        "children": []
+      }
+    ],
+    "path": "/book/%E8%89%BA%E6%9C%AF/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "清醒思考的艺术",
+    "headers": [],
+    "path": "/book/%E8%89%BA%E6%9C%AF/%E6%B8%85%E9%86%92%E6%80%9D%E8%80%83%E7%9A%84%E8%89%BA%E6%9C%AF.html",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -1245,6 +1245,59 @@ export const searchIndex = [
     "extraFields": []
   },
   {
+    "title": "Helm 安装使用",
+    "headers": [
+      {
+        "level": 2,
+        "title": "1.Helm",
+        "slug": "_1-helm",
+        "link": "#_1-helm",
+        "children": [
+          {
+            "level": 3,
+            "title": "1.1 概念",
+            "slug": "_1-1-概念",
+            "link": "#_1-1-概念",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "1.2 安装",
+            "slug": "_1-2-安装",
+            "link": "#_1-2-安装",
+            "children": []
+          }
+        ]
+      }
+    ],
+    "path": "/tool/Kubernetes/Helm%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "Kubernets存储",
+    "headers": [
+      {
+        "level": 2,
+        "title": "1. Volumes",
+        "slug": "_1-volumes",
+        "link": "#_1-volumes",
+        "children": [
+          {
+            "level": 3,
+            "title": "1.1 概述",
+            "slug": "_1-1-概述",
+            "link": "#_1-1-概述",
+            "children": []
+          }
+        ]
+      }
+    ],
+    "path": "/tool/Kubernetes/k8s%E5%AD%98%E5%82%A8.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
     "title": "Kubernets 安装(单Master)",
     "headers": [
       {
@@ -1501,16 +1554,16 @@ export const searchIndex = [
         "children": [
           {
             "level": 3,
-            "title": "2.1 Ingress-nginx",
-            "slug": "_2-1-ingress-nginx",
-            "link": "#_2-1-ingress-nginx",
+            "title": "2.1 Ingress-nginx 安装",
+            "slug": "_2-1-ingress-nginx-安装",
+            "link": "#_2-1-ingress-nginx-安装",
             "children": []
           },
           {
             "level": 3,
-            "title": "安装",
-            "slug": "安装",
-            "link": "#安装",
+            "title": "2.2 ingress 使用（发布流程）",
+            "slug": "_2-2-ingress-使用-发布流程",
+            "link": "#_2-2-ingress-使用-发布流程",
             "children": []
           }
         ]
@@ -1905,7 +1958,58 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "kube-prometheus安装使用",
+    "title": "prometheus基础",
+    "headers": [
+      {
+        "level": 2,
+        "title": "1. 概念",
+        "slug": "_1-概念",
+        "link": "#_1-概念",
+        "children": [
+          {
+            "level": 3,
+            "title": "特点",
+            "slug": "特点",
+            "link": "#特点",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "构成",
+            "slug": "构成",
+            "link": "#构成",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "架构图",
+            "slug": "架构图",
+            "link": "#架构图",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "能做什么",
+            "slug": "能做什么",
+            "link": "#能做什么",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "不能做什么",
+            "slug": "不能做什么",
+            "link": "#不能做什么",
+            "children": []
+          }
+        ]
+      }
+    ],
+    "path": "/tool/Prometheus/%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "安装 kube-prometheus",
     "headers": [
       {
         "level": 2,
@@ -1915,7 +2019,7 @@ export const searchIndex = [
         "children": []
       }
     ],
-    "path": "/tool/prometheus/%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8.html",
+    "path": "/tool/Prometheus/%E5%AE%89%E8%A3%85.html",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -5618,9 +5722,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "prometheus 分类",
+    "title": "helm 分类",
     "headers": [],
-    "path": "/category/prometheus/",
+    "path": "/category/helm/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -5632,9 +5736,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "远程调用 分类",
+    "title": "prometheus 分类",
     "headers": [],
-    "path": "/category/%E8%BF%9C%E7%A8%8B%E8%B0%83%E7%94%A8/",
+    "path": "/category/prometheus/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -5646,9 +5750,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "Python 分类",
+    "title": "远程调用 分类",
     "headers": [],
-    "path": "/category/python/",
+    "path": "/category/%E8%BF%9C%E7%A8%8B%E8%B0%83%E7%94%A8/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -5660,9 +5764,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "UDS 分类",
+    "title": "Python 分类",
     "headers": [],
-    "path": "/category/uds/",
+    "path": "/category/python/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -5674,9 +5778,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "UFS 分类",
+    "title": "UDS 分类",
     "headers": [],
-    "path": "/category/ufs/",
+    "path": "/category/uds/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -5688,9 +5792,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "CentOS 分类",
+    "title": "UFS 分类",
     "headers": [],
-    "path": "/category/centos/",
+    "path": "/category/ufs/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -5702,9 +5806,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "虚拟机 分类",
+    "title": "CentOS 分类",
     "headers": [],
-    "path": "/category/%E8%99%9A%E6%8B%9F%E6%9C%BA/",
+    "path": "/category/centos/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -5712,6 +5816,13 @@ export const searchIndex = [
     "title": "CLI 标签",
     "headers": [],
     "path": "/tag/cli/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "虚拟机 分类",
+    "headers": [],
+    "path": "/category/%E8%99%9A%E6%8B%9F%E6%9C%BA/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -5726,6 +5837,20 @@ export const searchIndex = [
     "title": "gitlab 标签",
     "headers": [],
     "path": "/tag/gitlab/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "helm 标签",
+    "headers": [],
+    "path": "/tag/helm/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "存储库 标签",
+    "headers": [],
+    "path": "/tag/%E5%AD%98%E5%82%A8%E5%BA%93/",
     "pathLocale": "/",
     "extraFields": []
   },

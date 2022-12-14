@@ -85,6 +85,7 @@ export default navbar([
       { text: "Nginx", link: "Nginx/Nginx基础" , icon: "nginx"},
       { text: "Docker", link: "Docker/docker容器" , icon: "docker"},
       { text: "Kubernetes", link: "Kubernetes/k8s资源Pod" , icon: "kubernetes"},
+      { text: "Prometheus", link: "Prometheus/安装" , icon: "prometheus"},
       { text: "工具", link: "Other/网络代理" , icon: "other"},
     ],
   },

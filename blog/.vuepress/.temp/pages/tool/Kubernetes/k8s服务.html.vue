@@ -541,132 +541,259 @@ index.html           <span class="token number">100</span>% <span class="token o
 </ul>
 </li>
 </ul>
-<h3 id="_2-1-ingress-nginx" tabindex="-1"><a class="header-anchor" href="#_2-1-ingress-nginx" aria-hidden="true">#</a> 2.1 Ingress-nginx</h3>
+<h3 id="_2-1-ingress-nginx-安装" tabindex="-1"><a class="header-anchor" href="#_2-1-ingress-nginx-安装" aria-hidden="true">#</a> 2.1 Ingress-nginx 安装</h3>
 <p>是 <strong>k8s</strong> 官方维护的控制器（<em>同步更新</em> ）<a href="https://kubernetes.github.io/ingress-nginx/" target="_blank" rel="noopener noreferrer">官方文档<ExternalLinkIcon/></a></p>
 <p><strong>Ingress-nginx</strong> 是 <strong>7 层的负载均衡器</strong> ，负责统一管理外部对 <strong>k8s cluster</strong> 中 <strong>Service</strong> 的请求，包含如下</p>
 <ul>
 <li><strong>ingress-nginx-controller：</strong> 根据用户编写的 <strong>ingress</strong> 规则（<em>创建的 ingress 的 yaml 文件</em> ），动态的去更改<strong>nginx</strong> 服务的配置文件，并且 <strong>reload</strong> 重载使其生效（<em>是自动化的，通过 lua 脚本来实现</em> ）</li>
 <li><strong>ingress资源对象：</strong> 将 <strong>Nginx</strong> 的配置抽象成一个 <strong>Ingress</strong> 对象，每添加一个新的 <strong>Service</strong> 资源对象只需写一个新的 <strong>Ingress</strong> 规则的 <strong>yaml</strong> 文件即可（<em>或修改已存在的 ingress 规则的 yaml 文件</em> ）</li>
 </ul>
-<h6 id="示意图" tabindex="-1"><a class="header-anchor" href="#示意图" aria-hidden="true">#</a> 示意图：</h6>
-<h6 id="实现逻辑" tabindex="-1"><a class="header-anchor" href="#实现逻辑" aria-hidden="true">#</a> 实现逻辑</h6>
-<p>1）ingress controller通过和kubernetes api交互，动态的去感知集群中ingress规则变化
-2）然后读取ingress规则(规则就是写明了哪个域名对应哪个service)，按照自定义的规则，生成一段nginx配置
-3）再写到nginx-ingress-controller的pod里，这个Ingress controller的pod里运行着一个Nginx服务，控制器把生成的nginx配置写入/etc/nginx.conf文件中
-4）然后reload一下使配置生效。以此达到域名分别配置和动态更新的问题。</p>
-<h3 id="安装" tabindex="-1"><a class="header-anchor" href="#安装" aria-hidden="true">#</a> 安装</h3>
-<p><a href="https://kubernetes.github.io/ingress-nginx/deploy/" target="_blank" rel="noopener noreferrer">ingress-nginx 官方文档<ExternalLinkIcon/></a> ，推荐使用 <strong>Helm</strong> 安装</p>
-<h4 id="安装-helm" tabindex="-1"><a class="header-anchor" href="#安装-helm" aria-hidden="true">#</a> 安装 helm</h4>
-<p><a href="https://helm.sh/" target="_blank" rel="noopener noreferrer">Helm 官方文档<ExternalLinkIcon/></a> ，仓库推荐用 <a href="https://github.com/bitnami/charts" target="_blank" rel="noopener noreferrer">bitnami<ExternalLinkIcon/></a> 可以方便部署 <strong>kafuka</strong> 和 <strong>zk</strong></p>
+<p><a href="https://kubernetes.github.io/ingress-nginx/deploy/" target="_blank" rel="noopener noreferrer">Ingress-nginx 官方文档<ExternalLinkIcon/></a> ，推荐使用 <strong><RouterLink to="/tool/Kubernetes/Helm%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8.html">Helm</RouterLink></strong> 安装</p>
+<p><a href="https://artifacthub.io/packages/helm/ingress-nginx/ingress-nginx" target="_blank" rel="noopener noreferrer">Artifact Hub中查找<ExternalLinkIcon/></a> 这是来源于 <strong>Kubernetes</strong> 维护的官方 <strong>Helm</strong> 仓库</p>
+<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code><span class="token comment"># 通过 helm 添加 ingress-nginx 仓库</span>
+$ helm repo <span class="token function">add</span> ingress-nginx https://kubernetes.github.io/ingress-nginx
+
+<span class="token comment"># 查看添加的仓库</span>
+$ helm repo list
+NAME         	URL                                          
+ingress-nginx	https://kubernetes.github.io/ingress-nginx
+
+<span class="token comment"># 查看仓库中 ingress-nginx 的版本</span>
+$ helm search repo ingress-nginx
+NAME                       	CHART VERSION	APP VERSION	DESCRIPTION
+ingress-nginx/ingress-nginx	<span class="token number">4.4</span>.0        	<span class="token number">1.5</span>.1      	Ingress controller <span class="token keyword">for</span> Kubernetes using NGINX a<span class="token punctuation">..</span>.
+
+<span class="token comment"># 虽然需要 APP VERSION >= 0.40.2 (bug少)，但是  CHART VERSION 4.4.0 太高了，安装会报错，</span>
+
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>此时要下 <strong>降级</strong> 的包，这里是 <strong>CHART VERSION == 3.18.0</strong></p>
+<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code><span class="token comment"># 通过命令 search 所有版本的包</span>
+$ helm search repo ingress-nginx <span class="token parameter variable">-l</span>
+<span class="token punctuation">..</span>.
+ingress-nginx/ingress-nginx	<span class="token number">3.18</span>.0        	<span class="token number">0.42</span>.0     	An nginx Ingress controller that uses ConfigMap<span class="token punctuation">..</span>.
+
+<span class="token comment"># pull 包指定版本号</span>
+$ helm pull ingress-nginx/ingress-nginx <span class="token parameter variable">--version</span> <span class="token number">3.18</span>.0
+
+<span class="token comment"># 网络失败，多试几次，下载后会多出个 3.18.0 的 tar 包</span>
+$ <span class="token function">ls</span>
+anaconda-ks.cfg  dev  <span class="token variable"><span class="token variable">`</span>ingress-nginx-3.18.0.tgz<span class="token variable">`</span></span>  k8s_install  kube-prometheus  prom  <span class="token builtin class-name">test</span>
+
+<span class="token comment"># 解压，进入目录</span>
+$ <span class="token function">tar</span> <span class="token parameter variable">-xf</span> ingress-nginx-3.18.0.tgz
+$ <span class="token builtin class-name">cd</span> ingress-nginx/
+
+<span class="token comment"># 如下是配置文件</span>
+$ <span class="token function">ls</span>
+CHANGELOG.md  Chart.yaml  ci  OWNERS  README.md  README.md.gotmpl  templates  values.yaml
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>修改 <strong>ingress</strong> 配置文件</p>
+<div class="language-ini ext-ini line-numbers-mode"><pre v-pre class="language-ini"><code><span class="token comment"># 打开 values.yaml 修改镜像地址等配置</span>
+$ vim values.yaml
+
+------------------------------
+<span class="token comment"># 修改镜像源地址，并去掉哈希值</span>
++ repository: docker.io/willdockerhub/ingress-nginx-controller
+- digest 
+...
+
+<span class="token comment"># 推荐使用 hostNetwork 部署，走宿主机端口，性能好一些, 且推荐使用 DaemonSet部署</span>
++ dnsPolicy: ClusterFirstWithHostNet
++ hostNetwork: true
++ kind: DaemonSet
+<span class="token comment"># 必须修改 dns 策略 否则 ingress pod 是解析不了 k8s 内部的 Service</span>
+...
+
+<span class="token comment"># 设置有 ingress 为 true 标签的节点才部署</span>
+nodeSelector:
+kubernetes.io/os: linux
++ ingress: "true"
+<span class="token comment"># 生产环境中建议修改 resources 需要给大点，毕竟是 k8s 的入口</span>
+...
+
+<span class="token comment"># 非云环境，type 是不需要使用 LoadBalancer 的，IDC 机房直接使用 ClusterIP 即可</span>
++ type: ClusterIP
+<span class="token comment"># 云的话，会向云发个请求，然后得到公有云分配的 IP 地址，之后将购买的域名解析到公有云的 IP 即可</span>
+...
+
+<span class="token comment"># 查看转轴控制 是否证书会报错 0.42 前会，将 enabled 修改</span>
+admissionWebhooks:
+  enabled: ...
+...
+
+<span class="token comment"># kube-webhook-certgen 的镜像地址同样修改</span>
++ repository: egistry.aliyuncs.com/google_containers/kube-webhook-certgen
+------------------------------
+
+<span class="token comment"># 如上镜像地址都是网上抄的，若 pull 失败，百度下载离线</span>
+docker pull quay.io/kubernetes-ingress-controller/nginx-ingress-controller:0.xx.0
+docker pull 能用的国内地址/k8s/defaultbackend-amd64:x.xx
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="custom-container warning">
+<p class="custom-container-title">注意</p>
+<p>若使用 <strong>Deployment</strong> 方式部署，则不使用 <strong>hostNetwork</strong>，因为是随机部署的，可能部署在同一个宿主机导致端口冲突</p>
+<p><strong>DaemonSet</strong> 更容易控制与某个节点，直接在宿主机上暴露端口号，<strong>k8s</strong> 外部的负载均衡，可以直接代理到 <strong>ingress</strong> 所在节点的 <strong>IP</strong> 和端口号上，而使用 <strong>Deployment + NodePort</strong> 方式性能差难维护</p>
+</div>
+<p>使用 <strong>Helm</strong> 安装</p>
+<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code><span class="token comment"># 创建命名空间并安装</span>
+$ kubectl create ns ingress-nginx
+
+<span class="token comment"># -n 指定 namespace</span>
+$ helm <span class="token function">install</span> ingress-nginx <span class="token parameter variable">-n</span> ingress-nginx <span class="token builtin class-name">.</span>
+
+<span class="token comment"># 出现如下，貌似密码 base64 转码啥的</span>
+NAME: ingress-nginx
+<span class="token punctuation">..</span>.
+If TLS is enabled <span class="token keyword">for</span> the Ingress, a Secret containing the certificate and key must also be provided:
+
+  apiVersion: v1
+  kind: Secret
+  metadata:
+    name: example-tls
+    namespace: foo
+  data:
+    tls.crt: <span class="token operator">&lt;</span>base64 encoded cert<span class="token operator">></span>
+    tls.key: <span class="token operator">&lt;</span>base64 encoded key<span class="token operator">></span>
+  type: kubernetes.io/tls
+
+<span class="token comment"># 查看 pod 等待下载镜像, Running 则成功</span>
+$ kubectl <span class="token parameter variable">-n</span> ingress-nginx get po <span class="token parameter variable">-w</span>
+NAME                             READY   STATUS              RESTARTS   AGE
+ingress-nginx-controller-22lhv   <span class="token number">0</span>/1     ContainerCreating   <span class="token number">0</span>          23s
+ingress-nginx-controller-22lhv   <span class="token number">0</span>/1     Running             <span class="token number">0</span>          46s
+ingress-nginx-controller-22lhv   <span class="token number">1</span>/1     Running             <span class="token number">0</span>          63s
+
+
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>之后 <strong>DaemonSet</strong> 会在指定的节点上起 <strong>ingress pod</strong> 并暴露 <strong>80</strong> 和 <strong>443</strong> 端口</p>
+<h4 id="ingress-扩容缩容" tabindex="-1"><a class="header-anchor" href="#ingress-扩容缩容" aria-hidden="true">#</a> ingress 扩容缩容</h4>
+<p>若需扩充 <strong>ingress pod</strong>，可直接其他节点打标签，<strong>DaemonSet</strong> 会持续监听并部署</p>
+<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code>$ kubectl label <span class="token function">node</span> k8s-slave-173 <span class="token assign-left variable">ingress</span><span class="token operator">=</span>true
+
+<span class="token comment"># 此时查看已扩容，正在部署</span>
+$ kubectl <span class="token parameter variable">-n</span> ingress-nginx get po
+NAME                             READY   STATUS              RESTARTS   AGE
+ingress-nginx-controller-22lhv   <span class="token number">1</span>/1     Running             <span class="token number">0</span>          7m49s
+ingress-nginx-controller-2gvv6   <span class="token number">0</span>/1     ContainerCreating   <span class="token number">0</span>          16s
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>外部的 <strong>WebLB</strong> 再将扩容的节点地址写入即可，缩容直接删标签即可</p>
+<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code>$ kubectl label <span class="token function">node</span> k8s-slave-173 ingress-
+
+<span class="token comment"># 此时查看已缩容，正在销毁</span>
+kubectl <span class="token parameter variable">-n</span> ingress-nginx get po
+NAME                             READY   STATUS        RESTARTS   AGE
+ingress-nginx-controller-22lhv   <span class="token number">1</span>/1     Running       <span class="token number">0</span>          12m
+ingress-nginx-controller-2gvv6   <span class="token number">1</span>/1     Terminating   <span class="token number">0</span>          4m58s
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>需要先将外部的 <strong>WebLB</strong> 配置的地址删除，再执行如上缩容操作，保证请求正常</p>
+<h3 id="_2-2-ingress-使用-发布流程" tabindex="-1"><a class="header-anchor" href="#_2-2-ingress-使用-发布流程" aria-hidden="true">#</a> 2.2 ingress 使用（发布流程）</h3>
+<p>如上已经安装完 <strong>ingress-nginx</strong> 的 控制器了，之后可以编写 <strong>yaml</strong> 来创建 <strong>Ingress</strong> 示例</p>
+<p>配置域名通常用 <a href="https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/annotations/" target="_blank" rel="noopener noreferrer">Annotations<ExternalLinkIcon/></a></p>
+<p>只需创建一次 <strong>Ingress</strong> 实例，即可自动生成 <strong>nginx</strong> 配置，</p>
+<p>若灰度发布、跨域、限速等配置，其配置文件写于 <strong>Annotations</strong> 里面，<strong>ingress controller</strong> 会分析 <strong>ingress</strong> 实例，从 <strong>Annotations</strong> 里面读取配置（<em>具有校验功能</em> ），生成 <strong>nginx</strong> 配置文件</p>
+<p>示例： 通过配置 <strong>ingress</strong> 域名反代到 <strong>nginx</strong> 服务上，如下创建一个名为 <strong>example</strong> 的 <strong>ingress</strong></p>
+<div class="language-ini ext-ini line-numbers-mode"><pre v-pre class="language-ini"><code>$ vim ingress.yaml
+
+<span class="token comment"># ingress 需要和服务在同一个 namespace 下, </span>
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+  name: example	
+  namespace: dev
+spec:
+  rules:
+  - host: nginx.bar.com
+    http:
+      paths:
+      - backend:
+          serviceName: svc-nignx
+          servicePort: 80
+        path: /
+      - backend:
+          serviceName: http-svc-abc
+          servicePort: 80
+        path: /abc
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p><strong>apiVersion：</strong></p>
+<ul>
+<li><code v-pre>networking.k8s.io/v1beta1</code> 会在 <strong>1.22</strong> 后废弃</li>
+<li><code v-pre>networking.k8s.io/v1:</code> <strong>1.22</strong> 之后的</li>
+<li><code v-pre>extensinos/v1beta1:</code> 最开始的版本，已废弃</li>
+</ul>
+<p>**annotations：**告诉接口，声明使用的 <strong>配置实例</strong> 是什么，这是由于集群中可能不止一个 <strong>ingress</strong> 控制器</p>
+<ul>
+<li><code v-pre>kubernetes.io/ingress.class：</code> 如上实例是 <strong>ingress-nginx</strong> （<em>在上文 <strong>value.yaml</strong> 中指定</em> ）</li>
+</ul>
+<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code>$ <span class="token function">cat</span> values.yaml <span class="token operator">|</span><span class="token function">grep</span> ingressClass
+<span class="token comment">#  ingressClass: nginx</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div></div></div><p><strong>rules：</strong> 固定写法，一个 <strong>ingress</strong> 可以配置多个 <strong>rules</strong> （<em>一个文件中可以指定多个域名</em>）</p>
+<ul>
+<li><code v-pre>host：</code> 配置域名，若不写则是 <strong>*</strong> 此时输入任何域名都会被解析，不推荐</li>
+<li><code v-pre>path：</code> 相当于 <strong>nginx</strong> 的 <strong>location</strong> 配置，同一个 <strong>hosts</strong> 可以配置多个路径</li>
+<li><code v-pre>backend:</code> 多个路径可以与不同的 <strong>Service</strong> 关联，上文表示一个域名下的两个路径，可通过 <strong>svc</strong> 访问</li>
+</ul>
+<p>创建 <strong>ingress</strong></p>
+<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code>$ kubectl create <span class="token parameter variable">-f</span> ingress.yaml 
+ingress.networking.k8s.io/rewrite created
+
+<span class="token comment"># 查看 ingress</span>
+$ kubectl <span class="token parameter variable">-n</span> dev get ing
+NAME      HOSTS           ADDRESS          PORTS   AGE
+example   nginx.bar.com   <span class="token number">10.107</span>.244.209   <span class="token number">80</span>      55s
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>配置 <strong>hosts</strong> 解析</p>
+<div class="language-text ext-text line-numbers-mode"><pre v-pre class="language-text"><code>192.168.3.172 nginx.bar.com
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><div class="custom-container tip">
+<p class="custom-container-title">提示</p>
+<p>若购买的域名，则解析到公司的 <strong>LB</strong> 上（<em><strong>LB</strong>是有地址的</em> ）然后 <strong>LB</strong> 再反代到 <strong>k8s</strong> 的 <strong>ingress</strong> 上，然后 <strong>ingress</strong> 再按着上面配置挨个来</p>
+</div>
+<h4 id="动态更新实现逻辑" tabindex="-1"><a class="header-anchor" href="#动态更新实现逻辑" aria-hidden="true">#</a> 动态更新实现逻辑</h4>
 <ol>
-<li>Download your <a href="https://github.com/helm/helm/releases" target="_blank" rel="noopener noreferrer">desired version<ExternalLinkIcon/></a></li>
-<li>Unpack it (<strong>tar -zxvf helm-v3.0.0-linux-amd64.tar.gz</strong>)</li>
-<li>Find the helm binary in the unpacked directory, and move it to its desired destination (<strong>mv linux-amd64/helm /usr/local/bin/helm</strong>)</li>
+<li><strong>ingress controller</strong> 通过和 <strong>k8s</strong> 的 <strong>api</strong> 交互，动态感知集群中 <strong>ingress</strong> 规则变化</li>
+<li>读取 <strong>ingress</strong> 规则（<em>哪个域名对应哪个 <strong>service</strong></em> ），按自定义的规则，生成 <strong>nginx</strong> 配置</li>
+<li>再写到 <strong>nginx-ingress-controller</strong> 的 <strong>pod</strong> 里，其 <strong>pod</strong> 里运行着一个 <strong>Nginx</strong> 服务，控制器把生成的 <strong>nginx</strong> 配置写入 <code v-pre>/etc/nginx.conf</code> 文件中，然后 <strong>reload</strong> 一下使配置生效</li>
 </ol>
-<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code><span class="token comment"># helm 安装 bitnami </span>
-$ helm repo <span class="token function">add</span> bitnami https://charts.bitnami.com/bitnami
-	<span class="token comment"># - add 仓库名称 地址</span>
-<span class="token string">"bitnami"</span> has been added to your repositories
-	
-<span class="token comment"># 搜索并安装 harbor 私有仓库</span>
-$ helm search repo harbor
-$ helm <span class="token function">install</span> my-harbor bitnami/harbor
-
-** Please be patient <span class="token keyword">while</span> the chart is being deployed **
-
-<span class="token number">1</span>. Get the Harbor URL:
-
-  NOTE: It may take a few minutes <span class="token keyword">for</span> the LoadBalancer IP to be available.
-        Watch the status with: <span class="token string">'kubectl get svc --namespace default -w my-harbor'</span>
-    <span class="token builtin class-name">export</span> <span class="token assign-left variable">SERVICE_IP</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span>kubectl get svc <span class="token parameter variable">--namespace</span> default my-harbor <span class="token parameter variable">--template</span> <span class="token string">"{{ range (index .status.loadBalancer.ingress 0) }}{{ . }}{{ end }}"</span><span class="token variable">)</span></span>
-    <span class="token builtin class-name">echo</span> <span class="token string">"Harbor URL: http://<span class="token variable">$SERVICE_IP</span>/"</span>
-
-<span class="token number">2</span>. Login with the following credentials to see your Harbor application
-
-  <span class="token builtin class-name">echo</span> Username: <span class="token string">"admin"</span>
-  <span class="token builtin class-name">echo</span> Password: <span class="token variable"><span class="token variable">$(</span>kubectl get secret <span class="token parameter variable">--namespace</span> default my-harbor-core-envvars <span class="token parameter variable">-o</span> <span class="token assign-left variable">jsonpath</span><span class="token operator">=</span><span class="token string">"{.data.HARBOR_ADMIN_PASSWORD}"</span> <span class="token operator">|</span> base64 <span class="token parameter variable">-d</span><span class="token variable">)</span></span>
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-powershell ext-powershell line-numbers-mode"><pre v-pre class="language-powershell"><code>$ wget https:<span class="token operator">/</span><span class="token operator">/</span>raw<span class="token punctuation">.</span>githubusercontent<span class="token punctuation">.</span>com/kubernetes/ingress-nginx/nginx-0<span class="token punctuation">.</span>30<span class="token punctuation">.</span>0/deploy/static/mandatory<span class="token punctuation">.</span>yaml
-<span class="token comment">## 或者使用myblog/deployment/ingress/mandatory.yaml</span>
-<span class="token comment">## 修改部署节点</span>
-$ grep <span class="token operator">-</span>n5 nodeSelector mandatory<span class="token punctuation">.</span>yaml
-212- spec:
-213- hostNetwork: true <span class="token comment">#添加为host模式</span>
-214- <span class="token comment"># wait up to five minutes for the drain of connections</span>
-215- terminationGracePeriodSeconds: 300
-216- serviceAccountName: nginx-ingress-serviceaccount
-217: nodeSelector:
-218- ingress: <span class="token string">"true"</span> <span class="token comment">#替换此处，来决定将ingress部署在哪些机器</span>
-219- containers:
-220- <span class="token operator">-</span> name: nginx-ingress-controller
-221- image: quay<span class="token punctuation">.</span>io/kubernetes-ingress-controller/nginx-ingress-controller:0<span class="token punctuation">.</span>30<span class="token punctuation">.</span>0
-222- args:
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>使用示例：<code v-pre>myblog/deployment/ingress.yaml</code></p>
+<p>如下 <strong>yaml</strong> 文件</p>
 <div class="language-yaml ext-yml line-numbers-mode"><pre v-pre class="language-yaml"><code><span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> extensions/v1beta1
 <span class="token key atrule">kind</span><span class="token punctuation">:</span> Ingress
 <span class="token key atrule">metadata</span><span class="token punctuation">:</span>
-<span class="token key atrule">name</span><span class="token punctuation">:</span> myblog
-<span class="token key atrule">namespace</span><span class="token punctuation">:</span> demo
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> myblog
+  <span class="token key atrule">namespace</span><span class="token punctuation">:</span> uit
 <span class="token key atrule">spec</span><span class="token punctuation">:</span>
-<span class="token key atrule">rules</span><span class="token punctuation">:</span>
-<span class="token punctuation">-</span> <span class="token key atrule">host</span><span class="token punctuation">:</span> myblog.devops.cn
-<span class="token key atrule">http</span><span class="token punctuation">:</span>
-<span class="token key atrule">paths</span><span class="token punctuation">:</span>
-<span class="token punctuation">-</span> <span class="token key atrule">path</span><span class="token punctuation">:</span> /
-<span class="token key atrule">backend</span><span class="token punctuation">:</span>
-<span class="token key atrule">serviceName</span><span class="token punctuation">:</span> myblog
-<span class="token key atrule">servicePort</span><span class="token punctuation">:</span> <span class="token number">80</span>
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>ingress-nginx动态生成upstream配置：</p>
-<div class="language-yaml ext-yml line-numbers-mode"><pre v-pre class="language-yaml"><code><span class="token punctuation">...</span>
+  <span class="token key atrule">rules</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> <span class="token key atrule">host</span><span class="token punctuation">:</span> myblog.devops.cn
+    <span class="token key atrule">http</span><span class="token punctuation">:</span>
+    <span class="token key atrule">paths</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> <span class="token key atrule">path</span><span class="token punctuation">:</span> /
+      <span class="token key atrule">backend</span><span class="token punctuation">:</span>
+      <span class="token key atrule">serviceName</span><span class="token punctuation">:</span> myblog
+      <span class="token key atrule">servicePort</span><span class="token punctuation">:</span> <span class="token number">80</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p><strong>ingress-nginx</strong> 会动态生成 <strong>upstream</strong> 配置</p>
+<div class="language-ini ext-ini line-numbers-mode"><pre v-pre class="language-ini"><code>...
 server_name myblog.devops.cn ;
 
 listen 80 ;
-listen <span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token punctuation">]</span><span class="token punctuation">:</span>80 ;
+listen [::]:80 ;
 listen 443 ssl http2 ;
-listen <span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token punctuation">]</span><span class="token punctuation">:</span>443 ssl http2 ;
+listen [::]:443 ssl http2 ;
 
-set $proxy_upstream_name "<span class="token punctuation">-</span>";
+set $proxy_upstream_name "-";
 
-ssl_certificate_by_lua_block <span class="token punctuation">{</span>
+ssl_certificate_by_lua_block {
 certificate.call()
-<span class="token punctuation">}</span>
+}
 
-location / <span class="token punctuation">{</span>
+location / {
 
 set $namespace "demo";
 set $ingress_name "myblog";
-<span class="token punctuation">...</span>
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h6 id="访问" tabindex="-1"><a class="header-anchor" href="#访问" aria-hidden="true">#</a> 访问</h6>
-<p>域名解析服务，将 <code v-pre>myblog.devops.cn</code>解析到ingress的地址上。ingress是支持多副本的，高可用的情况下，生产的配置是使用lb服务（内网F5设备，公网elb、slb、clb，解析到各ingress的机器，如何域名指向lb地址）</p>
-<p>本机，添加如下hosts记录来演示效果。</p>
-<div class="language-json ext-json line-numbers-mode"><pre v-pre class="language-json"><code><span class="token number">192.168</span>.<span class="token number">136.128</span> myblog.devops.cn
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p>然后，访问 <a href="http://myblog.devops.cn/blog/index/" target="_blank" rel="noopener noreferrer">http://myblog.devops.cn/blog/index/<ExternalLinkIcon/></a></p>
-<p>HTTPS访问：</p>
-<div class="language-powershell ext-powershell line-numbers-mode"><pre v-pre class="language-powershell"><code><span class="token comment">#自签名证书</span>
-$ openssl req <span class="token operator">-</span>x509 <span class="token operator">-</span>nodes <span class="token operator">-</span>days 2920 <span class="token operator">-</span>newkey rsa:2048 <span class="token operator">-</span>keyout tls<span class="token punctuation">.</span>key <span class="token operator">-</span>out tls<span class="token punctuation">.</span>crt <span class="token operator">-</span>subj <span class="token string">"/CN=*.devops.cn/O=ingress-nginx"</span>
+...
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>若需要 <strong>HTTPS</strong> 访问，需要生成证书</p>
+<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code><span class="token comment"># 自签名证书</span>
+$ openssl req <span class="token parameter variable">-x509</span> <span class="token parameter variable">-nodes</span> <span class="token parameter variable">-days</span> <span class="token number">2920</span> <span class="token parameter variable">-newkey</span> rsa:2048 <span class="token parameter variable">-keyout</span> tls.key <span class="token parameter variable">-out</span> tls.crt <span class="token parameter variable">-subj</span> <span class="token string">"/CN=*.devops.cn/O=ingress-nginx"</span>
 
-<span class="token comment"># 证书信息保存到secret对象中，ingress-nginx会读取secret对象解析出证书加载到nginx配置中</span>
-$ kubectl <span class="token operator">-</span>n demo create secret tls https-secret <span class="token operator">--</span>key tls<span class="token punctuation">.</span>key <span class="token operator">--</span>cert tls<span class="token punctuation">.</span>crt
+<span class="token comment"># 证书信息保存到 secret对象中，ingress-nginx 会读取 secret 对象解析出证书加载到 nginx 配置中</span>
+$ kubectl <span class="token parameter variable">-n</span> uit create secret tls https-secret <span class="token parameter variable">--key</span> tls.key <span class="token parameter variable">--cert</span> tls.crt
 secret/https-secret created
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>修改yaml</p>
-<div class="language-yaml ext-yml line-numbers-mode"><pre v-pre class="language-yaml"><code><span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> extensions/v1beta1
-<span class="token key atrule">kind</span><span class="token punctuation">:</span> Ingress
-<span class="token key atrule">metadata</span><span class="token punctuation">:</span>
-<span class="token key atrule">name</span><span class="token punctuation">:</span> myblog<span class="token punctuation">-</span>tls
-<span class="token key atrule">namespace</span><span class="token punctuation">:</span> demo
-<span class="token key atrule">spec</span><span class="token punctuation">:</span>
-<span class="token key atrule">rules</span><span class="token punctuation">:</span>
-<span class="token punctuation">-</span> <span class="token key atrule">host</span><span class="token punctuation">:</span> myblog.devops.cn
-<span class="token key atrule">http</span><span class="token punctuation">:</span>
-<span class="token key atrule">paths</span><span class="token punctuation">:</span>
-<span class="token punctuation">-</span> <span class="token key atrule">path</span><span class="token punctuation">:</span> /
-<span class="token key atrule">backend</span><span class="token punctuation">:</span>
-<span class="token key atrule">serviceName</span><span class="token punctuation">:</span> myblog
-<span class="token key atrule">servicePort</span><span class="token punctuation">:</span> <span class="token number">80</span>
-<span class="token key atrule">tls</span><span class="token punctuation">:</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>如上配置后面新增 <strong>tls</strong> 即可</p>
+<div class="language-yaml ext-yml line-numbers-mode"><pre v-pre class="language-yaml"><code><span class="token key atrule">tls</span><span class="token punctuation">:</span>
 <span class="token punctuation">-</span> <span class="token key atrule">hosts</span><span class="token punctuation">:</span>
 <span class="token punctuation">-</span> myblog.devops.cn
 <span class="token key atrule">secretName</span><span class="token punctuation">:</span> https<span class="token punctuation">-</span>secret
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>然后，访问 <a href="https://myblog.devops.cn/blog/index/" target="_blank" rel="noopener noreferrer">https://myblog.devops.cn/blog/index/<ExternalLinkIcon/></a></p>
-</div></template>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></div></template>
 
 

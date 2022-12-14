@@ -642,7 +642,7 @@ index.html           100% |*****************************]
   - 通常内部通过域名，反代到业务节点，**ingress** 上层可能还有 **F5**，**LVS**，**SLB**，**ELB** 等作为入口再反代到**ingress** 上，然后 **将购买的 域名 解析到 F5、阿里云等LB上** 
   - 由于是 **k8s** 中通过 **IPVS** 实现的一种 **内核级** 的转发，因此还是很快的，今后可能还使用 **EBPF** 等东西，速度更快
 
-### 2.1 Ingress-nginx
+### 2.1 Ingress-nginx 安装
 
 是 **k8s** 官方维护的控制器（*同步更新* ）[官方文档](https://kubernetes.github.io/ingress-nginx/) 
 
@@ -651,94 +651,282 @@ index.html           100% |*****************************]
 - **ingress-nginx-controller：** 根据用户编写的 **ingress** 规则（*创建的 ingress 的 yaml 文件* ），动态的去更改**nginx** 服务的配置文件，并且 **reload** 重载使其生效（*是自动化的，通过 lua 脚本来实现* ）
 - **ingress资源对象：** 将 **Nginx** 的配置抽象成一个 **Ingress** 对象，每添加一个新的 **Service** 资源对象只需写一个新的 **Ingress** 规则的 **yaml** 文件即可（*或修改已存在的 ingress 规则的 yaml 文件* ）
 
-###### 示意图：
+[Ingress-nginx 官方文档](https://kubernetes.github.io/ingress-nginx/deploy/) ，推荐使用 **[Helm](/tool/Kubernetes/Helm安装使用.html)** 安装
 
-###### 实现逻辑
-
-1）ingress controller通过和kubernetes api交互，动态的去感知集群中ingress规则变化
-2）然后读取ingress规则(规则就是写明了哪个域名对应哪个service)，按照自定义的规则，生成一段nginx配置
-3）再写到nginx-ingress-controller的pod里，这个Ingress controller的pod里运行着一个Nginx服务，控制器把生成的nginx配置写入/etc/nginx.conf文件中
-4）然后reload一下使配置生效。以此达到域名分别配置和动态更新的问题。
-
-### 安装
-
-[ingress-nginx 官方文档](https://kubernetes.github.io/ingress-nginx/deploy/) ，推荐使用 **Helm** 安装
-
-#### 安装 helm
-
- [Helm 官方文档](https://helm.sh/) ，仓库推荐用 [bitnami](https://github.com/bitnami/charts) 可以方便部署 **kafuka** 和 **zk** 
-
-1. Download your [desired version](https://github.com/helm/helm/releases)
-2. Unpack it (**tar -zxvf helm-v3.0.0-linux-amd64.tar.gz**)
-3. Find the helm binary in the unpacked directory, and move it to its desired destination (**mv linux-amd64/helm /usr/local/bin/helm**)
+[Artifact Hub中查找](https://artifacthub.io/packages/helm/ingress-nginx/ingress-nginx) 这是来源于 **Kubernetes** 维护的官方 **Helm** 仓库
 
 ```shell
-# helm 安装 bitnami 
-$ helm repo add bitnami https://charts.bitnami.com/bitnami
-	# - add 仓库名称 地址
-"bitnami" has been added to your repositories
-	
-# 搜索并安装 harbor 私有仓库
-$ helm search repo harbor
-$ helm install my-harbor bitnami/harbor
+# 通过 helm 添加 ingress-nginx 仓库
+$ helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
 
-** Please be patient while the chart is being deployed **
+# 查看添加的仓库
+$ helm repo list
+NAME         	URL                                          
+ingress-nginx	https://kubernetes.github.io/ingress-nginx
 
-1. Get the Harbor URL:
+# 查看仓库中 ingress-nginx 的版本
+$ helm search repo ingress-nginx
+NAME                       	CHART VERSION	APP VERSION	DESCRIPTION
+ingress-nginx/ingress-nginx	4.4.0        	1.5.1      	Ingress controller for Kubernetes using NGINX a...
 
-  NOTE: It may take a few minutes for the LoadBalancer IP to be available.
-        Watch the status with: 'kubectl get svc --namespace default -w my-harbor'
-    export SERVICE_IP=$(kubectl get svc --namespace default my-harbor --template "{{ range (index .status.loadBalancer.ingress 0) }}{{ . }}{{ end }}")
-    echo "Harbor URL: http://$SERVICE_IP/"
+# 虽然需要 APP VERSION >= 0.40.2 (bug少)，但是  CHART VERSION 4.4.0 太高了，安装会报错，
 
-2. Login with the following credentials to see your Harbor application
-
-  echo Username: "admin"
-  echo Password: $(kubectl get secret --namespace default my-harbor-core-envvars -o jsonpath="{.data.HARBOR_ADMIN_PASSWORD}" | base64 -d)
 ```
 
+此时要下 **降级** 的包，这里是 **CHART VERSION == 3.18.0**
 
+```shell
+# 通过命令 search 所有版本的包
+$ helm search repo ingress-nginx -l
+...
+ingress-nginx/ingress-nginx	3.18.0        	0.42.0     	An nginx Ingress controller that uses ConfigMap...
 
-```powershell
-$ wget https://raw.githubusercontent.com/kubernetes/ingress-nginx/nginx-0.30.0/deploy/static/mandatory.yaml
-## 或者使用myblog/deployment/ingress/mandatory.yaml
-## 修改部署节点
-$ grep -n5 nodeSelector mandatory.yaml
-212- spec:
-213- hostNetwork: true #添加为host模式
-214- # wait up to five minutes for the drain of connections
-215- terminationGracePeriodSeconds: 300
-216- serviceAccountName: nginx-ingress-serviceaccount
-217: nodeSelector:
-218- ingress: "true" #替换此处，来决定将ingress部署在哪些机器
-219- containers:
-220- - name: nginx-ingress-controller
-221- image: quay.io/kubernetes-ingress-controller/nginx-ingress-controller:0.30.0
-222- args:
+# pull 包指定版本号
+$ helm pull ingress-nginx/ingress-nginx --version 3.18.0
+
+# 网络失败，多试几次，下载后会多出个 3.18.0 的 tar 包
+$ ls
+anaconda-ks.cfg  dev  `ingress-nginx-3.18.0.tgz`  k8s_install  kube-prometheus  prom  test
+
+# 解压，进入目录
+$ tar -xf ingress-nginx-3.18.0.tgz
+$ cd ingress-nginx/
+
+# 如下是配置文件
+$ ls
+CHANGELOG.md  Chart.yaml  ci  OWNERS  README.md  README.md.gotmpl  templates  values.yaml
 ```
 
-使用示例：`myblog/deployment/ingress.yaml`
+修改 **ingress** 配置文件
+
+```ini
+# 打开 values.yaml 修改镜像地址等配置
+$ vim values.yaml
+
+------------------------------
+# 修改镜像源地址，并去掉哈希值
++ repository: docker.io/willdockerhub/ingress-nginx-controller
+- digest 
+...
+
+# 推荐使用 hostNetwork 部署，走宿主机端口，性能好一些, 且推荐使用 DaemonSet部署
++ dnsPolicy: ClusterFirstWithHostNet
++ hostNetwork: true
++ kind: DaemonSet
+# 必须修改 dns 策略 否则 ingress pod 是解析不了 k8s 内部的 Service
+...
+
+# 设置有 ingress 为 true 标签的节点才部署
+nodeSelector:
+kubernetes.io/os: linux
++ ingress: "true"
+# 生产环境中建议修改 resources 需要给大点，毕竟是 k8s 的入口
+...
+
+# 非云环境，type 是不需要使用 LoadBalancer 的，IDC 机房直接使用 ClusterIP 即可
++ type: ClusterIP
+# 云的话，会向云发个请求，然后得到公有云分配的 IP 地址，之后将购买的域名解析到公有云的 IP 即可
+...
+
+# 查看转轴控制 是否证书会报错 0.42 前会，将 enabled 修改
+admissionWebhooks:
+  enabled: ...
+...
+
+# kube-webhook-certgen 的镜像地址同样修改
++ repository: egistry.aliyuncs.com/google_containers/kube-webhook-certgen
+------------------------------
+
+# 如上镜像地址都是网上抄的，若 pull 失败，百度下载离线
+docker pull quay.io/kubernetes-ingress-controller/nginx-ingress-controller:0.xx.0
+docker pull 能用的国内地址/k8s/defaultbackend-amd64:x.xx
+```
+
+::: warning 注意
+
+若使用 **Deployment** 方式部署，则不使用 **hostNetwork**，因为是随机部署的，可能部署在同一个宿主机导致端口冲突
+
+**DaemonSet** 更容易控制与某个节点，直接在宿主机上暴露端口号，**k8s** 外部的负载均衡，可以直接代理到 **ingress** 所在节点的 **IP** 和端口号上，而使用 **Deployment + NodePort** 方式性能差难维护
+
+:::
+
+使用 **Helm** 安装
+
+```shell
+# 创建命名空间并安装
+$ kubectl create ns ingress-nginx
+
+# -n 指定 namespace
+$ helm install ingress-nginx -n ingress-nginx .
+
+# 出现如下，貌似密码 base64 转码啥的
+NAME: ingress-nginx
+...
+If TLS is enabled for the Ingress, a Secret containing the certificate and key must also be provided:
+
+  apiVersion: v1
+  kind: Secret
+  metadata:
+    name: example-tls
+    namespace: foo
+  data:
+    tls.crt: <base64 encoded cert>
+    tls.key: <base64 encoded key>
+  type: kubernetes.io/tls
+
+# 查看 pod 等待下载镜像, Running 则成功
+$ kubectl -n ingress-nginx get po -w
+NAME                             READY   STATUS              RESTARTS   AGE
+ingress-nginx-controller-22lhv   0/1     ContainerCreating   0          23s
+ingress-nginx-controller-22lhv   0/1     Running             0          46s
+ingress-nginx-controller-22lhv   1/1     Running             0          63s
+
+
+```
+
+之后 **DaemonSet** 会在指定的节点上起 **ingress pod** 并暴露 **80** 和 **443** 端口
+
+#### ingress 扩容缩容
+
+若需扩充 **ingress pod**，可直接其他节点打标签，**DaemonSet** 会持续监听并部署
+
+```shell
+$ kubectl label node k8s-slave-173 ingress=true
+
+# 此时查看已扩容，正在部署
+$ kubectl -n ingress-nginx get po
+NAME                             READY   STATUS              RESTARTS   AGE
+ingress-nginx-controller-22lhv   1/1     Running             0          7m49s
+ingress-nginx-controller-2gvv6   0/1     ContainerCreating   0          16s
+```
+
+外部的 **WebLB** 再将扩容的节点地址写入即可，缩容直接删标签即可
+
+```shell
+$ kubectl label node k8s-slave-173 ingress-
+
+# 此时查看已缩容，正在销毁
+kubectl -n ingress-nginx get po
+NAME                             READY   STATUS        RESTARTS   AGE
+ingress-nginx-controller-22lhv   1/1     Running       0          12m
+ingress-nginx-controller-2gvv6   1/1     Terminating   0          4m58s
+```
+
+需要先将外部的 **WebLB** 配置的地址删除，再执行如上缩容操作，保证请求正常
+
+
+
+### 2.2 ingress 使用（发布流程）
+
+如上已经安装完 **ingress-nginx** 的 控制器了，之后可以编写 **yaml** 来创建 **Ingress** 示例
+
+配置域名通常用 [Annotations](https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/annotations/)  
+
+只需创建一次 **Ingress** 实例，即可自动生成 **nginx** 配置，
+
+若灰度发布、跨域、限速等配置，其配置文件写于 **Annotations** 里面，**ingress controller** 会分析 **ingress** 实例，从 **Annotations** 里面读取配置（*具有校验功能* ），生成 **nginx** 配置文件
+
+示例： 通过配置 **ingress** 域名反代到 **nginx** 服务上，如下创建一个名为 **example** 的 **ingress**
+
+```ini
+$ vim ingress.yaml
+
+# ingress 需要和服务在同一个 namespace 下, 
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+  name: example	
+  namespace: dev
+spec:
+  rules:
+  - host: nginx.bar.com
+    http:
+      paths:
+      - backend:
+          serviceName: svc-nignx
+          servicePort: 80
+        path: /
+      - backend:
+          serviceName: http-svc-abc
+          servicePort: 80
+        path: /abc
+```
+
+**apiVersion：**
+
+- `networking.k8s.io/v1beta1` 会在 **1.22** 后废弃
+- `networking.k8s.io/v1:` **1.22** 之后的
+- `extensinos/v1beta1:` 最开始的版本，已废弃
+
+**annotations：**告诉接口，声明使用的 **配置实例** 是什么，这是由于集群中可能不止一个 **ingress** 控制器
+
+- `kubernetes.io/ingress.class：` 如上实例是 **ingress-nginx** （*在上文 **value.yaml** 中指定* ）
+
+```shell
+$ cat values.yaml |grep ingressClass
+#  ingressClass: nginx
+```
+
+**rules：** 固定写法，一个 **ingress** 可以配置多个 **rules** （*一个文件中可以指定多个域名*）
+
+- `host：` 配置域名，若不写则是 **\*** 此时输入任何域名都会被解析，不推荐
+- `path：` 相当于 **nginx** 的 **location** 配置，同一个 **hosts** 可以配置多个路径
+- `backend:` 多个路径可以与不同的 **Service** 关联，上文表示一个域名下的两个路径，可通过 **svc** 访问
+
+创建 **ingress**
+
+```shell
+$ kubectl create -f ingress.yaml 
+ingress.networking.k8s.io/rewrite created
+
+# 查看 ingress
+$ kubectl -n dev get ing
+NAME      HOSTS           ADDRESS          PORTS   AGE
+example   nginx.bar.com   10.107.244.209   80      55s
+```
+
+配置 **hosts** 解析
+
+```
+192.168.3.172 nginx.bar.com
+```
+
+::: tip
+
+若购买的域名，则解析到公司的 **LB** 上（***LB**是有地址的* ）然后 **LB** 再反代到 **k8s** 的 **ingress** 上，然后 **ingress** 再按着上面配置挨个来
+
+:::
+
+#### 动态更新实现逻辑
+
+1. **ingress controller** 通过和 **k8s** 的 **api** 交互，动态感知集群中 **ingress** 规则变化
+2. 读取 **ingress** 规则（*哪个域名对应哪个 **service*** ），按自定义的规则，生成 **nginx** 配置
+3. 再写到 **nginx-ingress-controller** 的 **pod** 里，其 **pod** 里运行着一个 **Nginx** 服务，控制器把生成的 **nginx** 配置写入 `/etc/nginx.conf` 文件中，然后 **reload** 一下使配置生效
+
+如下 **yaml** 文件
 
 ```yaml
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-name: myblog
-namespace: demo
+  name: myblog
+  namespace: uit
 spec:
-rules:
-- host: myblog.devops.cn
-http:
-paths:
-- path: /
-backend:
-serviceName: myblog
-servicePort: 80
+  rules:
+  - host: myblog.devops.cn
+    http:
+    paths:
+    - path: /
+      backend:
+      serviceName: myblog
+      servicePort: 80
 ```
 
-ingress-nginx动态生成upstream配置：
+**ingress-nginx** 会动态生成 **upstream** 配置
 
-```yaml
+```ini
 ...
 server_name myblog.devops.cn ;
 
@@ -760,50 +948,22 @@ set $ingress_name "myblog";
 ...
 ```
 
-###### 访问
+若需要 **HTTPS** 访问，需要生成证书
 
-域名解析服务，将 `myblog.devops.cn`解析到ingress的地址上。ingress是支持多副本的，高可用的情况下，生产的配置是使用lb服务（内网F5设备，公网elb、slb、clb，解析到各ingress的机器，如何域名指向lb地址）
-
-本机，添加如下hosts记录来演示效果。
-
-```json
-192.168.136.128 myblog.devops.cn
-```
-
-然后，访问 http://myblog.devops.cn/blog/index/
-
-HTTPS访问：
-
-```powershell
-#自签名证书
+```shell
+# 自签名证书
 $ openssl req -x509 -nodes -days 2920 -newkey rsa:2048 -keyout tls.key -out tls.crt -subj "/CN=*.devops.cn/O=ingress-nginx"
 
-# 证书信息保存到secret对象中，ingress-nginx会读取secret对象解析出证书加载到nginx配置中
-$ kubectl -n demo create secret tls https-secret --key tls.key --cert tls.crt
+# 证书信息保存到 secret对象中，ingress-nginx 会读取 secret 对象解析出证书加载到 nginx 配置中
+$ kubectl -n uit create secret tls https-secret --key tls.key --cert tls.crt
 secret/https-secret created
 ```
 
-修改yaml
+如上配置后面新增 **tls** 即可
 
 ```yaml
-apiVersion: extensions/v1beta1
-kind: Ingress
-metadata:
-name: myblog-tls
-namespace: demo
-spec:
-rules:
-- host: myblog.devops.cn
-http:
-paths:
-- path: /
-backend:
-serviceName: myblog
-servicePort: 80
 tls:
 - hosts:
 - myblog.devops.cn
 secretName: https-secret
 ```
-
-然后，访问 https://myblog.devops.cn/blog/index/

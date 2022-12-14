@@ -332,7 +332,16 @@ export default sidebar({
       icon: "kubernetes",
       prefix: "/tool/Kubernetes/",
       link: "/tool/Kubernetes/",
-      children: ["k8s安装", "k8s资源Pod", "k8s工作负载", "k8s服务", "k8s进阶"]
+      children: ["k8s安装", "k8s资源Pod", "k8s工作负载", "k8s服务", "k8s进阶", "Helm安装使用"]
+    }
+  ],
+  "/tool/Prometheus": [
+    {
+      text: "Prometheus",
+      icon: "prometheus",
+      prefix: "/tool/Prometheus/",
+      link: "/tool/Prometheus/",
+      children: ["安装", "基本使用"]
     }
   ],
   "/tool/Nginx": [

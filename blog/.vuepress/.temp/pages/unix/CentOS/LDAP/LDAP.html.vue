@@ -157,10 +157,16 @@ ss <span class="token parameter variable">-natup</span> <span class="token opera
 tcp    LISTEN     <span class="token number">0</span>      <span class="token number">128</span>       *:389                   *:*                   users:<span class="token variable"><span class="token punctuation">((</span>"slapd"<span class="token punctuation">,</span>pid<span class="token operator">=</span><span class="token number">1773</span><span class="token punctuation">,</span>fd<span class="token operator">=</span><span class="token number">8</span><span class="token punctuation">))</span></span>
 tcp    LISTEN     <span class="token number">0</span>      <span class="token number">128</span>      :::389                  :::*                   users:<span class="token variable"><span class="token punctuation">((</span>"slapd"<span class="token punctuation">,</span>pid<span class="token operator">=</span><span class="token number">1773</span><span class="token punctuation">,</span>fd<span class="token operator">=</span><span class="token number">9</span><span class="token punctuation">))</span></span>
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p><strong>导入基本 Schema</strong></p>
-<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code>ldapadd <span class="token parameter variable">-Y</span> EXTERNAL <span class="token parameter variable">-H</span> ldapi:/// <span class="token parameter variable">-f</span> /etc/openldap/schema/cosine.ldif
+<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code><span class="token comment"># 查看预生成的 ldif 文件</span>
+ll /etc/openldap/schema
+
+ldapadd <span class="token parameter variable">-Y</span> EXTERNAL <span class="token parameter variable">-H</span> ldapi:/// <span class="token parameter variable">-f</span> /etc/openldap/schema/cosine.ldif
 ldapadd <span class="token parameter variable">-Y</span> EXTERNAL <span class="token parameter variable">-H</span> ldapi:/// <span class="token parameter variable">-f</span> /etc/openldap/schema/nis.ldif
 ldapadd <span class="token parameter variable">-Y</span> EXTERNAL <span class="token parameter variable">-H</span> ldapi:/// <span class="token parameter variable">-f</span> /etc/openldap/schema/inetorgperson.ldif
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p><strong>修改 migrate_common.ph 文件</strong></p>
+
+<span class="token comment"># 注意！！加域必须要如下ldif 文件</span>
+ldapadd <span class="token parameter variable">-Y</span> EXTERNAL <span class="token parameter variable">-H</span> ldapi:/// <span class="token parameter variable">-f</span> /etc/openldap/schema/samba.ldif
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p><strong>修改 migrate_common.ph 文件</strong></p>
 <p>改文件主要用于生成 <strong>ldif</strong> 文件使用，修改如下</p>
 <div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code><span class="token function">vim</span> /usr/share/migrationtools/migrate_common.ph +71
 
@@ -175,7 +181,7 @@ ldapadd <span class="token parameter variable">-Y</span> EXTERNAL <span class="t
 <div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code><span class="token function">mkdir</span> /root/openldap
 /usr/share/migrationtools/migrate_base.pl <span class="token operator">></span>/root/openldap/base.ldif
 
-ldapadd <span class="token parameter variable">-x</span> <span class="token parameter variable">-D</span> <span class="token string">"cn=cloud,dc=uit,dc=ldevops,dc=local"</span> <span class="token parameter variable">-w</span> <span class="token number">123456</span> <span class="token parameter variable">-f</span> /root/openldap/base.ldif
+ldapadd <span class="token parameter variable">-x</span> <span class="token parameter variable">-D</span> <span class="token string">"cn=cloud,dc=uit,dc=ldevops,dc=local"</span> <span class="token parameter variable">-w</span> user@dev <span class="token parameter variable">-f</span> /root/openldap/base.ldif
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p><strong>添加用户及用户组</strong></p>
 <p>默认情况下 <strong>OpenLDAP</strong> 没有普通用户的，但有个管理员用户，即刚配置的 <strong>root</strong></p>
 <p>现在我们把系统中的用户，添加到 <strong>OpenLDAP</strong> 中，为了进行区分，新加两个用户 <strong>ldapuser1</strong> 和 <strong>ldapuser2</strong>，和两个用户组 <strong>ldapgroup1</strong> 和 <strong>ldapgroup2</strong></p>
@@ -583,7 +589,7 @@ dn:uid<span class="token operator">=</span>ldapuser1,ou<span class="token operat
 <h3 id="_5-1-smbldap-tools" tabindex="-1"><a class="header-anchor" href="#_5-1-smbldap-tools" aria-hidden="true">#</a> 5.1 smbldap-tools</h3>
 <p>是数据库管理软件，方便进行用户端的管理，但 <strong>smbldap-tools</strong> 有个缺点，不管你本地用户是否有相同的 <strong>UID</strong> 或则 <strong>GID</strong> 都会直接添加用户，故可能会引起冲突</p>
 <blockquote>
-<p><strong>smbldap-tools</strong> 的软件包在 <strong>epel</strong> 库，可能需先安装 <strong>epel</strong> 源</p>
+<p><strong>smbldap-tools</strong> 的软件包在 <strong>epel</strong> 库，可能需先安装 <strong>epel</strong> 源（建议在客户端安装，方便初始化</p>
 </blockquote>
 <div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code>$ yum <span class="token function">install</span> <span class="token parameter variable">-y</span> smbldap-tools
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p><strong>smbldap</strong> 会从 <code v-pre>/etc/samba/smb.conf</code> 读取部分信息，使用如下命令配置</p>

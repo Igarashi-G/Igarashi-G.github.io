@@ -256,9 +256,15 @@ tcp    LISTEN     0      128      :::389                  :::*                  
 **导入基本 Schema**
 
 ```shell
+# 查看预生成的 ldif 文件
+ll /etc/openldap/schema
+
 ldapadd -Y EXTERNAL -H ldapi:/// -f /etc/openldap/schema/cosine.ldif
 ldapadd -Y EXTERNAL -H ldapi:/// -f /etc/openldap/schema/nis.ldif
 ldapadd -Y EXTERNAL -H ldapi:/// -f /etc/openldap/schema/inetorgperson.ldif
+
+# 注意！！加域必须要如下ldif 文件
+ldapadd -Y EXTERNAL -H ldapi:/// -f /etc/openldap/schema/samba.ldif
 ```
 
 **修改 migrate_common.ph 文件**
@@ -283,7 +289,7 @@ $EXTENDED_SCHEMA = 1;
 mkdir /root/openldap
 /usr/share/migrationtools/migrate_base.pl >/root/openldap/base.ldif
 
-ldapadd -x -D "cn=cloud,dc=uit,dc=ldevops,dc=local" -w 123456 -f /root/openldap/base.ldif
+ldapadd -x -D "cn=cloud,dc=uit,dc=ldevops,dc=local" -w user@dev -f /root/openldap/base.ldif
 ```
 
 **添加用户及用户组**
@@ -848,7 +854,7 @@ dn:uid=ldapuser1,ou=People,dc=lework,dc=com
 
 是数据库管理软件，方便进行用户端的管理，但 **smbldap-tools** 有个缺点，不管你本地用户是否有相同的 **UID** 或则 **GID** 都会直接添加用户，故可能会引起冲突
 
-> **smbldap-tools** 的软件包在 **epel** 库，可能需先安装 **epel** 源
+> **smbldap-tools** 的软件包在 **epel** 库，可能需先安装 **epel** 源（建议在客户端安装，方便初始化
 
 ```shell
 $ yum install -y smbldap-tools
