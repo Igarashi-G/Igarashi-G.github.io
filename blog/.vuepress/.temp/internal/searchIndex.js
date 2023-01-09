@@ -270,6 +270,267 @@ export const searchIndex = [
     "extraFields": []
   },
   {
+    "title": "aioetcd3",
+    "headers": [
+      {
+        "level": 3,
+        "title": "安装",
+        "slug": "安装",
+        "link": "#安装",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "1. 使用说明",
+        "slug": "_1-使用说明",
+        "link": "#_1-使用说明",
+        "children": [
+          {
+            "level": 3,
+            "title": "2. 分布式锁",
+            "slug": "_2-分布式锁",
+            "link": "#_2-分布式锁",
+            "children": []
+          }
+        ]
+      }
+    ],
+    "path": "/database/etcd/aioetcd3.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "etcd",
+    "headers": [
+      {
+        "level": 2,
+        "title": "1. 简介",
+        "slug": "_1-简介",
+        "link": "#_1-简介",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "2. 工作原理",
+        "slug": "_2-工作原理",
+        "link": "#_2-工作原理",
+        "children": [
+          {
+            "level": 3,
+            "title": "2.1 选主",
+            "slug": "_2-1-选主",
+            "link": "#_2-1-选主",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "2.2 日志复制",
+            "slug": "_2-2-日志复制",
+            "link": "#_2-2-日志复制",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "2.3 安全性",
+            "slug": "_2-3-安全性",
+            "link": "#_2-3-安全性",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "3. 使用说明",
+        "slug": "_3-使用说明",
+        "link": "#_3-使用说明",
+        "children": [
+          {
+            "level": 3,
+            "title": "3.1 安装搭建",
+            "slug": "_3-1-安装搭建",
+            "link": "#_3-1-安装搭建",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "3.2 操作说明",
+            "slug": "_3-2-操作说明",
+            "link": "#_3-2-操作说明",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "数据库操作",
+            "slug": "数据库操作",
+            "link": "#数据库操作",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "get",
+            "slug": "get",
+            "link": "#get",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "非数据库操作",
+            "slug": "非数据库操作",
+            "link": "#非数据库操作",
+            "children": []
+          }
+        ]
+      }
+    ],
+    "path": "/database/etcd/etcd.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "etcd 进阶",
+    "headers": [
+      {
+        "level": 3,
+        "title": "1. etcd 的请求是如何执行的？",
+        "slug": "_1-etcd-的请求是如何执行的",
+        "link": "#_1-etcd-的请求是如何执行的",
+        "children": []
+      },
+      {
+        "level": 3,
+        "title": "2. 如何实现高可用、数据强一致性？",
+        "slug": "_2-如何实现高可用、数据强一致性",
+        "link": "#_2-如何实现高可用、数据强一致性",
+        "children": []
+      }
+    ],
+    "path": "/database/etcd/%E8%BF%9B%E9%98%B6.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "MySQL",
+    "headers": [
+      {
+        "level": 2,
+        "title": "1. 安装",
+        "slug": "_1-安装",
+        "link": "#_1-安装",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "2. 使用说明",
+        "slug": "_2-使用说明",
+        "link": "#_2-使用说明",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "二、数据表基本操作：",
+        "slug": "二、数据表基本操作",
+        "link": "#二、数据表基本操作",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "三、数据类型：（数值、时间、字符串）",
+        "slug": "三、数据类型-数值、时间、字符串",
+        "link": "#三、数据类型-数值、时间、字符串",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "四、数据表内容操作",
+        "slug": "四、数据表内容操作",
+        "link": "#四、数据表内容操作",
+        "children": []
+      }
+    ],
+    "path": "/database/MySQL/MySQL.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "Mysql调优",
+    "headers": [],
+    "path": "/database/MySQL/Mysql%E8%B0%83%E4%BC%98.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "Mysql进阶",
+    "headers": [],
+    "path": "/database/MySQL/Mysql%E8%BF%9B%E9%98%B6.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "Mysql高阶",
+    "headers": [],
+    "path": "/database/MySQL/Mysql%E9%AB%98%E9%98%B6.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "Navicat",
+    "headers": [],
+    "path": "/database/MySQL/Navicat.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "SQLAlchemy基础",
+    "headers": [],
+    "path": "/database/MySQL/SQLAlchemy.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "PostgreSQL基础",
+    "headers": [
+      {
+        "level": 2,
+        "title": "1. PostgreSQL 数据库",
+        "slug": "_1-postgresql-数据库",
+        "link": "#_1-postgresql-数据库",
+        "children": [
+          {
+            "level": 3,
+            "title": "1. 安装",
+            "slug": "_1-安装",
+            "link": "#_1-安装",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "2. 操作",
+            "slug": "_2-操作",
+            "link": "#_2-操作",
+            "children": []
+          }
+        ]
+      }
+    ],
+    "path": "/database/PostgreSQL/PostgreSQL.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "Redis",
+    "headers": [],
+    "path": "/database/Redis/redis.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "性能分析",
+    "headers": [],
+    "path": "/database/Redis/%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
     "title": "asyncio Recipes",
     "headers": [],
     "path": "/book/python/asyncio_recipes.html",
@@ -545,267 +806,6 @@ export const searchIndex = [
     "title": "非理性繁荣",
     "headers": [],
     "path": "/book/%E9%87%91%E8%9E%8D%E5%AD%A6/%E9%9D%9E%E7%90%86%E6%80%A7%E7%B9%81%E8%8D%A3.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "aioetcd3",
-    "headers": [
-      {
-        "level": 3,
-        "title": "安装",
-        "slug": "安装",
-        "link": "#安装",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "1. 使用说明",
-        "slug": "_1-使用说明",
-        "link": "#_1-使用说明",
-        "children": [
-          {
-            "level": 3,
-            "title": "2. 分布式锁",
-            "slug": "_2-分布式锁",
-            "link": "#_2-分布式锁",
-            "children": []
-          }
-        ]
-      }
-    ],
-    "path": "/database/etcd/aioetcd3.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "etcd",
-    "headers": [
-      {
-        "level": 2,
-        "title": "1. 简介",
-        "slug": "_1-简介",
-        "link": "#_1-简介",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "2. 工作原理",
-        "slug": "_2-工作原理",
-        "link": "#_2-工作原理",
-        "children": [
-          {
-            "level": 3,
-            "title": "2.1 选主",
-            "slug": "_2-1-选主",
-            "link": "#_2-1-选主",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "2.2 日志复制",
-            "slug": "_2-2-日志复制",
-            "link": "#_2-2-日志复制",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "2.3 安全性",
-            "slug": "_2-3-安全性",
-            "link": "#_2-3-安全性",
-            "children": []
-          }
-        ]
-      },
-      {
-        "level": 2,
-        "title": "3. 使用说明",
-        "slug": "_3-使用说明",
-        "link": "#_3-使用说明",
-        "children": [
-          {
-            "level": 3,
-            "title": "3.1 安装搭建",
-            "slug": "_3-1-安装搭建",
-            "link": "#_3-1-安装搭建",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "3.2 操作说明",
-            "slug": "_3-2-操作说明",
-            "link": "#_3-2-操作说明",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "数据库操作",
-            "slug": "数据库操作",
-            "link": "#数据库操作",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "get",
-            "slug": "get",
-            "link": "#get",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "非数据库操作",
-            "slug": "非数据库操作",
-            "link": "#非数据库操作",
-            "children": []
-          }
-        ]
-      }
-    ],
-    "path": "/database/etcd/etcd.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "etcd 进阶",
-    "headers": [
-      {
-        "level": 3,
-        "title": "1. etcd 的请求是如何执行的？",
-        "slug": "_1-etcd-的请求是如何执行的",
-        "link": "#_1-etcd-的请求是如何执行的",
-        "children": []
-      },
-      {
-        "level": 3,
-        "title": "2. 如何实现高可用、数据强一致性？",
-        "slug": "_2-如何实现高可用、数据强一致性",
-        "link": "#_2-如何实现高可用、数据强一致性",
-        "children": []
-      }
-    ],
-    "path": "/database/etcd/%E8%BF%9B%E9%98%B6.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "MySQL",
-    "headers": [
-      {
-        "level": 2,
-        "title": "1. 安装",
-        "slug": "_1-安装",
-        "link": "#_1-安装",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "2. 使用说明",
-        "slug": "_2-使用说明",
-        "link": "#_2-使用说明",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "二、数据表基本操作：",
-        "slug": "二、数据表基本操作",
-        "link": "#二、数据表基本操作",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "三、数据类型：（数值、时间、字符串）",
-        "slug": "三、数据类型-数值、时间、字符串",
-        "link": "#三、数据类型-数值、时间、字符串",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "四、数据表内容操作",
-        "slug": "四、数据表内容操作",
-        "link": "#四、数据表内容操作",
-        "children": []
-      }
-    ],
-    "path": "/database/MySQL/MySQL.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "Mysql调优",
-    "headers": [],
-    "path": "/database/MySQL/Mysql%E8%B0%83%E4%BC%98.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "Mysql进阶",
-    "headers": [],
-    "path": "/database/MySQL/Mysql%E8%BF%9B%E9%98%B6.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "Mysql高阶",
-    "headers": [],
-    "path": "/database/MySQL/Mysql%E9%AB%98%E9%98%B6.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "Navicat",
-    "headers": [],
-    "path": "/database/MySQL/Navicat.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "SQLAlchemy基础",
-    "headers": [],
-    "path": "/database/MySQL/SQLAlchemy.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "PostgreSQL基础",
-    "headers": [
-      {
-        "level": 2,
-        "title": "1. PostgreSQL 数据库",
-        "slug": "_1-postgresql-数据库",
-        "link": "#_1-postgresql-数据库",
-        "children": [
-          {
-            "level": 3,
-            "title": "1. 安装",
-            "slug": "_1-安装",
-            "link": "#_1-安装",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "2. 操作",
-            "slug": "_2-操作",
-            "link": "#_2-操作",
-            "children": []
-          }
-        ]
-      }
-    ],
-    "path": "/database/PostgreSQL/PostgreSQL.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "Redis",
-    "headers": [],
-    "path": "/database/Redis/redis.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "性能分析",
-    "headers": [],
-    "path": "/database/Redis/%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90.html",
     "pathLocale": "/",
     "extraFields": []
   },
