@@ -1275,7 +1275,7 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "Kubernets存储",
+    "title": "Kubernets - 存储",
     "headers": [
       {
         "level": 2,
@@ -1428,7 +1428,7 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "Kubernets -工作负载",
+    "title": "Kubernets - 工作负载",
     "headers": [
       {
         "level": 2,
@@ -1999,6 +1999,20 @@ export const searchIndex = [
             "title": "不能做什么",
             "slug": "不能做什么",
             "link": "#不能做什么",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "2. Metrics",
+            "slug": "_2-metrics",
+            "link": "#_2-metrics",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "Exporter",
+            "slug": "exporter",
+            "link": "#exporter",
             "children": []
           }
         ]
@@ -6079,16 +6093,3 @@ export const searchIndex = [
     "extraFields": []
   }
 ]
-
-if (import.meta.webpackHot) {
-  import.meta.webpackHot.accept()
-  if (__VUE_HMR_RUNTIME__.updateSearchIndex) {
-    __VUE_HMR_RUNTIME__.updateSearchIndex(searchIndex)
-  }
-}
-
-if (import.meta.hot) {
-  import.meta.hot.accept(({ searchIndex }) => {
-    __VUE_HMR_RUNTIME__.updateSearchIndex(searchIndex)
-  })
-}

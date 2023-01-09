@@ -1,14 +1,1 @@
-export const data = JSON.parse("{\"key\":\"v-8902d37a\",\"path\":\"/book/%E6%8A%80%E6%9C%AF/%E9%B8%9F%E5%93%A5%E7%9A%84Linux%E7%A7%81%E6%88%BF%E8%8F%9C.html\",\"title\":\"鸟哥的Linux私房菜\",\"lang\":\"zh-CN\",\"frontmatter\":{\"title\":\"鸟哥的Linux私房菜\",\"date\":\"2022-09-19T00:00:00.000Z\",\"article\":false,\"summary\":\"\",\"head\":[[\"meta\",{\"property\":\"og:url\",\"content\":\"https://igarashi-g.github.io/book/%E6%8A%80%E6%9C%AF/%E9%B8%9F%E5%93%A5%E7%9A%84Linux%E7%A7%81%E6%88%BF%E8%8F%9C.html\"}],[\"meta\",{\"property\":\"og:site_name\",\"content\":\"五十岚 ▪ 寄\"}],[\"meta\",{\"property\":\"og:title\",\"content\":\"鸟哥的Linux私房菜\"}],[\"meta\",{\"property\":\"og:type\",\"content\":\"article\"}],[\"meta\",{\"property\":\"og:locale\",\"content\":\"zh-CN\"}],[\"meta\",{\"property\":\"article:published_time\",\"content\":\"2022-09-19T00:00:00.000Z\"}]]},\"excerpt\":\"\",\"headers\":[],\"readingTime\":{\"minutes\":0.16,\"words\":47},\"filePathRelative\":\"book/技术/鸟哥的Linux私房菜.md\",\"localizedDate\":\"2022年9月19日\"}")
-
-if (import.meta.webpackHot) {
-  import.meta.webpackHot.accept()
-  if (__VUE_HMR_RUNTIME__.updatePageData) {
-    __VUE_HMR_RUNTIME__.updatePageData(data)
-  }
-}
-
-if (import.meta.hot) {
-  import.meta.hot.accept(({ data }) => {
-    __VUE_HMR_RUNTIME__.updatePageData(data)
-  })
-}
+export const data = JSON.parse("{\"key\":\"v-8902d37a\",\"path\":\"/book/%E6%8A%80%E6%9C%AF/%E9%B8%9F%E5%93%A5%E7%9A%84Linux%E7%A7%81%E6%88%BF%E8%8F%9C.html\",\"title\":\"鸟哥的Linux私房菜\",\"lang\":\"zh-CN\",\"frontmatter\":{\"title\":\"鸟哥的Linux私房菜\",\"date\":\"2022-09-19T00:00:00.000Z\",\"article\":false,\"summary\":\"\",\"head\":[[\"meta\",{\"property\":\"og:url\",\"content\":\"https://igarashi-g.github.io/book/%E6%8A%80%E6%9C%AF/%E9%B8%9F%E5%93%A5%E7%9A%84Linux%E7%A7%81%E6%88%BF%E8%8F%9C.html\"}],[\"meta\",{\"property\":\"og:site_name\",\"content\":\"五十岚 ▪ 寄\"}],[\"meta\",{\"property\":\"og:title\",\"content\":\"鸟哥的Linux私房菜\"}],[\"meta\",{\"property\":\"og:type\",\"content\":\"article\"}],[\"meta\",{\"property\":\"og:updated_time\",\"content\":\"2022-09-20T09:54:04.000Z\"}],[\"meta\",{\"property\":\"og:locale\",\"content\":\"zh-CN\"}],[\"meta\",{\"property\":\"article:published_time\",\"content\":\"2022-09-19T00:00:00.000Z\"}],[\"meta\",{\"property\":\"article:modified_time\",\"content\":\"2022-09-20T09:54:04.000Z\"}]]},\"excerpt\":\"\",\"headers\":[],\"git\":{\"createdTime\":1663654799000,\"updatedTime\":1663667644000,\"contributors\":[{\"name\":\"Igarashi\",\"email\":\"2545369032@qq.com\",\"commits\":2}]},\"readingTime\":{\"minutes\":0.16,\"words\":47},\"filePathRelative\":\"book/技术/鸟哥的Linux私房菜.md\",\"localizedDate\":\"2022年9月19日\"}")

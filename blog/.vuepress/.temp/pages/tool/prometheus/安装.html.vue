@@ -120,7 +120,7 @@ status:
 <div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code>$ kubectl <span class="token parameter variable">-n</span> monitoring get ingress
 NAME             HOSTS                                           ADDRESS   PORTS   AGE
 prom-ingresses   alert.test.com,grafana.test.com,prom.test.com             <span class="token number">80</span>      78s
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>修改 <strong>hosts</strong> 后即可访问域名，其中 <strong>grafana</strong> 的初始账户密码都为 <code v-pre>admin</code> ，登入后需修改（<em>若没有持久化，每次重启都会还原</em> ）</p>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>修改 <strong>hosts</strong> 后即可访问域名，其中 <strong>grafana</strong> 的初始账户密码都为 <code v-pre>admin</code> ，登入后需修改（<em>若没有持久化，每次重启都会还原，此处修改为 <code v-pre>user@dev</code>备忘</em> ）</p>
 <div class="language-ini ext-ini line-numbers-mode"><pre v-pre class="language-ini"><code>192.168.3.172	alert.test.com prom.test.com grafana.test.com
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div></div></template>
 

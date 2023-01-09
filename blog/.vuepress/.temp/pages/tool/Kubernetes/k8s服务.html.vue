@@ -429,83 +429,83 @@ $ kubectl taint <span class="token function">node</span> k8s-slave2 drunk-
 </ul>
 <h4 id="反代-ip" tabindex="-1"><a class="header-anchor" href="#反代-ip" aria-hidden="true">#</a> 反代 IP</h4>
 <p>以代理百度为例，先编写 <strong>svc</strong> 文件</p>
-<div class="language-ini ext-ini line-numbers-mode"><pre v-pre class="language-ini"><code>$ kubectl -n dev get svc -o yaml > svc-proxy.yaml
-$ vim svc-proxy.yaml
+<div class="language-yaml ext-yml line-numbers-mode"><pre v-pre class="language-yaml"><code>$ kubectl <span class="token punctuation">-</span>n dev get svc <span class="token punctuation">-</span>o yaml <span class="token punctuation">></span> svc<span class="token punctuation">-</span>proxy.yaml
+$ vim svc<span class="token punctuation">-</span>proxy.yaml
 
-----------------------------
-apiVersion: v1
-kind: Services
-metadata:
-  label:
-    app: svc-poroxy
-  name: svc-proxy
-  namespace: dev
-spce:
-  ports:
-  - name: http
-    port: 80
-    protocol: TCP
-    targetPort: 80
-  sessionAffinity: None
-  type: ClusterIP
+<span class="token punctuation">---</span><span class="token punctuation">---</span><span class="token punctuation">---</span><span class="token punctuation">---</span><span class="token punctuation">---</span><span class="token punctuation">---</span><span class="token punctuation">---</span><span class="token punctuation">---</span><span class="token punctuation">---</span><span class="token punctuation">-</span>
+<span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> v1
+<span class="token key atrule">kind</span><span class="token punctuation">:</span> Services
+<span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+  <span class="token key atrule">label</span><span class="token punctuation">:</span>
+    <span class="token key atrule">app</span><span class="token punctuation">:</span> svc<span class="token punctuation">-</span>poroxy
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> svc<span class="token punctuation">-</span>proxy
+  <span class="token key atrule">namespace</span><span class="token punctuation">:</span> dev
+<span class="token key atrule">spce</span><span class="token punctuation">:</span>
+  <span class="token key atrule">ports</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> http
+    <span class="token key atrule">port</span><span class="token punctuation">:</span> <span class="token number">80</span>
+    <span class="token key atrule">protocol</span><span class="token punctuation">:</span> TCP
+    <span class="token key atrule">targetPort</span><span class="token punctuation">:</span> <span class="token number">80</span>
+  <span class="token key atrule">sessionAffinity</span><span class="token punctuation">:</span> None
+  <span class="token key atrule">type</span><span class="token punctuation">:</span> ClusterIP
 
-----------------------------
+<span class="token punctuation">---</span><span class="token punctuation">---</span><span class="token punctuation">---</span><span class="token punctuation">---</span><span class="token punctuation">---</span><span class="token punctuation">---</span><span class="token punctuation">---</span><span class="token punctuation">---</span><span class="token punctuation">---</span><span class="token punctuation">-</span>
 
-$ kubectl create -f svc-proxy.yaml
-$ kubectl -n dev get svc
+$ kubectl create <span class="token punctuation">-</span>f svc<span class="token punctuation">-</span>proxy.yaml
+$ kubectl <span class="token punctuation">-</span>n dev get svc
 
-NAME        TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)   AGE
-svc-nignx   ClusterIP   None             &lt;none>        80/TCP    29d
-svc-proxy   ClusterIP   10.100.128.239   &lt;none>        80/TCP    11h
+NAME        TYPE        CLUSTER<span class="token punctuation">-</span>IP       EXTERNAL<span class="token punctuation">-</span>IP   PORT(S)   AGE
+svc<span class="token punctuation">-</span>nignx   ClusterIP   None             &lt;none<span class="token punctuation">></span>        80/TCP    29d
+svc<span class="token punctuation">-</span>proxy   ClusterIP   10.100.128.239   &lt;none<span class="token punctuation">></span>        80/TCP    11h
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>此时查看 <strong>svc</strong> 可获取自动分配的 <strong>IP</strong>，接下来编写 <strong>endpoints</strong> 来关联代理</p>
-<div class="language-ini ext-ini line-numbers-mode"><pre v-pre class="language-ini"><code><span class="token comment"># 先获取百度目前的IP</span>
+<div class="language-yaml ext-yml line-numbers-mode"><pre v-pre class="language-yaml"><code><span class="token comment"># 先获取百度目前的IP</span>
 $ ping www.baidu.com
-<span class="token key attr-name">64 bytes from 14.215.177.38 (14.215.177.38): icmp_seq</span><span class="token punctuation">=</span><span class="token value attr-value">1 ttl=56 time=6.87 ms</span>
+<span class="token key atrule">64 bytes from 14.215.177.38 (14.215.177.38)</span><span class="token punctuation">:</span> icmp_seq=1 ttl=56 time=6.87 ms
 
 <span class="token comment"># 编写 endpoints</span>
-$ vim ep-proxy.yaml
+$ vim ep<span class="token punctuation">-</span>proxy.yaml
 
-----------------------------
-apiVersion: v1
-kind: Endpoints
-metadata:
-  label:
-    app: svc-poroxy		# 需和 svc 的一致来进行关联
-  name: svc-proxy
-  namespace: dev
-subsets:				# 
-- addresses:
-  - ip: 14.215.177.38	# 填写代理的IP地址
-  ports:
-  - name: http
-    port: 80
-    protocol: TCP		# 协议需和 svc 的一致
+<span class="token punctuation">---</span><span class="token punctuation">---</span><span class="token punctuation">---</span><span class="token punctuation">---</span><span class="token punctuation">---</span><span class="token punctuation">---</span><span class="token punctuation">---</span><span class="token punctuation">---</span><span class="token punctuation">---</span><span class="token punctuation">-</span>
+<span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> v1
+<span class="token key atrule">kind</span><span class="token punctuation">:</span> Endpoints
+<span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+  <span class="token key atrule">label</span><span class="token punctuation">:</span>
+    <span class="token key atrule">app</span><span class="token punctuation">:</span> svc<span class="token punctuation">-</span>poroxy		<span class="token comment"># 需和 svc 的一致来进行关联</span>
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> svc<span class="token punctuation">-</span>proxy
+  <span class="token key atrule">namespace</span><span class="token punctuation">:</span> dev
+<span class="token key atrule">subsets</span><span class="token punctuation">:</span>				<span class="token comment"># </span>
+<span class="token punctuation">-</span> <span class="token key atrule">addresses</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> <span class="token key atrule">ip</span><span class="token punctuation">:</span> 14.215.177.38	<span class="token comment"># 填写代理的IP地址</span>
+  <span class="token key atrule">ports</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> http
+    <span class="token key atrule">port</span><span class="token punctuation">:</span> <span class="token number">80</span>
+    <span class="token key atrule">protocol</span><span class="token punctuation">:</span> TCP		<span class="token comment"># 协议需和 svc 的一致</span>
     
-----------------------------
+<span class="token punctuation">---</span><span class="token punctuation">---</span><span class="token punctuation">---</span><span class="token punctuation">---</span><span class="token punctuation">---</span><span class="token punctuation">---</span><span class="token punctuation">---</span><span class="token punctuation">---</span><span class="token punctuation">---</span><span class="token punctuation">-</span>
 
-$ kubectl apply -f ep-proxy.yaml
+$ kubectl apply <span class="token punctuation">-</span>f ep<span class="token punctuation">-</span>proxy.yaml
 <span class="token comment">#此时 svc 关联的 ep 已生成，且会随着 svc 的消失而消失</span>
-$ kubectl -n dev get ep
+$ kubectl <span class="token punctuation">-</span>n dev get ep
 
 <span class="token comment"># curl svc 的 IP 此时发现有相应</span>
-$ curl 10.100.128.239 -I
+$ curl 10.100.128.239 <span class="token punctuation">-</span>I
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>若更换了 <strong>IP</strong> 无需重启应用程序，只需要改动 <strong>endpoints</strong> 文件的 <code v-pre>ip</code> ，然后 <code v-pre>kubectl replace -f</code> 即可</p>
 <h4 id="externalname-反代域名" tabindex="-1"><a class="header-anchor" href="#externalname-反代域名" aria-hidden="true">#</a> ExternalName（<em>反代域名</em> ）</h4>
 <p>若需反代域名，则需要更改 <strong>svc</strong> 的类型为 <strong>ExternalName</strong></p>
-<div class="language-ini ext-ini line-numbers-mode"><pre v-pre class="language-ini"><code>vim svc-proxyName.yaml
-----------------------------
-apiVersion: v1
-kind: Service
-metadata:
-  labels:
-    app: svc-proxy-name
-  name: svc-proxy-name
-  namespace: dev
-spec:
-  type: ExternalName
-  externalName: www.baidu.com
-----------------------------
-$ kubectl apply -f svc-proxyName.yaml
+<div class="language-yaml ext-yml line-numbers-mode"><pre v-pre class="language-yaml"><code>vim svc<span class="token punctuation">-</span>proxyName.yaml
+<span class="token punctuation">---</span><span class="token punctuation">---</span><span class="token punctuation">---</span><span class="token punctuation">---</span><span class="token punctuation">---</span><span class="token punctuation">---</span><span class="token punctuation">---</span><span class="token punctuation">---</span><span class="token punctuation">---</span><span class="token punctuation">-</span>
+<span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> v1
+<span class="token key atrule">kind</span><span class="token punctuation">:</span> Service
+<span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+  <span class="token key atrule">labels</span><span class="token punctuation">:</span>
+    <span class="token key atrule">app</span><span class="token punctuation">:</span> svc<span class="token punctuation">-</span>proxy<span class="token punctuation">-</span>name
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> svc<span class="token punctuation">-</span>proxy<span class="token punctuation">-</span>name
+  <span class="token key atrule">namespace</span><span class="token punctuation">:</span> dev
+<span class="token key atrule">spec</span><span class="token punctuation">:</span>
+  <span class="token key atrule">type</span><span class="token punctuation">:</span> ExternalName
+  <span class="token key atrule">externalName</span><span class="token punctuation">:</span> www.baidu.com
+<span class="token punctuation">---</span><span class="token punctuation">---</span><span class="token punctuation">---</span><span class="token punctuation">---</span><span class="token punctuation">---</span><span class="token punctuation">---</span><span class="token punctuation">---</span><span class="token punctuation">---</span><span class="token punctuation">---</span><span class="token punctuation">-</span>
+$ kubectl apply <span class="token punctuation">-</span>f svc<span class="token punctuation">-</span>proxyName.yaml
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>此时进入 <strong>busybox</strong> 中尝试通过代理的服务名访问</p>
 <div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code>$ kubectl <span class="token parameter variable">-ndev</span> <span class="token builtin class-name">exec</span> <span class="token parameter variable">-ti</span> busybox -- <span class="token function">sh</span>
 
@@ -686,29 +686,29 @@ ingress-nginx-controller-2gvv6   <span class="token number">1</span>/1     Termi
 <p>只需创建一次 <strong>Ingress</strong> 实例，即可自动生成 <strong>nginx</strong> 配置，</p>
 <p>若灰度发布、跨域、限速等配置，其配置文件写于 <strong>Annotations</strong> 里面，<strong>ingress controller</strong> 会分析 <strong>ingress</strong> 实例，从 <strong>Annotations</strong> 里面读取配置（<em>具有校验功能</em> ），生成 <strong>nginx</strong> 配置文件</p>
 <p>示例： 通过配置 <strong>ingress</strong> 域名反代到 <strong>nginx</strong> 服务上，如下创建一个名为 <strong>example</strong> 的 <strong>ingress</strong></p>
-<div class="language-ini ext-ini line-numbers-mode"><pre v-pre class="language-ini"><code>$ vim ingress.yaml
+<div class="language-yaml ext-yml line-numbers-mode"><pre v-pre class="language-yaml"><code>$ vim ingress.yaml
 
 <span class="token comment"># ingress 需要和服务在同一个 namespace 下, </span>
-apiVersion: networking.k8s.io/v1beta1
-kind: Ingress
-metadata:
-  annotations:
-    kubernetes.io/ingress.class: "nginx"
-  name: example	
-  namespace: dev
-spec:
-  rules:
-  - host: nginx.bar.com
-    http:
-      paths:
-      - backend:
-          serviceName: svc-nignx
-          servicePort: 80
-        path: /
-      - backend:
-          serviceName: http-svc-abc
-          servicePort: 80
-        path: /abc
+<span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> networking.k8s.io/v1beta1
+<span class="token key atrule">kind</span><span class="token punctuation">:</span> Ingress
+<span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+  <span class="token key atrule">annotations</span><span class="token punctuation">:</span>
+    <span class="token key atrule">kubernetes.io/ingress.class</span><span class="token punctuation">:</span> <span class="token string">"nginx"</span>
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> example	
+  <span class="token key atrule">namespace</span><span class="token punctuation">:</span> dev
+<span class="token key atrule">spec</span><span class="token punctuation">:</span>
+  <span class="token key atrule">rules</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> <span class="token key atrule">host</span><span class="token punctuation">:</span> nginx.bar.com
+    <span class="token key atrule">http</span><span class="token punctuation">:</span>
+      <span class="token key atrule">paths</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> <span class="token key atrule">backend</span><span class="token punctuation">:</span>
+          <span class="token key atrule">serviceName</span><span class="token punctuation">:</span> svc<span class="token punctuation">-</span>nignx
+          <span class="token key atrule">servicePort</span><span class="token punctuation">:</span> <span class="token number">80</span>
+        <span class="token key atrule">path</span><span class="token punctuation">:</span> /
+      <span class="token punctuation">-</span> <span class="token key atrule">backend</span><span class="token punctuation">:</span>
+          <span class="token key atrule">serviceName</span><span class="token punctuation">:</span> http<span class="token punctuation">-</span>svc<span class="token punctuation">-</span>abc
+          <span class="token key atrule">servicePort</span><span class="token punctuation">:</span> <span class="token number">80</span>
+        <span class="token key atrule">path</span><span class="token punctuation">:</span> /abc
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p><strong>apiVersion：</strong></p>
 <ul>
 <li><code v-pre>networking.k8s.io/v1beta1</code> 会在 <strong>1.22</strong> 后废弃</li>

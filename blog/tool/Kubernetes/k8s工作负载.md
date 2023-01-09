@@ -1,5 +1,5 @@
 ---
-title: Kubernets -工作负载
+title: Kubernets - 工作负载
 date: 2022-10-03
 category:
   - 运维

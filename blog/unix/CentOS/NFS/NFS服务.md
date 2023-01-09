@@ -14,7 +14,9 @@ group:
 
 #### 2.1 软件配置
 
-#### 2.2 共享配置
+#### 2.2 导出配置
+
+[NFS Export Config](https://insights-core.readthedocs.io/en/latest/shared_parsers_catalog/nfs_exports.html#insights.parsers.nfs_exports.NFSExportsBase) 
 
 ### 3. 使用及说明
 
@@ -55,7 +57,7 @@ $ exportfs -rv  ||  -arv
   $ mount 172.16.120.141:/share /mnt/zz
   $ ls /mnt/zz
   # exports
-
+  
   $ls /mnt/zz/exports/
   # foo
   # bar
@@ -110,7 +112,7 @@ $ umount -fl /home/zz
 
   ```python
   import psutil
-
+  
   [
       {
           "laddr": f"{net.laddr.ip}:{net.laddr.port}",

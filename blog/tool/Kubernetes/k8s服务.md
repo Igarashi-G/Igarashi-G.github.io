@@ -513,7 +513,7 @@ $ kubectl taint node k8s-slave2 drunk-
 
 以代理百度为例，先编写 **svc** 文件
 
-```ini
+```yaml
 $ kubectl -n dev get svc -o yaml > svc-proxy.yaml
 $ vim svc-proxy.yaml
 
@@ -546,7 +546,7 @@ svc-proxy   ClusterIP   10.100.128.239   <none>        80/TCP    11h
 
 此时查看 **svc** 可获取自动分配的 **IP**，接下来编写 **endpoints** 来关联代理
 
-```ini
+```yaml
 # 先获取百度目前的IP
 $ ping www.baidu.com
 64 bytes from 14.215.177.38 (14.215.177.38): icmp_seq=1 ttl=56 time=6.87 ms
@@ -586,7 +586,7 @@ $ curl 10.100.128.239 -I
 
 若需反代域名，则需要更改 **svc** 的类型为 **ExternalName** 
 
-```ini
+```yaml
 vim svc-proxyName.yaml
 ----------------------------
 apiVersion: v1
@@ -828,7 +828,7 @@ ingress-nginx-controller-2gvv6   1/1     Terminating   0          4m58s
 
 示例： 通过配置 **ingress** 域名反代到 **nginx** 服务上，如下创建一个名为 **example** 的 **ingress**
 
-```ini
+```yaml
 $ vim ingress.yaml
 
 # ingress 需要和服务在同一个 namespace 下, 

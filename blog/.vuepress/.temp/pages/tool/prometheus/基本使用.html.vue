@@ -31,7 +31,11 @@
 <p><strong>Prometheus</strong> 可以很好地记录任何纯数字时间序列。它既适用于以服务器为中心的监控，也适用于高度动态的面向服务的体系结构的监控。在微服务的世界中，它支持多维数据收集和查询是一个独特的优势。</p>
 <h3 id="不能做什么" tabindex="-1"><a class="header-anchor" href="#不能做什么" aria-hidden="true">#</a> 不能做什么</h3>
 <p><strong>Prometheus</strong> 的价值在于可靠性，即使在某些时间节点收集失败情况下，您也可以始终查看有关系统的统计信息。如果您需要**100％**的准确性（例如按请求计费），<strong>Prometheus</strong> 并不是一个好的选择，因为收集的数据可能不够详细和完整。在这种情况下，您最好使用其他系统来收集和分析数据以进行计费，<strong>Prometheus</strong> 则可以进行其他监控。</p>
+<h3 id="_2-metrics" tabindex="-1"><a class="header-anchor" href="#_2-metrics" aria-hidden="true">#</a> 2. Metrics</h3>
+<h4 id="_2-1-类型" tabindex="-1"><a class="header-anchor" href="#_2-1-类型" aria-hidden="true">#</a> 2.1 类型</h4>
+<h3 id="exporter" tabindex="-1"><a class="header-anchor" href="#exporter" aria-hidden="true">#</a> Exporter</h3>
 <p><a href="https://prometheus.io/docs/instrumenting/exporters/" target="_blank" rel="noopener noreferrer">exporter<ExternalLinkIcon/></a></p>
+<p><a href="https://github.com/prometheus/client_python#summary" target="_blank" rel="noopener noreferrer">prometheus/client_python<ExternalLinkIcon/></a></p>
 </div></template>
 
 
