@@ -21,7 +21,7 @@ group:
 - CentOS 下安装客户端
 
   ```
-
+  
   ```
 
 ### 配置
@@ -261,3 +261,97 @@ group:
   ```shell
   $ pdbedit -x zz
   ```
+
+
+
+### 4. 公网连接
+
+#### Linux Samba 服务端
+
+配置好共享后，需要去 `/etc/samba/smb.conf` 中修改 
+
+```ini
+[global]
+		...
+		smb ports = 6727
+```
+
+然后重启 **samba** 服务，或是直接路由器上设置 **NAT** 端口转发 **445** 转 **6727**
+
+#### Windows 客户端
+
+需要先关闭 **Windows 防火墙**，检查 **control** -> 程序 -> 启用或关闭 **Windows** 功能 -> 是否开启了 **CIFS** 文件共享支持（*可以关闭SMB直通，无影响*）
+
+##### **1. 组策略关闭禁止访问无密码的 Samba 共享**
+
+直接 <kbd>Windows</kbd> + <kbd>r</kbd> 输入 `gpedit.msc` 服务
+
+在 **计算机配置** - **管理模板** - **网络-Lanman工作站** 中，找到并双击 **启用不安全的来宾登录**
+
+选择 **已启用** 确定即可
+
+##### **2.关闭 Windows 的 445 端口**
+
+命令行如下
+
+```powershell
+sc config LanmanServer start= disabled
+net stop LanmanServer
+```
+
+或是直接 <kbd>Windows</kbd> + <kbd>r</kbd> 输入 `services.msc` 服务中找到 **Server** 停止并禁用
+
+##### **3. 启动 windows 的 ip helper 服务**
+
+> 该服务用来端口转发
+
+```powershell
+sc config iphlpsvc start= auto
+
+success
+```
+
+##### **4. 设置 windows 端口转发** 
+
+> 假如 **公网IP** 是 **116.31.232.32** ，端口为上文的 **6727** 
+
+运行如下命令设置转发
+
+```powershell
+# 若有域名，直接将地址改为域名即可
+netsh interface portproxy add v4tov4 listenport=445 connectaddress=116.31.232.32 connectport=6727
+
+# 查看
+netsh interface portproxy show all
+
+# 删除端口转发
+netsh interface portproxy delete v4tov4 listenport=445 connectaddress=116.31.232.32 connectport=6727
+```
+
+##### **5.输入\\\\127.0.0.1 即可访问**
+
+**Windows：**
+
+直接 `\\127.0.0.1\共享名`  输入账户名，密码即可访问
+
+**Linux:**
+
+```shell
+smbclient //116.31.232.32/myshare -p 6727 -U samba
+
+# 若不知道目录，则要检索
+smbclient -L //116.31.232.32 -p 6727 -U samba`
+
+# 挂载卸载
+mount -t cifs //116.31.232.32/myshare /samba/samba1/ -o username=xxx,password=xxx,port=6727
+umount /samba/samba1/
+```
+
+**Mac:**
+
+```shell
+smb://用户名:密码@116.31.232.32:6727
+```
+
+手机可以用ES[文件管理器](https://www.zhihu.com/search?q=文件管理器&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra={"sourceType"%3A"answer"%2C"sourceId"%3A684689433})查看SMB，汉堡菜单-网络-局域网-新建-服务器填 [IP:端口]
+

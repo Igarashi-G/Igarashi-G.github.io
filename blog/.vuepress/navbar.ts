@@ -55,6 +55,29 @@ export default navbar([
     ],
   },
   {
+    text: "Golang",
+    icon: "go",
+    prefix: "/go/",
+    children: [
+      {
+        text: "基础",
+        prefix: "基础/",
+        children: [
+          { text: "go语言速记", link: "go语言速记" },
+        ],
+      },
+      {
+        text: "算法与数据结构",
+        prefix: "算法与数据结构/",
+        children: [
+          { text: "数组", link: "数组" },
+          { text: "线性表", link: "线性表" },
+          { text: "栈与队列", link: "栈与队列" },
+        ],
+      },
+    ],
+  },
+  {
     text: "数据库",
     icon: "database",
     prefix: "/database/",
@@ -92,7 +115,7 @@ export default navbar([
   {
     text: "漫漫全干卷的苦",
     children: [
-      { text: "GO", icon: "go", link: "https://draveness.me/golang/" },
+      { text: "GO语言设计与实现", icon: "go", link: "https://draveness.me/golang/" },
       { text: "GO备忘", icon: "go", link: "https://pegasuswang.github.io/LetsGo/basics/01_go_basic_types/basic_types/" },
       { text: "前端内卷不归路", icon: "javascript", link: "https://notes.fe-mm.com/interview/base/types.html" },
     ],

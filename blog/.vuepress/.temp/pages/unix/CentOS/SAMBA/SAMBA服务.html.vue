@@ -242,6 +242,59 @@ $ <span class="token builtin class-name">echo</span> <span class="token paramete
 <div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code>$ pdbedit <span class="token parameter variable">-x</span> zz
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div></li>
 </ul>
+<h3 id="_4-公网连接" tabindex="-1"><a class="header-anchor" href="#_4-公网连接" aria-hidden="true">#</a> 4. 公网连接</h3>
+<h4 id="linux-samba-服务端" tabindex="-1"><a class="header-anchor" href="#linux-samba-服务端" aria-hidden="true">#</a> Linux Samba 服务端</h4>
+<p>配置好共享后，需要去 <code v-pre>/etc/samba/smb.conf</code> 中修改</p>
+<div class="language-ini ext-ini line-numbers-mode"><pre v-pre class="language-ini"><code><span class="token section"><span class="token punctuation">[</span><span class="token section-name selector">global</span><span class="token punctuation">]</span></span>
+		...
+		<span class="token key attr-name">smb ports</span> <span class="token punctuation">=</span> <span class="token value attr-value">6727</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>然后重启 <strong>samba</strong> 服务，或是直接路由器上设置 <strong>NAT</strong> 端口转发 <strong>445</strong> 转 <strong>6727</strong></p>
+<h4 id="windows-客户端" tabindex="-1"><a class="header-anchor" href="#windows-客户端" aria-hidden="true">#</a> Windows 客户端</h4>
+<p>需要先关闭 <strong>Windows 防火墙</strong>，检查 <strong>control</strong> -&gt; 程序 -&gt; 启用或关闭 <strong>Windows</strong> 功能 -&gt; 是否开启了 <strong>CIFS</strong> 文件共享支持（<em>可以关闭SMB直通，无影响</em>）</p>
+<h5 id="_1-组策略关闭禁止访问无密码的-samba-共享" tabindex="-1"><a class="header-anchor" href="#_1-组策略关闭禁止访问无密码的-samba-共享" aria-hidden="true">#</a> <strong>1. 组策略关闭禁止访问无密码的 Samba 共享</strong></h5>
+<p>直接 <kbd>Windows</kbd> + <kbd>r</kbd> 输入 <code v-pre>gpedit.msc</code> 服务</p>
+<p>在 <strong>计算机配置</strong> - <strong>管理模板</strong> - <strong>网络-Lanman工作站</strong> 中，找到并双击 <strong>启用不安全的来宾登录</strong></p>
+<p>选择 <strong>已启用</strong> 确定即可</p>
+<h5 id="_2-关闭-windows-的-445-端口" tabindex="-1"><a class="header-anchor" href="#_2-关闭-windows-的-445-端口" aria-hidden="true">#</a> <strong>2.关闭 Windows 的 445 端口</strong></h5>
+<p>命令行如下</p>
+<div class="language-powershell ext-powershell line-numbers-mode"><pre v-pre class="language-powershell"><code><span class="token function">sc</span> config LanmanServer <span class="token function">start</span>= disabled
+net stop LanmanServer
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div></div></div><p>或是直接 <kbd>Windows</kbd> + <kbd>r</kbd> 输入 <code v-pre>services.msc</code> 服务中找到 <strong>Server</strong> 停止并禁用</p>
+<h5 id="_3-启动-windows-的-ip-helper-服务" tabindex="-1"><a class="header-anchor" href="#_3-启动-windows-的-ip-helper-服务" aria-hidden="true">#</a> <strong>3. 启动 windows 的 ip helper 服务</strong></h5>
+<blockquote>
+<p>该服务用来端口转发</p>
+</blockquote>
+<div class="language-powershell ext-powershell line-numbers-mode"><pre v-pre class="language-powershell"><code><span class="token function">sc</span> config iphlpsvc <span class="token function">start</span>= auto
+
+success
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h5 id="_4-设置-windows-端口转发" tabindex="-1"><a class="header-anchor" href="#_4-设置-windows-端口转发" aria-hidden="true">#</a> <strong>4. 设置 windows 端口转发</strong></h5>
+<blockquote>
+<p>假如 <strong>公网IP</strong> 是 <strong>116.31.232.32</strong> ，端口为上文的 <strong>6727</strong></p>
+</blockquote>
+<p>运行如下命令设置转发</p>
+<div class="language-powershell ext-powershell line-numbers-mode"><pre v-pre class="language-powershell"><code><span class="token comment"># 若有域名，直接将地址改为域名即可</span>
+netsh interface portproxy add v4tov4 listenport=445 connectaddress=116<span class="token punctuation">.</span>31<span class="token punctuation">.</span>232<span class="token punctuation">.</span>32 connectport=6727
+
+<span class="token comment"># 查看</span>
+netsh interface portproxy show all
+
+<span class="token comment"># 删除端口转发</span>
+netsh interface portproxy delete v4tov4 listenport=445 connectaddress=116<span class="token punctuation">.</span>31<span class="token punctuation">.</span>232<span class="token punctuation">.</span>32 connectport=6727
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h5 id="_5-输入-127-0-0-1-即可访问" tabindex="-1"><a class="header-anchor" href="#_5-输入-127-0-0-1-即可访问" aria-hidden="true">#</a> <strong>5.输入\\127.0.0.1 即可访问</strong></h5>
+<p><strong>Windows：</strong></p>
+<p>直接 <code v-pre>\\127.0.0.1\共享名</code>  输入账户名，密码即可访问</p>
+<p><strong>Linux:</strong></p>
+<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code>smbclient //116.31.232.32/myshare <span class="token parameter variable">-p</span> <span class="token number">6727</span> <span class="token parameter variable">-U</span> samba
+
+<span class="token comment"># 若不知道目录，则要检索</span>
+smbclient <span class="token parameter variable">-L</span> //116.31.232.32 <span class="token parameter variable">-p</span> <span class="token number">6727</span> <span class="token parameter variable">-U</span> samba`
+
+<span class="token comment"># 挂载卸载</span>
+<span class="token function">mount</span> <span class="token parameter variable">-t</span> cifs //116.31.232.32/myshare /samba/samba1/ <span class="token parameter variable">-o</span> <span class="token assign-left variable">username</span><span class="token operator">=</span>xxx,password<span class="token operator">=</span>xxx,port<span class="token operator">=</span><span class="token number">6727</span>
+<span class="token function">umount</span> /samba/samba1/
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p><strong>Mac:</strong></p>
+<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code>smb://用户名:密码@116.31.232.32:6727
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p>手机可以用ES<a href="https://www.zhihu.com/search?q=%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E5%99%A8&amp;search_source=Entity&amp;hybrid_search_source=Entity&amp;hybrid_search_extra=%7B%22sourceType%22%3A%22answer%22%2C%22sourceId%22%3A684689433%7D" target="_blank" rel="noopener noreferrer">文件管理器<ExternalLinkIcon/></a>查看SMB，汉堡菜单-网络-局域网-新建-服务器填 [IP:端口]</p>
 </div></template>
 
 

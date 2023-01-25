@@ -257,16 +257,20 @@ export default sidebar({
       children: [
         {
           text: "基础",
-          icon: "guide",
           collapsable: true,
           prefix: "基础/",
           children: [
-            {
-              text: "基础",
-              collapsable: true,
-              prefix: "基础/",
-              children: ["go语言速记"],
-            },
+            "go语言速记"
+          ]
+        },
+        {
+          text: "算法与数据结构",
+          collapsable: true,
+          prefix: "算法与数据结构/",
+          children: [
+            "数组",
+            "线性表",
+            "栈与队列"
           ]
         },
       ]
