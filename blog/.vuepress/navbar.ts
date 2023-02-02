@@ -73,6 +73,7 @@ export default navbar([
           { text: "数组", link: "数组" },
           { text: "线性表", link: "线性表" },
           { text: "栈与队列", link: "栈与队列" },
+          { text: "树", link: "树" },
         ],
       },
     ],

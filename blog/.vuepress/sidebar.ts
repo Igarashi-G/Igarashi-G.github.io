@@ -270,7 +270,8 @@ export default sidebar({
           children: [
             "数组",
             "线性表",
-            "栈与队列"
+            "栈与队列",
+            "树",
           ]
         },
       ]
