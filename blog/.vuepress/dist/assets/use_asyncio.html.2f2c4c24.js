@@ -1,1 +1,0 @@
-import{_ as o}from"./plugin-vueexport-helper.2444895f.js";import{o as n,c as t,d as c,r as s}from"./app.f40088b9.js";const r={};function _(a,i){const e=s("PDF");return n(),t("div",null,[c(e,{url:"https://www.deadly-exception.icu:7779/pdf/python/Using%20Asyncio%20in%20Python.pdf",height:"880px"})])}const d=o(r,[["render",_],["__file","use_asyncio.html.vue"]]);export{d as default};

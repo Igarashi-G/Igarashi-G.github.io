@@ -1173,58 +1173,29 @@ export const searchIndex = [
             "slug": "_4-1-二叉搜索树查找思想",
             "link": "#_4-1-二叉搜索树查找思想",
             "children": []
-          }
-        ]
-      },
-      {
-        "level": 2,
-        "title": "三 二叉搜索树的 ADT",
-        "slug": "三-二叉搜索树的-adt",
-        "link": "#三-二叉搜索树的-adt",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "三 二叉搜索树的缺陷",
-        "slug": "三-二叉搜索树的缺陷",
-        "link": "#三-二叉搜索树的缺陷",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "四 二叉搜索树一些操作",
-        "slug": "四-二叉搜索树一些操作",
-        "link": "#四-二叉搜索树一些操作",
-        "children": [
+          },
           {
             "level": 3,
-            "title": "4.1 查找结点的前驱",
-            "slug": "_4-1-查找结点的前驱",
-            "link": "#_4-1-查找结点的前驱",
+            "title": "4.2 插入实现",
+            "slug": "_4-2-插入实现",
+            "link": "#_4-2-插入实现",
             "children": []
           },
           {
             "level": 3,
-            "title": "4.2 查找结点的后继",
-            "slug": "_4-2-查找结点的后继",
-            "link": "#_4-2-查找结点的后继",
+            "title": "4.3 二叉搜索树其他操作",
+            "slug": "_4-3-二叉搜索树其他操作",
+            "link": "#_4-3-二叉搜索树其他操作",
             "children": []
           },
           {
             "level": 3,
-            "title": "4.3 删除结点",
-            "slug": "_4-3-删除结点",
-            "link": "#_4-3-删除结点",
+            "title": "4.4 时间复杂度与平衡树",
+            "slug": "_4-4-时间复杂度与平衡树",
+            "link": "#_4-4-时间复杂度与平衡树",
             "children": []
           }
         ]
-      },
-      {
-        "level": 2,
-        "title": "三 二叉搜索树的时间复杂度与平衡",
-        "slug": "三-二叉搜索树的时间复杂度与平衡",
-        "link": "#三-二叉搜索树的时间复杂度与平衡",
-        "children": []
       }
     ],
     "path": "/go/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%A0%91.html",
@@ -6775,16 +6746,3 @@ export const searchIndex = [
     "extraFields": []
   }
 ]
-
-if (import.meta.webpackHot) {
-  import.meta.webpackHot.accept()
-  if (__VUE_HMR_RUNTIME__.updateSearchIndex) {
-    __VUE_HMR_RUNTIME__.updateSearchIndex(searchIndex)
-  }
-}
-
-if (import.meta.hot) {
-  import.meta.hot.accept(({ searchIndex }) => {
-    __VUE_HMR_RUNTIME__.updateSearchIndex(searchIndex)
-  })
-}

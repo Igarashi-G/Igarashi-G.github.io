@@ -513,8 +513,4 @@ export const pagesComponents = {
   "v-b3084784": defineAsyncComponent(() => import(/* webpackChunkName: "v-b3084784" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/tag/pve/index.html.vue")),
   // path: /tag/vmware/
   "v-16e2b2ed": defineAsyncComponent(() => import(/* webpackChunkName: "v-16e2b2ed" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/tag/vmware/index.html.vue")),
-  // path: /go/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/.~%E6%A0%91.html
-  "v-31600c51": defineAsyncComponent(() => import(/* webpackChunkName: "v-31600c51" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/go/算法与数据结构/.~树.html.vue")),
-  // path: /go/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/.~%E7%BA%BF%E6%80%A7%E8%A1%A8.html
-  "v-37c46569": defineAsyncComponent(() => import(/* webpackChunkName: "v-37c46569" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/go/算法与数据结构/.~线性表.html.vue")),
 }
