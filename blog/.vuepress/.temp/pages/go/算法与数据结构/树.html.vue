@@ -625,7 +625,7 @@ n <span class="token operator">=</span> 2n0 + n1 - <span class="token number">1<
 </ul>
 <p>对于度为 <strong>2</strong> 的结点，<strong>其左子树的结点都小于它，右子树的结点都大于它</strong>！！按照二叉搜索树这个特性，取代被删除结点位置的结点值必须仍然比左子树都大，并比右子树都小，这样的结点正好是其前驱/后继。删除度为 <strong>2</strong> 结点的问题到这里就演变为了：找到要删除结点的前驱来替换掉当前位置，或者找到后继来替换掉当前位置，最后删除前驱或者后继。其前驱、后继结点的度必定为 <strong>0</strong> 或者 <strong>1</strong>，此时再删除前驱、后继就变得简单了！</p>
 <p>如图所示的二叉搜索树：</p>
-<p><img src="D:\Program\over-algorithm\images\structure\bstree-03.svg" alt="" loading="lazy"></p>
+<img src="@source/go/算法与数据结构/img/bstree-03.svg" >
 <p><strong>如果不是叶结点，那么会有相当多的麻烦，尤其是被删除结点拥有多个子结点</strong>：</p>
 <ul>
 <li>删除结点 <strong>9</strong>：将 <strong>8</strong> 替换到 <strong>9</strong>，或者将 <strong>10</strong> 替换到 <strong>9</strong> 即可</li>

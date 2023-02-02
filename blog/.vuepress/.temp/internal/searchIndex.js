@@ -327,6 +327,56 @@ export const searchIndex = [
     "extraFields": []
   },
   {
+    "title": "CODE -- 编码:隐匿在计算机背后的语言",
+    "headers": [],
+    "path": "/book/%E6%8A%80%E6%9C%AF/CODE.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "技术书籍",
+    "headers": [
+      {
+        "level": 2,
+        "title": "目录",
+        "slug": "目录",
+        "link": "#目录",
+        "children": []
+      }
+    ],
+    "path": "/book/%E6%8A%80%E6%9C%AF/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "成为技术领导者",
+    "headers": [],
+    "path": "/book/%E6%8A%80%E6%9C%AF/%E6%88%90%E4%B8%BA%E6%8A%80%E6%9C%AF%E9%A2%86%E5%AF%BC%E8%80%85.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "鸟哥的Linux私房菜",
+    "headers": [],
+    "path": "/book/%E6%8A%80%E6%9C%AF/%E9%B8%9F%E5%93%A5%E7%9A%84Linux%E7%A7%81%E6%88%BF%E8%8F%9C.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "鸟哥的Linux私房菜服务器架设篇",
+    "headers": [],
+    "path": "/book/%E6%8A%80%E6%9C%AF/%E9%B8%9F%E5%93%A5%E7%9A%84Linux%E7%A7%81%E6%88%BF%E8%8F%9C%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%9E%B6%E8%AE%BE%E7%AF%87.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "黑客与画家",
+    "headers": [],
+    "path": "/book/%E6%8A%80%E6%9C%AF/%E9%BB%91%E5%AE%A2%E4%B8%8E%E7%94%BB%E5%AE%B6.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
     "title": "心理学书籍",
     "headers": [
       {
@@ -387,56 +437,6 @@ export const searchIndex = [
     "title": "进化心理学",
     "headers": [],
     "path": "/book/%E5%BF%83%E7%90%86%E5%AD%A6/%E8%BF%9B%E5%8C%96%E5%BF%83%E7%90%86%E5%AD%A6.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "CODE -- 编码:隐匿在计算机背后的语言",
-    "headers": [],
-    "path": "/book/%E6%8A%80%E6%9C%AF/CODE.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "技术书籍",
-    "headers": [
-      {
-        "level": 2,
-        "title": "目录",
-        "slug": "目录",
-        "link": "#目录",
-        "children": []
-      }
-    ],
-    "path": "/book/%E6%8A%80%E6%9C%AF/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "成为技术领导者",
-    "headers": [],
-    "path": "/book/%E6%8A%80%E6%9C%AF/%E6%88%90%E4%B8%BA%E6%8A%80%E6%9C%AF%E9%A2%86%E5%AF%BC%E8%80%85.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "鸟哥的Linux私房菜",
-    "headers": [],
-    "path": "/book/%E6%8A%80%E6%9C%AF/%E9%B8%9F%E5%93%A5%E7%9A%84Linux%E7%A7%81%E6%88%BF%E8%8F%9C.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "鸟哥的Linux私房菜服务器架设篇",
-    "headers": [],
-    "path": "/book/%E6%8A%80%E6%9C%AF/%E9%B8%9F%E5%93%A5%E7%9A%84Linux%E7%A7%81%E6%88%BF%E8%8F%9C%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%9E%B6%E8%AE%BE%E7%AF%87.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "黑客与画家",
-    "headers": [],
-    "path": "/book/%E6%8A%80%E6%9C%AF/%E9%BB%91%E5%AE%A2%E4%B8%8E%E7%94%BB%E5%AE%B6.html",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -5193,58 +5193,6 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "Samba服务",
-    "headers": [
-      {
-        "level": 2,
-        "title": "1. 概述",
-        "slug": "_1-概述",
-        "link": "#_1-概述",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "2.安装&配置",
-        "slug": "_2-安装-配置",
-        "link": "#_2-安装-配置",
-        "children": [
-          {
-            "level": 3,
-            "title": "安装",
-            "slug": "安装",
-            "link": "#安装",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "配置",
-            "slug": "配置",
-            "link": "#配置",
-            "children": []
-          }
-        ]
-      },
-      {
-        "level": 2,
-        "title": "3. 命令",
-        "slug": "_3-命令",
-        "link": "#_3-命令",
-        "children": [
-          {
-            "level": 3,
-            "title": "4. 公网连接",
-            "slug": "_4-公网连接",
-            "link": "#_4-公网连接",
-            "children": []
-          }
-        ]
-      }
-    ],
-    "path": "/unix/CentOS/Samba/Samba%E6%9C%8D%E5%8A%A1.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
     "title": "Net-SNMP",
     "headers": [
       {
@@ -5277,6 +5225,94 @@ export const searchIndex = [
       }
     ],
     "path": "/unix/CentOS/SNMP/SNMP%E6%9C%8D%E5%8A%A1.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "CentOS安装及配置",
+    "headers": [
+      {
+        "level": 3,
+        "title": "1. 初始化相关",
+        "slug": "_1-初始化相关",
+        "link": "#_1-初始化相关",
+        "children": []
+      }
+    ],
+    "path": "/unix/CentOS/%E5%AE%89%E8%A3%85/CentOS%E7%9A%84%E5%AE%89%E8%A3%85.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "RPM包管理",
+    "headers": [
+      {
+        "level": 2,
+        "title": "1. rpm包",
+        "slug": "_1-rpm包",
+        "link": "#_1-rpm包",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "2. yum 管理工具",
+        "slug": "_2-yum-管理工具",
+        "link": "#_2-yum-管理工具",
+        "children": [
+          {
+            "level": 3,
+            "title": "2.1 更换 yum 源",
+            "slug": "_2-1-更换-yum-源",
+            "link": "#_2-1-更换-yum-源",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "2.2 安装 epel 拓展软件源",
+            "slug": "_2-2-安装-epel-拓展软件源",
+            "link": "#_2-2-安装-epel-拓展软件源",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "3. Linux 内核",
+        "slug": "_3-linux-内核",
+        "link": "#_3-linux-内核",
+        "children": [
+          {
+            "level": 3,
+            "title": "3.1 CentOS 内核",
+            "slug": "_3-1-centos-内核",
+            "link": "#_3-1-centos-内核",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "3.2 yum 升级软件和内核",
+            "slug": "_3-2-yum-升级软件和内核",
+            "link": "#_3-2-yum-升级软件和内核",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "3.3 在 CentOS 上降级内核",
+            "slug": "_3-3-在-centos-上降级内核",
+            "link": "#_3-3-在-centos-上降级内核",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "3.4 在 CentOS 上降级发行版本",
+            "slug": "_3-4-在-centos-上降级发行版本",
+            "link": "#_3-4-在-centos-上降级发行版本",
+            "children": []
+          }
+        ]
+      }
+    ],
+    "path": "/unix/CentOS/%E5%AE%89%E8%A3%85/RPM%E5%8C%85%E7%AE%A1%E7%90%86.html",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -5499,90 +5535,54 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "CentOS安装及配置",
-    "headers": [
-      {
-        "level": 3,
-        "title": "1. 初始化相关",
-        "slug": "_1-初始化相关",
-        "link": "#_1-初始化相关",
-        "children": []
-      }
-    ],
-    "path": "/unix/CentOS/%E5%AE%89%E8%A3%85/CentOS%E7%9A%84%E5%AE%89%E8%A3%85.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "RPM包管理",
+    "title": "Samba服务",
     "headers": [
       {
         "level": 2,
-        "title": "1. rpm包",
-        "slug": "_1-rpm包",
-        "link": "#_1-rpm包",
+        "title": "1. 概述",
+        "slug": "_1-概述",
+        "link": "#_1-概述",
         "children": []
       },
       {
         "level": 2,
-        "title": "2. yum 管理工具",
-        "slug": "_2-yum-管理工具",
-        "link": "#_2-yum-管理工具",
+        "title": "2.安装&配置",
+        "slug": "_2-安装-配置",
+        "link": "#_2-安装-配置",
         "children": [
           {
             "level": 3,
-            "title": "2.1 更换 yum 源",
-            "slug": "_2-1-更换-yum-源",
-            "link": "#_2-1-更换-yum-源",
+            "title": "安装",
+            "slug": "安装",
+            "link": "#安装",
             "children": []
           },
           {
             "level": 3,
-            "title": "2.2 安装 epel 拓展软件源",
-            "slug": "_2-2-安装-epel-拓展软件源",
-            "link": "#_2-2-安装-epel-拓展软件源",
+            "title": "配置",
+            "slug": "配置",
+            "link": "#配置",
             "children": []
           }
         ]
       },
       {
         "level": 2,
-        "title": "3. Linux 内核",
-        "slug": "_3-linux-内核",
-        "link": "#_3-linux-内核",
+        "title": "3. 命令",
+        "slug": "_3-命令",
+        "link": "#_3-命令",
         "children": [
           {
             "level": 3,
-            "title": "3.1 CentOS 内核",
-            "slug": "_3-1-centos-内核",
-            "link": "#_3-1-centos-内核",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "3.2 yum 升级软件和内核",
-            "slug": "_3-2-yum-升级软件和内核",
-            "link": "#_3-2-yum-升级软件和内核",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "3.3 在 CentOS 上降级内核",
-            "slug": "_3-3-在-centos-上降级内核",
-            "link": "#_3-3-在-centos-上降级内核",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "3.4 在 CentOS 上降级发行版本",
-            "slug": "_3-4-在-centos-上降级发行版本",
-            "link": "#_3-4-在-centos-上降级发行版本",
+            "title": "4. 公网连接",
+            "slug": "_4-公网连接",
+            "link": "#_4-公网连接",
             "children": []
           }
         ]
       }
     ],
-    "path": "/unix/CentOS/%E5%AE%89%E8%A3%85/RPM%E5%8C%85%E7%AE%A1%E7%90%86.html",
+    "path": "/unix/CentOS/Samba/Samba%E6%9C%8D%E5%8A%A1.html",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -6445,9 +6445,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "UDS 分类",
+    "title": "CentOS 分类",
     "headers": [],
-    "path": "/category/uds/",
+    "path": "/category/centos/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -6459,9 +6459,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "UFS 分类",
+    "title": "UDS 分类",
     "headers": [],
-    "path": "/category/ufs/",
+    "path": "/category/uds/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -6473,9 +6473,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "CentOS 分类",
+    "title": "UFS 分类",
     "headers": [],
-    "path": "/category/centos/",
+    "path": "/category/ufs/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -6690,6 +6690,20 @@ export const searchIndex = [
     "extraFields": []
   },
   {
+    "title": "CentOS 标签",
+    "headers": [],
+    "path": "/tag/centos/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "包管理 标签",
+    "headers": [],
+    "path": "/tag/%E5%8C%85%E7%AE%A1%E7%90%86/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
     "title": "UDS 标签",
     "headers": [],
     "path": "/tag/uds/",
@@ -6718,20 +6732,6 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "CentOS 标签",
-    "headers": [],
-    "path": "/tag/centos/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "包管理 标签",
-    "headers": [],
-    "path": "/tag/%E5%8C%85%E7%AE%A1%E7%90%86/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
     "title": "PVE 标签",
     "headers": [],
     "path": "/tag/pve/",
@@ -6746,3 +6746,16 @@ export const searchIndex = [
     "extraFields": []
   }
 ]
+
+if (import.meta.webpackHot) {
+  import.meta.webpackHot.accept()
+  if (__VUE_HMR_RUNTIME__.updateSearchIndex) {
+    __VUE_HMR_RUNTIME__.updateSearchIndex(searchIndex)
+  }
+}
+
+if (import.meta.hot) {
+  import.meta.hot.accept(({ searchIndex }) => {
+    __VUE_HMR_RUNTIME__.updateSearchIndex(searchIndex)
+  })
+}
