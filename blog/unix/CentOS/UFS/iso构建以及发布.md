@@ -1,16 +1,18 @@
 ---
-title: UDS-ISO构建及发布
+title: UFS-ISO构建及发布
 date: 2022-11-23
 category:
-  - UDS
+  - UFS
 tag:
-  - UDS
+  - UFS
   - 打包
 ---
 
-**UDS** 的 **CentOS** 镜像打包及发布流程
+**UFS** 的 **CentOS** 镜像打包及发布流程
 
 <!-- more -->
+
+
 
 
 
@@ -87,43 +89,10 @@ $ vim /home/ucfs-build/release/wheelrequirements.txt
 + ldap3==2.9.1
 ```
 
-## 2. iso打包
 
-打包环境：**iso_build_44**（*172.16.120.44* ）, **ucfs** 打包目录位于 `/home/ucfs-build` 目录下, 执行时需要 **传入指定版本号** 集合
-
-> **tikv** 没有更新到代码中，由 **gitignore** 提供，打包时无需强制更新
-
-- 打包时需要把全量 **iso** 挂载到 `/media/cdrom` 目录下
-- 然后执行 `./build.sh -v x.y.z` 开始打包
-- 打包后的文件会输出到 `/release` 目录下
 
 ```shell
-cd /home/ucfs-build
-
-# 以 1.2.6-8 为例，打包镜像如下
-bash ./build.sh -v 1.2.6-8
-
-# 查看打包后的镜像
-ls /release/1.2.6-8
-cd /release/1.2.6-8
-
-# 需要拷贝到上文 Nginx 环境中发布
-scp ./UDS-G5R1-v1.2.6-8-CentOS7.9-x86_64.iso 172.16.120.41:/mnt/docker-runtime/nginx/ufs-local/release/uds/v1.2.6/
-
-scp ./UDS-G5R1-v1.2.6-8-CentOS7.9-x86_64.upgrade.tar.gz 172.16.120.41:/mnt/docker-runtime/nginx/ufs-local/release/uds/v1.2.6/
-
-# 172.16.128.99上虚拟机测试
-scp ./UDS-G5R1-v1.2.6-8-CentOS7.9-x86_64.iso 172.16.128.99:/vmfs/volumes/628d8920-834315d0-6c3f-a4dcbef9446e/iso/
+# 将 windows 文件格式递归转换为 unix 格式
+find . -type f -exec dos2unix {} \;
 ```
-
-构建时会下载指定的内容，通过定义的 **host** 解析，更换环境时修改构建机器的 **hosts** 即可
-
-1. **iso** 发布，将输出的 **iso** 以及相应的 **checksum** 上传到 ` 172.16.120.41:/mnt/docker-runtime/nginx/ufs-local/release` 的指定目录中，发布完成
-
-
-
-**注：** 机器都在 **172.16.128.99** 的宿主机上
-
-- 虚拟机账号密码都为 **root  /  user@dev** 
-- 宿主机账号密码 **root  /   uit@123456**
 

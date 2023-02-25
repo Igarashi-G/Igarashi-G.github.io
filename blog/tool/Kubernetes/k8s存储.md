@@ -31,9 +31,9 @@ star: true
 
 #### 常用卷的类型
 
-emptyDir:
+[emptyDir](/tool/Kubernetes/k8s存储.html#_2-1-emptydir): 容器间数据共享，易失
 
-#### emptyDir
+### 2.1 emptyDir
 
 ​	**主要用于不同容器间 数据共享 的**，但和 **Volume** 不同在于，删除 **Pod** 后 **emptyDir** 卷中的数据也会删除，**可被挂载到相同或不同的路径**，默认情况支持任何介质（*磁盘、**SSD**、网络存储* ）
 
@@ -154,3 +154,4 @@ $ ls
 
 :::
 
+### 2.2 hostPath

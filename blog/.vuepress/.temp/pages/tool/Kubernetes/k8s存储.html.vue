@@ -9,8 +9,8 @@
 <p>​	另一方面，<strong>k8s</strong> 的卷有明确的生命周期，可以比 <strong>Pod</strong> 中运行的任何 <strong>Container</strong> 都长（<em><strong>Container</strong>重启或销毁后保留数据</em> ）且支持多种类型、任意数量的 <strong>volumes</strong></p>
 <p>​	本质上讲，卷只是一个目录，可能包含一些数据， <strong>Pod</strong> 中的容器可以访问它。要使用卷，<strong>Pod</strong> 需要通过 <code v-pre>.spec.columes</code> 字段指定为 <strong>Pod</strong> 提供的卷，以及使用 <code v-pre>.spce.containers.volumeMounts</code> 字段指定卷挂载的目录。从容器中的进程可以看到由 <strong>Docker</strong> 镜像和卷组成的文件系统视图，卷无法挂载其他卷或具有到其他卷的硬链接， <strong>Pod</strong> 中的每个 <strong>Container</strong> 必须独立指定每个卷的挂载位置</p>
 <h4 id="常用卷的类型" tabindex="-1"><a class="header-anchor" href="#常用卷的类型" aria-hidden="true">#</a> 常用卷的类型</h4>
-<p>emptyDir:</p>
-<h4 id="emptydir" tabindex="-1"><a class="header-anchor" href="#emptydir" aria-hidden="true">#</a> emptyDir</h4>
+<p><RouterLink to="/tool/Kubernetes/k8s%E5%AD%98%E5%82%A8.html#_2-1-emptydir">emptyDir</RouterLink>: 容器间数据共享，易失</p>
+<h3 id="_2-1-emptydir" tabindex="-1"><a class="header-anchor" href="#_2-1-emptydir" aria-hidden="true">#</a> 2.1 emptyDir</h3>
 <p>​	<strong>主要用于不同容器间 数据共享 的</strong>，但和 <strong>Volume</strong> 不同在于，删除 <strong>Pod</strong> 后 <strong>emptyDir</strong> 卷中的数据也会删除，<strong>可被挂载到相同或不同的路径</strong>，默认情况支持任何介质（<em>磁盘、<strong>SSD</strong>、网络存储</em> ）</p>
 <p>​	可以将 <code v-pre>emptyDir.medium</code> 字段设置为 <code v-pre>Memory</code> ，让 <strong>Kubernetes</strong> 使用 <strong>tmpfs</strong>（<em>内存支持的文件系统</em>）虽然 <strong>tmpfs</strong> 很快，但节点重启时数据同样会被清除，并且设置的大小会被计入到 <strong>Container</strong> 的内存限制中</p>
 <p>使用时 <code v-pre>volumes</code> 直接指定为 <strong>emptyDir</strong> 即可</p>
@@ -101,6 +101,7 @@ $ <span class="token function">ls</span>
 <span class="token number">123</span>.txt
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>此时表示，数据已经通过指定 <strong>emptyDir</strong> 实现共享</p>
 </div>
+<h3 id="_2-2-hostpath" tabindex="-1"><a class="header-anchor" href="#_2-2-hostpath" aria-hidden="true">#</a> 2.2 hostPath</h3>
 </div></template>
 
 

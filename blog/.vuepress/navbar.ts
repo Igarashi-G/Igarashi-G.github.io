@@ -64,6 +64,7 @@ export default navbar([
         prefix: "基础/",
         children: [
           { text: "go语言速记", link: "go语言速记" },
+          { text: "go工具速用", link: "go工具速用" },
         ],
       },
       {

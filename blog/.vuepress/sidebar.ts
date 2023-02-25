@@ -89,10 +89,10 @@ export default sidebar({
           children: ["网络基础", "命令", "CURL", "SSL协议", "Restful"],
         },
         {
-          text: "备忘命令",
+          text: "Troubleshooting",
           collapsable: true,
-          prefix: "备忘命令/",
-          children: ["常复习"],
+          prefix: "Troubleshooting/",
+          children: ["备忘命令", "故障快查"],
         },
       ]
     }
@@ -125,7 +125,7 @@ export default sidebar({
           text: "Samba",
           collapsable: true,
           prefix: "Samba/",
-          children: ["Samba服务"],
+          children: ["Samba服务", "rsync"],
         },
         {
           text: "LDAP",
@@ -215,7 +215,7 @@ export default sidebar({
               text: "多任务编程",
               collapsable: true,
               prefix: "多任务编程/",
-              children: ["进程", "多进程编程", "线程", "多线程编程", "同步队列", "协程"],
+              children: ["进程", "多进程编程", "线程", "多线程编程", "同步队列", "协程", "Linux文件锁"],
             },
             {
               text: "asyncio",
@@ -260,7 +260,8 @@ export default sidebar({
           collapsable: true,
           prefix: "基础/",
           children: [
-            "go语言速记"
+            "go语言速记",
+            "go工具速用"
           ]
         },
         {

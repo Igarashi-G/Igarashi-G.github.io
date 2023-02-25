@@ -129,8 +129,8 @@
 </ul>
 <h3 id="_3-1-非空二叉树的特性" tabindex="-1"><a class="header-anchor" href="#_3-1-非空二叉树的特性" aria-hidden="true">#</a> 3.1 非空二叉树的特性</h3>
 <ul>
-<li><strong>每层结点数</strong>：二叉树的第 <strong>i</strong> 层上至多有 **2<sup>i-1</sup>**个 结点 <strong>（i&gt;=1）</strong></li>
-<li><strong>全部结点数</strong>：高度为 <strong>h</strong> 的二叉树至多有 <strong>2<sup>k</sup>-1</strong> 个结点**（h&gt;=1，也是叶结点所在的最大层数）**。相应的高度 <strong>h = log<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mrow></mrow><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">_2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4511em;vertical-align:-0.15em;"></span><span class="mord"><span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>n+1</strong></li>
+<li><strong>每层结点数</strong>：二叉树的第 <strong>i</strong> 层上至多有 <strong>2<sup>i-1</sup></strong> 个 结点 <strong>（i&gt;=1）</strong></li>
+<li><strong>全部结点数</strong>：高度为 <strong>h</strong> 的二叉树至多有 <strong>2<sup>k</sup>-1</strong> 个结点 <strong>（h&gt;=1，也是叶结点所在的最大层数）</strong> 相应的高度 <strong>h = log<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mrow></mrow><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">_2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4511em;vertical-align:-0.15em;"></span><span class="mord"><span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>n+1</strong></li>
 <li><strong>叶结点数与度关系</strong>：<strong>叶结点数 = 度为 2 结点数 + 1</strong></li>
 </ul>
 <p>叶结点与度关系推导：</p>
@@ -139,8 +139,8 @@ T <span class="token operator">=</span> <span class="token number">1</span>*n1 +
 T <span class="token operator">=</span> n - <span class="token number">1</span>
 n <span class="token operator">=</span> n0 + n1 + n2
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>其实还可以得到一个公式： <strong>n = 2n0 + n1 - 1</strong></p>
-<p>如图所示：<br>
-<img src="D:/Program/over-algorithm/images/structure/binarytree-03.png" alt="" loading="lazy"></p>
+<p>如图所示：</p>
+<img src="@source/go/算法与数据结构/img/binarytree-03.png">
 <h3 id="_3-3-完全二叉树" tabindex="-1"><a class="header-anchor" href="#_3-3-完全二叉树" aria-hidden="true">#</a> 3.3 完全二叉树</h3>
 <p><strong>完全二叉树（<em>Complete Binary Tree</em>）</strong>：叶子结点只会出现在最后 <strong>2</strong> 层，且最后 <strong>1</strong> 层的叶子结点都靠左对其</p>
 <p>如图：</p>
@@ -199,10 +199,30 @@ n <span class="token operator">=</span> 2n0 + n1 - <span class="token number">1<
 <img src="@source/go/算法与数据结构/img/binarytree-07.png">
 <p>遍历一般是 <strong>从根结点开始</strong>，当然我们也可以限制左右顺序遍历是从左开始，主要遍历方法有下列多种：</p>
 <ul>
-<li><strong>前序遍历（<em>Preorder Traversal</em>）</strong>：根结点 -&gt; 前序遍历左子树 -&gt; 前序遍历右子树，结果为 <code v-pre>A -&gt; BDGH -&gt; CEIF</code></li>
-<li><strong>中序遍历（<em>Inorder Traversal</em>）</strong>：中序遍历左子树 -&gt; 根结点 -&gt; 中序遍历右子树，结果为 <code v-pre>GDHB -&gt; A -&gt; EICF</code></li>
-<li><strong>后序遍历（<em>Postorder Traversal</em>）</strong>：从左到右遍历左子树叶结点 -&gt; 从左到右遍历右子树叶结点 -&gt; 根结点，结果为 <code v-pre>GHDB -&gt; IEFC -&gt; A</code></li>
-<li><strong>层序遍历（<em>Level Order Traversal</em>）</strong>：根结点 -&gt; 第一层 -&gt; 第二层 -&gt; ... 依次类推，结果为 <code v-pre>A -&gt; BC -&gt; DEF -&gt; GHI</code></li>
+<li>
+<p><strong>前序遍历（<em>Preorder Traversal</em>）</strong>：根结点 -&gt; 前序遍历左子树 -&gt; 前序遍历右子树</p>
+<ul>
+<li>结果为 <code v-pre>A -&gt; BDGH -&gt; CEIF</code></li>
+</ul>
+</li>
+<li>
+<p><strong>中序遍历（<em>Inorder Traversal</em>）</strong>：中序遍历左子树 -&gt; 根结点 -&gt; 中序遍历右子树</p>
+<ul>
+<li>结果为 <code v-pre>GDHB -&gt; A -&gt; EICF</code></li>
+</ul>
+</li>
+<li>
+<p><strong>后序遍历（<em>Postorder Traversal</em>）</strong>：从左到右遍历左子树叶结点 -&gt; 从左到右遍历右子树叶结点 -&gt; 根结点</p>
+<ul>
+<li>结果为 <code v-pre>GHDB -&gt; IEFC -&gt; A</code></li>
+</ul>
+</li>
+<li>
+<p><strong>层序遍历（<em>Level Order Traversal</em>）</strong>：根结点 -&gt; 第一层 -&gt; 第二层 -&gt; ... 依次类推</p>
+<ul>
+<li>结果为 <code v-pre>A -&gt; BC -&gt; DEF -&gt; GHI</code></li>
+</ul>
+</li>
 </ul>
 <h3 id="_3-6-实现" tabindex="-1"><a class="header-anchor" href="#_3-6-实现" aria-hidden="true">#</a> 3.6 实现</h3>
 <p>二叉树的定义和遍历都需要利用递归原理</p>
@@ -518,7 +538,7 @@ n <span class="token operator">=</span> 2n0 + n1 - <span class="token number">1<
 			<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
 				p<span class="token punctuation">.</span>left <span class="token operator">=</span> <span class="token function">NewTreeNode</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span>
 				p<span class="token punctuation">.</span>left<span class="token punctuation">.</span>parent <span class="token operator">=</span> p
-				bst<span class="token punctuation">.</span>length<span class="token operator">++</span>
+				<span class="token keyword">break</span>
 			<span class="token punctuation">}</span>
 		<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> e <span class="token operator">></span> p<span class="token punctuation">.</span>data <span class="token punctuation">{</span>
 			<span class="token keyword">if</span> p<span class="token punctuation">.</span>right <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
@@ -526,12 +546,13 @@ n <span class="token operator">=</span> 2n0 + n1 - <span class="token number">1<
 			<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
 				p<span class="token punctuation">.</span>right <span class="token operator">=</span> <span class="token function">NewTreeNode</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span>
 				p<span class="token punctuation">.</span>right<span class="token punctuation">.</span>parent <span class="token operator">=</span> p
-				bst<span class="token punctuation">.</span>length<span class="token operator">++</span>
+				<span class="token keyword">break</span>
 			<span class="token punctuation">}</span>
 		<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
-			<span class="token keyword">return</span>
+			<span class="token keyword">break</span>
 		<span class="token punctuation">}</span>
 	<span class="token punctuation">}</span>
+	bst<span class="token punctuation">.</span>length<span class="token operator">++</span>
 	<span class="token keyword">return</span>
 <span class="token punctuation">}</span>
 
@@ -560,14 +581,45 @@ n <span class="token operator">=</span> 2n0 + n1 - <span class="token number">1<
 	<span class="token function">InOrderTraverse</span><span class="token punctuation">(</span>bst<span class="token punctuation">.</span>root<span class="token punctuation">)</span>
 	fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">"\nNon -repeatable tree length is:"</span><span class="token punctuation">,</span> bst<span class="token punctuation">.</span>length<span class="token punctuation">)</span>
 <span class="token punctuation">}</span>
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><blockquote>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><blockquote>
 <p>若数据重复，每个结点还需添加额外字段 <strong>count</strong> 可以用来计数</p>
 </blockquote>
 <h4 id="二叉搜索树的-adt" tabindex="-1"><a class="header-anchor" href="#二叉搜索树的-adt" aria-hidden="true">#</a> 二叉搜索树的 ADT</h4>
 <p>对于二叉搜索树来说，只需要保存根结点即可，因为其他结点都可以通过根结点找到。</p>
 <p>二叉树的结点内部必须保留左右子结点信息，<strong>若保留了父结点信息，更便于删除操作</strong>，此外 <strong>还可以用无父结点的二叉搜索树</strong></p>
 <h3 id="_4-3-二叉搜索树其他操作" tabindex="-1"><a class="header-anchor" href="#_4-3-二叉搜索树其他操作" aria-hidden="true">#</a> 4.3 二叉搜索树其他操作</h3>
-<h4 id="查找结点的前驱" tabindex="-1"><a class="header-anchor" href="#查找结点的前驱" aria-hidden="true">#</a> 查找结点的前驱</h4>
+<div class="language-go ext-go line-numbers-mode"><pre v-pre class="language-go"><code><span class="token comment">// 判断存在元素 （查找思路一致）</span>
+<span class="token keyword">func</span> <span class="token punctuation">(</span>bst <span class="token operator">*</span>BSTree<span class="token punctuation">)</span><span class="token function">hasElement</span><span class="token punctuation">(</span>e <span class="token builtin">int</span><span class="token punctuation">)</span> <span class="token builtin">bool</span> <span class="token punctuation">{</span>
+	p <span class="token operator">:=</span> bst<span class="token punctuation">.</span>root
+	<span class="token keyword">for</span> p <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
+		<span class="token keyword">if</span> e <span class="token operator">></span> p<span class="token punctuation">.</span>data <span class="token punctuation">{</span>
+			p <span class="token operator">=</span> p<span class="token punctuation">.</span>right
+		<span class="token punctuation">}</span><span class="token keyword">else</span> <span class="token keyword">if</span> e <span class="token operator">&lt;</span> p<span class="token punctuation">.</span>data <span class="token punctuation">{</span>
+			p <span class="token operator">=</span> p<span class="token punctuation">.</span>left
+		<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+			<span class="token keyword">return</span> <span class="token boolean">true</span>
+		<span class="token punctuation">}</span>
+	<span class="token punctuation">}</span>
+	<span class="token keyword">return</span> <span class="token boolean">false</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// 获取最小值 （最大值思路一致）</span>
+<span class="token keyword">func</span> <span class="token punctuation">(</span>bst <span class="token operator">*</span>BSTree<span class="token punctuation">)</span> <span class="token function">getMin</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">interface</span><span class="token punctuation">{</span><span class="token punctuation">}</span> <span class="token punctuation">{</span>
+	p <span class="token operator">:=</span> bst<span class="token punctuation">.</span>root
+	<span class="token keyword">var</span> data <span class="token keyword">interface</span><span class="token punctuation">{</span><span class="token punctuation">}</span>
+	<span class="token keyword">for</span> p <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
+		data <span class="token operator">=</span> p<span class="token punctuation">.</span>data
+		p <span class="token operator">=</span> p<span class="token punctuation">.</span>left
+	<span class="token punctuation">}</span>
+	<span class="token keyword">return</span> data
+<span class="token punctuation">}</span>
+
+<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">//...</span>
+	fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">"Min Value:"</span><span class="token punctuation">,</span> bst<span class="token punctuation">.</span><span class="token function">getMin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+	fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">"has 13:"</span><span class="token punctuation">,</span> bst<span class="token punctuation">.</span><span class="token function">hasElement</span><span class="token punctuation">(</span><span class="token number">13</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h4 id="查找结点的前驱" tabindex="-1"><a class="header-anchor" href="#查找结点的前驱" aria-hidden="true">#</a> 查找结点的前驱</h4>
 <p>前驱结点其实就是中序遍历时，当前结点的前一个结点，即从左侧找，会找到小一点的数据，<strong>该数据一定是删除结点左子树的最大值</strong>，称之为 <strong>前驱</strong></p>
 <p>假设要当前结点为 <strong>n</strong> ，则查找时有三种情况</p>
 <ul>
@@ -589,7 +641,8 @@ n <span class="token operator">=</span> 2n0 + n1 - <span class="token number">1<
 </ul>
 </li>
 </ul>
-<h4 id="查找结点的后继" tabindex="-1"><a class="header-anchor" href="#查找结点的后继" aria-hidden="true">#</a> 查找结点的后继</h4>
+<div class="language-go ext-go line-numbers-mode"><pre v-pre class="language-go"><code>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><h4 id="查找结点的后继" tabindex="-1"><a class="header-anchor" href="#查找结点的后继" aria-hidden="true">#</a> 查找结点的后继</h4>
 <p>后继结点其实就是中序遍历时，当前结点的后一个结点，即从右侧找，会找到大一点的数据，<strong>该数据一定是删除结点右子树的最小值</strong>，称之为 <strong>后继</strong></p>
 <p>假设当前结点为 <strong>n</strong> ，则查找有三种情况</p>
 <ul>
@@ -611,7 +664,8 @@ n <span class="token operator">=</span> 2n0 + n1 - <span class="token number">1<
 </ul>
 </li>
 </ul>
-<h4 id="删除结点" tabindex="-1"><a class="header-anchor" href="#删除结点" aria-hidden="true">#</a> 删除结点</h4>
+<div class="language-go ext-go line-numbers-mode"><pre v-pre class="language-go"><code>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><h4 id="删除结点" tabindex="-1"><a class="header-anchor" href="#删除结点" aria-hidden="true">#</a> 删除结点</h4>
 <p>删除结点对应需要先确定结点是否存在，即找到值对应的结点，然后依据找到的结点的不同，执行不同的操作：</p>
 <ul>
 <li>度为 <strong>0</strong> 结点： <strong>直接删除</strong> 即可，如果删除的结点也是根结点，则还需要将根结点掷空</li>

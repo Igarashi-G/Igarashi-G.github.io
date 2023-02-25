@@ -1,6 +1,5 @@
 <template><div><p><strong>Golang</strong> 特性、API、差异点等备忘速记</p>
 <!-- more -->
-<h1 id="go语言速记" tabindex="-1"><a class="header-anchor" href="#go语言速记" aria-hidden="true">#</a> Go语言速记</h1>
 <h5 id="路径" tabindex="-1"><a class="header-anchor" href="#路径" aria-hidden="true">#</a> <strong>路径</strong></h5>
 <p><strong>GOROOT = C://Program/go</strong></p>
 <p><strong>GOPATH = 编译项目的工作路径</strong></p>
@@ -13,7 +12,7 @@ go build
 
 <span class="token comment"># 编译为二进制 .a 文件</span>
 go 
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="变量类型" tabindex="-1"><a class="header-anchor" href="#变量类型" aria-hidden="true">#</a> <strong>变量类型</strong></h3>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="_1-变量" tabindex="-1"><a class="header-anchor" href="#_1-变量" aria-hidden="true">#</a> 1. 变量</h2>
 <div class="language-go ext-go line-numbers-mode"><pre v-pre class="language-go"><code><span class="token comment">/*
 声明 及 默认值、可海象、类型推导
 */</span>
@@ -49,26 +48,7 @@ a<span class="token punctuation">,</span> b <span class="token operator">=</span
 <span class="token comment">// 匿名变量</span>
 a<span class="token punctuation">,</span> <span class="token boolean">_</span> <span class="token operator">=</span> <span class="token function">getData</span><span class="token punctuation">(</span><span class="token punctuation">)</span> 
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></div>
-<p>数据类型转换</p>
-<div class="language-go ext-go line-numbers-mode"><pre v-pre class="language-go"><code><span class="token function">T</span><span class="token punctuation">(</span>表达式<span class="token punctuation">)</span>					<span class="token comment">// 通常情况下， 转换的类型(被转换的变量) 这种形式即可</span>
-
-<span class="token keyword">var</span> a <span class="token builtin">int</span> <span class="token number">32</span> <span class="token operator">=</span> <span class="token number">1047483647</span>
-b <span class="token operator">:=</span> <span class="token function">int16</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span> 				<span class="token comment">// 发生数值截断，32位int 转为 16位int</span>
-
-<span class="token keyword">var</span> c <span class="token builtin">float32</span> <span class="token operator">=</span> math<span class="token punctuation">.</span>Pi
-d <span class="token operator">=</span> <span class="token function">int</span><span class="token punctuation">(</span>c<span class="token punctuation">)</span>					<span class="token comment">// 发生精度丢失，小数后的被自动舍弃</span>
-
-<span class="token comment">// 数字转字符串</span>
-
-<span class="token comment">// 字符串转数字</span>
-
-<span class="token comment">// 字符串 转 字符数组，直接转</span>
-<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token function">byte</span><span class="token punctuation">(</span><span class="token builtin">string</span><span class="token punctuation">)</span>
-<span class="token function">string</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token builtin">byte</span><span class="token punctuation">)</span>
-
-<span class="token comment">// 字符串 转 布尔</span>
-ret<span class="token punctuation">,</span> err <span class="token operator">:=</span> strconv<span class="token punctuation">.</span><span class="token function">ParseBool</span><span class="token punctuation">(</span><span class="token string">"True"</span><span class="token punctuation">)</span>
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h4 id="整型" tabindex="-1"><a class="header-anchor" href="#整型" aria-hidden="true">#</a> <strong>整型</strong></h4>
+<h3 id="整型" tabindex="-1"><a class="header-anchor" href="#整型" aria-hidden="true">#</a> <strong>整型</strong></h3>
 <p>两大类，对应 <strong>C</strong></p>
 <ul>
 <li>按长度分类： <code v-pre>int8/16/32/64</code>、<code v-pre>int</code>
@@ -91,7 +71,7 @@ ret<span class="token punctuation">,</span> err <span class="token operator">:=<
 <li><code v-pre>int</code> 和 <code v-pre>uint</code> 自动匹配平台（<em>自动内存对齐</em> ），随平台变化，<strong>二进制传输、读写文件时禁用</strong></li>
 </ul>
 </div>
-<h4 id="浮点型" tabindex="-1"><a class="header-anchor" href="#浮点型" aria-hidden="true">#</a> <strong>浮点型</strong></h4>
+<h3 id="浮点型" tabindex="-1"><a class="header-anchor" href="#浮点型" aria-hidden="true">#</a> <strong>浮点型</strong></h3>
 <p>遵从<strong>IEEE754</strong> 标准有 <code v-pre>float32/64</code> 可用常量定义 <code v-pre>math.MaxFloat32/64</code></p>
 <p><strong>64位为例：</strong> <strong>1</strong> 位 <strong>sign</strong> 表正负，<strong>11</strong>位 <strong>exponent</strong> 表 <strong>-1023~1024</strong> ，<strong>52</strong> 位 表小数</p>
 <h5 id="精度问题" tabindex="-1"><a class="header-anchor" href="#精度问题" aria-hidden="true">#</a> <strong>精度问题</strong></h5>
@@ -108,9 +88,9 @@ $ go get github.com/shopspring/decimal
 <span class="token comment">// 保留</span>
 <span class="token keyword">var</span> v3 <span class="token operator">=</span> v2<span class="token punctuation">.</span><span class="token function">Round</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>		<span class="token comment">// 四舍五入</span>
 <span class="token keyword">var</span> v4 <span class="token operator">=</span> v2<span class="token punctuation">.</span><span class="token function">Truncate</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>		<span class="token comment">// 直接保留</span>
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h4 id="布尔" tabindex="-1"><a class="header-anchor" href="#布尔" aria-hidden="true">#</a> 布尔</h4>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="布尔" tabindex="-1"><a class="header-anchor" href="#布尔" aria-hidden="true">#</a> 布尔</h3>
 <p>分 <code v-pre>ture/flase</code> ，<strong>不允许 整型 强转 布尔</strong> ，无法参加数值运算</p>
-<h4 id="字符串" tabindex="-1"><a class="header-anchor" href="#字符串" aria-hidden="true">#</a> 字符串</h4>
+<h3 id="字符串" tabindex="-1"><a class="header-anchor" href="#字符串" aria-hidden="true">#</a> 字符串</h3>
 <p><strong>Go</strong> 中为原生类型</p>
 <p>常见转义</p>
 <table>
@@ -315,7 +295,7 @@ fmt<span class="token punctuation">.</span><span class="token function">Println<
 <span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
 	fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token function">getValue</span><span class="token punctuation">(</span><span class="token string">"D:\\Program\\GoProjects\\src\\day02\\1.输出\\example.ini"</span><span class="token punctuation">,</span> <span class="token string">"global"</span><span class="token punctuation">,</span> <span class="token string">"name"</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 <span class="token punctuation">}</span>
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h4 id="指针" tabindex="-1"><a class="header-anchor" href="#指针" aria-hidden="true">#</a> 指针</h4>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="指针" tabindex="-1"><a class="header-anchor" href="#指针" aria-hidden="true">#</a> 指针</h3>
 <p>指针被拆分为如下两个</p>
 <ul>
 <li><strong>类型指针：</strong> 可以改数据，传递数据用指针，<strong>不用拷贝省内存</strong>，但不能进行偏移和运算
@@ -337,9 +317,32 @@ fmt<span class="token punctuation">.</span><span class="token function">Println<
 a <span class="token operator">:=</span> <span class="token operator">&amp;</span>b
 fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">"b:"</span><span class="token punctuation">,</span>b<span class="token punctuation">,</span> <span class="token operator">&amp;</span>b<span class="token punctuation">,</span> <span class="token string">"a:"</span><span class="token punctuation">,</span> <span class="token operator">*</span>a<span class="token punctuation">,</span> a<span class="token punctuation">,</span> <span class="token operator">&amp;</span>a<span class="token punctuation">)</span>
 <span class="token comment">// b: 1 0xc00000e0d0 a: 1 0xc00000e0d0 0xc00000a038</span>
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h4 id="切片" tabindex="-1"><a class="header-anchor" href="#切片" aria-hidden="true">#</a> 切片</h4>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="数据类型转换" tabindex="-1"><a class="header-anchor" href="#数据类型转换" aria-hidden="true">#</a> 数据类型转换</h3>
+<div class="language-go ext-go line-numbers-mode"><pre v-pre class="language-go"><code><span class="token function">T</span><span class="token punctuation">(</span>表达式<span class="token punctuation">)</span>					<span class="token comment">// 通常情况下， 转换的类型(被转换的变量) 这种形式即可</span>
+
+<span class="token keyword">var</span> a <span class="token builtin">int</span> <span class="token number">32</span> <span class="token operator">=</span> <span class="token number">1047483647</span>
+b <span class="token operator">:=</span> <span class="token function">int16</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span> 				<span class="token comment">// 发生数值截断，32位int 转为 16位int</span>
+
+<span class="token keyword">var</span> c <span class="token builtin">float32</span> <span class="token operator">=</span> math<span class="token punctuation">.</span>Pi
+d <span class="token operator">=</span> <span class="token function">int</span><span class="token punctuation">(</span>c<span class="token punctuation">)</span>					<span class="token comment">// 发生精度丢失，小数后的被自动舍弃</span>
+
+<span class="token comment">// 数字转字符串</span>
+
+<span class="token comment">// 字符串转数字</span>
+
+<span class="token comment">// 字符串 转 字符数组，直接转</span>
+<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token function">byte</span><span class="token punctuation">(</span><span class="token builtin">string</span><span class="token punctuation">)</span>
+<span class="token function">string</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token builtin">byte</span><span class="token punctuation">)</span>
+
+<span class="token comment">// 字符串 转 布尔</span>
+ret<span class="token punctuation">,</span> err <span class="token operator">:=</span> strconv<span class="token punctuation">.</span><span class="token function">ParseBool</span><span class="token punctuation">(</span><span class="token string">"True"</span><span class="token punctuation">)</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><hr>
+<h2 id="_2-容器" tabindex="-1"><a class="header-anchor" href="#_2-容器" aria-hidden="true">#</a> 2. 容器</h2>
+<h3 id="数组" tabindex="-1"><a class="header-anchor" href="#数组" aria-hidden="true">#</a> 数组</h3>
+<h3 id="切片" tabindex="-1"><a class="header-anchor" href="#切片" aria-hidden="true">#</a> 切片</h3>
 <div class="language-go ext-go line-numbers-mode"><pre v-pre class="language-go"><code>
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p>变量逃逸</p>
+<h3 id="" tabindex="-1"><a class="header-anchor" href="#" aria-hidden="true">#</a> </h3>
 </div></template>
 
 

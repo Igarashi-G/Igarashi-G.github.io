@@ -36,34 +36,36 @@ the MySQL server daemon (Unix) or service (Windows) is not running.
 
 @tab Window
 
-- 在 MYSQL 数据库下的 bin 目录里面的便是 MYSQL 的可执行程序。
+**bin目录：** **MYSQL** 数据库下 **bin** 目录是 **MYSQL** 的可执行程序
 
-- 在 bin 目录下运行 mysqld：开启 mysql 的 socket。因此多种语言（例如:JAVA、Python、C#、Ruby、PHP 等等）可以写对应的 socket 进行数据库
-  的连接。
+- 在 **bin** 目录下运行 `mysqld` 开启 **mysql** 的 **socket**，因此多种语言（*如  **JAVA**、**Python**、**C#**、**Ruby**、**PHP** 等等*）可以写对应的 **socket** 进行数据库的连接
 
-- 因此：数据库的服务器端运行起来就是一个 socket server。之后就是启动客户端去连接服务端。
+- 数据库的服务器端运行起来就是一个 **socket server** ，之后启动客户端去连接服务端
 
-- 认证连接后发送命令，数据库便可执行对应的命令。MySql 也提供了自己的一个连接 socket，在 bin 下运行 mysql 便可开启。
+- 认证连接后发送命令，数据库便可执行对应的命令。**MySql** 也提供了自己的一个连接 **socket**，在 **bin** 下运行 **mysql** 便可开启。
 
-- mysql -u root -p：u 表示用户名，p 表示出 password，root 初始化不设置密码，直接回车即可。
+**连接：**
 
-#### 
+```powershell
+$ mysql -u root -p
+#  -u: 用户名
+#  -p: password
+# root 初始化不设置密码，直接回车即可
+```
 
-任务管理器有个 Windows 服务。若把 mysqld 搞成一个 Windows 服务，每次启动则会自动启动
+把 **mysqld** 搞成一个 **windows** 服务（*任务管理器 - 服务*）每次开机会自动启动
 
-- 利用 mysqld --install 命令运行 Install/Remove of the Service Denied!
+-  `mysqld --install` 命令运行 `Install/Remove of the Service Denied!`
 
-- 之后利用 net start/stop mysql 即可启动/关闭
+- 用 `net start/stop mysql` 即可启动/关闭
 
 :::
 
-
-
-## 2. 使用说明
+## 2. 用户权限
 
 ##### **默认数据库如下** 
 
-- **mysql：** 户权限相关数据
+- **mysql：** 用户权限相关数据
 - **test：** 用于用户测试数据
 - **information_schema：** **MySQL** 本身架构相关数据
 
@@ -94,12 +96,12 @@ select * from user;
 insert into user(nid, name, pwd) values(1, "zz", "123");
 
 # 清空 user 表内容
+delete from user;
 `对于自增来说，即使清空，也保留了之前的自增号，从下一自增号开始`
-delete from user
 
 # 清空 user 表内容
+truncate table user;
 `对于自增，也彻底清空，下次插入数据从 1 开始`
-truncate table user;            
 
 # 删除 user 表
 drop table user;
@@ -108,93 +110,176 @@ drop table user;
 show variables like 'max_connections';    
 ```
 
+##### 用户&授权:
 
+**MySQL** 有默认创建好的用户表 **user**， 虽然可以用 `insert` 来创建用户，但不推荐
 
-    用户&授权：
-        MySql数据库下有一个默认创建好的用户表user
-        可以利用select * from user;查看user表的所有数据（乱码）。用desc user;查看user表中的各个字段。
-        利用select host,user from user;查看user表中的host字段数据和user字段数据。
-        数据库的user虽然可以用insert 来创建用户，但是不推荐。用户管理有一些特殊的命令。
-    
-        用户管理：
-            创建用户
-                create user '用户名'@'IP地址' identified by '密码';    如（create user "igarashi"@"localhost" identified by "123"）下略
-            删除用户
-                drop user '用户名'@'IP地址';
-            修改用户
-                rename user '用户名'@'IP地址'; to '新用户名'@'IP地址';;
-            修改密码
-                set password for '用户名'@'IP地址' = Password('新密码')
-            -h :登录时设置输入ip地址
-    
-        权限管理：
-            grant  权限 on 数据库.表 to  '用户'@'IP地址'      -- 授权   如grant select on test.tb1 to "igarashi"@"localhost";
-            若远程管理连接只需要，创建对应ip地址的用户，并进行授权，用户便可以在远程进行连接 fuuka@192.168.1.12 即可在对应ip下登录
-    
-            MySql有通配符：
-                用户名@IP地址         用户只能在该IP下才能访问
-                用户名@192.168.1.%   用户只能在该IP段下才能访问(通配符%表示任意)（注意创建用户时记得加“”因为%不能特殊存在）
-                用户名@%             用户可以再任意IP下访问(默认IP地址为%)
-                注：远程客户端连接登录时 mysql -u 用户名 -h ip地址 -P 3306（默认端口，不写也有） -p 输入密码
-    
-            查询权限：
-                select * from mysql.user  （即可看到改数据库中的所有权限相关信息）
-    
-        相关权限：
-            参考博客
-    
-        特殊的：
-            flush privileges，将数据读取到内存中，从而立即生效。（刷新权限）
-    
-        忘记密码：
-            # 启动免授权服务端
-                mysqld --skip-grant-tables
-    
-            # 客户端
-                mysql -u root -p
-    
-            # 修改用户名密码
-                update mysql.user set authentication_string=password('666') where user='root';
-                flush privileges;
+```shell
+# 查看user表的所有数据（乱码）
+$ select * from user;
 
-## 二、数据表基本操作：
+# 查看user表中的各个字段详情
+$ desc user;
 
-    1、创建表：
-        create table 表名(
-            列名  类型  是否可以为空，
-            列名  类型  是否可以为空
-        )ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8
-    
-        ENGINE：是用InnoDB 还是 MyISAM：
-        MyISAM：支持全文索引，即速度非常快。
-        InnoDB：InnoDB虽然慢一点，但是它支持事务。
-        什么是事务、原子操作：原子操作即不能分割的操作。例如转账（减钱、加钱两个动作），不能让它转一半断电数据丢失，因此把它作为原子操作，
-            断电就回退原来状态。把两个动作叠加在一起，称之为一个事务，并且认为是原子性操作。回滚。
-    
-        是否可空，null表示空，非字符串
-            not null    - 不可空
-            null        - 可空
-    
-        默认值，创建列时可以指定默认值，当插入数据时如果未主动设置，则自动添加默认值
-            create table tb1(
-                nid int not null defalut 2,
-                num int not null
-            )
-    
-        自增，如果为某列设置自增列，插入数据时无需设置此列，默认将自增（表中只能有一个自增列）
-            create table tb1(
-                nid int not null auto_increment primary key,
-                num int null
-            )
-    
-        注意：1、对于自增列，必须是索引（含主键）。
-              2、对于自增可以设置步长和起始值
-    
-        修改自增列：如修改users表的自增id为123456
-            alter table users AUTO_INCREMENT=123456;
-    
-        主键，primary key一种特殊的唯一索引，不允许有空值，如果主键使用单个列，则它的值必须唯一，如果是多列，则其组合必须唯一。
-            nid int not null auto_increment primary key    或   primary key(nid,num)
+# 查看user表中的host字段数据和user字段数据
+$ select host,user from user;
+
+# 查询权限，可看到数据库中所有权限相关信息
+$ select * from mysql.user;
+```
+
+##### 用户管理：
+
+```shell
+# 创建用户
+$ create user '用户名'@'IP地址' identified by '密码';    
+`如（create user "igarashi"@"localhost" identified by "123"）下略`
+
+# 删除用户
+$ drop user '用户名'@'IP地址';
+
+#修改用户
+$ rename user '用户名'@'IP地址'; to '新用户名'@'IP地址';
+
+# 修改密码
+$ set password for '用户名'@'IP地址' = Password('新密码')
+	-h : # 登录时设置输入 IP 地址
+```
+
+##### 权限管理:
+
+```shell
+# 授权
+$ grant 权限 on 数据库.表 to  '用户'@'IP地址'
+
+如 grant select on test.tb1 to "igarashi"@"localhost";
+
+# 若远程管理连接, 只需要创建 对应IP地址 的用户，并进行授权
+$ grant select on test.tb1 to "igarashi"@"192.168.1.12";
+` 即可让用户 fuuka 远程在 192.168.1.12 上登录 `
+```
+
+ **通配符**
+
+- **用户名@IP地址 :** 用户只能在 该 **IP** 下 访问
+
+- **用户名@192.168.1.% :**   用户只能在 该 **IP** 段 下访问（***%** 表示任意，创建时需用 "" 号，**%** 是特殊字符*）
+
+- **用户名@% :**  用户可在 任意 **IP** 下访问 （*默认值*）
+
+- 远程客户端连接登录命令如下
+
+     ```shell
+     $ mysql -u "username" -h "ip addr" -P 3306 -p "passwd"
+     # 3306 默认值，修改自配的端口号
+     
+     
+     ```
+
+##### 其他：
+
+```shell
+# 刷新权限，将数据读取到内存中，使其立即生效
+$ flush privileges;
+
+# 若忘记密码： 启动免授权服务端，跳过数据库权限验证, 或是去修改 my.ini
+$ mysqld --skip-grant-tables
+
+# 继续客户端输入
+$ mysql -u root -p "任意"
+
+# 修改用户名密码
+$ use mysql
+$ update mysql.user set authentication_string=password('user@dev') where user='root';
+
+$ flush privileges;
+```
+
+## 3. 常用操作
+
+#### 创建表
+
+```mysql
+create table 表名(
+    列名  类型  是否可以为空，
+    列名  类型  是否可以为空
+)ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8
+```
+
+- **ENGINE：** 数据库引擎， **InnoDB** 还是 **MyISAM**
+  - **MyISAM:** 支持 **全文索引**，速度快
+  - **InnoDB: ** 支持 **事务**, 速度慢
+- **事务：** 原子操作，即 **不能分割** 的操作，如：**转账**（*减钱、加钱*）不能转一半断电数据丢失，因此断电要回退原来状态，**把多个动作叠加在一起，称之为一个事务**
+- **是否可空：**
+  - **not null：** 不可空
+  - **null：** 可空
+
+```mysql
+create table tb1(
+    nid int not null defalut 2,
+    num int not null
+)
+```
+
+- **default：** 默认值，创建可指定，插入数据若未设置，则自动使用默认值
+
+##### **主键自增：** 
+
+```mysql
+create table tb1(
+    nid int not null auto_increment primary key,
+	num int null
+)
+```
+
+- **auto_increment：** 自增，若某列设为自增列，插入无需再次指定，此列会自增（*表中只能有一个自增列* ）对于自增列：
+
+  - **必须是索引**（*含主键*）
+  - 可以设置 **步长** 和 **起始值**
+
+- 修改自增列
+
+  ```mysql
+  -- 修改 users 表 自增 id 为 123456
+  alter table users AUTO_INCREMENT=123456;
+  ```
+
+- **primary key：** 主键，特殊的 **唯一索引**，**不允许有空值**，若主键使用：
+
+  - **单个列：** 则它的 **值 必须唯一** 
+  - **多列：** 则其 **组合 必须唯一** 
+
+  ```mysql
+  create table tb1(
+      nid int not null auto_increment primary key, -- or primary key(nid,num) 
+  	...
+  ```
+
+##### **约束（联合）唯一：**
+
+**与主键约束相似** ，都可以 **确保列的唯一性**，不同的是，唯一约束在一个表中 **可有多个** ，设置唯一约束的列允许有空值，但也 **仅有一个空值** 
+
+```mysql
+CREATE TABLE `textbook_edition` (
+    `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT ' 默认 id',
+    列名 类型 unsigned NOT NULL DEFAULT '1' COMMENT 'XX',
+    PRIMARY KEY (`id`), 										-- 设置主键
+    UNIQUE KEY `idx_grade_subject` (`grade_type`,`subject`) 	-- 设置联合唯一
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8 COMMENT='XX表';
+```
+
+- UNIQUE KEY
+
+##### **索引：**
+
+用来 **快速查找** 出在一个列上 **用一特定值** 的行，无索引则会顺序遍历（*表越长越耗时* ） 
+
+::: tip
+
+所有的 **MySQL 索引** （***PRIMARY**、**UNIQUE** 和 **INDEX*** ）是在 **B树** 中存储
+
+:::
+
     
         外键，foreign key一个特殊的索引，只能是指定内容（一般对两个表有关系的列进行约束，一个表的外键通常是另一表的主键）
             constraint fk_cc foreign key (color_id) references color(nid) （constraint后面接的是 外键的标签）

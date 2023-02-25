@@ -1,4 +1,4 @@
-<template><div><p><strong>UDS</strong> 的 <strong>CentOS</strong> 镜像打包及发布流程</p>
+<template><div><p><strong>UFS</strong> 的 <strong>CentOS</strong> 镜像打包及发布流程</p>
 <!-- more -->
 <h1 id="软件发布" tabindex="-1"><a class="header-anchor" href="#软件发布" aria-hidden="true">#</a> 软件发布</h1>
 <p><strong>Nginx</strong> 发布环境 <strong>172.16.120.41</strong>（<em>用于 <strong>iso</strong> 下载</em> ）位于 目录  <code v-pre>/mnt/docker-runtime/nginx/ufs-local/</code> 下</p>
@@ -54,41 +54,8 @@ $ <span class="token function">vim</span> /home/ucfs-build/release/wheelrequirem
 + async-lru<span class="token operator">==</span><span class="token number">1.0</span>.3
 + <span class="token assign-left variable">Jinja2</span><span class="token operator">==</span><span class="token number">3.1</span>.2
 + <span class="token assign-left variable">ldap3</span><span class="token operator">==</span><span class="token number">2.9</span>.1
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="_2-iso打包" tabindex="-1"><a class="header-anchor" href="#_2-iso打包" aria-hidden="true">#</a> 2. iso打包</h2>
-<p>打包环境：<strong>iso_build_44</strong>（<em>172.16.120.44</em> ）, <strong>ucfs</strong> 打包目录位于 <code v-pre>/home/ucfs-build</code> 目录下, 执行时需要 <strong>传入指定版本号</strong> 集合</p>
-<blockquote>
-<p><strong>tikv</strong> 没有更新到代码中，由 <strong>gitignore</strong> 提供，打包时无需强制更新</p>
-</blockquote>
-<ul>
-<li>打包时需要把全量 <strong>iso</strong> 挂载到 <code v-pre>/media/cdrom</code> 目录下</li>
-<li>然后执行 <code v-pre>./build.sh -v x.y.z</code> 开始打包</li>
-<li>打包后的文件会输出到 <code v-pre>/release</code> 目录下</li>
-</ul>
-<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code><span class="token builtin class-name">cd</span> /home/ucfs-build
-
-<span class="token comment"># 以 1.2.6-8 为例，打包镜像如下</span>
-<span class="token function">bash</span> ./build.sh <span class="token parameter variable">-v</span> <span class="token number">1.2</span>.6-8
-
-<span class="token comment"># 查看打包后的镜像</span>
-<span class="token function">ls</span> /release/1.2.6-8
-<span class="token builtin class-name">cd</span> /release/1.2.6-8
-
-<span class="token comment"># 需要拷贝到上文 Nginx 环境中发布</span>
-<span class="token function">scp</span> ./UDS-G5R1-v1.2.6-8-CentOS7.9-x86_64.iso <span class="token number">172.16</span>.120.41:/mnt/docker-runtime/nginx/ufs-local/release/uds/v1.2.6/
-
-<span class="token function">scp</span> ./UDS-G5R1-v1.2.6-8-CentOS7.9-x86_64.upgrade.tar.gz <span class="token number">172.16</span>.120.41:/mnt/docker-runtime/nginx/ufs-local/release/uds/v1.2.6/
-
-<span class="token comment"># 172.16.128.99上虚拟机测试</span>
-<span class="token function">scp</span> ./UDS-G5R1-v1.2.6-8-CentOS7.9-x86_64.iso <span class="token number">172.16</span>.128.99:/vmfs/volumes/628d8920-834315d0-6c3f-a4dcbef9446e/iso/
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>构建时会下载指定的内容，通过定义的 <strong>host</strong> 解析，更换环境时修改构建机器的 <strong>hosts</strong> 即可</p>
-<ol>
-<li><strong>iso</strong> 发布，将输出的 <strong>iso</strong> 以及相应的 <strong>checksum</strong> 上传到 <code v-pre> 172.16.120.41:/mnt/docker-runtime/nginx/ufs-local/release</code> 的指定目录中，发布完成</li>
-</ol>
-<p><strong>注：</strong> 机器都在 <strong>172.16.128.99</strong> 的宿主机上</p>
-<ul>
-<li>虚拟机账号密码都为 <strong>root  /  user@dev</strong></li>
-<li>宿主机账号密码 <strong>root  /   uit@123456</strong></li>
-</ul>
-</div></template>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code><span class="token comment"># 将 windows 文件格式递归转换为 unix 格式</span>
+<span class="token function">find</span> <span class="token builtin class-name">.</span> <span class="token parameter variable">-type</span> f <span class="token parameter variable">-exec</span> dos2unix <span class="token punctuation">{</span><span class="token punctuation">}</span> <span class="token punctuation">\</span><span class="token punctuation">;</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div></div></div></div></template>
 
 

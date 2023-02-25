@@ -327,56 +327,6 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "CODE -- 编码:隐匿在计算机背后的语言",
-    "headers": [],
-    "path": "/book/%E6%8A%80%E6%9C%AF/CODE.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "技术书籍",
-    "headers": [
-      {
-        "level": 2,
-        "title": "目录",
-        "slug": "目录",
-        "link": "#目录",
-        "children": []
-      }
-    ],
-    "path": "/book/%E6%8A%80%E6%9C%AF/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "成为技术领导者",
-    "headers": [],
-    "path": "/book/%E6%8A%80%E6%9C%AF/%E6%88%90%E4%B8%BA%E6%8A%80%E6%9C%AF%E9%A2%86%E5%AF%BC%E8%80%85.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "鸟哥的Linux私房菜",
-    "headers": [],
-    "path": "/book/%E6%8A%80%E6%9C%AF/%E9%B8%9F%E5%93%A5%E7%9A%84Linux%E7%A7%81%E6%88%BF%E8%8F%9C.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "鸟哥的Linux私房菜服务器架设篇",
-    "headers": [],
-    "path": "/book/%E6%8A%80%E6%9C%AF/%E9%B8%9F%E5%93%A5%E7%9A%84Linux%E7%A7%81%E6%88%BF%E8%8F%9C%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%9E%B6%E8%AE%BE%E7%AF%87.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "黑客与画家",
-    "headers": [],
-    "path": "/book/%E6%8A%80%E6%9C%AF/%E9%BB%91%E5%AE%A2%E4%B8%8E%E7%94%BB%E5%AE%B6.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
     "title": "心理学书籍",
     "headers": [
       {
@@ -437,6 +387,56 @@ export const searchIndex = [
     "title": "进化心理学",
     "headers": [],
     "path": "/book/%E5%BF%83%E7%90%86%E5%AD%A6/%E8%BF%9B%E5%8C%96%E5%BF%83%E7%90%86%E5%AD%A6.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "CODE -- 编码:隐匿在计算机背后的语言",
+    "headers": [],
+    "path": "/book/%E6%8A%80%E6%9C%AF/CODE.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "技术书籍",
+    "headers": [
+      {
+        "level": 2,
+        "title": "目录",
+        "slug": "目录",
+        "link": "#目录",
+        "children": []
+      }
+    ],
+    "path": "/book/%E6%8A%80%E6%9C%AF/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "成为技术领导者",
+    "headers": [],
+    "path": "/book/%E6%8A%80%E6%9C%AF/%E6%88%90%E4%B8%BA%E6%8A%80%E6%9C%AF%E9%A2%86%E5%AF%BC%E8%80%85.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "鸟哥的Linux私房菜",
+    "headers": [],
+    "path": "/book/%E6%8A%80%E6%9C%AF/%E9%B8%9F%E5%93%A5%E7%9A%84Linux%E7%A7%81%E6%88%BF%E8%8F%9C.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "鸟哥的Linux私房菜服务器架设篇",
+    "headers": [],
+    "path": "/book/%E6%8A%80%E6%9C%AF/%E9%B8%9F%E5%93%A5%E7%9A%84Linux%E7%A7%81%E6%88%BF%E8%8F%9C%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%9E%B6%E8%AE%BE%E7%AF%87.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "黑客与画家",
+    "headers": [],
+    "path": "/book/%E6%8A%80%E6%9C%AF/%E9%BB%91%E5%AE%A2%E4%B8%8E%E7%94%BB%E5%AE%B6.html",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -699,16 +699,16 @@ export const searchIndex = [
       },
       {
         "level": 2,
-        "title": "2. 使用说明",
-        "slug": "_2-使用说明",
-        "link": "#_2-使用说明",
+        "title": "2. 用户权限",
+        "slug": "_2-用户权限",
+        "link": "#_2-用户权限",
         "children": []
       },
       {
         "level": 2,
-        "title": "二、数据表基本操作：",
-        "slug": "二、数据表基本操作",
-        "link": "#二、数据表基本操作",
+        "title": "3. 常用操作",
+        "slug": "_3-常用操作",
+        "link": "#_3-常用操作",
         "children": []
       },
       {
@@ -810,14 +810,109 @@ export const searchIndex = [
     "extraFields": []
   },
   {
+    "title": "Go工具速用",
+    "headers": [
+      {
+        "level": 2,
+        "title": "1. 常用方法",
+        "slug": "_1-常用方法",
+        "link": "#_1-常用方法",
+        "children": [
+          {
+            "level": 3,
+            "title": "随机数",
+            "slug": "随机数",
+            "link": "#随机数",
+            "children": []
+          }
+        ]
+      }
+    ],
+    "path": "/go/%E5%9F%BA%E7%A1%80/go%E5%B7%A5%E5%85%B7%E9%80%9F%E7%94%A8.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
     "title": "Go语言速记",
     "headers": [
       {
-        "level": 3,
-        "title": "变量类型",
-        "slug": "变量类型",
-        "link": "#变量类型",
-        "children": []
+        "level": 2,
+        "title": "1. 变量",
+        "slug": "_1-变量",
+        "link": "#_1-变量",
+        "children": [
+          {
+            "level": 3,
+            "title": "整型",
+            "slug": "整型",
+            "link": "#整型",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "浮点型",
+            "slug": "浮点型",
+            "link": "#浮点型",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "布尔",
+            "slug": "布尔",
+            "link": "#布尔",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "字符串",
+            "slug": "字符串",
+            "link": "#字符串",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "指针",
+            "slug": "指针",
+            "link": "#指针",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "数据类型转换",
+            "slug": "数据类型转换",
+            "link": "#数据类型转换",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "2. 容器",
+        "slug": "_2-容器",
+        "link": "#_2-容器",
+        "children": [
+          {
+            "level": 3,
+            "title": "数组",
+            "slug": "数组",
+            "link": "#数组",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "切片",
+            "slug": "切片",
+            "link": "#切片",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "",
+            "slug": "",
+            "link": "#",
+            "children": []
+          }
+        ]
       }
     ],
     "path": "/go/%E5%9F%BA%E7%A1%80/go%E8%AF%AD%E8%A8%80%E9%80%9F%E8%AE%B0.html",
@@ -1696,6 +1791,43 @@ export const searchIndex = [
     "extraFields": []
   },
   {
+    "title": "CICD",
+    "headers": [
+      {
+        "level": 2,
+        "title": "1. 构建基础",
+        "slug": "_1-构建基础",
+        "link": "#_1-构建基础",
+        "children": [
+          {
+            "level": 3,
+            "title": "1.1 概念",
+            "slug": "_1-1-概念",
+            "link": "#_1-1-概念",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "1.2 Jenkins安装",
+            "slug": "_1-2-jenkins安装",
+            "link": "#_1-2-jenkins安装",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "1.3 Jenkins 使用基础",
+            "slug": "_1-3-jenkins-使用基础",
+            "link": "#_1-3-jenkins-使用基础",
+            "children": []
+          }
+        ]
+      }
+    ],
+    "path": "/tool/Git/CICD.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
     "title": "Git版本管理",
     "headers": [
       {
@@ -1912,6 +2044,20 @@ export const searchIndex = [
             "title": "1.1 概述",
             "slug": "_1-1-概述",
             "link": "#_1-1-概述",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "2.1 emptyDir",
+            "slug": "_2-1-emptydir",
+            "link": "#_2-1-emptydir",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "2.2 hostPath",
+            "slug": "_2-2-hostpath",
+            "link": "#_2-2-hostpath",
             "children": []
           }
         ]
@@ -3773,6 +3919,43 @@ export const searchIndex = [
     "extraFields": []
   },
   {
+    "title": "Linux文件锁",
+    "headers": [
+      {
+        "level": 2,
+        "title": "Linux 中的文件锁",
+        "slug": "linux-中的文件锁",
+        "link": "#linux-中的文件锁",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "系统调用 fcntl 和 ioctl",
+        "slug": "系统调用-fcntl-和-ioctl",
+        "link": "#系统调用-fcntl-和-ioctl",
+        "children": [
+          {
+            "level": 3,
+            "title": "Linux",
+            "slug": "linux",
+            "link": "#linux",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "Python 的 fcntl 模块",
+            "slug": "python-的-fcntl-模块",
+            "link": "#python-的-fcntl-模块",
+            "children": []
+          }
+        ]
+      }
+    ],
+    "path": "/python/%E8%AF%AD%E8%A8%80/%E5%A4%9A%E4%BB%BB%E5%8A%A1%E7%BC%96%E7%A8%8B/Linux%E6%96%87%E4%BB%B6%E9%94%81.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
     "title": "协程",
     "headers": [
       {
@@ -4855,21 +5038,6 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "文件锁",
-    "headers": [
-      {
-        "level": 3,
-        "title": "对 fcntl.flock()函数的说明：",
-        "slug": "对-fcntl-flock-函数的说明",
-        "link": "#对-fcntl-flock-函数的说明",
-        "children": []
-      }
-    ],
-    "path": "/unix/CentOS/DNS/linux%20%E6%96%87%E4%BB%B6%E9%94%81.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
     "title": "DNS脚本说明",
     "headers": [
       {
@@ -5193,6 +5361,117 @@ export const searchIndex = [
     "extraFields": []
   },
   {
+    "title": "rsync同步",
+    "headers": [
+      {
+        "level": 2,
+        "title": "1. 说明",
+        "slug": "_1-说明",
+        "link": "#_1-说明",
+        "children": [
+          {
+            "level": 3,
+            "title": "1.1 用处",
+            "slug": "_1-1-用处",
+            "link": "#_1-1-用处",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "1.2 组成模式",
+            "slug": "_1-2-组成模式",
+            "link": "#_1-2-组成模式",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "1.3 工作方式",
+            "slug": "_1-3-工作方式",
+            "link": "#_1-3-工作方式",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "2. 基础使用",
+        "slug": "_2-基础使用",
+        "link": "#_2-基础使用",
+        "children": [
+          {
+            "level": 3,
+            "title": "2.1 简单示例",
+            "slug": "_2-1-简单示例",
+            "link": "#_2-1-简单示例",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "2.2 选项说明",
+        "slug": "_2-2-选项说明",
+        "link": "#_2-2-选项说明",
+        "children": []
+      }
+    ],
+    "path": "/unix/CentOS/Samba/rsync.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "Samba服务",
+    "headers": [
+      {
+        "level": 2,
+        "title": "1. 概述",
+        "slug": "_1-概述",
+        "link": "#_1-概述",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "2.安装&配置",
+        "slug": "_2-安装-配置",
+        "link": "#_2-安装-配置",
+        "children": [
+          {
+            "level": 3,
+            "title": "安装",
+            "slug": "安装",
+            "link": "#安装",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "配置",
+            "slug": "配置",
+            "link": "#配置",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "3. 命令",
+        "slug": "_3-命令",
+        "link": "#_3-命令",
+        "children": [
+          {
+            "level": 3,
+            "title": "4. 公网连接",
+            "slug": "_4-公网连接",
+            "link": "#_4-公网连接",
+            "children": []
+          }
+        ]
+      }
+    ],
+    "path": "/unix/CentOS/Samba/Samba%E6%9C%8D%E5%8A%A1.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
     "title": "Net-SNMP",
     "headers": [
       {
@@ -5229,108 +5508,13 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "CentOS安装及配置",
-    "headers": [
-      {
-        "level": 3,
-        "title": "1. 初始化相关",
-        "slug": "_1-初始化相关",
-        "link": "#_1-初始化相关",
-        "children": []
-      }
-    ],
-    "path": "/unix/CentOS/%E5%AE%89%E8%A3%85/CentOS%E7%9A%84%E5%AE%89%E8%A3%85.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "RPM包管理",
-    "headers": [
-      {
-        "level": 2,
-        "title": "1. rpm包",
-        "slug": "_1-rpm包",
-        "link": "#_1-rpm包",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "2. yum 管理工具",
-        "slug": "_2-yum-管理工具",
-        "link": "#_2-yum-管理工具",
-        "children": [
-          {
-            "level": 3,
-            "title": "2.1 更换 yum 源",
-            "slug": "_2-1-更换-yum-源",
-            "link": "#_2-1-更换-yum-源",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "2.2 安装 epel 拓展软件源",
-            "slug": "_2-2-安装-epel-拓展软件源",
-            "link": "#_2-2-安装-epel-拓展软件源",
-            "children": []
-          }
-        ]
-      },
-      {
-        "level": 2,
-        "title": "3. Linux 内核",
-        "slug": "_3-linux-内核",
-        "link": "#_3-linux-内核",
-        "children": [
-          {
-            "level": 3,
-            "title": "3.1 CentOS 内核",
-            "slug": "_3-1-centos-内核",
-            "link": "#_3-1-centos-内核",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "3.2 yum 升级软件和内核",
-            "slug": "_3-2-yum-升级软件和内核",
-            "link": "#_3-2-yum-升级软件和内核",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "3.3 在 CentOS 上降级内核",
-            "slug": "_3-3-在-centos-上降级内核",
-            "link": "#_3-3-在-centos-上降级内核",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "3.4 在 CentOS 上降级发行版本",
-            "slug": "_3-4-在-centos-上降级发行版本",
-            "link": "#_3-4-在-centos-上降级发行版本",
-            "children": []
-          }
-        ]
-      }
-    ],
-    "path": "/unix/CentOS/%E5%AE%89%E8%A3%85/RPM%E5%8C%85%E7%AE%A1%E7%90%86.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "UDS-ISO构建及发布",
+    "title": "UFS-ISO构建及发布",
     "headers": [
       {
         "level": 2,
         "title": "1. RPM打包",
         "slug": "_1-rpm打包",
         "link": "#_1-rpm打包",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "2. iso打包",
-        "slug": "_2-iso打包",
-        "link": "#_2-iso打包",
         "children": []
       }
     ],
@@ -5535,54 +5719,90 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "Samba服务",
+    "title": "CentOS安装及配置",
+    "headers": [
+      {
+        "level": 3,
+        "title": "1. 初始化相关",
+        "slug": "_1-初始化相关",
+        "link": "#_1-初始化相关",
+        "children": []
+      }
+    ],
+    "path": "/unix/CentOS/%E5%AE%89%E8%A3%85/CentOS%E7%9A%84%E5%AE%89%E8%A3%85.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "RPM包管理",
     "headers": [
       {
         "level": 2,
-        "title": "1. 概述",
-        "slug": "_1-概述",
-        "link": "#_1-概述",
+        "title": "1. rpm包",
+        "slug": "_1-rpm包",
+        "link": "#_1-rpm包",
         "children": []
       },
       {
         "level": 2,
-        "title": "2.安装&配置",
-        "slug": "_2-安装-配置",
-        "link": "#_2-安装-配置",
+        "title": "2. yum 管理工具",
+        "slug": "_2-yum-管理工具",
+        "link": "#_2-yum-管理工具",
         "children": [
           {
             "level": 3,
-            "title": "安装",
-            "slug": "安装",
-            "link": "#安装",
+            "title": "2.1 更换 yum 源",
+            "slug": "_2-1-更换-yum-源",
+            "link": "#_2-1-更换-yum-源",
             "children": []
           },
           {
             "level": 3,
-            "title": "配置",
-            "slug": "配置",
-            "link": "#配置",
+            "title": "2.2 安装 epel 拓展软件源",
+            "slug": "_2-2-安装-epel-拓展软件源",
+            "link": "#_2-2-安装-epel-拓展软件源",
             "children": []
           }
         ]
       },
       {
         "level": 2,
-        "title": "3. 命令",
-        "slug": "_3-命令",
-        "link": "#_3-命令",
+        "title": "3. Linux 内核",
+        "slug": "_3-linux-内核",
+        "link": "#_3-linux-内核",
         "children": [
           {
             "level": 3,
-            "title": "4. 公网连接",
-            "slug": "_4-公网连接",
-            "link": "#_4-公网连接",
+            "title": "3.1 CentOS 内核",
+            "slug": "_3-1-centos-内核",
+            "link": "#_3-1-centos-内核",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "3.2 yum 升级软件和内核",
+            "slug": "_3-2-yum-升级软件和内核",
+            "link": "#_3-2-yum-升级软件和内核",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "3.3 在 CentOS 上降级内核",
+            "slug": "_3-3-在-centos-上降级内核",
+            "link": "#_3-3-在-centos-上降级内核",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "3.4 在 CentOS 上降级发行版本",
+            "slug": "_3-4-在-centos-上降级发行版本",
+            "link": "#_3-4-在-centos-上降级发行版本",
             "children": []
           }
         ]
       }
     ],
-    "path": "/unix/CentOS/Samba/Samba%E6%9C%8D%E5%8A%A1.html",
+    "path": "/unix/CentOS/%E5%AE%89%E8%A3%85/RPM%E5%8C%85%E7%AE%A1%E7%90%86.html",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -5704,6 +5924,21 @@ export const searchIndex = [
     "extraFields": []
   },
   {
+    "title": "Shell",
+    "headers": [
+      {
+        "level": 2,
+        "title": "bash",
+        "slug": "bash",
+        "link": "#bash",
+        "children": []
+      }
+    ],
+    "path": "/unix/Linux/Shell%E8%84%9A%E6%9C%AC/shell.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
     "title": "vim 快捷键",
     "headers": [
       {
@@ -5741,38 +5976,46 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "vim 使用指北",
+    "title": "Linux 命令速查",
     "headers": [],
-    "path": "/unix/Linux/Shell%E8%84%9A%E6%9C%AC/vim%E7%A8%8B%E5%BA%8F%E7%BC%96%E8%BE%91%E5%99%A8.html",
+    "path": "/unix/Linux/Troubleshooting/%E5%A4%87%E5%BF%98%E5%91%BD%E4%BB%A4.html",
     "pathLocale": "/",
     "extraFields": []
   },
   {
-    "title": "Linux 基本命令",
+    "title": "快速排错",
     "headers": [
       {
         "level": 2,
-        "title": "一、bash：（Bourne Again Shell）",
-        "slug": "一、bash-bourne-again-shell",
-        "link": "#一、bash-bourne-again-shell",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "二、常用命令：",
-        "slug": "二、常用命令",
-        "link": "#二、常用命令",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "三、快捷键：",
-        "slug": "三、快捷键",
-        "link": "#三、快捷键",
-        "children": []
+        "title": "1. gdb",
+        "slug": "_1-gdb",
+        "link": "#_1-gdb",
+        "children": [
+          {
+            "level": 3,
+            "title": "1.1 安装",
+            "slug": "_1-1-安装",
+            "link": "#_1-1-安装",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "1.2 运行",
+            "slug": "_1-2-运行",
+            "link": "#_1-2-运行",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "1.3 使用",
+            "slug": "_1-3-使用",
+            "link": "#_1-3-使用",
+            "children": []
+          }
+        ]
       }
     ],
-    "path": "/unix/Linux/%E5%A4%87%E5%BF%98%E5%91%BD%E4%BB%A4/%E5%B8%B8%E5%A4%8D%E4%B9%A0.html",
+    "path": "/unix/Linux/Troubleshooting/%E6%95%85%E9%9A%9C%E5%BF%AB%E6%9F%A5.html",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -6375,9 +6618,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "k8s 分类",
+    "title": "CICD 分类",
     "headers": [],
-    "path": "/category/k8s/",
+    "path": "/category/cicd/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -6389,9 +6632,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "helm 分类",
+    "title": "k8s 分类",
     "headers": [],
-    "path": "/category/helm/",
+    "path": "/category/k8s/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -6403,6 +6646,20 @@ export const searchIndex = [
     "extraFields": []
   },
   {
+    "title": "helm 分类",
+    "headers": [],
+    "path": "/category/helm/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "GO 标签",
+    "headers": [],
+    "path": "/tag/go/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
     "title": "prometheus 分类",
     "headers": [],
     "path": "/category/prometheus/",
@@ -6410,9 +6667,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "速记 标签",
+    "title": "速用 标签",
     "headers": [],
-    "path": "/tag/%E9%80%9F%E8%AE%B0/",
+    "path": "/tag/%E9%80%9F%E7%94%A8/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -6424,9 +6681,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "数据结构 标签",
+    "title": "速记 标签",
     "headers": [],
-    "path": "/tag/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/",
+    "path": "/tag/%E9%80%9F%E8%AE%B0/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -6438,16 +6695,23 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "go 标签",
+    "title": "数据结构 标签",
     "headers": [],
-    "path": "/tag/go/",
+    "path": "/tag/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/",
     "pathLocale": "/",
     "extraFields": []
   },
   {
-    "title": "CentOS 分类",
+    "title": "文件锁 分类",
     "headers": [],
-    "path": "/category/centos/",
+    "path": "/category/%E6%96%87%E4%BB%B6%E9%94%81/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "协程 分类",
+    "headers": [],
+    "path": "/category/%E5%8D%8F%E7%A8%8B/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -6459,9 +6723,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "UDS 分类",
+    "title": "线程 分类",
     "headers": [],
-    "path": "/category/uds/",
+    "path": "/category/%E7%BA%BF%E7%A8%8B/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -6473,9 +6737,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "UFS 分类",
+    "title": "进程 分类",
     "headers": [],
-    "path": "/category/ufs/",
+    "path": "/category/%E8%BF%9B%E7%A8%8B/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -6487,16 +6751,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "虚拟机 分类",
+    "title": "SMB/CIFS 分类",
     "headers": [],
-    "path": "/category/%E8%99%9A%E6%8B%9F%E6%9C%BA/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "git 标签",
-    "headers": [],
-    "path": "/tag/git/",
+    "path": "/category/smbcifs/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -6508,9 +6765,51 @@ export const searchIndex = [
     "extraFields": []
   },
   {
+    "title": "UFS 分类",
+    "headers": [],
+    "path": "/category/ufs/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "CICD 标签",
+    "headers": [],
+    "path": "/tag/cicd/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "CentOS 分类",
+    "headers": [],
+    "path": "/category/centos/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "git 标签",
+    "headers": [],
+    "path": "/tag/git/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "Linux 分类",
+    "headers": [],
+    "path": "/category/linux/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
     "title": "helm 标签",
     "headers": [],
     "path": "/tag/helm/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "shell 分类",
+    "headers": [],
+    "path": "/category/shell/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -6522,6 +6821,13 @@ export const searchIndex = [
     "extraFields": []
   },
   {
+    "title": "命令 分类",
+    "headers": [],
+    "path": "/category/%E5%91%BD%E4%BB%A4/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
     "title": "k8s 标签",
     "headers": [],
     "path": "/tag/k8s/",
@@ -6529,9 +6835,23 @@ export const searchIndex = [
     "extraFields": []
   },
   {
+    "title": "troubleshooting 分类",
+    "headers": [],
+    "path": "/category/troubleshooting/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
     "title": "Nginx 标签",
     "headers": [],
     "path": "/tag/nginx/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "虚拟机 分类",
+    "headers": [],
+    "path": "/category/%E8%99%9A%E6%8B%9F%E6%9C%BA/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -6620,6 +6940,34 @@ export const searchIndex = [
     "extraFields": []
   },
   {
+    "title": "文件锁 标签",
+    "headers": [],
+    "path": "/tag/%E6%96%87%E4%BB%B6%E9%94%81/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "协程 标签",
+    "headers": [],
+    "path": "/tag/%E5%8D%8F%E7%A8%8B/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "线程 标签",
+    "headers": [],
+    "path": "/tag/%E7%BA%BF%E7%A8%8B/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "进程 标签",
+    "headers": [],
+    "path": "/tag/%E8%BF%9B%E7%A8%8B/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
     "title": "标准库 标签",
     "headers": [],
     "path": "/tag/%E6%A0%87%E5%87%86%E5%BA%93/",
@@ -6690,6 +7038,34 @@ export const searchIndex = [
     "extraFields": []
   },
   {
+    "title": "SMB/CIFS 标签",
+    "headers": [],
+    "path": "/tag/smbcifs/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "UFS 标签",
+    "headers": [],
+    "path": "/tag/ufs/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "打包 标签",
+    "headers": [],
+    "path": "/tag/%E6%89%93%E5%8C%85/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "UUS 标签",
+    "headers": [],
+    "path": "/tag/uus/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
     "title": "CentOS 标签",
     "headers": [],
     "path": "/tag/centos/",
@@ -6704,30 +7080,30 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "UDS 标签",
+    "title": "shell 标签",
     "headers": [],
-    "path": "/tag/uds/",
+    "path": "/tag/shell/",
     "pathLocale": "/",
     "extraFields": []
   },
   {
-    "title": "打包 标签",
+    "title": "命令 标签",
     "headers": [],
-    "path": "/tag/%E6%89%93%E5%8C%85/",
+    "path": "/tag/%E5%91%BD%E4%BB%A4/",
     "pathLocale": "/",
     "extraFields": []
   },
   {
-    "title": "UFS 标签",
+    "title": "troubleshooting 标签",
     "headers": [],
-    "path": "/tag/ufs/",
+    "path": "/tag/troubleshooting/",
     "pathLocale": "/",
     "extraFields": []
   },
   {
-    "title": "UUS 标签",
+    "title": "gdb 标签",
     "headers": [],
-    "path": "/tag/uus/",
+    "path": "/tag/gdb/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -6746,16 +7122,3 @@ export const searchIndex = [
     "extraFields": []
   }
 ]
-
-if (import.meta.webpackHot) {
-  import.meta.webpackHot.accept()
-  if (__VUE_HMR_RUNTIME__.updateSearchIndex) {
-    __VUE_HMR_RUNTIME__.updateSearchIndex(searchIndex)
-  }
-}
-
-if (import.meta.hot) {
-  import.meta.hot.accept(({ searchIndex }) => {
-    __VUE_HMR_RUNTIME__.updateSearchIndex(searchIndex)
-  })
-}

@@ -1,18 +1,23 @@
 ---
 title: Samba服务
-order: 1
-group:
-  title: SAMBA
-  order: 15
+date: 2021-11-04
+category:
+  - 运维
+  - SMB/CIFS
+tag:
+  - SMB/CIFS
+star: true
 ---
+
+[Samba 文档](https://www.samba.org/) 
+
+<!-- more -->
 
 # SAMBA Server
 
-[Samba 文档](https://www.samba.org/)
-
 ## 1. 概述
 
-**Samba** 是
+
 
 ## 2.安装&配置
 
