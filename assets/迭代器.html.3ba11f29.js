@@ -1,0 +1,118 @@
+import{_ as a}from"./plugin-vueexport-helper.2444895f.js";import{o as e,c as t,e as i,a as n,b as s,f as p}from"./app.0bb9a34e.js";const l={},o=n("p",null,[s("\u8FED\u4EE3\u662F\u6570\u636E\u5904\u7406\u7684\u57FA\u77F3\uFF0C"),n("strong",null,"\u5185\u5B58\u653E\u4E0D\u4E0B\u6570\u636E"),s(" \u65F6\uFF0C\u9700\u8981\u627E\u5230\u4E00\u79CD "),n("strong",null,"\u60F0\u6027\u83B7\u53D6\u6570\u636E\u9879"),s(" \u7684\u65B9\u5F0F\uFF0C\u5373\u6309\u9700\u4E00\u6B21\u83B7\u53D6\u4E00\u4E2A\u6570\u636E\u9879\uFF0C\u8FD9\u5C31\u662F "),n("strong",null,"\u8FED\u4EE3\u5668\u6A21\u5F0F"),s("\uFF08"),n("em",null,"Iterator pattern"),s("\uFF09")],-1),c=p(`<h1 id="\u8FED\u4EE3\u5668" tabindex="-1"><a class="header-anchor" href="#\u8FED\u4EE3\u5668" aria-hidden="true">#</a> \u8FED\u4EE3\u5668</h1><h2 id="_1-\u4EC0\u4E48\u662F\u8FED\u4EE3\u5668" tabindex="-1"><a class="header-anchor" href="#_1-\u4EC0\u4E48\u662F\u8FED\u4EE3\u5668" aria-hidden="true">#</a> 1. \u4EC0\u4E48\u662F\u8FED\u4EE3\u5668</h2><blockquote><p>\u901A\u5E38\uFF0C\u8FED\u4EE3\u5668\u662F\u4ECE <strong>\u96C6\u5408</strong> \u4E2D\u53D6\u5143\u7D20\uFF0C\u8868\u793A\u96C6\u5408\u662F\u6709\u9650\u591A\u4E2A\uFF0C\u53EA\u662F\u901A\u8FC7\u8FED\u4EE3\u5668\u6765\u4E00\u4E2A\u4E2A\u53D6</p></blockquote><p>\u65E2\u7136\u662F\u53D6\u96C6\u5408\uFF0C\u90A3\u4E48\u6240\u6709\u96C6\u5408\u90FD <strong>\u53EF\u8FED\u4EE3</strong>\uFF0C\u573A\u666F\u5982\u4E0B</p><ul><li>\u9996\u5148\u53EF\u8FED\u4EE3\u610F\u5473\u7740\u53EF\u4EE5 <strong>for</strong> \u5FAA\u73AF</li><li>\u6784\u5EFA\u548C\u6269\u5C55\u96C6\u5408\u7C7B\u578B</li><li>\u9010\u884C\u904D\u5386\u6587\u672C\u6587\u4EF6</li><li>\u5217\u8868\u3001\u5B57\u5178\u3001\u96C6\u5408\u63A8\u5BFC</li><li>\u5143\u7EC4\u62C6\u5305</li><li>\u8C03\u7528\u51FD\u6570\u65F6\uFF0C\u4F7F\u7528\u62C6\u5305\u5B9E\u4F8B</li></ul><h3 id="_1-1-\u53EF\u8FED\u4EE3\u5BF9\u8C61-\u5355\u8BCD\u5E8F\u5217" tabindex="-1"><a class="header-anchor" href="#_1-1-\u53EF\u8FED\u4EE3\u5BF9\u8C61-\u5355\u8BCD\u5E8F\u5217" aria-hidden="true">#</a> 1.1 \u53EF\u8FED\u4EE3\u5BF9\u8C61\uFF1A\u5355\u8BCD\u5E8F\u5217</h3><p><strong>\u5B9E\u73B0 Sentence \u7C7B\uFF1A</strong> \u5411\u8BE5\u7C7B\u7684\u6784\u9020\u65B9\u6CD5\u4E2D\uFF0C\u4F20\u5165\u4E00\u4E2A\u5305\u542B\u67D0\u4E9B\u6587\u672C\u7684\u5B57\u7B26\u4E32\uFF0C\u7136\u540E\u53EF\u4EE5\u5B9E\u73B0\u9010\u4E2A\u5355\u8BCD\u7684\u8FED\u4EE3\u3002</p><ul><li>\u9996\u5148\uFF0C\u5B9E\u73B0\u4E00\u4E2A\u7C7B\uFF0C\u8BE5\u7C7B\u5305\u542B\u4E86<a href="">\u5E8F\u5217\u534F\u8BAE</a></li><li>\u5B83\u7684\u5B9E\u4F8B\u5316\u5BF9\u8C61\u53EF\u8FED\u4EE3\uFF08\u80FD\u50CF\u5E8F\u5217\u4E00\u6837\uFF0C\u4F7F\u7528 <strong>for</strong> \u5FAA\u73AF \u904D\u5386\u51FA\u7ED3\u679C\uFF09</li></ul><div class="language-python ext-py line-numbers-mode"><pre class="language-python"><code><span class="token keyword">import</span> re
+<span class="token keyword">import</span> reprlib
+
+RE_WOED <span class="token operator">=</span> re<span class="token punctuation">.</span><span class="token builtin">compile</span><span class="token punctuation">(</span><span class="token string">&quot;\\w+&quot;</span><span class="token punctuation">)</span>
+
+
+<span class="token keyword">class</span> <span class="token class-name">Sentence</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> text<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>text <span class="token operator">=</span> text
+        self<span class="token punctuation">.</span>words <span class="token operator">=</span> RE_WOED<span class="token punctuation">.</span>findall<span class="token punctuation">(</span>text<span class="token punctuation">)</span>
+
+    <span class="token keyword">def</span> <span class="token function">__getitem__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> index<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> self<span class="token punctuation">.</span>words<span class="token punctuation">[</span>index<span class="token punctuation">]</span>
+
+    <span class="token keyword">def</span> <span class="token function">__repr__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token string-interpolation"><span class="token string">f&#39;Sentence</span><span class="token interpolation"><span class="token punctuation">{</span>reprlib<span class="token punctuation">.</span><span class="token builtin">repr</span><span class="token punctuation">(</span>self<span class="token punctuation">.</span>text<span class="token punctuation">)</span><span class="token punctuation">}</span></span><span class="token string">&#39;</span></span>
+
+
+s <span class="token operator">=</span> Sentence<span class="token punctuation">(</span><span class="token string">&quot;hello word!&quot;</span><span class="token punctuation">)</span>
+<span class="token keyword">for</span> word <span class="token keyword">in</span> s<span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>word<span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token builtin">list</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+<span class="token comment">### \u8F93\u51FA\u7ED3\u679C\uFF1A</span>
+<span class="token comment"># hello</span>
+<span class="token comment"># word</span>
+<span class="token comment"># [&#39;hello&#39;, &#39;word&#39;]</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><ul><li>\u9ED8\u8BA4\u60C5\u51B5\u4E0B <a href="">reprlib.repr()</a> \u751F\u6210\u7684\u5B57\u7B26\u4E32\u6700\u591A\u6709 30 \u4E2A\u5B57\u7B26\uFF0C\u6B64\u5904\u7ED9 <code>__repr__</code> \u4F7F\u7528</li></ul><p>\u9996\u6B21\u4F7F\u7528 reprlib \u5728 109 \u9875</p><p>6.\u8FED\u4EE3\u5668: \u751F\u6210\u5668\u90FD\u662F\u8FED\u4EE3\u5668,\u8FED\u4EE3\u5668\u4E0D\u4E00\u5B9A\u90FD\u662F\u751F\u6210\u5668 \u4F8B\uFF1A</p><div class="language-text ext-text line-numbers-mode"><pre class="language-text"><code> title = [&#39;Python&#39;,&#39;Java&#39;,&#39;C++&#39;] # \u5217\u8868\u662F\u4E00\u4E2A\u53EF\u8FED\u4EE3\u5BF9\u8C61
+ isinstance(title,Iterable)      # True
+ a = iter(title) # \u7531\u53EF\u8FED\u4EE3\u5BF9\u8C61\u7684iter\u65B9\u6CD5\u8FD4\u56DE\u4E00\u4E2A\u8FED\u4EE3\u5668
+ &gt;&gt;&gt; next(a)
+ Python
+ &gt;&gt;&gt; next(a)
+ Java
+ &gt;&gt;&gt; next(a)
+ C++
+ &gt;&gt;&gt; next(a)  # \u629B\u51FAStopIteration\u5F02\u5E38
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>\u3010\u4EC0\u4E48\u662F\u8FED\u4EE3\u5668\uFF1F\u3011 \u5229\u7528\u5185\u7F6E\u65B9\u6CD5 iter() \u628A list \u3001 dict \u3001 str \u7B49 Iterable\uFF08\u53EF\u8FED\u4EE3\u5BF9\u8C61\uFF09 \u8FDB\u884C\u8F6C\u6362\uFF0C\u8FD4\u56DE\u7684\u5BF9\u8C61 Iterator</p><pre><code>Iterator \u8FD9\u4E2A\u5BF9\u8C61\u5C31\u662F\u4E00\u4E2A\u8FED\u4EE3\u5668\u5BF9\u8C61\uFF0C\u4E5F\u5C31\u662F\u8FED\u4EE3\u5668\u4E86
+str list tuple dict:Iterable (\u53EF\u8FED\u4EE3\u5BF9\u8C61)
+\u4EC0\u4E48\u662F\u8FED\u4EE3\u5668\uFF1F(\u8FED\u4EE3\u5668\u534F\u8BAE)
+    Iterable\u5B9A\u4E49\u4E86\u53EF\u8FD4\u56DE\u8FED\u4EE3\u5668\u7684__iter__()\u65B9\u6CD5\u3001__next__() \u65B9\u6CD5
+        1.\u6709iter\u65B9\u6CD5:__iter__()
+        2.\u6709next\u65B9\u6CD5:__next__()
+
+        \u4E3A\u4EC0\u4E48\u5FC5\u987B\u6709iter\u65B9\u6CD5?
+            \u9996\u5148\u8FD9\u662F\u4E00\u4E2A\u89C4\u5B9A:\u597D\u591Aiter\u65B9\u6CD5return\u7684\u662Fself(\u81EA\u8EAB)\uFF08\u8FD9\u91CC\u662F\u8BF4__iter__()\u5185\u90E8return self \u89C1\u4E0B\uFF1Afor\u5FAA\u73AF\u7684\u7B2C\u4E00\u4EF6\u4E8B\uFF09
+            \u4F46\u60F3for\u5FAA\u73AF\u53EA\u6709next\u65B9\u6CD5\u6CA1\u6709iter\u65B9\u6CD5\u5C31\u4E0D\u80FD\u8FDB\u884C\u5FAA\u73AF(\u5C31\u662F\u81EA\u5B9A\u4E49\u8FED\u4EE3\u5668\u6CA1\u6709iter\u65B9\u6CD5\u7684\u8BDD\u5982\u4F55\u5FAA\u73AF)
+            \u56E0\u6B64\u5185\u7F6E\u7684iter\u65B9\u6CD5\u5B9E\u9645\u662F\u8C03\u7528__iter__()\u65B9\u6CD5 \u5982int\u7C7B\u81EA\u8EAB\u6CA1\u6709__iter__()\u65B9\u6CD5\u5219\u65E0\u6CD5\u8C03\u7528
+            &#39;int&#39; object is not iterable
+
+        \u8FED\u4EE3\u5668\u8C03\u7528next()\u65B9\u6CD5\u8C03\u7528\u505A\u7684\u4E24\u4EF6\u4E8B\uFF1A
+            1.\u4E3A\u4E0B\u4E00\u6B21\u8C03\u7528next()\u65B9\u6CD5\u4FEE\u6539\u72B6\u6001
+            2.\u751F\u6210\u5F53\u524D\u8C03\u7528\u7684\u8FD4\u56DE\u7ED3\u679C
+
+    \u751F\u6210\u5668\u6BD4\u8FED\u4EE3\u5668\u66F4\u4F18\u96C5 \u56E0\u4E3A\u662F\u7528yield\u5B9E\u73B0\u7684(\u6EE1\u8DB3\u8FED\u4EE3\u5668\u534F\u8BAE \u672C\u8EAB\u4E5F\u662F\u4E00\u4E2A\u8FED\u4EE3\u5668\u5BF9\u8C61)
+
+for\u5FAA\u73AF\u63A2\u8BA8\u540E\u7EED:(\u4E09\u4EF6\u4E8B)
+    \u5DF2\u77E5for\u5FAA\u73AFin\u540E\u9762\u63A5\u7684\u662F\u53EF\u8FED\u4EE3\u5BF9\u8C61 \u4F46\u662F\u53EF\u8FED\u4EE3\u5BF9\u8C61\u5E76\u4E0D\u5177\u6709iter\u65B9\u6CD5 \u5982:
+    [1,2,34] \u6211\u4EEC\u4E0D\u80FD\u628A\u5B83next([1,2,34]) \u56E0\u4E3A\u5B83\u662Flist\u5BF9\u8C61\u554A
+    1.\u56E0\u6B64for\u5FAA\u73AF \u7B2C\u4E00\u4EF6\u5E72\u7684\u4E8B\u5C31\u662F\u628A \u201C\u53EF\u8FED\u4EE3\u5BF9\u8C61\u53D8\u6210\u8FED\u4EE3\u5668\u201D ---\u7528\u4E86iter()\u65B9\u6CD5\uFF08\u5B9E\u8D28\u4E0A\u662F\u53BB\u627E\u53EF\u8FED\u4EE3\u5BF9\u8C61\u91CC\u7684__iter__\u65B9\u6CD5\uFF0C\u5F53\u6709for\u5FAA\u73AF\u65F6
+    \u4FBF\u4F1A\u81EA\u52A8\u6267\u884C\u5BF9\u8C61\u4E2D\u7684__iter__\u65B9\u6CD5\uFF0C\u6B64\u65B9\u6CD5\u53EA\u4F1A\u8FD4\u56DE\u8FED\u4EE3\u5668\uFF0C\u8BE6\u60C5\u89C14.3\u7279\u6B8A\u65B9\u6CD5\uFF09
+    2.\u7B2C\u4E8C\u4EF6\u5E72\u7684\u4E8B\u5C31\u662F\u4E0D\u65AD\u8C03\u7528\u8FED\u4EE3\u5668\u5BF9\u8C61\u7684next\u65B9\u6CD5\u8FDB\u884C\u8FED\u4EE3
+    3.\u7B2C\u4E09\u4FBF\u662F\u524D\u9762\u8BF4\u7684\u6355\u83B7\u5F02\u5E38\u5E76\u5904\u7406StopIteration
+
+isinstance(o,t):
+    \u5224\u65AD\u524D\u4E00\u4E2A\u5BF9\u8C61\u662F\u4E0D\u662F\u540E\u9762\u7684\u7C7B\u578B \u8FD4\u56DETrue False
+    \u5BFC\u5165collections\u4E2D\u7684Iterator\u548CIterable\u6A21\u5757\u4FBF\u53EF\u8FDB\u884C\u8FA8\u6790 \u4E3B\u8981\u89C1\u4EE3\u7801
+
+\u73B0\u5728\u5728\u6765\u770B\u6587\u4EF6:
+    f = open(&quot;xx.txt&quot;,r+,encoding=&quot;utf8&quot;)
+    for i in f.readlines(): \u6B64\u65F6\u662F\u628A\u6587\u4EF6\u590D\u5236\u4E4B\u540E\u6BCF\u4E00\u884C\u5F53\u6210\u4E00\u4E2A\u5143\u7D20\u653E\u5230\u5217\u8868\u4E2D\u5B58\u50A8\uFF0C\u518D\u8FD4\u56DE
+    \u82E5\u5229\u7528for i in f:\u5219\u538B\u6839\u6CA1\u6709\u590D\u5236f \u800C\u662F\u628Af\u76F4\u63A5\u5229\u7528iter(f)\u8FD4\u56DE\u4E86\u8FED\u4EE3\u5668\u5BF9\u8C61\uFF0C\u4E4B\u540Ef.read()
+    \u6BCF\u6B21\u8C03\u7528(next)\u65F6\u624D\u5360\u4E00\u884C\u7684\u5185\u5B58 \u56E0\u6B64\u8FD9\u5C31\u662F\u4E0D\u7528readlines\u7684\u539F\u56E0\uFF08\u8FED\u4EE3\u5668\u4E0D\u5360\u5185\u5B58\u7684\u597D\u5904\uFF0C\u7528\u65F6next\u4E00\u6761\uFF09
+</code></pre><div class="language-text ext-text line-numbers-mode"><pre class="language-text"><code>for\u7684\u5B9E\u8D28:
+    \u751F\u6210\u5668\u53EF\u4EE5\u7528for i in s: print(i)\u8FD9\u6837\u6765\u53D6\u51FA \u8FD9\u79CD\u65B9\u5F0F\u770B\u4F3C\u6CA1\u6709\u7528\u5230next()\u5185\u7F6E\u65B9\u6CD5
+    i\u80FD\u53D6\u5230s\u7684\u503C\u662Ffor\u7684\u529F\u80FD for\u5C31\u662F\u5BF9s\u5185\u90E8\u8FDB\u884C\u4E86\u4E00\u4E2Anext\u7684\u8C03\u7528(for\u5FAA\u73AF\u904D\u5386\u53EF\u8FED\u4EE3\u5BF9\u8C61)
+
+    python\u7684for\u91CC\u9762\u5230\u5E95\u505A\u4E86\u4EC0\u4E48? \u5176\u5B9E\u5B83\u5C31\u662F\u505A\u4E86\u8FD9\u4E48\u4E00\u4EF6\u4E8B\u60C5 \u8C03\u7528\u91CC\u9762\u7684next() \u53D6\u91CC\u9762\u7684\u503C(\u4E0D\u65AD\u7684next\u8D4B\u503C\u7ED9i)
+    \u4E4B\u540E\u6BCF\u6B21\u8C03\u7528\u65B0\u7684\u503C\u8D4B\u7ED9\u4E86i \u4E4B\u524D\u7684\u4FBF\u4F1A\u88AB\u5783\u573E\u56DE\u6536 \u56E0\u6B64\u7A7A\u95F4\u5C31\u51FA\u6765\u4E86(\u56E0\u6B64\u5360\u5185\u5B58\u7684\u53EA\u6709\u8FD9\u4E00\u4E2A\u6570,\u7A7A\u95F4\u6C38\u8FDC\u81EA\u7531)
+
+    \u6309\u7406\u6765\u8BF4\u8C03\u7528\u5230\u6700\u540E\u4E00\u4E2A\u4F1A\u62A5\u5F02\u5E38 \u7136\u800Cfor\u4F1A\u8FDB\u884C\u68C0\u6D4B\u3002 for\u662F\u5229\u7528\u4E86\u5F02\u5E38\u6355\u83B7(except)\u6355\u6349\u5230\u5F02\u5E38(\u8FED\u4EE3\u505C\u6B62)\u76F4\u63A5
+    \u5C31\u8FD4\u56DE\u4E86 \u4E0D\u505A\u4EFB\u4F55\u5176\u4ED6\u5904\u7406
+
+    while True:
+        i = next(\u53EF\u8FED\u4EE3\u5BF9\u8C61)
+        \u6355\u6349\u5F02\u5E38 \u8FDB\u884C\u5904\u7406(\u8FD4\u56DE)
+
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>\u5BB9\u5668\u3001\u8FED\u4EE3\u5668\u3001\u751F\u6210\u5668\u533A\u522B\uFF1A 1.\u5BB9\u5668\uFF1A\u5305\u542B\u5E38\u89C1\u7684\u5217\u8868\u3001\u5143\u7EC4\u3001\u5B57\u5178\u3001\u96C6\u5408\u548C\u5B57\u7B26\u4E32\uFF0C\u5E8F\u5217\u5B58\u50A8\u5728\u5185\u5B58\u4E2D\uFF0C\u9700\u8981\u7684\u65F6\u5019\u53EF\u4EE5\u4E00\u5E76\u53D6\u51FA</p><div class="language-text ext-text line-numbers-mode"><pre class="language-text"><code>2.\u8FED\u4EE3\u5668\uFF1Aiter(\u5BB9\u5668)\u8FD4\u56DE\u7684\u5BF9\u8C61\uFF0C\u6309\u9700\u5B58\u50A8\uFF0C\u53EF\u4EE5\u901A\u8FC7next()\u8FDB\u884C\u8FED\u4EE3,\u4F46\u5E76\u4E0D\u662F\u628A\u6240\u6709\u5E8F\u5217\u653E\u5728\u5185\u5B58\u4E2D\u518D\u8FED\u4EE3\u53D6\u503C\uFF0C\u800C\u662F\u4EC5\u4EC5\u5C06\u8FED\u4EE3\u5230\u7684\u67D0\u4E2A\u503C\u53D6\u5230\u5185\u5B58\u4E2D
+
+3.\u751F\u6210\u5668\uFF1A\u7B97\u662F\u53E6\u4E00\u4E2A\u8FED\u4EE3\u5668\uFF0C\u4E0D\u4EC5\u53EF\u4EE5\u8FED\u4EE3\u6309\u9700\u53D6\u6570\u636E\uFF0C\u8FD8\u53EF\u4EE5\u901A\u8FC7send()\u4F20\u5165\u6570\u636E\uFF0C\u5E76\u5728\u751F\u6210\u5668\u5185\u90E8\u8BA1\u7B97
+
+\u76F8\u540C\u70B9\uFF1A\u90FD\u662F\u53EF\u8FED\u4EE3\u5BF9\u8C61
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h4 id="\u6309\u4F4D\u7F6E\u8FED\u4EE3" tabindex="-1"><a class="header-anchor" href="#\u6309\u4F4D\u7F6E\u8FED\u4EE3" aria-hidden="true">#</a> \u6309\u4F4D\u7F6E\u8FED\u4EE3</h4><div class="language-python ext-py line-numbers-mode"><pre class="language-python"><code><span class="token keyword">from</span> itertools <span class="token keyword">import</span> islice
+
+
+<span class="token keyword">def</span> <span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    li <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">,</span> <span class="token number">9</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">11</span><span class="token punctuation">,</span> <span class="token number">12</span><span class="token punctuation">,</span> <span class="token number">13</span><span class="token punctuation">,</span> <span class="token number">14</span><span class="token punctuation">]</span>
+    <span class="token keyword">for</span> i <span class="token keyword">in</span> li<span class="token punctuation">:</span>
+        <span class="token keyword">yield</span> i
+
+
+<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">&#39;__main__&#39;</span><span class="token punctuation">:</span>
+    f <span class="token operator">=</span> foo<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    limit <span class="token operator">=</span> <span class="token number">10</span>
+    offset <span class="token operator">=</span> <span class="token number">10</span>
+    <span class="token keyword">for</span> i <span class="token keyword">in</span> islice<span class="token punctuation">(</span>f<span class="token punctuation">,</span> limit<span class="token punctuation">,</span> limit <span class="token operator">+</span> offset<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>\u4F7F\u7528\u5F02\u6B65\u5F62\u5F0F</p><div class="language-bash ext-sh line-numbers-mode"><pre class="language-bash"><code>$ pip <span class="token function">install</span> aioitertools
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p>\u8BA1\u7B97\u957F\u5EA6\uFF08<em>\u901A\u5E38\u6765\u8BB2\uFF0C\u4E0D\u5E94\u8BA1\u7B97\u8FED\u4EE3\u5668\u7684\u603B\u957F\u5EA6\uFF0C\u800C\u662F\u7528\u6765\u7701\u5185\u5B58</em> \uFF09</p><div class="language-python ext-py line-numbers-mode"><pre class="language-python"><code><span class="token comment"># \u4F1A\u6539\u53D8\u8FED\u4EE3\u5668\u7684\u4E0B\u6B21\u8FED\u4EE3\u4F4D\u7F6E\uFF0C\u9700\u518D new \u4E2A\u5BF9\u8C61</span>
+<span class="token builtin">iter</span> <span class="token operator">=</span> <span class="token punctuation">(</span>i <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">50</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token builtin">sum</span><span class="token punctuation">(</span><span class="token number">1</span> <span class="token keyword">for</span> _ <span class="token keyword">in</span> <span class="token builtin">iter</span><span class="token punctuation">)</span>
+
+<span class="token comment"># ------------</span>
+<span class="token keyword">import</span> more_itertools
+
+iter5 <span class="token operator">=</span> <span class="token builtin">iter</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>more_itertools<span class="token punctuation">.</span>ilen<span class="token punctuation">(</span>iter5<span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div>`,24);function r(u,d){return e(),t("div",null,[o,i(" more "),c])}const m=a(l,[["render",r],["__file","\u8FED\u4EE3\u5668.html.vue"]]);export{m as default};
