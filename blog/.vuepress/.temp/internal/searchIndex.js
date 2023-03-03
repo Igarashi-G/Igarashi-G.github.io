@@ -3260,20 +3260,13 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "asyncio进阶",
+    "title": "asyncio集",
     "headers": [
       {
         "level": 2,
-        "title": "一、队列集",
-        "slug": "一、队列集",
-        "link": "#一、队列集",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "二、子进程",
-        "slug": "二、子进程",
-        "link": "#二、子进程",
+        "title": "1. 子进程",
+        "slug": "_1-子进程",
+        "link": "#_1-子进程",
         "children": [
           {
             "level": 3,
@@ -3283,6 +3276,13 @@ export const searchIndex = [
             "children": []
           }
         ]
+      },
+      {
+        "level": 2,
+        "title": "2. 队列集",
+        "slug": "_2-队列集",
+        "link": "#_2-队列集",
+        "children": []
       }
     ],
     "path": "/python/%E8%AF%AD%E8%A8%80/asyncio/asyncio%E8%BF%9B%E9%98%B6.html",
@@ -3772,6 +3772,42 @@ export const searchIndex = [
             "children": []
           }
         ]
+      },
+      {
+        "level": 2,
+        "title": "6. 排序、去重和搜索",
+        "slug": "_6-排序、去重和搜索",
+        "link": "#_6-排序、去重和搜索",
+        "children": [
+          {
+            "level": 3,
+            "title": "6.1 关于排序",
+            "slug": "_6-1-关于排序",
+            "link": "#_6-1-关于排序",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "6.2 关于去重",
+            "slug": "_6-2-关于去重",
+            "link": "#_6-2-关于去重",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "6.3 关于搜索",
+            "slug": "_6-3-关于搜索",
+            "link": "#_6-3-关于搜索",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "杂谈",
+        "slug": "杂谈",
+        "link": "#杂谈",
+        "children": []
       }
     ],
     "path": "/python/%E8%AF%AD%E8%A8%80/%E5%9F%BA%E7%A1%80/%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B.html",
@@ -4054,25 +4090,24 @@ export const searchIndex = [
     "headers": [
       {
         "level": 2,
-        "title": "multiprocessing",
-        "slug": "multiprocessing",
-        "link": "#multiprocessing",
+        "title": "1. 多进程 multiprocessing",
+        "slug": "_1-多进程-multiprocessing",
+        "link": "#_1-多进程-multiprocessing",
         "children": [
           {
             "level": 3,
-            "title": "主要功能介绍",
-            "slug": "主要功能介绍",
-            "link": "#主要功能介绍",
+            "title": "1.1 主要功能介绍",
+            "slug": "_1-1-主要功能介绍",
+            "link": "#_1-1-主要功能介绍",
             "children": []
-          }
-        ]
-      },
-      {
-        "level": 2,
-        "title": "1 Process 类",
-        "slug": "_1-process-类",
-        "link": "#_1-process-类",
-        "children": [
+          },
+          {
+            "level": 3,
+            "title": "1.2 Process 类",
+            "slug": "_1-2-process-类",
+            "link": "#_1-2-process-类",
+            "children": []
+          },
           {
             "level": 3,
             "title": "上下文和启动方法：",
@@ -4088,6 +4123,28 @@ export const searchIndex = [
         "slug": "_2-多进程通讯-队列和管道",
         "link": "#_2-多进程通讯-队列和管道",
         "children": []
+      },
+      {
+        "level": 2,
+        "title": "3. subprocess",
+        "slug": "_3-subprocess",
+        "link": "#_3-subprocess",
+        "children": [
+          {
+            "level": 3,
+            "title": "3.1 关于 os.system os.popen 和 subprocess 的区别",
+            "slug": "_3-1-关于-os-system-os-popen-和-subprocess-的区别",
+            "link": "#_3-1-关于-os-system-os-popen-和-subprocess-的区别",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "3.2 Popen",
+            "slug": "_3-2-popen",
+            "link": "#_3-2-popen",
+            "children": []
+          }
+        ]
       }
     ],
     "path": "/python/%E8%AF%AD%E8%A8%80/%E5%A4%9A%E4%BB%BB%E5%8A%A1%E7%BC%96%E7%A8%8B/%E5%A4%9A%E8%BF%9B%E7%A8%8B%E7%BC%96%E7%A8%8B.html",
@@ -6702,16 +6759,16 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "文件锁 分类",
+    "title": "asyncio 分类",
     "headers": [],
-    "path": "/category/%E6%96%87%E4%BB%B6%E9%94%81/",
+    "path": "/category/asyncio/",
     "pathLocale": "/",
     "extraFields": []
   },
   {
-    "title": "协程 分类",
+    "title": "文件锁 分类",
     "headers": [],
-    "path": "/category/%E5%8D%8F%E7%A8%8B/",
+    "path": "/category/%E6%96%87%E4%BB%B6%E9%94%81/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -6723,9 +6780,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "线程 分类",
+    "title": "协程 分类",
     "headers": [],
-    "path": "/category/%E7%BA%BF%E7%A8%8B/",
+    "path": "/category/%E5%8D%8F%E7%A8%8B/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -6737,9 +6794,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "进程 分类",
+    "title": "多进程 分类",
     "headers": [],
-    "path": "/category/%E8%BF%9B%E7%A8%8B/",
+    "path": "/category/%E5%A4%9A%E8%BF%9B%E7%A8%8B/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -6751,9 +6808,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "SMB/CIFS 分类",
+    "title": "线程 分类",
     "headers": [],
-    "path": "/category/smbcifs/",
+    "path": "/category/%E7%BA%BF%E7%A8%8B/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -6765,9 +6822,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "UFS 分类",
+    "title": "进程 分类",
     "headers": [],
-    "path": "/category/ufs/",
+    "path": "/category/%E8%BF%9B%E7%A8%8B/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -6779,9 +6836,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "CentOS 分类",
+    "title": "SMB/CIFS 分类",
     "headers": [],
-    "path": "/category/centos/",
+    "path": "/category/smbcifs/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -6793,9 +6850,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "Linux 分类",
+    "title": "UFS 分类",
     "headers": [],
-    "path": "/category/linux/",
+    "path": "/category/ufs/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -6807,9 +6864,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "shell 分类",
+    "title": "CentOS 分类",
     "headers": [],
-    "path": "/category/shell/",
+    "path": "/category/centos/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -6821,9 +6878,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "命令 分类",
+    "title": "Linux 分类",
     "headers": [],
-    "path": "/category/%E5%91%BD%E4%BB%A4/",
+    "path": "/category/linux/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -6835,9 +6892,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "troubleshooting 分类",
+    "title": "shell 分类",
     "headers": [],
-    "path": "/category/troubleshooting/",
+    "path": "/category/shell/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -6849,9 +6906,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "虚拟机 分类",
+    "title": "命令 分类",
     "headers": [],
-    "path": "/category/%E8%99%9A%E6%8B%9F%E6%9C%BA/",
+    "path": "/category/%E5%91%BD%E4%BB%A4/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -6863,9 +6920,23 @@ export const searchIndex = [
     "extraFields": []
   },
   {
+    "title": "troubleshooting 分类",
+    "headers": [],
+    "path": "/category/troubleshooting/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
     "title": "Django 标签",
     "headers": [],
     "path": "/tag/django/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "虚拟机 分类",
+    "headers": [],
+    "path": "/category/%E8%99%9A%E6%8B%9F%E6%9C%BA/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -6919,16 +6990,30 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "pip 标签",
+    "title": "Python 标签",
     "headers": [],
-    "path": "/tag/pip/",
+    "path": "/tag/python/",
     "pathLocale": "/",
     "extraFields": []
   },
   {
-    "title": "Python 标签",
+    "title": "asyncio 标签",
     "headers": [],
-    "path": "/tag/python/",
+    "path": "/tag/asyncio/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "subprocess 标签",
+    "headers": [],
+    "path": "/tag/subprocess/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "pip 标签",
+    "headers": [],
+    "path": "/tag/pip/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -6950,6 +7035,13 @@ export const searchIndex = [
     "title": "协程 标签",
     "headers": [],
     "path": "/tag/%E5%8D%8F%E7%A8%8B/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "多进程 标签",
+    "headers": [],
+    "path": "/tag/%E5%A4%9A%E8%BF%9B%E7%A8%8B/",
     "pathLocale": "/",
     "extraFields": []
   },

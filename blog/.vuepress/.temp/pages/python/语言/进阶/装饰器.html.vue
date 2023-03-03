@@ -167,7 +167,7 @@ dis<span class="token punctuation">(</span>f3<span class="token punctuation">)</
 <img src="@source/python/语言/进阶/img/闭包.png">
 </li>
 <li>
-<p>在函数内部，<strong>对外部作用域</strong>（<em>但不是全局作用域</em>）的变量，进行 **引用 ** 的，就是闭包</p>
+<p>在函数内部，<strong>对外部作用域</strong>（<em>但不是全局作用域</em>）的变量，进行 <strong>引用</strong> 的，就是闭包</p>
 </li>
 </ul>
 <div class="custom-container tip">
@@ -348,7 +348,8 @@ clocked
 	<span class="token keyword">pass</span>
 
 f <span class="token operator">=</span> d1<span class="token punctuation">(</span>d2<span class="token punctuation">(</span>f<span class="token punctuation">)</span><span class="token punctuation">)</span>
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_2-5-参数化装饰器" tabindex="-1"><a class="header-anchor" href="#_2-5-参数化装饰器" aria-hidden="true">#</a> 2.5 参数化装饰器</h3>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>执行顺序是 <strong>由外层向内层</strong> 顺序执行</p>
+<h3 id="_2-5-参数化装饰器" tabindex="-1"><a class="header-anchor" href="#_2-5-参数化装饰器" aria-hidden="true">#</a> 2.5 参数化装饰器</h3>
 <p>装饰器可以接收被装饰的函数和他的参数，那么如何让装饰器自身来接收额外的参数呢？答案是创建一个 <strong>装饰器工厂函数</strong>，这个工厂的目的是，一调用这个工厂就能 <strong>返回</strong> 一个真正的 <strong>装饰器</strong></p>
 <div class="language-python ext-py line-numbers-mode"><pre v-pre class="language-python"><code>registry <span class="token operator">=</span> <span class="token builtin">set</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 

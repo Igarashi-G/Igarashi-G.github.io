@@ -1,7 +1,8 @@
-<template><div><h1 id="基于进程的并行" tabindex="-1"><a class="header-anchor" href="#基于进程的并行" aria-hidden="true">#</a> 基于进程的并行</h1>
+<template><div><p><strong>Python</strong> 基于进程的并行计算</p>
+<!--more-->
 <p><strong>multiprocessing</strong>：是一个与 <a href="/back_end/python/base/%E8%B5%84%E6%BA%90%E8%B0%83%E5%BA%A6/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%BC%96%E7%A8%8B#%E5%9F%BA%E4%BA%8E%E7%BA%BF%E7%A8%8B%E7%9A%84%E5%B9%B6%E5%8F%91">threading</a> 模块类似的包，能提供本地和远程的 <a href="/back_end/python/base/%E8%B5%84%E6%BA%90%E8%B0%83%E5%BA%A6/%E8%BF%9B%E7%A8%8B#12-%E5%B9%B6%E5%8F%91">并发</a> 操作（若多核那么就是 <a href="/back_end/python/base/%E8%B5%84%E6%BA%90%E8%B0%83%E5%BA%A6/%E8%BF%9B%E7%A8%8B#11-%E5%B9%B6%E8%A1%8C">并行</a> 操作）。它利用子进程来绕过了 <a href="/back_end/python/base/%E8%B5%84%E6%BA%90%E8%B0%83%E5%BA%A6/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%BC%96%E7%A8%8B#%E5%9F%BA%E4%BA%8E%E7%BA%BF%E7%A8%8B%E7%9A%84%E5%B9%B6%E5%8F%91">GIL 锁</a> ，适用于 Unix 和 Windows 系统的 <strong>CPU</strong>(计算)密集型操作（且通常不依赖上次计算结果）</p>
-<h2 id="multiprocessing" tabindex="-1"><a class="header-anchor" href="#multiprocessing" aria-hidden="true">#</a> <a href="https://docs.python.org/zh-cn/3/library/multiprocessing.html?highlight=basemanager#module-multiprocessing" target="_blank" rel="noopener noreferrer">multiprocessing<ExternalLinkIcon/></a></h2>
-<h3 id="主要功能介绍" tabindex="-1"><a class="header-anchor" href="#主要功能介绍" aria-hidden="true">#</a> 主要功能介绍</h3>
+<h2 id="_1-多进程-multiprocessing" tabindex="-1"><a class="header-anchor" href="#_1-多进程-multiprocessing" aria-hidden="true">#</a> 1. 多进程 <a href="https://docs.python.org/zh-cn/3/library/multiprocessing.html?highlight=basemanager#module-multiprocessing" target="_blank" rel="noopener noreferrer">multiprocessing<ExternalLinkIcon/></a></h2>
+<h3 id="_1-1-主要功能介绍" tabindex="-1"><a class="header-anchor" href="#_1-1-主要功能介绍" aria-hidden="true">#</a> 1.1 主要功能介绍</h3>
 <ul>
 <li>主要用于创建 <strong>子进程</strong> 对象，<code v-pre>Process</code>类，然后 start 启动</li>
 <li>进程通信，支持 <code v-pre>Queue</code>类 队列和 <code v-pre>Pipe</code> 类管道通信</li>
@@ -11,7 +12,11 @@
 <li>管理器，分布式计算，通过 <code v-pre>managers</code> 实现分布式的进程计算和通信</li>
 <li>监听器，通过 <code v-pre>Listener</code> 监听管道来交互</li>
 </ul>
-<Alert type="error">使用 `multiprocessing` 时，应遵循一些指导原则和习惯[用法](https://docs.python.org/zh-cn/3/library/multiprocessing.html?highlight=basemanager#multiprocessing-programming)</Alert><h4 id="部分摘要" tabindex="-1"><a class="header-anchor" href="#部分摘要" aria-hidden="true">#</a> <strong>部分摘要</strong>：</h4>
+<div class="custom-container tip">
+<p class="custom-container-title">提示</p>
+<p>使用 <code v-pre>multiprocessing</code> 时，应遵循一些指导原则和习惯 <a href="https://docs.python.org/zh-cn/3/library/multiprocessing.html?highlight=basemanager#multiprocessing-programming" target="_blank" rel="noopener noreferrer">用法<ExternalLinkIcon/></a></p>
+</div>
+<h4 id="部分摘要" tabindex="-1"><a class="header-anchor" href="#部分摘要" aria-hidden="true">#</a> <strong>部分摘要</strong>：</h4>
 <ul>
 <li>
 <p><code v-pre>multiprocessing</code> 有进程间通信 <strong>IPC</strong> (如：<code v-pre>Pipe</code> 和 <code v-pre>Queue</code>) 因此优先考虑使用它们，效率会高些</p>
@@ -26,7 +31,7 @@
 <p>若必须共享，可通过 <strong>共享内存</strong> 和 <code v-pre>Manager</code> 方法来共享资源，但此时程序复杂度大大提高，且因同步而降低了计算效率</p>
 </li>
 </ul>
-<h2 id="_1-process-类" tabindex="-1"><a class="header-anchor" href="#_1-process-类" aria-hidden="true">#</a> 1 Process 类</h2>
+<h3 id="_1-2-process-类" tabindex="-1"><a class="header-anchor" href="#_1-2-process-类" aria-hidden="true">#</a> 1.2 Process 类</h3>
 <p><strong><Font type="dark"><code v-pre>Process</code>(group=None, target=None, name=None, args=(), kwargs={}, *, daemon=None)</Font></strong></p>
 <blockquote>
 <p>进程对象表示在单独进程中运行的活动</p>
@@ -190,6 +195,224 @@
 </ul>
 </li>
 </ul>
+<h2 id="_3-subprocess" tabindex="-1"><a class="header-anchor" href="#_3-subprocess" aria-hidden="true">#</a> 3. subprocess</h2>
+<p><a href="https://docs.python.org/zh-cn/3/library/subprocess.html#module-subprocess" target="_blank" rel="noopener noreferrer"><code v-pre>subprocess</code><ExternalLinkIcon/></a> 模块允许你生成新的进程，连接它们的输入、输出、错误管道，并且获取它们的返回码，但该模块在 <strong>WebAssembly</strong> 无法使用</p>
+<div class="custom-container tip">
+<p class="custom-container-title">提示</p>
+<p>用于替代老旧模块 如</p>
+<div class="language-python ext-py line-numbers-mode"><pre v-pre class="language-python"><code>os<span class="token punctuation">.</span>systm
+os<span class="token punctuation">.</span>spawn<span class="token operator">*</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_3-1-关于-os-system-os-popen-和-subprocess-的区别" tabindex="-1"><a class="header-anchor" href="#_3-1-关于-os-system-os-popen-和-subprocess-的区别" aria-hidden="true">#</a> 3.1 <strong>关于 os.system os.popen 和 subprocess 的区别</strong></h3>
+<p><strong>os.system()</strong></p>
+<p>返回命令执行结果的返回值，有如下三步操作</p>
+<ol>
+<li><strong>fork</strong> 一个子进程</li>
+<li>子进程中调用 <strong>exec</strong> 函数执行命令</li>
+<li>父进程中调用 <strong>wait</strong> 阻塞等待子进程结果</li>
+</ol>
+<p><strong>os.popen()</strong></p>
+<p>它先创建了一个管道，然后 <strong>fork</strong>一个子进程，子进程执行命令，但返回值在标准 <strong>IO</strong> 流中，该管道用于父子进程间通信</p>
+<p>父进程要么从管道读信息，要么向管道写信息，至于是读还是写取决于父进程调用 <strong>popen</strong> 时传递的参数（<em><strong>w</strong> 或 <strong>r</strong></em> ）</p>
+<div class="language-python ext-py line-numbers-mode"><pre v-pre class="language-python"><code><span class="token keyword">import</span> os
+
+p <span class="token operator">=</span> os<span class="token punctuation">.</span>popen<span class="token punctuation">(</span><span class="token string">"exec command"</span><span class="token punctuation">)</span>
+s <span class="token operator">=</span> p<span class="token punctuation">.</span>read<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span>
+p<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></div>
+<h3 id="_3-2-popen" tabindex="-1"><a class="header-anchor" href="#_3-2-popen" aria-hidden="true">#</a> 3.2 Popen</h3>
+<p>通常可使用 <code v-pre>run()</code> 接口 传入 <strong>arg</strong> 指令等待其完成，并拿到返回的  <a href="https://docs.python.org/zh-cn/3/library/subprocess.html#subprocess.CompletedProcess" target="_blank" rel="noopener noreferrer"><code v-pre>CompletedProcess</code><ExternalLinkIcon/></a> 实例解析</p>
+<p>进阶用例请使用底层 <a href="https://docs.python.org/zh-cn/3/library/subprocess.html#subprocess.Popen" target="_blank" rel="noopener noreferrer">Popen<ExternalLinkIcon/></a> 接口，其构造如下</p>
+<p><code v-pre>class subprocess.Popen(args, bufsize=-1, executable=None, stdin=None, stdout=None, stderr=None, preexec_fn=None, close_fds=True, shell=False, cwd=None, env=None, universal_newlines=None, startupinfo=None, creationflags=0, restore_signals=True, start_new_session=False, pass_fds=(), *, group=None, extra_groups=None, user=None, umask=- 1, encoding=None, errors=None, text=None, pipesize=-1, process_group=None)</code></p>
+<p>在一个新的进程，执行子程序</p>
+<ul>
+<li><strong>args：</strong> 参数序列、字符串（<em>必须 <code v-pre>shell=True</code></em> ），<strong>推荐序列形式</strong>，若字符串，则被作为将 <strong>被执行的程序的命名</strong> 或 <strong>路径</strong> 解释</li>
+<li><strong>shell：</strong> 在 <strong>POSIX</strong>，当 <code v-pre>shell=True</code>， <strong>shell</strong> 默认为 <code v-pre>/bin/sh</code> ，若 <strong>args</strong> 是字符串，则将通过 <strong>shell</strong> 执行</li>
+</ul>
+<div class="custom-container danger">
+<p class="custom-container-title">Shell 注入漏洞</p>
+<p>关于为啥不推荐 <strong>shell=True</strong> 以及 <strong>subprocess</strong> 替代 <strong>os</strong> 模块，是由于 <strong>shell 注入漏洞</strong></p>
+<p>针对 <strong>popen</strong> 其实现是不会隐式调用系统 <strong>shell</strong> 的（<em>不用 <code v-pre>/bin/sh</code> 解析命令</em> ），它是可以将所有字符（<em>包括 <strong>shell</strong> 元字符</em> ）安全传递给子进程</p>
+<p>但指定 <strong>shell=True</strong> 时，则是显式发起调用（<em><strong>等效 os.system</strong></em> ）此时需要 <strong>应用程序本身</strong> 来保证字符串安全转义</p>
+<p>不然攻击输入类似如下这种危险的命令，会引发严重事故</p>
+<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code><span class="token function">ls</span> -l<span class="token punctuation">;</span><span class="token function">touch</span> <span class="token number">1</span>.txt	<span class="token comment"># ;rm -rf ~ | rm -rf / </span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p>防止操作系统命令注入漏洞的 <strong>最有效方法是永远不要从应用层代码中调用操作系统命令</strong></p>
+<p>使用 <strong>shell=True</strong> 显示调用，尽管可以方便的直接使用 <strong>&quot;|&quot;</strong> 管道符或 <strong>”&gt;“</strong>，如 <strong>SMB</strong> 的录入用户数据</p>
+<div class="language-text ext-text line-numbers-mode"><pre v-pre class="language-text"><code>echo -e "12345\n12345\n" | pdbedit -t -a zz
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><div class="language-python ext-py line-numbers-mode"><pre v-pre class="language-python"><code>cmd <span class="token operator">=</span> <span class="token string-interpolation"><span class="token string">f"echo -e '</span><span class="token interpolation"><span class="token punctuation">{</span>password<span class="token punctuation">}</span></span><span class="token string">\n</span><span class="token interpolation"><span class="token punctuation">{</span>password<span class="token punctuation">}</span></span><span class="token string">\n' | </span><span class="token interpolation"><span class="token punctuation">{</span>PDBEDIT<span class="token punctuation">}</span></span><span class="token string"> -t -a </span><span class="token interpolation"><span class="token punctuation">{</span>name<span class="token punctuation">}</span></span><span class="token string">"</span></span>
+out<span class="token punctuation">,</span> err<span class="token punctuation">,</span> rc <span class="token operator">=</span> <span class="token keyword">await</span> run_command<span class="token punctuation">(</span>cmd<span class="token punctuation">,</span> shell<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div></div></div><p>此时若将内嵌的参数 如 <code v-pre>{password}、{PDBEDIT}、{name}</code> 替换为危险的字符指令，则会引发跑路的后果，所以它不够安全，使用 <code v-pre>stdin=x.stdout</code> 输入则能安全的规避</p>
+<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code>$ <span class="token function">df</span> <span class="token parameter variable">-h</span> <span class="token operator">|</span><span class="token function">grep</span> sda1
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p>可以将第一条指令的管道输出作为第二条指令的输入</p>
+<div class="language-python ext-py line-numbers-mode"><pre v-pre class="language-python"><code>In <span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">:</span> p1 <span class="token operator">=</span> subprocess<span class="token punctuation">.</span>Popen<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'df'</span><span class="token punctuation">,</span><span class="token string">'-h'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> stdout<span class="token operator">=</span>subprocess<span class="token punctuation">.</span>PIPE<span class="token punctuation">)</span>
+In <span class="token punctuation">[</span><span class="token number">5</span><span class="token punctuation">]</span><span class="token punctuation">:</span> p2 <span class="token operator">=</span> subprocess<span class="token punctuation">.</span>Popen<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">"grep"</span><span class="token punctuation">,</span> <span class="token string">"sda1"</span><span class="token punctuation">]</span><span class="token punctuation">,</span> stdin<span class="token operator">=</span>p1<span class="token punctuation">.</span>stdout<span class="token punctuation">,</span> stdout<span class="token operator">=</span>subprocess<span class="token punctuation">.</span>PIPE<span class="token punctuation">)</span>
+In <span class="token punctuation">[</span><span class="token number">6</span><span class="token punctuation">]</span><span class="token punctuation">:</span> p1<span class="token punctuation">.</span>stdout<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span>
+In <span class="token punctuation">[</span><span class="token number">7</span><span class="token punctuation">]</span><span class="token punctuation">:</span> output <span class="token operator">=</span> p2<span class="token punctuation">.</span>communicate<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+In <span class="token punctuation">[</span><span class="token number">8</span><span class="token punctuation">]</span><span class="token punctuation">:</span> output
+Out<span class="token punctuation">[</span><span class="token number">8</span><span class="token punctuation">]</span><span class="token punctuation">:</span> <span class="token string">b'/dev/sda1       259M  119M  122M  50% /boot\n'</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>启动 <code v-pre>p2</code> 之后再执行 <code v-pre>p1.stdout.close()</code> 调用很重要，这是为了让 <code v-pre>p1</code> 能在 <code v-pre>p2</code> 先于 <code v-pre>p1</code> 退出时接收到 <code v-pre>SIGPIPE</code></p>
+</div>
+<div class="custom-container warning">
+<p class="custom-container-title">shlex</p>
+<p>若真的必须用 <strong>shell=True</strong> 调用子进程，并使用 <strong>Python</strong> 调用用户输入，还有一种方法可以安全地做到这一点</p>
+<p><a href="https://docs.python.org/zh-cn/3/library/shlex.html" target="_blank" rel="noopener noreferrer">shlex.quote()<ExternalLinkIcon/></a></p>
+<div class="language-python ext-py line-numbers-mode"><pre v-pre class="language-python"><code><span class="token keyword">import</span> shlex
+<span class="token keyword">import</span> subprocess
+
+subprocess<span class="token punctuation">.</span>call<span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f'echo </span><span class="token interpolation"><span class="token punctuation">{</span>shlex<span class="token punctuation">.</span>quote<span class="token punctuation">(</span>user_string<span class="token punctuation">)</span><span class="token punctuation">}</span></span><span class="token string"> >> user_string.txt'</span></span><span class="token punctuation">,</span> shell<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></div>
+<ul>
+<li>
+<p><strong>bufsize：</strong> 给 <strong>open()</strong> 函数提供参数的，此时会创建 <strong>stdin/stdout/stderr</strong> 管道文件对象</p>
+<ul>
+<li><strong>0</strong> 表示不使用缓冲区（<em>读写是一个系统调用</em> ）可返回短内容</li>
+<li><strong>1</strong> 表示一行 缓冲（<em>仅在 <code v-pre>text=True</code> 或 <code v-pre>universal_newlines=True</code> 中能用</em>）</li>
+<li>任何 <strong>其他正值</strong>，表示使用约为对应大小的缓冲区</li>
+<li>负值（<em>默认</em>）表示使用系统默认的 <code v-pre>io.DEFAULT_BUFFER_SIZE</code> ，即默认启用系统缓冲</li>
+</ul>
+</li>
+<li>
+<p><strong>executable：</strong> 指定一个要执行的替换程序，通常替换默认的 <strong>shell</strong> 即 <code v-pre>/bin/sh</code></p>
+</li>
+<li>
+<p><strong>stdin/stdout/stderr：</strong> 指定被执行程序的 <strong>标准输入、标准输出、和标准错误 文件句柄</strong>，合法的值包括 <a href="https://docs.python.org/zh-cn/3/library/subprocess.html#subprocess.PIPE" target="_blank" rel="noopener noreferrer"><code v-pre>PIPE</code><ExternalLinkIcon/></a>、<a href="https://docs.python.org/zh-cn/3/library/subprocess.html#subprocess.DEVNULL" target="_blank" rel="noopener noreferrer"><code v-pre>DEVNULL</code><ExternalLinkIcon/></a>、现存的 <strong>文件描述符</strong>（<em>正整数</em> ）、现存的带有合法文件描述符的 <a href="https://docs.python.org/zh-cn/3/glossary.html#term-file-object" target="_blank" rel="noopener noreferrer">file object<ExternalLinkIcon/></a> 以及 <code v-pre>None</code></p>
+<ul>
+<li><strong>PIPE：</strong> 新建一个连接子进程的管道</li>
+<li><strong>DEVNULL：</strong> 使用特殊的文件 <a href="https://docs.python.org/zh-cn/3/library/os.html#os.devnull" target="_blank" rel="noopener noreferrer"><code v-pre>os.devnull</code><ExternalLinkIcon/></a></li>
+<li><strong>None：</strong> 将不会进行任何重定向，子进程的文件流将 <strong>继承自父进程</strong></li>
+</ul>
+<blockquote>
+<p><strong>stderr</strong> 可以为 <a href="https://docs.python.org/zh-cn/3/library/subprocess.html#subprocess.STDOUT" target="_blank" rel="noopener noreferrer"><code v-pre>STDOUT</code><ExternalLinkIcon/></a>，这表示来自子进程的 <strong>stderr</strong> 数据应当被捕获到与 <strong>stdout</strong> 相同的文件句柄中</p>
+<p>若要在结果中同时捕获标准错误，请使用 <code v-pre>stderr=subprocess.STDOUT</code></p>
+</blockquote>
+</li>
+</ul>
+<div class="custom-container tip">
+<p class="custom-container-title">提示</p>
+<p><strong>Popen</strong> 对象支持通过 <a href="https://docs.python.org/zh-cn/3/reference/compound_stmts.html#with" target="_blank" rel="noopener noreferrer"><code v-pre>with</code><ExternalLinkIcon/></a> 语句作为上下文管理器，在退出时关闭文件描述符并等待进程</p>
+<div class="language-python ext-py line-numbers-mode"><pre v-pre class="language-python"><code><span class="token keyword">with</span> Popen<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">"ifconfig"</span><span class="token punctuation">]</span><span class="token punctuation">,</span> stdout<span class="token operator">=</span>PIPE<span class="token punctuation">)</span> <span class="token keyword">as</span> proc<span class="token punctuation">:</span>
+    log<span class="token punctuation">.</span>write<span class="token punctuation">(</span>proc<span class="token punctuation">.</span>stdout<span class="token punctuation">.</span>read<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div></div></div><p>请注意，如果您要做的事情比较复杂而又不能容纳在一行中，那么就需要 <code v-pre>devnull</code> 在 <code v-pre>Popen</code> 对象的整个生命中保持开放，而不仅仅是其构造。（<em>即将整个内容放入 <code v-pre>with</code> 语句</em>）</p>
+<div class="language-python ext-py line-numbers-mode"><pre v-pre class="language-python"><code><span class="token keyword">with</span> <span class="token builtin">open</span><span class="token punctuation">(</span>os<span class="token punctuation">.</span>devnull<span class="token punctuation">,</span> <span class="token string">'w'</span><span class="token punctuation">)</span> <span class="token keyword">as</span> devnull<span class="token punctuation">:</span>
+    subprocess<span class="token punctuation">.</span>check_call<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'java'</span><span class="token punctuation">,</span> <span class="token string">'-jar'</span><span class="token punctuation">,</span> <span class="token string">'foo.jar'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> stdout<span class="token operator">=</span>devnull<span class="token punctuation">)</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div></div></div><p><strong>POSIX</strong> 中重定向到 <code v-pre>/dev/null</code> 或 <strong>Windows</strong> 中的 <code v-pre>NUL</code></p>
+<ul>
+<li>
+<p>优点是不会创建不必要的管道，更重要的是，<strong>不会在子进程写入时阻塞该管道</strong></p>
+</li>
+<li>
+<p>缺点是  <code v-pre>os.devnull</code> 可能无法在某些平台上运行，若只关心 <strong>POSIX</strong> 和 <strong>Windows</strong> 上的<strong>CPython</strong>，<strong>PyPy</strong> 和 <strong>Jython</strong>，就没有问题</p>
+</li>
+</ul>
+</div>
+<ul>
+<li>
+<p><strong>cwd：</strong> 字符串、字节串、路径类对象，若 <strong>cwd</strong> 不为 <code v-pre>None</code>，此函数在执行子进程前会将当前工作目录改为 <strong>cwd</strong></p>
+</li>
+<li>
+<p><strong>env：</strong> 可指定环境变量，映射格式如下（<em>字符串、字节串</em>）</p>
+<div class="language-python ext-py line-numbers-mode"><pre v-pre class="language-python"><code>fake_env <span class="token operator">=</span> <span class="token builtin">dict</span><span class="token punctuation">(</span>os<span class="token punctuation">.</span>environ<span class="token punctuation">)</span>
+fake_env<span class="token punctuation">[</span><span class="token string">"LANG"</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">"en_US.UTF-8"</span>
+<span class="token comment"># subprocess.Popen(..., env=fake_env)</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></li>
+<li>
+<p><strong>pipesize：</strong> 当 <code v-pre>subprocess.PIPE</code> 作为输入输出时，可指定管道大小（<em><strong>3.10</strong> 仅 <strong>Linux</strong></em>）</p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code v-pre>Popen.poll()</code></td>
+<td>检查子进程是否已终止</td>
+</tr>
+<tr>
+<td><code v-pre>Popen.wait()</code></td>
+<td>等待子进程终止（<em>小心死锁</em> ）</td>
+</tr>
+<tr>
+<td><code v-pre>Popen.communicate()</code></td>
+<td>允许与进程交互（<em>规避死锁</em> ）</td>
+</tr>
+<tr>
+<td><code v-pre>Popen.send_signal()</code></td>
+<td>向子进程发送信号</td>
+</tr>
+<tr>
+<td><code v-pre>Popen.terminate()</code></td>
+<td>停止子进程</td>
+</tr>
+<tr>
+<td><code v-pre>Popen.kill()</code></td>
+<td>终止（<em>杀死</em> ）子进程</td>
+</tr>
+</tbody>
+</table>
+<div class="custom-container info">
+<p class="custom-container-title">说明</p>
+<p>使用 <a href="https://docs.python.org/zh-cn/3/library/subprocess.html#subprocess.Popen.communicate" target="_blank" rel="noopener noreferrer"><code v-pre>communicate()</code><ExternalLinkIcon/></a> 而非 <a href="https://docs.python.org/zh-cn/3/library/subprocess.html#subprocess.Popen.stdin" target="_blank" rel="noopener noreferrer"><code v-pre>.stdin.write</code><ExternalLinkIcon/></a>， <a href="https://docs.python.org/zh-cn/3/library/subprocess.html#subprocess.Popen.stdout" target="_blank" rel="noopener noreferrer"><code v-pre>.stdout.read</code><ExternalLinkIcon/></a> 或者 <a href="https://docs.python.org/zh-cn/3/library/subprocess.html#subprocess.Popen.stderr" target="_blank" rel="noopener noreferrer"><code v-pre>.stderr.read</code><ExternalLinkIcon/></a> 来避免由于任意其他 <strong>OS</strong> 管道 <strong>缓冲区被子进程填满阻塞</strong> 而导致的 <strong>死锁</strong></p>
+<p>它可以向 <strong>stdin</strong> 发送数据，或从 <strong>stdout</strong> 和 <strong>stderr</strong> 中读取数据</p>
+<p><strong>Popen.communicate(input=None, timeout=None)</strong></p>
+<ul>
+<li><strong>input：</strong> 可以发送数据到 <strong>子进程</strong>，若流是以文本模式打开的，则为字符串，否则为字节串</li>
+<li><strong>timeout：</strong> 若进程超时未终止，则 <strong>raise</strong> 一个 <a href="https://docs.python.org/zh-cn/3/library/subprocess.html#subprocess.TimeoutExpired" target="_blank" rel="noopener noreferrer"><code v-pre>TimeoutExpired</code><ExternalLinkIcon/></a> 异常，捕获此异常并重新等待将不会丢失任何输出</li>
+</ul>
+<p>如果超时到期，子进程不会被杀死，所以为了正确清理一个行为良好的应用程序应该杀死子进程并完成通讯</p>
+<div class="language-python ext-py line-numbers-mode"><pre v-pre class="language-python"><code>proc <span class="token operator">=</span> subprocess<span class="token punctuation">.</span>Popen<span class="token punctuation">(</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span>
+<span class="token keyword">try</span><span class="token punctuation">:</span>
+    outs<span class="token punctuation">,</span> errs <span class="token operator">=</span> proc<span class="token punctuation">.</span>communicate<span class="token punctuation">(</span>timeout<span class="token operator">=</span><span class="token number">15</span><span class="token punctuation">)</span>
+<span class="token keyword">except</span> TimeoutExpired<span class="token punctuation">:</span>
+    proc<span class="token punctuation">.</span>kill<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    outs<span class="token punctuation">,</span> errs <span class="token operator">=</span> proc<span class="token punctuation">.</span>communicate<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p><strong>注意：</strong> 内存里数据读取是缓冲的，<strong>若数据尺寸过大或无限，不要使用此方法</strong></p>
+</div>
+<h4 id="简单封装" tabindex="-1"><a class="header-anchor" href="#简单封装" aria-hidden="true">#</a> 简单封装</h4>
+<div class="language-python ext-py line-numbers-mode"><pre v-pre class="language-python"><code><span class="token keyword">def</span> <span class="token function">run_command_sync</span><span class="token punctuation">(</span>cmd<span class="token punctuation">,</span> shell<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">,</span> stdin<span class="token operator">=</span>asyncio<span class="token punctuation">.</span>subprocess<span class="token punctuation">.</span>PIPE<span class="token punctuation">,</span> stdout<span class="token operator">=</span>asyncio<span class="token punctuation">.</span>subprocess<span class="token punctuation">.</span>PIPE<span class="token punctuation">,</span>
+                     stderr<span class="token operator">=</span>asyncio<span class="token punctuation">.</span>subprocess<span class="token punctuation">.</span>PIPE<span class="token punctuation">,</span> log<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">,</span> <span class="token builtin">input</span><span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">,</span> throw<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">,</span> encoding<span class="token operator">=</span><span class="token string">"utf-8"</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">"""Usage:
+        shell:
+            run_command_sync("ls -l", shell=True)
+            run_command_sync("/usr/bin/ls -l", shell=True)
+        program:
+            run_command_sync("/usr/local/bin/your_program", shell=False)
+            run_command_sync(["/usr/local/bin/your_program"], shell=False)
+            run_command_sync(["/usr/bin/ls", "-l", "-a"], shell=False)
+    """</span>
+    <span class="token keyword">try</span><span class="token punctuation">:</span>
+        <span class="token comment"># We force run_command to always use en_US</span>
+        <span class="token comment"># to avoid issues on date and number formats</span>
+        <span class="token comment"># on not Anglo-Saxon systems (ex. it, es, fr, de, etc)</span>
+        fake_env <span class="token operator">=</span> <span class="token builtin">dict</span><span class="token punctuation">(</span>os<span class="token punctuation">.</span>environ<span class="token punctuation">)</span>
+        fake_env<span class="token punctuation">[</span><span class="token string">"LANG"</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">"en_US.UTF-8"</span>
+        <span class="token keyword">if</span> <span class="token keyword">not</span> shell<span class="token punctuation">:</span>
+            cmd <span class="token operator">=</span> <span class="token builtin">map</span><span class="token punctuation">(</span><span class="token builtin">str</span><span class="token punctuation">,</span> cmd<span class="token punctuation">)</span>
+        proc <span class="token operator">=</span> subprocess<span class="token punctuation">.</span>Popen<span class="token punctuation">(</span>
+            cmd<span class="token punctuation">,</span>
+            shell<span class="token operator">=</span>shell<span class="token punctuation">,</span>
+            stdout<span class="token operator">=</span>stdout<span class="token punctuation">,</span>
+            stderr<span class="token operator">=</span>stderr<span class="token punctuation">,</span>
+            stdin<span class="token operator">=</span>stdin<span class="token punctuation">,</span>
+            env<span class="token operator">=</span>fake_env<span class="token punctuation">,</span>
+        <span class="token punctuation">)</span>
+        out<span class="token punctuation">,</span> err <span class="token operator">=</span> proc<span class="token punctuation">.</span>communicate<span class="token punctuation">(</span><span class="token builtin">input</span><span class="token operator">=</span><span class="token builtin">input</span><span class="token punctuation">)</span>
+        rc <span class="token operator">=</span> proc<span class="token punctuation">.</span>returncode
+    <span class="token keyword">except</span> Exception <span class="token keyword">as</span> why<span class="token punctuation">:</span>
+        err<span class="token punctuation">,</span> rc <span class="token operator">=</span> <span class="token string">"Exception while running command({}): {}"</span><span class="token punctuation">.</span><span class="token builtin">format</span><span class="token punctuation">(</span>cmd<span class="token punctuation">,</span> <span class="token builtin">str</span><span class="token punctuation">(</span>why<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span>
+        logger<span class="token punctuation">.</span>info<span class="token punctuation">(</span>err<span class="token punctuation">)</span>
+        <span class="token keyword">if</span> throw<span class="token punctuation">:</span>
+            <span class="token keyword">raise</span> why
+        <span class="token keyword">return</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> err<span class="token punctuation">,</span> rc
+    <span class="token keyword">if</span> log<span class="token punctuation">:</span>
+        logger<span class="token punctuation">.</span>info<span class="token punctuation">(</span><span class="token string">"Run command: {} => out, err, rc = {}, {}, {} ======="</span>
+                    <span class="token punctuation">.</span><span class="token builtin">format</span><span class="token punctuation">(</span>cmd<span class="token punctuation">,</span> out<span class="token punctuation">,</span> err<span class="token punctuation">,</span> rc<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> out<span class="token punctuation">.</span>decode<span class="token punctuation">(</span>encoding<span class="token operator">=</span>encoding<span class="token punctuation">)</span><span class="token punctuation">,</span> err<span class="token punctuation">.</span>decode<span class="token punctuation">(</span>encoding<span class="token operator">=</span>encoding<span class="token punctuation">)</span><span class="token punctuation">,</span> rc
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h4 id="bandit" tabindex="-1"><a class="header-anchor" href="#bandit" aria-hidden="true">#</a> Bandit</h4>
+<p><strong>Bandit</strong> 这款工具可以用来搜索 <strong>Python</strong> 代码中常见的安全问题，在检测过程中，<strong>Bandit</strong> 会对每一份 <strong>Python</strong> 代码文件进行处理，并构建 <strong>AST</strong>，然后针对每一个 <strong>AST</strong> 节点运行相应的检测插件。完成安全扫描之后，**Bandit **会直接给用户生成检测报告（建议 <strong>CI/CD</strong> 时使用）</p>
 </div></template>
 
 
