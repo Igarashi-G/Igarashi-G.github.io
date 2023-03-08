@@ -1,1 +1,0 @@
-import{_ as t}from"./plugin-vueexport-helper.2444895f.js";import{o,c as r,d as n,r as c}from"./app.e661506f.js";const s={};function _(a,f){const e=c("PDF");return o(),r("div",null,[n(e,{url:"https://www.igarashi.fun:7779/pdf/%E6%8A%80%E6%9C%AF/CODE.pdf",height:"880px"})])}const m=t(s,[["render",_],["__file","CODE.html.vue"]]);export{m as default};

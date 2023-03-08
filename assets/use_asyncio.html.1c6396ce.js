@@ -1,1 +1,0 @@
-import{_ as o}from"./plugin-vueexport-helper.2444895f.js";import{o as n,c as t,d as s,r as c}from"./app.e661506f.js";const r={};function _(a,i){const e=c("PDF");return n(),t("div",null,[s(e,{url:"https://www.igarashi.fun:7779/pdf/python/Using%20Asyncio%20in%20Python.pdf",height:"880px"})])}const l=o(r,[["render",_],["__file","use_asyncio.html.vue"]]);export{l as default};
