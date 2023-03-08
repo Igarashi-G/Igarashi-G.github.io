@@ -771,9 +771,9 @@ asyncio<span class="token punctuation">.</span>run<span class="token punctuation
 <span class="token keyword">async</span> <span class="token keyword">def</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
     start <span class="token operator">=</span> time<span class="token punctuation">.</span>time<span class="token punctuation">(</span><span class="token punctuation">)</span>
     url_list <span class="token operator">=</span> <span class="token punctuation">[</span>
-        <span class="token string">"http://www.deadly-exception.icu:8999/img/Django.png"</span><span class="token punctuation">,</span>
-        <span class="token string">"http://www.deadly-exception.icu:8999/img/antd.png"</span><span class="token punctuation">,</span>
-        <span class="token string">"http://www.deadly-exception.icu:8999/img/etcd.png"</span><span class="token punctuation">,</span>
+        <span class="token string">"http://www.igarashi.fun:8999/img/Django.png"</span><span class="token punctuation">,</span>
+        <span class="token string">"http://www.igarashi.fun:8999/img/antd.png"</span><span class="token punctuation">,</span>
+        <span class="token string">"http://www.igarashi.fun:8999/img/etcd.png"</span><span class="token punctuation">,</span>
     <span class="token punctuation">]</span>
 
     <span class="token comment"># 创建多个协程</span>
@@ -793,9 +793,9 @@ asyncio<span class="token punctuation">.</span>run<span class="token punctuation
 asyncio<span class="token punctuation">.</span>run<span class="token punctuation">(</span>main<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 
 <span class="token comment">### 输出结果</span>
-<span class="token comment"># start download: http://www.deadly-exception.icu:8999/img/Django.png</span>
-<span class="token comment"># start download: http://www.deadly-exception.icu:8999/img/antd.png</span>
-<span class="token comment"># start download: http://www.deadly-exception.icu:8999/img/etcd.png</span>
+<span class="token comment"># start download: http://www.igarashi.fun:8999/img/Django.png</span>
+<span class="token comment"># start download: http://www.igarashi.fun:8999/img/antd.png</span>
+<span class="token comment"># start download: http://www.igarashi.fun:8999/img/etcd.png</span>
 <span class="token comment"># ret ['end download: Django.png', 'end download: antd.png', 'end download: etcd.png', RuntimeError()]</span>
 <span class="token comment"># 2.351871967315674</span>
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></li>

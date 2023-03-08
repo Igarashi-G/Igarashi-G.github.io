@@ -1,5 +1,5 @@
 <template><div><p>SQLAlchemy：
-<img src="http://www.deadly-exception.icu:8999/img/sqlalchemy.png"></p>
+<img src="http://www.igarashi.fun:8999/img/sqlalchemy.png"></p>
 <p>一、sqlalchemy 安装：
 在 Python 中，最有名的 ORM 框架是 SQLAlchemy。用户包括 openstack＼Dropbox 等知名公司或应用。
 主要用户列表<a href="http://www.sqlalchemy.org/organizations.html#openstack" target="_blank" rel="noopener noreferrer">http://www.sqlalchemy.org/organizations.html#openstack<ExternalLinkIcon/></a></p>

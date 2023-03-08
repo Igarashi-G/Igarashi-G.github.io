@@ -101,8 +101,8 @@ server {
 	listen [::]:443 ssl;
 	
     <span class="token comment"># 指定加密证书路径</span>
-	ssl_certificate /home/igarashi/web/ssl/8500011_www.deadly-exception.icu.pem;
-	ssl_certificate_key /home/igarashi/web/ssl/8500011_www.deadly-exception.icu.key;
+	ssl_certificate /home/igarashi/web/ssl/8500011_www.igarashi.fun.pem;
+	ssl_certificate_key /home/igarashi/web/ssl/8500011_www.igarashi.fun.key;
 	...
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></li>
 <li>

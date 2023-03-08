@@ -47,6 +47,7 @@ export default navbar([
         icon: "edit",
         prefix: "生态/",
         children: [
+          { text: "Web框架", link: "Web框架/网络框架基础/WEB框架本质", icon: "framework"},
           { text: "远程调用", link: "远程调用/gRPC", icon: "rpc"},
           { text: "消息队列", link: "消息队列/kafka" , icon: "kafka"},
           { text: "异步任务", link: "异步任务/Celery", icon: "tasks"},

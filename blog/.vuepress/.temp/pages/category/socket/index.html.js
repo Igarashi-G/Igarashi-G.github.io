@@ -1,0 +1,3 @@
+export const data = JSON.parse("{\"key\":\"v-057fcc04\",\"path\":\"/category/socket/\",\"title\":\"Socket 分类\",\"lang\":\"zh-CN\",\"frontmatter\":{\"title\":\"Socket 分类\",\"blog\":{\"type\":\"category\",\"name\":\"Socket\",\"key\":\"category\"},\"layout\":\"Blog\",\"summary\":\"\",\"head\":[[\"meta\",{\"property\":\"og:url\",\"content\":\"https://igarashi-g.github.io/category/socket/\"}],[\"meta\",{\"property\":\"og:site_name\",\"content\":\"五十岚 ▪ 寄\"}],[\"meta\",{\"property\":\"og:title\",\"content\":\"Socket 分类\"}],[\"meta\",{\"property\":\"og:type\",\"content\":\"website\"}],[\"meta\",{\"property\":\"og:locale\",\"content\":\"zh-CN\"}]]},\"excerpt\":\"\",\"headers\":[],\"readingTime\":{\"minutes\":0,\"words\":0},\"filePathRelative\":null}")
+
+if (import

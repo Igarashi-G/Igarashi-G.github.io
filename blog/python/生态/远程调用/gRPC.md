@@ -7,7 +7,6 @@ category:
 tag:
   - RPC
   - gRPC
-sticky: true
 ---
 
 目前比较主流，基于 **Golang** 开发的 **gRPC**

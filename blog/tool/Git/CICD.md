@@ -213,7 +213,7 @@ pipeline {
 
 **agent** 会将所有步骤 `steps{}` 存入一个执行队列，**executor** 一就绪就会执行
 
-- **docker** 若将其定义为容器
+- **docker** 若将其定义为容器 
 
   ```shell
   agent {

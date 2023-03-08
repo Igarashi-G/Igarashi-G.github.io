@@ -229,22 +229,59 @@ export default sidebar({
               prefix: "库/",
               children: ["标准库链接"],
             },
+            
           ],
-        },
-        // {
-        //   text: "框架",
-        //   icon: "frame",
-        //   collapsable: true,
-        //   prefix: "框架/",
-        //   children: []
-        // },
-        // {
-        //   text: "生态",
-        //   icon: "autumn",
-        //   collapsable: true,
-        //   prefix: "生态/",
-        //   children: []
-        // },
+        },{
+            text: "生态",
+            icon: "guide",
+            collapsable: true,
+            prefix: "生态/",
+            children: [
+              {
+                text: "Web框架",
+                icon: "framework",
+                collapsable: true,
+                prefix: "Web框架/",
+                children: [
+                  {
+                    text: "网络框架基础",
+                    collapsable: true,
+                    prefix: "网络框架基础/",
+                    children: [
+                      "WEB框架本质", "状态管理"
+                    ]
+                  },
+                  // {
+                  //   text: "FastAPI",
+                  //   icon: "fastapi",
+                  //   collapsable: true,
+                  //   prefix: "FastAPI/",
+                  //   children: [
+                  //     "FastAPI基础",
+                  //   ]
+                  // },
+                  // {
+                  //   text: "Django",
+                  //   icon: "django",
+                  //   collapsable: true,
+                  //   prefix: "Django/",
+                  //   children: [
+                  //     "Django概述", "Django基础",
+                  //   ]
+                  // },
+                  // {
+                  //   text: "Tornado",
+                  //   icon: "tornado",
+                  //   collapsable: true,
+                  //   prefix: "Tornado/",
+                  //   children: [
+                  //     "tornado",
+                  //   ]
+                  // },
+                ]
+              },
+            ],
+        }
       ],
     },
   ],

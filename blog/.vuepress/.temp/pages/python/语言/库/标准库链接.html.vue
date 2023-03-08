@@ -27,10 +27,11 @@
 <p><strong>xml：</strong> 过时，<strong>Java</strong> 配置</p>
 <p><strong>json：</strong> <strong>Web</strong> 通用，但性能差（<em><strong>文本格式</strong>，字符串，但也比 <strong>xml</strong> 强</em> ）</p>
 <p><strong>protobuf：</strong> 高效（<em><strong>1k</strong> 次和 <strong>json</strong> 差不多，<strong>10w</strong> 次大幅提高</em>），数据压缩小（<em>占用内存小，<strong>二进制格式</strong></em> ）</p>
-<p><strong>pickle、shelve、configparser、mimetypes、Jinja2、protobuf</strong></p>
+<p><strong>pickle、shelve、configparser、mimetypes、Jinja2</strong></p>
 <hr>
 <h4 id="函数式" tabindex="-1"><a class="header-anchor" href="#函数式" aria-hidden="true">#</a> 函数式</h4>
-<p><strong>functools、itertools、operator</strong></p>
+<p><strong>functools：</strong> 如缓存 <strong>lru_cache</strong>，装饰  <strong>warp</strong> ，函数式 <strong>partial</strong></p>
+<p><strong>itertools、operator</strong></p>
 <hr>
 <h4 id="文件" tabindex="-1"><a class="header-anchor" href="#文件" aria-hidden="true">#</a> 文件</h4>
 <p><strong>pathlib、stat、tempfile、mkstemp、mkdtemp</strong></p>
@@ -38,13 +39,16 @@
 <p><strong>shutil：</strong> 高级文件接口，<strong>copy</strong> 文件，<strong>with</strong> 跨平台寻找环境变量可执行程序</p>
 <hr>
 <h4 id="数据类型" tabindex="-1"><a class="header-anchor" href="#数据类型" aria-hidden="true">#</a> 数据类型</h4>
-<p><strong>collections、Enum</strong></p>
+<p><strong>collections：</strong> 自定义数据类型接口，具名元组，排序字典等</p>
+<p><strong>enum：</strong> 定义枚举</p>
 <hr>
 <h4 id="运行时" tabindex="-1"><a class="header-anchor" href="#运行时" aria-hidden="true">#</a> 运行时</h4>
 <p><strong>abc、atexit、contextlib、traceback</strong></p>
 <hr>
 <h4 id="其他" tabindex="-1"><a class="header-anchor" href="#其他" aria-hidden="true">#</a> 其他</h4>
-<p><strong>random、hashlib、gettext</strong></p>
+<p><strong>random：</strong> 随机数</p>
+<p><strong>gettext：</strong> 国际化 <strong>i18</strong> 转义</p>
+<p><strong>hashlib：</strong> 哈希，<strong>md5</strong> 校验， <strong>sha</strong> 加密</p>
 <h3 id="其他第三方库" tabindex="-1"><a class="header-anchor" href="#其他第三方库" aria-hidden="true">#</a> 其他第三方库</h3>
 <ul>
 <li><strong>时间：</strong> <strong>arrow</strong></li>

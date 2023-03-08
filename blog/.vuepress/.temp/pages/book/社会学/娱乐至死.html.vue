@@ -1,3 +1,3 @@
-<template><div><PDF url="https://www.deadly-exception.icu:7779/pdf/%E7%A4%BE%E4%BC%9A%E5%AD%A6/%E5%A8%B1%E4%B9%90%E8%87%B3%E6%AD%BB.pdf" height="880px"/></div></template>
+<template><div><PDF url="https://www.igarashi.fun:7779/pdf/%E7%A4%BE%E4%BC%9A%E5%AD%A6/%E5%A8%B1%E4%B9%90%E8%87%B3%E6%AD%BB.pdf" height="880px"/></div></template>
 
 

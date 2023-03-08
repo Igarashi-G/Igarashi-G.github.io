@@ -4490,7 +4490,30 @@ export const searchIndex = [
   },
   {
     "title": "Socket编程",
-    "headers": [],
+    "headers": [
+      {
+        "level": 2,
+        "title": "1. Socket 套接字",
+        "slug": "_1-socket-套接字",
+        "link": "#_1-socket-套接字",
+        "children": [
+          {
+            "level": 3,
+            "title": "1.1 进程通信",
+            "slug": "_1-1-进程通信",
+            "link": "#_1-1-进程通信",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "1.2 Socket 概述",
+            "slug": "_1-2-socket-概述",
+            "link": "#_1-2-socket-概述",
+            "children": []
+          }
+        ]
+      }
+    ],
     "path": "/python/%E8%AF%AD%E8%A8%80/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/Socket.html",
     "pathLocale": "/",
     "extraFields": []
@@ -6500,6 +6523,210 @@ export const searchIndex = [
     "extraFields": []
   },
   {
+    "title": "Django 基础",
+    "headers": [
+      {
+        "level": 2,
+        "title": "1. 执行流程",
+        "slug": "_1-执行流程",
+        "link": "#_1-执行流程",
+        "children": [
+          {
+            "level": 3,
+            "title": "2. 简易示例",
+            "slug": "_2-简易示例",
+            "link": "#_2-简易示例",
+            "children": []
+          }
+        ]
+      }
+    ],
+    "path": "/python/%E7%94%9F%E6%80%81/Web%E6%A1%86%E6%9E%B6/Django/Django%E5%9F%BA%E7%A1%80.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "Django概述",
+    "headers": [
+      {
+        "level": 2,
+        "title": "1. 初始化",
+        "slug": "_1-初始化",
+        "link": "#_1-初始化",
+        "children": [
+          {
+            "level": 3,
+            "title": "1.1 安装",
+            "slug": "_1-1-安装",
+            "link": "#_1-1-安装",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "1.2 创建项目",
+            "slug": "_1-2-创建项目",
+            "link": "#_1-2-创建项目",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "1.3 创建应用",
+            "slug": "_1-3-创建应用",
+            "link": "#_1-3-创建应用",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "2. 应用指北",
+        "slug": "_2-应用指北",
+        "link": "#_2-应用指北",
+        "children": [
+          {
+            "level": 3,
+            "title": "2.1 views",
+            "slug": "_2-1-views",
+            "link": "#_2-1-views",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "2.2 urls",
+            "slug": "_2-2-urls",
+            "link": "#_2-2-urls",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "2.3 models",
+            "slug": "_2-3-models",
+            "link": "#_2-3-models",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "2.4 settings",
+            "slug": "_2-4-settings",
+            "link": "#_2-4-settings",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "2.5 数据库",
+            "slug": "_2-5-数据库",
+            "link": "#_2-5-数据库",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "2.6 模板系统",
+            "slug": "_2-6-模板系统",
+            "link": "#_2-6-模板系统",
+            "children": []
+          }
+        ]
+      }
+    ],
+    "path": "/python/%E7%94%9F%E6%80%81/Web%E6%A1%86%E6%9E%B6/Django/Django%E6%A6%82%E8%BF%B0.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "Tornado基础",
+    "headers": [
+      {
+        "level": 3,
+        "title": "1.简介",
+        "slug": "_1-简介",
+        "link": "#_1-简介",
+        "children": []
+      },
+      {
+        "level": 3,
+        "title": "2. 使用",
+        "slug": "_2-使用",
+        "link": "#_2-使用",
+        "children": []
+      },
+      {
+        "level": 3,
+        "title": "2.2 示例",
+        "slug": "_2-2-示例",
+        "link": "#_2-2-示例",
+        "children": []
+      }
+    ],
+    "path": "/python/%E7%94%9F%E6%80%81/Web%E6%A1%86%E6%9E%B6/Tornado/tornado.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "WEB框架本质",
+    "headers": [
+      {
+        "level": 2,
+        "title": "1. Web 通信框架",
+        "slug": "_1-web-通信框架",
+        "link": "#_1-web-通信框架",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "2. 内置 WSGI",
+        "slug": "_2-内置-wsgi",
+        "link": "#_2-内置-wsgi",
+        "children": []
+      }
+    ],
+    "path": "/python/%E7%94%9F%E6%80%81/Web%E6%A1%86%E6%9E%B6/%E7%BD%91%E7%BB%9C%E6%A1%86%E6%9E%B6%E5%9F%BA%E7%A1%80/WEB%E6%A1%86%E6%9E%B6%E6%9C%AC%E8%B4%A8.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "状态管理",
+    "headers": [
+      {
+        "level": 2,
+        "title": "1. 协议状态",
+        "slug": "_1-协议状态",
+        "link": "#_1-协议状态",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "2. Cookie",
+        "slug": "_2-cookie",
+        "link": "#_2-cookie",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "3. Session",
+        "slug": "_3-session",
+        "link": "#_3-session",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "4. Token",
+        "slug": "_4-token",
+        "link": "#_4-token",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "5. JWT",
+        "slug": "_5-jwt",
+        "link": "#_5-jwt",
+        "children": []
+      }
+    ],
+    "path": "/python/%E7%94%9F%E6%80%81/Web%E6%A1%86%E6%9E%B6/%E7%BD%91%E7%BB%9C%E6%A1%86%E6%9E%B6%E5%9F%BA%E7%A1%80/%E7%8A%B6%E6%80%81%E7%AE%A1%E7%90%86.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
     "title": "",
     "headers": [],
     "path": "/404.html",
@@ -6836,9 +7063,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "SMB/CIFS 分类",
+    "title": "Socket 分类",
     "headers": [],
-    "path": "/category/smbcifs/",
+    "path": "/category/socket/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -6850,9 +7077,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "UFS 分类",
+    "title": "网络编程 分类",
     "headers": [],
-    "path": "/category/ufs/",
+    "path": "/category/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -6864,9 +7091,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "CentOS 分类",
+    "title": "SMB/CIFS 分类",
     "headers": [],
-    "path": "/category/centos/",
+    "path": "/category/smbcifs/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -6878,9 +7105,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "Linux 分类",
+    "title": "UFS 分类",
     "headers": [],
-    "path": "/category/linux/",
+    "path": "/category/ufs/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -6892,9 +7119,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "shell 分类",
+    "title": "CentOS 分类",
     "headers": [],
-    "path": "/category/shell/",
+    "path": "/category/centos/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -6906,9 +7133,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "命令 分类",
+    "title": "Linux 分类",
     "headers": [],
-    "path": "/category/%E5%91%BD%E4%BB%A4/",
+    "path": "/category/linux/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -6920,9 +7147,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "troubleshooting 分类",
+    "title": "shell 分类",
     "headers": [],
-    "path": "/category/troubleshooting/",
+    "path": "/category/shell/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -6934,9 +7161,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "虚拟机 分类",
+    "title": "命令 分类",
     "headers": [],
-    "path": "/category/%E8%99%9A%E6%8B%9F%E6%9C%BA/",
+    "path": "/category/%E5%91%BD%E4%BB%A4/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -6948,9 +7175,23 @@ export const searchIndex = [
     "extraFields": []
   },
   {
+    "title": "troubleshooting 分类",
+    "headers": [],
+    "path": "/category/troubleshooting/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
     "title": "服务 标签",
     "headers": [],
     "path": "/tag/%E6%9C%8D%E5%8A%A1/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "虚拟机 分类",
+    "headers": [],
+    "path": "/category/%E8%99%9A%E6%8B%9F%E6%9C%BA/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -6962,6 +7203,13 @@ export const searchIndex = [
     "extraFields": []
   },
   {
+    "title": "WEB框架 分类",
+    "headers": [],
+    "path": "/category/web%E6%A1%86%E6%9E%B6/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
     "title": "prometheus 标签",
     "headers": [],
     "path": "/tag/prometheus/",
@@ -6969,9 +7217,23 @@ export const searchIndex = [
     "extraFields": []
   },
   {
+    "title": "Django 分类",
+    "headers": [],
+    "path": "/category/django/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
     "title": "监控 标签",
     "headers": [],
     "path": "/tag/%E7%9B%91%E6%8E%A7/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "Web框架 分类",
+    "headers": [],
+    "path": "/category/web%E6%A1%86%E6%9E%B6/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -7063,6 +7325,20 @@ export const searchIndex = [
     "title": "标准库 标签",
     "headers": [],
     "path": "/tag/%E6%A0%87%E5%87%86%E5%BA%93/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "Socket 标签",
+    "headers": [],
+    "path": "/tag/socket/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "网络编程 标签",
+    "headers": [],
+    "path": "/tag/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -7210,6 +7486,27 @@ export const searchIndex = [
     "title": "VMware 标签",
     "headers": [],
     "path": "/tag/vmware/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "WEB框架 标签",
+    "headers": [],
+    "path": "/tag/web%E6%A1%86%E6%9E%B6/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "状态管理 标签",
+    "headers": [],
+    "path": "/tag/%E7%8A%B6%E6%80%81%E7%AE%A1%E7%90%86/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "Web框架 标签",
+    "headers": [],
+    "path": "/tag/web%E6%A1%86%E6%9E%B6/",
     "pathLocale": "/",
     "extraFields": []
   }
