@@ -251,33 +251,33 @@ export default sidebar({
                       "WEB框架本质", "状态管理"
                     ]
                   },
-                  // {
-                  //   text: "FastAPI",
-                  //   icon: "fastapi",
-                  //   collapsable: true,
-                  //   prefix: "FastAPI/",
-                  //   children: [
-                  //     "FastAPI基础",
-                  //   ]
-                  // },
-                  // {
-                  //   text: "Django",
-                  //   icon: "django",
-                  //   collapsable: true,
-                  //   prefix: "Django/",
-                  //   children: [
-                  //     "Django概述", "Django基础",
-                  //   ]
-                  // },
-                  // {
-                  //   text: "Tornado",
-                  //   icon: "tornado",
-                  //   collapsable: true,
-                  //   prefix: "Tornado/",
-                  //   children: [
-                  //     "tornado",
-                  //   ]
-                  // },
+                  {
+                    text: "FastAPI",
+                    icon: "fastapi",
+                    collapsable: true,
+                    prefix: "FastAPI/",
+                    children: [
+                      "FastAPI基础",
+                    ]
+                  },
+                  {
+                    text: "Django",
+                    icon: "django",
+                    collapsable: true,
+                    prefix: "Django/",
+                    children: [
+                      "Django概述", "Django基础",
+                    ]
+                  },
+                  {
+                    text: "Tornado",
+                    icon: "tornado",
+                    collapsable: true,
+                    prefix: "Tornado/",
+                    children: [
+                      "tornado",
+                    ]
+                  },
                 ]
               },
             ],

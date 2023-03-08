@@ -1,6 +1,6 @@
 ---
 title: Django概述
-date: 2020-03-1
+date: 2020-03-01
 category:
   - WEB框架
   - Django

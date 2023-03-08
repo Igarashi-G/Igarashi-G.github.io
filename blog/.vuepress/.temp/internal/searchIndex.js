@@ -5441,153 +5441,6 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "rsync同步",
-    "headers": [
-      {
-        "level": 2,
-        "title": "1. 说明",
-        "slug": "_1-说明",
-        "link": "#_1-说明",
-        "children": [
-          {
-            "level": 3,
-            "title": "1.1 用处",
-            "slug": "_1-1-用处",
-            "link": "#_1-1-用处",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "1.2 组成模式",
-            "slug": "_1-2-组成模式",
-            "link": "#_1-2-组成模式",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "1.3 工作方式",
-            "slug": "_1-3-工作方式",
-            "link": "#_1-3-工作方式",
-            "children": []
-          }
-        ]
-      },
-      {
-        "level": 2,
-        "title": "2. 基础使用",
-        "slug": "_2-基础使用",
-        "link": "#_2-基础使用",
-        "children": [
-          {
-            "level": 3,
-            "title": "2.1 简单示例",
-            "slug": "_2-1-简单示例",
-            "link": "#_2-1-简单示例",
-            "children": []
-          }
-        ]
-      },
-      {
-        "level": 2,
-        "title": "2.2 选项说明",
-        "slug": "_2-2-选项说明",
-        "link": "#_2-2-选项说明",
-        "children": []
-      }
-    ],
-    "path": "/unix/CentOS/Samba/rsync.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "Samba服务",
-    "headers": [
-      {
-        "level": 2,
-        "title": "1. 概述",
-        "slug": "_1-概述",
-        "link": "#_1-概述",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "2.安装&配置",
-        "slug": "_2-安装-配置",
-        "link": "#_2-安装-配置",
-        "children": [
-          {
-            "level": 3,
-            "title": "安装",
-            "slug": "安装",
-            "link": "#安装",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "配置",
-            "slug": "配置",
-            "link": "#配置",
-            "children": []
-          }
-        ]
-      },
-      {
-        "level": 2,
-        "title": "3. 命令",
-        "slug": "_3-命令",
-        "link": "#_3-命令",
-        "children": [
-          {
-            "level": 3,
-            "title": "4. 公网连接",
-            "slug": "_4-公网连接",
-            "link": "#_4-公网连接",
-            "children": []
-          }
-        ]
-      }
-    ],
-    "path": "/unix/CentOS/Samba/Samba%E6%9C%8D%E5%8A%A1.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "Net-SNMP",
-    "headers": [
-      {
-        "level": 3,
-        "title": "一、什么是 SNMP",
-        "slug": "一、什么是-snmp",
-        "link": "#一、什么是-snmp",
-        "children": []
-      },
-      {
-        "level": 3,
-        "title": "二、SNMP 支持的网管操作",
-        "slug": "二、snmp-支持的网管操作",
-        "link": "#二、snmp-支持的网管操作",
-        "children": []
-      },
-      {
-        "level": 3,
-        "title": "三、SNMP 的实现结构及定义",
-        "slug": "三、snmp-的实现结构及定义",
-        "link": "#三、snmp-的实现结构及定义",
-        "children": []
-      },
-      {
-        "level": 3,
-        "title": "四、Net-SNMP 软件",
-        "slug": "四、net-snmp-软件",
-        "link": "#四、net-snmp-软件",
-        "children": []
-      }
-    ],
-    "path": "/unix/CentOS/SNMP/SNMP%E6%9C%8D%E5%8A%A1.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
     "title": "UFS-ISO构建及发布",
     "headers": [
       {
@@ -5799,6 +5652,42 @@ export const searchIndex = [
     "extraFields": []
   },
   {
+    "title": "Net-SNMP",
+    "headers": [
+      {
+        "level": 3,
+        "title": "一、什么是 SNMP",
+        "slug": "一、什么是-snmp",
+        "link": "#一、什么是-snmp",
+        "children": []
+      },
+      {
+        "level": 3,
+        "title": "二、SNMP 支持的网管操作",
+        "slug": "二、snmp-支持的网管操作",
+        "link": "#二、snmp-支持的网管操作",
+        "children": []
+      },
+      {
+        "level": 3,
+        "title": "三、SNMP 的实现结构及定义",
+        "slug": "三、snmp-的实现结构及定义",
+        "link": "#三、snmp-的实现结构及定义",
+        "children": []
+      },
+      {
+        "level": 3,
+        "title": "四、Net-SNMP 软件",
+        "slug": "四、net-snmp-软件",
+        "link": "#四、net-snmp-软件",
+        "children": []
+      }
+    ],
+    "path": "/unix/CentOS/SNMP/SNMP%E6%9C%8D%E5%8A%A1.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
     "title": "CentOS安装及配置",
     "headers": [
       {
@@ -5894,6 +5783,50 @@ export const searchIndex = [
     "extraFields": []
   },
   {
+    "title": "Linux磁盘与文件系统管理",
+    "headers": [
+      {
+        "level": 3,
+        "title": "1. 认识 Linux 文件系统",
+        "slug": "_1-认识-linux-文件系统",
+        "link": "#_1-认识-linux-文件系统",
+        "children": []
+      }
+    ],
+    "path": "/unix/Linux/Linux%E6%96%87%E4%BB%B6/Linux%E7%A3%81%E7%9B%98%E4%B8%8E%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%86.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "文件与文件系统的压缩",
+    "headers": [],
+    "path": "/unix/Linux/Linux%E6%96%87%E4%BB%B6/%E6%96%87%E4%BB%B6%E4%B8%8E%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E5%8E%8B%E7%BC%A9.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "文件权限与目录配置",
+    "headers": [],
+    "path": "/unix/Linux/Linux%E6%96%87%E4%BB%B6/%E6%96%87%E4%BB%B6%E6%9D%83%E9%99%90%E4%B8%8E%E7%9B%AE%E5%BD%95%E9%85%8D%E7%BD%AE.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "认识系统服务",
+    "headers": [
+      {
+        "level": 3,
+        "title": "1. daemon 与服务（service）",
+        "slug": "_1-daemon-与服务-service",
+        "link": "#_1-daemon-与服务-service",
+        "children": []
+      }
+    ],
+    "path": "/unix/Linux/Linux%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%86%E5%91%98/%E8%AE%A4%E8%AF%86%E7%B3%BB%E7%BB%9F%E6%9C%8D%E5%8A%A1.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
     "title": "Linux是什么与如何学习",
     "headers": [
       {
@@ -5960,46 +5893,113 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "Linux磁盘与文件系统管理",
+    "title": "rsync同步",
     "headers": [
       {
-        "level": 3,
-        "title": "1. 认识 Linux 文件系统",
-        "slug": "_1-认识-linux-文件系统",
-        "link": "#_1-认识-linux-文件系统",
+        "level": 2,
+        "title": "1. 说明",
+        "slug": "_1-说明",
+        "link": "#_1-说明",
+        "children": [
+          {
+            "level": 3,
+            "title": "1.1 用处",
+            "slug": "_1-1-用处",
+            "link": "#_1-1-用处",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "1.2 组成模式",
+            "slug": "_1-2-组成模式",
+            "link": "#_1-2-组成模式",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "1.3 工作方式",
+            "slug": "_1-3-工作方式",
+            "link": "#_1-3-工作方式",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "2. 基础使用",
+        "slug": "_2-基础使用",
+        "link": "#_2-基础使用",
+        "children": [
+          {
+            "level": 3,
+            "title": "2.1 简单示例",
+            "slug": "_2-1-简单示例",
+            "link": "#_2-1-简单示例",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "2.2 选项说明",
+        "slug": "_2-2-选项说明",
+        "link": "#_2-2-选项说明",
         "children": []
       }
     ],
-    "path": "/unix/Linux/Linux%E6%96%87%E4%BB%B6/Linux%E7%A3%81%E7%9B%98%E4%B8%8E%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%86.html",
+    "path": "/unix/CentOS/Samba/rsync.html",
     "pathLocale": "/",
     "extraFields": []
   },
   {
-    "title": "文件与文件系统的压缩",
-    "headers": [],
-    "path": "/unix/Linux/Linux%E6%96%87%E4%BB%B6/%E6%96%87%E4%BB%B6%E4%B8%8E%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E5%8E%8B%E7%BC%A9.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "文件权限与目录配置",
-    "headers": [],
-    "path": "/unix/Linux/Linux%E6%96%87%E4%BB%B6/%E6%96%87%E4%BB%B6%E6%9D%83%E9%99%90%E4%B8%8E%E7%9B%AE%E5%BD%95%E9%85%8D%E7%BD%AE.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "认识系统服务",
+    "title": "Samba服务",
     "headers": [
       {
-        "level": 3,
-        "title": "1. daemon 与服务（service）",
-        "slug": "_1-daemon-与服务-service",
-        "link": "#_1-daemon-与服务-service",
+        "level": 2,
+        "title": "1. 概述",
+        "slug": "_1-概述",
+        "link": "#_1-概述",
         "children": []
+      },
+      {
+        "level": 2,
+        "title": "2.安装&配置",
+        "slug": "_2-安装-配置",
+        "link": "#_2-安装-配置",
+        "children": [
+          {
+            "level": 3,
+            "title": "安装",
+            "slug": "安装",
+            "link": "#安装",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "配置",
+            "slug": "配置",
+            "link": "#配置",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "3. 命令",
+        "slug": "_3-命令",
+        "link": "#_3-命令",
+        "children": [
+          {
+            "level": 3,
+            "title": "4. 公网连接",
+            "slug": "_4-公网连接",
+            "link": "#_4-公网连接",
+            "children": []
+          }
+        ]
       }
     ],
-    "path": "/unix/Linux/Linux%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%86%E5%91%98/%E8%AE%A4%E8%AF%86%E7%B3%BB%E7%BB%9F%E6%9C%8D%E5%8A%A1.html",
+    "path": "/unix/CentOS/Samba/Samba%E6%9C%8D%E5%8A%A1.html",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -6523,22 +6523,14 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "Django 基础",
+    "title": "Django基础",
     "headers": [
       {
         "level": 2,
         "title": "1. 执行流程",
         "slug": "_1-执行流程",
         "link": "#_1-执行流程",
-        "children": [
-          {
-            "level": 3,
-            "title": "2. 简易示例",
-            "slug": "_2-简易示例",
-            "link": "#_2-简易示例",
-            "children": []
-          }
-        ]
+        "children": []
       }
     ],
     "path": "/python/%E7%94%9F%E6%80%81/Web%E6%A1%86%E6%9E%B6/Django/Django%E5%9F%BA%E7%A1%80.html",
@@ -6633,28 +6625,118 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "Tornado基础",
+    "title": "FastAPI基础",
     "headers": [
       {
-        "level": 3,
-        "title": "1.简介",
+        "level": 2,
+        "title": "1.概述",
+        "slug": "_1-概述",
+        "link": "#_1-概述",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "2. Request (请求部分)",
+        "slug": "_2-request-请求部分",
+        "link": "#_2-request-请求部分",
+        "children": [
+          {
+            "level": 3,
+            "title": "2.1 url 和 参数获取",
+            "slug": "_2-1-url-和-参数获取",
+            "link": "#_2-1-url-和-参数获取",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "2.2 数据模型与校验",
+            "slug": "_2-2-数据模型与校验",
+            "link": "#_2-2-数据模型与校验",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "3. Response (响应部分 )",
+        "slug": "_3-response-响应部分",
+        "link": "#_3-response-响应部分",
+        "children": [
+          {
+            "level": 3,
+            "title": "3.1 响应模型",
+            "slug": "_3-1-响应模型",
+            "link": "#_3-1-响应模型",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "4. FastAPI 相关配置",
+        "slug": "_4-fastapi-相关配置",
+        "link": "#_4-fastapi-相关配置",
+        "children": [
+          {
+            "level": 3,
+            "title": "4.1 静态资源导入",
+            "slug": "_4-1-静态资源导入",
+            "link": "#_4-1-静态资源导入",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "2. fastapi 启用热更新",
+            "slug": "_2-fastapi-启用热更新",
+            "link": "#_2-fastapi-启用热更新",
+            "children": []
+          }
+        ]
+      }
+    ],
+    "path": "/python/%E7%94%9F%E6%80%81/Web%E6%A1%86%E6%9E%B6/FastAPI/FastAPI%E5%9F%BA%E7%A1%80.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "Tornado框架",
+    "headers": [
+      {
+        "level": 2,
+        "title": "1. 简介",
         "slug": "_1-简介",
         "link": "#_1-简介",
-        "children": []
+        "children": [
+          {
+            "level": 3,
+            "title": "1.1 各类框架的比较",
+            "slug": "_1-1-各类框架的比较",
+            "link": "#_1-1-各类框架的比较",
+            "children": []
+          }
+        ]
       },
       {
-        "level": 3,
-        "title": "2. 使用",
-        "slug": "_2-使用",
-        "link": "#_2-使用",
-        "children": []
-      },
-      {
-        "level": 3,
-        "title": "2.2 示例",
-        "slug": "_2-2-示例",
-        "link": "#_2-2-示例",
-        "children": []
+        "level": 2,
+        "title": "2. 基础使用",
+        "slug": "_2-基础使用",
+        "link": "#_2-基础使用",
+        "children": [
+          {
+            "level": 3,
+            "title": "2.1 安装",
+            "slug": "_2-1-安装",
+            "link": "#_2-1-安装",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "2.2 示例",
+            "slug": "_2-2-示例",
+            "link": "#_2-2-示例",
+            "children": []
+          }
+        ]
       }
     ],
     "path": "/python/%E7%94%9F%E6%80%81/Web%E6%A1%86%E6%9E%B6/Tornado/tornado.html",
@@ -7091,9 +7173,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "SMB/CIFS 分类",
+    "title": "UFS 分类",
     "headers": [],
-    "path": "/category/smbcifs/",
+    "path": "/category/ufs/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -7105,9 +7187,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "UFS 分类",
+    "title": "CentOS 分类",
     "headers": [],
-    "path": "/category/ufs/",
+    "path": "/category/centos/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -7119,9 +7201,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "CentOS 分类",
+    "title": "SMB/CIFS 分类",
     "headers": [],
-    "path": "/category/centos/",
+    "path": "/category/smbcifs/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -7231,9 +7313,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "Web框架 分类",
+    "title": "FastAPI 分类",
     "headers": [],
-    "path": "/category/web%E6%A1%86%E6%9E%B6/",
+    "path": "/category/fastapi/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -7245,9 +7327,23 @@ export const searchIndex = [
     "extraFields": []
   },
   {
+    "title": "Tornado 分类",
+    "headers": [],
+    "path": "/category/tornado/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
     "title": "gRPC 标签",
     "headers": [],
     "path": "/tag/grpc/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "Web框架 分类",
+    "headers": [],
+    "path": "/category/web%E6%A1%86%E6%9E%B6/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -7406,13 +7502,6 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "SMB/CIFS 标签",
-    "headers": [],
-    "path": "/tag/smbcifs/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
     "title": "UFS 标签",
     "headers": [],
     "path": "/tag/ufs/",
@@ -7444,6 +7533,13 @@ export const searchIndex = [
     "title": "包管理 标签",
     "headers": [],
     "path": "/tag/%E5%8C%85%E7%AE%A1%E7%90%86/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "SMB/CIFS 标签",
+    "headers": [],
+    "path": "/tag/smbcifs/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -7493,6 +7589,20 @@ export const searchIndex = [
     "title": "WEB框架 标签",
     "headers": [],
     "path": "/tag/web%E6%A1%86%E6%9E%B6/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "FastAPI 标签",
+    "headers": [],
+    "path": "/tag/fastapi/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "Tornado 标签",
+    "headers": [],
+    "path": "/tag/tornado/",
     "pathLocale": "/",
     "extraFields": []
   },
