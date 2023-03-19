@@ -257,7 +257,7 @@ export default sidebar({
                     collapsable: true,
                     prefix: "FastAPI/",
                     children: [
-                      "FastAPI基础",
+                      "FastAPI基础", "FastAPI基础二",
                     ]
                   },
                   {

@@ -1,23 +1,22 @@
 <template><div><p>迭代是数据处理的基石，<strong>内存放不下数据</strong> 时，需要找到一种 <strong>惰性获取数据项</strong> 的方式，即按需一次获取一个数据项，这就是 <strong>迭代器模式</strong>（<em>Iterator pattern</em>）</p>
 <!-- more -->
-<h1 id="迭代器" tabindex="-1"><a class="header-anchor" href="#迭代器" aria-hidden="true">#</a> 迭代器</h1>
 <h2 id="_1-什么是迭代器" tabindex="-1"><a class="header-anchor" href="#_1-什么是迭代器" aria-hidden="true">#</a> 1. 什么是迭代器</h2>
 <blockquote>
 <p>通常，迭代器是从 <strong>集合</strong> 中取元素，表示集合是有限多个，只是通过迭代器来一个个取</p>
 </blockquote>
 <p>既然是取集合，那么所有集合都 <strong>可迭代</strong>，场景如下</p>
 <ul>
-<li>首先可迭代意味着可以 <strong>for</strong> 循环</li>
-<li>构建和扩展集合类型</li>
+<li>可迭代意味着能 <strong>for</strong> 循环遍历</li>
+<li>可构建和扩展集合类型</li>
 <li>逐行遍历文本文件</li>
 <li>列表、字典、集合推导</li>
 <li>元组拆包</li>
 <li>调用函数时，使用拆包实例</li>
 </ul>
-<h3 id="_1-1-可迭代对象-单词序列" tabindex="-1"><a class="header-anchor" href="#_1-1-可迭代对象-单词序列" aria-hidden="true">#</a> 1.1 可迭代对象：单词序列</h3>
-<p><strong>实现 Sentence 类：</strong> 向该类的构造方法中，传入一个包含某些文本的字符串，然后可以实现逐个单词的迭代。</p>
+<h3 id="_1-1-可迭代对象-单词序列" tabindex="-1"><a class="header-anchor" href="#_1-1-可迭代对象-单词序列" aria-hidden="true">#</a> 1.1 可迭代对象（<em>单词序列</em>）</h3>
+<p><strong>实现 Sentence 类：</strong> 向该类的构造方法中，传入一个包含某些文本的字符串，然后可以实现逐个单词的迭代</p>
 <ul>
-<li>首先，实现一个类，该类包含了<a href="">序列协议</a></li>
+<li>首先，实现一个类，该类包含了 <RouterLink to="/python/%E8%AF%AD%E8%A8%80/%E6%B7%B1%E5%85%A5/%E5%BA%8F%E5%88%97%E8%BF%9B%E9%98%B6.html#_1-%E5%BA%8F%E5%88%97%E5%8D%8F%E8%AE%AE">序列协议</RouterLink></li>
 <li>它的实例化对象可迭代（能像序列一样，使用 <strong>for</strong> 循环 遍历出结果）</li>
 </ul>
 <div class="language-python ext-py line-numbers-mode"><pre v-pre class="language-python"><code><span class="token keyword">import</span> re
@@ -35,7 +34,7 @@ RE_WOED <span class="token operator">=</span> re<span class="token punctuation">
         <span class="token keyword">return</span> self<span class="token punctuation">.</span>words<span class="token punctuation">[</span>index<span class="token punctuation">]</span>
 
     <span class="token keyword">def</span> <span class="token function">__repr__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token keyword">return</span> <span class="token string-interpolation"><span class="token string">f'Sentence</span><span class="token interpolation"><span class="token punctuation">{</span>reprlib<span class="token punctuation">.</span><span class="token builtin">repr</span><span class="token punctuation">(</span>self<span class="token punctuation">.</span>text<span class="token punctuation">)</span><span class="token punctuation">}</span></span><span class="token string">'</span></span>
+        <span class="token keyword">return</span> <span class="token string-interpolation"><span class="token string">f"Sentence</span><span class="token interpolation"><span class="token punctuation">{</span>reprlib<span class="token punctuation">.</span><span class="token builtin">repr</span><span class="token punctuation">(</span>self<span class="token punctuation">.</span>text<span class="token punctuation">)</span><span class="token punctuation">}</span></span><span class="token string">"</span></span>
 
 
 s <span class="token operator">=</span> Sentence<span class="token punctuation">(</span><span class="token string">"hello word!"</span><span class="token punctuation">)</span>
@@ -48,25 +47,31 @@ s <span class="token operator">=</span> Sentence<span class="token punctuation">
 <span class="token comment"># word</span>
 <span class="token comment"># ['hello', 'word']</span>
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><ul>
-<li>默认情况下 <a href="">reprlib.repr()</a> 生成的字符串最多有 30 个字符，此处给 <code v-pre>__repr__</code> 使用</li>
+<li>
+<p>默认情况下 <a href="">reprlib.repr()</a> 生成的字符串最多有 <strong>30</strong> 个字符，此处给 <code v-pre>__repr__</code> 使用</p>
+</li>
+<li>
+<p>此时会发现 <strong>Sentence</strong> 的实例化对象 <strong>s</strong> 可直接循环并打印出 <strong>word</strong></p>
+</li>
+<li>
+<p>这是由于 <strong>for</strong> 循环每次迭代的时候会直接去 <code v-pre>__getitem__()</code> 取</p>
+</li>
 </ul>
-<p>首次使用 reprlib 在 109 页</p>
-<p>6.迭代器:
-生成器都是迭代器,迭代器不一定都是生成器
-例：</p>
-<div class="language-text ext-text line-numbers-mode"><pre v-pre class="language-text"><code> title = ['Python','Java','C++'] # 列表是一个可迭代对象
- isinstance(title,Iterable)      # True
- a = iter(title) # 由可迭代对象的iter方法返回一个迭代器
- >>> next(a)
+<h3 id="_1-2-迭代器" tabindex="-1"><a class="header-anchor" href="#_1-2-迭代器" aria-hidden="true">#</a> 1.2 迭代器</h3>
+<h4 id="什么是迭代器" tabindex="-1"><a class="header-anchor" href="#什么是迭代器" aria-hidden="true">#</a> 什么是迭代器</h4>
+<p>利用内置方法 iter() 把 list 、 dict 、 str 等 Iterable（可迭代对象） 进行转换，返回的对象 Iterator</p>
+<p>生成器都是迭代器,迭代器不一定都是生成器</p>
+<div class="language-python ext-py line-numbers-mode"><pre v-pre class="language-python"><code> title <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'Python'</span><span class="token punctuation">,</span><span class="token string">'Java'</span><span class="token punctuation">,</span><span class="token string">'C++'</span><span class="token punctuation">]</span> 	<span class="token comment"># 列表是一个可迭代对象</span>
+ <span class="token builtin">isinstance</span><span class="token punctuation">(</span>title<span class="token punctuation">,</span> Iterable<span class="token punctuation">)</span>      	<span class="token comment"># True</span>
+ a <span class="token operator">=</span> <span class="token builtin">iter</span><span class="token punctuation">(</span>title<span class="token punctuation">)</span> 					<span class="token comment"># 由可迭代对象的 iter 方法返回一个迭代器</span>
+ <span class="token operator">>></span><span class="token operator">></span> <span class="token builtin">next</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span>
  Python
- >>> next(a)
+ <span class="token operator">>></span><span class="token operator">></span> <span class="token builtin">next</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span>
  Java
- >>> next(a)
- C++
- >>> next(a)  # 抛出StopIteration异常
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>【什么是迭代器？】
-利用内置方法 iter() 把 list 、 dict 、 str 等 Iterable（可迭代对象） 进行转换，返回的对象 Iterator</p>
-<pre><code>Iterator 这个对象就是一个迭代器对象，也就是迭代器了
+ <span class="token operator">>></span><span class="token operator">></span> <span class="token builtin">next</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span>
+ C<span class="token operator">+</span><span class="token operator">+</span>
+ <span class="token operator">>></span><span class="token operator">></span> <span class="token builtin">next</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span>  						<span class="token comment"># 抛出 StopIteration 异常</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><pre><code>Iterator 这个对象就是一个迭代器对象，也就是迭代器了
 str list tuple dict:Iterable (可迭代对象)
 什么是迭代器？(迭代器协议)
     Iterable定义了可返回迭代器的__iter__()方法、__next__() 方法

@@ -28,34 +28,35 @@
 <h3 id="_1-3-容器与虚拟机对比" tabindex="-1"><a class="header-anchor" href="#_1-3-容器与虚拟机对比" aria-hidden="true">#</a> 1.3 容器与虚拟机对比</h3>
 <img src="@source/tool/Docker/img/为啥使用容器技术.png">
 <h5 id="虚拟机" tabindex="-1"><a class="header-anchor" href="#虚拟机" aria-hidden="true">#</a> <strong>虚拟机</strong></h5>
-<p>如 <strong>VMware</strong> 、<strong>PVE</strong>、<strong>ESXi</strong>、<strong>Workstation</strong> 等，多台虚拟机都虚拟出了一套 <strong>不同</strong> 的 <strong>虚拟机器硬件资源</strong>、<strong>Kernel</strong>（<em>内核</em>）、<strong>Lib 库</strong>，然后在上层运行各自的 APP，像是物理机的系统中的子系统一样，从物理虚拟层面进行隔离，占用资源极高</p>
+<p>如 <strong>VMware</strong> 、<strong>PVE</strong>、<strong>ESXi</strong>、<strong>Workstation</strong> 等，多台虚拟机都虚拟出了一套 <strong>不同</strong> 的 <strong>虚拟机器硬件资源</strong>、<strong>Kernel</strong>（<em>内核</em> ）和 <strong>Lib 库</strong>，然后在上层运行各自的 <strong>APP</strong>，像是物理机的系统中的子系统一样，从物理虚拟层面进行隔离，占用资源极高</p>
 <ul>
-<li><strong>Hypervisor：</strong> 一种运行在基础物理服务器和操作系统之间的中间软件层，可允许多个操作系统和应用共享硬件。</li>
+<li><strong>Hypervisor：</strong> 一种运行在基础物理服务器和操作系统之间的中间软件层，可允许多个操作系统和应用共享硬件</li>
+<li>共享硬件资源，但每起一个虚拟机都需要额外的安装操作系统，从而带来重复的操作系统开销</li>
 </ul>
 <h5 id="容器" tabindex="-1"><a class="header-anchor" href="#容器" aria-hidden="true">#</a> <strong>容器</strong></h5>
-<p>则是多个容器 <strong>共同使用</strong> 一套物理机 <strong>硬件资源</strong>、<strong>Kernel</strong> 然后从运行所需的 <strong>Lib 库</strong> 层面 进行隔离，因此极大的压榨了物理资源，使物理机物尽其用。</p>
+<p>则是多个容器 <strong>共同使用</strong> 一套物理机 <strong>硬件资源</strong>、<strong>Kernel</strong> 然后从运行所需的 <strong>Lib 库</strong> 层面 进行隔离，因此极大的压榨了物理资源，使物理机物尽其用</p>
 <ul>
-<li><strong>Container Runtime：</strong> 通过 <strong>Linux</strong> 内核虚拟化能力管理多个容器，多个容器共享一套操作系统内核，因此 <strong>摘掉了内核占用的空间</strong> 及运行所需要的耗时，使得容器极其轻量与快速。</li>
+<li><strong>Container Runtime：</strong> 通过 <strong>Linux</strong> 内核虚拟化能力管理多个容器，多个容器共享一套操作系统内核，因此 <strong>摘掉了内核占用的空间</strong> 及运行所需要的耗时，使得容器极其轻量与快速</li>
 </ul>
 <div class="custom-container note">
-<p class="custom-container-title">因此，Docker 用于解决如下需求</p>
+<p class="custom-container-title">Docker 解决如下需求</p>
 <ul>
 <li>环境、依赖不一致</li>
 <li>物理硬件资源不够</li>
 <li>快速交付介质，直接交付打包后的 <strong>Docker</strong> 镜像，各平台部署</li>
 <li>跨平台，方便装任何系统，屏蔽平台间差异</li>
-<li>物理资源相互隔离（<em>也可以做到内存、CPU 等资源分配与隔离，但安全性不如虚拟机</em>）</li>
+<li>物理资源相互隔离（<em>也可以做到内存、<strong>CPU</strong> 等资源分配与隔离，但安全性不如虚拟机</em>）</li>
 <li><strong>Docker</strong> 启动多容器生命周期管理</li>
 </ul>
 </div>
 <h3 id="_1-4-docker-架构" tabindex="-1"><a class="header-anchor" href="#_1-4-docker-架构" aria-hidden="true">#</a> 1.4 Docker 架构</h3>
-<p><strong>2015</strong> 年 <strong>6</strong> 月，<strong>Docker</strong> 成立 <a href="https://opencontainers.org/" target="_blank" rel="noopener noreferrer">OCI<ExternalLinkIcon/></a> （<em>Open Container Initiative 开放容器计划</em>）组织，建立通用标准并由该组织维护 <strong>libcontainer</strong> 项目，后续由从仅包含 <strong>Kernel</strong> 的库加入了 <strong>CLI</strong> 工具且改名为 <a href="https://github.com/opencontainers/runc" target="_blank" rel="noopener noreferrer">runC<ExternalLinkIcon/></a> （<em>运行容器的轻量级工具</em>）</p>
+<p><strong>2015</strong> 年 <strong>6</strong> 月，<strong>Docker</strong> 成立 <a href="https://opencontainers.org/" target="_blank" rel="noopener noreferrer">OCI<ExternalLinkIcon/></a> （<em><strong>Open Container Initiative</strong> 开放容器计划</em> ）组织，建立通用标准并由该组织维护 <strong>libcontainer</strong> 项目，后续由从仅包含 <strong>Kernel</strong> 的库加入了 <strong>CLI</strong> 工具且改名为 <a href="https://github.com/opencontainers/runc" target="_blank" rel="noopener noreferrer">runC<ExternalLinkIcon/></a> （<em>运行容器的轻量级工具</em> ）</p>
 <p><strong>Docker</strong> 随后做出了架构调整</p>
 <img src="@source/tool/Docker/img/docker架构.png">
-<p>将容器运行时相关的程序从 <code v-pre>docker daemon</code> 剥离出来，形成了 <strong>containerd</strong></p>
+<p>将容器运行时相关的程序从 <strong>docker daemon</strong> 剥离出来，形成了 <strong>containerd</strong></p>
 <ul>
-<li><strong>runC：</strong> 是一个 <strong>Linux CLI</strong>（<em>命令行</em>）工具， <strong>runC + containerd-shim</strong> 通过 <code v-pre>gRPC</code> 去调用 <strong>containerd</strong> 来创建和运行容器</li>
-<li><strong>containerd：</strong> 一个 <strong>守护程序</strong>，<strong>它管理容器的生命周期</strong>，屏蔽了 <code v-pre>docker deamon</code> 底层细节（<em>同时解耦升级后的不兼容</em>），抽象出了一套 <code v-pre>gRPC</code> 接口，提供了在节点上执行容器和管理镜像的最小功能集</li>
+<li><strong>runC：</strong> 是一个 <strong>Linux CLI</strong>（<em>命令行</em> ）工具， <strong>runC + containerd-shim</strong> 通过 <strong>gRPC</strong> 去调用 <strong>containerd</strong> 来创建和运行容器</li>
+<li><strong>containerd：</strong> 一个 <strong>守护程序</strong>，<strong>它管理容器的生命周期</strong>，屏蔽了 <strong>docker deamon</strong> 底层细节（<em>同时解耦升级后的不兼容</em> ），抽象出了一套 <strong>gRPC</strong> 接口，提供了在节点上执行容器和管理镜像的最小功能集</li>
 </ul>
 <img src="@source/tool/Docker/img/CS架构.png">
 <p>因此，<strong>Docker</strong> 演变为了 <strong>CS</strong> 架构的产品</p>

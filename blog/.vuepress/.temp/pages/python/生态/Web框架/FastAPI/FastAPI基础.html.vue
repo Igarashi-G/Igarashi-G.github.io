@@ -659,18 +659,18 @@ items <span class="token operator">=</span> <span class="token punctuation">{</s
 <p>与上文相同，通过回调的方式将错误传入，当发生 <strong>ValidationError</strong> 验证错误时，会自行执行 retu<strong>r</strong>n 后的代码，把 <strong>detail</strong> 和 <strong>body</strong> 返回了</p>
 </li>
 <li>
-<p>**exc.body：**该参数可以获取到 <strong>POST</strong> 请求输入的实际参数</p>
+<p><strong>exc.body：</strong> 该参数可以获取到 <strong>POST</strong> 请求输入的实际参数</p>
 </li>
 <li>
 <p><strong>FastAPI</strong> 和 <strong>starlette</strong> 都有自己的 <strong>HTTPException</strong>，但区别在于 <strong>FastAPI</strong> 中多了 <strong>头部的响应信息可以传入</strong> ，<strong>OAuth2.0</strong> 安全相关的可能会用到</p>
 </li>
 </ul>
-<h4 id="form-表单数据" tabindex="-1"><a class="header-anchor" href="#form-表单数据" aria-hidden="true">#</a> Form 表单数据</h4>
+<h4 id="form-表单数据" tabindex="-1"><a class="header-anchor" href="#form-表单数据" aria-hidden="true">#</a> <strong>Form 表单数据</strong></h4>
 <div class="language-python ext-py line-numbers-mode"><pre v-pre class="language-python"><code><span class="token keyword">from</span> fastapi <span class="token keyword">import</span> FastAPI<span class="token punctuation">,</span> Form
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><ul>
 <li><strong>Form</strong> 表单针对于前端传送的 <strong>Form</strong> 表单结构解析</li>
 </ul>
-<h4 id="文件传输" tabindex="-1"><a class="header-anchor" href="#文件传输" aria-hidden="true">#</a> 文件传输</h4>
+<h4 id="文件传输" tabindex="-1"><a class="header-anchor" href="#文件传输" aria-hidden="true">#</a> <strong>文件传输</strong></h4>
 <div class="language-python ext-py line-numbers-mode"><pre v-pre class="language-python"><code><span class="token keyword">from</span> fastapi <span class="token keyword">import</span> FastAPI<span class="token punctuation">,</span> File<span class="token punctuation">,</span> UploadFile
 
 <span class="token decorator annotation punctuation">@app<span class="token punctuation">.</span>post</span><span class="token punctuation">(</span><span class="token string">"/files/"</span><span class="token punctuation">)</span>
@@ -703,7 +703,7 @@ items <span class="token operator">=</span> <span class="token punctuation">{</s
 <strong>Body multipart/form-data application/json</strong>，不是 <strong>FastAPI</strong> 做的限制 ，而是 <strong>HTTP</strong> 协议规定的</p>
 </li>
 </ul>
-<h5 id="文件-大文件下载" tabindex="-1"><a class="header-anchor" href="#文件-大文件下载" aria-hidden="true">#</a> 文件&amp;大文件下载</h5>
+<h5 id="文件-大文件下载" tabindex="-1"><a class="header-anchor" href="#文件-大文件下载" aria-hidden="true">#</a> <strong>文件&amp;大文件下载</strong></h5>
 <p>上述下载，实际返回的是个字典，而正常下载，应返回指定的文件对象</p>
 <div class="language-python ext-py line-numbers-mode"><pre v-pre class="language-python"><code><span class="token keyword">import</span> pathlib
 
@@ -810,7 +810,7 @@ items <span class="token operator">=</span> <span class="token punctuation">{</s
 <li><strong>Item(**stored_item_data)：</strong> 把 <strong>items</strong> 获取的一条数据传入 <strong>Item</strong> 类，会自动解析对应赋值，但传入<code v-pre>{'name': 'Foo', 'price': 50.2}</code> 解析后会附带 <strong>Item</strong> 类的默认值为 <code v-pre>stored_item_model name='Foo' description=None price=50.2 tax=10.5 tags=[]</code></li>
 <li><strong>item.dict()：</strong> 继承 <strong>BaseModel</strong> 的类，即可调用 <code v-pre>.dict()</code> 转换字典类型</li>
 <li><strong>exclude_unset=True：</strong> 和上文 <strong>response_model_exclude_unset</strong> 类似，将 <strong>Item</strong> 类中没有赋值的字段给过滤掉</li>
-<li>**.copy()：**可以 <strong>copy</strong> 出一个 <strong>Item</strong> 副本，这里 <strong>copy</strong> 出的是 <strong>stored_item_model</strong>，上文解析后带默认值的</li>
+<li><strong>.copy()：</strong> 可以 <strong>copy</strong> 出一个 <strong>Item</strong> 副本，这里 <strong>copy</strong> 出的是 <strong>stored_item_model</strong>，上文解析后带默认值的</li>
 <li><strong>update</strong> 用于将 <strong>Model</strong> 进行更新的参数，会将同样的键进行实打实的更新</li>
 </ul>
 <h2 id="_4-fastapi-相关配置" tabindex="-1"><a class="header-anchor" href="#_4-fastapi-相关配置" aria-hidden="true">#</a> 4. FastAPI 相关配置</h2>

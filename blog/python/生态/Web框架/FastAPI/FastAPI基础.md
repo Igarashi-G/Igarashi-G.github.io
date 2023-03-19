@@ -911,7 +911,7 @@ async def update_item(item_id: str, item: Item):
 - **Item(\*\*stored_item_data)：** 把 **items** 获取的一条数据传入 **Item** 类，会自动解析对应赋值，但传入`{'name': 'Foo', 'price': 50.2}` 解析后会附带 **Item** 类的默认值为 `stored_item_model name='Foo' description=None price=50.2 tax=10.5 tags=[]` 
 - **item.dict()：** 继承 **BaseModel** 的类，即可调用 `.dict()` 转换字典类型
 - **exclude_unset=True：** 和上文 **response_model_exclude_unset** 类似，将 **Item** 类中没有赋值的字段给过滤掉
-- **.copy()：**可以 **copy** 出一个 **Item** 副本，这里 **copy** 出的是 **stored_item_model**，上文解析后带默认值的
+- **.copy()：** 可以 **copy** 出一个 **Item** 副本，这里 **copy** 出的是 **stored_item_model**，上文解析后带默认值的
 - **update** 用于将 **Model** 进行更新的参数，会将同样的键进行实打实的更新
 
 ## 4. FastAPI 相关配置
