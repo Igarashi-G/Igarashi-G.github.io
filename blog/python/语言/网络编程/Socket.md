@@ -66,9 +66,9 @@ SYSCALL_DEFINE2(socketcall, int, call, unsigned long __user *, args) {
 
 因此用户态程序一旦调用了 **socket** 接口，就会通过系统调用陷入内核
 
-    
-                
-    
+
+​                
+​    
         Server端：服务器端，在服务器上运行，先建立，否则客户端没法连
                 1->2->3->4  ->6->7
     

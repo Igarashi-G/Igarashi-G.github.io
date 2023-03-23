@@ -31,10 +31,11 @@ asmlinkage <span class="token keyword">long</span> <span class="token function">
 <span class="token punctuation">}</span>
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p><strong>sys_socketcall</strong> 几乎是用户进程 <strong>socket</strong> 所有操作函数的入口，它又实际调用了 <strong>SYSCALL_DEFINE2</strong> ...</p>
 <p>因此用户态程序一旦调用了 <strong>socket</strong> 接口，就会通过系统调用陷入内核</p>
-<pre><code>    Server端：服务器端，在服务器上运行，先建立，否则客户端没法连
-            1-&gt;2-&gt;3-&gt;4  -&gt;6-&gt;7
-
-    Client端：客户端，在客户主机上运行
+<p>​<br>
+​<br>
+Server端：服务器端，在服务器上运行，先建立，否则客户端没法连
+1-&gt;2-&gt;3-&gt;4  -&gt;6-&gt;7</p>
+<pre><code>    Client端：客户端，在客户主机上运行
             1-&gt;5  -&gt;6-&gt;7
 
     Socket对象:   ----1

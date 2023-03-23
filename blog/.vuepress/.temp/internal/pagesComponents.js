@@ -615,4 +615,6 @@ export const pagesComponents = {
   "v-721ff41e": defineAsyncComponent(() => import(/* webpackChunkName: "v-721ff41e" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/tag/状态管理/index.html.vue")),
   // path: /tag/web%E6%A1%86%E6%9E%B6/
   "v-414c2b62": defineAsyncComponent(() => import(/* webpackChunkName: "v-414c2b62" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/tag/web框架/index.html.vue")),
+  // path: /unix/Linux/%E7%BD%91%E7%BB%9C/.~%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80.html
+  "v-2f002c4b": defineAsyncComponent(() => import(/* webpackChunkName: "v-2f002c4b" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/unix/Linux/网络/.~网络基础.html.vue")),
 }

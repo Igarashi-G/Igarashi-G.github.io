@@ -6373,6 +6373,13 @@ export const searchIndex = [
           },
           {
             "level": 3,
+            "title": "2.3 网络层",
+            "slug": "_2-3-网络层",
+            "link": "#_2-3-网络层",
+            "children": []
+          },
+          {
+            "level": 3,
             "title": "HTTP 抓包演示",
             "slug": "http-抓包演示",
             "link": "#http-抓包演示",
