@@ -1,4 +1,5 @@
-<template><div><h1 id="进程" tabindex="-1"><a class="header-anchor" href="#进程" aria-hidden="true">#</a> 进程</h1>
+<template><div><p>操作系统进程相关</p>
+<!--more-->
 <p>首先讨论进程前先要弄清 <strong>并行</strong> 和 <strong>并发</strong> 两个概念</p>
 <h2 id="_1-并行与并发" tabindex="-1"><a class="header-anchor" href="#_1-并行与并发" aria-hidden="true">#</a> 1. 并行与并发</h2>
 <h3 id="_1-1-并行" tabindex="-1"><a class="header-anchor" href="#_1-1-并行" aria-hidden="true">#</a> 1.1 并行</h3>
@@ -15,7 +16,8 @@
 </ul>
 <img src="@source/python/语言/多任务编程/img/CPU并发和并行.png" />
 <h2 id="_2-什么是进程" tabindex="-1"><a class="header-anchor" href="#_2-什么是进程" aria-hidden="true">#</a> 2. 什么是进程</h2>
-<Alert type="info">**进程**(`Process`)： 狭义理解，是 **\*OS** 即操作系统资源分配\* 的<Font type="success">基本单位</Font></Alert><h3 id="_2-1-进程相关的基本概念" tabindex="-1"><a class="header-anchor" href="#_2-1-进程相关的基本概念" aria-hidden="true">#</a> 2.1 进程相关的基本概念</h3>
+<p><strong>进程（<em>Process</em>）：</strong> 狭义理解，是 <strong>OS</strong> 即操作系统资源分配的<Font type="success">基本单位</Font></p>
+<h3 id="_2-1-进程相关的基本概念" tabindex="-1"><a class="header-anchor" href="#_2-1-进程相关的基本概念" aria-hidden="true">#</a> 2.1 进程相关的基本概念</h3>
 <ol>
 <li>
 <p><strong>程序</strong>：是指令的集合，不能单独运行，要装载到内存中(<code v-pre>分配内存</code>),并需要系统为它分配资源(<code v-pre>分配执行环境</code>)</p>

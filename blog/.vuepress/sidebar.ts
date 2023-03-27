@@ -133,6 +133,12 @@ export default sidebar({
           prefix: "LDAP/",
           children: ["AD域", "LDAP", "Python对接AD域"],
         },
+        {
+          text: "SNMP",
+          collapsable: true,
+          prefix: "SNMP/",
+          children: ["SNMP服务", "SNMP设计文档"],
+        },
       ]
     }
   ],

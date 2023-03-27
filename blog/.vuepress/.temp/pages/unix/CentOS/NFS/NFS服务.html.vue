@@ -1,9 +1,23 @@
-<template><div><h1 id="nfs" tabindex="-1"><a class="header-anchor" href="#nfs" aria-hidden="true">#</a> NFS</h1>
+<template><div><p><strong>NFS</strong> 服务基础</p>
+<!-- more -->
 <h3 id="_1-简介" tabindex="-1"><a class="header-anchor" href="#_1-简介" aria-hidden="true">#</a> 1. 简介</h3>
-<h3 id="_2-配置" tabindex="-1"><a class="header-anchor" href="#_2-配置" aria-hidden="true">#</a> 2. 配置</h3>
-<h4 id="_2-1-软件配置" tabindex="-1"><a class="header-anchor" href="#_2-1-软件配置" aria-hidden="true">#</a> 2.1 软件配置</h4>
-<h4 id="_2-2-导出配置" tabindex="-1"><a class="header-anchor" href="#_2-2-导出配置" aria-hidden="true">#</a> 2.2 导出配置</h4>
-<p><a href="https://insights-core.readthedocs.io/en/latest/shared_parsers_catalog/nfs_exports.html#insights.parsers.nfs_exports.NFSExportsBase" target="_blank" rel="noopener noreferrer">NFS Export Config<ExternalLinkIcon/></a></p>
+<h3 id="_2-安装及配置" tabindex="-1"><a class="header-anchor" href="#_2-安装及配置" aria-hidden="true">#</a> 2. 安装及配置</h3>
+<h4 id="_2-1-安装nfs客户端" tabindex="-1"><a class="header-anchor" href="#_2-1-安装nfs客户端" aria-hidden="true">#</a> 2.1 安装NFS客户端</h4>
+<p>通过 <strong>yum</strong> 或者 <strong>apt</strong> 工具安装 <strong>nfs</strong> 客户端软件包</p>
+<Tabs :data='[{"title":"CentOS 7.x"},{"title":"Ubuntu 20.04 / Debian 11.x"},{"title":"openSUSE-Leap-15.x"}]'>
+<template #tab0="{ title, value, isActive }">
+<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code>$ <span class="token function">sudo</span> yum <span class="token function">install</span> nfs-utils
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div></template>
+<template #tab1="{ title, value, isActive }">
+<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code><span class="token function">sudo</span> <span class="token function">apt</span> <span class="token function">install</span> nfs-common
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div></template>
+<template #tab2="{ title, value, isActive }">
+<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code><span class="token function">sudo</span> <span class="token function">zypper</span> <span class="token function">install</span> nfs-utils
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div></template>
+</Tabs>
+<h4 id="_2-2-基本配置" tabindex="-1"><a class="header-anchor" href="#_2-2-基本配置" aria-hidden="true">#</a> 2.2 基本配置</h4>
+<p><strong>软件配置：</strong></p>
+<p><strong>导出配置:</strong> <a href="https://insights-core.readthedocs.io/en/latest/shared_parsers_catalog/nfs_exports.html#insights.parsers.nfs_exports.NFSExportsBase" target="_blank" rel="noopener noreferrer">NFS Export Config<ExternalLinkIcon/></a></p>
 <h3 id="_3-使用及说明" tabindex="-1"><a class="header-anchor" href="#_3-使用及说明" aria-hidden="true">#</a> 3. 使用及说明</h3>
 <h4 id="_3-1-exportfs-工具" tabindex="-1"><a class="header-anchor" href="#_3-1-exportfs-工具" aria-hidden="true">#</a> 3.1 exportfs 工具</h4>
 <p><strong>语法格式</strong></p>
@@ -36,7 +50,7 @@ $ <span class="token function">ls</span> /mnt/zz
 <span class="token comment"># bar</span>
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></li>
 </ul>
-<h4 id="_3-3-挂载" tabindex="-1"><a class="header-anchor" href="#_3-3-挂载" aria-hidden="true">#</a> 3.3 挂载</h4>
+<h4 id="_3-3-挂载-nfs-文件系统" tabindex="-1"><a class="header-anchor" href="#_3-3-挂载-nfs-文件系统" aria-hidden="true">#</a> 3.3 挂载 NFS 文件系统</h4>
 <p>请使用如下形式的命令去挂载：</p>
 <div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code>$ <span class="token function">mount</span> <span class="token parameter variable">-t</span> nfs <span class="token parameter variable">-o</span> options host:/remote/export /local/directory
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><ul>

@@ -4271,6 +4271,43 @@ export const searchIndex = [
     "extraFields": []
   },
   {
+    "title": "进程",
+    "headers": [
+      {
+        "level": 2,
+        "title": "1. 计算机基本系统",
+        "slug": "_1-计算机基本系统",
+        "link": "#_1-计算机基本系统",
+        "children": [
+          {
+            "level": 3,
+            "title": "1.1 计算单元",
+            "slug": "_1-1-计算单元",
+            "link": "#_1-1-计算单元",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "1.2 存储单元",
+            "slug": "_1-2-存储单元",
+            "link": "#_1-2-存储单元",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "1.3 通信层",
+            "slug": "_1-3-通信层",
+            "link": "#_1-3-通信层",
+            "children": []
+          }
+        ]
+      }
+    ],
+    "path": "/python/%E8%AF%AD%E8%A8%80/%E5%A4%9A%E4%BB%BB%E5%8A%A1%E7%BC%96%E7%A8%8B/%E9%AB%98%E6%80%A7%E8%83%BD%E7%BC%96%E7%A8%8B.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
     "title": "标准库链接",
     "headers": [
       {
@@ -5408,9 +5445,9 @@ export const searchIndex = [
       },
       {
         "level": 3,
-        "title": "2. 配置",
-        "slug": "_2-配置",
-        "link": "#_2-配置",
+        "title": "2. 安装及配置",
+        "slug": "_2-安装及配置",
+        "link": "#_2-安装及配置",
         "children": []
       },
       {
@@ -5563,34 +5600,85 @@ export const searchIndex = [
     "headers": [
       {
         "level": 3,
-        "title": "一、什么是 SNMP",
-        "slug": "一、什么是-snmp",
-        "link": "#一、什么是-snmp",
+        "title": "1. 什么是 SNMP 协议",
+        "slug": "_1-什么是-snmp-协议",
+        "link": "#_1-什么是-snmp-协议",
         "children": []
       },
       {
         "level": 3,
-        "title": "二、SNMP 支持的网管操作",
-        "slug": "二、snmp-支持的网管操作",
-        "link": "#二、snmp-支持的网管操作",
+        "title": "2. SNMP 支持的网管操作",
+        "slug": "_2-snmp-支持的网管操作",
+        "link": "#_2-snmp-支持的网管操作",
         "children": []
       },
       {
         "level": 3,
-        "title": "三、SNMP 的实现结构及定义",
-        "slug": "三、snmp-的实现结构及定义",
-        "link": "#三、snmp-的实现结构及定义",
+        "title": "3. SNMP 的实现结构及定义",
+        "slug": "_3-snmp-的实现结构及定义",
+        "link": "#_3-snmp-的实现结构及定义",
         "children": []
       },
       {
         "level": 3,
-        "title": "四、Net-SNMP 软件",
-        "slug": "四、net-snmp-软件",
-        "link": "#四、net-snmp-软件",
+        "title": "4. Net-SNMP 软件",
+        "slug": "_4-net-snmp-软件",
+        "link": "#_4-net-snmp-软件",
         "children": []
       }
     ],
     "path": "/unix/CentOS/SNMP/SNMP%E6%9C%8D%E5%8A%A1.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "SNMP设计文档",
+    "headers": [
+      {
+        "level": 2,
+        "title": "1. SNMP 详细设计",
+        "slug": "_1-snmp-详细设计",
+        "link": "#_1-snmp-详细设计",
+        "children": [
+          {
+            "level": 3,
+            "title": "1.2 SNMPv2c",
+            "slug": "_1-2-snmpv2c",
+            "link": "#_1-2-snmpv2c",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "1.3 SNMPv3",
+            "slug": "_1-3-snmpv3",
+            "link": "#_1-3-snmpv3",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "1.4 服务高可用",
+            "slug": "_1-4-服务高可用",
+            "link": "#_1-4-服务高可用",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "1.5 MIB 管理对象",
+            "slug": "_1-5-mib-管理对象",
+            "link": "#_1-5-mib-管理对象",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "2. SNMP 接收端配置",
+        "slug": "_2-snmp-接收端配置",
+        "link": "#_2-snmp-接收端配置",
+        "children": []
+      }
+    ],
+    "path": "/unix/CentOS/SNMP/SNMP%E8%AE%BE%E8%AE%A1%E6%96%87%E6%A1%A3.html",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -6352,11 +6440,26 @@ export const searchIndex = [
           },
           {
             "level": 3,
-            "title": "2. 网络七层模型",
-            "slug": "_2-网络七层模型",
-            "link": "#_2-网络七层模型",
+            "title": "1.2 网络分类",
+            "slug": "_1-2-网络分类",
+            "link": "#_1-2-网络分类",
             "children": []
           },
+          {
+            "level": 3,
+            "title": "1.3 性能指标",
+            "slug": "_1-3-性能指标",
+            "link": "#_1-3-性能指标",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "2. 网络七层模型",
+        "slug": "_2-网络七层模型",
+        "link": "#_2-网络七层模型",
+        "children": [
           {
             "level": 3,
             "title": "2.1 物理层",
@@ -7276,9 +7379,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "Socket 分类",
+    "title": "高性能 分类",
     "headers": [],
-    "path": "/category/socket/",
+    "path": "/category/%E9%AB%98%E6%80%A7%E8%83%BD/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -7290,9 +7393,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "网络编程 分类",
+    "title": "Socket 分类",
     "headers": [],
-    "path": "/category/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/",
+    "path": "/category/socket/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -7304,9 +7407,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "SMB/CIFS 分类",
+    "title": "网络编程 分类",
     "headers": [],
-    "path": "/category/smbcifs/",
+    "path": "/category/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -7318,9 +7421,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "UFS 分类",
+    "title": "NFS 分类",
     "headers": [],
-    "path": "/category/ufs/",
+    "path": "/category/nfs/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -7332,9 +7435,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "CentOS 分类",
+    "title": "SMB/CIFS 分类",
     "headers": [],
-    "path": "/category/centos/",
+    "path": "/category/smbcifs/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -7346,9 +7449,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "Linux 分类",
+    "title": "SNMP 分类",
     "headers": [],
-    "path": "/category/linux/",
+    "path": "/category/snmp/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -7360,9 +7463,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "shell 分类",
+    "title": "UFS 分类",
     "headers": [],
-    "path": "/category/shell/",
+    "path": "/category/ufs/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -7374,9 +7477,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "命令 分类",
+    "title": "CentOS 分类",
     "headers": [],
-    "path": "/category/%E5%91%BD%E4%BB%A4/",
+    "path": "/category/centos/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -7388,9 +7491,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "troubleshooting 分类",
+    "title": "Linux 分类",
     "headers": [],
-    "path": "/category/troubleshooting/",
+    "path": "/category/linux/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -7402,9 +7505,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "网络通信 分类",
+    "title": "shell 分类",
     "headers": [],
-    "path": "/category/%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1/",
+    "path": "/category/shell/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -7416,9 +7519,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "虚拟机 分类",
+    "title": "命令 分类",
     "headers": [],
-    "path": "/category/%E8%99%9A%E6%8B%9F%E6%9C%BA/",
+    "path": "/category/%E5%91%BD%E4%BB%A4/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -7430,9 +7533,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "WEB框架 分类",
+    "title": "troubleshooting 分类",
     "headers": [],
-    "path": "/category/web%E6%A1%86%E6%9E%B6/",
+    "path": "/category/troubleshooting/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -7444,9 +7547,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "Django 分类",
+    "title": "网络通信 分类",
     "headers": [],
-    "path": "/category/django/",
+    "path": "/category/%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -7458,9 +7561,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "FastAPI 分类",
+    "title": "虚拟机 分类",
     "headers": [],
-    "path": "/category/fastapi/",
+    "path": "/category/%E8%99%9A%E6%8B%9F%E6%9C%BA/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -7472,9 +7575,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "Tornado 分类",
+    "title": "WEB框架 分类",
     "headers": [],
-    "path": "/category/tornado/",
+    "path": "/category/web%E6%A1%86%E6%9E%B6/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -7486,9 +7589,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "Web框架 分类",
+    "title": "Django 分类",
     "headers": [],
-    "path": "/category/web%E6%A1%86%E6%9E%B6/",
+    "path": "/category/django/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -7500,6 +7603,13 @@ export const searchIndex = [
     "extraFields": []
   },
   {
+    "title": "FastAPI 分类",
+    "headers": [],
+    "path": "/category/fastapi/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
     "title": "subprocess 标签",
     "headers": [],
     "path": "/tag/subprocess/",
@@ -7507,9 +7617,23 @@ export const searchIndex = [
     "extraFields": []
   },
   {
+    "title": "Tornado 分类",
+    "headers": [],
+    "path": "/category/tornado/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
     "title": "pip 标签",
     "headers": [],
     "path": "/tag/pip/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "Web框架 分类",
+    "headers": [],
+    "path": "/category/web%E6%A1%86%E6%9E%B6/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -7552,6 +7676,20 @@ export const searchIndex = [
     "title": "进程 标签",
     "headers": [],
     "path": "/tag/%E8%BF%9B%E7%A8%8B/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "高性能 标签",
+    "headers": [],
+    "path": "/tag/%E9%AB%98%E6%80%A7%E8%83%BD/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "CPU 标签",
+    "headers": [],
+    "path": "/tag/cpu/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -7640,9 +7778,30 @@ export const searchIndex = [
     "extraFields": []
   },
   {
+    "title": "运维 标签",
+    "headers": [],
+    "path": "/tag/%E8%BF%90%E7%BB%B4/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "NFS 标签",
+    "headers": [],
+    "path": "/tag/nfs/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
     "title": "SMB/CIFS 标签",
     "headers": [],
     "path": "/tag/smbcifs/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "SNMP 标签",
+    "headers": [],
+    "path": "/tag/snmp/",
     "pathLocale": "/",
     "extraFields": []
   },

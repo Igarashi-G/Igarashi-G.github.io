@@ -5,8 +5,8 @@ category:
   - 运维
   - SMB/CIFS
 tag:
+  - 运维
   - SMB/CIFS
-star: true
 ---
 
 [Samba 文档](https://www.samba.org/) 

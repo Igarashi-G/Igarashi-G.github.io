@@ -1,26 +1,24 @@
-<template><div><h1 id="snmp" tabindex="-1"><a class="header-anchor" href="#snmp" aria-hidden="true">#</a> SNMP</h1>
-<h3 id="一、什么是-snmp" tabindex="-1"><a class="header-anchor" href="#一、什么是-snmp" aria-hidden="true">#</a> 一、什么是 SNMP</h3>
-<p>“简单网络管理协议”，用于网络管理的协议。常用于监控工具，可以持续性实时监控，好处是带宽消耗非常少
-因此使用此套件进行监控不会降低网络速度。它和 DNS 一样也是基于 UDP 协议实现的（速度快，消息易丢失）</p>
-<ul>
-<li>基本思想：为不同种类的设备、不同厂家生产的设备、不同型号的设备，定义为一个统一的接口和协议，
-使得管理员可以是使用统一的外观面对这些需要管理的网络设备进行管理。</li>
-</ul>
-<h3 id="二、snmp-支持的网管操作" tabindex="-1"><a class="header-anchor" href="#二、snmp-支持的网管操作" aria-hidden="true">#</a> 二、SNMP 支持的网管操作</h3>
+<template><div><p><strong>SNMP</strong> 协议简要说明</p>
+<!--more-->
+<h3 id="_1-什么是-snmp-协议" tabindex="-1"><a class="header-anchor" href="#_1-什么是-snmp-协议" aria-hidden="true">#</a> 1. 什么是 SNMP 协议</h3>
+<p><strong>SNMP （<em>简单网络管理协议</em>）：</strong> 用于网络管理的协议，常用于 <strong>监控工具</strong>，可以 <strong>持续性实时监控</strong>，好处是带宽消耗非常少，因此使用此套件进行监控不会降低网络速度，它和 <strong>DNS</strong> 一样也是基于 <strong>UDP 协议</strong> 实现 （<em>速度快，消息易丢失</em> ）</p>
+<p><strong>基本思想：</strong> 为不同种类的设备、不同厂家生产的设备、不同型号的设备，定义为一个统一的接口和协议，
+使得管理员可以使用统一的外观，面对这些需要管理的网络设备进行管理</p>
+<h3 id="_2-snmp-支持的网管操作" tabindex="-1"><a class="header-anchor" href="#_2-snmp-支持的网管操作" aria-hidden="true">#</a> 2. SNMP 支持的网管操作</h3>
 <ul>
 <li>
-<p>Get：读取网络设备的状态信息。</p>
+<p><strong>Get：</strong> 读取网络设备的状态信息</p>
 </li>
 <li>
-<p>Set：远程配置设备参数。</p>
+<p><strong>Set：</strong> 远程配置设备参数</p>
 </li>
 <li>
-<p>Trap：管理站及时获取设备的重要信息。</p>
+<p><strong>Trap：</strong> 管理站及时获取设备的重要信息</p>
 </li>
 </ul>
-<h3 id="三、snmp-的实现结构及定义" tabindex="-1"><a class="header-anchor" href="#三、snmp-的实现结构及定义" aria-hidden="true">#</a> 三、SNMP 的实现结构及定义</h3>
-<p>SNMP 为管理员提供了一个网管平台(NMS)，又称为管理站，负责网管命令的发出、数据存储、及数据分析。
-被监管的设备上运行一个 SNMP 代理(Agent))，代理实现设备与管理站的 SNMP 通信。</p>
+<h3 id="_3-snmp-的实现结构及定义" tabindex="-1"><a class="header-anchor" href="#_3-snmp-的实现结构及定义" aria-hidden="true">#</a> 3. SNMP 的实现结构及定义</h3>
+<p><strong>SNMP</strong> 为管理员提供了一个网管平台 <strong>（<em>NMS</em>）</strong>，又称为管理站，负责网管命令的发出、数据存储、及数据分析，
+被监管的设备上运行一个 <strong>SNMP</strong> 代理 <strong>（<em>Agent</em>）</strong> ，代理实现设备与管理站的 <strong>SNMP</strong> 通信</p>
 <ul>
 <li>
 <p>SNMP：Simple Network Management Protocol(简单网络管理协议)，是一个标准的用于管理基于 IP 网络上设备的协议。</p>
@@ -53,7 +51,7 @@
 <p>BER： Basic Encoding Rule，基本编码规格。描述如何将 ASN.1 类型的值编码为字符串的方法。它是 ASN.1 标准的一部分。BER 编码将数据分成 TLV 三部分，T 为 Tag 的缩写，是类型标识；L 为 Length 的缩写，标识类型的长度；V 为 Value 的缩写，标识数据内容。按照 TLV 的顺序对数据进行编码，生成字节流。SNMP 使用 BER 将 SNMP 的操作请求和应答编码后进行传输，并用于接收端进行解码。</p>
 </li>
 </ul>
-<h3 id="四、net-snmp-软件" tabindex="-1"><a class="header-anchor" href="#四、net-snmp-软件" aria-hidden="true">#</a> 四、Net-SNMP 软件</h3>
+<h3 id="_4-net-snmp-软件" tabindex="-1"><a class="header-anchor" href="#_4-net-snmp-软件" aria-hidden="true">#</a> 4. Net-SNMP 软件</h3>
 <ul>
 <li>
 <p>Net-snmp 提供完整的 API 用于 SNMP 应用程序开发，包括 C 和 Perl 的 API 。</p>
@@ -71,23 +69,21 @@
 <p>一个 Trap 接收进程，用于接收和显示 Trap，并将 Trap 记录到日志文件中。</p>
 </li>
 </ul>
-<p>安装：</p>
-<pre><code>yum install -y net-snmp net-snmp-utils
-</code></pre>
-<p>查看一下安装的软件包：</p>
-<pre><code>rpm -qa | grep net-snmp*
+<p>安装</p>
+<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code>yum <span class="token function">install</span> <span class="token parameter variable">-y</span> net-snmp net-snmp-utils
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p>查看一下安装的软件包</p>
+<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code><span class="token function">rpm</span> <span class="token parameter variable">-qa</span> <span class="token operator">|</span> <span class="token function">grep</span> net-snmp*
     net-snmp-libs-5.7.2-24.el7.x86_64
     net-snmp-5.7.2-24.el7.x86_64
     net-snmp-agent-libs-5.7.2-24.el7.x86_64
     net-snmp-utils-5.7.2-24.el7.x86_64
-</code></pre>
-<p>配置文件：</p>
-<pre><code>主配置文件：/etc/snmp/snmpd.conf
-</code></pre>
-<p>启动和测试：</p>
-<pre><code>service snmpd start
-snmpd -v #查看一下net-snmp版本
-</code></pre>
-</div></template>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>主配置文件</p>
+<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code>$ <span class="token function">cat</span> /etc/snmp/snmpd.conf
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p>启动和测试</p>
+<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code>$ systemctl snmpd restart
+
+<span class="token comment"># 查看一下 net-snmp 版本</span>
+$ snmpd <span class="token parameter variable">-v</span> 
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></div></template>
 
 

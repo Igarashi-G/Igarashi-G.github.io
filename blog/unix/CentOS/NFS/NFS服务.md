@@ -1,22 +1,55 @@
 ---
 title: NFS服务
-order: 1
-group:
-  title: NFS
-  order: 14
+date: 2021-08-04
+category:
+  - 运维
+  - NFS
+tag:
+  - 运维
+  - NFS
 ---
 
-# NFS
+**NFS** 服务基础
+
+<!-- more -->
 
 ### 1. 简介
 
-### 2. 配置
+### 2. 安装及配置
 
-#### 2.1 软件配置
+#### 2.1 安装NFS客户端
 
-#### 2.2 导出配置
+通过 **yum** 或者 **apt** 工具安装 **nfs** 客户端软件包
 
-[NFS Export Config](https://insights-core.readthedocs.io/en/latest/shared_parsers_catalog/nfs_exports.html#insights.parsers.nfs_exports.NFSExportsBase) 
+::: tabs
+
+@tab CentOS 7.x
+
+```shell
+$ sudo yum install nfs-utils
+```
+
+@tab Ubuntu 20.04 / Debian 11.x
+
+```shell
+sudo apt install nfs-common
+```
+
+@tab openSUSE-Leap-15.x
+
+```shell
+sudo zypper install nfs-utils
+```
+
+:::
+
+
+
+#### 2.2 基本配置
+
+**软件配置：** 
+
+**导出配置:** [NFS Export Config](https://insights-core.readthedocs.io/en/latest/shared_parsers_catalog/nfs_exports.html#insights.parsers.nfs_exports.NFSExportsBase) 
 
 ### 3. 使用及说明
 
@@ -63,7 +96,9 @@ $ exportfs -rv  ||  -arv
   # bar
   ```
 
-#### 3.3 挂载
+#### 3.3 挂载 NFS 文件系统
+
+
 
 请使用如下形式的命令去挂载：
 

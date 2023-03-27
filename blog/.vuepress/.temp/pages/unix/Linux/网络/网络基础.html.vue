@@ -15,27 +15,27 @@
 <li><strong>分组（packet ）：</strong>  因特网中传送的数据单元。由首部 <strong>header</strong> 和数据段组成，分组又称为包，首部可称为包头</li>
 <li><strong>存储转发（store and forward ）：</strong> 路由器收到一个分组，先检查分组是否正确，并过滤掉冲突包错误，确定包正确后，取出目的地址，通过查找表找到想要发送的输出端口地址，然后将该包发送出去</li>
 </ul>
-<h4 id="网络分类" tabindex="-1"><a class="header-anchor" href="#网络分类" aria-hidden="true">#</a> 网络分类</h4>
-<h5 id="作用范围分类" tabindex="-1"><a class="header-anchor" href="#作用范围分类" aria-hidden="true">#</a> <strong>作用范围分类</strong></h5>
+<h3 id="_1-2-网络分类" tabindex="-1"><a class="header-anchor" href="#_1-2-网络分类" aria-hidden="true">#</a> 1.2 网络分类</h3>
+<h4 id="作用范围分类" tabindex="-1"><a class="header-anchor" href="#作用范围分类" aria-hidden="true">#</a> <strong>作用范围分类</strong></h4>
 <ul>
 <li><strong>广域网 WAN（Wide Area Network）：</strong> 任务是通过长距离运送主机发送的数据</li>
 <li><strong>城域网 MAN（Metropolitan Area Network）：</strong> 用来将多个局域网进行互连</li>
 <li><strong>局域网 LAN（Local Area Network）：</strong> 学校或企业大多拥有多个互连的局域网</li>
 <li><strong>个人区域网 PAN（Personal Area Network）：</strong>  在个人工作的地方，个人的电子设备用无线技术连接起来的网络</li>
 </ul>
-<h5 id="使用者分类" tabindex="-1"><a class="header-anchor" href="#使用者分类" aria-hidden="true">#</a> <strong>使用者分类</strong></h5>
+<h4 id="使用者分类" tabindex="-1"><a class="header-anchor" href="#使用者分类" aria-hidden="true">#</a> <strong>使用者分类</strong></h4>
 <ul>
 <li><strong>公用网络：</strong> 对所有的人提供服务，只要符合网络拥有者的要求就能使用这个网</li>
 <li><strong>专用网络：</strong> 专用网为一个或几个部门所拥有，它只为拥有者提供服务，这种网络不向拥有者以外的人提供服务，局域网一般都是专用网</li>
 </ul>
-<h4 id="性能指标" tabindex="-1"><a class="header-anchor" href="#性能指标" aria-hidden="true">#</a> 性能指标</h4>
+<h3 id="_1-3-性能指标" tabindex="-1"><a class="header-anchor" href="#_1-3-性能指标" aria-hidden="true">#</a> 1.3 性能指标</h3>
 <ul>
 <li><strong>带宽（bandwidth）：</strong> 计算机网络中，表示在 <strong>单位时间内</strong>，<strong>从</strong> 网络中的 <strong>某一点</strong> 到 <strong>另一点</strong> 所能通过的 <strong>“最高数据率”</strong>，来表示网络的通信线路所能传送数据的能力。单位是 <strong>“比特每秒”</strong>，记为 <strong>bit/s</strong> 即 <strong>bps</strong></li>
 <li><strong>吞吐量（throughput）：</strong> 表示在 <strong>单位时间内</strong>，<strong>通过</strong> 某个 <strong>网络（<em>信道、接口</em> ）</strong> 的 <strong>数据量</strong>，吞吐量常用于测量现实世界中的网络，以便知道实际上到底有多少数据量能够通过网络，吞吐量 <strong>受网络的带宽</strong> 或 <strong>网络的额定速率</strong> 的限制</li>
 <li><strong>时延：</strong> 发送时延、传播时延、排队时延、处理时延</li>
 <li><strong>往返时间（RTT）：</strong> 数据报文在端到端通信中来回一次的时间</li>
 </ul>
-<h3 id="_2-网络七层模型" tabindex="-1"><a class="header-anchor" href="#_2-网络七层模型" aria-hidden="true">#</a> 2. 网络七层模型</h3>
+<h2 id="_2-网络七层模型" tabindex="-1"><a class="header-anchor" href="#_2-网络七层模型" aria-hidden="true">#</a> 2. 网络七层模型</h2>
 <p>如今网络按照 <strong>OSI</strong> 体系实现的七层模型</p>
 <img src="@source/unix/Linux/网络/img/七层模型.png">
 <p>如图是一个基础的 <strong>网络协议栈</strong>，它是栈结构，因此上层都是基于下层的 <strong>层层封装</strong> ，故网络连接都是按照栈的 <strong>先入后出</strong> 来层层拆包</p>
@@ -103,7 +103,7 @@ $ iperf3 <span class="token parameter variable">-i1</span> <span class="token pa
 <img src="@source/unix/Linux/网络/img/无线网桥.jpg" /> 
 </li>
 <li>
-<p><strong>以太网交换机（<em>Switch 二层交换机</em>）：</strong> 早期的交换机可看做多个 <strong>Bridge</strong> 的集成设备（<em>多端口网桥</em> ） ，即添加了 <strong>MAC</strong> 地址学习功能的设备，系统内部集成了 <strong>动态查找表</strong> ，若 <strong>MAC</strong> 不在查找表中，则会加入记录，并将数据帧发送给目的端口</p>
+<p><strong>以太网交换机（<em>Switch 二层交换机</em>）：</strong> 早期的交换机可看做多个 <strong>Bridge</strong> 的集成设备（<em><strong>多端口网桥</strong></em> ） ，即添加了 <strong>MAC</strong> 地址学习功能的设备，系统内部集成了 <strong>动态查找表</strong> ，若 <strong>MAC</strong> 不在查找表中，则会加入记录，并将数据帧发送给目的端口，<strong>无需广播</strong></p>
 <img src="@source/unix/Linux/网络/img/以太网交换机.jpg" /> 
 </li>
 <li>
@@ -129,6 +129,8 @@ $ iperf3 <span class="token parameter variable">-i1</span> <span class="token pa
 <li><strong>CRC：</strong> 循环冗余码</li>
 <li><strong>以太网最短帧：</strong> 为 <strong>64 个字节</strong> ，数据部分 <strong>18</strong> 个固定字节 <strong>+</strong> 数据最短 <strong>46</strong> 个字节</li>
 </ul>
+<p><strong>MAC 模块：</strong></p>
+<p>消息是以 <strong>光/电信号</strong> 的形式从网口进入，到了 <strong>PHY</strong> 会转成通用格式的电信号，<strong>MAC模块</strong> 的作用就是将 <strong>电信号转为数字信号</strong> ，这样就能提取出 <strong>MAC</strong> 包头，并通过 <strong>MAC</strong> 数据帧末尾的 <strong>FCS</strong> 校验包有无问题</p>
 <h3 id="_2-3-网络层" tabindex="-1"><a class="header-anchor" href="#_2-3-网络层" aria-hidden="true">#</a> 2.3 网络层</h3>
 <p>其目的是实现 <strong>两个端系统之间的数据透明传送</strong>，具体功能包括 <strong>寻址 和 路由选择、连接的建立、保持和终止等</strong></p>
 <ol>
@@ -145,11 +147,11 @@ $ iperf3 <span class="token parameter variable">-i1</span> <span class="token pa
 <h4 id="物理设备-2" tabindex="-1"><a class="header-anchor" href="#物理设备-2" aria-hidden="true">#</a> <strong>物理设备</strong></h4>
 <ul>
 <li>
-<p><strong>路由器：</strong> <strong>IP</strong> 地址转发的设备，家中常见的网络设备</p>
+<p><strong>路由器：</strong> <strong>IP</strong> 地址转发的设备，<strong>“三层交换机”</strong>， 家中常见的网络设备，通过网段的方式定位要将消息转发到哪儿，无需像 <strong>二层交换机</strong> 那样记录 <strong>MAC</strong> 地址</p>
 <img src="@source/unix/Linux/网络/img/路由器.jpg" /> 
 </li>
 </ul>
-<p><strong>网关（<em>Gateway</em>）：</strong> 网关不只具体的特定设备，而是连接不同网络的设备都具备网关意义，即 <strong>网络信息达到网关，可被重加工</strong> ，因此路由器也可以实现网关功能，但不仅仅能实现网关，网关也不仅被路由器实现</p>
+<p><strong>网关（<em>Gateway</em>）：</strong> 网关不只具体的特定设备，而是 <strong>连接不同网络</strong> 的设备都具备网关意义，即 <strong>网络信息达到网关，可被重加工</strong> ，因此路由器也可以实现网关功能，但不仅仅能实现网关，网关也不仅被路由器实现</p>
 <img src="@source/unix/Linux/网络/img/网关.jpg">
 <div class="custom-container info">
 <p class="custom-container-title">关于Mbps 和 MB/s</p>
@@ -167,20 +169,51 @@ $ iperf3 <span class="token parameter variable">-i1</span> <span class="token pa
 <p>自治系统内部的路由选择：RIP 和 OSPF</p>
 <p>自治系统间的路由选择：BGP</p>
 <h4 id="ip协议" tabindex="-1"><a class="header-anchor" href="#ip协议" aria-hidden="true">#</a> IP协议</h4>
-<p><strong>IP协议（<em>Internet Protocol</em>）：</strong> <strong>因特网互联协议</strong>，它仅提供 <strong>不可靠、无连接</strong> 的传送服务，主要功能有：<strong>无连接数据报传输</strong>、<strong>数据报路由选择和差错控制</strong>。</p>
-<p>与IP协议配套使用实现其功能的还有地址解析协议ARP、逆地址解析协议RARP、因特网报文协议ICMP、因特网组管理协议IGMP。具体的协议我们会在接下来的部分进行总结，有关网络层的重点为：</p>
-<p>3.包含的主要协议：</p>
-<p>IP协议;
-ICMP协议（Internet Control Message Protocol，因特网控制报文协议）;
-ARP协议（Address Resolution Protocol，地址解析协议）;
-RARP协议（Reverse Address Resolution Protocol，逆地址解析协议）。
-4.重要的设备：路由器。</p>
-<pre><code>        网络接口层 ---&gt;      [ 数据链路层、
-                               物理层 ]
-
-        每层运行常见物理设备：
+<p><strong>IP协议（<em>Internet Protocol</em> ）因特网互联协议：</strong> 网络层最核心的协议，它把复杂的实际网络，变为一个 <strong>虚拟互联的网络</strong>，并解决了在虚拟网络中 <strong>数据报传输路径的问题</strong>，即使仅提供了 <strong>不可靠、无连接</strong> 的传送服务，主要功能有：<strong>无连接数据报传输</strong>、<strong>数据报路由选择和差错控制</strong></p>
+<p><strong>IPv4：</strong> 该协议其最核心的就是 <strong>源/目的 IP 地址</strong> ，其表现形式为点分十进制**（<em>v4</em>）**，并结合子网掩码来划分区域，如下</p>
+<img src="@source/unix/Linux/网络/img/点分十进制.png" />
+<ul>
+<li><strong>子网掩码：</strong> 其尾缀 <strong>/24</strong> 即为 <strong>3</strong> 个 <strong>8位</strong> 补全<strong>1</strong>，即 <strong>255.255.255.0</strong> ，它会认为 <strong>192.168.0.x</strong> 上的 <strong>IP</strong> 都属于 <strong>一个局域网</strong> ，这 <strong>十分重要（<em>如：高可用 IP 漂移时，不指定掩码也许会带来灾难</em> ）</strong></li>
+</ul>
+<p><strong>数据报格式：</strong> 其格式如下</p>
+<img src="@source/unix/Linux/网络/img/IP协议报文头.png" /> 
+<ul>
+<li><strong>版本：</strong> 为 <strong>v4/6</strong> 协议版本</li>
+<li><strong>首部长度：</strong> 表示 <strong>IP首部</strong> 的长度，最值 <strong>15</strong></li>
+<li><strong>总长度：</strong> 表示 <strong>IP 数据报</strong> 总长度，最值 <strong>65535</strong></li>
+<li><strong>TTL：</strong> 生存时间， <strong>IP数据报</strong> 在网络中的寿命</li>
+<li><strong>协议：</strong> 即 <strong>上层协议</strong>，表明 <strong>IP数据</strong> 所携带的具体数据是什么协议 <strong>（<em>TCP、UDP</em>）</strong></li>
+</ul>
+<div class="custom-container note">
+<p class="custom-container-title">配套协议</p>
+<p>光有 <strong>IP协议</strong> 是不够的，与 <strong>IP协议</strong> 配套使用实现其功能的还有 <strong>地址解析协议ARP、逆地址解析协议RARP、因特网报文协议ICMP、因特网组管理协议IGMP</strong></p>
+</div>
+<h4 id="r-arp协议" tabindex="-1"><a class="header-anchor" href="#r-arp协议" aria-hidden="true">#</a> <strong>R/ARP协议</strong></h4>
+<p><strong>R/ARP（<em>Reverse/Address Resolution Protocal</em>）逆/地址解析协议：</strong> 用于将 <strong>IP</strong> 地址解析为以太网的 <strong>MAC</strong> 地址的协议，为 <strong>网卡</strong>（<em>网络适配器</em> ）的 <strong>IP（<em>32位地址</em> ）</strong> 和其 <strong>MAC（<em>48位地址</em> ）</strong> 提供动态映射</p>
+<p>在局域网中，当 <strong>主机 A</strong> 有数据要发送给  <strong>主机 B</strong> 时，仅有IP地址是不够的，还需要将 <strong>IP 数据报文</strong> 在数据链路层 <strong>封装成帧</strong> 才能通过物理网络发送，发送端必须有接收端的 <strong>MAC</strong> 地址，因此需要一个从 <strong>IP 地址</strong> 到 <strong>MAC 地址</strong> 的 <strong>映射</strong>，即 <strong>ARP</strong></p>
+<img src="@source/unix/Linux/网络/img/ARP过程.png" /> 
+<h5 id="arp过程" tabindex="-1"><a class="header-anchor" href="#arp过程" aria-hidden="true">#</a> <strong>ARP过程</strong></h5>
+<ul>
+<li><strong>主机A</strong> 查本地 <strong>ARP 表</strong> 发现 <strong>主机B</strong> 的 <strong>IP</strong> 和 <strong>MAC</strong> 映射关系不存在</li>
+<li><strong>主机A</strong> 通过 <strong>ARP 广播</strong> 的形式向局域网发出消息，询问某 <strong>IP</strong> 对应的 <strong>MAC</strong> 地址是多少
+<ul>
+<li>比如 <strong>主机A</strong> 此时知道 <strong>主机B</strong> 的 <strong>IP</strong>，但并不知道 <strong>主机B</strong> 的 <strong>MAC地址</strong> 是多少，就尝试在局域网内发起 <strong>ARP广播</strong>，询问局域网下所有机器，<strong>哪个机器的IP</strong> 与 <strong>主机B 的 IP 一致</strong></li>
+</ul>
+</li>
+<li><strong>主机B</strong> 收到这个 <strong>ARP 消息</strong> ，发现 <strong>主机A</strong> 要问的 <strong>IP</strong> 与自己的 <strong>IP</strong> 一致，就会 <strong>把 自己的 MAC 地址 作为应答</strong> 返回给 <strong>主机A</strong></li>
+<li>此时 <strong>主机A</strong> 就知道了 <strong>主机B</strong> 的 <strong>MAC 地址</strong>，顺便把消息 <strong>记录到本地 ARP 表</strong> 里，下次直接调表里的关系即可，无需再广播</li>
+</ul>
+<p>之后即是从数据链路层到物理层，把数据转为 <strong>0/1 的比特流</strong></p>
+<div class="custom-container info">
+<p class="custom-container-title">即插即用</p>
+<p>由于 ARP 是即插即用的，其 <strong>ARP 表</strong> 是自动建立的，无需系统管理员来配置</p>
+<p>因此在 <strong>高可用 IP 漂移（<em>频繁改变 IP</em> ）后</strong> ，需要手动执行 <strong>ARP</strong> 命令，来帮助各网络设备自动更新 <strong>ARP 映射关系</strong></p>
+<img src="@source/unix/Linux/网络/img/ARP映射关系.png" /> 
+</div>
+<h4 id="icmp协议" tabindex="-1"><a class="header-anchor" href="#icmp协议" aria-hidden="true">#</a> <strong>ICMP协议</strong></h4>
+<p><strong>ICMP（<em>Internet Control Message Protocol</em> ）因特网控制报文协议：</strong></p>
+<pre><code>        每层运行常见物理设备：
             传输层     ————&gt;   四层交换机、四层路由器
-            网络层     ————&gt;   路由器、三层交换机
 </code></pre>
 <p>​<br>
 ​<br>
