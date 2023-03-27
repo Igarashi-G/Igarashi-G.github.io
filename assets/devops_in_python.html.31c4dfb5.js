@@ -1,1 +1,0 @@
-import{_ as o}from"./plugin-vueexport-helper.2444895f.js";import{o as t,c as n,d as r,r as s}from"./app.a8ba0084.js";const _={};function p(c,a){const e=s("PDF");return t(),n("div",null,[r(e,{url:"https://www.igarashi.fun:7779/pdf/python/DevOps%20in%20Python.pdf",height:"880px"})])}const h=o(_,[["render",p],["__file","devops_in_python.html.vue"]]);export{h as default};
