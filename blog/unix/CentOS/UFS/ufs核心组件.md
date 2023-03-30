@@ -11,16 +11,6 @@ tag:
 
 <!-- more -->
 
-# 核心组件
-
-**产品**：UFS
-
-**版本**：v4.0
-
-**日期**：2021-10-16
-
-**摘要**：本文档提供 UFS 存储系统核心组件的配置说明
-
 ## 1. MSS 组件
 
 ### 1.1 基本信息
@@ -380,38 +370,44 @@ ufsmount -h
 
 #### 3.4.1 缓存配置
 
-        -o ufscachemode=CMODE       设置缓存模式(default: AUTO)
-        -o ufsattrcacheto=SEC       设置属性缓存超时 (default: 1.0)
-        -o ufsxattrcacheto=SEC      设置扩展属性 (xattr) 缓存超时 (default: 30.0)
-        -o ufsentrycacheto=SEC      设置文件entry缓存超时 (default: 0.0)
-        -o ufsdirentrycacheto=SEC   设置目录entry缓存超时 (default: 1.0)
-        -o ufsnegentrycacheto=SEC   设置neg entry缓存超时  (default: 0.0)
-        -o ufsgroupscacheto=SEC     设置用户组缓存超时 (default: 300.0)
+```shell
+    -o ufscachemode=CMODE       设置缓存模式(default: AUTO)
+    -o ufsattrcacheto=SEC       设置属性缓存超时 (default: 1.0)
+    -o ufsxattrcacheto=SEC      设置扩展属性 (xattr) 缓存超时 (default: 30.0)
+    -o ufsentrycacheto=SEC      设置文件entry缓存超时 (default: 0.0)
+    -o ufsdirentrycacheto=SEC   设置目录entry缓存超时 (default: 1.0)
+    -o ufsnegentrycacheto=SEC   设置neg entry缓存超时  (default: 0.0)
+    -o ufsgroupscacheto=SEC     设置用户组缓存超时 (default: 300.0)
+```
 
 #### 3.4.2 IO 调优
 
-        -o ufsfsyncmintime=SEC      force fsync before last file close when file was opened/created at least SEC seconds earlier (default: 0.0 - always do fsync before close)
-        -o ufswritecachesize=N      设置write缓冲区大小，单位:MiB (default: 256)
-        -o ufsreadaheadsize=N       设置read缓冲区大小，单位:MiB  (default: 256)
-        -o ufsreadaheadleng=N       设置read预读取的文件大小，单位：B (default: 1048576)
-        -o ufsreadaheadtrigger=N    设置按顺序读取开启预读的字节数 (default: 10 * ufsreadaheadleng)
-        -o ufserroronlostchunk      启用数据块丢失时直接返回io error
-        -o ufserroronnospace        启用空间不足时直接返回io error
-        -o ufsioretries=N           设置I/O错误返回前的重试次数(default: 30)
-        -o ufstimeout=N             设置I/O错误返回前的最大超时秒数(default: 0 - which means no timeout)
-        -o ufslogretry=N            定义超过多少次I/O重试操作后客户端开始记录日志 (default: 5)
+```shell
+    -o ufsfsyncmintime=SEC      force fsync before last file close when file was opened/created at least SEC seconds earlier (default: 0.0 - always do fsync before close)
+    -o ufswritecachesize=N      设置write缓冲区大小，单位:MiB (default: 256)
+    -o ufsreadaheadsize=N       设置read缓冲区大小，单位:MiB  (default: 256)
+    -o ufsreadaheadleng=N       设置read预读取的文件大小，单位：B (default: 1048576)
+    -o ufsreadaheadtrigger=N    设置按顺序读取开启预读的字节数 (default: 10 * ufsreadaheadleng)
+    -o ufserroronlostchunk      启用数据块丢失时直接返回io error
+    -o ufserroronnospace        启用空间不足时直接返回io error
+    -o ufsioretries=N           设置I/O错误返回前的重试次数(default: 30)
+    -o ufstimeout=N             设置I/O错误返回前的最大超时秒数(default: 0 - which means no timeout)
+    -o ufslogretry=N            定义超过多少次I/O重试操作后客户端开始记录日志 (default: 5)
+```
 
 #### 3.4.3 系统调优
 
-        -o ufsrlimitnofile=N        设置客户端进程允许使用的fd句柄上限(root身份运行)  (default: 100000)
-        -o ufsnice=N                运行守护进程的 nice 级别 (default: -19)
-        -o ufsmemlock               允许锁定内存以避免使用swap
-        -o ufslimitarenas=N         将malloc arenas限制为给定值 - 防止服务器使用大量虚拟内存 (default: 4)
-        -o ufsallowoomkiller        允许OOM Killer
+```shell
+    -o ufsrlimitnofile=N        设置客户端进程允许使用的fd句柄上限(root身份运行)  (default: 100000)
+    -o ufsnice=N                运行守护进程的 nice 级别 (default: -19)
+    -o ufsmemlock               允许锁定内存以避免使用swap
+    -o ufslimitarenas=N         将malloc arenas限制为给定值 - 防止服务器使用大量虚拟内存 (default: 4)
+    -o ufsallowoomkiller        允许OOM Killer
+```
 
 #### 3.4.4 通用配置
 
-```
+```shell
     -o nonempty                 允许UFS挂载非空目录
     -o ufscfgfile=CFGFILE       设置客户端配置文件以便从文件中加载配置参数(default: /etc/ufs/ufsmount.cfg)
     -o ufsdebug                 输出调试信息
@@ -429,28 +425,177 @@ ufsmount -h
     -o ufsnoxattrs              关闭xattr功能
     -o ufsnoposixlocks          关闭posix locks (lockf + ioctl)功能
     -o ufsnobsdlocks            关闭BSD locks (flock)功能
+```
 
+#### 3.4.5 附加特性
+
+```shell
+	-o fsname=NAME ⾃定义⽂件系统名称
+	-o ufspreflabels=LABELEXPR 指定在 I/O 期间选择chunkserver的⾸选标签
+	-o ufsnoxattrs 关闭xattr功能
+	-o ufsnoposixlocks 关闭posix locks (lockf + ioctl)功能
+	-o ufsnobsdlocks 关闭BSD locks (flock)功能
 ```
 
 ### 3.5 应用场景
 
 #### 3.5.1 自动挂载
 
-通过配置`/etc/fstab`可实现 Unix/Linux 平台下客户端自动挂载。
+对于 **CentOS、Ubuntu/Debian** 等 **Linux** 操作系统，⽀持以 **fstab** 和 **systemd** 两种⽅式进⾏开机⾃动挂载
 
-在`/etc/fstab`中增加以下内容：
+::: warning 注意
 
+1. 通过定义/etc/hosts主机配置，在ufsmount命令⾏中可以简化 "-H"、"-o ufsmaster="等参数定义。"-H"参数可以指定多个meta服务IP或者主机名；"-o ufsmaster="参数仅⽀持指定单个meta服务IP或者主机名
+
+2. 通过定义默认的/etc/ufs/ufsmount.cfg挂载配置⽂件，在ufsmount命令⾏和fstab中可以简化 "-o "等系列参数的定义
+
+3. 由于客户端可能优先启动于 UFS 集群，导致客户端注册失败从⽽⽆法⾃动挂载，这种情况下需要在客户端配置⽂件(/etc/ufs/ufsmount.cfg)或者命令⾏中增加ufsdelayedinit参数项，以便⽀持此场景
+
+::: 
+
+##### **3.5.1.1 systemd ⾃动挂载**
+
+在 **Linux** 操作系统中通过 **systemd** 系统管理⼯具实现 **ufsmount** 开机⾃动挂载功能
+
+**步骤1：** 创建 **systemd** 配置模板 
+
+新建名为 **ufs-automount.service** 的⽂本⽂件（配置名字可以⾃*定义*），存放到 `/usr/lib/systemd/system` 路径下，通过 **systemd** 配置语法指定相应的启动参数
+
+**ufs-automount.service** 的内容⽰例如下
+
+```ini
+[Unit]
+Description=UFS Client Helper
+Wants=network-online.target
+After=network.target network-online.target
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/ufsmount3 -o ufssubfolder=/,ufsdelayedinit -H
+172.16.120.111,172.16.120.112,172.16.120.113 /mnt/ufs
+Restart=on-abnormal
+RestartSec=120s
+
+[Install]
+WantedBy=multi-user.target
 ```
-#
+
+> ⚠️**注意：** **ExecStart** 为命令⾏挂载语法，⽤户需要替换为实际的挂载参数 
+
+通过配置`/etc/fstab`可实现 Unix/Linux 平台下客户端自动挂载
+
+**步骤2：** 通过 **systemctl** ⼯具设置开机启动
+
+```shell
+# 0. 向操作系统注册 ufs-automount.service
+systemctl daemon-reload
+
+# 1. 启⽤服务 - 允许开机⾃动运⾏
+systemctl enable ufs-automount.service
+
+# 2. ⽴即启动服务
+systemctl start ufs-automount.service
+
+# 3. ⽴即停⽌服务
+systemctl stop ufs-automount.service
+
+# 4. 查看服务运⾏状态
+systemctl status ufs-automount.service
+```
+
+**步骤3：** 验证以上配置是否⽣效，重启查看是否挂载即可
+
+##### **3.5.1.2  fstab ⾃动挂载** 
+
+在 **Linux** 操作系统中通过 **fstab** 方式实现 **ufsmount** 开机⾃动挂载功能
+
+**步骤1：**  安装 **fuse** ⼯具包 
+
+ ::: tabs
+
+@CentOS 7.x
+
+```shell
+$ yum install fuse fuse3
+```
+
+@Ubuntu 20.04 / Debian 11.x
+
+```shell
+$ apt install fuse fuse3
+```
+
+@openSUSE-Leap-15.x
+
+```shell
+sudo zypper install fuse fuse3
+```
+
+:::
+
+**步骤2：** 配置 **fstab**
+
+通过 **vim** 编辑 `/etc/fstab` ，增加⾃动挂载路径（`/mnt/ufs`），示例如下
+
+```shell
 # /etc/fstab
-# Created by anaconda on Sun Apr  8 04:45:34 2018
-#
-
-ufsmount    /mnt/ufs   fuse ufssubfolder=/,ufsdelayedinit=1     0 0
-
+ufsmount3 /mnt/ufs fuse ufsdelayedinit,ufsioretries=120,ufssubfolder=/0 0
 ```
 
-#### 3.5.2 查询运行参数
+**步骤3：** 验证以上配置是否⽣效
+
+```shell
+# 验证 /mnt/ufs 是否能挂载
+mount /mnt/ufs
+
+# 卸载/mnt/ufs
+umount /mnt/ufs
+```
+
+#### 3.5.2 查看操作⽇志
+
+以 `/mnt/ufs` 为客户端挂载点为⽰例
+
+```shell
+cat /mnt/ufs/.oplog
+# 输出⽰例如下
+08.18 17:48:30.986145: uid:0 gid:0 pid:27219 cmd:readdirplus
+(165735,4096,1414) [handle:00000007]: OK (3984)
+08.18 17:48:30.986247: uid:0 gid:0 pid:27219 cmd:readdir (165735,4096,2493)
+[handle:00000007]: OK (880)
+08.18 17:48:30.986307: uid:0 gid:0 pid:27219 cmd:readdir (165735,4096,2493)
+[handle:00000007]: OK (no data)
+08.18 17:48:30.986682: uid:0 gid:0 pid:0 cmd:releasedir (165735)
+[handle:00000000]: OK
+08.18 17:48:30.986687: uid:0 gid:0 pid:0 cmd:releasedir (165731)
+[handle:00000000]: OK
+08.18 17:48:30.987260: uid:0 gid:0 pid:27219 cmd:opendir (136392): OK
+[handle:00000002]
+```
+
+#### 3.5.3 自定义挂载参数
+
+**方法1：** 通过命令⾏参数
+
+```shell
+ufsmount /mnt/ufs \
+	-H 172.16.120.111,172.16.120.112,172.16.120.113 \
+	-o ufsloglevel=debug \
+	-o ufslogfile=/var/log/ufs/ufsmount_xingang.log \
+	-o ufsrlimitnofile=1024000 \
+	-o ufsioretries=120 \
+	-o ufssubfolder=/Users/Xingang
+```
+
+**方法2：** 通过配置⽂件
+
+```shell
+ufsmount /mnt/ufs -c /etc/ufs/your_ufsmount.cfg
+```
+
+#### 3.5.4 查询挂载参数
+
+以 `/mnt/ufs` 为客户端挂载点为示例
 
 ```
 cat /mnt/ufs/.params
@@ -526,7 +671,7 @@ kernel_defaults_mask: 0xFC0B
 kernel_working_mask: 0xEC5B
 ```
 
-#### 3.5.3 查看操作日志
+#### 3.5.5 查看操作日志
 
 以`/mnt/ufs`为客户端挂载点为示例。
 
@@ -550,3 +695,131 @@ cat /mnt/ufs/.oplog
 08.18 17:48:30.988008: uid:0 gid:0 pid:27219 cmd:readdir (136392,4096,137) [handle:00000002]: OK (no data)
 ...
 ```
+
+#### 3.5.6 查询运行日志
+
+以 `/var/log/ufs/ufsmount.log` 为⽇志⽰例
+
+1. 客户端启动⽇志
+
+   ```shell
+   [2022-07-28 10:36:54.520 info 30275:30275] setting glibc malloc arena max to 4
+   [2022-07-28 10:36:54.520 info 30275:30275] setting glibc malloc arena test to 4
+   [2022-07-28 10:36:54.520 info 30275:30275] out of memory killer disabled
+   17 / 22[2022-07-28 10:36:54.520 info 30275:30275] monotonic clock function: clock_gettime
+   [2022-07-28 10:36:54.530 info 30275:30275] monotonic clock speed: 679351 ops / 10 miliseconds
+   [2022-07-28 10:36:54.541 info 30275:30287] my st_dev: 51
+   ```
+
+2. Leader离线
+
+   ```shell
+   [2022-07-28 11:04:32.264 warning 4681:4684] master: connection lost (header)
+   [2022-07-28 11:04:32.267 warning 4681:4684] ufsmaster 172.16.120.112 - doesn't know his
+   leader, waiting a moment and retrying using different IP
+   [2022-07-28 11:04:32.268 warning 4681:4684] ufsmaster 172.16.120.112 - doesn't know his
+   leader, waiting a moment and retrying using different IP
+   [2022-07-28 11:04:34.269 warning 4681:4684] ufsmaster 172.16.120.112 - doesn't know his
+   leader, waiting a moment and retrying using different IP
+   [2022-07-28 11:04:34.270 warning 4681:4684] ufsmaster 172.16.120.113 - doesn't know his
+   leader, waiting a moment and retrying using different IP
+   [2022-07-28 11:04:36.272 warning 4681:4684] ufsmaster 172.16.120.113 - doesn't know his
+   leader, waiting a moment and retrying using different IP
+   ```
+
+3. 向New Leader注册
+
+   ```shell
+   [2022-07-28 11:04:36.272 warning 4681:4684] ufsmaster found leader: 172.16.120.113
+   [2022-07-28 11:04:38.274 warning 4681:4684] ufsmaster 172.16.120.113 - doesn't know his
+   leader, waiting a moment and retrying using different IP
+   [2022-07-28 11:04:38.275 warning 4681:4684] can't connect to master
+   ("172.16.120.112":"9421")
+   [2022-07-28 11:04:42.279 warning 4681:4684] ufsmaster 172.16.120.113 - doesn't know his
+   leader, waiting a moment and retrying using different IP
+   [2022-07-28 11:04:42.279 warning 4681:4684] ufsmaster found leader: 172.16.120.113
+   [2022-07-28 11:04:42.280 warning 4681:4684] ufsmaster 172.16.120.113 - doesn't know his
+   leader, waiting a moment and retrying using different IP
+   [2022-07-28 11:04:44.281 info 4681:4684] registered to master
+   ```
+
+4. ⽂件的数据块离线, 导致客户端⽆法读数据(read)、写数据(write)
+
+   ```shell
+   # a. 存储节点不在线
+   # b. CSS服务未启动
+   [2022-07-28 11:09:11.859 warning 4681:4817] file: 359987, index: 0, chunk:
+   0000000010AF62DE, version: 00000003 - there are no valid copies
+   [2022-07-28 11:09:21.860 warning 4681:4688] file: 359987, index: 0, chunk:
+   0000000010AF62DE, version: 00000003 - there are no valid copies
+   [2022-07-28 11:09:21.860 warning 4681:4818] file: 359987, index: 0, chunk:
+   0000000010AF62DE, version: 00000003 - there are no valid copies
+   [2022-07-28 11:32:45.770 warning 8706:12146] file: 72628, index: 0, chunk:
+   0000000010B2618C, version: 00000002 - there are no valid copies
+   [2022-07-28 11:32:55.771 warning 8706:12147] file: 72628, index: 0, chunk:
+   0000000010B2618C, version: 00000002 - there are no valid copies 
+   ```
+
+5. chunkserver离线，导致客户端⽆法写数据
+
+   ```shell
+   [2022-07-28 11:20:41.754 warning 8706:8715] file: 72628, index: 0 - fs_writechunk returned
+   status: Chunkserver not present
+   [2022-07-28 11:20:43.255 warning 8706:9629] file: 72628, index: 0 - fs_writechunk returned
+   status: Chunkserver not present
+   [2022-07-28 11:20:45.056 warning 8706:8715] file: 72628, index: 0 - fs_writechunk returned
+   status: Chunkserver not present
+   [2022-07-28 11:20:47.157 warning 8706:9629] file: 72628, index: 0 - fs_writechunk returned
+   status: Chunkserver not present
+   [2022-07-28 11:20:49.558 warning 8706:8715] file: 72628, index: 0 - fs_writechunk returned
+   status: Chunkserver not present
+   [2022-07-28 11:20:52.260 warning 8706:9629] file: 72628, index: 0 - fs_writechunk returned
+   status: Chunkserver not present
+   [2022-07-28 11:20:55.261 warning 8706:8715] file: 72628, index: 0 - fs_writechunk returned
+   status: Chunkserver not present
+   [2022-07-28 11:20:58.562 warning 8706:9629] file: 72628, index: 0 - fs_writechunk returned
+   status: Chunkserver not present
+   ```
+
+6. 磁盘离线， 导致客户端⽆法写数据
+
+   ```shell
+   [2022-07-28 11:25:19.261 warning 8706:9629] file: 72628, index: 0 - fs_writechunk returned
+   status: Chunk lost
+   [2022-07-28 11:25:21.063 warning 8706:8715] file: 72628, index: 0 - fs_writechunk returned
+   status: Chunk lost
+   [2022-07-28 11:25:23.164 warning 8706:9629] file: 72628, index: 0 - fs_writechunk returned
+   status: Chunk lost
+   [2022-07-28 11:25:25.565 warning 8706:8715] file: 72628, index: 0 - fs_writechunk returned
+   status: Chunk lost
+   [2022-07-28 11:25:28.266 warning 8706:9629] file: 72628, index: 0 - fs_writechunk returned
+   status: Chunk lost
+   [2022-07-28 11:27:16.594 warning 8706:8715] error writing file number 72628: ENXIO (No
+   such device or address)
+   ```
+
+7. 磁盘离线， 导致客户端⽆法读数据
+
+   ```shell
+   [2022-07-28 11:28:31.087 warning 8706:12146] file: 72628, index: 0 - fs_readchunk returned
+   status: Chunk lost
+   [2022-07-28 11:28:32.289 warning 8706:12147] file: 72628, index: 0 - fs_readchunk returned
+   status: Chunk lost
+   [2022-07-28 11:28:33.488 warning 8706:8713] file: 72628, index: 0 - fs_readchunk returned
+   status: Chunk lost
+   [2022-07-28 11:28:34.990 warning 8706:12146] file: 72628, index: 0 - fs_readchunk returned
+   status: Chunk lost
+   [2022-07-28 11:28:36.491 warning 8706:12147] file: 72628, index: 0 - fs_readchunk returned
+   status: Chunk lost
+   [2022-07-28 11:28:38.291 warning 8706:8713] file: 72628, index: 0 - fs_readchunk returned
+   status: Chunk lost
+   [2022-07-28 11:28:40.093 warning 8706:12146] file: 72628, index: 0 - fs_readchunk returned
+   status: Chunk lost
+   [2022-07-28 11:29:26.301 warning 8706:12146] file: 72628, index: 0 - fs_readchunk returned
+   status: Chunk lost
+   [2022-07-28 11:29:26.301 warning 8706:12146] error reading file number 72628: ENXIO (No
+   such device or address)
+   ```
+
+   
+

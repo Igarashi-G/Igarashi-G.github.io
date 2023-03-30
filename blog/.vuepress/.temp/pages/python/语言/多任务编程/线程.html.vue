@@ -1,5 +1,6 @@
-<template><div><h1 id="线程" tabindex="-1"><a class="header-anchor" href="#线程" aria-hidden="true">#</a> 线程</h1>
-<Alert type="info">**线程**(`thread`) 是 _操作系统运算调度_ 的<Font type="success">最小单位</Font>，它被包含在 [进程](/back_end/python/base/资源调度/进程) 之中，是进程中的实际运作单位。</Alert><h2 id="一、区分概念" tabindex="-1"><a class="header-anchor" href="#一、区分概念" aria-hidden="true">#</a> 一、区分概念</h2>
+<template><div><p><strong>线程（<em>thread</em>） ：</strong> 它是 <strong>操作系统运算调度</strong> 的最小单位，它被包含在 <a href="/back_end/python/base/%E8%B5%84%E6%BA%90%E8%B0%83%E5%BA%A6/%E8%BF%9B%E7%A8%8B">进程</a> 之中，是进程中的实际运作单位</p>
+<!-- more -->
+<h2 id="_1-区分概念" tabindex="-1"><a class="header-anchor" href="#_1-区分概念" aria-hidden="true">#</a> 1. 区分概念</h2>
 <h3 id="_1-cpu-级别的线程" tabindex="-1"><a class="header-anchor" href="#_1-cpu-级别的线程" aria-hidden="true">#</a> 1. CPU 级别的线程：</h3>
 <p><strong>此线程非彼线程</strong>：</p>
 <p>我们买硬件时常说如：<code v-pre>CPU 酷睿i9-11900K 8核16线程</code>，这里的线程，<strong>意味着是能够同时<Font>并行执行</Font> 16 个程序</strong> 的意思</p>

@@ -4156,9 +4156,9 @@ export const searchIndex = [
     "headers": [
       {
         "level": 2,
-        "title": "一、区分概念",
-        "slug": "一、区分概念",
-        "link": "#一、区分概念",
+        "title": "1. 区分概念",
+        "slug": "_1-区分概念",
+        "link": "#_1-区分概念",
         "children": [
           {
             "level": 3,
@@ -4271,7 +4271,7 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "进程",
+    "title": "Python高性能编程",
     "headers": [
       {
         "level": 2,
@@ -5437,28 +5437,79 @@ export const searchIndex = [
     "title": "NFS服务",
     "headers": [
       {
-        "level": 3,
+        "level": 2,
         "title": "1. 简介",
         "slug": "_1-简介",
         "link": "#_1-简介",
         "children": []
       },
       {
-        "level": 3,
+        "level": 2,
         "title": "2. 安装及配置",
         "slug": "_2-安装及配置",
         "link": "#_2-安装及配置",
-        "children": []
+        "children": [
+          {
+            "level": 3,
+            "title": "2.1 安装NFS客户端",
+            "slug": "_2-1-安装nfs客户端",
+            "link": "#_2-1-安装nfs客户端",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "2.2 基本配置",
+            "slug": "_2-2-基本配置",
+            "link": "#_2-2-基本配置",
+            "children": []
+          }
+        ]
       },
       {
-        "level": 3,
+        "level": 2,
         "title": "3. 使用及说明",
         "slug": "_3-使用及说明",
         "link": "#_3-使用及说明",
-        "children": []
+        "children": [
+          {
+            "level": 3,
+            "title": "3.1 exportfs 工具",
+            "slug": "_3-1-exportfs-工具",
+            "link": "#_3-1-exportfs-工具",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "3.2 发现 NFS 导出",
+            "slug": "_3-2-发现-nfs-导出",
+            "link": "#_3-2-发现-nfs-导出",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "3.3 挂载 NFS 文件系统",
+            "slug": "_3-3-挂载-nfs-文件系统",
+            "link": "#_3-3-挂载-nfs-文件系统",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "3.4 卸载",
+            "slug": "_3-4-卸载",
+            "link": "#_3-4-卸载",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "3.5 获取挂载 NFS 客户端",
+            "slug": "_3-5-获取挂载-nfs-客户端",
+            "link": "#_3-5-获取挂载-nfs-客户端",
+            "children": []
+          }
+        ]
       },
       {
-        "level": 3,
+        "level": 2,
         "title": "4. V4 无法直接挂载问题",
         "slug": "_4-v4-无法直接挂载问题",
         "link": "#_4-v4-无法直接挂载问题",
@@ -5561,16 +5612,23 @@ export const searchIndex = [
         "children": [
           {
             "level": 3,
-            "title": "安装",
-            "slug": "安装",
-            "link": "#安装",
+            "title": "2.1 客户端安装",
+            "slug": "_2-1-客户端安装",
+            "link": "#_2-1-客户端安装",
             "children": []
           },
           {
             "level": 3,
-            "title": "配置",
-            "slug": "配置",
-            "link": "#配置",
+            "title": "2.2 服务端安装",
+            "slug": "_2-2-服务端安装",
+            "link": "#_2-2-服务端安装",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "2.3 服务端配置",
+            "slug": "_2-3-服务端配置",
+            "link": "#_2-3-服务端配置",
             "children": []
           }
         ]
@@ -5583,9 +5641,52 @@ export const searchIndex = [
         "children": [
           {
             "level": 3,
-            "title": "4. 公网连接",
-            "slug": "_4-公网连接",
-            "link": "#_4-公网连接",
+            "title": "3.1 挂载SMB文件系统",
+            "slug": "_3-1-挂载smb文件系统",
+            "link": "#_3-1-挂载smb文件系统",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "3.2 卸载",
+            "slug": "_3-2-卸载",
+            "link": "#_3-2-卸载",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "3.3 关于 Windows客户端 的注意事项",
+            "slug": "_3-3-关于-windows客户端-的注意事项",
+            "link": "#_3-3-关于-windows客户端-的注意事项",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "3.4 pdbedit 的使用",
+            "slug": "_3-4-pdbedit-的使用",
+            "link": "#_3-4-pdbedit-的使用",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "4. 公网SMB连接",
+        "slug": "_4-公网smb连接",
+        "link": "#_4-公网smb连接",
+        "children": [
+          {
+            "level": 3,
+            "title": "4.1 Linux Samba 服务端",
+            "slug": "_4-1-linux-samba-服务端",
+            "link": "#_4-1-linux-samba-服务端",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "4.2 Windows 客户端",
+            "slug": "_4-2-windows-客户端",
+            "link": "#_4-2-windows-客户端",
             "children": []
           }
         ]
@@ -5690,6 +5791,28 @@ export const searchIndex = [
         "title": "1. RPM打包",
         "slug": "_1-rpm打包",
         "link": "#_1-rpm打包",
+        "children": [
+          {
+            "level": 3,
+            "title": "1.1 管理平台 RPM 打包",
+            "slug": "_1-1-管理平台-rpm-打包",
+            "link": "#_1-1-管理平台-rpm-打包",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "1.2 其他",
+            "slug": "_1-2-其他",
+            "link": "#_1-2-其他",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "2. iso打包",
+        "slug": "_2-iso打包",
+        "link": "#_2-iso打包",
         "children": []
       }
     ],
@@ -7925,16 +8048,3 @@ export const searchIndex = [
     "extraFields": []
   }
 ]
-
-if (import.meta.webpackHot) {
-  import.meta.webpackHot.accept()
-  if (__VUE_HMR_RUNTIME__.updateSearchIndex) {
-    __VUE_HMR_RUNTIME__.updateSearchIndex(searchIndex)
-  }
-}
-
-if (import.meta.hot) {
-  import.meta.hot.accept(({ searchIndex }) => {
-    __VUE_HMR_RUNTIME__.updateSearchIndex(searchIndex)
-  })
-}

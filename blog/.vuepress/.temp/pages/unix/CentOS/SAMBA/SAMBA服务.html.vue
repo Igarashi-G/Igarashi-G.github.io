@@ -1,35 +1,33 @@
 <template><div><p><a href="https://www.samba.org/" target="_blank" rel="noopener noreferrer">Samba 文档<ExternalLinkIcon/></a></p>
 <!-- more -->
-<h1 id="samba-server" tabindex="-1"><a class="header-anchor" href="#samba-server" aria-hidden="true">#</a> SAMBA Server</h1>
+<h1 id="samba" tabindex="-1"><a class="header-anchor" href="#samba" aria-hidden="true">#</a> SAMBA</h1>
 <h2 id="_1-概述" tabindex="-1"><a class="header-anchor" href="#_1-概述" aria-hidden="true">#</a> 1. 概述</h2>
 <h2 id="_2-安装-配置" tabindex="-1"><a class="header-anchor" href="#_2-安装-配置" aria-hidden="true">#</a> 2.安装&amp;配置</h2>
-<h3 id="安装" tabindex="-1"><a class="header-anchor" href="#安装" aria-hidden="true">#</a> 安装</h3>
-<ul>
-<li>
-<p>CentOS 下安装客户端</p>
-<div class="language-text ext-text line-numbers-mode"><pre v-pre class="language-text"><code>
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div></li>
-</ul>
-<h3 id="配置" tabindex="-1"><a class="header-anchor" href="#配置" aria-hidden="true">#</a> 配置</h3>
-<Alert type="info">通常在 `/etc/samba/smb.conf` 文件中指定**日志**文件名称和**共享**存放路径</Alert><h5 id="常规全局配置" tabindex="-1"><a class="header-anchor" href="#常规全局配置" aria-hidden="true">#</a> 常规全局配置：</h5>
+<h3 id="_2-1-客户端安装" tabindex="-1"><a class="header-anchor" href="#_2-1-客户端安装" aria-hidden="true">#</a> 2.1 客户端安装</h3>
+<Tabs :data='[]'>
+</Tabs>
+<h3 id="_2-2-服务端安装" tabindex="-1"><a class="header-anchor" href="#_2-2-服务端安装" aria-hidden="true">#</a> 2.2 服务端安装</h3>
+<h3 id="_2-3-服务端配置" tabindex="-1"><a class="header-anchor" href="#_2-3-服务端配置" aria-hidden="true">#</a> 2.3 服务端配置</h3>
+<p>通常在 <code v-pre>/etc/samba/smb.conf</code> 文件中指定 <strong>日志</strong> 文件名称和 <strong>共享</strong> 存放路径</p>
+<h5 id="常规全局配置" tabindex="-1"><a class="header-anchor" href="#常规全局配置" aria-hidden="true">#</a> 常规全局配置：</h5>
 <blockquote>
-<p><code v-pre>#</code>号开头：默认的文字注释信息</p>
-<p><code v-pre>；</code>号开头：默认的注释配置项</p>
+<p><code v-pre>#</code> 号开头：默认的文字注释信息</p>
+<p><code v-pre>;</code> 号开头：默认的注释配置项</p>
 </blockquote>
-<div class="language-text ext-text line-numbers-mode"><pre v-pre class="language-text"><code>[global]
-	workgroup = SAMBA
-	security = user
+<div class="language-ini ext-ini line-numbers-mode"><pre v-pre class="language-ini"><code><span class="token section"><span class="token punctuation">[</span><span class="token section-name selector">global</span><span class="token punctuation">]</span></span>
+	<span class="token key attr-name">workgroup</span> <span class="token punctuation">=</span> <span class="token value attr-value">SAMBA</span>
+	<span class="token key attr-name">security</span> <span class="token punctuation">=</span> <span class="token value attr-value">user</span>
 
-#注释网卡配置项
-;	interfaces = lo eth0 192.168.1.12/24 172.168.13.2/24
-	passdb backend = tdbsam
+<span class="token comment"># 注释网卡配置项</span>
+<span class="token comment">;	interfaces = lo eth0 192.168.1.12/24 172.168.13.2/24</span>
+	<span class="token key attr-name">passdb backend</span> <span class="token punctuation">=</span> <span class="token value attr-value">tdbsam</span>
 
-	printing = cups
-	printcap name = cups
-	load printers = yes
-	cups options = raw
+	<span class="token key attr-name">printing</span> <span class="token punctuation">=</span> <span class="token value attr-value">cups</span>
+	<span class="token key attr-name">printcap name</span> <span class="token punctuation">=</span> <span class="token value attr-value">cups</span>
+	<span class="token key attr-name">load printers</span> <span class="token punctuation">=</span> <span class="token value attr-value">yes</span>
+	<span class="token key attr-name">cups options</span> <span class="token punctuation">=</span> <span class="token value attr-value">raw</span>
 
-	include = /etc/samba/smb_share.conf
+	<span class="token key attr-name">include</span> <span class="token punctuation">=</span> <span class="token value attr-value">/etc/samba/smb_share.conf</span>
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p><strong>[global]</strong>: 关键字，全局配置</p>
 <ul>
 <li>
@@ -88,8 +86,8 @@
 <blockquote>
 <p>当配置 <code v-pre>include = registry</code> 时，不是键入当前目录下的 <code v-pre>registry</code> 文件，是从注册表中读取全局配置选项，此时可以通过 <code v-pre>net conf</code> 进行对 <code v-pre>samba</code> 的配置，如：</p>
 </blockquote>
-<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code>net conf addshare igarashi /export/nas/igarashi
-net conf list
+<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code>$ net conf addshare igarashi /export/nas/igarashi
+$ net conf list
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div></div></div></li>
 </ul>
 <hr>
@@ -189,21 +187,83 @@ net conf list
 <li></li>
 </ul>
 <h2 id="_3-命令" tabindex="-1"><a class="header-anchor" href="#_3-命令" aria-hidden="true">#</a> 3. 命令</h2>
-<h5 id="基本的挂载、卸载" tabindex="-1"><a class="header-anchor" href="#基本的挂载、卸载" aria-hidden="true">#</a> 基本的挂载、卸载</h5>
-<ul>
-<li>
+<h3 id="_3-1-挂载smb文件系统" tabindex="-1"><a class="header-anchor" href="#_3-1-挂载smb文件系统" aria-hidden="true">#</a> 3.1 挂载SMB文件系统</h3>
 <p>基本挂载</p>
-<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code><span class="token comment"># 通过IP挂载</span>
+<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code><span class="token comment"># 挂载命令格式如下</span>
+$ <span class="token function">mount</span> <span class="token parameter variable">-t</span> cifs //<span class="token operator">&lt;</span>挂载点<span class="token operator">></span>/share <span class="token operator">&lt;</span>挂载目录<span class="token operator">></span> <span class="token parameter variable">-o</span> <span class="token operator">&lt;</span>挂载选项<span class="token operator">></span>
+
+<span class="token comment"># 通过IP挂载</span>
 $ <span class="token function">mount</span> <span class="token parameter variable">-t</span> cifs //172.16.120./test /mnt/uit-share02/
 $ Password <span class="token keyword">for</span> root@//10.10.10.223/test
-
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></li>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>挂载 <strong>SMB v2.1</strong></p>
+<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code>$ <span class="token function">mount</span> <span class="token parameter variable">-t</span> cifs //nas.uds.local/share /mnt/smb <span class="token parameter variable">-o</span> <span class="token assign-left variable">vers</span><span class="token operator">=</span><span class="token number">2.1</span>,uid<span class="token operator">=</span><span class="token number">0</span>,gid<span class="token operator">=</span><span class="token number">0</span>,dir_mode<span class="token operator">=</span>0755,file_mode<span class="token operator">=</span>0755,mfsymlinks,cache<span class="token operator">=</span>strict,rsize<span class="token operator">=</span><span class="token number">1048576</span>,wsize<span class="token operator">=</span><span class="token number">1048576</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p>挂载 <strong>SMB v3.0</strong></p>
+<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code>$ <span class="token function">mount</span> <span class="token parameter variable">-t</span> cifs //nas.uds.local/share /mnt/smb <span class="token parameter variable">-o</span> <span class="token assign-left variable">vers</span><span class="token operator">=</span><span class="token number">3.0</span>,uid<span class="token operator">=</span><span class="token number">0</span>,gid<span class="token operator">=</span><span class="token number">0</span>,dir_mode<span class="token operator">=</span>0755,file_mode<span class="token operator">=</span>0755,mfsymlinks,cache<span class="token operator">=</span>strict,rsize<span class="token operator">=</span><span class="token number">1048576</span>,wsize<span class="token operator">=</span><span class="token number">1048576</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p>以 <strong>Guest</strong> 匿名身份进行挂载</p>
+<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code>$ <span class="token function">mount</span> <span class="token parameter variable">-t</span> cifs //nas.uds.local/share /mnt/smb <span class="token parameter variable">-o</span> <span class="token assign-left variable">vers</span><span class="token operator">=</span><span class="token number">2.0</span>,guest,uid<span class="token operator">=</span><span class="token number">0</span>,gid<span class="token operator">=</span><span class="token number">0</span>,dir_mode<span class="token operator">=</span>0755,file_mode<span class="token operator">=</span>0755,mfsymlinks,cache<span class="token operator">=</span>strict,rsize<span class="token operator">=</span><span class="token number">1048576</span>,wsize<span class="token operator">=</span><span class="token number">1048576</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p>以 <strong>username + password</strong> 身份进行挂载</p>
+<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code>$ <span class="token function">mount</span> <span class="token parameter variable">-t</span> cifs //nas.uds.local/share /mnt/smb <span class="token parameter variable">-o</span> <span class="token assign-left variable">vers</span><span class="token operator">=</span><span class="token number">2.0</span>,username<span class="token operator">=</span>uds,password<span class="token operator">=</span>udspass,uid<span class="token operator">=</span><span class="token number">0</span>,gid<span class="token operator">=</span><span class="token number">0</span>,dir_mode<span class="token operator">=</span>0755,file_mode<span class="token operator">=</span>0755,mfsymlinks,cache<span class="token operator">=</span>strict,rsize<span class="token operator">=</span><span class="token number">1048576</span>,wsize<span class="token operator">=</span><span class="token number">1048576</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><h5 id="参数说明" tabindex="-1"><a class="header-anchor" href="#参数说明" aria-hidden="true">#</a> <strong>参数说明</strong></h5>
+<ul>
+<li><span style="color: blue"><strong>文件系统类型：</strong></span> 必须配置 <strong>-t cifs</strong> 参数</li>
+<li><span style="color: blue"><strong>&lt;挂载点&gt;：</strong></span> 创建文件系统挂载点时，需根据实际值替换自动生成的挂载点</li>
+<li><span style="color: blue"><strong>&lt;挂载目录&gt;：</strong></span> 要挂载的目标路径，例如：<code v-pre>/mnt/smb</code></li>
+<li><span style="color: blue"><strong>vers：</strong></span> 指定 <strong>v2.0</strong> 或 <strong>v3.0</strong> 协议版本</li>
+<li><span style="color: blue"><strong>guest：</strong></span> 只支持基于 <strong>ntlm</strong> 认证协议的客户端挂载</li>
+<li><span style="color: blue"><strong>rsize：</strong></span> 用来设置读数据包的最大限制，建议值 <strong>1048576（<em>1MB</em>）</strong></li>
+<li><span style="color: blue"><strong>wsize：</strong></span> 用来设置写数据包的最大限制，建议值 <strong>1048576（<em>1MB</em>）</strong></li>
+<li><span style="color: blue"><strong>uid：</strong></span> 挂载成功后，文件所属的用户，若未设置，默认<strong>uid=0</strong></li>
+<li><span style="color: blue"><strong>gid：</strong></span> 挂载成功后，文件所属的用户组，若未设置，默认 <strong>gid=0</strong></li>
+<li><span style="color: blue"><strong>dir_mode：</strong></span> 向用户授予指定目录的读取、写入和执行权限，必须以 <strong>0</strong> 开头 <em><strong>（如：0755、0644）等</strong></em>，若未设置，默认<strong>dir_mode=0755</strong></li>
+<li><span style="color: blue"><strong>file_mode：</strong></span> 向用户授予普通文件的读取、写入和执行权限。必须以 <strong>0</strong> 开头 <em><strong>（如：0755、0644）等</strong></em>，若未设置，默认 <strong>file_mode=0755</strong></li>
+<li><span style="color: blue"><strong>mfsymlinks：</strong></span> 支持 <strong>symbol link</strong> 功能</li>
+<li><span style="color: blue"><strong>cache：</strong></span> 设置 <strong>SMB</strong> 文件系统使用客户端缓存，若未设置，默认 <strong>cache=strict</strong>
+<ul>
+<li><strong>cache=none：</strong> 设置 <strong>SMB</strong> 文件系统不使用客户端缓存</li>
+</ul>
+</li>
+<li><span style="color: blue"><strong>atime：</strong></span></li>
+</ul>
+<h5 id="查看挂载结果" tabindex="-1"><a class="header-anchor" href="#查看挂载结果" aria-hidden="true">#</a> <strong>查看挂载结果</strong></h5>
+<p>执行如下命令，查看挂载结果，若包含如下类似返回信息，说明挂载成功</p>
+<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code>$ <span class="token function">mount</span> <span class="token parameter variable">-l</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><img src="@source/unix/CentOS/Samba/img/smb挂载结果.png" /> 
+<p>挂载成功后，查看当前文件系统的容量信息</p>
+<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code>$ <span class="token function">df</span> <span class="token parameter variable">-h</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p><img src="@source/unix/CentOS/Samba/img/smb容量信息.png" /> 如果挂载失败，请进行错误排查</p>
+<h5 id="访问smb" tabindex="-1"><a class="header-anchor" href="#访问smb" aria-hidden="true">#</a> <strong>访问SMB</strong></h5>
+<p>挂载成功后，可在 <strong>Linux</strong> 上访问 <strong>NAS</strong> 文件系统，执行 读取 或 写入 操作，可把其当作一个普通的目录来访问和使用</p>
+<img src="@source/unix/CentOS/Samba/img/访问smb.png" /> 
+<h5 id="自动挂载smb客户端" tabindex="-1"><a class="header-anchor" href="#自动挂载smb客户端" aria-hidden="true">#</a> <strong>自动挂载SMB客户端</strong></h5>
+<p>为避免已挂载 <strong>SMB</strong> 文件系统的服务器重启后，挂载信息丢失，可在 <strong>Linux</strong> 系统中配置 <code v-pre>/etc/fstab</code> 文件，实现服务器设置重启时，<strong>SMB</strong> 文件系统自动挂载。</p>
+<p>打开 <code v-pre>/etc/fstab</code> 配置文件，添加挂载配置</p>
+<ul>
 <li>
-<p>强制卸载</p>
-<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code>$ <span class="token function">umount</span> <span class="token parameter variable">-f</span> <span class="token parameter variable">-a</span> <span class="token parameter variable">-t</span> cifs <span class="token parameter variable">-l</span> /挂载点
+<p>使用 <strong>SMB v2.1</strong> 协议挂载文件系统</p>
+<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code> //nas.uds.local/share /mnt/smb cifs auto,username<span class="token operator">=</span>uds,password<span class="token operator">=</span>udspass,vers<span class="token operator">=</span><span class="token number">2.1</span>,uid<span class="token operator">=</span><span class="token number">0</span>,gid<span class="token operator">=</span><span class="token number">0</span>,dir_mode<span class="token operator">=</span>0755,file_mode<span class="token operator">=</span>0755,mfsymlinks,cache<span class="token operator">=</span>strict,rsize<span class="token operator">=</span><span class="token number">1048576</span>,wsize<span class="token operator">=</span><span class="token number">1048576</span> <span class="token number">0</span> <span class="token number">0</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div></li>
+<li>
+<p>使用 <strong>SMB v3.0</strong> 协议挂载文件系统</p>
+<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code> //nas.uds.local/share /mnt/smb cifs auto,username<span class="token operator">=</span>uds,password<span class="token operator">=</span>udspass,vers<span class="token operator">=</span><span class="token number">3.0</span>,uid<span class="token operator">=</span><span class="token number">0</span>,gid<span class="token operator">=</span><span class="token number">0</span>,dir_mode<span class="token operator">=</span>0755,file_mode<span class="token operator">=</span>0755,mfsymlinks,cache<span class="token operator">=</span>strict,rsize<span class="token operator">=</span><span class="token number">1048576</span>,wsize<span class="token operator">=</span><span class="token number">1048576</span> <span class="token number">0</span> <span class="token number">0</span>
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div></li>
 </ul>
-<h5 id="清除-window-下-samba-的缓存" tabindex="-1"><a class="header-anchor" href="#清除-window-下-samba-的缓存" aria-hidden="true">#</a> 清除 Window 下 samba 的缓存</h5>
+<p>其参数说明如上挂载，其余参数说明如下：</p>
+<ul>
+<li><span style="color: blue"><strong>auto：</strong></span> 自动挂载 <strong>SMB</strong> 共享</li>
+<li><span style="color: blue"><strong>username：</strong></span> 登录账户</li>
+<li><span style="color: blue"><strong>password：</strong></span> 登录密码</li>
+<li><span style="color: blue"><strong>0（wsize后第一项）：</strong></span> 非零值表示文件系统应由 <strong>dump</strong> 备份，对于 <strong>NAS</strong> 文件系统而言，此值默认为 <strong>0</strong></li>
+<li><span style="color: blue"><strong>0（wsize后第二项）：</strong></span> 该值表示 <strong>fsck</strong> 在启动时检查文件系统的顺序，对于 <strong>NAS</strong> 文件系统而言，此值默认为 <strong>0</strong>，表示 <strong>fsck</strong> 不应在启动时运行</li>
+</ul>
+<h5 id="验证自动挂载" tabindex="-1"><a class="header-anchor" href="#验证自动挂载" aria-hidden="true">#</a> <strong>验证自动挂载</strong></h5>
+<p>执行重启命令，重启应用服务器，验证 <strong>SMB</strong> 客户端自动挂载</p>
+<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code>$ <span class="token function">reboot</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><h3 id="_3-2-卸载" tabindex="-1"><a class="header-anchor" href="#_3-2-卸载" aria-hidden="true">#</a> 3.2 卸载</h3>
+<p>强制卸载</p>
+<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code>$ <span class="token function">umount</span> <span class="token parameter variable">-f</span> <span class="token parameter variable">-a</span> <span class="token parameter variable">-t</span> cifs <span class="token parameter variable">-l</span> /挂载点
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><h3 id="_3-3-关于-windows客户端-的注意事项" tabindex="-1"><a class="header-anchor" href="#_3-3-关于-windows客户端-的注意事项" aria-hidden="true">#</a> 3.3 关于 Windows客户端 的注意事项</h3>
+<p><strong>windows</strong> 默认 不允许同一台机器使用多个用户身份去登录 <strong>SMB</strong>，因此切换用户时需要先清除缓存</p>
+<h5 id="清除-window-下-samba-的缓存" tabindex="-1"><a class="header-anchor" href="#清除-window-下-samba-的缓存" aria-hidden="true">#</a> <strong>清除 Window 下 samba 的缓存</strong></h5>
 <ul>
 <li>
 <p>查看缓存列表</p>
@@ -217,6 +277,7 @@ $ Password <span class="token keyword">for</span> root@//10.10.10.223/test
 </blockquote>
 </li>
 </ul>
+<h3 id="_3-4-pdbedit-的使用" tabindex="-1"><a class="header-anchor" href="#_3-4-pdbedit-的使用" aria-hidden="true">#</a> 3.4 pdbedit 的使用</h3>
 <h5 id="pdbedit-操作用户" tabindex="-1"><a class="header-anchor" href="#pdbedit-操作用户" aria-hidden="true">#</a> pdbedit 操作用户</h5>
 <ul>
 <li>
@@ -242,14 +303,14 @@ $ <span class="token builtin class-name">echo</span> <span class="token paramete
 <div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code>$ pdbedit <span class="token parameter variable">-x</span> zz
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div></li>
 </ul>
-<h3 id="_4-公网连接" tabindex="-1"><a class="header-anchor" href="#_4-公网连接" aria-hidden="true">#</a> 4. 公网连接</h3>
-<h4 id="linux-samba-服务端" tabindex="-1"><a class="header-anchor" href="#linux-samba-服务端" aria-hidden="true">#</a> Linux Samba 服务端</h4>
+<h2 id="_4-公网smb连接" tabindex="-1"><a class="header-anchor" href="#_4-公网smb连接" aria-hidden="true">#</a> 4. 公网SMB连接</h2>
+<h3 id="_4-1-linux-samba-服务端" tabindex="-1"><a class="header-anchor" href="#_4-1-linux-samba-服务端" aria-hidden="true">#</a> 4.1 Linux Samba 服务端</h3>
 <p>配置好共享后，需要去 <code v-pre>/etc/samba/smb.conf</code> 中修改</p>
 <div class="language-ini ext-ini line-numbers-mode"><pre v-pre class="language-ini"><code><span class="token section"><span class="token punctuation">[</span><span class="token section-name selector">global</span><span class="token punctuation">]</span></span>
 		...
 		<span class="token key attr-name">smb ports</span> <span class="token punctuation">=</span> <span class="token value attr-value">6727</span>
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>然后重启 <strong>samba</strong> 服务，或是直接路由器上设置 <strong>NAT</strong> 端口转发 <strong>445</strong> 转 <strong>6727</strong></p>
-<h4 id="windows-客户端" tabindex="-1"><a class="header-anchor" href="#windows-客户端" aria-hidden="true">#</a> Windows 客户端</h4>
+<h3 id="_4-2-windows-客户端" tabindex="-1"><a class="header-anchor" href="#_4-2-windows-客户端" aria-hidden="true">#</a> 4.2 Windows 客户端</h3>
 <p>需要先关闭 <strong>Windows 防火墙</strong>，检查 <strong>control</strong> -&gt; 程序 -&gt; 启用或关闭 <strong>Windows</strong> 功能 -&gt; 是否开启了 <strong>CIFS</strong> 文件共享支持（<em>可以关闭SMB直通，无影响</em>）</p>
 <h5 id="_1-组策略关闭禁止访问无密码的-samba-共享" tabindex="-1"><a class="header-anchor" href="#_1-组策略关闭禁止访问无密码的-samba-共享" aria-hidden="true">#</a> <strong>1. 组策略关闭禁止访问无密码的 Samba 共享</strong></h5>
 <p>直接 <kbd>Windows</kbd> + <kbd>r</kbd> 输入 <code v-pre>gpedit.msc</code> 服务</p>
@@ -281,20 +342,27 @@ netsh interface portproxy show all
 <span class="token comment"># 删除端口转发</span>
 netsh interface portproxy delete v4tov4 listenport=445 connectaddress=116<span class="token punctuation">.</span>31<span class="token punctuation">.</span>232<span class="token punctuation">.</span>32 connectport=6727
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h5 id="_5-输入-127-0-0-1-即可访问" tabindex="-1"><a class="header-anchor" href="#_5-输入-127-0-0-1-即可访问" aria-hidden="true">#</a> <strong>5.输入\\127.0.0.1 即可访问</strong></h5>
-<p><strong>Windows：</strong></p>
-<p>直接 <code v-pre>\\127.0.0.1\共享名</code>  输入账户名，密码即可访问</p>
-<p><strong>Linux:</strong></p>
-<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code>smbclient //116.31.232.32/myshare <span class="token parameter variable">-p</span> <span class="token number">6727</span> <span class="token parameter variable">-U</span> samba
+<Tabs :data='[{"title":"Windows"},{"title":"Linux"},{"title":"Mac端"},{"title":"手机端"}]'>
+<template #tab0="{ title, value, isActive }">
+<p>直接 <strong><code v-pre>\\127.0.0.1\共享名</code></strong>  输入账户名，密码即可访问</p>
+</template>
+<template #tab1="{ title, value, isActive }">
+<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code>$ smbclient //116.31.232.32/myshare <span class="token parameter variable">-p</span> <span class="token number">6727</span> <span class="token parameter variable">-U</span> samba
 
 <span class="token comment"># 若不知道目录，则要检索</span>
-smbclient <span class="token parameter variable">-L</span> //116.31.232.32 <span class="token parameter variable">-p</span> <span class="token number">6727</span> <span class="token parameter variable">-U</span> samba`
+$ smbclient <span class="token parameter variable">-L</span> //116.31.232.32 <span class="token parameter variable">-p</span> <span class="token number">6727</span> <span class="token parameter variable">-U</span> samba`
 
 <span class="token comment"># 挂载卸载</span>
-<span class="token function">mount</span> <span class="token parameter variable">-t</span> cifs //116.31.232.32/myshare /samba/samba1/ <span class="token parameter variable">-o</span> <span class="token assign-left variable">username</span><span class="token operator">=</span>xxx,password<span class="token operator">=</span>xxx,port<span class="token operator">=</span><span class="token number">6727</span>
-<span class="token function">umount</span> /samba/samba1/
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p><strong>Mac:</strong></p>
+$ <span class="token function">mount</span> <span class="token parameter variable">-t</span> cifs //116.31.232.32/myshare /samba/samba1/ <span class="token parameter variable">-o</span> <span class="token assign-left variable">username</span><span class="token operator">=</span>xxx,password<span class="token operator">=</span>xxx,port<span class="token operator">=</span><span class="token number">6727</span>
+$ <span class="token function">umount</span> /samba/samba1/
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></template>
+<template #tab2="{ title, value, isActive }">
 <div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code>smb://用户名:密码@116.31.232.32:6727
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p>手机可以用ES<a href="https://www.zhihu.com/search?q=%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E5%99%A8&amp;search_source=Entity&amp;hybrid_search_source=Entity&amp;hybrid_search_extra=%7B%22sourceType%22%3A%22answer%22%2C%22sourceId%22%3A684689433%7D" target="_blank" rel="noopener noreferrer">文件管理器<ExternalLinkIcon/></a>查看SMB，汉堡菜单-网络-局域网-新建-服务器填 [IP:端口]</p>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div></template>
+<template #tab3="{ title, value, isActive }">
+<p>手机可以用 <a href="https://www.zhihu.com/search?q=%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E5%99%A8&amp;search_source=Entity&amp;hybrid_search_source=Entity&amp;hybrid_search_extra=%7B%22sourceType%22%3A%22answer%22%2C%22sourceId%22%3A684689433%7D" target="_blank" rel="noopener noreferrer">ES 文件管理器<ExternalLinkIcon/></a> 查看 <strong>SMB</strong>，汉堡菜单-网络-局域网-新建-服务器填 <strong>[IP: 端口]</strong></p>
+</template>
+</Tabs>
 </div></template>
 
 

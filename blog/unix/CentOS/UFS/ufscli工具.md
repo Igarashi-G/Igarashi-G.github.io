@@ -12,19 +12,9 @@ tag:
 
 <!-- more -->
 
-# CLI 工具
-
-**产品**：UFS
-
-**版本**：v4.0
-
-**日期**：2021-10-16
-
-**摘要**：本文档提供 UFS 存储系统中 CLI 工具的使用方法
-
 ## 1. ufs-cli 工具
 
-`ufscli`工具支持以命令行方式查询集群状态。
+`ufscli`工具支持以命令行方式查询集群状态
 
 使用方式如下：
 
@@ -156,7 +146,7 @@ ufscli -SMS
 
 ## 2. ufs-tools 工具
 
-`ufstools`工具支持对文件系统进行高级的管理操作。
+`ufstools` 工具支持对文件系统进行高级的管理操作
 
 支持的操作类型如下：
 
@@ -192,3 +182,115 @@ ufscli -SMS
 	setarchive			# 设置archive
 	clrarchive			# 清除archive
 ```
+
+#### 1.2.1 回收时间
+
+设置回收时间
+
+```shell
+$ ufstools settrashtime SECONDS name [name ...]
+```
+
+查看回收时间
+
+```shell
+# usage: 
+$ufstools gettrashtime name [name ...]
+```
+
+#### 1.2.2 文件状态
+
+查看文件状态
+
+```shell
+$ ufstools fileinfo [-qcs] name [name ...]
+
+switches:
+ -q - quick info (show only number of valid copies)
+ -c - receive chunk checksums from chunkservers
+ -s - calculate file signature (using checksums)
+```
+
+
+查看目录状态
+
+```shell
+$ ufstools dirinfo [-nhHkmg] [-idfclsr] [-p] name [name ...]
+
+'show' switches:
+ -i - show number of inodes
+ -d - show number of directories
+ -f - show number of files
+ -c - show number of chunks
+ -l - show length
+ -s - show size
+ -r - show realsize
+'mode' switch:
+ -p - precise mode
+
+If no 'show' switches are present then show everything
+
+Meaning of some not obvious output data:
+ 'length' is just sum of files lengths
+ 'size' is sum of chunks lengths
+ 'realsize' is estimated hdd usage (usually size multiplied by current goal)
+```
+
+
+修复损坏文件
+
+```shell
+$ ufstools filerepair name [name ...]
+```
+
+检索文件路径
+
+```shell
+$ ufstools filepaths name/inode [name/inode ...]
+```
+
+#### 1.2.3 配额管理
+
+查看配额列表
+
+```shell
+$ ufstools listquota dirname
+```
+
+设置配额
+
+```shell
+$ ufstools setquota (-U uid|-G gid|-D) [-iI inodes] [-p grace_period] [-lL length] [-sS size] [-rR realsize] dirname [dirname ...]
+ -U - set user quota
+ -G - set group quota
+ -D - set directory quota
+ -p - set grace period in seconds for soft quota
+ -i/-I - set soft/hard limit for number of filesystem objects
+ -l/-L - set soft/hard limit for sum of files lengths
+ -s/-S - set soft/hard limit for sum of file sizes (chunk sizes)
+ -r/-R - set soft/hard limit for estimated hdd usage (usually size multiplied by goal)
+```
+
+查看配额
+
+```shell
+$ ufstools getquota (-U uid|-G gid|-D) dirname [dirname ...]
+ -U - get user quota
+ -G - get group quota
+ -D - get directory quota
+```
+
+删除配额
+
+```shell
+$ ufstools delquota (-U uid|-G gid|-D) dirname [dirname ...]
+ -U - delete user quota
+ -G - delete group quota
+ -D - delete directory quota
+ -i/-I - delete inodes soft/hard quota
+ -l/-L - delete length soft/hard quota
+ -s/-S - delete size soft/hard quota
+ -r/-R - delete real size soft/hard quota
+ -a/-A - delete all soft/hard quotas
+```
+

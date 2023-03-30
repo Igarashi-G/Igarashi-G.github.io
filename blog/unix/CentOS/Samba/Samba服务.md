@@ -13,7 +13,7 @@ tag:
 
 <!-- more -->
 
-# SAMBA Server
+# SAMBA
 
 ## 1. 概述
 
@@ -21,30 +21,50 @@ tag:
 
 ## 2.安装&配置
 
-### 安装
+### 2.1 客户端安装
 
-- CentOS 下安装客户端
+::: tabs
 
-  ```
-  
-  ```
+@CentOS 7.x
 
-### 配置
+```shell
+$ yum install cifs-utils
+```
 
-<Alert type="info">通常在 `/etc/samba/smb.conf` 文件中指定**日志**文件名称和**共享**存放路径</Alert>
+@Ubuntu 20.04 / Debian 11.x
+
+```shell
+$ sudo apt install cifs-common
+```
+
+@openSUSE-Leap-15.x
+
+```shell
+$ sudo zypper install cifs-utils
+```
+
+:::
+
+### 2.2 服务端安装
+
+
+
+### 2.3 服务端配置
+
+通常在 `/etc/samba/smb.conf` 文件中指定 **日志** 文件名称和 **共享** 存放路径
 
 ##### 常规全局配置：
 
-> `#`号开头：默认的文字注释信息
+> `#` 号开头：默认的文字注释信息
 >
-> `；`号开头：默认的注释配置项
+> `;` 号开头：默认的注释配置项
 
-```
+```ini
 [global]
 	workgroup = SAMBA
 	security = user
 
-#注释网卡配置项
+# 注释网卡配置项
 ;	interfaces = lo eth0 192.168.1.12/24 172.168.13.2/24
 	passdb backend = tdbsam
 
@@ -100,9 +120,9 @@ tag:
 
   > 当配置 `include = registry` 时，不是键入当前目录下的 `registry` 文件，是从注册表中读取全局配置选项，此时可以通过 `net conf` 进行对 `samba` 的配置，如：
 
-  ```bash
-  net conf addshare igarashi /export/nas/igarashi
-  net conf list
+  ```shell
+  $ net conf addshare igarashi /export/nas/igarashi
+  $ net conf list
   ```
 
 ---
@@ -202,24 +222,132 @@ tag:
 
 ## 3. 命令
 
-##### 基本的挂载、卸载
+### 3.1 挂载SMB文件系统
 
-- 基本挂载
+基本挂载
+
+```shell
+# 挂载命令格式如下
+$ mount -t cifs //<挂载点>/share <挂载目录> -o <挂载选项>
+
+# 通过IP挂载
+$ mount -t cifs //172.16.120./test /mnt/uit-share02/
+$ Password for root@//10.10.10.223/test
+```
+
+挂载 **SMB v2.1** 
+
+```shell
+$ mount -t cifs //nas.uds.local/share /mnt/smb -o vers=2.1,uid=0,gid=0,dir_mode=0755,file_mode=0755,mfsymlinks,cache=strict,rsize=1048576,wsize=1048576
+```
+
+挂载 **SMB v3.0** 
+
+```shell
+$ mount -t cifs //nas.uds.local/share /mnt/smb -o vers=3.0,uid=0,gid=0,dir_mode=0755,file_mode=0755,mfsymlinks,cache=strict,rsize=1048576,wsize=1048576
+```
+
+以 **Guest** 匿名身份进行挂载
+
+```shell
+$ mount -t cifs //nas.uds.local/share /mnt/smb -o vers=2.0,guest,uid=0,gid=0,dir_mode=0755,file_mode=0755,mfsymlinks,cache=strict,rsize=1048576,wsize=1048576
+```
+
+以 **username + password** 身份进行挂载
+
+```shell
+$ mount -t cifs //nas.uds.local/share /mnt/smb -o vers=2.0,username=uds,password=udspass,uid=0,gid=0,dir_mode=0755,file_mode=0755,mfsymlinks,cache=strict,rsize=1048576,wsize=1048576
+```
+
+##### **参数说明** 
+
+- <span style="color: blue">**文件系统类型：**</span> 必须配置 **-t cifs** 参数
+- <span style="color: blue">**<挂载点>：**</span> 创建文件系统挂载点时，需根据实际值替换自动生成的挂载点
+- <span style="color: blue">**<挂载目录>：**</span> 要挂载的目标路径，例如：`/mnt/smb` 
+- <span style="color: blue">**vers：**</span> 指定 **v2.0** 或 **v3.0** 协议版本
+- <span style="color: blue">**guest：**</span> 只支持基于 **ntlm** 认证协议的客户端挂载
+- <span style="color: blue">**rsize：**</span> 用来设置读数据包的最大限制，建议值 **1048576（*1MB*）**
+- <span style="color: blue">**wsize：**</span> 用来设置写数据包的最大限制，建议值 **1048576（*1MB*）**
+- <span style="color: blue">**uid：**</span> 挂载成功后，文件所属的用户，若未设置，默认**uid=0** 
+- <span style="color: blue">**gid：**</span> 挂载成功后，文件所属的用户组，若未设置，默认 **gid=0**
+- <span style="color: blue">**dir\_mode：**</span> 向用户授予指定目录的读取、写入和执行权限，必须以 **0** 开头 ***（如：0755、0644）等***，若未设置，默认**dir\_mode=0755**  
+- <span style="color: blue">**file\_mode：**</span> 向用户授予普通文件的读取、写入和执行权限。必须以 **0** 开头 ***（如：0755、0644）等***，若未设置，默认 **file\_mode=0755** 
+- <span style="color: blue">**mfsymlinks：**</span> 支持 **symbol link** 功能
+- <span style="color: blue">**cache：**</span> 设置 **SMB** 文件系统使用客户端缓存，若未设置，默认 **cache=strict** 
+  - **cache=none：** 设置 **SMB** 文件系统不使用客户端缓存
+- <span style="color: blue">**atime：**</span> 
+
+##### **查看挂载结果** 
+
+执行如下命令，查看挂载结果，若包含如下类似返回信息，说明挂载成功
+
+```shell
+$ mount -l
+```
+
+<img src="./img/smb挂载结果.png" /> 
+
+挂载成功后，查看当前文件系统的容量信息
+
+```shell
+$ df -h
+```
+
+<img src="./img/smb容量信息.png" /> 如果挂载失败，请进行错误排查
+
+##### **访问SMB** 
+
+挂载成功后，可在 **Linux** 上访问 **NAS** 文件系统，执行 读取 或 写入 操作，可把其当作一个普通的目录来访问和使用
+
+<img src="./img/访问smb.png" /> 
+
+##### **自动挂载SMB客户端**
+
+为避免已挂载 **SMB** 文件系统的服务器重启后，挂载信息丢失，可在 **Linux** 系统中配置 `/etc/fstab` 文件，实现服务器设置重启时，**SMB** 文件系统自动挂载。
+
+打开 `/etc/fstab` 配置文件，添加挂载配置
+
+* 使用 **SMB v2.1** 协议挂载文件系统
 
   ```shell
-  # 通过IP挂载
-  $ mount -t cifs //172.16.120./test /mnt/uit-share02/
-  $ Password for root@//10.10.10.223/test
-
+   //nas.uds.local/share /mnt/smb cifs auto,username=uds,password=udspass,vers=2.1,uid=0,gid=0,dir_mode=0755,file_mode=0755,mfsymlinks,cache=strict,rsize=1048576,wsize=1048576 0 0
   ```
 
-- 强制卸载
+* 使用 **SMB v3.0** 协议挂载文件系统
 
   ```shell
-  $ umount -f -a -t cifs -l /挂载点
+   //nas.uds.local/share /mnt/smb cifs auto,username=uds,password=udspass,vers=3.0,uid=0,gid=0,dir_mode=0755,file_mode=0755,mfsymlinks,cache=strict,rsize=1048576,wsize=1048576 0 0
   ```
 
-##### 清除 Window 下 samba 的缓存
+其参数说明如上挂载，其余参数说明如下：
+
+- <span style="color: blue">**auto：**</span> 自动挂载 **SMB** 共享
+- <span style="color: blue">**username：**</span> 登录账户
+- <span style="color: blue">**password：**</span> 登录密码
+- <span style="color: blue">**0（wsize后第一项）：**</span> 非零值表示文件系统应由 **dump** 备份，对于 **NAS** 文件系统而言，此值默认为 **0** 
+- <span style="color: blue">**0（wsize后第二项）：**</span> 该值表示 **fsck** 在启动时检查文件系统的顺序，对于 **NAS** 文件系统而言，此值默认为 **0**，表示 **fsck** 不应在启动时运行 
+
+##### **验证自动挂载** 
+
+执行重启命令，重启应用服务器，验证 **SMB** 客户端自动挂载
+
+```shell
+$ reboot
+```
+
+### 3.2 卸载
+
+强制卸载
+
+```shell
+$ umount -f -a -t cifs -l /挂载点
+```
+
+### 3.3 关于 Windows客户端 的注意事项
+
+**windows** 默认 不允许同一台机器使用多个用户身份去登录 **SMB**，因此切换用户时需要先清除缓存
+
+##### **清除 Window 下 samba 的缓存** 
 
 - 查看缓存列表
 
@@ -234,6 +362,8 @@ tag:
   ```
 
   > 再去 任务管理器 - 重启文件资源管理器，确保刷新
+
+### 3.4 pdbedit 的使用
 
 ##### pdbedit 操作用户
 
@@ -267,11 +397,9 @@ tag:
   $ pdbedit -x zz
   ```
 
+## 4. 公网SMB连接
 
-
-### 4. 公网连接
-
-#### Linux Samba 服务端
+### 4.1 Linux Samba 服务端
 
 配置好共享后，需要去 `/etc/samba/smb.conf` 中修改 
 
@@ -283,19 +411,19 @@ tag:
 
 然后重启 **samba** 服务，或是直接路由器上设置 **NAT** 端口转发 **445** 转 **6727**
 
-#### Windows 客户端
+### 4.2 Windows 客户端
 
 需要先关闭 **Windows 防火墙**，检查 **control** -> 程序 -> 启用或关闭 **Windows** 功能 -> 是否开启了 **CIFS** 文件共享支持（*可以关闭SMB直通，无影响*）
 
 ##### **1. 组策略关闭禁止访问无密码的 Samba 共享**
 
-直接 <kbd>Windows</kbd> + <kbd>r</kbd> 输入 `gpedit.msc` 服务
+直接 <kbd>Windows</kbd> + <kbd>r</kbd> 输入 `gpedit.msc` 服务 
 
 在 **计算机配置** - **管理模板** - **网络-Lanman工作站** 中，找到并双击 **启用不安全的来宾登录**
 
 选择 **已启用** 确定即可
 
-##### **2.关闭 Windows 的 445 端口**
+##### **2.关闭 Windows 的 445 端口** 
 
 命令行如下
 
@@ -335,28 +463,33 @@ netsh interface portproxy delete v4tov4 listenport=445 connectaddress=116.31.232
 
 ##### **5.输入\\\\127.0.0.1 即可访问**
 
-**Windows：**
+::: tabs
 
-直接 `\\127.0.0.1\共享名`  输入账户名，密码即可访问
+@tab Windows 
 
-**Linux:**
+直接 **`\\127.0.0.1\共享名`**  输入账户名，密码即可访问
+
+@tab Linux
 
 ```shell
-smbclient //116.31.232.32/myshare -p 6727 -U samba
+$ smbclient //116.31.232.32/myshare -p 6727 -U samba
 
 # 若不知道目录，则要检索
-smbclient -L //116.31.232.32 -p 6727 -U samba`
+$ smbclient -L //116.31.232.32 -p 6727 -U samba`
 
 # 挂载卸载
-mount -t cifs //116.31.232.32/myshare /samba/samba1/ -o username=xxx,password=xxx,port=6727
-umount /samba/samba1/
+$ mount -t cifs //116.31.232.32/myshare /samba/samba1/ -o username=xxx,password=xxx,port=6727
+$ umount /samba/samba1/
 ```
 
-**Mac:**
+@tab Mac端
 
 ```shell
 smb://用户名:密码@116.31.232.32:6727
 ```
 
-手机可以用ES[文件管理器](https://www.zhihu.com/search?q=文件管理器&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra={"sourceType"%3A"answer"%2C"sourceId"%3A684689433})查看SMB，汉堡菜单-网络-局域网-新建-服务器填 [IP:端口]
+@tab 手机端
 
+手机可以用 [ES 文件管理器](https://www.zhihu.com/search?q=文件管理器&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra={"sourceType"%3A"answer"%2C"sourceId"%3A684689433}) 查看 **SMB**，汉堡菜单-网络-局域网-新建-服务器填 **[IP: 端口]** 
+
+:::

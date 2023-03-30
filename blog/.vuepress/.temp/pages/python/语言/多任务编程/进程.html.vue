@@ -1,5 +1,5 @@
 <template><div><p>操作系统进程相关</p>
-<!--more-->
+<!-- more -->
 <p>首先讨论进程前先要弄清 <strong>并行</strong> 和 <strong>并发</strong> 两个概念</p>
 <h2 id="_1-并行与并发" tabindex="-1"><a class="header-anchor" href="#_1-并行与并发" aria-hidden="true">#</a> 1. 并行与并发</h2>
 <h3 id="_1-1-并行" tabindex="-1"><a class="header-anchor" href="#_1-1-并行" aria-hidden="true">#</a> 1.1 并行</h3>

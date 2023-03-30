@@ -1,5 +1,5 @@
 <template><div><p>一些简单的网络基础</p>
-<!--more-->
+<!-- more -->
 <h2 id="_1-网络基础" tabindex="-1"><a class="header-anchor" href="#_1-网络基础" aria-hidden="true">#</a> 1. 网络基础</h2>
 <h3 id="_1-1-网络通信" tabindex="-1"><a class="header-anchor" href="#_1-1-网络通信" aria-hidden="true">#</a> 1.1 网络通信</h3>
 <p>应用软件，是通过和操作系统 <strong>OS</strong> ，来和硬件打交道的，那么软件和软件之间，机器和机器之间，则需要利用 <strong>Internet</strong>（<em>网络</em> ）进行通信，互联网本质就是一系列的 <strong>网络协议</strong></p>

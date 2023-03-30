@@ -1,5 +1,5 @@
 <template><div><p><strong>SNMP</strong> 协议简要说明</p>
-<!--more-->
+<!-- more -->
 <h3 id="_1-什么是-snmp-协议" tabindex="-1"><a class="header-anchor" href="#_1-什么是-snmp-协议" aria-hidden="true">#</a> 1. 什么是 SNMP 协议</h3>
 <p><strong>SNMP （<em>简单网络管理协议</em>）：</strong> 用于网络管理的协议，常用于 <strong>监控工具</strong>，可以 <strong>持续性实时监控</strong>，好处是带宽消耗非常少，因此使用此套件进行监控不会降低网络速度，它和 <strong>DNS</strong> 一样也是基于 <strong>UDP 协议</strong> 实现 （<em>速度快，消息易丢失</em> ）</p>
 <p><strong>基本思想：</strong> 为不同种类的设备、不同厂家生产的设备、不同型号的设备，定义为一个统一的接口和协议，

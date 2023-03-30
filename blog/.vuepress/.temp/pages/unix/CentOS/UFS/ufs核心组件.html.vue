@@ -1,10 +1,5 @@
 <template><div><p>本文档提供 <strong>UFS</strong> 存储系统核心组件的配置说明</p>
 <!-- more -->
-<h1 id="核心组件" tabindex="-1"><a class="header-anchor" href="#核心组件" aria-hidden="true">#</a> 核心组件</h1>
-<p><strong>产品</strong>：UFS</p>
-<p><strong>版本</strong>：v4.0</p>
-<p><strong>日期</strong>：2021-10-16</p>
-<p><strong>摘要</strong>：本文档提供 UFS 存储系统核心组件的配置说明</p>
 <h2 id="_1-mss-组件" tabindex="-1"><a class="header-anchor" href="#_1-mss-组件" aria-hidden="true">#</a> 1. MSS 组件</h2>
 <h3 id="_1-1-基本信息" tabindex="-1"><a class="header-anchor" href="#_1-1-基本信息" aria-hidden="true">#</a> 1.1 基本信息</h3>
 <table>
@@ -696,64 +691,154 @@ systemctl disable ufs-chunkserver
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><h3 id="_3-4-参数配置" tabindex="-1"><a class="header-anchor" href="#_3-4-参数配置" aria-hidden="true">#</a> 3.4 参数配置</h3>
 <p>客户端的挂载参数可以在命令行中指定，也可以在<code v-pre>/etc/ufs/ufsmount.cfg</code>中进行设置。</p>
 <h4 id="_3-4-1-缓存配置" tabindex="-1"><a class="header-anchor" href="#_3-4-1-缓存配置" aria-hidden="true">#</a> 3.4.1 缓存配置</h4>
-<pre><code>    -o ufscachemode=CMODE       设置缓存模式(default: AUTO)
-    -o ufsattrcacheto=SEC       设置属性缓存超时 (default: 1.0)
-    -o ufsxattrcacheto=SEC      设置扩展属性 (xattr) 缓存超时 (default: 30.0)
-    -o ufsentrycacheto=SEC      设置文件entry缓存超时 (default: 0.0)
-    -o ufsdirentrycacheto=SEC   设置目录entry缓存超时 (default: 1.0)
-    -o ufsnegentrycacheto=SEC   设置neg entry缓存超时  (default: 0.0)
-    -o ufsgroupscacheto=SEC     设置用户组缓存超时 (default: 300.0)
-</code></pre>
-<h4 id="_3-4-2-io-调优" tabindex="-1"><a class="header-anchor" href="#_3-4-2-io-调优" aria-hidden="true">#</a> 3.4.2 IO 调优</h4>
-<pre><code>    -o ufsfsyncmintime=SEC      force fsync before last file close when file was opened/created at least SEC seconds earlier (default: 0.0 - always do fsync before close)
-    -o ufswritecachesize=N      设置write缓冲区大小，单位:MiB (default: 256)
-    -o ufsreadaheadsize=N       设置read缓冲区大小，单位:MiB  (default: 256)
-    -o ufsreadaheadleng=N       设置read预读取的文件大小，单位：B (default: 1048576)
-    -o ufsreadaheadtrigger=N    设置按顺序读取开启预读的字节数 (default: 10 * ufsreadaheadleng)
-    -o ufserroronlostchunk      启用数据块丢失时直接返回io error
-    -o ufserroronnospace        启用空间不足时直接返回io error
-    -o ufsioretries=N           设置I/O错误返回前的重试次数(default: 30)
-    -o ufstimeout=N             设置I/O错误返回前的最大超时秒数(default: 0 - which means no timeout)
-    -o ufslogretry=N            定义超过多少次I/O重试操作后客户端开始记录日志 (default: 5)
-</code></pre>
-<h4 id="_3-4-3-系统调优" tabindex="-1"><a class="header-anchor" href="#_3-4-3-系统调优" aria-hidden="true">#</a> 3.4.3 系统调优</h4>
-<pre><code>    -o ufsrlimitnofile=N        设置客户端进程允许使用的fd句柄上限(root身份运行)  (default: 100000)
-    -o ufsnice=N                运行守护进程的 nice 级别 (default: -19)
-    -o ufsmemlock               允许锁定内存以避免使用swap
-    -o ufslimitarenas=N         将malloc arenas限制为给定值 - 防止服务器使用大量虚拟内存 (default: 4)
-    -o ufsallowoomkiller        允许OOM Killer
-</code></pre>
-<h4 id="_3-4-4-通用配置" tabindex="-1"><a class="header-anchor" href="#_3-4-4-通用配置" aria-hidden="true">#</a> 3.4.4 通用配置</h4>
-<div class="language-text ext-text line-numbers-mode"><pre v-pre class="language-text"><code>    -o nonempty                 允许UFS挂载非空目录
-    -o ufscfgfile=CFGFILE       设置客户端配置文件以便从文件中加载配置参数(default: /etc/ufs/ufsmount.cfg)
-    -o ufsdebug                 输出调试信息
-    -o ufsmeta                  挂载meta文件系统(包含回收站)
-    -o ufsflattrash             设置回收站挂载目录的显示格式为flat模式
-    -o ufsdelayedinit           允许客户端异步连接UFS集群(特别适用于/etc/fstab开机挂载场景)
-    -o ufsioretries=N           配置发生IO异常时的重试的次数(default: 30)
-    -o ufstimeout=N             配置发生IO异常时的最大超时时间 (default: 0 - 表示不限制超时)
-    -o ufsmaster=HOST           指定UFS集群IP(default: ufsmetaserver)
-    -o ufsport=PORT             指定UFS集群网络端口 (default: 9421)
-    -o ufsbind=IP               指定客户端bind的网络地址
-    -o ufssubfolder=PATH        指定挂载的集群目录 (default: /)
-    -o ufspassword=PASSWORD     配置客户端访问密码
-    -o ufspreflabels=LABELEXPR
-    -o ufsnoxattrs              关闭xattr功能
-    -o ufsnoposixlocks          关闭posix locks (lockf + ioctl)功能
-    -o ufsnobsdlocks            关闭BSD locks (flock)功能
-
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_3-5-应用场景" tabindex="-1"><a class="header-anchor" href="#_3-5-应用场景" aria-hidden="true">#</a> 3.5 应用场景</h3>
+<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code>    <span class="token parameter variable">-o</span> <span class="token assign-left variable">ufscachemode</span><span class="token operator">=</span>CMODE       设置缓存模式<span class="token punctuation">(</span>default: AUTO<span class="token punctuation">)</span>
+    <span class="token parameter variable">-o</span> <span class="token assign-left variable">ufsattrcacheto</span><span class="token operator">=</span>SEC       设置属性缓存超时 <span class="token punctuation">(</span>default: <span class="token number">1.0</span><span class="token punctuation">)</span>
+    <span class="token parameter variable">-o</span> <span class="token assign-left variable">ufsxattrcacheto</span><span class="token operator">=</span>SEC      设置扩展属性 <span class="token punctuation">(</span>xattr<span class="token punctuation">)</span> 缓存超时 <span class="token punctuation">(</span>default: <span class="token number">30.0</span><span class="token punctuation">)</span>
+    <span class="token parameter variable">-o</span> <span class="token assign-left variable">ufsentrycacheto</span><span class="token operator">=</span>SEC      设置文件entry缓存超时 <span class="token punctuation">(</span>default: <span class="token number">0.0</span><span class="token punctuation">)</span>
+    <span class="token parameter variable">-o</span> <span class="token assign-left variable">ufsdirentrycacheto</span><span class="token operator">=</span>SEC   设置目录entry缓存超时 <span class="token punctuation">(</span>default: <span class="token number">1.0</span><span class="token punctuation">)</span>
+    <span class="token parameter variable">-o</span> <span class="token assign-left variable">ufsnegentrycacheto</span><span class="token operator">=</span>SEC   设置neg entry缓存超时  <span class="token punctuation">(</span>default: <span class="token number">0.0</span><span class="token punctuation">)</span>
+    <span class="token parameter variable">-o</span> <span class="token assign-left variable">ufsgroupscacheto</span><span class="token operator">=</span>SEC     设置用户组缓存超时 <span class="token punctuation">(</span>default: <span class="token number">300.0</span><span class="token punctuation">)</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h4 id="_3-4-2-io-调优" tabindex="-1"><a class="header-anchor" href="#_3-4-2-io-调优" aria-hidden="true">#</a> 3.4.2 IO 调优</h4>
+<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code>    <span class="token parameter variable">-o</span> <span class="token assign-left variable">ufsfsyncmintime</span><span class="token operator">=</span>SEC      force fsync before last <span class="token function">file</span> close when <span class="token function">file</span> was opened/created at least SEC seconds earlier <span class="token punctuation">(</span>default: <span class="token number">0.0</span> - always <span class="token keyword">do</span> fsync before close<span class="token punctuation">)</span>
+    <span class="token parameter variable">-o</span> <span class="token assign-left variable">ufswritecachesize</span><span class="token operator">=</span>N      设置write缓冲区大小，单位:MiB <span class="token punctuation">(</span>default: <span class="token number">256</span><span class="token punctuation">)</span>
+    <span class="token parameter variable">-o</span> <span class="token assign-left variable">ufsreadaheadsize</span><span class="token operator">=</span>N       设置read缓冲区大小，单位:MiB  <span class="token punctuation">(</span>default: <span class="token number">256</span><span class="token punctuation">)</span>
+    <span class="token parameter variable">-o</span> <span class="token assign-left variable">ufsreadaheadleng</span><span class="token operator">=</span>N       设置read预读取的文件大小，单位：B <span class="token punctuation">(</span>default: <span class="token number">1048576</span><span class="token punctuation">)</span>
+    <span class="token parameter variable">-o</span> <span class="token assign-left variable">ufsreadaheadtrigger</span><span class="token operator">=</span>N    设置按顺序读取开启预读的字节数 <span class="token punctuation">(</span>default: <span class="token number">10</span> * ufsreadaheadleng<span class="token punctuation">)</span>
+    <span class="token parameter variable">-o</span> ufserroronlostchunk      启用数据块丢失时直接返回io error
+    <span class="token parameter variable">-o</span> ufserroronnospace        启用空间不足时直接返回io error
+    <span class="token parameter variable">-o</span> <span class="token assign-left variable">ufsioretries</span><span class="token operator">=</span>N           设置I/O错误返回前的重试次数<span class="token punctuation">(</span>default: <span class="token number">30</span><span class="token punctuation">)</span>
+    <span class="token parameter variable">-o</span> <span class="token assign-left variable">ufstimeout</span><span class="token operator">=</span>N             设置I/O错误返回前的最大超时秒数<span class="token punctuation">(</span>default: <span class="token number">0</span> - <span class="token function">which</span> means no <span class="token function">timeout</span><span class="token punctuation">)</span>
+    <span class="token parameter variable">-o</span> <span class="token assign-left variable">ufslogretry</span><span class="token operator">=</span>N            定义超过多少次I/O重试操作后客户端开始记录日志 <span class="token punctuation">(</span>default: <span class="token number">5</span><span class="token punctuation">)</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h4 id="_3-4-3-系统调优" tabindex="-1"><a class="header-anchor" href="#_3-4-3-系统调优" aria-hidden="true">#</a> 3.4.3 系统调优</h4>
+<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code>    <span class="token parameter variable">-o</span> <span class="token assign-left variable">ufsrlimitnofile</span><span class="token operator">=</span>N        设置客户端进程允许使用的fd句柄上限<span class="token punctuation">(</span>root身份运行<span class="token punctuation">)</span>  <span class="token punctuation">(</span>default: <span class="token number">100000</span><span class="token punctuation">)</span>
+    <span class="token parameter variable">-o</span> <span class="token assign-left variable">ufsnice</span><span class="token operator">=</span>N                运行守护进程的 <span class="token function">nice</span> 级别 <span class="token punctuation">(</span>default: -19<span class="token punctuation">)</span>
+    <span class="token parameter variable">-o</span> ufsmemlock               允许锁定内存以避免使用swap
+    <span class="token parameter variable">-o</span> <span class="token assign-left variable">ufslimitarenas</span><span class="token operator">=</span>N         将malloc arenas限制为给定值 - 防止服务器使用大量虚拟内存 <span class="token punctuation">(</span>default: <span class="token number">4</span><span class="token punctuation">)</span>
+    <span class="token parameter variable">-o</span> ufsallowoomkiller        允许OOM Killer
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h4 id="_3-4-4-通用配置" tabindex="-1"><a class="header-anchor" href="#_3-4-4-通用配置" aria-hidden="true">#</a> 3.4.4 通用配置</h4>
+<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code>    <span class="token parameter variable">-o</span> nonempty                 允许UFS挂载非空目录
+    <span class="token parameter variable">-o</span> <span class="token assign-left variable">ufscfgfile</span><span class="token operator">=</span>CFGFILE       设置客户端配置文件以便从文件中加载配置参数<span class="token punctuation">(</span>default: /etc/ufs/ufsmount.cfg<span class="token punctuation">)</span>
+    <span class="token parameter variable">-o</span> ufsdebug                 输出调试信息
+    <span class="token parameter variable">-o</span> ufsmeta                  挂载meta文件系统<span class="token punctuation">(</span>包含回收站<span class="token punctuation">)</span>
+    <span class="token parameter variable">-o</span> ufsflattrash             设置回收站挂载目录的显示格式为flat模式
+    <span class="token parameter variable">-o</span> ufsdelayedinit           允许客户端异步连接UFS集群<span class="token punctuation">(</span>特别适用于/etc/fstab开机挂载场景<span class="token punctuation">)</span>
+    <span class="token parameter variable">-o</span> <span class="token assign-left variable">ufsioretries</span><span class="token operator">=</span>N           配置发生IO异常时的重试的次数<span class="token punctuation">(</span>default: <span class="token number">30</span><span class="token punctuation">)</span>
+    <span class="token parameter variable">-o</span> <span class="token assign-left variable">ufstimeout</span><span class="token operator">=</span>N             配置发生IO异常时的最大超时时间 <span class="token punctuation">(</span>default: <span class="token number">0</span> - 表示不限制超时<span class="token punctuation">)</span>
+    <span class="token parameter variable">-o</span> <span class="token assign-left variable">ufsmaster</span><span class="token operator">=</span>HOST           指定UFS集群IP<span class="token punctuation">(</span>default: ufsmetaserver<span class="token punctuation">)</span>
+    <span class="token parameter variable">-o</span> <span class="token assign-left variable">ufsport</span><span class="token operator">=</span>PORT             指定UFS集群网络端口 <span class="token punctuation">(</span>default: <span class="token number">9421</span><span class="token punctuation">)</span>
+    <span class="token parameter variable">-o</span> <span class="token assign-left variable">ufsbind</span><span class="token operator">=</span>IP               指定客户端bind的网络地址
+    <span class="token parameter variable">-o</span> <span class="token assign-left variable">ufssubfolder</span><span class="token operator">=</span><span class="token environment constant">PATH</span>        指定挂载的集群目录 <span class="token punctuation">(</span>default: /<span class="token punctuation">)</span>
+    <span class="token parameter variable">-o</span> <span class="token assign-left variable">ufspassword</span><span class="token operator">=</span>PASSWORD     配置客户端访问密码
+    <span class="token parameter variable">-o</span> <span class="token assign-left variable">ufspreflabels</span><span class="token operator">=</span>LABELEXPR
+    <span class="token parameter variable">-o</span> ufsnoxattrs              关闭xattr功能
+    <span class="token parameter variable">-o</span> ufsnoposixlocks          关闭posix locks <span class="token punctuation">(</span>lockf + ioctl<span class="token punctuation">)</span>功能
+    <span class="token parameter variable">-o</span> ufsnobsdlocks            关闭BSD locks <span class="token punctuation">(</span>flock<span class="token punctuation">)</span>功能
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h4 id="_3-4-5-附加特性" tabindex="-1"><a class="header-anchor" href="#_3-4-5-附加特性" aria-hidden="true">#</a> 3.4.5 附加特性</h4>
+<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code>	<span class="token parameter variable">-o</span> <span class="token assign-left variable">fsname</span><span class="token operator">=</span>NAME ⾃定义⽂件系统名称
+	<span class="token parameter variable">-o</span> <span class="token assign-left variable">ufspreflabels</span><span class="token operator">=</span>LABELEXPR 指定在 I/O 期间选择chunkserver的⾸选标签
+	<span class="token parameter variable">-o</span> ufsnoxattrs 关闭xattr功能
+	<span class="token parameter variable">-o</span> ufsnoposixlocks 关闭posix locks <span class="token punctuation">(</span>lockf + ioctl<span class="token punctuation">)</span>功能
+	<span class="token parameter variable">-o</span> ufsnobsdlocks 关闭BSD locks <span class="token punctuation">(</span>flock<span class="token punctuation">)</span>功能
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_3-5-应用场景" tabindex="-1"><a class="header-anchor" href="#_3-5-应用场景" aria-hidden="true">#</a> 3.5 应用场景</h3>
 <h4 id="_3-5-1-自动挂载" tabindex="-1"><a class="header-anchor" href="#_3-5-1-自动挂载" aria-hidden="true">#</a> 3.5.1 自动挂载</h4>
-<p>通过配置<code v-pre>/etc/fstab</code>可实现 Unix/Linux 平台下客户端自动挂载。</p>
-<p>在<code v-pre>/etc/fstab</code>中增加以下内容：</p>
-<div class="language-text ext-text line-numbers-mode"><pre v-pre class="language-text"><code>#
-# /etc/fstab
-# Created by anaconda on Sun Apr  8 04:45:34 2018
-#
+<p>对于 <strong>CentOS、Ubuntu/Debian</strong> 等 <strong>Linux</strong> 操作系统，⽀持以 <strong>fstab</strong> 和 <strong>systemd</strong> 两种⽅式进⾏开机⾃动挂载</p>
+<div class="custom-container warning">
+<p class="custom-container-title">注意</p>
+<ol>
+<li>
+<p>通过定义/etc/hosts主机配置，在ufsmount命令⾏中可以简化 &quot;-H&quot;、&quot;-o ufsmaster=&quot;等参数定义。&quot;-H&quot;参数可以指定多个meta服务IP或者主机名；&quot;-o ufsmaster=&quot;参数仅⽀持指定单个meta服务IP或者主机名</p>
+</li>
+<li>
+<p>通过定义默认的/etc/ufs/ufsmount.cfg挂载配置⽂件，在ufsmount命令⾏和fstab中可以简化 &quot;-o &quot;等系列参数的定义</p>
+</li>
+<li>
+<p>由于客户端可能优先启动于 UFS 集群，导致客户端注册失败从⽽⽆法⾃动挂载，这种情况下需要在客户端配置⽂件(/etc/ufs/ufsmount.cfg)或者命令⾏中增加ufsdelayedinit参数项，以便⽀持此场景</p>
+</li>
+</ol>
+</div>
+<h5 id="_3-5-1-1-systemd-自动挂载" tabindex="-1"><a class="header-anchor" href="#_3-5-1-1-systemd-自动挂载" aria-hidden="true">#</a> <strong>3.5.1.1 systemd ⾃动挂载</strong></h5>
+<p>在 <strong>Linux</strong> 操作系统中通过 <strong>systemd</strong> 系统管理⼯具实现 <strong>ufsmount</strong> 开机⾃动挂载功能</p>
+<p><strong>步骤1：</strong> 创建 <strong>systemd</strong> 配置模板</p>
+<p>新建名为 <strong>ufs-automount.service</strong> 的⽂本⽂件（配置名字可以⾃<em>定义</em>），存放到 <code v-pre>/usr/lib/systemd/system</code> 路径下，通过 <strong>systemd</strong> 配置语法指定相应的启动参数</p>
+<p><strong>ufs-automount.service</strong> 的内容⽰例如下</p>
+<div class="language-ini ext-ini line-numbers-mode"><pre v-pre class="language-ini"><code><span class="token section"><span class="token punctuation">[</span><span class="token section-name selector">Unit</span><span class="token punctuation">]</span></span>
+<span class="token key attr-name">Description</span><span class="token punctuation">=</span><span class="token value attr-value">UFS Client Helper</span>
+<span class="token key attr-name">Wants</span><span class="token punctuation">=</span><span class="token value attr-value">network-online.target</span>
+<span class="token key attr-name">After</span><span class="token punctuation">=</span><span class="token value attr-value">network.target network-online.target</span>
 
-ufsmount    /mnt/ufs   fuse ufssubfolder=/,ufsdelayedinit=1     0 0
+<span class="token section"><span class="token punctuation">[</span><span class="token section-name selector">Service</span><span class="token punctuation">]</span></span>
+<span class="token key attr-name">Type</span><span class="token punctuation">=</span><span class="token value attr-value">forking</span>
+<span class="token key attr-name">ExecStart</span><span class="token punctuation">=</span><span class="token value attr-value">/usr/bin/ufsmount3 -o ufssubfolder=/,ufsdelayedinit -H</span>
+172.16.120.111,172.16.120.112,172.16.120.113 /mnt/ufs
+<span class="token key attr-name">Restart</span><span class="token punctuation">=</span><span class="token value attr-value">on-abnormal</span>
+<span class="token key attr-name">RestartSec</span><span class="token punctuation">=</span><span class="token value attr-value">120s</span>
 
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h4 id="_3-5-2-查询运行参数" tabindex="-1"><a class="header-anchor" href="#_3-5-2-查询运行参数" aria-hidden="true">#</a> 3.5.2 查询运行参数</h4>
+<span class="token section"><span class="token punctuation">[</span><span class="token section-name selector">Install</span><span class="token punctuation">]</span></span>
+<span class="token key attr-name">WantedBy</span><span class="token punctuation">=</span><span class="token value attr-value">multi-user.target</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><blockquote>
+<p>⚠️<strong>注意：</strong> <strong>ExecStart</strong> 为命令⾏挂载语法，⽤户需要替换为实际的挂载参数</p>
+</blockquote>
+<p>通过配置<code v-pre>/etc/fstab</code>可实现 Unix/Linux 平台下客户端自动挂载</p>
+<p><strong>步骤2：</strong> 通过 <strong>systemctl</strong> ⼯具设置开机启动</p>
+<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code><span class="token comment"># 0. 向操作系统注册 ufs-automount.service</span>
+systemctl daemon-reload
+
+<span class="token comment"># 1. 启⽤服务 - 允许开机⾃动运⾏</span>
+systemctl <span class="token builtin class-name">enable</span> ufs-automount.service
+
+<span class="token comment"># 2. ⽴即启动服务</span>
+systemctl start ufs-automount.service
+
+<span class="token comment"># 3. ⽴即停⽌服务</span>
+systemctl stop ufs-automount.service
+
+<span class="token comment"># 4. 查看服务运⾏状态</span>
+systemctl status ufs-automount.service
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p><strong>步骤3：</strong> 验证以上配置是否⽣效，重启查看是否挂载即可</p>
+<h5 id="_3-5-1-2-fstab-自动挂载" tabindex="-1"><a class="header-anchor" href="#_3-5-1-2-fstab-自动挂载" aria-hidden="true">#</a> <strong>3.5.1.2  fstab ⾃动挂载</strong></h5>
+<p>在 <strong>Linux</strong> 操作系统中通过 <strong>fstab</strong> 方式实现 <strong>ufsmount</strong> 开机⾃动挂载功能</p>
+<p><strong>步骤1：</strong>  安装 <strong>fuse</strong> ⼯具包</p>
+<Tabs :data='[]'>
+</Tabs>
+<p><strong>步骤2：</strong> 配置 <strong>fstab</strong></p>
+<p>通过 <strong>vim</strong> 编辑 <code v-pre>/etc/fstab</code> ，增加⾃动挂载路径（<code v-pre>/mnt/ufs</code>），示例如下</p>
+<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code><span class="token comment"># /etc/fstab</span>
+ufsmount3 /mnt/ufs fuse ufsdelayedinit,ufsioretries<span class="token operator">=</span><span class="token number">120</span>,ufssubfolder<span class="token operator">=</span>/0 <span class="token number">0</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div></div></div><p><strong>步骤3：</strong> 验证以上配置是否⽣效</p>
+<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code><span class="token comment"># 验证 /mnt/ufs 是否能挂载</span>
+<span class="token function">mount</span> /mnt/ufs
+
+<span class="token comment"># 卸载/mnt/ufs</span>
+<span class="token function">umount</span> /mnt/ufs
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h4 id="_3-5-2-查看操作日志" tabindex="-1"><a class="header-anchor" href="#_3-5-2-查看操作日志" aria-hidden="true">#</a> 3.5.2 查看操作⽇志</h4>
+<p>以 <code v-pre>/mnt/ufs</code> 为客户端挂载点为⽰例</p>
+<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code><span class="token function">cat</span> /mnt/ufs/.oplog
+<span class="token comment"># 输出⽰例如下</span>
+08.18 <span class="token number">17</span>:48:30.986145: uid:0 gid:0 pid:27219 cmd:readdirplus
+<span class="token punctuation">(</span><span class="token number">165735,4096</span>,1414<span class="token punctuation">)</span> <span class="token punctuation">[</span>handle:00000007<span class="token punctuation">]</span>: OK <span class="token punctuation">(</span><span class="token number">3984</span><span class="token punctuation">)</span>
+08.18 <span class="token number">17</span>:48:30.986247: uid:0 gid:0 pid:27219 cmd:readdir <span class="token punctuation">(</span><span class="token number">165735,4096</span>,2493<span class="token punctuation">)</span>
+<span class="token punctuation">[</span>handle:00000007<span class="token punctuation">]</span>: OK <span class="token punctuation">(</span><span class="token number">880</span><span class="token punctuation">)</span>
+08.18 <span class="token number">17</span>:48:30.986307: uid:0 gid:0 pid:27219 cmd:readdir <span class="token punctuation">(</span><span class="token number">165735,4096</span>,2493<span class="token punctuation">)</span>
+<span class="token punctuation">[</span>handle:00000007<span class="token punctuation">]</span>: OK <span class="token punctuation">(</span>no data<span class="token punctuation">)</span>
+08.18 <span class="token number">17</span>:48:30.986682: uid:0 gid:0 pid:0 cmd:releasedir <span class="token punctuation">(</span><span class="token number">165735</span><span class="token punctuation">)</span>
+<span class="token punctuation">[</span>handle:00000000<span class="token punctuation">]</span>: OK
+08.18 <span class="token number">17</span>:48:30.986687: uid:0 gid:0 pid:0 cmd:releasedir <span class="token punctuation">(</span><span class="token number">165731</span><span class="token punctuation">)</span>
+<span class="token punctuation">[</span>handle:00000000<span class="token punctuation">]</span>: OK
+08.18 <span class="token number">17</span>:48:30.987260: uid:0 gid:0 pid:27219 cmd:opendir <span class="token punctuation">(</span><span class="token number">136392</span><span class="token punctuation">)</span>: OK
+<span class="token punctuation">[</span>handle:00000002<span class="token punctuation">]</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h4 id="_3-5-3-自定义挂载参数" tabindex="-1"><a class="header-anchor" href="#_3-5-3-自定义挂载参数" aria-hidden="true">#</a> 3.5.3 自定义挂载参数</h4>
+<p><strong>方法1：</strong> 通过命令⾏参数</p>
+<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code>ufsmount /mnt/ufs <span class="token punctuation">\</span>
+	<span class="token parameter variable">-H</span> <span class="token number">172.16</span>.120.111,172.16.120.112,172.16.120.113 <span class="token punctuation">\</span>
+	<span class="token parameter variable">-o</span> <span class="token assign-left variable">ufsloglevel</span><span class="token operator">=</span>debug <span class="token punctuation">\</span>
+	<span class="token parameter variable">-o</span> <span class="token assign-left variable">ufslogfile</span><span class="token operator">=</span>/var/log/ufs/ufsmount_xingang.log <span class="token punctuation">\</span>
+	<span class="token parameter variable">-o</span> <span class="token assign-left variable">ufsrlimitnofile</span><span class="token operator">=</span><span class="token number">1024000</span> <span class="token punctuation">\</span>
+	<span class="token parameter variable">-o</span> <span class="token assign-left variable">ufsioretries</span><span class="token operator">=</span><span class="token number">120</span> <span class="token punctuation">\</span>
+	<span class="token parameter variable">-o</span> <span class="token assign-left variable">ufssubfolder</span><span class="token operator">=</span>/Users/Xingang
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p><strong>方法2：</strong> 通过配置⽂件</p>
+<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code>ufsmount /mnt/ufs <span class="token parameter variable">-c</span> /etc/ufs/your_ufsmount.cfg
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><h4 id="_3-5-4-查询挂载参数" tabindex="-1"><a class="header-anchor" href="#_3-5-4-查询挂载参数" aria-hidden="true">#</a> 3.5.4 查询挂载参数</h4>
+<p>以 <code v-pre>/mnt/ufs</code> 为客户端挂载点为示例</p>
 <div class="language-text ext-text line-numbers-mode"><pre v-pre class="language-text"><code>cat /mnt/ufs/.params
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p><strong>输出示例如下：</strong></p>
 <div class="language-text ext-text line-numbers-mode"><pre v-pre class="language-text"><code>ufsmaster: ufsmetaserver
@@ -821,7 +906,7 @@ kernel_fuse_protocol: 7.22
 kernel_capability_mask: 0xFFDB
 kernel_defaults_mask: 0xFC0B
 kernel_working_mask: 0xEC5B
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h4 id="_3-5-3-查看操作日志" tabindex="-1"><a class="header-anchor" href="#_3-5-3-查看操作日志" aria-hidden="true">#</a> 3.5.3 查看操作日志</h4>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h4 id="_3-5-5-查看操作日志" tabindex="-1"><a class="header-anchor" href="#_3-5-5-查看操作日志" aria-hidden="true">#</a> 3.5.5 查看操作日志</h4>
 <p>以<code v-pre>/mnt/ufs</code>为客户端挂载点为示例。</p>
 <div class="language-text ext-text line-numbers-mode"><pre v-pre class="language-text"><code>cat /mnt/ufs/.oplog
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p><strong>输出示例如下：</strong></p>
@@ -837,6 +922,117 @@ kernel_working_mask: 0xEC5B
 08.18 17:48:30.987940: uid:0 gid:0 pid:27219 cmd:readdirplus (136392,4096,137) [handle:00000002]: OK (488)
 08.18 17:48:30.988008: uid:0 gid:0 pid:27219 cmd:readdir (136392,4096,137) [handle:00000002]: OK (no data)
 ...
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></div></template>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h4 id="_3-5-6-查询运行日志" tabindex="-1"><a class="header-anchor" href="#_3-5-6-查询运行日志" aria-hidden="true">#</a> 3.5.6 查询运行日志</h4>
+<p>以 <code v-pre>/var/log/ufs/ufsmount.log</code> 为⽇志⽰例</p>
+<ol>
+<li>
+<p>客户端启动⽇志</p>
+<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code><span class="token punctuation">[</span><span class="token number">2022</span>-07-28 <span class="token number">10</span>:36:54.520 info <span class="token number">30275</span>:30275<span class="token punctuation">]</span> setting glibc malloc arena max to <span class="token number">4</span>
+<span class="token punctuation">[</span><span class="token number">2022</span>-07-28 <span class="token number">10</span>:36:54.520 info <span class="token number">30275</span>:30275<span class="token punctuation">]</span> setting glibc malloc arena <span class="token builtin class-name">test</span> to <span class="token number">4</span>
+<span class="token punctuation">[</span><span class="token number">2022</span>-07-28 <span class="token number">10</span>:36:54.520 info <span class="token number">30275</span>:30275<span class="token punctuation">]</span> out of memory killer disabled
+<span class="token number">17</span> / <span class="token number">22</span><span class="token punctuation">[</span><span class="token number">2022</span>-07-28 <span class="token number">10</span>:36:54.520 info <span class="token number">30275</span>:30275<span class="token punctuation">]</span> monotonic clock function: clock_gettime
+<span class="token punctuation">[</span><span class="token number">2022</span>-07-28 <span class="token number">10</span>:36:54.530 info <span class="token number">30275</span>:30275<span class="token punctuation">]</span> monotonic clock speed: <span class="token number">679351</span> ops / <span class="token number">10</span> miliseconds
+<span class="token punctuation">[</span><span class="token number">2022</span>-07-28 <span class="token number">10</span>:36:54.541 info <span class="token number">30275</span>:30287<span class="token punctuation">]</span> my st_dev: <span class="token number">51</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></li>
+<li>
+<p>Leader离线</p>
+<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code><span class="token punctuation">[</span><span class="token number">2022</span>-07-28 <span class="token number">11</span>:04:32.264 warning <span class="token number">4681</span>:4684<span class="token punctuation">]</span> master: connection lost <span class="token punctuation">(</span>header<span class="token punctuation">)</span>
+<span class="token punctuation">[</span><span class="token number">2022</span>-07-28 <span class="token number">11</span>:04:32.267 warning <span class="token number">4681</span>:4684<span class="token punctuation">]</span> ufsmaster <span class="token number">172.16</span>.120.112 - doesn<span class="token string">'t know his
+leader, waiting a moment and retrying using different IP
+[2022-07-28 11:04:32.268 warning 4681:4684] ufsmaster 172.16.120.112 - doesn'</span>t know his
+leader, waiting a moment and retrying using different IP
+<span class="token punctuation">[</span><span class="token number">2022</span>-07-28 <span class="token number">11</span>:04:34.269 warning <span class="token number">4681</span>:4684<span class="token punctuation">]</span> ufsmaster <span class="token number">172.16</span>.120.112 - doesn<span class="token string">'t know his
+leader, waiting a moment and retrying using different IP
+[2022-07-28 11:04:34.270 warning 4681:4684] ufsmaster 172.16.120.113 - doesn'</span>t know his
+leader, waiting a moment and retrying using different IP
+<span class="token punctuation">[</span><span class="token number">2022</span>-07-28 <span class="token number">11</span>:04:36.272 warning <span class="token number">4681</span>:4684<span class="token punctuation">]</span> ufsmaster <span class="token number">172.16</span>.120.113 - doesn't know his
+leader, waiting a moment and retrying using different IP
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></li>
+<li>
+<p>向New Leader注册</p>
+<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code><span class="token punctuation">[</span><span class="token number">2022</span>-07-28 <span class="token number">11</span>:04:36.272 warning <span class="token number">4681</span>:4684<span class="token punctuation">]</span> ufsmaster found leader: <span class="token number">172.16</span>.120.113
+<span class="token punctuation">[</span><span class="token number">2022</span>-07-28 <span class="token number">11</span>:04:38.274 warning <span class="token number">4681</span>:4684<span class="token punctuation">]</span> ufsmaster <span class="token number">172.16</span>.120.113 - doesn<span class="token string">'t know his
+leader, waiting a moment and retrying using different IP
+[2022-07-28 11:04:38.275 warning 4681:4684] can'</span>t connect to master
+<span class="token punctuation">(</span><span class="token string">"172.16.120.112"</span><span class="token builtin class-name">:</span><span class="token string">"9421"</span><span class="token punctuation">)</span>
+<span class="token punctuation">[</span><span class="token number">2022</span>-07-28 <span class="token number">11</span>:04:42.279 warning <span class="token number">4681</span>:4684<span class="token punctuation">]</span> ufsmaster <span class="token number">172.16</span>.120.113 - doesn<span class="token string">'t know his
+leader, waiting a moment and retrying using different IP
+[2022-07-28 11:04:42.279 warning 4681:4684] ufsmaster found leader: 172.16.120.113
+[2022-07-28 11:04:42.280 warning 4681:4684] ufsmaster 172.16.120.113 - doesn'</span>t know his
+leader, waiting a moment and retrying using different IP
+<span class="token punctuation">[</span><span class="token number">2022</span>-07-28 <span class="token number">11</span>:04:44.281 info <span class="token number">4681</span>:4684<span class="token punctuation">]</span> registered to master
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></li>
+<li>
+<p>⽂件的数据块离线, 导致客户端⽆法读数据(read)、写数据(write)</p>
+<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code><span class="token comment"># a. 存储节点不在线</span>
+<span class="token comment"># b. CSS服务未启动</span>
+<span class="token punctuation">[</span><span class="token number">2022</span>-07-28 <span class="token number">11</span>:09:11.859 warning <span class="token number">4681</span>:4817<span class="token punctuation">]</span> file: <span class="token number">359987</span>, index: <span class="token number">0</span>, chunk:
+0000000010AF62DE, version: 00000003 - there are no valid copies
+<span class="token punctuation">[</span><span class="token number">2022</span>-07-28 <span class="token number">11</span>:09:21.860 warning <span class="token number">4681</span>:4688<span class="token punctuation">]</span> file: <span class="token number">359987</span>, index: <span class="token number">0</span>, chunk:
+0000000010AF62DE, version: 00000003 - there are no valid copies
+<span class="token punctuation">[</span><span class="token number">2022</span>-07-28 <span class="token number">11</span>:09:21.860 warning <span class="token number">4681</span>:4818<span class="token punctuation">]</span> file: <span class="token number">359987</span>, index: <span class="token number">0</span>, chunk:
+0000000010AF62DE, version: 00000003 - there are no valid copies
+<span class="token punctuation">[</span><span class="token number">2022</span>-07-28 <span class="token number">11</span>:32:45.770 warning <span class="token number">8706</span>:12146<span class="token punctuation">]</span> file: <span class="token number">72628</span>, index: <span class="token number">0</span>, chunk:
+0000000010B2618C, version: 00000002 - there are no valid copies
+<span class="token punctuation">[</span><span class="token number">2022</span>-07-28 <span class="token number">11</span>:32:55.771 warning <span class="token number">8706</span>:12147<span class="token punctuation">]</span> file: <span class="token number">72628</span>, index: <span class="token number">0</span>, chunk:
+0000000010B2618C, version: 00000002 - there are no valid copies 
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></li>
+<li>
+<p>chunkserver离线，导致客户端⽆法写数据</p>
+<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code><span class="token punctuation">[</span><span class="token number">2022</span>-07-28 <span class="token number">11</span>:20:41.754 warning <span class="token number">8706</span>:8715<span class="token punctuation">]</span> file: <span class="token number">72628</span>, index: <span class="token number">0</span> - fs_writechunk returned
+status: Chunkserver not present
+<span class="token punctuation">[</span><span class="token number">2022</span>-07-28 <span class="token number">11</span>:20:43.255 warning <span class="token number">8706</span>:9629<span class="token punctuation">]</span> file: <span class="token number">72628</span>, index: <span class="token number">0</span> - fs_writechunk returned
+status: Chunkserver not present
+<span class="token punctuation">[</span><span class="token number">2022</span>-07-28 <span class="token number">11</span>:20:45.056 warning <span class="token number">8706</span>:8715<span class="token punctuation">]</span> file: <span class="token number">72628</span>, index: <span class="token number">0</span> - fs_writechunk returned
+status: Chunkserver not present
+<span class="token punctuation">[</span><span class="token number">2022</span>-07-28 <span class="token number">11</span>:20:47.157 warning <span class="token number">8706</span>:9629<span class="token punctuation">]</span> file: <span class="token number">72628</span>, index: <span class="token number">0</span> - fs_writechunk returned
+status: Chunkserver not present
+<span class="token punctuation">[</span><span class="token number">2022</span>-07-28 <span class="token number">11</span>:20:49.558 warning <span class="token number">8706</span>:8715<span class="token punctuation">]</span> file: <span class="token number">72628</span>, index: <span class="token number">0</span> - fs_writechunk returned
+status: Chunkserver not present
+<span class="token punctuation">[</span><span class="token number">2022</span>-07-28 <span class="token number">11</span>:20:52.260 warning <span class="token number">8706</span>:9629<span class="token punctuation">]</span> file: <span class="token number">72628</span>, index: <span class="token number">0</span> - fs_writechunk returned
+status: Chunkserver not present
+<span class="token punctuation">[</span><span class="token number">2022</span>-07-28 <span class="token number">11</span>:20:55.261 warning <span class="token number">8706</span>:8715<span class="token punctuation">]</span> file: <span class="token number">72628</span>, index: <span class="token number">0</span> - fs_writechunk returned
+status: Chunkserver not present
+<span class="token punctuation">[</span><span class="token number">2022</span>-07-28 <span class="token number">11</span>:20:58.562 warning <span class="token number">8706</span>:9629<span class="token punctuation">]</span> file: <span class="token number">72628</span>, index: <span class="token number">0</span> - fs_writechunk returned
+status: Chunkserver not present
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></li>
+<li>
+<p>磁盘离线， 导致客户端⽆法写数据</p>
+<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code><span class="token punctuation">[</span><span class="token number">2022</span>-07-28 <span class="token number">11</span>:25:19.261 warning <span class="token number">8706</span>:9629<span class="token punctuation">]</span> file: <span class="token number">72628</span>, index: <span class="token number">0</span> - fs_writechunk returned
+status: Chunk lost
+<span class="token punctuation">[</span><span class="token number">2022</span>-07-28 <span class="token number">11</span>:25:21.063 warning <span class="token number">8706</span>:8715<span class="token punctuation">]</span> file: <span class="token number">72628</span>, index: <span class="token number">0</span> - fs_writechunk returned
+status: Chunk lost
+<span class="token punctuation">[</span><span class="token number">2022</span>-07-28 <span class="token number">11</span>:25:23.164 warning <span class="token number">8706</span>:9629<span class="token punctuation">]</span> file: <span class="token number">72628</span>, index: <span class="token number">0</span> - fs_writechunk returned
+status: Chunk lost
+<span class="token punctuation">[</span><span class="token number">2022</span>-07-28 <span class="token number">11</span>:25:25.565 warning <span class="token number">8706</span>:8715<span class="token punctuation">]</span> file: <span class="token number">72628</span>, index: <span class="token number">0</span> - fs_writechunk returned
+status: Chunk lost
+<span class="token punctuation">[</span><span class="token number">2022</span>-07-28 <span class="token number">11</span>:25:28.266 warning <span class="token number">8706</span>:9629<span class="token punctuation">]</span> file: <span class="token number">72628</span>, index: <span class="token number">0</span> - fs_writechunk returned
+status: Chunk lost
+<span class="token punctuation">[</span><span class="token number">2022</span>-07-28 <span class="token number">11</span>:27:16.594 warning <span class="token number">8706</span>:8715<span class="token punctuation">]</span> error writing <span class="token function">file</span> number <span class="token number">72628</span>: ENXIO <span class="token punctuation">(</span>No
+such device or address<span class="token punctuation">)</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></li>
+<li>
+<p>磁盘离线， 导致客户端⽆法读数据</p>
+<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code><span class="token punctuation">[</span><span class="token number">2022</span>-07-28 <span class="token number">11</span>:28:31.087 warning <span class="token number">8706</span>:12146<span class="token punctuation">]</span> file: <span class="token number">72628</span>, index: <span class="token number">0</span> - fs_readchunk returned
+status: Chunk lost
+<span class="token punctuation">[</span><span class="token number">2022</span>-07-28 <span class="token number">11</span>:28:32.289 warning <span class="token number">8706</span>:12147<span class="token punctuation">]</span> file: <span class="token number">72628</span>, index: <span class="token number">0</span> - fs_readchunk returned
+status: Chunk lost
+<span class="token punctuation">[</span><span class="token number">2022</span>-07-28 <span class="token number">11</span>:28:33.488 warning <span class="token number">8706</span>:8713<span class="token punctuation">]</span> file: <span class="token number">72628</span>, index: <span class="token number">0</span> - fs_readchunk returned
+status: Chunk lost
+<span class="token punctuation">[</span><span class="token number">2022</span>-07-28 <span class="token number">11</span>:28:34.990 warning <span class="token number">8706</span>:12146<span class="token punctuation">]</span> file: <span class="token number">72628</span>, index: <span class="token number">0</span> - fs_readchunk returned
+status: Chunk lost
+<span class="token punctuation">[</span><span class="token number">2022</span>-07-28 <span class="token number">11</span>:28:36.491 warning <span class="token number">8706</span>:12147<span class="token punctuation">]</span> file: <span class="token number">72628</span>, index: <span class="token number">0</span> - fs_readchunk returned
+status: Chunk lost
+<span class="token punctuation">[</span><span class="token number">2022</span>-07-28 <span class="token number">11</span>:28:38.291 warning <span class="token number">8706</span>:8713<span class="token punctuation">]</span> file: <span class="token number">72628</span>, index: <span class="token number">0</span> - fs_readchunk returned
+status: Chunk lost
+<span class="token punctuation">[</span><span class="token number">2022</span>-07-28 <span class="token number">11</span>:28:40.093 warning <span class="token number">8706</span>:12146<span class="token punctuation">]</span> file: <span class="token number">72628</span>, index: <span class="token number">0</span> - fs_readchunk returned
+status: Chunk lost
+<span class="token punctuation">[</span><span class="token number">2022</span>-07-28 <span class="token number">11</span>:29:26.301 warning <span class="token number">8706</span>:12146<span class="token punctuation">]</span> file: <span class="token number">72628</span>, index: <span class="token number">0</span> - fs_readchunk returned
+status: Chunk lost
+<span class="token punctuation">[</span><span class="token number">2022</span>-07-28 <span class="token number">11</span>:29:26.301 warning <span class="token number">8706</span>:12146<span class="token punctuation">]</span> error reading <span class="token function">file</span> number <span class="token number">72628</span>: ENXIO <span class="token punctuation">(</span>No
+such device or address<span class="token punctuation">)</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></li>
+</ol>
+</div></template>
 
 

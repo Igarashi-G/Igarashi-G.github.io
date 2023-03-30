@@ -221,7 +221,7 @@ export default sidebar({
               text: "多任务编程",
               collapsable: true,
               prefix: "多任务编程/",
-              children: ["进程", "多进程编程", "线程", "多线程编程", "同步队列", "协程", "Linux文件锁"],
+              children: ["进程", "多进程编程", "线程", "多线程编程", "同步队列", "协程", "Linux文件锁", "高性能编程"],
             },
             {
               text: "asyncio",
