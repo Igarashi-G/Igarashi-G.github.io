@@ -1,5 +1,5 @@
 <template><div><p><strong>Python</strong> 高性能编程简述</p>
-<!-- more -->
+<!-- more --> 
 <h2 id="_1-计算机基本系统" tabindex="-1"><a class="header-anchor" href="#_1-计算机基本系统" aria-hidden="true">#</a> 1. 计算机基本系统</h2>
 <h5 id="思考" tabindex="-1"><a class="header-anchor" href="#思考" aria-hidden="true">#</a> <strong>思考：</strong></h5>
 <p>实现高性能 <strong>Python</strong> 代码的障碍在哪里？</p>

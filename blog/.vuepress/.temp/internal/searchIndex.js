@@ -5125,6 +5125,520 @@ export const searchIndex = [
     "extraFields": []
   },
   {
+    "title": "账号管理与ACL权限",
+    "headers": [],
+    "path": "/unix/Linux/Linux%E4%BD%BF%E7%94%A8%E8%80%85%E7%AE%A1%E7%90%86/%E8%B4%A6%E5%8F%B7%E7%AE%A1%E7%90%86%E4%B8%8EACL%E6%9D%83%E9%99%90.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "Linux是什么与如何学习",
+    "headers": [
+      {
+        "level": 3,
+        "title": "1. Linux 是什么",
+        "slug": "_1-linux-是什么",
+        "link": "#_1-linux-是什么",
+        "children": []
+      }
+    ],
+    "path": "/unix/Linux/Linux%E5%9F%BA%E7%A1%80%E6%8C%87%E5%BC%95/Linux%E6%98%AF%E4%BB%80%E4%B9%88%E4%B8%8E%E5%A6%82%E4%BD%95%E5%AD%A6%E4%B9%A0.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "主机规划与磁盘分区",
+    "headers": [
+      {
+        "level": 3,
+        "title": "硬件设备在 Linux 中的文件名",
+        "slug": "硬件设备在-linux-中的文件名",
+        "link": "#硬件设备在-linux-中的文件名",
+        "children": []
+      }
+    ],
+    "path": "/unix/Linux/Linux%E5%9F%BA%E7%A1%80%E6%8C%87%E5%BC%95/%E4%B8%BB%E6%9C%BA%E8%A7%84%E5%88%92%E4%B8%8E%E7%A3%81%E7%9B%98%E5%88%86%E5%8C%BA.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "快速指引",
+    "headers": [
+      {
+        "level": 3,
+        "title": "1. 认识计算机",
+        "slug": "_1-认识计算机",
+        "link": "#_1-认识计算机",
+        "children": []
+      },
+      {
+        "level": 3,
+        "title": "2. 数据表示方式",
+        "slug": "_2-数据表示方式",
+        "link": "#_2-数据表示方式",
+        "children": []
+      },
+      {
+        "level": 3,
+        "title": "3. 计算机上面常用的计算单位",
+        "slug": "_3-计算机上面常用的计算单位",
+        "link": "#_3-计算机上面常用的计算单位",
+        "children": []
+      },
+      {
+        "level": 3,
+        "title": "4. 软件程序运行",
+        "slug": "_4-软件程序运行",
+        "link": "#_4-软件程序运行",
+        "children": []
+      }
+    ],
+    "path": "/unix/Linux/Linux%E5%9F%BA%E7%A1%80%E6%8C%87%E5%BC%95/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%A6%82%E8%AE%BA.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "Linux磁盘与文件系统管理",
+    "headers": [
+      {
+        "level": 3,
+        "title": "1. 认识 Linux 文件系统",
+        "slug": "_1-认识-linux-文件系统",
+        "link": "#_1-认识-linux-文件系统",
+        "children": []
+      }
+    ],
+    "path": "/unix/Linux/Linux%E6%96%87%E4%BB%B6/Linux%E7%A3%81%E7%9B%98%E4%B8%8E%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%86.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "文件与文件系统的压缩",
+    "headers": [],
+    "path": "/unix/Linux/Linux%E6%96%87%E4%BB%B6/%E6%96%87%E4%BB%B6%E4%B8%8E%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E5%8E%8B%E7%BC%A9.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "文件权限与目录配置",
+    "headers": [],
+    "path": "/unix/Linux/Linux%E6%96%87%E4%BB%B6/%E6%96%87%E4%BB%B6%E6%9D%83%E9%99%90%E4%B8%8E%E7%9B%AE%E5%BD%95%E9%85%8D%E7%BD%AE.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "认识系统服务",
+    "headers": [
+      {
+        "level": 3,
+        "title": "1. daemon 与服务（service）",
+        "slug": "_1-daemon-与服务-service",
+        "link": "#_1-daemon-与服务-service",
+        "children": []
+      }
+    ],
+    "path": "/unix/Linux/Linux%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%86%E5%91%98/%E8%AE%A4%E8%AF%86%E7%B3%BB%E7%BB%9F%E6%9C%8D%E5%8A%A1.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "Shell",
+    "headers": [
+      {
+        "level": 2,
+        "title": "bash",
+        "slug": "bash",
+        "link": "#bash",
+        "children": []
+      }
+    ],
+    "path": "/unix/Linux/Shell%E8%84%9A%E6%9C%AC/shell.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "vim 快捷键",
+    "headers": [
+      {
+        "level": 2,
+        "title": "vim 的使用方法&快捷键：",
+        "slug": "vim-的使用方法-快捷键",
+        "link": "#vim-的使用方法-快捷键",
+        "children": [
+          {
+            "level": 3,
+            "title": "1.查询：",
+            "slug": "_1-查询",
+            "link": "#_1-查询",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "2.跳行和换首尾：",
+            "slug": "_2-跳行和换首尾",
+            "link": "#_2-跳行和换首尾",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "3.复制和粘贴：",
+            "slug": "_3-复制和粘贴",
+            "link": "#_3-复制和粘贴",
+            "children": []
+          }
+        ]
+      }
+    ],
+    "path": "/unix/Linux/Shell%E8%84%9A%E6%9C%AC/vim%20%E5%BF%AB%E6%8D%B7%E9%94%AE.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "Linux 命令速查",
+    "headers": [],
+    "path": "/unix/Linux/Troubleshooting/%E5%A4%87%E5%BF%98%E5%91%BD%E4%BB%A4.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "快速排错",
+    "headers": [
+      {
+        "level": 2,
+        "title": "1. gdb",
+        "slug": "_1-gdb",
+        "link": "#_1-gdb",
+        "children": [
+          {
+            "level": 3,
+            "title": "1.1 安装",
+            "slug": "_1-1-安装",
+            "link": "#_1-1-安装",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "1.2 运行",
+            "slug": "_1-2-运行",
+            "link": "#_1-2-运行",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "1.3 使用",
+            "slug": "_1-3-使用",
+            "link": "#_1-3-使用",
+            "children": []
+          }
+        ]
+      }
+    ],
+    "path": "/unix/Linux/Troubleshooting/%E6%95%85%E9%9A%9C%E5%BF%AB%E6%9F%A5.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "CURL 用法指北",
+    "headers": [
+      {
+        "level": 2,
+        "title": "简介",
+        "slug": "简介",
+        "link": "#简介",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "各种命令集合",
+        "slug": "各种命令集合",
+        "link": "#各种命令集合",
+        "children": [
+          {
+            "level": 3,
+            "title": "-A",
+            "slug": "a",
+            "link": "#a",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "-b",
+            "slug": "b",
+            "link": "#b",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "-c",
+            "slug": "c",
+            "link": "#c",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "-d",
+            "slug": "d",
+            "link": "#d",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "--data-urlencode",
+            "slug": "data-urlencode",
+            "link": "#data-urlencode",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "-e",
+            "slug": "e",
+            "link": "#e",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "-H 参数可以通过直接添加标头 Referer，达到同样效果。",
+            "slug": "h-参数可以通过直接添加标头-referer-达到同样效果。",
+            "link": "#h-参数可以通过直接添加标头-referer-达到同样效果。",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "-F",
+            "slug": "f",
+            "link": "#f",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "-G",
+            "slug": "g",
+            "link": "#g",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "-H",
+            "slug": "h",
+            "link": "#h",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "-i",
+            "slug": "i",
+            "link": "#i",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "-I",
+            "slug": "i-1",
+            "link": "#i-1",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "-k",
+            "slug": "k",
+            "link": "#k",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "-L",
+            "slug": "l",
+            "link": "#l",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "--limit-rate",
+            "slug": "limit-rate",
+            "link": "#limit-rate",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "-o",
+            "slug": "o",
+            "link": "#o",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "-O",
+            "slug": "o-1",
+            "link": "#o-1",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "-S",
+            "slug": "s",
+            "link": "#s",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "-u",
+            "slug": "u",
+            "link": "#u",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "-v",
+            "slug": "v",
+            "link": "#v",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "-x",
+            "slug": "x",
+            "link": "#x",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "-X",
+            "slug": "x-1",
+            "link": "#x-1",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "补充 telnet",
+            "slug": "补充-telnet",
+            "link": "#补充-telnet",
+            "children": []
+          }
+        ]
+      }
+    ],
+    "path": "/unix/Linux/%E7%BD%91%E7%BB%9C/CURL.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "SSL/TLS协议",
+    "headers": [],
+    "path": "/unix/Linux/%E7%BD%91%E7%BB%9C/SSL%E5%8D%8F%E8%AE%AE.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "CentOS网络命令",
+    "headers": [
+      {
+        "level": 2,
+        "title": "1. 网络 IP 指令集合",
+        "slug": "_1-网络-ip-指令集合",
+        "link": "#_1-网络-ip-指令集合",
+        "children": [
+          {
+            "level": 3,
+            "title": "1.网络参数设定：",
+            "slug": "_1-网络参数设定",
+            "link": "#_1-网络参数设定",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "1.1 手动/自动设置启停 IP：",
+            "slug": "_1-1-手动-自动设置启停-ip",
+            "link": "#_1-1-手动-自动设置启停-ip",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "2.ss 命令",
+            "slug": "_2-ss-命令",
+            "link": "#_2-ss-命令",
+            "children": []
+          }
+        ]
+      }
+    ],
+    "path": "/unix/Linux/%E7%BD%91%E7%BB%9C/%E5%91%BD%E4%BB%A4.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "Linux 网络基础",
+    "headers": [
+      {
+        "level": 2,
+        "title": "1. 网络基础",
+        "slug": "_1-网络基础",
+        "link": "#_1-网络基础",
+        "children": [
+          {
+            "level": 3,
+            "title": "1.1 网络通信",
+            "slug": "_1-1-网络通信",
+            "link": "#_1-1-网络通信",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "1.2 网络分类",
+            "slug": "_1-2-网络分类",
+            "link": "#_1-2-网络分类",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "1.3 性能指标",
+            "slug": "_1-3-性能指标",
+            "link": "#_1-3-性能指标",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "2. 网络七层模型",
+        "slug": "_2-网络七层模型",
+        "link": "#_2-网络七层模型",
+        "children": [
+          {
+            "level": 3,
+            "title": "2.1 物理层",
+            "slug": "_2-1-物理层",
+            "link": "#_2-1-物理层",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "2.2 数据链路层",
+            "slug": "_2-2-数据链路层",
+            "link": "#_2-2-数据链路层",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "2.3 网络层",
+            "slug": "_2-3-网络层",
+            "link": "#_2-3-网络层",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "HTTP 抓包演示",
+            "slug": "http-抓包演示",
+            "link": "#http-抓包演示",
+            "children": []
+          }
+        ]
+      }
+    ],
+    "path": "/unix/Linux/%E7%BD%91%E7%BB%9C/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
     "title": "DNS-BIND",
     "headers": [
       {
@@ -5697,326 +6211,6 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "Net-SNMP",
-    "headers": [
-      {
-        "level": 3,
-        "title": "1. 什么是 SNMP 协议",
-        "slug": "_1-什么是-snmp-协议",
-        "link": "#_1-什么是-snmp-协议",
-        "children": []
-      },
-      {
-        "level": 3,
-        "title": "2. SNMP 支持的网管操作",
-        "slug": "_2-snmp-支持的网管操作",
-        "link": "#_2-snmp-支持的网管操作",
-        "children": []
-      },
-      {
-        "level": 3,
-        "title": "3. SNMP 的实现结构及定义",
-        "slug": "_3-snmp-的实现结构及定义",
-        "link": "#_3-snmp-的实现结构及定义",
-        "children": []
-      },
-      {
-        "level": 3,
-        "title": "4. Net-SNMP 软件",
-        "slug": "_4-net-snmp-软件",
-        "link": "#_4-net-snmp-软件",
-        "children": []
-      }
-    ],
-    "path": "/unix/CentOS/SNMP/SNMP%E6%9C%8D%E5%8A%A1.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "SNMP设计文档",
-    "headers": [
-      {
-        "level": 2,
-        "title": "1. SNMP 详细设计",
-        "slug": "_1-snmp-详细设计",
-        "link": "#_1-snmp-详细设计",
-        "children": [
-          {
-            "level": 3,
-            "title": "1.2 SNMPv2c",
-            "slug": "_1-2-snmpv2c",
-            "link": "#_1-2-snmpv2c",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "1.3 SNMPv3",
-            "slug": "_1-3-snmpv3",
-            "link": "#_1-3-snmpv3",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "1.4 服务高可用",
-            "slug": "_1-4-服务高可用",
-            "link": "#_1-4-服务高可用",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "1.5 MIB 管理对象",
-            "slug": "_1-5-mib-管理对象",
-            "link": "#_1-5-mib-管理对象",
-            "children": []
-          }
-        ]
-      },
-      {
-        "level": 2,
-        "title": "2. SNMP 接收端配置",
-        "slug": "_2-snmp-接收端配置",
-        "link": "#_2-snmp-接收端配置",
-        "children": []
-      }
-    ],
-    "path": "/unix/CentOS/SNMP/SNMP%E8%AE%BE%E8%AE%A1%E6%96%87%E6%A1%A3.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "UFS-ISO构建及发布",
-    "headers": [
-      {
-        "level": 2,
-        "title": "1. RPM打包",
-        "slug": "_1-rpm打包",
-        "link": "#_1-rpm打包",
-        "children": [
-          {
-            "level": 3,
-            "title": "1.1 管理平台 RPM 打包",
-            "slug": "_1-1-管理平台-rpm-打包",
-            "link": "#_1-1-管理平台-rpm-打包",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "1.2 其他",
-            "slug": "_1-2-其他",
-            "link": "#_1-2-其他",
-            "children": []
-          }
-        ]
-      },
-      {
-        "level": 2,
-        "title": "2. iso打包",
-        "slug": "_2-iso打包",
-        "link": "#_2-iso打包",
-        "children": []
-      }
-    ],
-    "path": "/unix/CentOS/UFS/iso%E6%9E%84%E5%BB%BA%E4%BB%A5%E5%8F%8A%E5%8F%91%E5%B8%83.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "UFS-CLI",
-    "headers": [
-      {
-        "level": 2,
-        "title": "1. ufs-cli 工具",
-        "slug": "_1-ufs-cli-工具",
-        "link": "#_1-ufs-cli-工具",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "2. ufs-tools 工具",
-        "slug": "_2-ufs-tools-工具",
-        "link": "#_2-ufs-tools-工具",
-        "children": []
-      }
-    ],
-    "path": "/unix/CentOS/UFS/ufscli%E5%B7%A5%E5%85%B7.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "UFS核心组件",
-    "headers": [
-      {
-        "level": 2,
-        "title": "1. MSS 组件",
-        "slug": "_1-mss-组件",
-        "link": "#_1-mss-组件",
-        "children": [
-          {
-            "level": 3,
-            "title": "1.1 基本信息",
-            "slug": "_1-1-基本信息",
-            "link": "#_1-1-基本信息",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "1.2 操作方式",
-            "slug": "_1-2-操作方式",
-            "link": "#_1-2-操作方式",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "1.3 操作类型",
-            "slug": "_1-3-操作类型",
-            "link": "#_1-3-操作类型",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "1.4 参数配置",
-            "slug": "_1-4-参数配置",
-            "link": "#_1-4-参数配置",
-            "children": []
-          }
-        ]
-      },
-      {
-        "level": 2,
-        "title": "2. CSS 组件",
-        "slug": "_2-css-组件",
-        "link": "#_2-css-组件",
-        "children": [
-          {
-            "level": 3,
-            "title": "2.1 基本信息",
-            "slug": "_2-1-基本信息",
-            "link": "#_2-1-基本信息",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "2.2 操作方式",
-            "slug": "_2-2-操作方式",
-            "link": "#_2-2-操作方式",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "2.3 操作类型",
-            "slug": "_2-3-操作类型",
-            "link": "#_2-3-操作类型",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "2.4 参数配置",
-            "slug": "_2-4-参数配置",
-            "link": "#_2-4-参数配置",
-            "children": []
-          }
-        ]
-      },
-      {
-        "level": 2,
-        "title": "3. CLIENT 组件",
-        "slug": "_3-client-组件",
-        "link": "#_3-client-组件",
-        "children": [
-          {
-            "level": 3,
-            "title": "3.1 基本信息",
-            "slug": "_3-1-基本信息",
-            "link": "#_3-1-基本信息",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "3.2 操作方式",
-            "slug": "_3-2-操作方式",
-            "link": "#_3-2-操作方式",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "3.3 操作类型",
-            "slug": "_3-3-操作类型",
-            "link": "#_3-3-操作类型",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "3.4 参数配置",
-            "slug": "_3-4-参数配置",
-            "link": "#_3-4-参数配置",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "3.5 应用场景",
-            "slug": "_3-5-应用场景",
-            "link": "#_3-5-应用场景",
-            "children": []
-          }
-        ]
-      }
-    ],
-    "path": "/unix/CentOS/UFS/ufs%E6%A0%B8%E5%BF%83%E7%BB%84%E4%BB%B6.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "UFS快捷命令",
-    "headers": [
-      {
-        "level": 3,
-        "title": "1. 部署相关",
-        "slug": "_1-部署相关",
-        "link": "#_1-部署相关",
-        "children": []
-      },
-      {
-        "level": 3,
-        "title": "2. 调度相关",
-        "slug": "_2-调度相关",
-        "link": "#_2-调度相关",
-        "children": []
-      },
-      {
-        "level": 3,
-        "title": "3. 基础排错相关",
-        "slug": "_3-基础排错相关",
-        "link": "#_3-基础排错相关",
-        "children": []
-      }
-    ],
-    "path": "/unix/CentOS/UFS/ufs%E7%AE%A1%E7%90%86%E5%B9%B3%E5%8F%B0.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "虚拟机UUS排错",
-    "headers": [
-      {
-        "level": 3,
-        "title": "1. UUS 部分说明",
-        "slug": "_1-uus-部分说明",
-        "link": "#_1-uus-部分说明",
-        "children": []
-      },
-      {
-        "level": 3,
-        "title": "2. 使用 UUS 虚拟机的限制",
-        "slug": "_2-使用-uus-虚拟机的限制",
-        "link": "#_2-使用-uus-虚拟机的限制",
-        "children": []
-      }
-    ],
-    "path": "/unix/CentOS/UFS/uus%E8%99%9A%E6%8B%9F%E6%9C%BA%E6%8E%92%E9%94%99.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
     "title": "CentOS安装及配置",
     "headers": [
       {
@@ -6105,534 +6299,6 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "账号管理与ACL权限",
-    "headers": [],
-    "path": "/unix/Linux/Linux%E4%BD%BF%E7%94%A8%E8%80%85%E7%AE%A1%E7%90%86/%E8%B4%A6%E5%8F%B7%E7%AE%A1%E7%90%86%E4%B8%8EACL%E6%9D%83%E9%99%90.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "Linux是什么与如何学习",
-    "headers": [
-      {
-        "level": 3,
-        "title": "1. Linux 是什么",
-        "slug": "_1-linux-是什么",
-        "link": "#_1-linux-是什么",
-        "children": []
-      }
-    ],
-    "path": "/unix/Linux/Linux%E5%9F%BA%E7%A1%80%E6%8C%87%E5%BC%95/Linux%E6%98%AF%E4%BB%80%E4%B9%88%E4%B8%8E%E5%A6%82%E4%BD%95%E5%AD%A6%E4%B9%A0.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "主机规划与磁盘分区",
-    "headers": [
-      {
-        "level": 3,
-        "title": "硬件设备在 Linux 中的文件名",
-        "slug": "硬件设备在-linux-中的文件名",
-        "link": "#硬件设备在-linux-中的文件名",
-        "children": []
-      }
-    ],
-    "path": "/unix/Linux/Linux%E5%9F%BA%E7%A1%80%E6%8C%87%E5%BC%95/%E4%B8%BB%E6%9C%BA%E8%A7%84%E5%88%92%E4%B8%8E%E7%A3%81%E7%9B%98%E5%88%86%E5%8C%BA.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "快速指引",
-    "headers": [
-      {
-        "level": 3,
-        "title": "1. 认识计算机",
-        "slug": "_1-认识计算机",
-        "link": "#_1-认识计算机",
-        "children": []
-      },
-      {
-        "level": 3,
-        "title": "2. 数据表示方式",
-        "slug": "_2-数据表示方式",
-        "link": "#_2-数据表示方式",
-        "children": []
-      },
-      {
-        "level": 3,
-        "title": "3. 计算机上面常用的计算单位",
-        "slug": "_3-计算机上面常用的计算单位",
-        "link": "#_3-计算机上面常用的计算单位",
-        "children": []
-      },
-      {
-        "level": 3,
-        "title": "4. 软件程序运行",
-        "slug": "_4-软件程序运行",
-        "link": "#_4-软件程序运行",
-        "children": []
-      }
-    ],
-    "path": "/unix/Linux/Linux%E5%9F%BA%E7%A1%80%E6%8C%87%E5%BC%95/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%A6%82%E8%AE%BA.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "Linux磁盘与文件系统管理",
-    "headers": [
-      {
-        "level": 3,
-        "title": "1. 认识 Linux 文件系统",
-        "slug": "_1-认识-linux-文件系统",
-        "link": "#_1-认识-linux-文件系统",
-        "children": []
-      }
-    ],
-    "path": "/unix/Linux/Linux%E6%96%87%E4%BB%B6/Linux%E7%A3%81%E7%9B%98%E4%B8%8E%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%86.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "文件与文件系统的压缩",
-    "headers": [],
-    "path": "/unix/Linux/Linux%E6%96%87%E4%BB%B6/%E6%96%87%E4%BB%B6%E4%B8%8E%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E5%8E%8B%E7%BC%A9.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "文件权限与目录配置",
-    "headers": [],
-    "path": "/unix/Linux/Linux%E6%96%87%E4%BB%B6/%E6%96%87%E4%BB%B6%E6%9D%83%E9%99%90%E4%B8%8E%E7%9B%AE%E5%BD%95%E9%85%8D%E7%BD%AE.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "认识系统服务",
-    "headers": [
-      {
-        "level": 3,
-        "title": "1. daemon 与服务（service）",
-        "slug": "_1-daemon-与服务-service",
-        "link": "#_1-daemon-与服务-service",
-        "children": []
-      }
-    ],
-    "path": "/unix/Linux/Linux%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%86%E5%91%98/%E8%AE%A4%E8%AF%86%E7%B3%BB%E7%BB%9F%E6%9C%8D%E5%8A%A1.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "Shell",
-    "headers": [
-      {
-        "level": 2,
-        "title": "bash",
-        "slug": "bash",
-        "link": "#bash",
-        "children": []
-      }
-    ],
-    "path": "/unix/Linux/Shell%E8%84%9A%E6%9C%AC/shell.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "vim 快捷键",
-    "headers": [
-      {
-        "level": 2,
-        "title": "vim 的使用方法&快捷键：",
-        "slug": "vim-的使用方法-快捷键",
-        "link": "#vim-的使用方法-快捷键",
-        "children": [
-          {
-            "level": 3,
-            "title": "1.查询：",
-            "slug": "_1-查询",
-            "link": "#_1-查询",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "2.跳行和换首尾：",
-            "slug": "_2-跳行和换首尾",
-            "link": "#_2-跳行和换首尾",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "3.复制和粘贴：",
-            "slug": "_3-复制和粘贴",
-            "link": "#_3-复制和粘贴",
-            "children": []
-          }
-        ]
-      }
-    ],
-    "path": "/unix/Linux/Shell%E8%84%9A%E6%9C%AC/vim%20%E5%BF%AB%E6%8D%B7%E9%94%AE.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "Linux 命令速查",
-    "headers": [],
-    "path": "/unix/Linux/Troubleshooting/%E5%A4%87%E5%BF%98%E5%91%BD%E4%BB%A4.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "快速排错",
-    "headers": [
-      {
-        "level": 2,
-        "title": "1. gdb",
-        "slug": "_1-gdb",
-        "link": "#_1-gdb",
-        "children": [
-          {
-            "level": 3,
-            "title": "1.1 安装",
-            "slug": "_1-1-安装",
-            "link": "#_1-1-安装",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "1.2 运行",
-            "slug": "_1-2-运行",
-            "link": "#_1-2-运行",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "1.3 使用",
-            "slug": "_1-3-使用",
-            "link": "#_1-3-使用",
-            "children": []
-          }
-        ]
-      }
-    ],
-    "path": "/unix/Linux/Troubleshooting/%E6%95%85%E9%9A%9C%E5%BF%AB%E6%9F%A5.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "CURL 用法指北",
-    "headers": [
-      {
-        "level": 2,
-        "title": "简介",
-        "slug": "简介",
-        "link": "#简介",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "各种命令集合",
-        "slug": "各种命令集合",
-        "link": "#各种命令集合",
-        "children": [
-          {
-            "level": 3,
-            "title": "-A",
-            "slug": "a",
-            "link": "#a",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "-b",
-            "slug": "b",
-            "link": "#b",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "-c",
-            "slug": "c",
-            "link": "#c",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "-d",
-            "slug": "d",
-            "link": "#d",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "--data-urlencode",
-            "slug": "data-urlencode",
-            "link": "#data-urlencode",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "-e",
-            "slug": "e",
-            "link": "#e",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "-H 参数可以通过直接添加标头 Referer，达到同样效果。",
-            "slug": "h-参数可以通过直接添加标头-referer-达到同样效果。",
-            "link": "#h-参数可以通过直接添加标头-referer-达到同样效果。",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "-F",
-            "slug": "f",
-            "link": "#f",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "-G",
-            "slug": "g",
-            "link": "#g",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "-H",
-            "slug": "h",
-            "link": "#h",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "-i",
-            "slug": "i",
-            "link": "#i",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "-I",
-            "slug": "i-1",
-            "link": "#i-1",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "-k",
-            "slug": "k",
-            "link": "#k",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "-L",
-            "slug": "l",
-            "link": "#l",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "--limit-rate",
-            "slug": "limit-rate",
-            "link": "#limit-rate",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "-o",
-            "slug": "o",
-            "link": "#o",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "-O",
-            "slug": "o-1",
-            "link": "#o-1",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "-S",
-            "slug": "s",
-            "link": "#s",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "-u",
-            "slug": "u",
-            "link": "#u",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "-v",
-            "slug": "v",
-            "link": "#v",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "-x",
-            "slug": "x",
-            "link": "#x",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "-X",
-            "slug": "x-1",
-            "link": "#x-1",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "补充 telnet",
-            "slug": "补充-telnet",
-            "link": "#补充-telnet",
-            "children": []
-          }
-        ]
-      }
-    ],
-    "path": "/unix/Linux/%E7%BD%91%E7%BB%9C/CURL.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "SSL/TLS协议",
-    "headers": [],
-    "path": "/unix/Linux/%E7%BD%91%E7%BB%9C/SSL%E5%8D%8F%E8%AE%AE.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "CentOS网络命令",
-    "headers": [
-      {
-        "level": 2,
-        "title": "1. 网络 IP 指令集合",
-        "slug": "_1-网络-ip-指令集合",
-        "link": "#_1-网络-ip-指令集合",
-        "children": [
-          {
-            "level": 3,
-            "title": "1.网络参数设定：",
-            "slug": "_1-网络参数设定",
-            "link": "#_1-网络参数设定",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "1.1 手动/自动设置启停 IP：",
-            "slug": "_1-1-手动-自动设置启停-ip",
-            "link": "#_1-1-手动-自动设置启停-ip",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "2.ss 命令",
-            "slug": "_2-ss-命令",
-            "link": "#_2-ss-命令",
-            "children": []
-          }
-        ]
-      }
-    ],
-    "path": "/unix/Linux/%E7%BD%91%E7%BB%9C/%E5%91%BD%E4%BB%A4.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "Linux 网络基础",
-    "headers": [
-      {
-        "level": 2,
-        "title": "1. 网络基础",
-        "slug": "_1-网络基础",
-        "link": "#_1-网络基础",
-        "children": [
-          {
-            "level": 3,
-            "title": "1.1 网络通信",
-            "slug": "_1-1-网络通信",
-            "link": "#_1-1-网络通信",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "1.2 网络分类",
-            "slug": "_1-2-网络分类",
-            "link": "#_1-2-网络分类",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "1.3 性能指标",
-            "slug": "_1-3-性能指标",
-            "link": "#_1-3-性能指标",
-            "children": []
-          }
-        ]
-      },
-      {
-        "level": 2,
-        "title": "2. 网络七层模型",
-        "slug": "_2-网络七层模型",
-        "link": "#_2-网络七层模型",
-        "children": [
-          {
-            "level": 3,
-            "title": "2.1 物理层",
-            "slug": "_2-1-物理层",
-            "link": "#_2-1-物理层",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "2.2 数据链路层",
-            "slug": "_2-2-数据链路层",
-            "link": "#_2-2-数据链路层",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "2.3 网络层",
-            "slug": "_2-3-网络层",
-            "link": "#_2-3-网络层",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "HTTP 抓包演示",
-            "slug": "http-抓包演示",
-            "link": "#http-抓包演示",
-            "children": []
-          }
-        ]
-      }
-    ],
-    "path": "/unix/Linux/%E7%BD%91%E7%BB%9C/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "认识Ubuntu系统",
-    "headers": [],
-    "path": "/unix/Ubuntu/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/Ubuntu%E7%B3%BB%E5%88%97%E6%93%8D%E4%BD%9C.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "认识Linux系统二",
-    "headers": [],
-    "path": "/unix/Ubuntu/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/%E8%AE%A4%E8%AF%86Linux%E7%B3%BB%E7%BB%9F.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
     "title": "CPU",
     "headers": [
       {
@@ -6644,6 +6310,93 @@ export const searchIndex = [
       }
     ],
     "path": "/unix/%E7%A1%AC%E4%BB%B6%E5%9F%BA%E7%A1%80/CPU/CPU.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "Net-SNMP",
+    "headers": [
+      {
+        "level": 3,
+        "title": "1. 什么是 SNMP 协议",
+        "slug": "_1-什么是-snmp-协议",
+        "link": "#_1-什么是-snmp-协议",
+        "children": []
+      },
+      {
+        "level": 3,
+        "title": "2. SNMP 支持的网管操作",
+        "slug": "_2-snmp-支持的网管操作",
+        "link": "#_2-snmp-支持的网管操作",
+        "children": []
+      },
+      {
+        "level": 3,
+        "title": "3. SNMP 的实现结构及定义",
+        "slug": "_3-snmp-的实现结构及定义",
+        "link": "#_3-snmp-的实现结构及定义",
+        "children": []
+      },
+      {
+        "level": 3,
+        "title": "4. Net-SNMP 软件",
+        "slug": "_4-net-snmp-软件",
+        "link": "#_4-net-snmp-软件",
+        "children": []
+      }
+    ],
+    "path": "/unix/CentOS/SNMP/SNMP%E6%9C%8D%E5%8A%A1.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "SNMP设计文档",
+    "headers": [
+      {
+        "level": 2,
+        "title": "1. SNMP 详细设计",
+        "slug": "_1-snmp-详细设计",
+        "link": "#_1-snmp-详细设计",
+        "children": [
+          {
+            "level": 3,
+            "title": "1.2 SNMPv2c",
+            "slug": "_1-2-snmpv2c",
+            "link": "#_1-2-snmpv2c",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "1.3 SNMPv3",
+            "slug": "_1-3-snmpv3",
+            "link": "#_1-3-snmpv3",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "1.4 服务高可用",
+            "slug": "_1-4-服务高可用",
+            "link": "#_1-4-服务高可用",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "1.5 MIB 管理对象",
+            "slug": "_1-5-mib-管理对象",
+            "link": "#_1-5-mib-管理对象",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "2. SNMP 接收端配置",
+        "slug": "_2-snmp-接收端配置",
+        "link": "#_2-snmp-接收端配置",
+        "children": []
+      }
+    ],
+    "path": "/unix/CentOS/SNMP/SNMP%E8%AE%BE%E8%AE%A1%E6%96%87%E6%A1%A3.html",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -6679,6 +6432,20 @@ export const searchIndex = [
     "title": "显卡",
     "headers": [],
     "path": "/unix/%E7%A1%AC%E4%BB%B6%E5%9F%BA%E7%A1%80/%E6%98%BE%E5%8D%A1/%E6%98%BE%E5%8D%A1.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "认识Ubuntu系统",
+    "headers": [],
+    "path": "/unix/Ubuntu/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/Ubuntu%E7%B3%BB%E5%88%97%E6%93%8D%E4%BD%9C.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "认识Linux系统二",
+    "headers": [],
+    "path": "/unix/Ubuntu/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/%E8%AE%A4%E8%AF%86Linux%E7%B3%BB%E7%BB%9F.html",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -7166,6 +6933,239 @@ export const searchIndex = [
     "extraFields": []
   },
   {
+    "title": "UFS-ISO构建及发布",
+    "headers": [
+      {
+        "level": 2,
+        "title": "1. RPM打包",
+        "slug": "_1-rpm打包",
+        "link": "#_1-rpm打包",
+        "children": [
+          {
+            "level": 3,
+            "title": "1.1 管理平台 RPM 打包",
+            "slug": "_1-1-管理平台-rpm-打包",
+            "link": "#_1-1-管理平台-rpm-打包",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "1.2 其他",
+            "slug": "_1-2-其他",
+            "link": "#_1-2-其他",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "2. iso打包",
+        "slug": "_2-iso打包",
+        "link": "#_2-iso打包",
+        "children": []
+      }
+    ],
+    "path": "/unix/CentOS/UFS/iso%E6%9E%84%E5%BB%BA%E4%BB%A5%E5%8F%8A%E5%8F%91%E5%B8%83.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "UFS-CLI",
+    "headers": [
+      {
+        "level": 2,
+        "title": "1. ufs-cli 工具",
+        "slug": "_1-ufs-cli-工具",
+        "link": "#_1-ufs-cli-工具",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "2. ufs-tools 工具",
+        "slug": "_2-ufs-tools-工具",
+        "link": "#_2-ufs-tools-工具",
+        "children": []
+      }
+    ],
+    "path": "/unix/CentOS/UFS/ufscli%E5%B7%A5%E5%85%B7.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "UFS核心组件",
+    "headers": [
+      {
+        "level": 2,
+        "title": "1. MSS 组件",
+        "slug": "_1-mss-组件",
+        "link": "#_1-mss-组件",
+        "children": [
+          {
+            "level": 3,
+            "title": "1.1 基本信息",
+            "slug": "_1-1-基本信息",
+            "link": "#_1-1-基本信息",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "1.2 操作方式",
+            "slug": "_1-2-操作方式",
+            "link": "#_1-2-操作方式",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "1.3 操作类型",
+            "slug": "_1-3-操作类型",
+            "link": "#_1-3-操作类型",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "1.4 参数配置",
+            "slug": "_1-4-参数配置",
+            "link": "#_1-4-参数配置",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "2. CSS 组件",
+        "slug": "_2-css-组件",
+        "link": "#_2-css-组件",
+        "children": [
+          {
+            "level": 3,
+            "title": "2.1 基本信息",
+            "slug": "_2-1-基本信息",
+            "link": "#_2-1-基本信息",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "2.2 操作方式",
+            "slug": "_2-2-操作方式",
+            "link": "#_2-2-操作方式",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "2.3 操作类型",
+            "slug": "_2-3-操作类型",
+            "link": "#_2-3-操作类型",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "2.4 参数配置",
+            "slug": "_2-4-参数配置",
+            "link": "#_2-4-参数配置",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "3. CLIENT 组件",
+        "slug": "_3-client-组件",
+        "link": "#_3-client-组件",
+        "children": [
+          {
+            "level": 3,
+            "title": "3.1 基本信息",
+            "slug": "_3-1-基本信息",
+            "link": "#_3-1-基本信息",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "3.2 操作方式",
+            "slug": "_3-2-操作方式",
+            "link": "#_3-2-操作方式",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "3.3 操作类型",
+            "slug": "_3-3-操作类型",
+            "link": "#_3-3-操作类型",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "3.4 参数配置",
+            "slug": "_3-4-参数配置",
+            "link": "#_3-4-参数配置",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "3.5 应用场景",
+            "slug": "_3-5-应用场景",
+            "link": "#_3-5-应用场景",
+            "children": []
+          }
+        ]
+      }
+    ],
+    "path": "/unix/CentOS/UFS/ufs%E6%A0%B8%E5%BF%83%E7%BB%84%E4%BB%B6.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "UFS快捷命令",
+    "headers": [
+      {
+        "level": 3,
+        "title": "1. 部署相关",
+        "slug": "_1-部署相关",
+        "link": "#_1-部署相关",
+        "children": []
+      },
+      {
+        "level": 3,
+        "title": "2. 调度相关",
+        "slug": "_2-调度相关",
+        "link": "#_2-调度相关",
+        "children": []
+      },
+      {
+        "level": 3,
+        "title": "3. 基础排错相关",
+        "slug": "_3-基础排错相关",
+        "link": "#_3-基础排错相关",
+        "children": []
+      }
+    ],
+    "path": "/unix/CentOS/UFS/ufs%E7%AE%A1%E7%90%86%E5%B9%B3%E5%8F%B0.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "虚拟机UUS排错",
+    "headers": [
+      {
+        "level": 3,
+        "title": "1. UUS 部分说明",
+        "slug": "_1-uus-部分说明",
+        "link": "#_1-uus-部分说明",
+        "children": []
+      },
+      {
+        "level": 3,
+        "title": "2. 使用 UUS 虚拟机的限制",
+        "slug": "_2-使用-uus-虚拟机的限制",
+        "link": "#_2-使用-uus-虚拟机的限制",
+        "children": []
+      }
+    ],
+    "path": "/unix/CentOS/UFS/uus%E8%99%9A%E6%8B%9F%E6%9C%BA%E6%8E%92%E9%94%99.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
     "title": "",
     "headers": [],
     "path": "/404.html",
@@ -7544,9 +7544,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "NFS 分类",
+    "title": "Linux 分类",
     "headers": [],
-    "path": "/category/nfs/",
+    "path": "/category/linux/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -7558,9 +7558,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "SMB/CIFS 分类",
+    "title": "shell 分类",
     "headers": [],
-    "path": "/category/smbcifs/",
+    "path": "/category/shell/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -7572,9 +7572,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "SNMP 分类",
+    "title": "命令 分类",
     "headers": [],
-    "path": "/category/snmp/",
+    "path": "/category/%E5%91%BD%E4%BB%A4/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -7586,9 +7586,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "UFS 分类",
+    "title": "troubleshooting 分类",
     "headers": [],
-    "path": "/category/ufs/",
+    "path": "/category/troubleshooting/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -7600,9 +7600,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "CentOS 分类",
+    "title": "网络通信 分类",
     "headers": [],
-    "path": "/category/centos/",
+    "path": "/category/%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -7614,9 +7614,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "Linux 分类",
+    "title": "NFS 分类",
     "headers": [],
-    "path": "/category/linux/",
+    "path": "/category/nfs/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -7628,9 +7628,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "shell 分类",
+    "title": "SMB/CIFS 分类",
     "headers": [],
-    "path": "/category/shell/",
+    "path": "/category/smbcifs/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -7642,9 +7642,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "命令 分类",
+    "title": "CentOS 分类",
     "headers": [],
-    "path": "/category/%E5%91%BD%E4%BB%A4/",
+    "path": "/category/centos/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -7656,9 +7656,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "troubleshooting 分类",
+    "title": "SNMP 分类",
     "headers": [],
-    "path": "/category/troubleshooting/",
+    "path": "/category/snmp/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -7670,9 +7670,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "网络通信 分类",
+    "title": "虚拟机 分类",
     "headers": [],
-    "path": "/category/%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1/",
+    "path": "/category/%E8%99%9A%E6%8B%9F%E6%9C%BA/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -7684,9 +7684,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "虚拟机 分类",
+    "title": "WEB框架 分类",
     "headers": [],
-    "path": "/category/%E8%99%9A%E6%8B%9F%E6%9C%BA/",
+    "path": "/category/web%E6%A1%86%E6%9E%B6/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -7698,9 +7698,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "WEB框架 分类",
+    "title": "Django 分类",
     "headers": [],
-    "path": "/category/web%E6%A1%86%E6%9E%B6/",
+    "path": "/category/django/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -7712,9 +7712,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "Django 分类",
+    "title": "FastAPI 分类",
     "headers": [],
-    "path": "/category/django/",
+    "path": "/category/fastapi/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -7726,9 +7726,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "FastAPI 分类",
+    "title": "Tornado 分类",
     "headers": [],
-    "path": "/category/fastapi/",
+    "path": "/category/tornado/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -7740,9 +7740,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "Tornado 分类",
+    "title": "Web框架 分类",
     "headers": [],
-    "path": "/category/tornado/",
+    "path": "/category/web%E6%A1%86%E6%9E%B6/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -7754,9 +7754,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "Web框架 分类",
+    "title": "UFS 分类",
     "headers": [],
-    "path": "/category/web%E6%A1%86%E6%9E%B6/",
+    "path": "/category/ufs/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -7880,6 +7880,41 @@ export const searchIndex = [
     "extraFields": []
   },
   {
+    "title": "shell 标签",
+    "headers": [],
+    "path": "/tag/shell/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "命令 标签",
+    "headers": [],
+    "path": "/tag/%E5%91%BD%E4%BB%A4/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "troubleshooting 标签",
+    "headers": [],
+    "path": "/tag/troubleshooting/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "gdb 标签",
+    "headers": [],
+    "path": "/tag/gdb/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "网络通信 标签",
+    "headers": [],
+    "path": "/tag/%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
     "title": "AD 标签",
     "headers": [],
     "path": "/tag/ad/",
@@ -7922,34 +7957,6 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "SNMP 标签",
-    "headers": [],
-    "path": "/tag/snmp/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "UFS 标签",
-    "headers": [],
-    "path": "/tag/ufs/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "打包 标签",
-    "headers": [],
-    "path": "/tag/%E6%89%93%E5%8C%85/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "UUS 标签",
-    "headers": [],
-    "path": "/tag/uus/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
     "title": "CentOS 标签",
     "headers": [],
     "path": "/tag/centos/",
@@ -7964,37 +7971,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "shell 标签",
+    "title": "SNMP 标签",
     "headers": [],
-    "path": "/tag/shell/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "命令 标签",
-    "headers": [],
-    "path": "/tag/%E5%91%BD%E4%BB%A4/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "troubleshooting 标签",
-    "headers": [],
-    "path": "/tag/troubleshooting/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "gdb 标签",
-    "headers": [],
-    "path": "/tag/gdb/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "网络通信 标签",
-    "headers": [],
-    "path": "/tag/%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1/",
+    "path": "/tag/snmp/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -8046,5 +8025,39 @@ export const searchIndex = [
     "path": "/tag/web%E6%A1%86%E6%9E%B6/",
     "pathLocale": "/",
     "extraFields": []
+  },
+  {
+    "title": "UFS 标签",
+    "headers": [],
+    "path": "/tag/ufs/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "打包 标签",
+    "headers": [],
+    "path": "/tag/%E6%89%93%E5%8C%85/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "UUS 标签",
+    "headers": [],
+    "path": "/tag/uus/",
+    "pathLocale": "/",
+    "extraFields": []
   }
 ]
+
+if (import.meta.webpackHot) {
+  import.meta.webpackHot.accept()
+  if (__VUE_HMR_RUNTIME__.updateSearchIndex) {
+    __VUE_HMR_RUNTIME__.updateSearchIndex(searchIndex)
+  }
+}
+
+if (import.meta.hot) {
+  import.meta.hot.accept(({ searchIndex }) => {
+    __VUE_HMR_RUNTIME__.updateSearchIndex(searchIndex)
+  })
+}

@@ -45,7 +45,7 @@ order: 3
 
 **可写脚本**
 
-- 判断返回的状态码：
+- 判断返回的状态码
 
   ```js
   tests['Status code is 200'] = responseCode.code === 200;
@@ -57,14 +57,14 @@ order: 3
   tests['Body matches string'] = responseBody.has('test', 'POST');
   ```
 
-- 解析 JSON 并检查
+- 解析 **JSON** 并检查
 
   ```js
   var jsonData = JSON.parse(responseBody);
   tests['request test'] = jsonData.test === 'POST';
   ```
 
-**Collection**：
-把测试用例保存，`Runner` 批量执行
+**Collection** 
+把测试用例保存，**Runner** 批量执行
 
-> 在线可尝试商业版软件 [yapi](https://yapi.ymfe.org/)
+> 在线可尝试商业版软件 [YAPI](https://yapi.ymfe.org/) 

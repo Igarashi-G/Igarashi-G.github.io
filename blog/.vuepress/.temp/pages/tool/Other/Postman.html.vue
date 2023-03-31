@@ -45,7 +45,7 @@
 <p><strong>可写脚本</strong></p>
 <ul>
 <li>
-<p>判断返回的状态码：</p>
+<p>判断返回的状态码</p>
 <div class="language-javascript ext-js line-numbers-mode"><pre v-pre class="language-javascript"><code>tests<span class="token punctuation">[</span><span class="token string">'Status code is 200'</span><span class="token punctuation">]</span> <span class="token operator">=</span> responseCode<span class="token punctuation">.</span>code <span class="token operator">===</span> <span class="token number">200</span><span class="token punctuation">;</span>
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div></li>
 <li>
@@ -53,15 +53,15 @@
 <div class="language-javascript ext-js line-numbers-mode"><pre v-pre class="language-javascript"><code>tests<span class="token punctuation">[</span><span class="token string">'Body matches string'</span><span class="token punctuation">]</span> <span class="token operator">=</span> responseBody<span class="token punctuation">.</span><span class="token function">has</span><span class="token punctuation">(</span><span class="token string">'test'</span><span class="token punctuation">,</span> <span class="token string">'POST'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div></li>
 <li>
-<p>解析 JSON 并检查</p>
+<p>解析 <strong>JSON</strong> 并检查</p>
 <div class="language-javascript ext-js line-numbers-mode"><pre v-pre class="language-javascript"><code><span class="token keyword">var</span> jsonData <span class="token operator">=</span> <span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span>responseBody<span class="token punctuation">)</span><span class="token punctuation">;</span>
 tests<span class="token punctuation">[</span><span class="token string">'request test'</span><span class="token punctuation">]</span> <span class="token operator">=</span> jsonData<span class="token punctuation">.</span>test <span class="token operator">===</span> <span class="token string">'POST'</span><span class="token punctuation">;</span>
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div></div></div></li>
 </ul>
-<p><strong>Collection</strong>：
-把测试用例保存，<code v-pre>Runner</code> 批量执行</p>
+<p><strong>Collection</strong>
+把测试用例保存，<strong>Runner</strong> 批量执行</p>
 <blockquote>
-<p>在线可尝试商业版软件 <a href="https://yapi.ymfe.org/" target="_blank" rel="noopener noreferrer">yapi<ExternalLinkIcon/></a></p>
+<p>在线可尝试商业版软件 <a href="https://yapi.ymfe.org/" target="_blank" rel="noopener noreferrer">YAPI<ExternalLinkIcon/></a></p>
 </blockquote>
 </div></template>
 

@@ -11,7 +11,6 @@
 <li><strong>ISP（Internet Service Provider）：</strong> 因特网服务提供者（<em>提供商，如中国电信、移动等</em> ）</li>
 <li><strong>IXP（Internet Exchange Point） ：</strong> 互联网交换点，允许两个网络 <strong>直接相连</strong> 并 <strong>交换分组</strong>，而不需要再通过第三个网络来转发分组</li>
 <li><strong>RFC（Request For Comments）：</strong> 意思是 <strong>“请求评议”</strong>，包含了关于 <strong>Internet</strong> 几乎所有的重要的文字资料</li>
-<li></li>
 <li><strong>分组（packet ）：</strong>  因特网中传送的数据单元。由首部 <strong>header</strong> 和数据段组成，分组又称为包，首部可称为包头</li>
 <li><strong>存储转发（store and forward ）：</strong> 路由器收到一个分组，先检查分组是否正确，并过滤掉冲突包错误，确定包正确后，取出目的地址，通过查找表找到想要发送的输出端口地址，然后将该包发送出去</li>
 </ul>

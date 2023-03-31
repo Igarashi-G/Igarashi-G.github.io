@@ -11,7 +11,7 @@ tag:
 
 **Linux Shell** 脚本指南
 
-<!--more-->
+<!-- more -->
 
 ## bash
 
@@ -23,5 +23,22 @@ tag:
 
 # 默认的shell
 /bin/bash
+```
+
+配置文件 `~/.bashrc` 内容如下
+
+```shell
+#!/usr/bin/env bash
+
+alias cp='cp -i'
+alias egrep='egrep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias grep='grep --color=auto'
+alias l.='ls -d .* --color=auto'
+alias ll='ls -l --color=auto'
+alias ls='ls --color=auto'
+alias mv='mv -i'
+alias rm='rm -i'
+alias which='alias | /usr/bin/which --tty-only --read-alias --show-dot --show-tilde'
 ```
 

@@ -52,9 +52,28 @@
 <p>最后测试:</p>
 <div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code><span class="token function">curl</span> www.baidu.com
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><h3 id="_4-快捷配置" tabindex="-1"><a class="header-anchor" href="#_4-快捷配置" aria-hidden="true">#</a> 4. 快捷配置</h3>
-<p>下载 <a href="https://www.youngzsoft.net/ccproxy/" target="_blank" rel="noopener noreferrer">CCProxy<ExternalLinkIcon/></a></p>
+<p><strong>Windows</strong> 下，下载 <a href="https://www.youngzsoft.net/ccproxy/" target="_blank" rel="noopener noreferrer">CCProxy<ExternalLinkIcon/></a></p>
 <p>启动软件并直接执行如下命令即可</p>
 <div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code><span class="token builtin class-name">export</span> <span class="token assign-left variable">all_proxy</span><span class="token operator">=</span>http://172.16.70.104:808
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div></div></template>
+
+<span class="token comment"># 或 proxy_setup.sh</span>
+<span class="token comment">#!/usr/bin/env bash</span>
+<span class="token builtin class-name">export</span> <span class="token assign-left variable">PROXY_IP</span><span class="token operator">=</span><span class="token string">"172.16.70.104"</span>
+<span class="token builtin class-name">export</span> <span class="token assign-left variable">PROXY_PORT</span><span class="token operator">=</span><span class="token string">"808"</span>
+
+<span class="token builtin class-name">export</span> <span class="token assign-left variable">http_proxy</span><span class="token operator">=</span>http://<span class="token variable">${PROXY_IP}</span><span class="token builtin class-name">:</span><span class="token variable">${PROXY_PORT}</span>
+<span class="token builtin class-name">export</span> <span class="token assign-left variable">https_proxy</span><span class="token operator">=</span>https://<span class="token variable">${PROXY_IP}</span><span class="token builtin class-name">:</span><span class="token variable">${PROXY_PORT}</span>
+
+<span class="token comment"># 配置 git 代理</span>
+<span class="token function">git</span> config <span class="token parameter variable">--global</span> http.proxy  http://<span class="token variable">${PROXY_IP}</span><span class="token builtin class-name">:</span><span class="token variable">${PROXY_PORT}</span>
+<span class="token function">git</span> config <span class="token parameter variable">--global</span> https.proxy  https://<span class="token variable">${PROXY_IP}</span><span class="token builtin class-name">:</span><span class="token variable">${PROXY_PORT}</span>
+
+<span class="token comment"># 配置 npm 代理</span>
+<span class="token function">npm</span> config <span class="token builtin class-name">set</span> proxy http://<span class="token variable">${PROXY_IP}</span><span class="token builtin class-name">:</span><span class="token variable">${PROXY_PORT}</span>
+<span class="token function">npm</span> config <span class="token builtin class-name">set</span> https-proxy https://<span class="token variable">${PROXY_IP}</span><span class="token builtin class-name">:</span><span class="token variable">${PROXY_PORT}</span>
+
+<span class="token comment"># 配置 pypi 代理</span>
+pip search tornado <span class="token parameter variable">--proxy</span><span class="token operator">=</span><span class="token string">"http://172.16.70.104:808"</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></div></template>
 
 
