@@ -50,7 +50,7 @@
 <img src="@source/unix/Linux/网络/img/各层解耦.jpg" /> 
 <img src="@source/unix/Linux/网络/img/网络传输.jpg" /> 
 <h3 id="_2-1-物理层" tabindex="-1"><a class="header-anchor" href="#_2-1-物理层" aria-hidden="true">#</a> 2.1 物理层</h3>
-<p><strong>物理层：</strong> 连接不同的物理设备，传输 <strong>比特流</strong> ，该层为上层协议提供了一个 <strong>传输数据可靠的物理媒体</strong></p>
+<p><strong>物理层：</strong> 连接不同的物理设备，传输 <span style="color: blue"><strong>0/1 比特流（<em>流式传输</em> ）</strong></span>  ，该层为上层协议提供了一个 <strong>传输数据可靠的物理媒体</strong></p>
 <p>最早，计算机间的通信，和打电话通信的原理一致</p>
 <ol>
 <li><strong>底层需要建立物理链接：</strong> 如 电话线 &gt; 网线、路由器等等</li>
@@ -63,6 +63,11 @@
 <img src="@source/unix/Linux/网络/img/中继器.jpg" />
 <p><strong>集线器（<em>Hub</em>）：</strong> 多端口中继器，可以整合两头物理线路资源的 <strong>黑盒子</strong>，并以 <strong>广播的形式</strong> 转发到目标端，<strong>半双工（<em>不能隔离冲突域及广播域</em> ）</strong>，解决 <strong>同一局域网 多机互联</strong> 的问题</p>
 <img src="@source/unix/Linux/网络/img/集线器.jpg" />
+<div class="custom-container tip">
+<p class="custom-container-title">集线器硬件解析流程</p>
+<p>集线器是连接 <strong>N 台通信设备</strong> ，无脑将数据 <strong>复制 N 份广播</strong>，内部从网口经过中继电路会转发到 <strong>PHY</strong> 模块（<em>用来统一传输通用格式，想象成翻译</em> ）然后以电信号 <strong>BCD</strong> 网口的格式传入各各连接网口</p>
+<p><strong>传输：</strong> 会受到噪声干扰，导致信号形变出错，但出错也依然 <strong>原封不动</strong> 的广播（<em>无纠错</em> ），故会有如上信号放大器（<em><strong>中继器</strong></em> ）诞生，也会有如下链路层 <strong>MAC</strong> 报文头末尾的 <strong>FCS（<em>存放 CRC 冗余校验</em> ）字段</strong> 进行纠错</p>
+</div>
 <h4 id="其他概念" tabindex="-1"><a class="header-anchor" href="#其他概念" aria-hidden="true">#</a> <strong>其他概念</strong></h4>
 <p><strong>信道：</strong> 只一个方向传输信息的媒体，一条通信电路包含一个 <strong>发送信道</strong> 和一个 <strong>接收信道</strong></p>
 <ul>
@@ -102,8 +107,15 @@ $ iperf3 <span class="token parameter variable">-i1</span> <span class="token pa
 <img src="@source/unix/Linux/网络/img/无线网桥.jpg" /> 
 </li>
 <li>
-<p><strong>以太网交换机（<em>Switch 二层交换机</em>）：</strong> 早期的交换机可看做多个 <strong>Bridge</strong> 的集成设备（<em><strong>多端口网桥</strong></em> ） ，即添加了 <strong>MAC</strong> 地址学习功能的设备，系统内部集成了 <strong>动态查找表</strong> ，若 <strong>MAC</strong> 不在查找表中，则会加入记录，并将数据帧发送给目的端口，<strong>无需广播</strong></p>
+<p><strong>以太网交换机（<em>Switch 二层交换机</em>）：</strong> 早期的交换机可看做多个 <strong>Bridge</strong> 的集成设备（<em><strong>多端口网桥</strong></em> ） ，即添加了 <strong>MAC</strong> 地址学习功能的设备，系统内部集成了 <strong>动态查找表</strong> ，若 <strong>MAC</strong> 不在查找表中，则会加入记录，并将数据帧发送给目的端口，<strong>其消息传递是 转发，无需广播</strong></p>
 <img src="@source/unix/Linux/网络/img/以太网交换机.jpg" /> 
+<div class="custom-container tip">
+<p class="custom-container-title">交换机硬件解析流程</p>
+<p>其内部结构和集线器类似，<strong>消息以电信号的形式从网口进入</strong>，也是通过 <strong>PHY</strong> 转成通用格式的电信号，由于交换机多了 <strong>MAC</strong> 模块 ，其作用是将<strong>电信号 转为 数字信号</strong>，就能提取 <strong>MAC</strong> 包头，然后通过上文所述的 <strong>FCS 校验</strong> 包有无问题，若没有，则将数据放入 <strong>内存缓冲区</strong>，否则 <strong>丢弃</strong></p>
+<blockquote>
+<p>交换机的 <strong>MAC模块 没有 MAC地址</strong> ，因此其端口不核对接收方 <strong>MAC</strong> 地址，而是直接将所有包接收并存入缓冲区，然后 <strong>查表、转发</strong> ，详细流程见下</p>
+</blockquote>
+</div>
 </li>
 <li>
 <p><strong>网卡（<em>Network Interface Card</em>）：</strong> 也叫 <strong>NIC</strong> 卡，是一种允许计算机网络连接的硬件设备</p>
@@ -111,7 +123,7 @@ $ iperf3 <span class="token parameter variable">-i1</span> <span class="token pa
 </ul>
 <h4 id="以太网协议" tabindex="-1"><a class="header-anchor" href="#以太网协议" aria-hidden="true">#</a> <strong>以太网协议</strong></h4>
 <img src="@source/unix/Linux/网络/img/以太网协议.png" />
-<p><strong>MAC地址：</strong> 每一个设备都有唯一的 <strong>MAC 地址</strong>，共 <strong>16进制 的 48 位 长度为 6 个字节，用 - 或 : 连接</strong>，它具有唯一性的对应每个网络适配器，其广播地址为 <strong>FF-FF-FF-FF-FF-FF</strong></p>
+<p><strong>MAC地址：</strong> 每一个设备都有唯一的 <strong>MAC 地址</strong>，共 <strong>16进制 的 48 位 长度为 <code v-pre>6 * 8bit = 6bytes</code> 即 6个字节，用 - 或 : 连接</strong>，它具有唯一性的对应每个网络适配器，其广播地址为 <strong>FF-FF-FF-FF-FF-FF</strong></p>
 <p><strong>局域网：</strong> <strong>Ethernet</strong> 以太网 <strong>IEEE802.3</strong></p>
 <ul>
 <li>以太网第一个广泛部署的高速局域网</li>
@@ -130,6 +142,29 @@ $ iperf3 <span class="token parameter variable">-i1</span> <span class="token pa
 </ul>
 <p><strong>MAC 模块：</strong></p>
 <p>消息是以 <strong>光/电信号</strong> 的形式从网口进入，到了 <strong>PHY</strong> 会转成通用格式的电信号，<strong>MAC模块</strong> 的作用就是将 <strong>电信号转为数字信号</strong> ，这样就能提取出 <strong>MAC</strong> 包头，并通过 <strong>MAC</strong> 数据帧末尾的 <strong>FCS</strong> 校验包有无问题</p>
+<h4 id="交换机传输流程" tabindex="-1"><a class="header-anchor" href="#交换机传输流程" aria-hidden="true">#</a> <strong>交换机传输流程</strong></h4>
+<img src="@source/unix/Linux/网络/img/交换机流程.png" /> 
+<h5 id="主机a-向-主机b-发送流程" tabindex="-1"><a class="header-anchor" href="#主机a-向-主机b-发送流程" aria-hidden="true">#</a> <strong>主机A 向 主机B 发送流程：</strong></h5>
+<ul>
+<li><strong>A</strong> 准备向 <strong>B</strong> 发送消息，先会把 <strong>B</strong> 的 <strong>MAC</strong> 地址和要发送的数据写入以太网协议的帧里，顺着网线发出</li>
+<li>交换机从端口收到数据，会拆帧将 <strong>源 和 目的 MAC 地址提取</strong> 出来，和 <strong>MAC</strong> 地址表进行对比</li>
+<li>发现表中 <strong>B</strong> 的 <strong>MAC</strong> 地址在 <strong>2</strong> 号端口，则将数据封帧再转发给 <strong>2</strong> 号端口</li>
+<li>随后 <strong>主机B</strong> 从网线接收到来自交换机 <strong>2</strong> 号端口的数据</li>
+</ul>
+<h5 id="特殊情况" tabindex="-1"><a class="header-anchor" href="#特殊情况" aria-hidden="true">#</a> <strong>特殊情况：</strong></h5>
+<p><strong>情况一：</strong> 交换机查询地址表时，发现目的 <strong>MAC</strong> 地址的目标端口和包的源端口一致，此时会 <strong>直接丢弃这个包</strong> ，过程如下图</p>
+<img src="@source/unix/Linux/网络/img/交换机流程特殊情况.png" />
+<ul>
+<li>此时 <strong>主机A</strong> 和 <strong>主机B</strong> 是通过集线器连接的，集线器再接入交换机，此时消息会经过集线器广播到 <strong>主机B</strong> 和 <strong>交换机</strong></li>
+<li><strong>B</strong> 通过广播收到 <strong>A</strong> 的消息</li>
+<li>交换机从 <strong>1</strong> 号端口拆包查表，发现是同一端口，若不丢弃，则 <strong>B</strong> 会收到 <strong>A</strong> 同样消息两次</li>
+</ul>
+<p><strong>情况二：</strong> 地址表中查无此设备，如下几种情况</p>
+<ul>
+<li>具有该地址的设备，从未向交换机发送过包，故交换机无记录端口号</li>
+<li>该设备一段时间没有工作，被交换机从地址表中删除</li>
+</ul>
+<p>此时，交换机无法判断该包应该转发至那个端口，则会和集线器一样处理，<strong>进行广播</strong>，发送包后目标会进行响应，只要返回响应包，交换机就会 <strong>重新写入地址表</strong></p>
 <h3 id="_2-3-网络层" tabindex="-1"><a class="header-anchor" href="#_2-3-网络层" aria-hidden="true">#</a> 2.3 网络层</h3>
 <p>其目的是实现 <strong>两个端系统之间的数据透明传送</strong>，具体功能包括 <strong>寻址 和 路由选择、连接的建立、保持和终止等</strong></p>
 <ol>
@@ -188,7 +223,7 @@ $ iperf3 <span class="token parameter variable">-i1</span> <span class="token pa
 <p>光有 <strong>IP协议</strong> 是不够的，与 <strong>IP协议</strong> 配套使用实现其功能的还有 <strong>地址解析协议ARP、逆地址解析协议RARP、因特网报文协议ICMP、因特网组管理协议IGMP</strong></p>
 </div>
 <h4 id="r-arp协议" tabindex="-1"><a class="header-anchor" href="#r-arp协议" aria-hidden="true">#</a> <strong>R/ARP协议</strong></h4>
-<p><strong>R/ARP（<em>Reverse/Address Resolution Protocal</em>）逆/地址解析协议：</strong> 用于将 <strong>IP</strong> 地址解析为以太网的 <strong>MAC</strong> 地址的协议，为 <strong>网卡</strong>（<em>网络适配器</em> ）的 <strong>IP（<em>32位地址</em> ）</strong> 和其 <strong>MAC（<em>48位地址</em> ）</strong> 提供动态映射</p>
+<p><strong>R/ARP（<em>Reverse/Address Resolution Protocal</em>）逆/地址解析协议：</strong> 用于将 <strong>网卡</strong>（<em>网络适配器</em> ）的 <strong>IP（<em>32位地址</em> ）</strong> 解析为以太网   <strong>MAC（<em>48位地址</em> ）</strong> 的协议（<em>提供动态映射</em> ），逆解析即反着解析为 <strong>IP</strong></p>
 <p>在局域网中，当 <strong>主机 A</strong> 有数据要发送给  <strong>主机 B</strong> 时，仅有IP地址是不够的，还需要将 <strong>IP 数据报文</strong> 在数据链路层 <strong>封装成帧</strong> 才能通过物理网络发送，发送端必须有接收端的 <strong>MAC</strong> 地址，因此需要一个从 <strong>IP 地址</strong> 到 <strong>MAC 地址</strong> 的 <strong>映射</strong>，即 <strong>ARP</strong></p>
 <img src="@source/unix/Linux/网络/img/ARP过程.png" /> 
 <h5 id="arp过程" tabindex="-1"><a class="header-anchor" href="#arp过程" aria-hidden="true">#</a> <strong>ARP过程</strong></h5>
@@ -205,8 +240,8 @@ $ iperf3 <span class="token parameter variable">-i1</span> <span class="token pa
 <p>之后即是从数据链路层到物理层，把数据转为 <strong>0/1 的比特流</strong></p>
 <div class="custom-container info">
 <p class="custom-container-title">即插即用</p>
-<p>由于 ARP 是即插即用的，其 <strong>ARP 表</strong> 是自动建立的，无需系统管理员来配置</p>
-<p>因此在 <strong>高可用 IP 漂移（<em>频繁改变 IP</em> ）后</strong> ，需要手动执行 <strong>ARP</strong> 命令，来帮助各网络设备自动更新 <strong>ARP 映射关系</strong></p>
+<p>由于 <strong>ARP</strong> 是即插即用的，其 <strong>ARP 表</strong> 是自动建立的，无需系统管理员来配置</p>
+<p>因此在 <strong>NAS 高可用 IP 漂移（<em>频繁改变 IP</em> ）后</strong> ，需要手动执行 <strong>ARP</strong> 命令，来帮助各网络设备自动更新 <strong>ARP 映射关系</strong></p>
 <img src="@source/unix/Linux/网络/img/ARP映射关系.png" /> 
 </div>
 <h4 id="icmp协议" tabindex="-1"><a class="header-anchor" href="#icmp协议" aria-hidden="true">#</a> <strong>ICMP协议</strong></h4>

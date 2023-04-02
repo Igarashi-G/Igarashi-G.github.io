@@ -643,4 +643,6 @@ export const pagesComponents = {
   "v-da70c892": defineAsyncComponent(() => import(/* webpackChunkName: "v-da70c892" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/unix/Linux/Shell脚本/.~shell.html.vue")),
   // path: /python/%E8%AF%AD%E8%A8%80/%E5%A4%9A%E4%BB%BB%E5%8A%A1%E7%BC%96%E7%A8%8B/.~%E9%AB%98%E6%80%A7%E8%83%BD%E7%BC%96%E7%A8%8B.html
   "v-84d44fb0": defineAsyncComponent(() => import(/* webpackChunkName: "v-84d44fb0" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/python/语言/多任务编程/.~高性能编程.html.vue")),
+  // path: /unix/Linux/%E7%BD%91%E7%BB%9C/.~%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80.html
+  "v-2f002c4b": defineAsyncComponent(() => import(/* webpackChunkName: "v-2f002c4b" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/unix/Linux/网络/.~网络基础.html.vue")),
 }
