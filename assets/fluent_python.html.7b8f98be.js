@@ -1,1 +1,0 @@
-import{_ as t}from"./plugin-vueexport-helper.2444895f.js";import{o as e,c as n,d as r,r as c}from"./app.25a623ff.js";const _={};function s(p,a){const o=c("PDF");return e(),n("div",null,[r(o,{url:"https://www.igarashi.fun:7779/pdf/python/Python%20Cookbook.pdf",height:"880px"})])}const h=t(_,[["render",s],["__file","fluent_python.html.vue"]]);export{h as default};
