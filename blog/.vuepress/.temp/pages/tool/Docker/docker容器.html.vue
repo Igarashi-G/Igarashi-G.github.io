@@ -192,7 +192,7 @@ journalctl <span class="token parameter variable">-fu</span> <span class="token 
 <span class="token comment"># gpg:               imported: 1</span>
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></li>
 <li>
-<p>写入 <strong>Docker</strong> 镜像源地址</p>
+<p>写入 <strong>Docker</strong> 镜像源地址，若失败请从</p>
 <div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code>add-apt-repository <span class="token string">"deb [arch=amd64] https://mirrors.tuna.tsinghua.edu.cn/docker-ce/linux/debian <span class="token variable"><span class="token variable">$(</span>lsb_release <span class="token parameter variable">-cs</span><span class="token variable">)</span></span> stable"</span>
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div></li>
 <li>

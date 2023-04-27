@@ -1,6 +1,9 @@
-<template><div><p>RabbitMQ 队列：（重要组件）
-消息队列，非常 nb。通用很多种语言，不同语言之间，不同机器上实现队列。--消息中间件（开发语言是 erlang 爱立信开发，改代码局部生效，热插拔）
-线程 q 实现了同一个进程之间的不同线程的交互（两个进程之间的线程 q 不能互相通信）
+<template><div><p><strong>RabbitMQ</strong> 是一个 <strong>Erlang</strong> 开发的，通用多种语言、不同语言间、不同机器上实现的消息队列，其支持热插拔</p>
+<!-- more -->
+<p><a href="https://www.rabbitmq.com/download.html" target="_blank" rel="noopener noreferrer">[安装地址]<ExternalLinkIcon/></a> | <a href="https://www.rabbitmq.com/documentation.html" target="_blank" rel="noopener noreferrer">[官方文档]<ExternalLinkIcon/></a></p>
+<p><a href="https://rabbitmq.mr-ping.com/tutorials_with_python/%5B1%5DHello_World.html" target="_blank" rel="noopener noreferrer">[中文Tutorials]<ExternalLinkIcon/></a> | <a href="https://github.com/pika/pika/tree/main/examples" target="_blank" rel="noopener noreferrer">[pika examples]<ExternalLinkIcon/></a></p>
+<h3 id="_1-amqp协议" tabindex="-1"><a class="header-anchor" href="#_1-amqp协议" aria-hidden="true">#</a> 1. AMQP协议</h3>
+<p>线程 q 实现了同一个进程之间的不同线程的交互（两个进程之间的线程 q 不能互相通信）
 进程 Q 实现了不同进程之间的数据交互。</p>
 <pre><code>异步-实现大并发（专业级别的，甩py几十条街，工作原理相同）
     前端可以写一万个命令，可能最多能承载10个并发，但是可以把一万个人的任务先接过来，慢慢执行

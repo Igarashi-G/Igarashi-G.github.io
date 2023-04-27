@@ -246,7 +246,7 @@ sysctl -p /etc/sysctl.d/docker.conf
   # gpg:               imported: 1
   ```
 
-- 写入 **Docker** 镜像源地址
+- 写入 **Docker** 镜像源地址，若失败请从 
 
   ```shell
   add-apt-repository "deb [arch=amd64] https://mirrors.tuna.tsinghua.edu.cn/docker-ce/linux/debian $(lsb_release -cs) stable"
