@@ -645,4 +645,10 @@ export const pagesComponents = {
   "v-721ff41e": defineAsyncComponent(() => import(/* webpackChunkName: "v-721ff41e" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/tag/状态管理/index.html.vue")),
   // path: /tag/web%E6%A1%86%E6%9E%B6/
   "v-414c2b62": defineAsyncComponent(() => import(/* webpackChunkName: "v-414c2b62" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/tag/web框架/index.html.vue")),
+  // path: /tool/Docker/.~%E4%BD%BF%E7%94%A8%E5%9F%BA%E7%A1%80.html
+  "v-6549ae63": defineAsyncComponent(() => import(/* webpackChunkName: "v-6549ae63" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/tool/Docker/.~使用基础.html.vue")),
+  // path: /python/%E7%94%9F%E6%80%81/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/pika.html
+  "v-be661ea4": defineAsyncComponent(() => import(/* webpackChunkName: "v-be661ea4" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/python/生态/消息队列/pika.html.vue")),
+  // path: /python/%E7%94%9F%E6%80%81/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/kombu.html
+  "v-b0d2f48e": defineAsyncComponent(() => import(/* webpackChunkName: "v-b0d2f48e" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/python/生态/消息队列/kombu.html.vue")),
 }

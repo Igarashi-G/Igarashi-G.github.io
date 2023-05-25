@@ -5,7 +5,7 @@
 <h3 id="_1-amqp协议" tabindex="-1"><a class="header-anchor" href="#_1-amqp协议" aria-hidden="true">#</a> 1. AMQP协议</h3>
 <p>线程 q 实现了同一个进程之间的不同线程的交互（两个进程之间的线程 q 不能互相通信）
 进程 Q 实现了不同进程之间的数据交互。</p>
-<pre><code>异步-实现大并发（专业级别的，甩py几十条街，工作原理相同）
+<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code>异步-实现大并发（专业级别的，甩py几十条街，工作原理相同）
     前端可以写一万个命令，可能最多能承载10个并发，但是可以把一万个人的任务先接过来，慢慢执行
     实现前提：没有同步要求，提交的任务不具备实时性（实时性：比如支付、飞机监测、自动驾驶）例如：抢购、股票分 实时的和委托，委托即队列
     让它以某个价格去买。
@@ -14,19 +14,18 @@
 
 安装python rabbitMQ module（python用它专门的模块pika）
 
-pip install pika
+pip <span class="token function">install</span> pika
 or
 easy_install pika
 or
 源码
 
 https://pypi.python.org/pypi/pika
-</code></pre>
-<p>一、实现最简单的队列通信
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>一、实现最简单的队列通信
 假设有三个应用程序，都用队列但相互不影响，则可以 rabbitmq 可以开三个队列互不干涉。rabbitmq 可以开成千上万个队列。避免混淆，队列名要唯一。
 p1 ----&gt; crm &lt;----c1 : p1 给 crm 发一个消息，那么 c1 可以从 crm 中取。（为了方便理解）实际上是如下操作
 p1（客户端先发消息给）----&gt;EX1（交换）----&gt;crm 队列（把消息放到队列）&lt;------c1（客户端再取）现在来看 exchange 没有存在的必要。</p>
-<pre><code>send端：
+<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code>send端：
     见sender.py
 
 receive端：
@@ -34,26 +33,24 @@ receive端：
 
 远程连接rabbitmq server的话，需要配置权限：（无论win还是linux上有一个管理工具rabbitmqctl）：
 
-    1.首先在rabbitmq server上创建一个用户并分配角色
-        sudo rabbitmqctl  add_user name pass
-        sudo rabbitmqctl  set_user_tags name administrator  　　
+    <span class="token number">1</span>.首先在rabbitmq server上创建一个用户并分配角色
+        <span class="token function">sudo</span> rabbitmqctl  add_user name pass
+        <span class="token function">sudo</span> rabbitmqctl  set_user_tags name administrator  　　
 
-    2.同时还要配置权限，允许从外面访问(必须)
-        sudo rabbitmqctl set_permissions -p / alex &quot;.*&quot; &quot;.*&quot; &quot;.*&quot;   # 授权，表示所有ip地址都能访问
+    <span class="token number">2</span>.同时还要配置权限，允许从外面访问<span class="token punctuation">(</span>必须<span class="token punctuation">)</span>
+        <span class="token function">sudo</span> rabbitmqctl set_permissions <span class="token parameter variable">-p</span> / alex <span class="token string">".*"</span> <span class="token string">".*"</span> <span class="token string">".*"</span>   <span class="token comment"># 授权，表示所有ip地址都能访问</span>
 
-    3.客户端连接的时候需要配置认证参数
-        credentials = pika.PlainCredentials('name', 'pass')
+    <span class="token number">3</span>.客户端连接的时候需要配置认证参数
+        credentials <span class="token operator">=</span> pika.PlainCredentials<span class="token punctuation">(</span><span class="token string">'name'</span>, <span class="token string">'pass'</span><span class="token punctuation">)</span>
 
-        connection = pika.BlockingConnection(pika.ConnectionParameters(
-            '192.168.80.133',5672,'/', credentials=credentials))
-        channel = connection.channel()
+        connection <span class="token operator">=</span> pika.BlockingConnection<span class="token punctuation">(</span>pika.ConnectionParameters<span class="token punctuation">(</span>
+            <span class="token string">'192.168.80.133'</span>,5672,<span class="token string">'/'</span>, <span class="token assign-left variable">credentials</span><span class="token operator">=</span>credentials<span class="token punctuation">))</span>
+        channel <span class="token operator">=</span> connection.channel<span class="token punctuation">(</span><span class="token punctuation">)</span>
 
     注：用apt装的rabbitmq-server的话重启服务在/etc/init.d/rabbitmq-server restart
 
-        查看队列用list_queues记住要root 故sudo rqbbitmqctl list_queues!
-
-
-&lt;1&gt;启动sender.py之后消息发送出去了[x] Sent 'Hello World!'，在队列中没有人接收。
+        查看队列用list_queues记住要root 故sudo rqbbitmqctl list_queues<span class="token operator">!</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><pre><code>&lt;1&gt;启动sender.py之后消息发送出去了[x] Sent 'Hello World!'，在队列中没有人接收。
 
 &lt;2&gt;在启动receive.py得到以下数据，我们分别把callback 的参数打印:
     body：[x] Received b'Hello World!' --消息主体
@@ -146,26 +143,25 @@ receive端：
         web端关闭，下次重启时，获取队列消息，如库存做出了某些改动，通知消费者（同时订阅库存改动的用户）
 </code></pre>
 <p>五、消息订阅发布之组播：</p>
-<pre><code>问题：如何根据消息的级别，来接收不同级别的消息？
+<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code>问题：如何根据消息的级别，来接收不同级别的消息？
 
 改动：send端：
-        1.exchange_declare里面的exchange_type=&quot;direct&quot;组播形式。
-        2.severity = sys.argv[1:] if len(sys.argv) &gt; 1 else 'info'  定义严重级别、程度 ,recv端根据级别来接收
-        3.basic_publish中的routing_key=severity  发出不同级别的组播（即发出不同组的消息）
+        <span class="token number">1</span>.exchange_declare里面的exchange_type<span class="token operator">=</span><span class="token string">"direct"</span>组播形式。
+        <span class="token number">2</span>.severity <span class="token operator">=</span> sys.argv<span class="token punctuation">[</span><span class="token number">1</span>:<span class="token punctuation">]</span> <span class="token keyword">if</span> len<span class="token punctuation">(</span>sys.argv<span class="token punctuation">)</span> <span class="token operator">></span> <span class="token number">1</span> <span class="token keyword">else</span> <span class="token string">'info'</span>  定义严重级别、程度 ,recv端根据级别来接收
+        <span class="token number">3</span>.basic_publish中的routing_key<span class="token operator">=</span>severity  发出不同级别的组播（即发出不同组的消息）
      recv端：
-        1.同上，改exchange_declare里面的exchange_type
-        2.severities = sys.argv[1:]  拿到的是一个列表，跟几个level就绑定几个severities，这里为了指定订阅消息的分组
-        3.if not severities:    若没有定义分组则退出，报个错
-            sys.stderr.write(&quot;Usage:%s [info] [warning] [error]\n&quot; % sys.argv[0])
-            sys.exit(1)
-        4.for severity in severities:  # 循环绑定，有几个绑定几个，即绑定指定的那些组
-            channel.queue_bind(exchange=&quot;direct_logs&quot;,
-                               queue=queue_name,
-                               routing_key=severity)  # 之后它就会监听，所有发到绑定的info、error...组的就会被监听，实现按组订阅
+        <span class="token number">1</span>.同上，改exchange_declare里面的exchange_type
+        <span class="token number">2</span>.severities <span class="token operator">=</span> sys.argv<span class="token punctuation">[</span><span class="token number">1</span>:<span class="token punctuation">]</span>  拿到的是一个列表，跟几个level就绑定几个severities，这里为了指定订阅消息的分组
+        <span class="token number">3</span>.if not severities:    若没有定义分组则退出，报个错
+            sys.stderr.write<span class="token punctuation">(</span><span class="token string">"Usage:%s [info] [warning] [error]<span class="token entity" title="\n">\n</span>"</span> % sys.argv<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+            sys.exit<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+        <span class="token number">4</span>.for <span class="token for-or-select variable">severity</span> <span class="token keyword">in</span> severities:  <span class="token comment"># 循环绑定，有几个绑定几个，即绑定指定的那些组</span>
+            channel.queue_bind<span class="token punctuation">(</span>exchange<span class="token operator">=</span><span class="token string">"direct_logs"</span>,
+                               <span class="token assign-left variable">queue</span><span class="token operator">=</span>queue_name,
+                               <span class="token assign-left variable">routing_key</span><span class="token operator">=</span>severity<span class="token punctuation">)</span>  <span class="token comment"># 之后它就会监听，所有发到绑定的info、error...组的就会被监听，实现按组订阅</span>
 
 结果：
-</code></pre>
-<p>六、更细致的消息过滤：</p>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>六、更细致的消息过滤：</p>
 <pre><code>问题：若想更加细致的，比如要根据多个标准来进行路由怎么办？
 
 改动：仅需把send端和recv端的exchange_type 改为'topic'即可。

@@ -150,10 +150,9 @@ CMD <span class="token punctuation">[</span><span class="token string">"/usr/sbi
 <span class="token function">docker</span> push localhost:5000/znginx:ubuntu
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="custom-container info">
 <p class="custom-container-title">在编写自动化脚本时，可以使用如下形式</p>
-<p>先通过命令构建镜像，需要注意的是 <code v-pre>docker_repo</code> 指的是 <strong>registry</strong> 的地址，仅镜像 <strong>tag</strong> 前缀和 <strong>registry</strong> 地址一致才能正常上传</p>
+<p>先通过命令构建镜像，需要注意的是 <code v-pre>docker_repo</code> 指的是 <strong>registry</strong> 的地址，仅镜像 <strong>tag</strong> 前缀和 <strong>registry</strong> 地址一致貌似才能正常上传</p>
 <div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code><span class="token assign-left variable">image_name</span><span class="token operator">=</span><span class="token string">"mysql"</span>
 <span class="token assign-left variable">tag</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span><span class="token function">date</span> <span class="token string">"+%Y%m%d%H%M%S"</span><span class="token variable">)</span></span>
-<span class="token comment"># 此处必须是registry的地址</span>
 <span class="token assign-left variable">docker_repo</span><span class="token operator">=</span><span class="token string">"192.168.0.172:8003"</span>	
 <span class="token assign-left variable">image_full_name</span><span class="token operator">=</span><span class="token variable">$docker_repo</span><span class="token string">"/"</span><span class="token variable">$image_name</span>
 <span class="token assign-left variable">image_file</span><span class="token operator">=</span><span class="token variable">$image_full_name</span><span class="token string">":"</span><span class="token variable">$tag</span>
@@ -163,7 +162,7 @@ CMD <span class="token punctuation">[</span><span class="token string">"/usr/sbi
 
 <span class="token comment"># 若cicd可使用如下形式</span>
 <span class="token function">sudo</span> <span class="token function">docker</span> build <span class="token parameter variable">--platform</span><span class="token operator">=</span>linux/amd64 <span class="token parameter variable">-f</span> ./Dockerfile <span class="token parameter variable">-t</span> <span class="token variable">$image_file</span> --build-arg <span class="token assign-left variable">GITLAB_TOKEN_USER</span><span class="token operator">=</span>zzheng --build-arg <span class="token assign-left variable">GITLAB_TOKEN</span><span class="token operator">=</span>zzheng --build-arg <span class="token assign-left variable">BRANCH</span><span class="token operator">=</span><span class="token variable">$branch</span> <span class="token builtin class-name">.</span>
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>自动构建后，需要登录到 <strong>registry</strong> 并上传</p>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>自动构建后，需要登录到 <strong>registry</strong> 并上传</p>
 <div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code><span class="token comment"># 如下形式先登录</span>
 <span class="token function">docker</span> login <span class="token number">192.168</span>.0.172:8003 <span class="token parameter variable">-u</span> root <span class="token parameter variable">-p</span> user@dev
 <span class="token comment"># 或脚本</span>
@@ -172,7 +171,11 @@ CMD <span class="token punctuation">[</span><span class="token string">"/usr/sbi
 <span class="token comment">#然后可以直接push</span>
 <span class="token function">sudo</span> <span class="token function">docker</span> push <span class="token variable">$image_file</span>
 <span class="token function">sudo</span> <span class="token function">docker</span> rmi <span class="token variable">$image_file</span>
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><img src="@source/tool/Docker/img/上传register.jpg">
+
+<span class="token comment"># 获取列表</span>
+<span class="token function">curl</span> <span class="token parameter variable">-X</span> GET http://192.168.0.172:8003/v2/_catalog
+<span class="token punctuation">{</span><span class="token string">"repositories"</span>:<span class="token punctuation">[</span><span class="token string">"mysql"</span><span class="token punctuation">]</span><span class="token punctuation">}</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><img src="@source/tool/Docker/img/上传register.jpg">
 </div>
 </li>
 <li>
@@ -184,7 +187,7 @@ CMD <span class="token punctuation">[</span><span class="token string">"/usr/sbi
 <span class="token comment"># {"name":"nginx","tags":["alpine"]}</span>
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></li>
 <li>
-<p>若需要镜像仓库给外部访问</p>
+<p>若需要镜像仓库给外部访问，<strong>Nexus</strong> 仓库也一样</p>
 <div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code><span class="token function">docker</span> tag z-nginx:ubuntu <span class="token number">120.53</span>.122.253:5000/znginx:ubuntu
 
 <span class="token comment"># 若需要push 到外网地址，此时会报错</span>
@@ -321,7 +324,19 @@ $ <span class="token function">docker</span> run <span class="token parameter va
 
 <span class="token comment"># 进入容器后，手动指定该容器对应的 ENTRYPOINT 或 CMD 命令，此时即使出错，容器也不会退出</span>
 <span class="token comment"># 因为 bash 作为 1号进程，只要不主动退出容器，该容器就不会自动退出， --rm 容器跟随退出</span>
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></li>
+
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></li>
+<li>
+<p>删除未使用的资源（<em>适用于删除 <strong>register</strong> 资源未释放</em> ）</p>
+<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code><span class="token comment"># 删除未使用的容器</span>
+$ <span class="token function">docker</span> container prune
+
+<span class="token comment"># 删除未使用的镜像</span>
+$ <span class="token function">docker</span> image prune
+
+<span class="token comment"># 清理所有未使用的镜像、容器、网络和数据卷</span>
+$ <span class="token function">docker</span> system prune
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></li>
 </ol>
 <hr>
 <h2 id="_2-docker-构建镜像" tabindex="-1"><a class="header-anchor" href="#_2-docker-构建镜像" aria-hidden="true">#</a> 2. Docker 构建镜像</h2>

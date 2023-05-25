@@ -1,4 +1,4 @@
-<template><div><p><strong>Helm</strong> 相关的安装使用</p>
+<template><div><p><strong><a href="https://helm.sh/zh/docs/" target="_blank" rel="noopener noreferrer">Helm<ExternalLinkIcon/></a></strong> 相关的安装使用</p>
 <!-- more -->
 <h2 id="_1-helm" tabindex="-1"><a class="header-anchor" href="#_1-helm" aria-hidden="true">#</a> 1.Helm</h2>
 <p><strong>Helm</strong> 类似 <strong>npm</strong>，<strong>pip</strong>，<strong>docker hub</strong>, 可理解为是软件库，方便快速的为 <strong>k8s</strong> 集群安装第三方软件</p>
@@ -72,6 +72,26 @@ $ helm <span class="token function">install</span> my-harbor bitnami/harbor
 
   <span class="token builtin class-name">echo</span> Username: <span class="token string">"admin"</span>
   <span class="token builtin class-name">echo</span> Password: <span class="token variable"><span class="token variable">$(</span>kubectl get secret <span class="token parameter variable">--namespace</span> default my-harbor-core-envvars <span class="token parameter variable">-o</span> <span class="token assign-left variable">jsonpath</span><span class="token operator">=</span><span class="token string">"{.data.HARBOR_ADMIN_PASSWORD}"</span> <span class="token operator">|</span> base64 <span class="token parameter variable">-d</span><span class="token variable">)</span></span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="_2-使用" tabindex="-1"><a class="header-anchor" href="#_2-使用" aria-hidden="true">#</a> 2. 使用</h2>
+<h3 id="_2-1-常用命令" tabindex="-1"><a class="header-anchor" href="#_2-1-常用命令" aria-hidden="true">#</a> 2.1 常用命令</h3>
+<p>简单打包发布流程</p>
+<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code><span class="token comment"># 打包</span>
+$ <span class="token function">sudo</span> helm package analysis-data-worker-chart <span class="token parameter variable">--version</span> <span class="token number">0.1</span>.0 <span class="token parameter variable">--destination</span> <span class="token builtin class-name">.</span>
+
+<span class="token comment"># 添加自建的nexus仓库，注意是url</span>
+$ <span class="token function">sudo</span> helm repo <span class="token function">add</span> nexus-repo http://192.168.3.111:8081/repository/helm-repo/
+
+<span class="token comment"># 安装第三方脚本</span>
+$ <span class="token function">sudo</span> helm plugin <span class="token function">install</span> <span class="token parameter variable">--version</span> master https://gitee.com/mirrors_sonatype-nexus-community/helm-nexus-push.git
+
+<span class="token comment"># 上传chart包</span>
+$ <span class="token function">sudo</span> helm nexus-push nexus-repo analysis-data-worker-chart-0.1.0.tgz <span class="token parameter variable">-u</span> root <span class="token parameter variable">-p</span> xxx
+
+<span class="token comment"># 从仓库里安装chart</span>
+$ <span class="token function">sudo</span> helm <span class="token function">install</span> analysis-data-worker analysis-data-worker-chart <span class="token parameter variable">--namespace</span><span class="token operator">=</span>zz-test <span class="token parameter variable">--version</span><span class="token operator">=</span><span class="token number">0.1</span>.3
+
+<span class="token comment"># 卸载chart包</span>
+<span class="token function">sudo</span> helm uninstall analysis-data-worker <span class="token parameter variable">--namespace</span><span class="token operator">=</span>zz-test
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></div></template>
 
 

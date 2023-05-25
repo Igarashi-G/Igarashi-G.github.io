@@ -643,4 +643,10 @@ export const pagesData = {
   "v-721ff41e": () => import(/* webpackChunkName: "v-721ff41e" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/tag/状态管理/index.html.js").then(({ data }) => data),
   // path: /tag/web%E6%A1%86%E6%9E%B6/
   "v-414c2b62": () => import(/* webpackChunkName: "v-414c2b62" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/tag/web框架/index.html.js").then(({ data }) => data),
+  // path: /tool/Docker/.~%E4%BD%BF%E7%94%A8%E5%9F%BA%E7%A1%80.html
+  "v-6549ae63": () => import(/* webpackChunkName: "v-6549ae63" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/tool/Docker/.~使用基础.html.js").then(({ data }) => data),
+  // path: /python/%E7%94%9F%E6%80%81/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/pika.html
+  "v-be661ea4": () => import(/* webpackChunkName: "v-be661ea4" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/python/生态/消息队列/pika.html.js").then(({ data }) => data),
+  // path: /python/%E7%94%9F%E6%80%81/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/kombu.html
+  "v-b0d2f48e": () => import(/* webpackChunkName: "v-b0d2f48e" */"D:/Program/igarashi-blog/blog/.vuepress/.temp/pages/python/生态/消息队列/kombu.html.js").then(({ data }) => data),
 }

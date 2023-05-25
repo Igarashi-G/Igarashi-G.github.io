@@ -1,1 +1,14 @@
-export const data = JSON.parse("{\"key\":\"v-7f137270\",\"path\":\"/book/%E7%A4%BE%E4%BC%9A%E5%AD%A6/%E4%B9%8C%E5%90%88%E4%B9%8B%E4%BC%97.html\",\"title\":\"乌合之众\",\"lang\":\"zh-CN\",\"frontmatter\":{\"title\":\"乌合之众\",\"date\":\"2022-09-19T00:00:00.000Z\",\"article\":false,\"summary\":\"\",\"head\":[[\"meta\",{\"property\":\"og:url\",\"content\":\"https://igarashi-g.github.io/book/%E7%A4%BE%E4%BC%9A%E5%AD%A6/%E4%B9%8C%E5%90%88%E4%B9%8B%E4%BC%97.html\"}],[\"meta\",{\"property\":\"og:site_name\",\"content\":\"五十岚 ▪ 寄\"}],[\"meta\",{\"property\":\"og:title\",\"content\":\"乌合之众\"}],[\"meta\",{\"property\":\"og:type\",\"content\":\"article\"}],[\"meta\",{\"property\":\"og:updated_time\",\"content\":\"2023-03-08T05:05:29.000Z\"}],[\"meta\",{\"property\":\"og:locale\",\"content\":\"zh-CN\"}],[\"meta\",{\"property\":\"article:published_time\",\"content\":\"2022-09-19T00:00:00.000Z\"}],[\"meta\",{\"property\":\"article:modified_time\",\"content\":\"2023-03-08T05:05:29.000Z\"}]]},\"excerpt\":\"\",\"headers\":[],\"git\":{\"createdTime\":1663654799000,\"updatedTime\":1678251929000,\"contributors\":[{\"name\":\"Igarashi\",\"email\":\"2545369032@qq.com\",\"commits\":3}]},\"readingTime\":{\"minutes\":0.13,\"words\":40},\"filePathRelative\":\"book/社会学/乌合之众.md\",\"localizedDate\":\"2022年9月19日\"}")
+export const data = JSON.parse("{\"key\":\"v-7f137270\",\"path\":\"/book/%E7%A4%BE%E4%BC%9A%E5%AD%A6/%E4%B9%8C%E5%90%88%E4%B9%8B%E4%BC%97.html\",\"title\":\"乌合之众\",\"lang\":\"zh-CN\",\"frontmatter\":{\"title\":\"乌合之众\",\"date\":\"2022-09-19T00:00:00.000Z\",\"article\":false,\"summary\":\"\",\"head\":[[\"meta\",{\"property\":\"og:url\",\"content\":\"https://igarashi-g.github.io/book/%E7%A4%BE%E4%BC%9A%E5%AD%A6/%E4%B9%8C%E5%90%88%E4%B9%8B%E4%BC%97.html\"}],[\"meta\",{\"property\":\"og:site_name\",\"content\":\"五十岚 ▪ 寄\"}],[\"meta\",{\"property\":\"og:title\",\"content\":\"乌合之众\"}],[\"meta\",{\"property\":\"og:type\",\"content\":\"article\"}],[\"meta\",{\"property\":\"og:locale\",\"content\":\"zh-CN\"}],[\"meta\",{\"property\":\"article:published_time\",\"content\":\"2022-09-19T00:00:00.000Z\"}]]},\"excerpt\":\"\",\"headers\":[],\"readingTime\":{\"minutes\":0.13,\"words\":40},\"filePathRelative\":\"book/社会学/乌合之众.md\",\"localizedDate\":\"2022年9月19日\"}")
+
+if (import.meta.webpackHot) {
+  import.meta.webpackHot.accept()
+  if (__VUE_HMR_RUNTIME__.updatePageData) {
+    __VUE_HMR_RUNTIME__.updatePageData(data)
+  }
+}
+
+if (import.meta.hot) {
+  import.meta.hot.accept(({ data }) => {
+    __VUE_HMR_RUNTIME__.updatePageData(data)
+  })
+}

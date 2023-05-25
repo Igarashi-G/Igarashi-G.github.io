@@ -10,7 +10,7 @@ tag:
   - 存储库
 ---
 
-**Helm** 相关的安装使用
+**[Helm](https://helm.sh/zh/docs/)** 相关的安装使用
 
 <!-- more -->
 
@@ -109,5 +109,31 @@ $ helm install my-harbor bitnami/harbor
 
   echo Username: "admin"
   echo Password: $(kubectl get secret --namespace default my-harbor-core-envvars -o jsonpath="{.data.HARBOR_ADMIN_PASSWORD}" | base64 -d)
+```
+
+## 2. 使用
+
+### 2.1 常用命令
+
+简单打包发布流程
+
+```shell
+# 打包
+$ sudo helm package analysis-data-worker-chart --version 0.1.0 --destination .
+
+# 添加自建的nexus仓库，注意是url
+$ sudo helm repo add nexus-repo http://192.168.3.111:8081/repository/helm-repo/
+
+# 安装第三方脚本
+$ sudo helm plugin install --version master https://gitee.com/mirrors_sonatype-nexus-community/helm-nexus-push.git
+
+# 上传chart包
+$ sudo helm nexus-push nexus-repo analysis-data-worker-chart-0.1.0.tgz -u root -p xxx
+
+# 从仓库里安装chart
+$ sudo helm install analysis-data-worker analysis-data-worker-chart --namespace=zz-test --version=0.1.3
+
+# 卸载chart包
+sudo helm uninstall analysis-data-worker --namespace=zz-test
 ```
 

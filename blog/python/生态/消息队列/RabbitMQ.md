@@ -27,53 +27,57 @@ star: true
 线程 q 实现了同一个进程之间的不同线程的交互（两个进程之间的线程 q 不能互相通信）
 进程 Q 实现了不同进程之间的数据交互。
 
-    异步-实现大并发（专业级别的，甩py几十条街，工作原理相同）
-        前端可以写一万个命令，可能最多能承载10个并发，但是可以把一万个人的任务先接过来，慢慢执行
-        实现前提：没有同步要求，提交的任务不具备实时性（实时性：比如支付、飞机监测、自动驾驶）例如：抢购、股票分 实时的和委托，委托即队列
-        让它以某个价格去买。
-    
-    安装 http://www.rabbitmq.com/install-standalone-mac.html
-    
-    安装python rabbitMQ module（python用它专门的模块pika）
-    
-    pip install pika
-    or
-    easy_install pika
-    or
-    源码
-    
-    https://pypi.python.org/pypi/pika
+```shell
+异步-实现大并发（专业级别的，甩py几十条街，工作原理相同）
+    前端可以写一万个命令，可能最多能承载10个并发，但是可以把一万个人的任务先接过来，慢慢执行
+    实现前提：没有同步要求，提交的任务不具备实时性（实时性：比如支付、飞机监测、自动驾驶）例如：抢购、股票分 实时的和委托，委托即队列
+    让它以某个价格去买。
+
+安装 http://www.rabbitmq.com/install-standalone-mac.html
+
+安装python rabbitMQ module（python用它专门的模块pika）
+
+pip install pika
+or
+easy_install pika
+or
+源码
+
+https://pypi.python.org/pypi/pika
+```
 
 一、实现最简单的队列通信
 假设有三个应用程序，都用队列但相互不影响，则可以 rabbitmq 可以开三个队列互不干涉。rabbitmq 可以开成千上万个队列。避免混淆，队列名要唯一。
 p1 ----> crm <----c1 : p1 给 crm 发一个消息，那么 c1 可以从 crm 中取。（为了方便理解）实际上是如下操作
 p1（客户端先发消息给）---->EX1（交换）---->crm 队列（把消息放到队列）<------c1（客户端再取）现在来看 exchange 没有存在的必要。
 
-    send端：
-        见sender.py
-    
-    receive端：
-        见receive.py
-    
-    远程连接rabbitmq server的话，需要配置权限：（无论win还是linux上有一个管理工具rabbitmqctl）：
-    
-        1.首先在rabbitmq server上创建一个用户并分配角色
-            sudo rabbitmqctl  add_user name pass
-            sudo rabbitmqctl  set_user_tags name administrator  　　
-    
-        2.同时还要配置权限，允许从外面访问(必须)
-            sudo rabbitmqctl set_permissions -p / alex ".*" ".*" ".*"   # 授权，表示所有ip地址都能访问
-    
-        3.客户端连接的时候需要配置认证参数
-            credentials = pika.PlainCredentials('name', 'pass')
-    
-            connection = pika.BlockingConnection(pika.ConnectionParameters(
-                '192.168.80.133',5672,'/', credentials=credentials))
-            channel = connection.channel()
-    
-        注：用apt装的rabbitmq-server的话重启服务在/etc/init.d/rabbitmq-server restart
-    
-            查看队列用list_queues记住要root 故sudo rqbbitmqctl list_queues!
+```shell
+send端：
+    见sender.py
+
+receive端：
+    见receive.py
+
+远程连接rabbitmq server的话，需要配置权限：（无论win还是linux上有一个管理工具rabbitmqctl）：
+
+    1.首先在rabbitmq server上创建一个用户并分配角色
+        sudo rabbitmqctl  add_user name pass
+        sudo rabbitmqctl  set_user_tags name administrator  　　
+
+    2.同时还要配置权限，允许从外面访问(必须)
+        sudo rabbitmqctl set_permissions -p / alex ".*" ".*" ".*"   # 授权，表示所有ip地址都能访问
+
+    3.客户端连接的时候需要配置认证参数
+        credentials = pika.PlainCredentials('name', 'pass')
+
+        connection = pika.BlockingConnection(pika.ConnectionParameters(
+            '192.168.80.133',5672,'/', credentials=credentials))
+        channel = connection.channel()
+
+    注：用apt装的rabbitmq-server的话重启服务在/etc/init.d/rabbitmq-server restart
+
+        查看队列用list_queues记住要root 故sudo rqbbitmqctl list_queues!
+```
 
 
     <1>启动sender.py之后消息发送出去了[x] Sent 'Hello World!'，在队列中没有人接收。
@@ -173,24 +177,26 @@ p1（客户端先发消息给）---->EX1（交换）---->crm 队列（把消息�
 
 五、消息订阅发布之组播：
 
-    问题：如何根据消息的级别，来接收不同级别的消息？
-    
-    改动：send端：
-            1.exchange_declare里面的exchange_type="direct"组播形式。
-            2.severity = sys.argv[1:] if len(sys.argv) > 1 else 'info'  定义严重级别、程度 ,recv端根据级别来接收
-            3.basic_publish中的routing_key=severity  发出不同级别的组播（即发出不同组的消息）
-         recv端：
-            1.同上，改exchange_declare里面的exchange_type
-            2.severities = sys.argv[1:]  拿到的是一个列表，跟几个level就绑定几个severities，这里为了指定订阅消息的分组
-            3.if not severities:    若没有定义分组则退出，报个错
-                sys.stderr.write("Usage:%s [info] [warning] [error]\n" % sys.argv[0])
-                sys.exit(1)
-            4.for severity in severities:  # 循环绑定，有几个绑定几个，即绑定指定的那些组
-                channel.queue_bind(exchange="direct_logs",
-                                   queue=queue_name,
-                                   routing_key=severity)  # 之后它就会监听，所有发到绑定的info、error...组的就会被监听，实现按组订阅
-    
-    结果：
+```shell
+问题：如何根据消息的级别，来接收不同级别的消息？
+
+改动：send端：
+        1.exchange_declare里面的exchange_type="direct"组播形式。
+        2.severity = sys.argv[1:] if len(sys.argv) > 1 else 'info'  定义严重级别、程度 ,recv端根据级别来接收
+        3.basic_publish中的routing_key=severity  发出不同级别的组播（即发出不同组的消息）
+     recv端：
+        1.同上，改exchange_declare里面的exchange_type
+        2.severities = sys.argv[1:]  拿到的是一个列表，跟几个level就绑定几个severities，这里为了指定订阅消息的分组
+        3.if not severities:    若没有定义分组则退出，报个错
+            sys.stderr.write("Usage:%s [info] [warning] [error]\n" % sys.argv[0])
+            sys.exit(1)
+        4.for severity in severities:  # 循环绑定，有几个绑定几个，即绑定指定的那些组
+            channel.queue_bind(exchange="direct_logs",
+                               queue=queue_name,
+                               routing_key=severity)  # 之后它就会监听，所有发到绑定的info、error...组的就会被监听，实现按组订阅
+
+结果：
+```
 
 六、更细致的消息过滤：
 
