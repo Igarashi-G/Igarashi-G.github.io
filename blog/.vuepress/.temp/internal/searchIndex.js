@@ -2024,6 +2024,21 @@ export const searchIndex = [
             "children": []
           }
         ]
+      },
+      {
+        "level": 2,
+        "title": "2. 使用",
+        "slug": "_2-使用",
+        "link": "#_2-使用",
+        "children": [
+          {
+            "level": 3,
+            "title": "2.1 常用命令",
+            "slug": "_2-1-常用命令",
+            "link": "#_2-1-常用命令",
+            "children": []
+          }
+        ]
       }
     ],
     "path": "/tool/Kubernetes/Helm%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8.html",
@@ -3058,6 +3073,28 @@ export const searchIndex = [
     "title": "",
     "headers": [],
     "path": "/python/%E7%94%9F%E6%80%81/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/kafka.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "Kombu",
+    "headers": [
+      {
+        "level": 3,
+        "title": "1. 概述",
+        "slug": "_1-概述",
+        "link": "#_1-概述",
+        "children": []
+      }
+    ],
+    "path": "/python/%E7%94%9F%E6%80%81/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/kombu.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "",
+    "headers": [],
+    "path": "/python/%E7%94%9F%E6%80%81/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/pika.html",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -7404,9 +7441,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "RBMQ 分类",
+    "title": "Kombu 分类",
     "headers": [],
-    "path": "/category/rbmq/",
+    "path": "/category/kombu/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -7418,9 +7455,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "远程调用 分类",
+    "title": "MQ 分类",
     "headers": [],
-    "path": "/category/%E8%BF%9C%E7%A8%8B%E8%B0%83%E7%94%A8/",
+    "path": "/category/mq/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -7432,16 +7469,16 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "Python 分类",
+    "title": "RBMQ 分类",
     "headers": [],
-    "path": "/category/python/",
+    "path": "/category/rbmq/",
     "pathLocale": "/",
     "extraFields": []
   },
   {
-    "title": "asyncio 分类",
+    "title": "远程调用 分类",
     "headers": [],
-    "path": "/category/asyncio/",
+    "path": "/category/%E8%BF%9C%E7%A8%8B%E8%B0%83%E7%94%A8/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -7453,9 +7490,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "文件锁 分类",
+    "title": "Python 分类",
     "headers": [],
-    "path": "/category/%E6%96%87%E4%BB%B6%E9%94%81/",
+    "path": "/category/python/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -7467,9 +7504,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "协程 分类",
+    "title": "asyncio 分类",
     "headers": [],
-    "path": "/category/%E5%8D%8F%E7%A8%8B/",
+    "path": "/category/asyncio/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -7481,9 +7518,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "多进程 分类",
+    "title": "文件锁 分类",
     "headers": [],
-    "path": "/category/%E5%A4%9A%E8%BF%9B%E7%A8%8B/",
+    "path": "/category/%E6%96%87%E4%BB%B6%E9%94%81/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -7495,9 +7532,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "线程 分类",
+    "title": "协程 分类",
     "headers": [],
-    "path": "/category/%E7%BA%BF%E7%A8%8B/",
+    "path": "/category/%E5%8D%8F%E7%A8%8B/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -7509,9 +7546,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "进程 分类",
+    "title": "多进程 分类",
     "headers": [],
-    "path": "/category/%E8%BF%9B%E7%A8%8B/",
+    "path": "/category/%E5%A4%9A%E8%BF%9B%E7%A8%8B/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -7523,9 +7560,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "高性能 分类",
+    "title": "线程 分类",
     "headers": [],
-    "path": "/category/%E9%AB%98%E6%80%A7%E8%83%BD/",
+    "path": "/category/%E7%BA%BF%E7%A8%8B/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -7537,9 +7574,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "Socket 分类",
+    "title": "进程 分类",
     "headers": [],
-    "path": "/category/socket/",
+    "path": "/category/%E8%BF%9B%E7%A8%8B/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -7551,9 +7588,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "网络编程 分类",
+    "title": "高性能 分类",
     "headers": [],
-    "path": "/category/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/",
+    "path": "/category/%E9%AB%98%E6%80%A7%E8%83%BD/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -7565,9 +7602,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "NFS 分类",
+    "title": "Socket 分类",
     "headers": [],
-    "path": "/category/nfs/",
+    "path": "/category/socket/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -7579,9 +7616,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "SMB/CIFS 分类",
+    "title": "网络编程 分类",
     "headers": [],
-    "path": "/category/smbcifs/",
+    "path": "/category/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -7593,9 +7630,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "SNMP 分类",
+    "title": "NFS 分类",
     "headers": [],
-    "path": "/category/snmp/",
+    "path": "/category/nfs/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -7607,9 +7644,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "UFS 分类",
+    "title": "SMB/CIFS 分类",
     "headers": [],
-    "path": "/category/ufs/",
+    "path": "/category/smbcifs/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -7621,9 +7658,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "CentOS 分类",
+    "title": "SNMP 分类",
     "headers": [],
-    "path": "/category/centos/",
+    "path": "/category/snmp/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -7635,9 +7672,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "Linux 分类",
+    "title": "UFS 分类",
     "headers": [],
-    "path": "/category/linux/",
+    "path": "/category/ufs/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -7649,9 +7686,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "shell 分类",
+    "title": "CentOS 分类",
     "headers": [],
-    "path": "/category/shell/",
+    "path": "/category/centos/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -7663,9 +7700,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "Vim 分类",
+    "title": "Linux 分类",
     "headers": [],
-    "path": "/category/vim/",
+    "path": "/category/linux/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -7673,6 +7710,34 @@ export const searchIndex = [
     "title": "监控 标签",
     "headers": [],
     "path": "/tag/%E7%9B%91%E6%8E%A7/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "shell 分类",
+    "headers": [],
+    "path": "/category/shell/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "MQ 标签",
+    "headers": [],
+    "path": "/tag/mq/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "Vim 分类",
+    "headers": [],
+    "path": "/category/vim/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "消息队列 标签",
+    "headers": [],
+    "path": "/tag/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -7698,9 +7763,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "消息队列 标签",
+    "title": "RPC 标签",
     "headers": [],
-    "path": "/tag/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/",
+    "path": "/tag/rpc/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -7712,9 +7777,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "RPC 标签",
+    "title": "gRPC 标签",
     "headers": [],
-    "path": "/tag/rpc/",
+    "path": "/tag/grpc/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -7726,9 +7791,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "gRPC 标签",
+    "title": "Python 标签",
     "headers": [],
-    "path": "/tag/grpc/",
+    "path": "/tag/python/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -7740,9 +7805,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "Python 标签",
+    "title": "asyncio 标签",
     "headers": [],
-    "path": "/tag/python/",
+    "path": "/tag/asyncio/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -7754,9 +7819,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "asyncio 标签",
+    "title": "subprocess 标签",
     "headers": [],
-    "path": "/tag/asyncio/",
+    "path": "/tag/subprocess/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -7768,9 +7833,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "subprocess 标签",
+    "title": "pip 标签",
     "headers": [],
-    "path": "/tag/subprocess/",
+    "path": "/tag/pip/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -7782,9 +7847,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "pip 标签",
+    "title": "Pycharm 标签",
     "headers": [],
-    "path": "/tag/pip/",
+    "path": "/tag/pycharm/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -7792,13 +7857,6 @@ export const searchIndex = [
     "title": "Web框架 分类",
     "headers": [],
     "path": "/category/web%E6%A1%86%E6%9E%B6/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "Pycharm 标签",
-    "headers": [],
-    "path": "/tag/pycharm/",
     "pathLocale": "/",
     "extraFields": []
   },

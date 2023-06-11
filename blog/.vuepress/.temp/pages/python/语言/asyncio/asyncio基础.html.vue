@@ -51,7 +51,6 @@ loop<span class="token punctuation">.</span>run_until_complete<span class="token
 future <span class="token operator">=</span> tasks<span class="token punctuation">.</span>ensure_future<span class="token punctuation">(</span>future<span class="token punctuation">,</span> loop<span class="token operator">=</span>self<span class="token punctuation">)</span> <span class="token comment"># 将传入值 future 用 ensure_future 进行转换为task对象</span>
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></li>
 </ul>
-<p>​</p>
 <h3 id="_2-2-快速上手" tabindex="-1"><a class="header-anchor" href="#_2-2-快速上手" aria-hidden="true">#</a> 2.2 快速上手</h3>
 <h5 id="什么是协程函数" tabindex="-1"><a class="header-anchor" href="#什么是协程函数" aria-hidden="true">#</a> <strong>什么是协程函数？</strong></h5>
 <p><code v-pre>async</code> + <code v-pre>def</code> + 函数名</p>
@@ -230,10 +229,10 @@ asyncio<span class="token punctuation">.</span>run<span class="token punctuation
         asyncio<span class="token punctuation">.</span>ensure_future<span class="token punctuation">(</span>coroutine2<span class="token punctuation">)</span><span class="token punctuation">,</span>
         asyncio<span class="token punctuation">.</span>ensure_future<span class="token punctuation">(</span>coroutine3<span class="token punctuation">)</span>
     <span class="token punctuation">]</span>
-
+  
     start <span class="token operator">=</span> time<span class="token punctuation">.</span>time<span class="token punctuation">(</span><span class="token punctuation">)</span>
     <span class="token keyword">await</span> asyncio<span class="token punctuation">.</span>wait<span class="token punctuation">(</span>tasks<span class="token punctuation">)</span>
-
+  
     <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'TIME: '</span><span class="token punctuation">,</span> time<span class="token punctuation">.</span>time<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span> start<span class="token punctuation">)</span>
 
 
@@ -474,13 +473,13 @@ asyncio<span class="token punctuation">.</span>run<span class="token punctuation
 
     coroutine <span class="token operator">=</span> foo<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
     loop <span class="token operator">=</span> asyncio<span class="token punctuation">.</span>get_event_loop<span class="token punctuation">(</span><span class="token punctuation">)</span>
-
+  
     task <span class="token operator">=</span> asyncio<span class="token punctuation">.</span>ensure_future<span class="token punctuation">(</span>coroutine<span class="token punctuation">)</span>
     task<span class="token punctuation">.</span>add_done_callback<span class="token punctuation">(</span>callback<span class="token punctuation">)</span>  <span class="token comment"># 添加执行完之后的回调</span>
-
+  
     loop<span class="token punctuation">.</span>run_until_complete<span class="token punctuation">(</span>task<span class="token punctuation">)</span>
     loop<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span>
-
+  
     end <span class="token operator">=</span> time<span class="token punctuation">.</span>time<span class="token punctuation">(</span><span class="token punctuation">)</span>
     <span class="token keyword">print</span><span class="token punctuation">(</span>end <span class="token operator">-</span> start<span class="token punctuation">)</span>
 
@@ -490,11 +489,11 @@ asyncio<span class="token punctuation">.</span>run<span class="token punctuation
     start <span class="token operator">=</span> time<span class="token punctuation">.</span>time<span class="token punctuation">(</span><span class="token punctuation">)</span>
 
     coroutine <span class="token operator">=</span> foo<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
-
+  
     task <span class="token operator">=</span> asyncio<span class="token punctuation">.</span>create_task<span class="token punctuation">(</span>coroutine<span class="token punctuation">)</span>
     <span class="token keyword">await</span> task
     <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f"callback: </span><span class="token interpolation"><span class="token punctuation">{</span>task<span class="token punctuation">.</span>result<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">}</span></span><span class="token string">"</span></span><span class="token punctuation">)</span>
-
+  
     end <span class="token operator">=</span> time<span class="token punctuation">.</span>time<span class="token punctuation">(</span><span class="token punctuation">)</span>
     <span class="token keyword">print</span><span class="token punctuation">(</span>end <span class="token operator">-</span> start<span class="token punctuation">)</span>
 
@@ -695,7 +694,7 @@ asyncio<span class="token punctuation">.</span>run<span class="token punctuation
     <span class="token comment"># 使用.run_in_executor() 返回一个 asyncio.Future对象，将普通function 变为 Future对象</span>
     future <span class="token operator">=</span> loop<span class="token punctuation">.</span>run_in_executor<span class="token punctuation">(</span><span class="token boolean">None</span><span class="token punctuation">,</span> func1<span class="token punctuation">)</span>
     <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"future"</span><span class="token punctuation">,</span> future<span class="token punctuation">,</span> <span class="token builtin">type</span><span class="token punctuation">(</span>future<span class="token punctuation">)</span><span class="token punctuation">)</span>
-
+  
     ret <span class="token operator">=</span> <span class="token keyword">await</span> future
     <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"result:"</span><span class="token punctuation">,</span> ret<span class="token punctuation">,</span> future<span class="token punctuation">)</span>
 
@@ -760,7 +759,7 @@ asyncio<span class="token punctuation">.</span>run<span class="token punctuation
 
     <span class="token comment"># requests模块默认不支持异步操作，此处使用线程池改为协程Future</span>
     data <span class="token operator">=</span> <span class="token keyword">await</span> loop<span class="token punctuation">.</span>run_in_executor<span class="token punctuation">(</span><span class="token boolean">None</span><span class="token punctuation">,</span> requests<span class="token punctuation">.</span>get<span class="token punctuation">,</span> url<span class="token punctuation">)</span>
-
+  
     file_name <span class="token operator">=</span> data<span class="token punctuation">.</span>url<span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token string">"/"</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span>
     <span class="token keyword">with</span> <span class="token builtin">open</span><span class="token punctuation">(</span>file_name<span class="token punctuation">,</span> <span class="token string">"wb"</span><span class="token punctuation">)</span> <span class="token keyword">as</span> f<span class="token punctuation">:</span>
         f<span class="token punctuation">.</span>write<span class="token punctuation">(</span>data<span class="token punctuation">.</span>content<span class="token punctuation">)</span>
@@ -778,15 +777,15 @@ asyncio<span class="token punctuation">.</span>run<span class="token punctuation
 
     <span class="token comment"># 创建多个协程</span>
     tasks <span class="token operator">=</span> <span class="token punctuation">[</span>asyncio<span class="token punctuation">.</span>create_task<span class="token punctuation">(</span>download<span class="token punctuation">(</span>url<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">for</span> url <span class="token keyword">in</span> url_list<span class="token punctuation">]</span>
-
+  
     <span class="token keyword">async</span> <span class="token keyword">def</span> <span class="token function">except_foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
         <span class="token keyword">raise</span> RuntimeError
-
+  
     tasks<span class="token punctuation">.</span>append<span class="token punctuation">(</span>asyncio<span class="token punctuation">.</span>create_task<span class="token punctuation">(</span>except_foo<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-
+  
     ret <span class="token operator">=</span> <span class="token keyword">await</span> asyncio<span class="token punctuation">.</span>gather<span class="token punctuation">(</span><span class="token operator">*</span>tasks<span class="token punctuation">,</span> return_exceptions<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
     <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"ret"</span><span class="token punctuation">,</span> ret<span class="token punctuation">)</span>
-
+  
     <span class="token keyword">print</span><span class="token punctuation">(</span>time<span class="token punctuation">.</span>time<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span> start<span class="token punctuation">)</span>
 
 

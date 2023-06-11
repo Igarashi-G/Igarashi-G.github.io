@@ -1,4 +1,4 @@
-<template><div><p><strong>变量不是盒子</strong>，以及 深/浅拷贝</p>
+<template><div><p><strong>变量不是盒子</strong>，以及 深/浅拷贝、弱引用等</p>
 <!-- more -->
 <h1 id="变量机制" tabindex="-1"><a class="header-anchor" href="#变量机制" aria-hidden="true">#</a> 变量机制</h1>
 <h2 id="_1-深浅拷贝" tabindex="-1"><a class="header-anchor" href="#_1-深浅拷贝" aria-hidden="true">#</a> 1. 深浅拷贝</h2>

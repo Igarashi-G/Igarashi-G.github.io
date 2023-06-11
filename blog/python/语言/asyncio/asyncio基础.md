@@ -69,11 +69,11 @@ loop.run_until_complete()
 
   ```python
   new_task = not futures.isfuture(future)     # 判断传入的是future还是coroutine
-
+  
   future = tasks.ensure_future(future, loop=self) # 将传入值 future 用 ensure_future 进行转换为task对象
   ```
 
-​
+
 
 ### 2.2 快速上手
 
@@ -263,10 +263,10 @@ _3.10 版后已移除:_ 如果未指定 _loop_ 并且没有正在运行的事件
           asyncio.ensure_future(coroutine2),
           asyncio.ensure_future(coroutine3)
       ]
-
+    
       start = time.time()
       await asyncio.wait(tasks)
-
+    
       print('TIME: ', time.time() - start)
 
 
@@ -361,12 +361,12 @@ _3.10 版后已移除:_ 如果未指定 _loop_ 并且没有正在运行的事件
       ]
       done, pending = await asyncio.wait(task_list, timeout=2)  # 修改超时，得到不同结果
       print(done, pending)
-
+  
   ### 输出结果
   # 未超时正常输出结果：
   # {<Task finished name='task1' coro=<foo() done, defined at file_path> result=6>,
   # <Task finished name='task2' coro=<foo() done, defined at file_path> result=15>}
-
+  
   # 超时状态，pending结果：
   # {<Task pending name='task1' coro=<foo() running at file_path> wait_for=<Future pending cb=[<TaskWakeupMethWrapper object at 0x0000019F8D6F52E0>()]>>,
   # <Task pending name='task2' coro=<foo() running at file_path> wait_for=<Future pending cb=[<TaskWakeupMethWrapper object at 0x0000019F8D6F52B0>()]>>}
@@ -498,13 +498,13 @@ _3.10 版后已移除:_ 如果未指定 _loop_ 并且没有正在运行的事件
 
       coroutine = foo(1)
       loop = asyncio.get_event_loop()
-
+    
       task = asyncio.ensure_future(coroutine)
       task.add_done_callback(callback)  # 添加执行完之后的回调
-
+    
       loop.run_until_complete(task)
       loop.close()
-
+    
       end = time.time()
       print(end - start)
 
@@ -514,11 +514,11 @@ _3.10 版后已移除:_ 如果未指定 _loop_ 并且没有正在运行的事件
       start = time.time()
 
       coroutine = foo(1)
-
+    
       task = asyncio.create_task(coroutine)
       await task
       print(f"callback: {task.result()}")
-
+    
       end = time.time()
       print(end - start)
 
@@ -594,7 +594,7 @@ main()
 # True
 # True
 # TIME:  0.6261041164398193
-```
+  ```
 
 - asyncio.Task.all_tasks():取到所有 task
 
@@ -726,7 +726,7 @@ asyncio.run(main())
       # 使用.run_in_executor() 返回一个 asyncio.Future对象，将普通function 变为 Future对象
       future = loop.run_in_executor(None, func1)
       print("future", future, type(future))
-
+    
       ret = await future
       print("result:", ret, future)
 
@@ -793,7 +793,7 @@ asyncio.run(main())
 
       # requests模块默认不支持异步操作，此处使用线程池改为协程Future
       data = await loop.run_in_executor(None, requests.get, url)
-
+    
       file_name = data.url.split("/")[-1]
       with open(file_name, "wb") as f:
           f.write(data.content)
@@ -811,15 +811,15 @@ asyncio.run(main())
 
       # 创建多个协程
       tasks = [asyncio.create_task(download(url)) for url in url_list]
-
+    
       async def except_foo():
           raise RuntimeError
-
+    
       tasks.append(asyncio.create_task(except_foo()))
-
+    
       ret = await asyncio.gather(*tasks, return_exceptions=True)
       print("ret", ret)
-
+    
       print(time.time() - start)
 
 
