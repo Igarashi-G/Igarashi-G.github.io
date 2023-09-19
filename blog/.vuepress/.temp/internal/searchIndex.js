@@ -174,6 +174,21 @@ export const searchIndex = [
     "extraFields": []
   },
   {
+    "title": "Python",
+    "headers": [
+      {
+        "level": 2,
+        "title": "目录",
+        "slug": "目录",
+        "link": "#目录",
+        "children": []
+      }
+    ],
+    "path": "/python/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
     "title": "PS 插画基础",
     "headers": [
       {
@@ -244,21 +259,6 @@ export const searchIndex = [
       }
     ],
     "path": "/paint/SAI%E6%93%8D%E4%BD%9C%E5%9F%BA%E7%A1%80.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "Python",
-    "headers": [
-      {
-        "level": 2,
-        "title": "目录",
-        "slug": "目录",
-        "link": "#目录",
-        "children": []
-      }
-    ],
-    "path": "/python/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -4469,8 +4469,68 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "垃圾回收",
-    "headers": [],
+    "title": "GC机制",
+    "headers": [
+      {
+        "level": 2,
+        "title": "1. 垃圾回收机制",
+        "slug": "_1-垃圾回收机制",
+        "link": "#_1-垃圾回收机制",
+        "children": [
+          {
+            "level": 3,
+            "title": "1.1 引用计数",
+            "slug": "_1-1-引用计数",
+            "link": "#_1-1-引用计数",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "2.1 循环引用",
+            "slug": "_2-1-循环引用",
+            "link": "#_2-1-循环引用",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "2. 垃圾回收（gc）",
+        "slug": "_2-垃圾回收-gc",
+        "link": "#_2-垃圾回收-gc",
+        "children": [
+          {
+            "level": 3,
+            "title": "2.2 gc模块自动垃圾回收",
+            "slug": "_2-2-gc模块自动垃圾回收",
+            "link": "#_2-2-gc模块自动垃圾回收",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "2. 弱引用",
+        "slug": "_2-弱引用",
+        "link": "#_2-弱引用",
+        "children": [
+          {
+            "level": 3,
+            "title": "2.1 weakref 弱引用",
+            "slug": "_2-1-weakref-弱引用",
+            "link": "#_2-1-weakref-弱引用",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "2.2 关于 __slots__",
+            "slug": "_2-2-关于-slots",
+            "link": "#_2-2-关于-slots",
+            "children": []
+          }
+        ]
+      }
+    ],
     "path": "/python/%E8%AF%AD%E8%A8%80/%E6%B7%B1%E5%85%A5/%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6.html",
     "pathLocale": "/",
     "extraFields": []
@@ -4691,6 +4751,49 @@ export const searchIndex = [
     "title": "事件の起源——回调",
     "headers": [],
     "path": "/python/%E8%AF%AD%E8%A8%80/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/%E5%9B%9E%E8%B0%83.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "信号量",
+    "headers": [
+      {
+        "level": 2,
+        "title": "1. 接收信号",
+        "slug": "_1-接收信号",
+        "link": "#_1-接收信号",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "发送信号",
+        "slug": "发送信号",
+        "link": "#发送信号",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "定时发出 SIGALRM 信号",
+        "slug": "定时发出-sigalrm-信号",
+        "link": "#定时发出-sigalrm-信号",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "忽略信号",
+        "slug": "忽略信号",
+        "link": "#忽略信号",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "信号与线程",
+        "slug": "信号与线程",
+        "link": "#信号与线程",
+        "children": []
+      }
+    ],
+    "path": "/python/%E8%AF%AD%E8%A8%80/%E8%BF%9B%E9%98%B6/%E4%BF%A1%E5%8F%B7%E9%87%8F.html",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -6362,26 +6465,34 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "CURL 用法指北",
+    "title": "操作系统",
     "headers": [
       {
         "level": 2,
-        "title": "简介",
-        "slug": "简介",
-        "link": "#简介",
+        "title": "1. 操作系统",
+        "slug": "_1-操作系统",
+        "link": "#_1-操作系统",
         "children": []
-      },
+      }
+    ],
+    "path": "/unix/Linux/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "crul 用法指北",
+    "headers": [
       {
         "level": 2,
-        "title": "各种命令集合",
-        "slug": "各种命令集合",
-        "link": "#各种命令集合",
+        "title": "curl 用法指北",
+        "slug": "curl-用法指北-1",
+        "link": "#curl-用法指北-1",
         "children": [
           {
             "level": 3,
-            "title": "-A",
-            "slug": "a",
-            "link": "#a",
+            "title": "1. 各种命令集合",
+            "slug": "_1-各种命令集合",
+            "link": "#_1-各种命令集合",
             "children": []
           },
           {
@@ -6541,7 +6652,7 @@ export const searchIndex = [
         ]
       }
     ],
-    "path": "/unix/Linux/%E7%BD%91%E7%BB%9C/CURL.html",
+    "path": "/unix/Linux/%E7%BD%91%E7%BB%9C/curl.html",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -7770,9 +7881,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "网络通信 分类",
+    "title": "操作系统 分类",
     "headers": [],
-    "path": "/category/%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1/",
+    "path": "/category/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -7784,9 +7895,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "虚拟机 分类",
+    "title": "curl 分类",
     "headers": [],
-    "path": "/category/%E8%99%9A%E6%8B%9F%E6%9C%BA/",
+    "path": "/category/curl/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -7798,9 +7909,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "WEB框架 分类",
+    "title": "w网络 分类",
     "headers": [],
-    "path": "/category/web%E6%A1%86%E6%9E%B6/",
+    "path": "/category/w%E7%BD%91%E7%BB%9C/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -7812,9 +7923,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "Django 分类",
+    "title": "网络通信 分类",
     "headers": [],
-    "path": "/category/django/",
+    "path": "/category/%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -7826,9 +7937,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "FastAPI 分类",
+    "title": "虚拟机 分类",
     "headers": [],
-    "path": "/category/fastapi/",
+    "path": "/category/%E8%99%9A%E6%8B%9F%E6%9C%BA/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -7840,9 +7951,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "Tornado 分类",
+    "title": "WEB框架 分类",
     "headers": [],
-    "path": "/category/tornado/",
+    "path": "/category/web%E6%A1%86%E6%9E%B6/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -7854,9 +7965,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "Web框架 分类",
+    "title": "Django 分类",
     "headers": [],
-    "path": "/category/web%E6%A1%86%E6%9E%B6/",
+    "path": "/category/django/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -7868,6 +7979,13 @@ export const searchIndex = [
     "extraFields": []
   },
   {
+    "title": "FastAPI 分类",
+    "headers": [],
+    "path": "/category/fastapi/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
     "title": "协程 标签",
     "headers": [],
     "path": "/tag/%E5%8D%8F%E7%A8%8B/",
@@ -7875,9 +7993,23 @@ export const searchIndex = [
     "extraFields": []
   },
   {
+    "title": "Tornado 分类",
+    "headers": [],
+    "path": "/category/tornado/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
     "title": "多进程 标签",
     "headers": [],
     "path": "/tag/%E5%A4%9A%E8%BF%9B%E7%A8%8B/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "Web框架 分类",
+    "headers": [],
+    "path": "/category/web%E6%A1%86%E6%9E%B6/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -7917,6 +8049,13 @@ export const searchIndex = [
     "extraFields": []
   },
   {
+    "title": "GC 标签",
+    "headers": [],
+    "path": "/tag/gc/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
     "title": "Socket 标签",
     "headers": [],
     "path": "/tag/socket/",
@@ -7927,6 +8066,13 @@ export const searchIndex = [
     "title": "网络编程 标签",
     "headers": [],
     "path": "/tag/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "信号量 标签",
+    "headers": [],
+    "path": "/tag/%E4%BF%A1%E5%8F%B7%E9%87%8F/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -8088,6 +8234,20 @@ export const searchIndex = [
     "title": "gdb 标签",
     "headers": [],
     "path": "/tag/gdb/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "操作系统 标签",
+    "headers": [],
+    "path": "/tag/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "curl 标签",
+    "headers": [],
+    "path": "/tag/curl/",
     "pathLocale": "/",
     "extraFields": []
   },

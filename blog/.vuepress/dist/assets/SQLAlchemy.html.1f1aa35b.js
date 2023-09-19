@@ -1,4 +1,4 @@
-import{_ as r}from"./plugin-vueexport-helper.2444895f.js";import{o,c as a,a as e,b as n,d as i,r as l}from"./app.c323a8c1.js";const t={},c=e("p",null,[n("SQLAlchemy\uFF1A "),e("img",{src:"http://www.igarashi.fun:8999/img/sqlalchemy.png"})],-1),m={href:"http://www.sqlalchemy.org/organizations.html#openstack",target:"_blank",rel:"noopener noreferrer"},y=e("pre",null,[e("code",null,`    \u5B89\u88C5\uFF1A
+import{_ as r}from"./plugin-vueexport-helper.2444895f.js";import{o,c as a,a as e,b as n,d as i,r as l}from"./app.c323a8c1.js";const t={},c=e("p",null,[n("SQLAlchemy\uFF1A "),e("img",{src:"http://www.igarashi.icu:8999/img/sqlalchemy.png"})],-1),m={href:"http://www.sqlalchemy.org/organizations.html#openstack",target:"_blank",rel:"noopener noreferrer"},y=e("pre",null,[e("code",null,`    \u5B89\u88C5\uFF1A
         pip install SQLAlchemy
         pip install pymysql  #\u7531\u4E8Emysqldb\u4F9D\u7136\u4E0D\u652F\u6301py3\uFF0C\u6240\u4EE5\u8FD9\u91CC\u6211\u4EEC\u7528pymysql\u4E0Esqlalchemy\u4EA4\u4E92
 

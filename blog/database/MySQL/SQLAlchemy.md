@@ -7,7 +7,7 @@ group:
 ---
 
 SQLAlchemy：
-<img src="http://www.igarashi.fun:8999/img/sqlalchemy.png">
+<img src="http://www.igarashi.icu:8999/img/sqlalchemy.png">
 
 一、sqlalchemy 安装：
 在 Python 中，最有名的 ORM 框架是 SQLAlchemy。用户包括 openstack＼Dropbox 等知名公司或应用。

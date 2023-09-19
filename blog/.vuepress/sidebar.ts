@@ -83,10 +83,16 @@ export default sidebar({
           children: ["认识系统服务"],
         },
         {
+          text: "操作系统",
+          collapsable: true,
+          prefix: "操作系统/",
+          children: ["操作系统"],
+        },
+        {
           text: "网络",
           collapsable: true,
           prefix: "网络/",
-          children: ["网络基础", "命令", "CURL", "SSL协议", "Restful"],
+          children: ["网络基础", "命令", "curl", "SSL协议"],
         },
         {
           text: "Troubleshooting",
@@ -203,7 +209,7 @@ export default sidebar({
               text: "进阶",
               collapsable: true,
               prefix: "进阶/",
-              children: ["变量机制", "函数", "模块和包", "装饰器", "迭代器", "生成器", "错误和异常", "面向对象"],
+              children: ["变量机制", "函数", "模块和包", "装饰器", "迭代器", "生成器", "错误和异常", "面向对象", "信号量"],
             },
             {
               text: "深入",

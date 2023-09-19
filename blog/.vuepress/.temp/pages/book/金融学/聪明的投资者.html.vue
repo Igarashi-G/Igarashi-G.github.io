@@ -1,3 +1,3 @@
-<template><div><PDF url="https://www.igarashi.fun:7779/pdf/%E9%87%91%E8%9E%8D%E5%AD%A6/%E8%81%AA%E6%98%8E%E7%9A%84%E6%8A%95%E8%B5%84%E8%80%85.pdf" height="880px"/></div></template>
+<template><div><PDF url="https://www.igarashi.icu:7779/pdf/%E9%87%91%E8%9E%8D%E5%AD%A6/%E8%81%AA%E6%98%8E%E7%9A%84%E6%8A%95%E8%B5%84%E8%80%85.pdf" height="880px"/></div></template>
 
 

@@ -1,36 +1,45 @@
 ---
-title: CURL 用法指北
-order: 5
+title: crul
+date: 2019-11-24
+category:
+  - curl
+  - 网络
+tag:
+  - curl
+  - Linux
+  - 网络
 ---
 
 # CURL 用法指北
 
-http://www.ruanyifeng.com/blog/2019/09/curl-reference.html
+[curl-reference](http://www.ruanyifeng.com/blog/2019/09/curl-reference.html)  **curl** 是常用的命令行工具，主要是用去请求 **web** 服务器接口
 
-## 简介
+<!-- more --> 
 
-curl 是常用的命令行工具，主要是用去请求 web 服务器。
+## curl 用法指北
 
-它的名字就是客户端（client）的 URL 工具的意思。功能非常强大，命令行参数多达几十种。如果熟练的话，完全可以取代 Postman 这一类的图形
-界面工具。
+它的名字就是客户端（*client*）的 **URL** 工具的意思。功能非常强大，命令行参数多达几十种。如果熟练的话，完全可以取代 **Postman** 这一类的图形
+界面工具
 
-## 各种命令集合
+### 1. 各种命令集合
 
-### -A
+#### -A
 
--A 参数指定客户端的用户代理标头，即 User-Agent。curl 的默认用户代理字符串是 curl/[version]
+该参数指定客户端的用户代理标头，即 **User-Agent**
 
-    curl -A 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.100 Safari/537.36' https://google.com
+**curl** 的默认用户代理字符串是 `curl/[version]`
 
-上面命令将 User-Agent 改成 Chrome 浏览器。
+如下命令将 **User-Agent** 改成 **Chrome** 浏览器
 
-    curl -A '' https://google.com
+```shell
+curl -A 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.100 Safari/537.36' https://google.com
 
-上面命令会移除 User-Agent 标头。
+# 移除标头
+curl -A '' https://google.com
 
-    curl -H 'User-Agent: php/1.0' https://google.com
-
-也可以通过-H 参数直接指定标头，更改 User-Agent。
+# -H 参数直接指定标头，更改 User-Agent
+curl -H 'User-Agent: php/1.0' https://google.com
+```
 
 ### -b
 
@@ -266,12 +275,14 @@ curl 能够识别 URL 里面的用户名和密码。
 
     curl -X POST https://www.example.com
 
-上面命令对https://www.example.com发出 POST 请求。
+上面命令对 https://www.example.com 发出 **POST** 请求
 
 ### 补充 telnet
 
-    windows下 控制面板 -> 程序和功能 -> 打开或关闭Windows功能 -> 勾选 telnet客户端/服务端 -> 等一会
+```shell
+windows下 控制面板 -> 程序和功能 -> 打开或关闭Windows功能 -> 勾选 telnet客户端/服务端 -> 等一会
 
-    yum install -y telnet
+yum install -y telnet
 
-    telnet ip port  若提示失败则未连通 若全黑框则连通
+telnet ip port  若提示失败则未连通 若全黑框则连通
+```

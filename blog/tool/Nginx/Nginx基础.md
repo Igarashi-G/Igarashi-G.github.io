@@ -171,8 +171,8 @@ sudo nginx -s reload
   	listen [::]:443 ssl;
   	
       # 指定加密证书路径
-  	ssl_certificate /home/igarashi/web/ssl/8500011_www.igarashi.fun.pem;
-  	ssl_certificate_key /home/igarashi/web/ssl/8500011_www.igarashi.fun.key;
+  	ssl_certificate /home/igarashi/web/ssl/8500011_www.igarashi.icu.pem;
+  	ssl_certificate_key /home/igarashi/web/ssl/8500011_www.igarashi.icu.key;
   	...
   ```
 

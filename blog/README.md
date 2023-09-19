@@ -23,12 +23,12 @@ projects:
   - icon: project
     name: UFS
     desc: 分布式私有云存储
-    link: https://www.igarashi.fun:31443
+    link: https://www.igarashi.icu:31443
 
   - icon: link
     name: PVE
     desc: 虚拟化
-    link: https://www.igarashi.fun:8006/
+    link: https://www.igarashi.icu:8006/
 
   - icon: book
     name: 书籍
@@ -43,7 +43,7 @@ projects:
   # - icon: article
   #   name: 老版本
   #   desc: dumi搭的文档，真弟拉胯
-  #   link: http://www.igarashi.fun:8888/
+  #   link: http://www.igarashi.icu:8888/
 
   # - icon: discover
   #   name: 播放器

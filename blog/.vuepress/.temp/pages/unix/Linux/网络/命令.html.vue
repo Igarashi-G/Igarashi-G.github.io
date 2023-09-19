@@ -1,9 +1,20 @@
-<template><div><h1 id="centos-网络命令" tabindex="-1"><a class="header-anchor" href="#centos-网络命令" aria-hidden="true">#</a> CentOS 网络命令</h1>
-<h2 id="_1-网络-ip-指令集合" tabindex="-1"><a class="header-anchor" href="#_1-网络-ip-指令集合" aria-hidden="true">#</a> 1. 网络 IP 指令集合</h2>
-<blockquote>
-<p><code v-pre>CentOS7</code> 正式废弃了旧工具包：<code v-pre>ifconfig</code>、<code v-pre>netstat</code>、<code v-pre>locate</code> 等命令（也可以用，不推荐），新系统使用 <code v-pre>ip</code>、<code v-pre>ss</code>、<code v-pre>net</code> 等命令代替</p>
-</blockquote>
-<h3 id="_1-网络参数设定" tabindex="-1"><a class="header-anchor" href="#_1-网络参数设定" aria-hidden="true">#</a> 1.网络参数设定：</h3>
+<template><div><p>常用的一些网络命令</p>
+<!-- more --> 
+<h1 id="centos-网络命令及工具" tabindex="-1"><a class="header-anchor" href="#centos-网络命令及工具" aria-hidden="true">#</a> CentOS 网络命令及工具</h1>
+<h2 id="_1-好用工具" tabindex="-1"><a class="header-anchor" href="#_1-好用工具" aria-hidden="true">#</a> 1. 好用工具</h2>
+<h3 id="_1-1-network-manager" tabindex="-1"><a class="header-anchor" href="#_1-1-network-manager" aria-hidden="true">#</a> 1.1 network-manager</h3>
+<p><strong>nmtui：</strong> 网络配置图形化工具，方便好用</p>
+<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code>$ <span class="token function">sudo</span> <span class="token function">apt</span> <span class="token function">install</span> network-manager
+
+<span class="token comment"># user nmcli and nmtui</span>
+
+<span class="token comment"># show net device</span>
+$ nmcli device
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="_2-常用网络命令" tabindex="-1"><a class="header-anchor" href="#_2-常用网络命令" aria-hidden="true">#</a> 2. 常用网络命令</h2>
+<p><strong>CentOS7</strong> 正式废弃了旧工具包：<strong>ifconfig</strong>、<strong>netstat</strong>、<strong>locate</strong> 等命令（<em>也可以用，不推荐</em> ）</p>
+<p>新系统使用 <strong>ip</strong>、<strong>ss</strong>、<strong>net</strong> 等命令代替</p>
+<h3 id="_2-1-ip-指令集合" tabindex="-1"><a class="header-anchor" href="#_2-1-ip-指令集合" aria-hidden="true">#</a> 2.1 IP 指令集合</h3>
+<h4 id="网络参数设定" tabindex="-1"><a class="header-anchor" href="#网络参数设定" aria-hidden="true">#</a> 网络参数设定</h4>
 <p>任何時刻如果你想要做好你的网络参数设定（<code v-pre>IP</code>、路由、无线网络）就要了解如下指令</p>
 <ul>
 <li><strong>ifconfig</strong> ：查詢、设定网卡与 <code v-pre>IP</code> 网域等相关参数</li>
@@ -65,7 +76,6 @@ ip addr add 192.168.0.123/24 dev eth0
 <p>如果返回值为 0 执行 arping -I $dev -c 3 -b -s $ip 1.1.1.1</p>
 <pre><code>  arping -I eth0 -c 3 -b -s 192.168.10.23 1.1.1.1
 </code></pre>
-<p>​</p>
 <h1 id="删除-ip-地址" tabindex="-1"><a class="header-anchor" href="#删除-ip-地址" aria-hidden="true">#</a> 删除 ip 地址</h1>
 <p>ip a del {ip_addr} dev {interface}
 ip addr del 192.168.0.123 dev eth0</p>
@@ -152,7 +162,6 @@ ss -nt dst gt :1024
 这样每秒中会刷新一次ss的结果。
 </code></pre>
 <p>​<br>
-​<br>
 ​<br>
 ​<br>
 ​<br>
