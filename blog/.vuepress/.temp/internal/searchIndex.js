@@ -174,21 +174,6 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "Python",
-    "headers": [
-      {
-        "level": 2,
-        "title": "目录",
-        "slug": "目录",
-        "link": "#目录",
-        "children": []
-      }
-    ],
-    "path": "/python/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
     "title": "PS 插画基础",
     "headers": [
       {
@@ -259,6 +244,21 @@ export const searchIndex = [
       }
     ],
     "path": "/paint/SAI%E6%93%8D%E4%BD%9C%E5%9F%BA%E7%A1%80.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "Python",
+    "headers": [
+      {
+        "level": 2,
+        "title": "目录",
+        "slug": "目录",
+        "link": "#目录",
+        "children": []
+      }
+    ],
+    "path": "/python/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -3647,6 +3647,114 @@ export const searchIndex = [
     "extraFields": []
   },
   {
+    "title": "Python项目打包",
+    "headers": [
+      {
+        "level": 2,
+        "title": "1. python 打 rpm 包",
+        "slug": "_1-python-打-rpm-包",
+        "link": "#_1-python-打-rpm-包",
+        "children": [
+          {
+            "level": 3,
+            "title": "1.1 安装工具",
+            "slug": "_1-1-安装工具",
+            "link": "#_1-1-安装工具",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "1.2 建立环境",
+            "slug": "_1-2-建立环境",
+            "link": "#_1-2-建立环境",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "1.3 SPEC 阶段与目录的对应关系",
+            "slug": "_1-3-spec-阶段与目录的对应关系",
+            "link": "#_1-3-spec-阶段与目录的对应关系",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "1.4 工具使用",
+            "slug": "_1-4-工具使用",
+            "link": "#_1-4-工具使用",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "1.5 生成 SPEC 文件",
+            "slug": "_1-5-生成-spec-文件",
+            "link": "#_1-5-生成-spec-文件",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "1.6 示例文件：",
+            "slug": "_1-6-示例文件",
+            "link": "#_1-6-示例文件",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "1.7 打包命令 rpmbuild",
+            "slug": "_1-7-打包命令-rpmbuild",
+            "link": "#_1-7-打包命令-rpmbuild",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "1.8 准备打包的源代码",
+            "slug": "_1-8-准备打包的源代码",
+            "link": "#_1-8-准备打包的源代码",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "2. python 项目打包 wheel",
+        "slug": "_2-python-项目打包-wheel",
+        "link": "#_2-python-项目打包-wheel",
+        "children": [
+          {
+            "level": 3,
+            "title": "2.1 编写 setup.py 文件",
+            "slug": "_2-1-编写-setup-py-文件",
+            "link": "#_2-1-编写-setup-py-文件",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "2.2 编写 .service 文件",
+            "slug": "_2-2-编写-service-文件",
+            "link": "#_2-2-编写-service-文件",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "2.3 去掉依赖",
+            "slug": "_2-3-去掉依赖",
+            "link": "#_2-3-去掉依赖",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "2.4 打包到镜像",
+            "slug": "_2-4-打包到镜像",
+            "link": "#_2-4-打包到镜像",
+            "children": []
+          }
+        ]
+      }
+    ],
+    "path": "/python/%E8%AF%AD%E8%A8%80/%E5%9F%BA%E7%A1%80/Python%E9%A1%B9%E7%9B%AE%E6%89%93%E5%8C%85.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
     "title": "字符编码",
     "headers": [
       {
@@ -6472,7 +6580,22 @@ export const searchIndex = [
         "title": "1. 操作系统",
         "slug": "_1-操作系统",
         "link": "#_1-操作系统",
-        "children": []
+        "children": [
+          {
+            "level": 3,
+            "title": "1.1 操作系统架构",
+            "slug": "_1-1-操作系统架构",
+            "link": "#_1-1-操作系统架构",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "中断",
+            "slug": "中断",
+            "link": "#中断",
+            "children": []
+          }
+        ]
       }
     ],
     "path": "/unix/Linux/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F.html",
@@ -6480,7 +6603,7 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "crul 用法指北",
+    "title": "crul",
     "headers": [
       {
         "level": 2,
@@ -6664,19 +6787,34 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "CentOS网络命令",
+    "title": "命令",
     "headers": [
       {
         "level": 2,
-        "title": "1. 网络 IP 指令集合",
-        "slug": "_1-网络-ip-指令集合",
-        "link": "#_1-网络-ip-指令集合",
+        "title": "1. 好用工具",
+        "slug": "_1-好用工具",
+        "link": "#_1-好用工具",
         "children": [
           {
             "level": 3,
-            "title": "1.网络参数设定：",
-            "slug": "_1-网络参数设定",
-            "link": "#_1-网络参数设定",
+            "title": "1.1 network-manager",
+            "slug": "_1-1-network-manager",
+            "link": "#_1-1-network-manager",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "2. 常用网络命令",
+        "slug": "_2-常用网络命令",
+        "link": "#_2-常用网络命令",
+        "children": [
+          {
+            "level": 3,
+            "title": "2.1 IP 指令集合",
+            "slug": "_2-1-ip-指令集合",
+            "link": "#_2-1-ip-指令集合",
             "children": []
           },
           {
@@ -7629,9 +7767,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "文件锁 分类",
+    "title": "打包 分类",
     "headers": [],
-    "path": "/category/%E6%96%87%E4%BB%B6%E9%94%81/",
+    "path": "/category/%E6%89%93%E5%8C%85/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -7643,9 +7781,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "协程 分类",
+    "title": "文件锁 分类",
     "headers": [],
-    "path": "/category/%E5%8D%8F%E7%A8%8B/",
+    "path": "/category/%E6%96%87%E4%BB%B6%E9%94%81/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -7657,9 +7795,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "多进程 分类",
+    "title": "协程 分类",
     "headers": [],
-    "path": "/category/%E5%A4%9A%E8%BF%9B%E7%A8%8B/",
+    "path": "/category/%E5%8D%8F%E7%A8%8B/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -7671,9 +7809,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "线程 分类",
+    "title": "多进程 分类",
     "headers": [],
-    "path": "/category/%E7%BA%BF%E7%A8%8B/",
+    "path": "/category/%E5%A4%9A%E8%BF%9B%E7%A8%8B/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -7685,9 +7823,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "进程 分类",
+    "title": "线程 分类",
     "headers": [],
-    "path": "/category/%E8%BF%9B%E7%A8%8B/",
+    "path": "/category/%E7%BA%BF%E7%A8%8B/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -7699,9 +7837,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "高性能 分类",
+    "title": "进程 分类",
     "headers": [],
-    "path": "/category/%E9%AB%98%E6%80%A7%E8%83%BD/",
+    "path": "/category/%E8%BF%9B%E7%A8%8B/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -7713,9 +7851,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "Socket 分类",
+    "title": "高性能 分类",
     "headers": [],
-    "path": "/category/socket/",
+    "path": "/category/%E9%AB%98%E6%80%A7%E8%83%BD/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -7727,9 +7865,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "网络编程 分类",
+    "title": "Socket 分类",
     "headers": [],
-    "path": "/category/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/",
+    "path": "/category/socket/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -7741,9 +7879,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "NFS 分类",
+    "title": "网络编程 分类",
     "headers": [],
-    "path": "/category/nfs/",
+    "path": "/category/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -7755,9 +7893,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "SMB/CIFS 分类",
+    "title": "NFS 分类",
     "headers": [],
-    "path": "/category/smbcifs/",
+    "path": "/category/nfs/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -7769,9 +7907,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "SNMP 分类",
+    "title": "SMB/CIFS 分类",
     "headers": [],
-    "path": "/category/snmp/",
+    "path": "/category/smbcifs/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -7783,9 +7921,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "UFS 分类",
+    "title": "SNMP 分类",
     "headers": [],
-    "path": "/category/ufs/",
+    "path": "/category/snmp/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -7797,9 +7935,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "CentOS 分类",
+    "title": "UFS 分类",
     "headers": [],
-    "path": "/category/centos/",
+    "path": "/category/ufs/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -7811,9 +7949,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "Linux 分类",
+    "title": "CentOS 分类",
     "headers": [],
-    "path": "/category/linux/",
+    "path": "/category/centos/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -7825,9 +7963,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "shell 分类",
+    "title": "Linux 分类",
     "headers": [],
-    "path": "/category/shell/",
+    "path": "/category/linux/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -7839,9 +7977,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "Vim 分类",
+    "title": "shell 分类",
     "headers": [],
-    "path": "/category/vim/",
+    "path": "/category/shell/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -7853,9 +7991,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "命令 分类",
+    "title": "Vim 分类",
     "headers": [],
-    "path": "/category/%E5%91%BD%E4%BB%A4/",
+    "path": "/category/vim/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -7867,9 +8005,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "troubleshooting 分类",
+    "title": "命令 分类",
     "headers": [],
-    "path": "/category/troubleshooting/",
+    "path": "/category/%E5%91%BD%E4%BB%A4/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -7881,9 +8019,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "操作系统 分类",
+    "title": "troubleshooting 分类",
     "headers": [],
-    "path": "/category/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/",
+    "path": "/category/troubleshooting/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -7895,9 +8033,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "curl 分类",
+    "title": "操作系统 分类",
     "headers": [],
-    "path": "/category/curl/",
+    "path": "/category/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -7909,9 +8047,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "w网络 分类",
+    "title": "curl 分类",
     "headers": [],
-    "path": "/category/w%E7%BD%91%E7%BB%9C/",
+    "path": "/category/curl/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -7923,9 +8061,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "网络通信 分类",
+    "title": "网络 分类",
     "headers": [],
-    "path": "/category/%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1/",
+    "path": "/category/%E7%BD%91%E7%BB%9C/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -7937,9 +8075,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "虚拟机 分类",
+    "title": "网络通信 分类",
     "headers": [],
-    "path": "/category/%E8%99%9A%E6%8B%9F%E6%9C%BA/",
+    "path": "/category/%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -7947,6 +8085,20 @@ export const searchIndex = [
     "title": "pip 标签",
     "headers": [],
     "path": "/tag/pip/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "虚拟机 分类",
+    "headers": [],
+    "path": "/category/%E8%99%9A%E6%8B%9F%E6%9C%BA/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "打包 标签",
+    "headers": [],
+    "path": "/tag/%E6%89%93%E5%8C%85/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -8175,13 +8327,6 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "打包 标签",
-    "headers": [],
-    "path": "/tag/%E6%89%93%E5%8C%85/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
     "title": "UUS 标签",
     "headers": [],
     "path": "/tag/uus/",
@@ -8248,6 +8393,13 @@ export const searchIndex = [
     "title": "curl 标签",
     "headers": [],
     "path": "/tag/curl/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "网络 标签",
+    "headers": [],
+    "path": "/tag/%E7%BD%91%E7%BB%9C/",
     "pathLocale": "/",
     "extraFields": []
   },

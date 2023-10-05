@@ -203,7 +203,7 @@ export default sidebar({
               text: "基础",
               collapsable: true,
               prefix: "基础/",
-              children: ["环境安装", "pip", "数据类型", "流程控制", "字符编码", "文件基础"],
+              children: ["环境安装", "pip", "数据类型", "流程控制", "字符编码", "文件基础", "Python项目打包"],
             },
             {
               text: "进阶",
