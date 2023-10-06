@@ -1,1 +1,0 @@
-import{_ as e}from"./plugin-vueexport-helper.2444895f.js";import{o as t,c}from"./app.c84c9b2a.js";const o={};function r(_,a){return t(),c("div")}const f=e(o,[["render",r],["__file","pika.html.vue"]]);export{f as default};
