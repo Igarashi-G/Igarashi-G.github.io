@@ -1,0 +1,1 @@
+import{_ as o}from"./plugin-vueexport-helper.2444895f.js";import{o as c,c as t,d as s,r as n}from"./app.c84c9b2a.js";const r={};function a(i,_){const e=n("PDF");return c(),t("div",null,[s(e,{url:"https://www.igarashi.icu:7779/pdf/python/asyncio%20Recipes.pdf",height:"880px"})])}const f=o(r,[["render",a],["__file","asyncio_recipes.html.vue"]]);export{f as default};
