@@ -5,14 +5,12 @@
 <p><strong>GOPATH = 编译项目的工作路径</strong></p>
 <h5 id="运行" tabindex="-1"><a class="header-anchor" href="#运行" aria-hidden="true">#</a> <strong>运行</strong></h5>
 <div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code><span class="token comment"># 直接运行</span>
-go run main.go -- 参数
+go run main.go
+ <span class="token variable"><span class="token variable">`</span><span class="token parameter variable">-p</span> <span class="token number">4</span> 资源受限<span class="token variable">`</span></span>
 
 <span class="token comment"># 编译</span>
 go build 
-
-<span class="token comment"># 编译为二进制 .a 文件</span>
-go 
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="_1-变量" tabindex="-1"><a class="header-anchor" href="#_1-变量" aria-hidden="true">#</a> 1. 变量</h2>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="_1-基础类型" tabindex="-1"><a class="header-anchor" href="#_1-基础类型" aria-hidden="true">#</a> 1. 基础类型</h2>
 <div class="language-go ext-go line-numbers-mode"><pre v-pre class="language-go"><code><span class="token comment">/*
 声明 及 默认值、可海象、类型推导
 */</span>
@@ -63,7 +61,7 @@ a<span class="token punctuation">,</span> <span class="token boolean">_</span> <
 </ul>
 </li>
 </ul>
-<p>大整数计算 <strong>big.Int</strong></p>
+<p>某些场景下， 若 <strong>64位</strong> 依然满足不了你，可以使用大整数计算 <strong>big.Int</strong> 和 有理数 <strong>big.Rat</strong> 类型</p>
 <div class="language-text ext-text line-numbers-mode"><pre v-pre class="language-text"><code>
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><div class="custom-container tip">
 <p class="custom-container-title">注意事项</p>
@@ -88,9 +86,9 @@ $ go get github.com/shopspring/decimal
 <span class="token comment">// 保留</span>
 <span class="token keyword">var</span> v3 <span class="token operator">=</span> v2<span class="token punctuation">.</span><span class="token function">Round</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>		<span class="token comment">// 四舍五入</span>
 <span class="token keyword">var</span> v4 <span class="token operator">=</span> v2<span class="token punctuation">.</span><span class="token function">Truncate</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>		<span class="token comment">// 直接保留</span>
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="布尔" tabindex="-1"><a class="header-anchor" href="#布尔" aria-hidden="true">#</a> 布尔</h3>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="布尔" tabindex="-1"><a class="header-anchor" href="#布尔" aria-hidden="true">#</a> <strong>布尔</strong></h3>
 <p>分 <code v-pre>ture/flase</code> ，<strong>不允许 整型 强转 布尔</strong> ，无法参加数值运算</p>
-<h3 id="字符串" tabindex="-1"><a class="header-anchor" href="#字符串" aria-hidden="true">#</a> 字符串</h3>
+<h3 id="字符串" tabindex="-1"><a class="header-anchor" href="#字符串" aria-hidden="true">#</a> <strong>字符串</strong></h3>
 <p><strong>Go</strong> 中为原生类型</p>
 <p>常见转义</p>
 <table>
@@ -312,7 +310,7 @@ fmt<span class="token punctuation">.</span><span class="token function">Println<
 str <span class="token operator">:=</span> <span class="token function">new</span><span class="token punctuation">(</span><span class="token builtin">string</span><span class="token punctuation">)</span>			<span class="token comment">// new 创建的 会有个初始的默认值 如 int 是 0， string 是 ""</span>
 fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span>ptr<span class="token punctuation">,</span> <span class="token operator">*</span>str<span class="token punctuation">)</span>
 <span class="token comment">// &lt;nil> "" 未显示引号</span>
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>自动推导出：整型指针 <strong>a</strong> 指向 <strong>b</strong> 的地址，<em><strong>a</strong> 是取 <strong>b</strong> 的值，<strong>a</strong> 是 <strong>b</strong> 的地址，</em><em>&amp;a</em>* 是 <strong>a</strong> 的地址</p>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>自动推导出：整型指针 <strong>a</strong> 指向 <strong>b</strong> 的地址，<strong>*a</strong> 是取 <strong>b</strong> 的值，<strong>a</strong> 是 <strong>b</strong> 的地址， <strong>&amp;a</strong> 是 <strong>a</strong> 的地址</p>
 <div class="language-go ext-go line-numbers-mode"><pre v-pre class="language-go"><code><span class="token keyword">var</span> b <span class="token operator">=</span> <span class="token number">1</span>
 a <span class="token operator">:=</span> <span class="token operator">&amp;</span>b
 fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">"b:"</span><span class="token punctuation">,</span>b<span class="token punctuation">,</span> <span class="token operator">&amp;</span>b<span class="token punctuation">,</span> <span class="token string">"a:"</span><span class="token punctuation">,</span> <span class="token operator">*</span>a<span class="token punctuation">,</span> a<span class="token punctuation">,</span> <span class="token operator">&amp;</span>a<span class="token punctuation">)</span>
@@ -336,13 +334,113 @@ d <span class="token operator">=</span> <span class="token function">int</span><
 
 <span class="token comment">// 字符串 转 布尔</span>
 ret<span class="token punctuation">,</span> err <span class="token operator">:=</span> strconv<span class="token punctuation">.</span><span class="token function">ParseBool</span><span class="token punctuation">(</span><span class="token string">"True"</span><span class="token punctuation">)</span>
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><hr>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="custom-container info">
+<p class="custom-container-title">数值转换小提示</p>
+<ul>
+<li>注意不同数值类型之间转换(大转小)可能有截断，比如一个 <strong>int64</strong> 转成 <strong>int32</strong> 类型的数字</li>
+<li>可以使用 <strong>int(float)</strong> 转换一个 浮点数到整数，小数部分会丢弃。但是如果浮点数的值超过了整数类型范围，结果是不可预期的</li>
+<li>注意计算机使用二进制不能精确表示 <strong>float</strong> 数字，当比较两个浮点数时你要格外小心不能用等号直接比较。(通常作差绝对值小于一个很小的阈值)</li>
+<li>业务中经常使用 <strong>float64</strong>，因为 <strong>math</strong> 函数很多接受 <strong>float64</strong> 作为参数</li>
+<li>你可以通过 <strong>math.MaxInt32</strong> 类似的定义查看一个类型的最大值</li>
+</ul>
+</div>
+<p>若情况复杂，可以使用 <strong><a href="https://github.com/spf13/cast" target="_blank" rel="noopener noreferrer">cast<ExternalLinkIcon/></a></strong> 转换 , 但注意，<strong>cast</strong> 不能转换自定义类型，比如声明 <code v-pre>type StringType string</code> <strong>ToString()</strong> 无法获取到想转义的字符串</p>
+<hr>
 <h2 id="_2-容器" tabindex="-1"><a class="header-anchor" href="#_2-容器" aria-hidden="true">#</a> 2. 容器</h2>
-<h3 id="数组" tabindex="-1"><a class="header-anchor" href="#数组" aria-hidden="true">#</a> 数组</h3>
-<h3 id="切片" tabindex="-1"><a class="header-anchor" href="#切片" aria-hidden="true">#</a> 切片</h3>
+<h3 id="数组-array" tabindex="-1"><a class="header-anchor" href="#数组-array" aria-hidden="true">#</a> 数组（array）</h3>
+<h3 id="切片-slice" tabindex="-1"><a class="header-anchor" href="#切片-slice" aria-hidden="true">#</a> 切片（slice）</h3>
 <div class="language-go ext-go line-numbers-mode"><pre v-pre class="language-go"><code>
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p>变量逃逸</p>
-<h3 id="" tabindex="-1"><a class="header-anchor" href="#" aria-hidden="true">#</a> </h3>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><h3 id="变量逃逸" tabindex="-1"><a class="header-anchor" href="#变量逃逸" aria-hidden="true">#</a> 变量逃逸</h3>
+<p><strong>变量逃逸(<em>escape analysis</em> )：</strong>  是编译器进行内存分配的一种优化机制。</p>
+<blockquote>
+<p>需要理解几个关键点:</p>
+<ol>
+<li>
+<p>Go中变量的分配方式有两种:</p>
+<ul>
+<li>栈分配: 函数调用结束后自动回收,性能好</li>
+<li>堆分配: 需要GC回收,性能相对较差</li>
+</ul>
+</li>
+<li>
+<p>逃逸分析的目的:</p>
+<ul>
+<li>决定变量分配在栈还是堆</li>
+<li>优化内存分配和回收</li>
+<li>提高程序性能</li>
+</ul>
+</li>
+<li>
+<p>常见的逃逸场景:</p>
+<ul>
+<li>返回局部变量的指针</li>
+<li>interface{}类型</li>
+<li>切片扩容</li>
+<li>闭包引用</li>
+<li>goroutine中使用的变量</li>
+</ul>
+</li>
+</ol>
+</blockquote>
+<h5 id="典型的逃逸场景" tabindex="-1"><a class="header-anchor" href="#典型的逃逸场景" aria-hidden="true">#</a> 典型的逃逸场景</h5>
+<ol>
+<li>
+<p>返回局部变量的指针:</p>
+<div class="language-go ext-go line-numbers-mode"><pre v-pre class="language-go"><code><span class="token comment">// 变量x会逃逸到堆</span>
+<span class="token keyword">func</span> <span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">*</span><span class="token builtin">int</span> <span class="token punctuation">{</span>
+    x <span class="token operator">:=</span> <span class="token number">42</span>
+    <span class="token keyword">return</span> <span class="token operator">&amp;</span>x
+<span class="token punctuation">}</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></li>
+<li>
+<p>interface{}类型:</p>
+<div class="language-go ext-go line-numbers-mode"><pre v-pre class="language-go"><code><span class="token comment">// i会逃逸到堆</span>
+<span class="token keyword">func</span> <span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> i <span class="token keyword">interface</span><span class="token punctuation">{</span><span class="token punctuation">}</span>
+    i <span class="token operator">=</span> <span class="token number">42</span>
+<span class="token punctuation">}</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></li>
+<li>
+<p>切片扩容:</p>
+<div class="language-go ext-go line-numbers-mode"><pre v-pre class="language-go"><code><span class="token comment">// 当切片扩容时,底层数组可能逃逸到堆</span>
+<span class="token keyword">func</span> <span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    s <span class="token operator">:=</span> <span class="token function">make</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token builtin">int</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span>
+    <span class="token keyword">for</span> i <span class="token operator">:=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">100</span><span class="token punctuation">;</span> i<span class="token operator">++</span> <span class="token punctuation">{</span>
+        s <span class="token operator">=</span> <span class="token function">append</span><span class="token punctuation">(</span>s<span class="token punctuation">,</span> i<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></li>
+<li>
+<p>闭包引用:</p>
+<div class="language-go ext-go line-numbers-mode"><pre v-pre class="language-go"><code><span class="token comment">// x会逃逸到堆,因为被闭包引用</span>
+<span class="token keyword">func</span> <span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token builtin">int</span> <span class="token punctuation">{</span>
+    x <span class="token operator">:=</span> <span class="token number">42</span>
+    <span class="token keyword">return</span> <span class="token keyword">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token builtin">int</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> x
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></li>
+<li>
+<p>goroutine引用:</p>
+<div class="language-text ext-text line-numbers-mode"><pre v-pre class="language-text"><code>// x会逃逸到堆,因为被goroutine引用
+func foo() {
+    x := 42
+    go func() {
+        println(x)
+    }()
+}
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></li>
+</ol>
+<p>可以通过以下方式查看逃逸分析:</p>
+<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code>go build <span class="token parameter variable">-gcflags</span><span class="token operator">=</span><span class="token string">"-m"</span> your_file.go
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><h5 id="避免不必要的逃逸的建议" tabindex="-1"><a class="header-anchor" href="#避免不必要的逃逸的建议" aria-hidden="true">#</a> 避免不必要的逃逸的建议:</h5>
+<ul>
+<li>尽量不要返回局部变量的指针</li>
+<li>避免过度使用interface{}</li>
+<li>合理预估切片容量,避免频繁扩容</li>
+<li>注意闭包对变量的引用</li>
+<li>对于小对象,优先使用值传递而不是指针</li>
+</ul>
 </div></template>
 
 

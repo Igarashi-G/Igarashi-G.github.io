@@ -92,7 +92,7 @@ export default sidebar({
           text: "网络",
           collapsable: true,
           prefix: "网络/",
-          children: ["网络基础", "命令", "curl", "SSL协议"],
+          children: ["网络基础", "命令", "curl", "SSL协议", "P2P"],
         },
         {
           text: "Troubleshooting",

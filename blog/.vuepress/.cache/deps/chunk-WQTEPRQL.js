@@ -1,6 +1,6 @@
 import {
   useMetaLocale
-} from "./chunk-QZ6FWJ2T.js";
+} from "./chunk-QDK5JGKI.js";
 import {
   b
 } from "./chunk-6EOYTJSC.js";
@@ -20,7 +20,7 @@ import {
 } from "./chunk-FGBNMEU6.js";
 
 // node_modules/.pnpm/vuepress-theme-hope@2.0.0-beta.100/node_modules/vuepress-theme-hope/lib/client/modules/info/components/TOC.js
-import "D:/Program/igarashi-blog/node_modules/.pnpm/vuepress-theme-hope@2.0.0-beta.100/node_modules/vuepress-theme-hope/lib/client/modules/info/styles/toc.scss";
+import "D:/Program/Igarashi-G.github.io/node_modules/.pnpm/vuepress-theme-hope@2.0.0-beta.100/node_modules/vuepress-theme-hope/lib/client/modules/info/styles/toc.scss";
 var renderHeader = ({ title, level, slug }) => h(RouterLink, {
   to: `#${slug}`,
   class: ["toc-link", `level${level}`]
@@ -88,4 +88,4 @@ var TOC_default = defineComponent({
 export {
   TOC_default
 };
-//# sourceMappingURL=chunk-E4UCNEBX.js.map
+//# sourceMappingURL=chunk-WQTEPRQL.js.map

@@ -1,11 +1,11 @@
 import {
   InfoPanel_default
-} from "./chunk-V7ORLPUI.js";
-import "./chunk-7BETSFT5.js";
-import "./chunk-JGDU4R2Y.js";
+} from "./chunk-LJXJB3WR.js";
+import "./chunk-W72C445G.js";
+import "./chunk-VEHO2IML.js";
 import {
   ArticleList_default
-} from "./chunk-HL5RB44Z.js";
+} from "./chunk-R3VBYWQX.js";
 import "./chunk-TU6COK3D.js";
 import {
   ArticleIcon,
@@ -14,14 +14,14 @@ import {
   LinkIcon,
   ProjectIcon,
   SlideDownIcon
-} from "./chunk-3PKHFVAX.js";
+} from "./chunk-7OOO4E4T.js";
 import {
   useArticles
 } from "./chunk-BKUOSC5D.js";
 import {
   DropTransition_default
 } from "./chunk-YEPRUSCA.js";
-import "./chunk-QZ6FWJ2T.js";
+import "./chunk-QDK5JGKI.js";
 import {
   MarkdownContent_default
 } from "./chunk-LY373K3I.js";
@@ -51,8 +51,8 @@ import "./chunk-ZLM2EG36.js";
 import "./chunk-BPKF3OQJ.js";
 
 // node_modules/.pnpm/vuepress-theme-hope@2.0.0-beta.100/node_modules/vuepress-theme-hope/lib/client/modules/blog/components/BlogHero.js
-import defaultHeroBgImagePath from "D:/Program/igarashi-blog/node_modules/.pnpm/vuepress-theme-hope@2.0.0-beta.100/node_modules/vuepress-theme-hope/lib/client/modules/blog/assets/hero.jpg";
-import "D:/Program/igarashi-blog/node_modules/.pnpm/vuepress-theme-hope@2.0.0-beta.100/node_modules/vuepress-theme-hope/lib/client/modules/blog/styles/blog-hero.scss";
+import defaultHeroBgImagePath from "D:/Program/Igarashi-G.github.io/node_modules/.pnpm/vuepress-theme-hope@2.0.0-beta.100/node_modules/vuepress-theme-hope/lib/client/modules/blog/assets/hero.jpg";
+import "D:/Program/Igarashi-G.github.io/node_modules/.pnpm/vuepress-theme-hope@2.0.0-beta.100/node_modules/vuepress-theme-hope/lib/client/modules/blog/styles/blog-hero.scss";
 var BlogHero_default = defineComponent({
   name: "BlogHero",
   setup(_props, { slots }) {
@@ -125,7 +125,7 @@ var BlogHero_default = defineComponent({
 });
 
 // node_modules/.pnpm/vuepress-theme-hope@2.0.0-beta.100/node_modules/vuepress-theme-hope/lib/client/modules/blog/components/ProjectPanel.js
-import "D:/Program/igarashi-blog/node_modules/.pnpm/vuepress-theme-hope@2.0.0-beta.100/node_modules/vuepress-theme-hope/lib/client/modules/blog/styles/project-panel.scss";
+import "D:/Program/Igarashi-G.github.io/node_modules/.pnpm/vuepress-theme-hope@2.0.0-beta.100/node_modules/vuepress-theme-hope/lib/client/modules/blog/styles/project-panel.scss";
 var AVAILABLE_PROJECT_TYPES = [
   "link",
   "article",
@@ -167,7 +167,7 @@ var ProjectPanel_default = defineComponent({
 });
 
 // node_modules/.pnpm/vuepress-theme-hope@2.0.0-beta.100/node_modules/vuepress-theme-hope/lib/client/modules/blog/components/BlogHome.js
-import "D:/Program/igarashi-blog/node_modules/.pnpm/vuepress-theme-hope@2.0.0-beta.100/node_modules/vuepress-theme-hope/lib/client/modules/blog/styles/home.scss";
+import "D:/Program/Igarashi-G.github.io/node_modules/.pnpm/vuepress-theme-hope@2.0.0-beta.100/node_modules/vuepress-theme-hope/lib/client/modules/blog/styles/home.scss";
 var BlogHome_default = defineComponent({
   name: "BlogHome",
   setup() {
