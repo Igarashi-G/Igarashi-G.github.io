@@ -22,7 +22,7 @@ import {
 } from "./chunk-FGBNMEU6.js";
 
 // node_modules/.pnpm/vuepress-theme-hope@2.0.0-beta.100/node_modules/vuepress-theme-hope/lib/client/modules/encrypt/components/PasswordModal.js
-import "D:/Program/igarashi-blog/node_modules/.pnpm/vuepress-theme-hope@2.0.0-beta.100/node_modules/vuepress-theme-hope/lib/client/modules/encrypt/styles/password-modal.scss";
+import "D:/Program/Igarashi-G.github.io/node_modules/.pnpm/vuepress-theme-hope@2.0.0-beta.100/node_modules/vuepress-theme-hope/lib/client/modules/encrypt/styles/password-modal.scss";
 var PasswordModal_default = defineComponent({
   name: "PasswordModal",
   props: {
@@ -348,4 +348,4 @@ export {
   useGlobalEcrypt,
   usePathEncrypt
 };
-//# sourceMappingURL=chunk-XMRTMZYX.js.map
+//# sourceMappingURL=chunk-XKLJ6WVK.js.map

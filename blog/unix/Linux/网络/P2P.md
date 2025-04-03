@@ -8,7 +8,7 @@ tag:
   - 网络通信
   - Linux
 star: true
-
+sticky: true
 ---
 
 **Golang P2P** 网络编程
@@ -699,7 +699,11 @@ func ExampleClient() {
 
 #### TCP编程缺点
 
-tcp/udp是传输层协议 tcp是 stream流式无边界的。无frame,如果要在上面实现拆包处理消息，需要是先实现frame, udp 是数据报Dgram有边界，但是不可靠
+tcp/udp是传输层协议 
+
+- **TCP** 是 **stream** 流式无边界的：无 **frame** , 如果要在上面实现拆包处理消息，需要是先实现 **frame**;
+
+- **UDP** 是数据报 **Dgram** 有边界，但是不可靠;
 
 http, grpc，ws，quic, sctp是应用层，自带frame(按帧传输)  
 

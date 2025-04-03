@@ -1,10 +1,10 @@
-import { useStyleTag } from "D:/Program/igarashi-blog/node_modules/.pnpm/vuepress-plugin-components@2.0.0-beta.100/node_modules/vuepress-plugin-components/lib/client/composables/index.js";
+import { useStyleTag } from "D:/Program/Igarashi-G.github.io/node_modules/.pnpm/vuepress-plugin-components@2.0.0-beta.100/node_modules/vuepress-plugin-components/lib/client/composables/index.js";
 import { h } from "vue";
 import { defineClientConfig } from "@vuepress/client";
-import FontIcon from "D:/Program/igarashi-blog/node_modules/.pnpm/vuepress-plugin-components@2.0.0-beta.100/node_modules/vuepress-plugin-components/lib/client/components/FontIcon.js";
-import Badge from "D:/Program/igarashi-blog/node_modules/.pnpm/vuepress-plugin-components@2.0.0-beta.100/node_modules/vuepress-plugin-components/lib/client/components/Badge.js";
-import PDF from "D:/Program/igarashi-blog/node_modules/.pnpm/vuepress-plugin-components@2.0.0-beta.100/node_modules/vuepress-plugin-components/lib/client/components/PDF.js";
-import BackToTop from "D:/Program/igarashi-blog/node_modules/.pnpm/vuepress-plugin-components@2.0.0-beta.100/node_modules/vuepress-plugin-components/lib/client/components/BackToTop.js";
+import FontIcon from "D:/Program/Igarashi-G.github.io/node_modules/.pnpm/vuepress-plugin-components@2.0.0-beta.100/node_modules/vuepress-plugin-components/lib/client/components/FontIcon.js";
+import Badge from "D:/Program/Igarashi-G.github.io/node_modules/.pnpm/vuepress-plugin-components@2.0.0-beta.100/node_modules/vuepress-plugin-components/lib/client/components/Badge.js";
+import PDF from "D:/Program/Igarashi-G.github.io/node_modules/.pnpm/vuepress-plugin-components@2.0.0-beta.100/node_modules/vuepress-plugin-components/lib/client/components/PDF.js";
+import BackToTop from "D:/Program/Igarashi-G.github.io/node_modules/.pnpm/vuepress-plugin-components@2.0.0-beta.100/node_modules/vuepress-plugin-components/lib/client/components/BackToTop.js";
 
 
 export default defineClientConfig({

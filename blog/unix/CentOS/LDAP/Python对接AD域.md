@@ -8,7 +8,7 @@ tag:
   - LDAP
   - 认证
 star: true
-sticky: true
+sticky: false
 ---
 
 **UFS** 管理平台 通过 **ldap3** 等 **Python** 工具，对接域相关的认证 
