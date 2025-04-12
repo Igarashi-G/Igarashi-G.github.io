@@ -350,8 +350,7 @@ ret, err := strconv.ParseBool("True")
 
 ## 2. 容器
 
-### 数组（array）
-
+### [数组（array）](/go/算法与数据结构/数组.html)
 
 
 ### 切片（slice）
