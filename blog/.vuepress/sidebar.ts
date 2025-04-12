@@ -318,6 +318,7 @@ export default sidebar({
           collapsable: true,
           prefix: "算法与数据结构/",
           children: [
+            "概述",
             "数组",
             "线性表",
             "栈与队列",

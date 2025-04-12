@@ -347,7 +347,7 @@ ret<span class="token punctuation">,</span> err <span class="token operator">:=<
 <p>若情况复杂，可以使用 <strong><a href="https://github.com/spf13/cast" target="_blank" rel="noopener noreferrer">cast<ExternalLinkIcon/></a></strong> 转换 , 但注意，<strong>cast</strong> 不能转换自定义类型，比如声明 <code v-pre>type StringType string</code> <strong>ToString()</strong> 无法获取到想转义的字符串</p>
 <hr>
 <h2 id="_2-容器" tabindex="-1"><a class="header-anchor" href="#_2-容器" aria-hidden="true">#</a> 2. 容器</h2>
-<h3 id="数组-array" tabindex="-1"><a class="header-anchor" href="#数组-array" aria-hidden="true">#</a> 数组（array）</h3>
+<h3 id="数组-array" tabindex="-1"><a class="header-anchor" href="#数组-array" aria-hidden="true">#</a> <RouterLink to="/go/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E7%BB%84.html">数组（array）</RouterLink></h3>
 <h3 id="切片-slice" tabindex="-1"><a class="header-anchor" href="#切片-slice" aria-hidden="true">#</a> 切片（slice）</h3>
 <div class="language-go ext-go line-numbers-mode"><pre v-pre class="language-go"><code>
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><h3 id="变量逃逸" tabindex="-1"><a class="header-anchor" href="#变量逃逸" aria-hidden="true">#</a> 变量逃逸</h3>
