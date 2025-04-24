@@ -1,4 +1,285 @@
 <template><div><!-- markdownlint-disable MD024 MD033 MD051 -->
-<Presentation id="presentation-1a96284b" data-code="%0A%3C!--%20.slide%3A%20data-transition%3D%22slide%22%20--%3E%0A%0A%23%23%20%E5%B9%BB%E7%81%AF%E7%89%87%E6%BC%94%E7%A4%BA%0A%0A%3C!--%20.element%3A%20class%3D%22r-fit-text%22%20--%3E%0A%0A%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84%E5%B9%BB%E7%81%AF%E7%89%87%E6%BC%94%E7%A4%BA%E4%B8%8E%E5%90%84%E7%A7%8D%E5%B0%8F%E8%B4%B4%E5%A3%AB%E3%80%82%0A%0A%3C!--%20.element%3A%20class%3D%22r-fit-text%22%20--%3E%0A%0A%3E%20%E4%BD%9C%E8%80%85%20Mr.Hope.%20%E8%AF%B7%E6%BB%9A%E5%8A%A8%E9%BC%A0%E6%A0%87%E6%BB%9A%E8%BD%AE%E8%BF%9B%E5%85%A5%E4%B8%8B%E4%B8%80%E9%A1%B5%0A%0A---%0A%0A%23%23%20%E6%A0%87%E6%B3%A8%E5%B9%BB%E7%81%AF%E7%89%87%0A%0A%3C!--%20.element%3A%20class%3D%22r-fit-text%22%20--%3E%0A%0A%5B%F0%9F%91%87%5D(%23%2F1%2F1)%0A%0A--%0A%0A%23%23%20%E6%A0%87%E6%B3%A8%E5%B9%BB%E7%81%AF%E7%89%87%0A%0A%3C!--%20.element%3A%20class%3D%22r-fit-text%22%20--%3E%0A%0A%E4%BD%BF%E7%94%A8%20%60---%60%20%E6%A0%87%E6%B3%A8%E6%B0%B4%E5%B9%B3%E5%B9%BB%E7%81%AF%E7%89%87%0A%0A%3C!--%20.element%3A%20class%3D%22fragment%20fade-in%22%20--%3E%0A%0A%E5%9C%A8%E6%B0%B4%E5%B9%B3%E5%B9%BB%E7%81%AF%E7%89%87%E4%B8%AD%E4%BD%BF%E7%94%A8%20%60--%60%20%E5%88%86%E5%89%B2%E5%9E%82%E7%9B%B4%E5%B9%BB%E7%81%AF%E7%89%87%0A%0A%3C!--%20.element%3A%20class%3D%22fragment%20fade-in%22%20--%3E%0A%0A%E4%BD%BF%E7%94%A8%20%60%3C!--%20.slide%3A%20...%20--%3E%60%20%E5%9C%A8%E5%B9%BB%E7%81%AF%E7%89%87%E4%B8%8A%E6%B7%BB%E5%8A%A0%E5%B1%9E%E6%80%A7%0A%0A%3C!--%20.element%3A%20class%3D%22fragment%20fade-in%22%20--%3E%0A%0A%E4%BD%BF%E7%94%A8%20%60%3C!--%20.element%3A%20...%20--%3E%60%20%E5%9C%A8%E5%89%8D%E4%B8%80%E4%B8%AA%20HTML%20%E5%85%83%E7%B4%A0%E4%B8%8A%E6%B7%BB%E5%8A%A0%E5%B1%9E%E6%80%A7%0A%0A%3C!--%20.element%3A%20class%3D%22fragment%20fade-in%22%20--%3E%0A%0A---%0A%0A%3C!--%20.slide%3A%20data-transition%3D%22slide%22%20data-auto-animate%20--%3E%0A%0A%23%23%20Markdown%0A%0A%3C!--%20.element%3A%20class%3D%22r-fit-text%22%20--%3E%0A%0A%E4%BD%A0%E5%8F%AF%E4%BB%A5%E5%9C%A8%E5%B9%BB%E7%81%AF%E7%89%87%E4%B8%AD%E4%BD%BF%E7%94%A8%20Markdown%20%E8%AF%AD%E6%B3%95%E7%9A%84%E5%90%84%E7%A7%8D%E6%A0%87%E8%AE%B0.%0A%0A%3C!--%20.element%3A%20class%3D%22r-fit-text%22%20--%3E%0A%0A--%0A%0A%3C!--%20.slide%3A%20data-auto-animate%20--%3E%0A%0A%23%23%20Markdown%0A%0A%E4%BD%A0%E5%8F%AF%E4%BB%A5%E5%9C%A8%E5%B9%BB%E7%81%AF%E7%89%87%E4%B8%AD%E4%BD%BF%E7%94%A8%20Markdown%20%E8%AF%AD%E6%B3%95%E7%9A%84%E5%90%84%E7%A7%8D%E6%A0%87%E8%AE%B0.%0A%0A%23%23%23%20%E8%BF%99%E6%98%AF%E4%B8%80%E4%B8%AA%20H3%0A%0A%E6%A0%87%E9%A2%98%E9%BB%98%E8%AE%A4%E4%BC%9A%E8%87%AA%E5%8A%A8%E8%BD%AC%E6%8D%A2%E4%B8%BA%E5%A4%A7%E5%86%99%E3%80%82%0A%0A%E8%BF%99%E6%98%AF%E4%B8%80%E4%B8%AA%E6%9C%89%E7%9D%80%20**%E7%B2%97%E4%BD%93**%2C%20_%E6%96%9C%E4%BD%93_%2C%20~~%E5%88%A0%E9%99%A4%E7%BA%BF~~%20%E6%96%87%E5%AD%97%E5%B9%B6%E5%8C%85%E5%90%AB%20%5B%E4%B8%80%E4%B8%AA%E9%93%BE%E6%8E%A5%5D(https%3A%2F%2Fmrhope.site)%20%E7%9A%84%E6%AE%B5%E8%90%BD%EF%BC%8C%E5%B9%B6%E4%B8%94%E5%AE%83%E4%BC%9A%E8%87%AA%E5%8A%A8%E6%8D%A2%E8%A1%8C%E3%80%82%E6%89%80%E4%BB%A5%E4%BD%A0%E6%97%A0%E9%9C%80%E6%8B%85%E5%BF%83%E5%AE%83%E7%9A%84%E9%95%BF%E5%BA%A6%E3%80%82%0A%0A--%0A%0A%3C!--%20.slide%3A%20data-auto-animate%20--%3E%0A%0A%23%23%20Markdown%0A%0A%E4%BD%A0%E5%8F%AF%E4%BB%A5%E5%9C%A8%E5%B9%BB%E7%81%AF%E7%89%87%E4%B8%AD%E4%BD%BF%E7%94%A8%20Markdown%20%E8%AF%AD%E6%B3%95%E7%9A%84%E5%90%84%E7%A7%8D%E6%A0%87%E8%AE%B0.%0A%0A%E5%88%97%E8%A1%A8%E9%BB%98%E8%AE%A4%E4%B8%BA%20%60inline-block%60%0A%0A-%20%E9%A1%B9%E7%9B%AE%0A-%20%E9%A1%B9%E7%9B%AE%0A-%20%E9%A1%B9%E7%9B%AE%0A%0A1.%20%E9%A1%B9%E7%9B%AE%201%0A1.%20%E9%A1%B9%E7%9B%AE%202%0A1.%20%E9%A1%B9%E7%9B%AE%203%0A%0A--%0A%0A%3C!--%20.slide%3A%20data-auto-animate%20--%3E%0A%0A%23%23%20Markdown%0A%0A%E4%BD%A0%E5%8F%AF%E4%BB%A5%E5%9C%A8%E5%B9%BB%E7%81%AF%E7%89%87%E4%B8%AD%E4%BD%BF%E7%94%A8%20Markdown%20%E8%AF%AD%E6%B3%95%E7%9A%84%E5%90%84%E7%A7%8D%E6%A0%87%E8%AE%B0.%0A%0A%E5%9C%A8%E4%BD%A0%E5%90%AF%E7%94%A8%20%60highlight%60%20%E6%8F%92%E4%BB%B6%E5%90%8E%EF%BC%8C%E4%BB%A3%E7%A0%81%E5%9D%97%E4%BC%9A%E8%87%AA%E5%8A%A8%E9%AB%98%E4%BA%AE%E3%80%82%0A%0A%60%60%60js%0Aconst%20a%20%3D%201%3B%0A%60%60%60%0A%0A--%0A%0A%3C!--%20.slide%3A%20data-auto-animate%20--%3E%0A%0A%23%23%20Markdown%0A%0A%E4%BD%A0%E5%8F%AF%E4%BB%A5%E5%9C%A8%E5%B9%BB%E7%81%AF%E7%89%87%E4%B8%AD%E4%BD%BF%E7%94%A8%20Markdown%20%E8%AF%AD%E6%B3%95%E7%9A%84%E5%90%84%E7%A7%8D%E6%A0%87%E8%AE%B0.%0A%0A%E5%9C%A8%E4%BD%A0%E5%90%AF%E7%94%A8%20%60math%60%20%E6%8F%92%E4%BB%B6%E5%90%8E%EF%BC%8C%E4%BD%A0%E4%B9%9F%E5%8F%AF%E4%BB%A5%E4%BD%BF%E7%94%A8%20TEX%20%E6%A0%BC%E5%BC%8F%E4%BD%BF%E7%94%A8%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F%E3%80%82%0A%0A%24%24%0AJ(%5Ctheta_0%2C%5Ctheta_1)%20%3D%20%5Csum_%7Bi%3D0%7D%0A%24%24%0A%0A--%0A%0A%3C!--%20.slide%3A%20data-auto-animate%20--%3E%0A%0A%23%23%20Markdown%0A%0A%E4%BD%A0%E5%8F%AF%E4%BB%A5%E5%9C%A8%E5%B9%BB%E7%81%AF%E7%89%87%E4%B8%AD%E4%BD%BF%E7%94%A8%20Markdown%20%E8%AF%AD%E6%B3%95%E7%9A%84%E5%90%84%E7%A7%8D%E6%A0%87%E8%AE%B0.%0A%0A%E2%9A%A0**%E8%AF%B7%E6%B3%A8%E6%84%8F**%3A%20%E8%A1%A8%E6%A0%BC%E5%92%8C%E5%88%86%E5%89%B2%E7%BA%BF%EF%BC%8C%E4%BB%A5%E5%8F%8A%E6%89%80%E6%9C%89%E4%B8%8D%E5%9C%A8%20Markdown%20%E6%A0%87%E5%87%86%E8%AF%AD%E6%B3%95%E4%B8%AD%E7%9A%84%E5%86%85%E5%AE%B9%E5%9D%87%E4%B8%8D%E5%8F%97%E6%94%AF%E6%8C%81%E3%80%82%0A%0A---%0A%0A%3C!--%20.slide%3A%20data-transition%3D%22slide%22%20data-auto-animate%20--%3E%0A%0A%23%23%20%E5%B8%83%E5%B1%80%0A%0A%3C!--%20.element%3A%20class%3D%22r-fit-text%22%20--%3E%0A%0A--%0A%0A%3C!--%20.slide%3A%20data-auto-animate%20%20--%3E%0A%0A%23%23%20%E5%B8%83%E5%B1%80%0A%0A%3C!--%20.element%3A%20class%3D%22r-fit-text%22%20--%3E%0A%0A%F0%9F%91%86%20%60r-fit-text%60%20class%20%E4%BC%9A%E8%AE%A9%E6%96%87%E5%AD%97%E5%9C%A8%E4%B8%8D%E8%B6%85%E5%87%BA%E5%B9%BB%E7%81%AF%E7%89%87%E8%8C%83%E5%9B%B4%E7%9A%84%E6%83%85%E5%86%B5%E4%B8%8B%E5%B0%BD%E5%8F%AF%E8%83%BD%E5%A4%A7%E3%80%82%0A%0A--%0A%0A%3C!--%20.slide%3A%20data-auto-animate%20%20--%3E%0A%0A%23%23%20%E5%B8%83%E5%B1%80%0A%0A!%5BLogo%5D(%2Flogo.svg)%0A%0A%3C!--%20.element%3A%20class%3D%22r-stretch%22%20--%3E%0A%0A%F0%9F%91%86%20%60r-stretch%60%20class%20%E5%B8%AE%E5%8A%A9%E4%BD%A0%E6%8E%A7%E5%88%B6%E6%B3%A8%E5%85%A5%E5%9B%BE%E7%89%87%E6%88%96%E8%A7%86%E9%A2%91%E7%9A%84%E5%A4%A7%E5%B0%8F%EF%BC%8C%E4%BD%BF%E5%AE%83%E4%BB%AC%E5%A1%AB%E5%85%85%E6%BB%A1%E5%B9%BB%E7%81%AF%E7%89%87%E5%9E%82%E7%9B%B4%E6%96%B9%E5%90%91%E4%B8%8A%E7%9A%84%E5%89%A9%E4%BD%99%E7%A9%BA%E9%97%B4%E3%80%82%0A%0A--%0A%0A%3C!--%20.slide%3A%20data-auto-animate%20data-background-color%3D%22rgb(70%2C%2070%2C%20255)%22%20--%3E%0A%0A%23%23%20%E5%B8%83%E5%B1%80%0A%0A%23%23%23%20%E8%83%8C%E6%99%AF%0A%0A%E4%BD%A0%E5%8F%AF%E4%BB%A5%E9%80%9A%E8%BF%87%E5%90%91%E7%89%B9%E5%AE%9A%E5%B9%BB%E7%81%AF%E7%89%87%E6%B7%BB%E5%8A%A0%20%60data-background%60%20%E5%B1%9E%E6%80%A7%E8%87%AA%E5%AE%9A%E4%B9%89%E5%B9%BB%E7%81%AF%E7%89%87%E8%83%8C%E6%99%AF.%0A%0A---%0A%0A%3C!--%20.slide%3A%20data-auto-animate%20--%3E%0A%0A%23%23%20%E5%8A%A8%E7%94%BB%E7%89%87%E6%AE%B5%0A%0A%3C!--%20.element%3A%20class%3D%22r-fit-text%22%20--%3E%0A%0A--%0A%0A%3C!--%20.slide%3A%20data-auto-animate%20--%3E%0A%0A%23%23%20%E5%8A%A8%E7%94%BB%E7%89%87%E6%AE%B5%0A%0A%3C!--%20.element%3A%20class%3D%22r-fit-text%22%20--%3E%0A%0A%E5%8A%A8%E7%94%BB%E7%89%87%E6%AE%B5%E7%94%A8%E4%BA%8E%E9%AB%98%E4%BA%AE%E6%88%96%E6%98%BE%E9%9A%90%E5%B9%BB%E7%81%AF%E7%89%87%E4%B8%AD%E7%9A%84%E5%85%83%E7%B4%A0%E3%80%82%0A%0A%E4%BD%A0%E9%9C%80%E8%A6%81%E5%9C%A8%E5%85%83%E7%B4%A0%E4%B8%8A%E6%B7%BB%E5%8A%A0%20%60fragment%60%20%E5%92%8C%E5%8A%A8%E7%94%BB%20class%E3%80%82%0A%0A--%0A%0A%3C!--%20.slide%3A%20data-auto-animate%20--%3E%0A%0A%23%23%20%E5%8A%A8%E7%94%BB%E7%89%87%E6%AE%B5%0A%0A%23%23%23%20%E5%8A%A8%E7%94%BB%20class%0A%0A-%20%60fade-in%60%0A%3C!--%20.element%3A%20class%3D%22fragment%20fade-in%22%20--%3E%0A%0A-%20%60fade-out%60%0A%3C!--%20.element%3A%20class%3D%22fragment%20fade-out%22%20--%3E%0A%0A-%20%60fade-up%60%0A%3C!--%20.element%3A%20class%3D%22fragment%20fade-up%22%20--%3E%0A%0A%3C!--%20list%20break%20--%3E%0A%0A-%20%60fade-down%60%0A%3C!--%20.element%3A%20class%3D%22fragment%20fade-down%22%20--%3E%0A%0A-%20%60fade-left%60%0A%3C!--%20.element%3A%20class%3D%22fragment%20fade-left%22%20--%3E%0A%0A-%20%60fade-right%60%0A%3C!--%20.element%3A%20class%3D%22fragment%20fade-right%22%20--%3E%0A%0A%3C!--%20list%20break%20--%3E%0A%0A-%20%60fade-in-then-out%60%0A%3C!--%20.element%3A%20class%3D%22fragment%20fade-in-then-out%22%20--%3E%0A%0A-%20%60fade-in-then-semi-out%60%0A%3C!--%20.element%3A%20class%3D%22fragment%20fade-in-then-semi-out%22%20--%3E%0A%0A--%0A%0A%3C!--%20.slide%3A%20data-auto-animate%20--%3E%0A%0A%23%23%20%E5%8A%A8%E7%94%BB%E7%89%87%E6%AE%B5%0A%0A%23%23%23%20%E5%8A%A8%E7%94%BB%20class%0A%0A-%20%60grow%60%0A%3C!--%20.element%3A%20class%3D%22fragment%20grow%22%20--%3E%0A%0A-%20%60shrink%60%0A%3C!--%20.element%3A%20class%3D%22fragment%20shrink%22%20--%3E%0A%0A-%20%60strike%60%0A%3C!--%20.element%3A%20class%3D%22fragment%20strike%22%20--%3E%0A%0A%3C!--%20list%20break%20--%3E%0A%0A-%20%60highlight-red%60%0A%3C!--%20.element%3A%20class%3D%22fragment%20highlight-red%22%20--%3E%0A%0A-%20%60highlight-green%60%0A%3C!--%20.element%3A%20class%3D%22fragment%20highlight-green%22%20--%3E%0A%0A-%20%60highlight-blue%60%0A%3C!--%20.element%3A%20class%3D%22fragment%20highlight-blue%22%20--%3E%0A%0A%3C!--%20list%20break%20--%3E%0A%0A-%20%60highlight-current-red%60%0A%3C!--%20.element%3A%20class%3D%22fragment%20highlight-current-red%22%20--%3E%0A%0A-%20%60highlight-current-green%60%0A%3C!--%20.element%3A%20class%3D%22fragment%20highlight-current-green%22%20--%3E%0A%0A-%20%60highlight-current-blue%60%0A%3C!--%20.element%3A%20class%3D%22fragment%20highlight-current-blue%22%20--%3E%0A%0A--%0A%0A%3C!--%20.slide%3A%20data-auto-animate%20--%3E%0A%0A%23%23%20%E5%8A%A8%E7%94%BB%E7%89%87%E6%AE%B5%0A%0A%23%23%23%20%E5%A4%9A%E4%B8%AA%E5%8A%A8%E7%94%BB%E7%89%87%E6%AE%B5%0A%0A%E4%BD%A0%E5%8F%AF%E4%BB%A5%E6%8C%89%E7%85%A7%E9%A1%BA%E5%BA%8F%E5%8C%85%E8%A3%B9%E4%B8%80%E4%B8%AA%20HTML%20%E5%85%83%E7%B4%A0%E4%BD%BF%E5%85%B6%E6%8B%A5%E6%9C%89%E5%A4%9A%E4%B8%AA%E5%8A%A8%E7%94%BB%E7%89%87%E6%AE%B5%0A%0A%3Cspan%20class%3D%22fragment%20fade-in%22%3E%0A%20%20%3Cspan%20class%3D%22fragment%20highlight-red%22%3E%0A%20%20%20%20%3Cspan%20class%3D%22fragment%20fade-out%22%3E%0A%20%20%20%20%20%20%E6%B8%90%E5%85%A5%20%3E%20%E5%8F%98%E7%BA%A2%20%3E%20%E6%B8%90%E5%87%BA%0A%20%20%20%20%3C%2Fspan%3E%0A%20%20%3C%2Fspan%3E%0A%3C%2Fspan%3E%0A%0A--%0A%0A%3C!--%20.slide%3A%20data-auto-animate%20--%3E%0A%0A%23%23%20%E5%8A%A8%E7%94%BB%E7%89%87%E6%AE%B5%0A%0A%23%23%23%20%E9%A1%BA%E5%BA%8F%0A%0A%E4%BD%A0%E5%8F%AF%E4%BB%A5%E4%BD%BF%E7%94%A8%20%60data-fragment-index%60%20%E5%B1%9E%E6%80%A7%E6%94%B9%E5%8F%98%E5%85%83%E7%B4%A0%E7%9A%84%E5%8A%A8%E7%94%BB%E9%A1%BA%E5%BA%8F%E3%80%82%0A%0A%E4%B8%8D%E5%90%8C%E5%85%83%E7%B4%A0%E5%8F%AF%E4%BB%A5%E6%9C%89%E7%9B%B8%E5%90%8C%E7%9A%84%E5%8A%A8%E7%94%BB%E9%A1%BA%E5%BA%8F%E3%80%82%0A%0A-%20%E6%9C%80%E5%90%8E%E6%98%BE%E7%A4%BA%0A%3C!--%20.element%3A%20class%3D%22fragment%22%20data-fragment-index%3D%223%22--%3E%0A%0A-%20%E7%AC%AC%E4%BA%8C%E4%B8%AA%E6%98%BE%E7%A4%BA%0A%3C!--%20.element%3A%20class%3D%22fragment%22%20data-fragment-index%3D%222%22--%3E%0A%0A%3C!--%20list%20break%20--%3E%0A%0A-%20%E7%AC%AC%E4%B8%80%E4%B8%AA%E6%98%BE%E7%A4%BA%0A%3C!--%20.element%3A%20class%3D%22fragment%22%20data-fragment-index%3D%221%22--%3E%0A%0A-%20%E7%AC%AC%E4%BA%8C%E4%B8%AA%E6%98%BE%E7%A4%BA%0A%3C!--%20.element%3A%20class%3D%22fragment%22%20data-fragment-index%3D%222%22--%3E%0A%0A---%0A%0A%3C!--%20.slide%3A%20data-transition%3D%22slide%22%20data-auto-animate%20--%3E%0A%0A%23%23%20%E6%B8%90%E5%8F%98%0A%0A%3C!--%20.element%3A%20class%3D%22r-fit-text%22%20--%3E%0A%0A--%0A%0A%3C!--%20.slide%3A%20data-transition%3D%22slide%22%20data-auto-animate%20--%3E%0A%0A%23%23%20%E6%B8%90%E5%8F%98%0A%0A%3C!--%20.element%3A%20class%3D%22r-fit-text%22%20--%3E%0A%0ATransition%20%E5%8F%AF%E4%BB%A5%E9%80%9A%E8%BF%87%E9%85%8D%E7%BD%AE%E4%B8%AD%E7%9A%84%20%60transition%60%20%E9%80%89%E9%A1%B9%E5%85%A8%E5%B1%80%E8%AE%BE%E7%BD%AE%EF%BC%8C%E4%B9%9F%E5%8F%AF%E4%BB%A5%E9%80%9A%E8%BF%87%E5%9C%A8%E7%89%B9%E5%AE%9A%E5%B9%BB%E7%81%AF%E7%89%87%E6%B7%BB%E5%8A%A0%20%60data-transition%60%20%E5%B1%9E%E6%80%A7%E5%B1%80%E9%83%A8%E8%AE%BE%E7%BD%AE.%0A%0A%E5%8F%AF%E8%83%BD%E7%9A%84%E5%80%BC%3A%0A%0A-%20none%0A-%20fade%0A-%20slide%0A%0A%3C!--%20list%20break%20--%3E%0A%0A-%20convex%0A-%20concave%0A-%20zoom%0A%0A--%0A%0A%3C!--%20.slide%3A%20data-auto-animate%20--%3E%0A%0A%23%23%20%E6%B8%90%E5%8F%98%0A%0A%3C!--%20.element%3A%20class%3D%22r-fit-text%22%20--%3E%0A%0A%23%23%23%20%E8%BF%87%E6%B8%A1%E5%8A%A8%E7%94%BB%0A%0A%E4%BD%A0%E5%8F%AF%E4%BB%A5%E5%9C%A8%E7%9B%B8%E9%82%BB%E7%9A%84%E5%B9%BB%E7%81%AF%E7%89%87%E4%B8%8A%E6%B7%BB%E5%8A%A0%20%60data-auto-animate%60%20%E4%BD%BF%E7%9B%B8%E5%90%8C%E7%9A%84%20HTML%20%E5%85%83%E7%B4%A0%E4%BA%A7%E7%94%9F%E8%BF%87%E6%B8%A1%E5%8A%A8%E7%94%BB%E6%95%88%E6%9E%9C%E3%80%82%0A%0A---%0A%0A%3C!--%20.slide%3A%20data-transition%3D%22slide%22%20data-auto-animate%20--%3E%0A%0A%23%23%20%E5%8A%9F%E8%83%BD%0A%0A%3C!--%20.element%3A%20class%3D%22r-fit-text%22%20--%3E%0A%0A--%0A%0A%3C!--%20.slide%3A%20data-transition%3D%22slide%22%20data-auto-animate%20--%3E%0A%0A%23%23%20%E5%8A%9F%E8%83%BD%0A%0A%3C!--%20.element%3A%20class%3D%22r-fit-text%22%20--%3E%0A%0A%23%23%23%20%E4%BB%A3%E7%A0%81%0A%0A%E9%80%9A%E8%BF%87%E5%90%AF%E7%94%A8%20%60highlight%60%20%E6%8F%92%E4%BB%B6%EF%BC%8C%E4%BD%A0%E5%8F%AF%E4%BB%A5%E5%AF%B9%E4%BB%A3%E7%A0%81%E5%9D%97%E8%BF%9B%E8%A1%8C%E9%AB%98%E4%BA%AE%E3%80%82%0A%0A%E4%BD%A0%E5%8F%AF%E4%BB%A5%E4%BD%BF%E7%94%A8%20%60%5Ba-b%7Cc-d%5D%60%20%E8%AF%AD%E6%B3%95%E6%9D%A5%E5%88%86%E5%B8%83%E9%AB%98%E4%BA%AE%E7%89%B9%E5%AE%9A%E8%A1%8C%E3%80%82%0A%0A%60%60%60js%20%5B1-2%7C3%7C4%5D%0Alet%20a%20%3D%201%3B%0Alet%20b%20%3D%202%3B%0Alet%20c%20%3D%20(x)%20%3D%3E%201%20%2B%202%20%2B%20x%3B%0Ac(3)%3B%0A%60%60%60%0A%0A--%0A%0A%3C!--%20.slide%3A%20data-transition%3D%22slide%22%20data-auto-animate%20--%3E%0A%0A%23%23%20%E5%8A%9F%E8%83%BD%0A%0A%3C!--%20.element%3A%20class%3D%22r-fit-text%22%20--%3E%0A%0A%23%23%23%20%E9%A2%84%E8%A7%88%E6%A8%A1%E5%BC%8F%0A%0A%E6%8C%89%E4%B8%8B%20%60Esc%60%20%E6%88%96%20%60O%60%20%E5%8D%B3%E5%8F%AF%E5%9C%A8%E5%B9%BB%E7%81%AF%E7%89%87%E8%8E%B7%E5%BE%97%E7%84%A6%E7%82%B9%E6%97%B6%E8%BF%9B%E5%85%A5%E9%A2%84%E8%A7%88%E6%A8%A1%E5%BC%8F%E3%80%82%0A%0A--%0A%0A%3C!--%20.slide%3A%20data-transition%3D%22slide%22%20data-auto-animate%20--%3E%0A%0A%23%23%20%E5%8A%9F%E8%83%BD%0A%0A%3C!--%20.element%3A%20class%3D%22r-fit-text%22%20--%3E%0A%0A%23%23%23%20%E5%85%A8%E5%B1%8F%E6%A8%A1%E5%BC%8F%0A%0A%E6%8C%89%E4%B8%8B%20%60F%60%20%E6%88%96%20%60F11%60%20%E5%8D%B3%E5%8F%AF%E5%9C%A8%E5%B9%BB%E7%81%AF%E7%89%87%E8%8E%B7%E5%BE%97%E7%84%A6%E7%82%B9%E6%97%B6%E8%BF%9B%E5%85%A5%E5%85%A8%E5%B1%8F%E6%A8%A1%E5%BC%8F%E3%80%82%0A%0A--%0A%0A%3C!--%20.slide%3A%20data-transition%3D%22slide%22%20data-auto-animate%20--%3E%0A%0A%23%23%20%E5%8A%9F%E8%83%BD%0A%0A%3C!--%20.element%3A%20class%3D%22r-fit-text%22%20--%3E%0A%0A%23%23%23%20%E7%BC%A9%E6%94%BE%0A%0A%E6%8C%89%E4%B8%8B%20%60alt%60%20(Linux%20%E4%B8%8A%E4%BD%BF%E7%94%A8%20%60ctrl%60)%20%E7%9A%84%E5%90%8C%E6%97%B6%E7%82%B9%E5%87%BB%E5%B9%BB%E7%81%AF%E7%89%87%E7%9A%84%E4%BB%BB%E4%BD%95%E5%85%83%E7%B4%A0%EF%BC%8C%E5%8D%B3%E5%8F%AF%E4%BB%A5%E5%90%91%E6%AD%A4%E5%85%83%E7%B4%A0%E8%BF%9B%E8%A1%8C%E6%94%BE%E5%A4%A7%E3%80%82%0A%0A%E5%86%8D%E6%AC%A1%E7%82%B9%E5%87%BB%E5%8D%B3%E5%8F%AF%E7%BC%A9%E5%B0%8F%E3%80%82%0A%0A---%0A%0A%3C!--%20.element%3A%20class%3D%22r-fit-text%22%20--%3E%0A%0A%23%23%20%E7%BB%93%E6%9D%9F%0A" theme="auto"></Presentation></div></template>
+<p>@slidestart</p>
+<!-- .slide: data-transition="slide" -->
+<h2 id="幻灯片演示" tabindex="-1"><a class="header-anchor" href="#幻灯片演示"><span>幻灯片演示</span></a></h2>
+<!-- .element: class="r-fit-text" -->
+<p>一个简单的幻灯片演示与各种小贴士。</p>
+<!-- .element: class="r-fit-text" -->
+<blockquote>
+<p>作者 Mr.Hope. 请滚动鼠标滚轮进入下一页</p>
+</blockquote>
+<hr>
+<h2 id="标注幻灯片" tabindex="-1"><a class="header-anchor" href="#标注幻灯片"><span>标注幻灯片</span></a></h2>
+<!-- .element: class="r-fit-text" -->
+<p><a href="#/1/1">👇</a></p>
+<p>--</p>
+<h2 id="标注幻灯片-1" tabindex="-1"><a class="header-anchor" href="#标注幻灯片-1"><span>标注幻灯片</span></a></h2>
+<!-- .element: class="r-fit-text" -->
+<p>使用 <code v-pre>---</code> 标注水平幻灯片</p>
+<!-- .element: class="fragment fade-in" -->
+<p>在水平幻灯片中使用 <code v-pre>--</code> 分割垂直幻灯片</p>
+<!-- .element: class="fragment fade-in" -->
+<p>使用 <code v-pre>&lt;!-- .slide: ... --&gt;</code> 在幻灯片上添加属性</p>
+<!-- .element: class="fragment fade-in" -->
+<p>使用 <code v-pre>&lt;!-- .element: ... --&gt;</code> 在前一个 HTML 元素上添加属性</p>
+<!-- .element: class="fragment fade-in" -->
+<hr>
+<!-- .slide: data-transition="slide" data-auto-animate -->
+<h2 id="markdown" tabindex="-1"><a class="header-anchor" href="#markdown"><span>Markdown</span></a></h2>
+<!-- .element: class="r-fit-text" -->
+<p>你可以在幻灯片中使用 Markdown 语法的各种标记.</p>
+<!-- .element: class="r-fit-text" -->
+<p>--</p>
+<!-- .slide: data-auto-animate -->
+<h2 id="markdown-1" tabindex="-1"><a class="header-anchor" href="#markdown-1"><span>Markdown</span></a></h2>
+<p>你可以在幻灯片中使用 Markdown 语法的各种标记.</p>
+<h3 id="这是一个-h3" tabindex="-1"><a class="header-anchor" href="#这是一个-h3"><span>这是一个 H3</span></a></h3>
+<p>标题默认会自动转换为大写。</p>
+<p>这是一个有着 <strong>粗体</strong>, <em>斜体</em>, <s>删除线</s> 文字并包含 <a href="https://mrhope.site" target="_blank" rel="noopener noreferrer">一个链接</a> 的段落，并且它会自动换行。所以你无需担心它的长度。</p>
+<p>--</p>
+<!-- .slide: data-auto-animate -->
+<h2 id="markdown-2" tabindex="-1"><a class="header-anchor" href="#markdown-2"><span>Markdown</span></a></h2>
+<p>你可以在幻灯片中使用 Markdown 语法的各种标记.</p>
+<p>列表默认为 <code v-pre>inline-block</code></p>
+<ul>
+<li>项目</li>
+<li>项目</li>
+<li>项目</li>
+</ul>
+<ol>
+<li>项目 1</li>
+<li>项目 2</li>
+<li>项目 3</li>
+</ol>
+<p>--</p>
+<!-- .slide: data-auto-animate -->
+<h2 id="markdown-3" tabindex="-1"><a class="header-anchor" href="#markdown-3"><span>Markdown</span></a></h2>
+<p>你可以在幻灯片中使用 Markdown 语法的各种标记.</p>
+<p>在你启用 <code v-pre>highlight</code> 插件后，代码块会自动高亮。</p>
+<div class="language-js line-numbers-mode" data-highlighter="shiki" data-ext="js" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">const</span><span style="--shiki-light:#986801;--shiki-dark:#E5C07B"> a</span><span style="--shiki-light:#0184BC;--shiki-dark:#56B6C2"> =</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> 1</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">;</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div><p>--</p>
+<!-- .slide: data-auto-animate -->
+<h2 id="markdown-4" tabindex="-1"><a class="header-anchor" href="#markdown-4"><span>Markdown</span></a></h2>
+<p>你可以在幻灯片中使用 Markdown 语法的各种标记.</p>
+<p>在你启用 <code v-pre>math</code> 插件后，你也可以使用 TEX 格式使用数学公式。</p>
+<p>$$<br>
+J(\theta_0,\theta_1) = \sum_{i=0}<br>
+$$</p>
+<p>--</p>
+<!-- .slide: data-auto-animate -->
+<h2 id="markdown-5" tabindex="-1"><a class="header-anchor" href="#markdown-5"><span>Markdown</span></a></h2>
+<p>你可以在幻灯片中使用 Markdown 语法的各种标记.</p>
+<p>⚠<strong>请注意</strong>: 表格和分割线，以及所有不在 Markdown 标准语法中的内容均不受支持。</p>
+<hr>
+<!-- .slide: data-transition="slide" data-auto-animate -->
+<h2 id="布局" tabindex="-1"><a class="header-anchor" href="#布局"><span>布局</span></a></h2>
+<!-- .element: class="r-fit-text" -->
+<p>--</p>
+<!-- .slide: data-auto-animate  -->
+<h2 id="布局-1" tabindex="-1"><a class="header-anchor" href="#布局-1"><span>布局</span></a></h2>
+<!-- .element: class="r-fit-text" -->
+<p>👆 <code v-pre>r-fit-text</code> class 会让文字在不超出幻灯片范围的情况下尽可能大。</p>
+<p>--</p>
+<!-- .slide: data-auto-animate  -->
+<h2 id="布局-2" tabindex="-1"><a class="header-anchor" href="#布局-2"><span>布局</span></a></h2>
+<p><img src="/logo.svg" alt="Logo"></p>
+<!-- .element: class="r-stretch" -->
+<p>👆 <code v-pre>r-stretch</code> class 帮助你控制注入图片或视频的大小，使它们填充满幻灯片垂直方向上的剩余空间。</p>
+<p>--</p>
+<!-- .slide: data-auto-animate data-background-color="rgb(70, 70, 255)" -->
+<h2 id="布局-3" tabindex="-1"><a class="header-anchor" href="#布局-3"><span>布局</span></a></h2>
+<h3 id="背景" tabindex="-1"><a class="header-anchor" href="#背景"><span>背景</span></a></h3>
+<p>你可以通过向特定幻灯片添加 <code v-pre>data-background</code> 属性自定义幻灯片背景.</p>
+<hr>
+<!-- .slide: data-auto-animate -->
+<h2 id="动画片段" tabindex="-1"><a class="header-anchor" href="#动画片段"><span>动画片段</span></a></h2>
+<!-- .element: class="r-fit-text" -->
+<p>--</p>
+<!-- .slide: data-auto-animate -->
+<h2 id="动画片段-1" tabindex="-1"><a class="header-anchor" href="#动画片段-1"><span>动画片段</span></a></h2>
+<!-- .element: class="r-fit-text" -->
+<p>动画片段用于高亮或显隐幻灯片中的元素。</p>
+<p>你需要在元素上添加 <code v-pre>fragment</code> 和动画 class。</p>
+<p>--</p>
+<!-- .slide: data-auto-animate -->
+<h2 id="动画片段-2" tabindex="-1"><a class="header-anchor" href="#动画片段-2"><span>动画片段</span></a></h2>
+<h3 id="动画-class" tabindex="-1"><a class="header-anchor" href="#动画-class"><span>动画 class</span></a></h3>
+<ul>
+<li><code v-pre>fade-in</code></li>
+</ul>
+<!-- .element: class="fragment fade-in" -->
+<ul>
+<li><code v-pre>fade-out</code></li>
+</ul>
+<!-- .element: class="fragment fade-out" -->
+<ul>
+<li><code v-pre>fade-up</code></li>
+</ul>
+<!-- .element: class="fragment fade-up" -->
+<!-- list break -->
+<ul>
+<li><code v-pre>fade-down</code></li>
+</ul>
+<!-- .element: class="fragment fade-down" -->
+<ul>
+<li><code v-pre>fade-left</code></li>
+</ul>
+<!-- .element: class="fragment fade-left" -->
+<ul>
+<li><code v-pre>fade-right</code></li>
+</ul>
+<!-- .element: class="fragment fade-right" -->
+<!-- list break -->
+<ul>
+<li><code v-pre>fade-in-then-out</code></li>
+</ul>
+<!-- .element: class="fragment fade-in-then-out" -->
+<ul>
+<li><code v-pre>fade-in-then-semi-out</code></li>
+</ul>
+<!-- .element: class="fragment fade-in-then-semi-out" -->
+<p>--</p>
+<!-- .slide: data-auto-animate -->
+<h2 id="动画片段-3" tabindex="-1"><a class="header-anchor" href="#动画片段-3"><span>动画片段</span></a></h2>
+<h3 id="动画-class-1" tabindex="-1"><a class="header-anchor" href="#动画-class-1"><span>动画 class</span></a></h3>
+<ul>
+<li><code v-pre>grow</code></li>
+</ul>
+<!-- .element: class="fragment grow" -->
+<ul>
+<li><code v-pre>shrink</code></li>
+</ul>
+<!-- .element: class="fragment shrink" -->
+<ul>
+<li><code v-pre>strike</code></li>
+</ul>
+<!-- .element: class="fragment strike" -->
+<!-- list break -->
+<ul>
+<li><code v-pre>highlight-red</code></li>
+</ul>
+<!-- .element: class="fragment highlight-red" -->
+<ul>
+<li><code v-pre>highlight-green</code></li>
+</ul>
+<!-- .element: class="fragment highlight-green" -->
+<ul>
+<li><code v-pre>highlight-blue</code></li>
+</ul>
+<!-- .element: class="fragment highlight-blue" -->
+<!-- list break -->
+<ul>
+<li><code v-pre>highlight-current-red</code></li>
+</ul>
+<!-- .element: class="fragment highlight-current-red" -->
+<ul>
+<li><code v-pre>highlight-current-green</code></li>
+</ul>
+<!-- .element: class="fragment highlight-current-green" -->
+<ul>
+<li><code v-pre>highlight-current-blue</code></li>
+</ul>
+<!-- .element: class="fragment highlight-current-blue" -->
+<p>--</p>
+<!-- .slide: data-auto-animate -->
+<h2 id="动画片段-4" tabindex="-1"><a class="header-anchor" href="#动画片段-4"><span>动画片段</span></a></h2>
+<h3 id="多个动画片段" tabindex="-1"><a class="header-anchor" href="#多个动画片段"><span>多个动画片段</span></a></h3>
+<p>你可以按照顺序包裹一个 HTML 元素使其拥有多个动画片段</p>
+<span class="fragment fade-in">
+  <span class="fragment highlight-red">
+    <span class="fragment fade-out">
+      渐入 > 变红 > 渐出
+    </span>
+  </span>
+</span>
+<p>--</p>
+<!-- .slide: data-auto-animate -->
+<h2 id="动画片段-5" tabindex="-1"><a class="header-anchor" href="#动画片段-5"><span>动画片段</span></a></h2>
+<h3 id="顺序" tabindex="-1"><a class="header-anchor" href="#顺序"><span>顺序</span></a></h3>
+<p>你可以使用 <code v-pre>data-fragment-index</code> 属性改变元素的动画顺序。</p>
+<p>不同元素可以有相同的动画顺序。</p>
+<ul>
+<li>最后显示</li>
+</ul>
+<!-- .element: class="fragment" data-fragment-index="3"-->
+<ul>
+<li>第二个显示</li>
+</ul>
+<!-- .element: class="fragment" data-fragment-index="2"-->
+<!-- list break -->
+<ul>
+<li>第一个显示</li>
+</ul>
+<!-- .element: class="fragment" data-fragment-index="1"-->
+<ul>
+<li>第二个显示</li>
+</ul>
+<!-- .element: class="fragment" data-fragment-index="2"-->
+<hr>
+<!-- .slide: data-transition="slide" data-auto-animate -->
+<h2 id="渐变" tabindex="-1"><a class="header-anchor" href="#渐变"><span>渐变</span></a></h2>
+<!-- .element: class="r-fit-text" -->
+<p>--</p>
+<!-- .slide: data-transition="slide" data-auto-animate -->
+<h2 id="渐变-1" tabindex="-1"><a class="header-anchor" href="#渐变-1"><span>渐变</span></a></h2>
+<!-- .element: class="r-fit-text" -->
+<p>Transition 可以通过配置中的 <code v-pre>transition</code> 选项全局设置，也可以通过在特定幻灯片添加 <code v-pre>data-transition</code> 属性局部设置.</p>
+<p>可能的值:</p>
+<ul>
+<li>none</li>
+<li>fade</li>
+<li>slide</li>
+</ul>
+<!-- list break -->
+<ul>
+<li>convex</li>
+<li>concave</li>
+<li>zoom</li>
+</ul>
+<p>--</p>
+<!-- .slide: data-auto-animate -->
+<h2 id="渐变-2" tabindex="-1"><a class="header-anchor" href="#渐变-2"><span>渐变</span></a></h2>
+<!-- .element: class="r-fit-text" -->
+<h3 id="过渡动画" tabindex="-1"><a class="header-anchor" href="#过渡动画"><span>过渡动画</span></a></h3>
+<p>你可以在相邻的幻灯片上添加 <code v-pre>data-auto-animate</code> 使相同的 HTML 元素产生过渡动画效果。</p>
+<hr>
+<!-- .slide: data-transition="slide" data-auto-animate -->
+<h2 id="功能" tabindex="-1"><a class="header-anchor" href="#功能"><span>功能</span></a></h2>
+<!-- .element: class="r-fit-text" -->
+<p>--</p>
+<!-- .slide: data-transition="slide" data-auto-animate -->
+<h2 id="功能-1" tabindex="-1"><a class="header-anchor" href="#功能-1"><span>功能</span></a></h2>
+<!-- .element: class="r-fit-text" -->
+<h3 id="代码" tabindex="-1"><a class="header-anchor" href="#代码"><span>代码</span></a></h3>
+<p>通过启用 <code v-pre>highlight</code> 插件，你可以对代码块进行高亮。</p>
+<p>你可以使用 <code v-pre>[a-b|c-d]</code> 语法来分布高亮特定行。</p>
+<div class="language-js line-numbers-mode" data-highlighter="shiki" data-ext="js" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line highlighted"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">let</span><span style="--shiki-light:#383A42;--shiki-dark:#E06C75"> a</span><span style="--shiki-light:#0184BC;--shiki-dark:#56B6C2"> =</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> 1</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line highlighted"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">let</span><span style="--shiki-light:#383A42;--shiki-dark:#E06C75"> b</span><span style="--shiki-light:#0184BC;--shiki-dark:#56B6C2"> =</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> 2</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">let</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF"> c</span><span style="--shiki-light:#0184BC;--shiki-dark:#56B6C2"> =</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> (</span><span style="--shiki-light:#383A42;--shiki-light-font-style:inherit;--shiki-dark:#E06C75;--shiki-dark-font-style:italic">x</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">) </span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">=></span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> 1</span><span style="--shiki-light:#0184BC;--shiki-dark:#56B6C2"> +</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> 2</span><span style="--shiki-light:#0184BC;--shiki-dark:#56B6C2"> +</span><span style="--shiki-light:#383A42;--shiki-dark:#E06C75"> x</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">c</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">3</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">);</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>--</p>
+<!-- .slide: data-transition="slide" data-auto-animate -->
+<h2 id="功能-2" tabindex="-1"><a class="header-anchor" href="#功能-2"><span>功能</span></a></h2>
+<!-- .element: class="r-fit-text" -->
+<h3 id="预览模式" tabindex="-1"><a class="header-anchor" href="#预览模式"><span>预览模式</span></a></h3>
+<p>按下 <code v-pre>Esc</code> 或 <code v-pre>O</code> 即可在幻灯片获得焦点时进入预览模式。</p>
+<p>--</p>
+<!-- .slide: data-transition="slide" data-auto-animate -->
+<h2 id="功能-3" tabindex="-1"><a class="header-anchor" href="#功能-3"><span>功能</span></a></h2>
+<!-- .element: class="r-fit-text" -->
+<h3 id="全屏模式" tabindex="-1"><a class="header-anchor" href="#全屏模式"><span>全屏模式</span></a></h3>
+<p>按下 <code v-pre>F</code> 或 <code v-pre>F11</code> 即可在幻灯片获得焦点时进入全屏模式。</p>
+<p>--</p>
+<!-- .slide: data-transition="slide" data-auto-animate -->
+<h2 id="功能-4" tabindex="-1"><a class="header-anchor" href="#功能-4"><span>功能</span></a></h2>
+<!-- .element: class="r-fit-text" -->
+<h3 id="缩放" tabindex="-1"><a class="header-anchor" href="#缩放"><span>缩放</span></a></h3>
+<p>按下 <code v-pre>alt</code> (Linux 上使用 <code v-pre>ctrl</code>) 的同时点击幻灯片的任何元素，即可以向此元素进行放大。</p>
+<p>再次点击即可缩小。</p>
+<hr>
+<!-- .element: class="r-fit-text" -->
+<h2 id="结束" tabindex="-1"><a class="header-anchor" href="#结束"><span>结束</span></a></h2>
+<p>@slideend</p>
+</div></template>
 
 

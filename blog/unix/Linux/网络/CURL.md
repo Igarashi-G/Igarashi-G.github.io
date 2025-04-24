@@ -1,5 +1,5 @@
 ---
-title: crul
+title: curl
 date: 2019-11-24
 category:
   - curl

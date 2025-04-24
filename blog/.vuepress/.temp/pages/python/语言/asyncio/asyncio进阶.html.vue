@@ -1,11 +1,11 @@
 <template><div><p><strong>Python</strong> <strong>aio</strong> 子进程集 及 队列集</p>
 <!--more-->
-<h2 id="_1-子进程" tabindex="-1"><a class="header-anchor" href="#_1-子进程" aria-hidden="true">#</a> 1. 子进程</h2>
-<h3 id="subprocess-结合异步应用" tabindex="-1"><a class="header-anchor" href="#subprocess-结合异步应用" aria-hidden="true">#</a> subprocess 结合异步应用</h3>
-<p>####需求：
-需要 ping 内网中的所有 ip 地址，是否都可以 pnig 通。
+<h2 id="_1-子进程" tabindex="-1"><a class="header-anchor" href="#_1-子进程"><span>1. 子进程</span></a></h2>
+<h3 id="subprocess-结合异步应用" tabindex="-1"><a class="header-anchor" href="#subprocess-结合异步应用"><span>subprocess 结合异步应用</span></a></h3>
+<p>####需求：<br>
+需要 ping 内网中的所有 ip 地址，是否都可以 pnig 通。<br>
 内网网段为：192.168.31.0/24</p>
-<h4 id="完整代码" tabindex="-1"><a class="header-anchor" href="#完整代码" aria-hidden="true">#</a> 完整代码：</h4>
+<h4 id="完整代码" tabindex="-1"><a class="header-anchor" href="#完整代码"><span>完整代码：</span></a></h4>
 <pre><code>#!/usr/bin/env python3
 # coding: utf-8
 
@@ -80,7 +80,7 @@ if __name__ == '__main__':
 <li>subprocess 模块，是调用 asyncio.create_subprocess_exec，它返回一个 asyncio 生成器对象。</li>
 <li>如果直接调用 python 自带的 subprocess 模块，是无法实现异步的。</li>
 </ul>
-<h2 id="_2-队列集" tabindex="-1"><a class="header-anchor" href="#_2-队列集" aria-hidden="true">#</a> 2. 队列集</h2>
+<h2 id="_2-队列集" tabindex="-1"><a class="header-anchor" href="#_2-队列集"><span>2. 队列集</span></a></h2>
 </div></template>
 
 

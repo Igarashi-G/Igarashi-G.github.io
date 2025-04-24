@@ -68,7 +68,7 @@ export default sidebar({
           text: "Shell脚本",
           collapsable: true,
           prefix: "Shell脚本/",
-          children: ["vim程序编辑器", "vim 快捷键"],
+          children: ["shell", "vim 快捷键"],
         },
         {
           text: "Linux使用者管理",
@@ -92,7 +92,7 @@ export default sidebar({
           text: "网络",
           collapsable: true,
           prefix: "网络/",
-          children: ["网络基础", "命令", "curl", "SSL协议", "P2P"],
+          children: ["网络基础", "命令", "CURL", "P2P"],
         },
         {
           text: "Troubleshooting",
@@ -155,10 +155,10 @@ export default sidebar({
       prefix: "/unix/Ubuntu/",
       children: [
         {
-          text: "常用命令",
+          text: "下载",
           collapsable: true,
-          prefix: "常用命令/",
-          children: ["Ubuntu系列操作"],
+          prefix: "下载/",
+          children: ["Ubuntu系统"],
         },
       ]
     }

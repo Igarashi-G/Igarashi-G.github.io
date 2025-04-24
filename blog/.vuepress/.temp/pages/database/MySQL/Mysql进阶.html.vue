@@ -1,6 +1,6 @@
-<template><div><p>一、本节内容概要：
-本节内容虽然在开发过程中可能用到较少，但至少也能描述清楚概念和能写的出来才行。其中索引的知识为重！（而触发器存储过程和视图可能用的不是
-很多）<a href="http://xn--3ds.net" target="_blank" rel="noopener noreferrer">在.net<ExternalLinkIcon/></a> 的 sqlserver 中可能写到存储过程会比较多一些。因此通常开发时还是常用 sql 语句（这才是重中之重）————mysql 中运用较少，但 sqlserver 和
+<template><div><p>一、本节内容概要：<br>
+本节内容虽然在开发过程中可能用到较少，但至少也能描述清楚概念和能写的出来才行。其中索引的知识为重！（而触发器存储过程和视图可能用的不是<br>
+很多）<a href="http://xn--3ds.net" target="_blank" rel="noopener noreferrer">在.net</a> 的 sqlserver 中可能写到存储过程会比较多一些。因此通常开发时还是常用 sql 语句（这才是重中之重）————mysql 中运用较少，但 sqlserver 和<br>
 Oracle 中用的还是较多（C#时把所有 sql 语句都封装成存储过程，因此存储过程利用的还是较多）</p>
 <pre><code>1、视图：
     通常sql查询中会用到大量的临时表（先把想要的一部分东西先放到临时表里面，然后再去临时表中细化）

@@ -1,6 +1,6 @@
 import { defineUserConfig } from "vuepress";
 import theme from "./theme.js";
-import { viteBundler } from 'vuepress'
+import { viteBundler } from "@vuepress/bundler-vite";
 import { searchPlugin } from "@vuepress/plugin-search";
 
 const INVALID_CHAR_REGEX = /[\x00-\x1F\x7F<>*#"{}|^[\]`;?:&=+$,]/g;
@@ -10,8 +10,8 @@ export default defineUserConfig({
   base: "/",
 
   lang: "zh-CN",
-  title: "五十岚 ▪ 寄",
-  description: "五十岚の博客",
+  title: "悦 ▪ 宝宝",
+  description: "悦宝宝の博客",
 
   head: [
     [

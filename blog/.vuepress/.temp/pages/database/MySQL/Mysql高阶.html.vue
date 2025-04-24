@@ -1,17 +1,17 @@
-<template><div><p>5、函数：（不太重要）
-MySQL 中提供了许多内置函数，例如：见博客
-CHAR<em>LENGTH(str)：获取字符串长度 select char_length(&quot;igarashi&quot;)
-CONCAT(str1,str2,...)：字符串拼接 select concat(&quot;igarashi&quot;,&quot;xx&quot;,&quot;123&quot;)
-CONCAT_WS(separator,str1,str2,...)：字符串拼接（自定义连接符）类似&quot;</em>&quot;.join select concat<em>ws(&quot;</em>&quot;,&quot;3&quot;,&quot;a&quot;) ###后面懒得写，见博客
-创建函数：
-delimiter \
-create function f1(i1 int,i2 int) --函数的参数
-returns int --多了返回值 数字类型，相当于 java 的 public int func() 指定返回类型
-BEGIN
-declare num int;
-set num = i1 + i2;
-return(num);
-END \
+<template><div><p>5、函数：（不太重要）<br>
+MySQL 中提供了许多内置函数，例如：见博客<br>
+CHAR<em>LENGTH(str)：获取字符串长度 select char_length(&quot;igarashi&quot;)<br>
+CONCAT(str1,str2,...)：字符串拼接 select concat(&quot;igarashi&quot;,&quot;xx&quot;,&quot;123&quot;)<br>
+CONCAT_WS(separator,str1,str2,...)：字符串拼接（自定义连接符）类似&quot;</em>&quot;.join select concat<em>ws(&quot;</em>&quot;,&quot;3&quot;,&quot;a&quot;) ###后面懒得写，见博客<br>
+创建函数：<br>
+delimiter \<br>
+create function f1(i1 int,i2 int) --函数的参数<br>
+returns int --多了返回值 数字类型，相当于 java 的 public int func() 指定返回类型<br>
+BEGIN<br>
+declare num int;<br>
+set num = i1 + i2;<br>
+return(num);<br>
+END \<br>
 delimiter ;</p>
 <pre><code>    函数内部无法写sql语句，用return返回（与存储过程的区别）
     虽然sql不允许，但其中支持：
@@ -34,8 +34,8 @@ delimiter ;</p>
 删除函数：
     drop function func_name;
 </code></pre>
-<p>6、索引：（nb 的存在，必须掌握）
-为什么要有 DBA，因为 DBA 要写索引。命中索引之后，查询速度回非常非常快（成百万级别的倍数）。可能你写一个要 10 秒拿到数据，DBA 写了就 0.00 几秒。
+<p>6、索引：（nb 的存在，必须掌握）<br>
+为什么要有 DBA，因为 DBA 要写索引。命中索引之后，查询速度回非常非常快（成百万级别的倍数）。可能你写一个要 10 秒拿到数据，DBA 写了就 0.00 几秒。<br>
 索引，是数据库中专门用于帮助用户快速查询数据的一种数据结构。类似于字典中的目录，查找字典内容时可以根据目录查找到数据的存放位置，然后直接获取即可。</p>
 <pre><code>索引有两类功能：
     1.做约束（主键、外键、唯一、普通、组合...）
@@ -210,8 +210,8 @@ delimiter ;</p>
 
         此时可以直接做一个组合索引，而不用创建两个索引（根据业务判断）组合索引通常要快一点
 </code></pre>
-<p>7、执行计划： - 相对&quot;比较&quot;准确的表达出当前 SQL 运行的状况（走没走索引）
-因此以后写 sql 语句时要关注，是否走索引了。（但不能说每一次都看一下表结构吧，有可能我误判了，但也没这么干的）
+<p>7、执行计划： - 相对&quot;比较&quot;准确的表达出当前 SQL 运行的状况（走没走索引）<br>
+因此以后写 sql 语句时要关注，是否走索引了。（但不能说每一次都看一下表结构吧，有可能我误判了，但也没这么干的）<br>
 用于参考，也有不准确的情况方式。</p>
 <pre><code>explain +SQL语句：如
     explain select * from tb;
@@ -268,7 +268,7 @@ delimiter ;</p>
 
 性能高低由上到下，下面的最高，越靠下越nb，但不是所有都能走到下面，一般在range下即可（全表扫描是万万不能要的）
 </code></pre>
-<p>8、如何命中索引：
+<p>8、如何命中索引：<br>
 mysql 中会有锁，你一个人执行用了 1.6s，当人多的时候简直不动。一个人执行时把 mysql 锁住了，别人就别想再执行。（虽然不是整体全部加锁，部分加锁也不行）</p>
 <pre><code>- like '%xx'：
     当：explain select * from tb11 where name like &quot;%cnn&quot; 此时Type：all  -- 此时没有走索引，全表扫描
@@ -304,8 +304,8 @@ mysql 中会有锁，你一个人执行用了 1.6s，当人多的时候简直不
 - 组合索引最左前缀
 </code></pre>
 <p>其他注意事项： - 避免使用 select _ - count(1)或 count(列) 代替 count(_) - 创建表时尽量时 char 代替 varchar - 表的字段顺序固定长度的字段优先（varchar、text 等都是变长的往后放） - 组合索引代替多个单列索引（经常使用多个条件查询时）组合索引通常要快一点 - 尽量使用短索引（假如一共有 30 多位，然而前八位即可区分唯一，那么指定列的某几个字符来创建索引。text、blob 若要指定索引，必须指定长度） - 使用连接（JOIN）来代替子查询(Sub-Queries)（优先连表，效率高） - 连表时注意条件类型需一致 - 索引散列值（重复少）不适合建索引，例：性别不适合（一列中存在大量的重复，何必浪费空间）</p>
-<p>9、SQL-limit 分页（面试必备）
-无论是否有索引，limit 分页是一个值得关注的问题。有分页便有翻页。
+<p>9、SQL-limit 分页（面试必备）<br>
+无论是否有索引，limit 分页是一个值得关注的问题。有分页便有翻页。<br>
 分页时第一页查询倒是快，而数据量越大查询越慢。那此时怎么解决？————删库：这也是一种解决办法，然后就可以跑路了。（分库分表也行，但投机取巧，不考虑）</p>
 <pre><code>在sql语句级别如何处理：
     limit原理就是找到要的便不找了。从开始往下扫。若一百万行时则前面的岂不是白扫了。若id用in的话（in一个范围）也只能饮鸩止渴（网上这种解决方式都是错的，垃圾）
@@ -322,8 +322,8 @@ mysql 中会有锁，你一个人执行用了 1.6s，当人多的时候简直不
 
             分页的应用其实主要是网页 --还没完，还能再加工，点第几页第几页效率还不低...以后再讨论
 </code></pre>
-<p>10、慢日志查询：
-可以在内存中修改
+<p>10、慢日志查询：<br>
+可以在内存中修改<br>
 配置文件可以配置，之后让 DBA 填坑。在 mysql 的配置文件中加以下内容：</p>
 <pre><code>a、配置MySQL自动记录慢日志（内存中默认都是OFF，改完后记得重启服务，之后指定的配置文件才生效）
     slow_query_log = OFF                            是否开启慢日志记录

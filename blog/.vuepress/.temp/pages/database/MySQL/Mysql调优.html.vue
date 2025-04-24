@@ -1,5 +1,5 @@
-<template><div><h1 id="mysql-调优" tabindex="-1"><a class="header-anchor" href="#mysql-调优" aria-hidden="true">#</a> MYSQL 调优</h1>
-<p><a href="https://www.cnblogs.com/clschao/articles/10463743.html" target="_blank" rel="noopener noreferrer">https://www.cnblogs.com/clschao/articles/10463743.html<ExternalLinkIcon/></a></p>
+<template><div><h1 id="mysql-调优" tabindex="-1"><a class="header-anchor" href="#mysql-调优"><span>MYSQL 调优</span></a></h1>
+<p><a href="https://www.cnblogs.com/clschao/articles/10463743.html" target="_blank" rel="noopener noreferrer">https://www.cnblogs.com/clschao/articles/10463743.html</a></p>
 <pre><code>引擎：
     InnoDB：插入时按主键排序插入（最常用） -- 聚集
     MYISAM：按照插入时顺序插入 -- 堆表（数据堆在一起）

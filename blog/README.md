@@ -12,7 +12,7 @@ bgImageStyle: {
   "height": "400px"
 }
 heroImage: header.png
-heroText: 五十岚の博客
+heroText: 悦·宝宝の博客
 heroFullScreen: false
 heroImageStyle: {
   "margin-top": "0px",
@@ -51,8 +51,8 @@ projects:
   #   link: https://netease-music.fe-mm.com/#/music/playlist
 
   - icon: /arknights_logo.png
-    name: 五十岚
-    desc: 关于五十岚~
+    name: 悦·宝宝
+    desc: 关于悦·宝宝~
     link: intro
 
 footer: MIT Licensed | Copyright © 2021-present Igarashi

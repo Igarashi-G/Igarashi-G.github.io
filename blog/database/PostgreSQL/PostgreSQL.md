@@ -12,7 +12,7 @@ group:
 
 ## 1. PostgreSQL 数据库
 
-**86** 年诞生的，**开源**、**对象关系型 **数据库，采用 **客户端/服务器** 模型
+**86** 年诞生的，**开源**、**对象关系型** 数据库，采用 **客户端/服务器** 模型
 
 - `postgres`： 服务器进程，管理数据库
 - `Navicat`：等连接服务器的，客户端工具
@@ -21,7 +21,11 @@ group:
 
 [下载](https://www.postgresql.org/download/)
 
-#### 1.1 CentOS
+::: tabs
+
+
+
+@tab CentOS
 
 `yum` 软件包安装
 
@@ -68,14 +72,14 @@ yum -y install postgresql-server
   sudo -i -u postgres
   ```
 
-#### 1.2 Ubuntu
+@tab Ubuntu
 
 ```shell
 sudo apt-get update
 sudo apt-get -y install postgresql
 ```
 
-#### 1.3 Windows
+@tab Windows 
 
 - 下载 `.exe` 软件安装
 
@@ -88,6 +92,8 @@ sudo apt-get -y install postgresql
   'C:\Program Files\PostgreSQL\14\bin'
   ```
 
+:::
+
 ### 2. 操作
 
-[菜鸟教程](https://www.runoob.com/postgresql/postgresql-create-database.html) |
+[菜鸟教程](https://www.runoob.com/postgresql/postgresql-create-database.html) 

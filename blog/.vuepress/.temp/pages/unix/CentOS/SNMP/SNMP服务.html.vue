@@ -1,10 +1,10 @@
 <template><div><p><strong>SNMP</strong> 协议简要说明</p>
 <!-- more -->
-<h3 id="_1-什么是-snmp-协议" tabindex="-1"><a class="header-anchor" href="#_1-什么是-snmp-协议" aria-hidden="true">#</a> 1. 什么是 SNMP 协议</h3>
+<h3 id="_1-什么是-snmp-协议" tabindex="-1"><a class="header-anchor" href="#_1-什么是-snmp-协议"><span>1. 什么是 SNMP 协议</span></a></h3>
 <p><strong>SNMP （<em>简单网络管理协议</em>）：</strong> 用于网络管理的协议，常用于 <strong>监控工具</strong>，可以 <strong>持续性实时监控</strong>，好处是带宽消耗非常少，因此使用此套件进行监控不会降低网络速度，它和 <strong>DNS</strong> 一样也是基于 <strong>UDP 协议</strong> 实现 （<em>速度快，消息易丢失</em> ）</p>
-<p><strong>基本思想：</strong> 为不同种类的设备、不同厂家生产的设备、不同型号的设备，定义为一个统一的接口和协议，
+<p><strong>基本思想：</strong> 为不同种类的设备、不同厂家生产的设备、不同型号的设备，定义为一个统一的接口和协议，<br>
 使得管理员可以使用统一的外观，面对这些需要管理的网络设备进行管理</p>
-<h3 id="_2-snmp-支持的网管操作" tabindex="-1"><a class="header-anchor" href="#_2-snmp-支持的网管操作" aria-hidden="true">#</a> 2. SNMP 支持的网管操作</h3>
+<h3 id="_2-snmp-支持的网管操作" tabindex="-1"><a class="header-anchor" href="#_2-snmp-支持的网管操作"><span>2. SNMP 支持的网管操作</span></a></h3>
 <ul>
 <li>
 <p><strong>Get：</strong> 读取网络设备的状态信息</p>
@@ -16,8 +16,8 @@
 <p><strong>Trap：</strong> 管理站及时获取设备的重要信息</p>
 </li>
 </ul>
-<h3 id="_3-snmp-的实现结构及定义" tabindex="-1"><a class="header-anchor" href="#_3-snmp-的实现结构及定义" aria-hidden="true">#</a> 3. SNMP 的实现结构及定义</h3>
-<p><strong>SNMP</strong> 为管理员提供了一个网管平台 <strong>（<em>NMS</em>）</strong>，又称为管理站，负责网管命令的发出、数据存储、及数据分析，
+<h3 id="_3-snmp-的实现结构及定义" tabindex="-1"><a class="header-anchor" href="#_3-snmp-的实现结构及定义"><span>3. SNMP 的实现结构及定义</span></a></h3>
+<p><strong>SNMP</strong> 为管理员提供了一个网管平台 <strong>（<em>NMS</em>）</strong>，又称为管理站，负责网管命令的发出、数据存储、及数据分析，<br>
 被监管的设备上运行一个 <strong>SNMP</strong> 代理 <strong>（<em>Agent</em>）</strong> ，代理实现设备与管理站的 <strong>SNMP</strong> 通信</p>
 <ul>
 <li>
@@ -51,7 +51,7 @@
 <p>BER： Basic Encoding Rule，基本编码规格。描述如何将 ASN.1 类型的值编码为字符串的方法。它是 ASN.1 标准的一部分。BER 编码将数据分成 TLV 三部分，T 为 Tag 的缩写，是类型标识；L 为 Length 的缩写，标识类型的长度；V 为 Value 的缩写，标识数据内容。按照 TLV 的顺序对数据进行编码，生成字节流。SNMP 使用 BER 将 SNMP 的操作请求和应答编码后进行传输，并用于接收端进行解码。</p>
 </li>
 </ul>
-<h3 id="_4-net-snmp-软件" tabindex="-1"><a class="header-anchor" href="#_4-net-snmp-软件" aria-hidden="true">#</a> 4. Net-SNMP 软件</h3>
+<h3 id="_4-net-snmp-软件" tabindex="-1"><a class="header-anchor" href="#_4-net-snmp-软件"><span>4. Net-SNMP 软件</span></a></h3>
 <ul>
 <li>
 <p>Net-snmp 提供完整的 API 用于 SNMP 应用程序开发，包括 C 和 Perl 的 API 。</p>
@@ -70,20 +70,20 @@
 </li>
 </ul>
 <p>安装</p>
-<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code>yum <span class="token function">install</span> <span class="token parameter variable">-y</span> net-snmp net-snmp-utils
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p>查看一下安装的软件包</p>
-<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code><span class="token function">rpm</span> <span class="token parameter variable">-qa</span> <span class="token operator">|</span> <span class="token function">grep</span> net-snmp*
-    net-snmp-libs-5.7.2-24.el7.x86_64
-    net-snmp-5.7.2-24.el7.x86_64
-    net-snmp-agent-libs-5.7.2-24.el7.x86_64
-    net-snmp-utils-5.7.2-24.el7.x86_64
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>主配置文件</p>
-<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code>$ <span class="token function">cat</span> /etc/snmp/snmpd.conf
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p>启动和测试</p>
-<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code>$ systemctl snmpd restart
-
-<span class="token comment"># 查看一下 net-snmp 版本</span>
-$ snmpd <span class="token parameter variable">-v</span> 
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></div></template>
+<div class="language-shell line-numbers-mode" data-highlighter="shiki" data-ext="shell" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">yum</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> install</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> -y</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> net-snmp</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> net-snmp-utils</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div><p>查看一下安装的软件包</p>
+<div class="language-shell line-numbers-mode" data-highlighter="shiki" data-ext="shell" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">rpm</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> -qa</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> | </span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">grep</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> net-snmp</span><span style="--shiki-light:#E45649;--shiki-dark:#E5C07B">*</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">    net-snmp-libs-5.7.2-24.el7.x86_64</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">    net-snmp-5.7.2-24.el7.x86_64</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">    net-snmp-agent-libs-5.7.2-24.el7.x86_64</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">    net-snmp-utils-5.7.2-24.el7.x86_64</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>主配置文件</p>
+<div class="language-shell line-numbers-mode" data-highlighter="shiki" data-ext="shell" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">$</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> cat</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> /etc/snmp/snmpd.conf</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div><p>启动和测试</p>
+<div class="language-shell line-numbers-mode" data-highlighter="shiki" data-ext="shell" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">$</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> systemctl</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> snmpd</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> restart</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># 查看一下 net-snmp 版本</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">$</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> snmpd</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> -v</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></div></template>
 
 

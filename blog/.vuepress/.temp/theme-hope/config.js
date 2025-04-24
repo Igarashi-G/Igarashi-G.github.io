@@ -1,38 +1,37 @@
-import { defineClientConfig } from "@vuepress/client";
+import { Layout, NotFound, injectDarkMode, setupDarkMode, setupSidebarItems, scrollPromise } from "D:/Program/Igarashi-G.github.io/node_modules/.pnpm/vuepress-theme-hope@2.0.0-rc.82_e3inqaxasw55kclwdpvpku4dte/node_modules/vuepress-theme-hope/lib/bundle/export.js";
 
-import CommonWrapper from "@theme-hope/components/CommonWrapper.js";
-import HomePage from "@theme-hope/components/HomePage.js";
-import NormalPage from "@theme-hope/components/NormalPage.js";
-import Navbar from "@theme-hope/modules/navbar/components/Navbar.js";
-import Sidebar from "@theme-hope/modules/sidebar/components/Sidebar.js";
-import Layout from "D:/Program/Igarashi-G.github.io/node_modules/.pnpm/vuepress-theme-hope@2.0.0-beta.100/node_modules/vuepress-theme-hope/lib/client/layouts/Layout.js";
-import NotFound from "D:/Program/Igarashi-G.github.io/node_modules/.pnpm/vuepress-theme-hope@2.0.0-beta.100/node_modules/vuepress-theme-hope/lib/client/layouts/NotFound.js";
+import { defineCatalogInfoGetter } from "D:/Program/Igarashi-G.github.io/node_modules/.pnpm/@vuepress+plugin-catalog@2.0.0-rc.94_vuepress@2.0.0-rc.21/node_modules/@vuepress/plugin-catalog/lib/client/index.js"
+import { h } from "vue"
+import { resolveComponent } from "vue"
+import { BlogCategory, BlogHome, BlogType, BloggerInfo, SocialMedias, Timeline, setupBlog } from "D:/Program/Igarashi-G.github.io/node_modules/.pnpm/vuepress-theme-hope@2.0.0-rc.82_e3inqaxasw55kclwdpvpku4dte/node_modules/vuepress-theme-hope/lib/bundle/modules/blog/export.js";
+import "D:/Program/Igarashi-G.github.io/node_modules/.pnpm/vuepress-theme-hope@2.0.0-rc.82_e3inqaxasw55kclwdpvpku4dte/node_modules/vuepress-theme-hope/lib/bundle/modules/blog/styles/all.scss";
+import { GlobalEncrypt, LocalEncrypt } from "D:/Program/Igarashi-G.github.io/node_modules/.pnpm/vuepress-theme-hope@2.0.0-rc.82_e3inqaxasw55kclwdpvpku4dte/node_modules/vuepress-theme-hope/lib/bundle/modules/encrypt/export.js";
+import "D:/Program/Igarashi-G.github.io/node_modules/.pnpm/vuepress-theme-hope@2.0.0-rc.82_e3inqaxasw55kclwdpvpku4dte/node_modules/vuepress-theme-hope/lib/bundle/modules/encrypt/styles/all.scss"
 
-import { useScrollPromise } from "@theme-hope/composables/index.js";
-import { injectDarkMode, setupDarkMode } from "@theme-hope/modules/outlook/composables/index.js";
-import { setupSidebarItems } from "@theme-hope/modules/sidebar/composables/index.js";
+import "D:/Program/Igarashi-G.github.io/node_modules/.pnpm/@vuepress+helper@2.0.0-rc.94_vuepress@2.0.0-rc.21/node_modules/@vuepress/helper/lib/client/styles/colors.css";
+import "D:/Program/Igarashi-G.github.io/node_modules/.pnpm/@vuepress+helper@2.0.0-rc.94_vuepress@2.0.0-rc.21/node_modules/@vuepress/helper/lib/client/styles/normalize.css";
+import "D:/Program/Igarashi-G.github.io/node_modules/.pnpm/@vuepress+helper@2.0.0-rc.94_vuepress@2.0.0-rc.21/node_modules/@vuepress/helper/lib/client/styles/sr-only.css";
+import "D:/Program/Igarashi-G.github.io/node_modules/.pnpm/vuepress-theme-hope@2.0.0-rc.82_e3inqaxasw55kclwdpvpku4dte/node_modules/vuepress-theme-hope/lib/bundle/styles/all.scss";
 
-import "D:/Program/Igarashi-G.github.io/node_modules/.pnpm/vuepress-theme-hope@2.0.0-beta.100/node_modules/vuepress-theme-hope/lib/client/styles/index.scss";
+defineCatalogInfoGetter((meta) => {
+  const title = meta.title;
+  const shouldIndex = meta.index ?? true;
+  const icon = meta.icon;
 
+  return shouldIndex ? {
+    title,
+    content: icon ? () =>[h(resolveComponent("VPIcon"), { icon }), title] : null,
+    order: meta.order,
+    index: meta.index,
+  } : null;
+});
 
-import BloggerInfo from "@theme-hope/modules/blog/components/BloggerInfo.js";
-import BlogHome from "@theme-hope/modules/blog/components/BlogHome.js";
-import BlogPage from "@theme-hope/modules/blog/components/BlogPage.js";
-import { setupBlog } from "@theme-hope/modules/blog/composables/index.js";
-import "D:/Program/Igarashi-G.github.io/node_modules/.pnpm/vuepress-theme-hope@2.0.0-beta.100/node_modules/vuepress-theme-hope/lib/client/modules/blog/styles/layout.scss";
-
-import GloablEncrypt from "@theme-hope/modules/encrypt/components/GloablEncrypt.js";
-import LocalEncrypt from "@theme-hope/modules/encrypt/components/LocalEncrypt.js";
-import Slide from "D:/Program/Igarashi-G.github.io/node_modules/.pnpm/vuepress-theme-hope@2.0.0-beta.100/node_modules/vuepress-theme-hope/lib/client/layouts/Slide.js";
-import Blog from "D:/Program/Igarashi-G.github.io/node_modules/.pnpm/vuepress-theme-hope@2.0.0-beta.100/node_modules/vuepress-theme-hope/lib/client/modules/blog/layouts/Blog.js";
-
-
-export default defineClientConfig({
+export default {
   enhance: ({ app, router }) => {
     const { scrollBehavior } = router.options;
 
     router.options.scrollBehavior = async (...args) => {
-      await useScrollPromise().wait();
+      await scrollPromise.wait();
 
       return scrollBehavior(...args);
     };
@@ -40,33 +39,22 @@ export default defineClientConfig({
     // inject global properties
     injectDarkMode(app);
 
-    // register to inject styles
-    app.component("CommonWrapper", CommonWrapper);
-    app.component("HomePage", HomePage);
-    app.component("NormalPage", NormalPage);
-    app.component("Navbar", Navbar);
-    app.component("Sidebar", Sidebar);
-
-    
     app.component("BloggerInfo", BloggerInfo);
-    app.component("BlogHome", BlogHome);
-    app.component("BlogPage", BlogPage);
-    
-    app.component("GloablEncrypt", GloablEncrypt);
+    app.component("SocialMedias", SocialMedias);
+    app.component("GlobalEncrypt", GlobalEncrypt);
     app.component("LocalEncrypt", LocalEncrypt);
-    
   },
   setup: () => {
     setupDarkMode();
     setupSidebarItems();
     setupBlog();
-    
   },
   layouts: {
     Layout,
     NotFound,
-    Slide,
-    Blog,
-    
+    BlogCategory,
+    BlogHome,
+    BlogType,
+    Timeline,
   }
-});
+};

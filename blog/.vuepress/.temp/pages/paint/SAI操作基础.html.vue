@@ -1,19 +1,19 @@
-<template><div><h2 id="sai-应用基础" tabindex="-1"><a class="header-anchor" href="#sai-应用基础" aria-hidden="true">#</a> SAI 应用基础</h2>
-<h3 id="_1-新建图像" tabindex="-1"><a class="header-anchor" href="#_1-新建图像" aria-hidden="true">#</a> 1. 新建图像：</h3>
+<template><div><h2 id="sai-应用基础" tabindex="-1"><a class="header-anchor" href="#sai-应用基础"><span>SAI 应用基础</span></a></h2>
+<h3 id="_1-新建图像" tabindex="-1"><a class="header-anchor" href="#_1-新建图像"><span>1. 新建图像：</span></a></h3>
 <p><strong>尺寸</strong>：</p>
 <ul>
 <li><strong>B5</strong>：适合做练习</li>
 <li><strong>A4</strong>：本子，商插等</li>
 </ul>
 <hr>
-<h3 id="_2-快捷键" tabindex="-1"><a class="header-anchor" href="#_2-快捷键" aria-hidden="true">#</a> 2. 快捷键：</h3>
-<h4 id="_2-1-画布" tabindex="-1"><a class="header-anchor" href="#_2-1-画布" aria-hidden="true">#</a> 2.1 画布</h4>
+<h3 id="_2-快捷键" tabindex="-1"><a class="header-anchor" href="#_2-快捷键"><span>2. 快捷键：</span></a></h3>
+<h4 id="_2-1-画布" tabindex="-1"><a class="header-anchor" href="#_2-1-画布"><span>2.1 画布</span></a></h4>
 <p><strong>图像</strong>：图像大小一般不调整</p>
 <p><strong>画布大小</strong>：一般使用延长，然后输入多少毫米即可</p>
 <p><strong>水平翻转图层</strong>：<code v-pre>h</code></p>
 <p><strong>垂直翻转图层</strong>：<code v-pre>y</code></p>
 <p><strong>顺/逆 90 度旋转图层</strong>：正常给出的快捷键是<code v-pre>u | k</code>，但系统没配，这个和上面设置了都是固定的，下次打开图层不会还原</p>
-<h4 id="_2-2-编辑" tabindex="-1"><a class="header-anchor" href="#_2-2-编辑" aria-hidden="true">#</a> 2.2 编辑</h4>
+<h4 id="_2-2-编辑" tabindex="-1"><a class="header-anchor" href="#_2-2-编辑"><span>2.2 编辑</span></a></h4>
 <ul>
 <li><strong>粘贴</strong>：<code v-pre>ctrl + v</code> 若剪贴板有图，或 setuna 这类的截图工具复制过，可以直接粘贴到图层</li>
 <li><strong>撤销</strong>：<code v-pre>ctrl + z</code></li>
@@ -21,14 +21,14 @@
 <li><strong>剪贴</strong>：<code v-pre>ctrl + x</code> 和代码一样，常用于直接删除，比如像删除图中的某一部分，直接套索起来剪切掉，就等于删掉了</li>
 <li><strong>填充</strong>： <code v-pre>ctrl+ f</code> 类似于油漆桶一样的存在</li>
 </ul>
-<h4 id="_2-3-选择" tabindex="-1"><a class="header-anchor" href="#_2-3-选择" aria-hidden="true">#</a> 2.3 选择</h4>
+<h4 id="_2-3-选择" tabindex="-1"><a class="header-anchor" href="#_2-3-选择"><span>2.3 选择</span></a></h4>
 <ul>
 <li><strong>去掉选区</strong>：<code v-pre>ctrl + d</code> 套索工具、选区笔选中的区域</li>
 <li><strong>反选</strong>：官方提示，未配置，选区时反向选择使用的</li>
 <li><strong>选区边缘</strong>：<code v-pre>ctrl + h</code> 当需要选区状态，但不显示选区的虚线标识时使用</li>
 <li><strong>扩大选区</strong>：和 PS 涂色技巧时一直，使用场景往往在上色边缘缺像素时，扩大那么一下子</li>
 </ul>
-<h4 id="_2-4-滤镜" tabindex="-1"><a class="header-anchor" href="#_2-4-滤镜" aria-hidden="true">#</a> 2.4 滤镜</h4>
+<h4 id="_2-4-滤镜" tabindex="-1"><a class="header-anchor" href="#_2-4-滤镜"><span>2.4 滤镜</span></a></h4>
 <ul>
 <li><strong>调整色相饱和度</strong>：<code v-pre>ctrl + u</code>
 <ul>
@@ -49,13 +49,13 @@
 </ul>
 </li>
 </ul>
-<h4 id="_2-5-视图" tabindex="-1"><a class="header-anchor" href="#_2-5-视图" aria-hidden="true">#</a> 2.5 视图</h4>
+<h4 id="_2-5-视图" tabindex="-1"><a class="header-anchor" href="#_2-5-视图"><span>2.5 视图</span></a></h4>
 <ul>
 <li><strong>新建视图</strong>：原封不动的复制了一份工作区</li>
 <li><strong>关闭</strong>：关闭当前所在的工作区</li>
 <li><strong>全部关闭</strong>：关闭所有工作区</li>
 </ul>
-<h4 id="_2-6-窗口" tabindex="-1"><a class="header-anchor" href="#_2-6-窗口" aria-hidden="true">#</a> 2.6 窗口</h4>
+<h4 id="_2-6-窗口" tabindex="-1"><a class="header-anchor" href="#_2-6-窗口"><span>2.6 窗口</span></a></h4>
 <ul>
 <li>
 <p><strong>色轮</strong>：上色用的一定要打开</p>
@@ -91,11 +91,11 @@
 <p><strong>隐藏控制面板、全屏: TAB/F11 (F11 + TAB)</strong> 整个屏幕都清净了</p>
 </li>
 </ul>
-<h4 id="_2-7-其他" tabindex="-1"><a class="header-anchor" href="#_2-7-其他" aria-hidden="true">#</a> 2.7 其他</h4>
+<h4 id="_2-7-其他" tabindex="-1"><a class="header-anchor" href="#_2-7-其他"><span>2.7 其他</span></a></h4>
 <ul>
 <li><strong>选项</strong>：最大图像尺寸可以设置 <code v-pre>10000*10000</code> 这个可以提高 <code v-pre>sai</code> 的运行速度，数位板和工具可以不用调</li>
 </ul>
-<h4 id="_2-8-自定义" tabindex="-1"><a class="header-anchor" href="#_2-8-自定义" aria-hidden="true">#</a> 2.8 自定义</h4>
+<h4 id="_2-8-自定义" tabindex="-1"><a class="header-anchor" href="#_2-8-自定义"><span>2.8 自定义</span></a></h4>
 <blockquote>
 <p>以下为自设快捷键，部分保留与 <strong>PS</strong> 一致，便于通用</p>
 </blockquote>
@@ -116,8 +116,8 @@
 <li><strong>切换前/背景色：x</strong> （据说透明色画透过头发的皮肤有奇效）</li>
 </ul>
 <hr>
-<h3 id="_3-属性" tabindex="-1"><a class="header-anchor" href="#_3-属性" aria-hidden="true">#</a> 3 属性：</h3>
-<h4 id="_3-1-常用效果" tabindex="-1"><a class="header-anchor" href="#_3-1-常用效果" aria-hidden="true">#</a> 3.1 常用效果</h4>
+<h3 id="_3-属性" tabindex="-1"><a class="header-anchor" href="#_3-属性"><span>3 属性：</span></a></h3>
+<h4 id="_3-1-常用效果" tabindex="-1"><a class="header-anchor" href="#_3-1-常用效果"><span>3.1 常用效果</span></a></h4>
 <ul>
 <li>
 <p><strong>混合模式</strong>: 比 ps 要少很多很多</p>
@@ -144,7 +144,7 @@
 <p><strong>黑白</strong>：不透明度 100 就几乎全黑，切割用的</p>
 </li>
 </ul>
-<h4 id="_3-2-画材效果" tabindex="-1"><a class="header-anchor" href="#_3-2-画材效果" aria-hidden="true">#</a> 3.2 画材效果</h4>
+<h4 id="_3-2-画材效果" tabindex="-1"><a class="header-anchor" href="#_3-2-画材效果"><span>3.2 画材效果</span></a></h4>
 <blockquote>
 <p>几乎用不到，做效果用 ps 即可</p>
 </blockquote>
@@ -155,8 +155,8 @@
 <blockquote>
 <p><strong>注</strong>：以上属性均可叠加，画材效果可网上扩展</p>
 </blockquote>
-<h4 id="_3-3-各类笔属性" tabindex="-1"><a class="header-anchor" href="#_3-3-各类笔属性" aria-hidden="true">#</a> 3.3 各类笔属性</h4>
-<h5 id="铅笔" tabindex="-1"><a class="header-anchor" href="#铅笔" aria-hidden="true">#</a> 铅笔</h5>
+<h4 id="_3-3-各类笔属性" tabindex="-1"><a class="header-anchor" href="#_3-3-各类笔属性"><span>3.3 各类笔属性</span></a></h4>
+<h5 id="铅笔" tabindex="-1"><a class="header-anchor" href="#铅笔"><span>铅笔</span></a></h5>
 <ul>
 <li>
 <p><strong>形状</strong>：比较硬的时候，比如勾线，用后两个形状，前两个画比较软的物体，比如球</p>

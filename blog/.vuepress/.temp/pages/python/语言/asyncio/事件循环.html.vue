@@ -1,7 +1,7 @@
-<template><div><h1 id="asyncio-————-不同线程的事件循环" tabindex="-1"><a class="header-anchor" href="#asyncio-————-不同线程的事件循环" aria-hidden="true">#</a> asyncio ———— 不同线程的事件循环</h1>
-<p><a href="https://www.cnblogs.com/yanzi-meng/p/8533734.html" target="_blank" rel="noopener noreferrer">https://www.cnblogs.com/yanzi-meng/p/8533734.html<ExternalLinkIcon/></a></p>
-<h2 id="不同线程的事件循环" tabindex="-1"><a class="header-anchor" href="#不同线程的事件循环" aria-hidden="true">#</a> 不同线程的事件循环</h2>
-<h3 id="_1-同一线程" tabindex="-1"><a class="header-anchor" href="#_1-同一线程" aria-hidden="true">#</a> 1.同一线程：</h3>
+<template><div><h1 id="asyncio-————-不同线程的事件循环" tabindex="-1"><a class="header-anchor" href="#asyncio-————-不同线程的事件循环"><span>asyncio ———— 不同线程的事件循环</span></a></h1>
+<p><a href="https://www.cnblogs.com/yanzi-meng/p/8533734.html" target="_blank" rel="noopener noreferrer">https://www.cnblogs.com/yanzi-meng/p/8533734.html</a></p>
+<h2 id="不同线程的事件循环" tabindex="-1"><a class="header-anchor" href="#不同线程的事件循环"><span>不同线程的事件循环</span></a></h2>
+<h3 id="_1-同一线程" tabindex="-1"><a class="header-anchor" href="#_1-同一线程"><span>1.同一线程：</span></a></h3>
 <pre><code>import asyncio,time
 
 async def func1(num):
@@ -30,12 +30,12 @@ if __name__ == &quot;__main__&quot;:
     print(end-begin)
 </code></pre>
 <p>【发现问题】：</p>
-<p>上述代码在一个线程中执行的事件循环，除非只有我们<strong>主动关闭</strong>事件 close，事件循环才会结束。否则输出完 534 结果一致会进行阻塞，等待其他协程
+<p>上述代码在一个线程中执行的事件循环，除非只有我们<strong>主动关闭</strong>事件 close，事件循环才会结束。否则输出完 534 结果一致会进行阻塞，等待其他协程<br>
 任务到达，那么此时不想让线程阻塞，而去完成别的工作呢？</p>
 <p>【解决办法】：</p>
-<p>在当前线程中创建一个事件循环（<strong>不启用</strong>，单纯获取<strong>标识</strong>），开启一个新的线程，在<strong>新的线程中启动</strong>事件循环。在当前线程依据事件循环标识，
+<p>在当前线程中创建一个事件循环（<strong>不启用</strong>，单纯获取<strong>标识</strong>），开启一个新的线程，在<strong>新的线程中启动</strong>事件循环。在当前线程依据事件循环标识，<br>
 可以向事件中添加协程对象。当前线程不会由于事件循环而阻塞了。</p>
-<p>###2.不同线程事件循环（不涉及协程）：
+<p>###2.不同线程事件循环（不涉及协程）：<br>
 【场景】：</p>
 <p>事件循环用来注册协程，协程需要动态地添加到事件循环中，然而还不想主线程因此而阻塞卡死(block)，此时可以利用多线程</p>
 <pre><code>import asyncio,time,threading
@@ -72,7 +72,7 @@ if __name__ == &quot;__main__&quot;:
 6 before---func1----
 </code></pre>
 <p>由于 func1() 中 time.sleep 操作是同步阻塞的， 因此运行完毕 所有的 func 需要大致 6 + 2 + 3 秒</p>
-<h4 id="loop-调用回调函数相关方法" tabindex="-1"><a class="header-anchor" href="#loop-调用回调函数相关方法" aria-hidden="true">#</a> loop 调用回调函数相关方法</h4>
+<h4 id="loop-调用回调函数相关方法" tabindex="-1"><a class="header-anchor" href="#loop-调用回调函数相关方法"><span>loop 调用回调函数相关方法</span></a></h4>
 <ul>
 <li>
 <p>loop.call_soon(callback, *args): 立即执行, call_soon 比 call_later 优先执行（非线程安全的异步 API）</p>
@@ -131,7 +131,7 @@ work_done 4
 work_done 6
 </code></pre>
 <p>【描述】：</p>
-<p>同样，主线程创建一个 new_loop, 然后在另外的子线程中开启一个无限事件循环。主线程通过 run_coroutine_threadsafe 新注册协程对象。
+<p>同样，主线程创建一个 new_loop, 然后在另外的子线程中开启一个无限事件循环。主线程通过 run_coroutine_threadsafe 新注册协程对象。<br>
 这样就能在子线程中进行事件循环的并发操作，同时主线程又不会被 block。一共执行的时间大概在 6s 左右。</p>
 <p>若要从不同的 OS 线程调度一个协程对象，应该使用 run_coroutine_threadsafe() 函数。它返回一个 concurrent.futures.Future 。</p>
 <pre><code>async def coro_func():
@@ -157,7 +157,7 @@ result = future.result()
 <p>在写异步爬虫时，发现很多请求莫名其妙地超时。</p>
 <p>【现象】：解析网页耗费了太多时间，使得部分请求超过预定时间。</p>
 <p>【根本原因】：asyncio 的协程是非抢占式的。协程如果不主动交出控制权，就会一直执行下去。假如一个协程占用了太多时间，那么其他协程就有可能超时挂掉。</p>
-<h3 id="模拟实验" tabindex="-1"><a class="header-anchor" href="#模拟实验" aria-hidden="true">#</a> 模拟实验：</h3>
+<h3 id="模拟实验" tabindex="-1"><a class="header-anchor" href="#模拟实验"><span>模拟实验：</span></a></h3>
 <pre><code>import asyncio
 import time
 
@@ -199,11 +199,11 @@ waiting task 2 timeout
 waiting task 1 end
 </code></pre>
 <p>【运行现象】：</p>
-<p>在 long_calc 启动前的 waiting_task 超时报错，long_calc 完成后的 waiting_task 正常结束。很明显，开过多同步任务和这种情况是一样的。
+<p>在 long_calc 启动前的 waiting_task 超时报错，long_calc 完成后的 waiting_task 正常结束。很明显，开过多同步任务和这种情况是一样的。<br>
 说白了就是当有同步任务执行时间过长时，会把有时间限制的异步任务卡死让其未执行而超时异常。</p>
 <p>【解决办法】：</p>
 <p>在异步爬虫的场景来说，就是过多或过长的解析让请求超时。合理的架构设计当然能避免这个冲突，这里提供另外的解决办法。</p>
-<h3 id="利用新线程协程解决" tabindex="-1"><a class="header-anchor" href="#利用新线程协程解决" aria-hidden="true">#</a> 利用新线程协程解决：</h3>
+<h3 id="利用新线程协程解决" tabindex="-1"><a class="header-anchor" href="#利用新线程协程解决"><span>利用新线程协程解决：</span></a></h3>
 <pre><code>import asyncio
 import time
 import threading

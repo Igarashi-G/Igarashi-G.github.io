@@ -98,7 +98,7 @@ export default navbar([
     children: [
       { text: "Linux", link: "Linux/Linux基础指引/计算机概论", icon: "linux"},
       { text: "CentOS", link: "CentOS/安装/CentOS的安装", icon: "centos"},
-      { text: "Ubuntu", link: "Ubuntu/常用命令/Ubuntu系列操作", icon: "ubuntu"},
+      { text: "Ubuntu", link: "Ubuntu/下载/Ubuntu系统", icon: "ubuntu"},
       { text: "虚拟机", link: "虚拟机/PVE/PVE", icon: "pve"},
     ],
   },

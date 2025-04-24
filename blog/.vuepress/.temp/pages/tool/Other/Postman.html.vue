@@ -1,6 +1,6 @@
-<template><div><h1 id="postman" tabindex="-1"><a class="header-anchor" href="#postman" aria-hidden="true">#</a> Postman</h1>
+<template><div><h1 id="postman" tabindex="-1"><a class="header-anchor" href="#postman"><span>Postman</span></a></h1>
 <p><strong>Postman</strong> 是一款功能强大的网页调试与发送网页 <code v-pre>HTTP</code> 请求的 <code v-pre>Chrome</code> 插件。可以用于测试发送各种 <code v-pre>HTTP</code> 请求。</p>
-<h3 id="_1-基本操作" tabindex="-1"><a class="header-anchor" href="#_1-基本操作" aria-hidden="true">#</a> 1. 基本操作</h3>
+<h3 id="_1-基本操作" tabindex="-1"><a class="header-anchor" href="#_1-基本操作"><span>1. 基本操作</span></a></h3>
 <p><strong>Authorization - 授权</strong></p>
 <p>身份认证，显示 <code v-pre>browser cookies</code>，需要开启 <code v-pre>Interceptor</code></p>
 <ul>
@@ -41,27 +41,27 @@
 <p>二进制形式，文件流，字节流等</p>
 </li>
 </ul>
-<h3 id="_2-测试" tabindex="-1"><a class="header-anchor" href="#_2-测试" aria-hidden="true">#</a> 2. 测试</h3>
+<h3 id="_2-测试" tabindex="-1"><a class="header-anchor" href="#_2-测试"><span>2. 测试</span></a></h3>
 <p><strong>可写脚本</strong></p>
 <ul>
 <li>
 <p>判断返回的状态码</p>
-<div class="language-javascript ext-js line-numbers-mode"><pre v-pre class="language-javascript"><code>tests<span class="token punctuation">[</span><span class="token string">'Status code is 200'</span><span class="token punctuation">]</span> <span class="token operator">=</span> responseCode<span class="token punctuation">.</span>code <span class="token operator">===</span> <span class="token number">200</span><span class="token punctuation">;</span>
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div></li>
+<div class="language-js line-numbers-mode" data-highlighter="shiki" data-ext="js" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#E06C75">tests</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">[</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">'Status code is 200'</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">] </span><span style="--shiki-light:#0184BC;--shiki-dark:#56B6C2">=</span><span style="--shiki-light:#383A42;--shiki-dark:#E5C07B"> responseCode</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">code</span><span style="--shiki-light:#0184BC;--shiki-dark:#56B6C2"> ===</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> 200</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">;</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div></li>
 <li>
 <p>校验包含字符串</p>
-<div class="language-javascript ext-js line-numbers-mode"><pre v-pre class="language-javascript"><code>tests<span class="token punctuation">[</span><span class="token string">'Body matches string'</span><span class="token punctuation">]</span> <span class="token operator">=</span> responseBody<span class="token punctuation">.</span><span class="token function">has</span><span class="token punctuation">(</span><span class="token string">'test'</span><span class="token punctuation">,</span> <span class="token string">'POST'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div></li>
+<div class="language-js line-numbers-mode" data-highlighter="shiki" data-ext="js" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#E06C75">tests</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">[</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">'Body matches string'</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">] </span><span style="--shiki-light:#0184BC;--shiki-dark:#56B6C2">=</span><span style="--shiki-light:#383A42;--shiki-dark:#E5C07B"> responseBody</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">has</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">'test'</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">, </span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">'POST'</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">);</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div></li>
 <li>
 <p>解析 <strong>JSON</strong> 并检查</p>
-<div class="language-javascript ext-js line-numbers-mode"><pre v-pre class="language-javascript"><code><span class="token keyword">var</span> jsonData <span class="token operator">=</span> <span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span>responseBody<span class="token punctuation">)</span><span class="token punctuation">;</span>
-tests<span class="token punctuation">[</span><span class="token string">'request test'</span><span class="token punctuation">]</span> <span class="token operator">=</span> jsonData<span class="token punctuation">.</span>test <span class="token operator">===</span> <span class="token string">'POST'</span><span class="token punctuation">;</span>
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div></div></div></li>
+<div class="language-js line-numbers-mode" data-highlighter="shiki" data-ext="js" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">var</span><span style="--shiki-light:#383A42;--shiki-dark:#E06C75"> jsonData</span><span style="--shiki-light:#0184BC;--shiki-dark:#56B6C2"> =</span><span style="--shiki-light:#986801;--shiki-dark:#E5C07B"> JSON</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">parse</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#383A42;--shiki-dark:#E06C75">responseBody</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">);</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#E06C75">tests</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">[</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">'request test'</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">] </span><span style="--shiki-light:#0184BC;--shiki-dark:#56B6C2">=</span><span style="--shiki-light:#383A42;--shiki-dark:#E5C07B"> jsonData</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">test</span><span style="--shiki-light:#0184BC;--shiki-dark:#56B6C2"> ===</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> 'POST'</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">;</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div></div></div></li>
 </ul>
-<p><strong>Collection</strong>
+<p><strong>Collection</strong><br>
 把测试用例保存，<strong>Runner</strong> 批量执行</p>
 <blockquote>
-<p>在线可尝试商业版软件 <a href="https://yapi.ymfe.org/" target="_blank" rel="noopener noreferrer">YAPI<ExternalLinkIcon/></a></p>
+<p>在线可尝试商业版软件 <a href="https://yapi.ymfe.org/" target="_blank" rel="noopener noreferrer">YAPI</a></p>
 </blockquote>
 </div></template>
 

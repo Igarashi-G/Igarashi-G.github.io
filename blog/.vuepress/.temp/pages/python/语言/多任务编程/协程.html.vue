@@ -1,6 +1,6 @@
-<template><div><h1 id="协程-coroutine" tabindex="-1"><a class="header-anchor" href="#协程-coroutine" aria-hidden="true">#</a> 协程 Coroutine</h1>
-<Alert type="info"> **协程**不是计算机提供的，而是<Badge type="queen">程序员创造</Badge> 的</Alert><h2 id="一、协程概念" tabindex="-1"><a class="header-anchor" href="#一、协程概念" aria-hidden="true">#</a> 一、协程概念：</h2>
-<h3 id="_1-1-为什么要有协程" tabindex="-1"><a class="header-anchor" href="#_1-1-为什么要有协程" aria-hidden="true">#</a> 1.1 为什么要有协程？</h3>
+<template><div><h1 id="协程-coroutine" tabindex="-1"><a class="header-anchor" href="#协程-coroutine"><span>协程 Coroutine</span></a></h1>
+<Alert type="info"> **协程**不是计算机提供的，而是<Badge type="queen">程序员创造</Badge> 的</Alert><h2 id="一、协程概念" tabindex="-1"><a class="header-anchor" href="#一、协程概念"><span>一、协程概念：</span></a></h2>
+<h3 id="_1-1-为什么要有协程" tabindex="-1"><a class="header-anchor" href="#_1-1-为什么要有协程"><span>1.1 为什么要有协程？</span></a></h3>
 <Font type="error">痛点：</Font><ul>
 <li><strong>同步编程</strong> 的并发性不高</li>
 <li><strong>多进程编程</strong> 效率受 CPU 核数限制，当任务数量远大于 CPU 核数时，执行效率会降低（分片）</li>
@@ -24,7 +24,7 @@
 <li>总耗时：<strong>最耗时</strong> 事件的时间</li>
 <li>应用场景：**IO 密集型 **任务</li>
 </ul>
-<h3 id="_1-2-什么是协程" tabindex="-1"><a class="header-anchor" href="#_1-2-什么是协程" aria-hidden="true">#</a> 1.2 什么是协程</h3>
+<h3 id="_1-2-什么是协程" tabindex="-1"><a class="header-anchor" href="#_1-2-什么是协程"><span>1.2 什么是协程</span></a></h3>
 <p><strong>协程</strong>，又称<code v-pre>微线程</code>|<code v-pre>纤程</code>。英文：<strong>Coroutine</strong> 可揉挺</p>
 <br/>
 <p>一句话说明：协程是一种 <code v-pre>用户态</code> 的 <code v-pre>轻量级</code> <strong>线程</strong>。通过一个<code v-pre>线程</code>，实现代码块相互切换执行，实现麻烦但效率极佳。</p>
@@ -37,8 +37,8 @@
 </li>
 </ul>
 <br/>
-<Alert type="miku">以前<Font type="queen">在系统里</Font>开线程，避免 IO，实现并发。 现在<Font type="queen">在一个线程里</Font>切换阻塞代码，避免 IO，实现并发</Alert><h3 id="_1-3-协程的优缺点" tabindex="-1"><a class="header-anchor" href="#_1-3-协程的优缺点" aria-hidden="true">#</a> 1.3 协程的优缺点</h3>
-<h4 id="协程の好处" tabindex="-1"><a class="header-anchor" href="#协程の好处" aria-hidden="true">#</a> 协程の好处</h4>
+<Alert type="miku">以前<Font type="queen">在系统里</Font>开线程，避免 IO，实现并发。 现在<Font type="queen">在一个线程里</Font>切换阻塞代码，避免 IO，实现并发</Alert><h3 id="_1-3-协程的优缺点" tabindex="-1"><a class="header-anchor" href="#_1-3-协程的优缺点"><span>1.3 协程的优缺点</span></a></h3>
+<h4 id="协程の好处" tabindex="-1"><a class="header-anchor" href="#协程の好处"><span>协程の好处</span></a></h4>
 <ul>
 <li>
 <ol>
@@ -89,7 +89,7 @@
 </ol>
 </li>
 </ul>
-<h4 id="协程の缺点" tabindex="-1"><a class="header-anchor" href="#协程の缺点" aria-hidden="true">#</a> 协程の缺点</h4>
+<h4 id="协程の缺点" tabindex="-1"><a class="header-anchor" href="#协程の缺点"><span>协程の缺点</span></a></h4>
 <ul>
 <li>
 <ol>
@@ -115,16 +115,16 @@
 </ol>
 </li>
 </ul>
-<h2 id="二、协程进化史" tabindex="-1"><a class="header-anchor" href="#二、协程进化史" aria-hidden="true">#</a> 二、协程进化史：</h2>
+<h2 id="二、协程进化史" tabindex="-1"><a class="header-anchor" href="#二、协程进化史"><span>二、协程进化史：</span></a></h2>
 <p>实现前先给协程一个<code v-pre>标准定义</code>，即符合什么条件就能称之为<code v-pre>协程</code>：</p>
-<div class="language-markdown ext-md line-numbers-mode"><pre v-pre class="language-markdown"><code><span class="token list punctuation">1.</span> 必须在只有一个<span class="token code-snippet code keyword">`单线程`</span>里实现并发
-
-<span class="token list punctuation">2.</span> 修改共享数据不需加锁
-
-<span class="token list punctuation">3.</span> 用户程序里自己保存多个控制流的上下文栈
-
-<span class="token list punctuation">4.</span> 一个协程遇到 IO 操作自动切换到其它协程
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>实现方式有以下几种：</p>
+<div class="language-markdown line-numbers-mode" data-highlighter="shiki" data-ext="markdown" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#E5C07B">1.</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> 必须在只有一个</span><span style="--shiki-light:#383A42;--shiki-dark:#E5C07B">`</span><span style="--shiki-light:#383A42;--shiki-dark:#98C379">单线程</span><span style="--shiki-light:#383A42;--shiki-dark:#E5C07B">`</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">里实现并发</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#E5C07B">2.</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> 修改共享数据不需加锁</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#E5C07B">3.</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> 用户程序里自己保存多个控制流的上下文栈</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#E5C07B">4.</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> 一个协程遇到 IO 操作自动切换到其它协程</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>实现方式有以下几种：</p>
 <blockquote>
 <ul>
 <li>生成器 <code v-pre>yield</code> 关键字</li>
@@ -134,114 +134,114 @@
 <li><code v-pre>async|await</code> 关键字<Badge>py3.5</Badge>[主流实现]</li>
 </ul>
 </blockquote>
-<h3 id="_2-1-yield-生成器实现" tabindex="-1"><a class="header-anchor" href="#_2-1-yield-生成器实现" aria-hidden="true">#</a> 2.1 yield 生成器实现</h3>
+<h3 id="_2-1-yield-生成器实现" tabindex="-1"><a class="header-anchor" href="#_2-1-yield-生成器实现"><span>2.1 yield 生成器实现</span></a></h3>
 <p>因为 <code v-pre>yield</code> 可以实现中断功能，所以起初，协程是用<a href="">生成器</a>来实现的，此时不是 <code v-pre>线程级CPU</code> 的切换，而是 <code v-pre>执行顺序</code> 的切换，但原理依旧</p>
-<div class="language-python ext-py line-numbers-mode"><pre v-pre class="language-python"><code><span class="token keyword">def</span> <span class="token function">func1</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">yield</span> <span class="token number">1</span>
-    <span class="token keyword">yield</span> <span class="token keyword">from</span> func2<span class="token punctuation">(</span><span class="token punctuation">)</span>	<span class="token comment"># 切换到func2 执行，并保留上下文</span>
-    <span class="token keyword">yield</span> <span class="token number">2</span>
-
-
-<span class="token keyword">def</span> <span class="token function">func2</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">yield</span> <span class="token number">3</span>
-    <span class="token keyword">yield</span> <span class="token number">4</span>
-
-
-f1 <span class="token operator">=</span> func1<span class="token punctuation">(</span><span class="token punctuation">)</span>
-
-<span class="token keyword">for</span> item <span class="token keyword">in</span> f1<span class="token punctuation">:</span>		<span class="token comment"># 返回了生成器</span>
-    <span class="token keyword">print</span><span class="token punctuation">(</span>item<span class="token punctuation">)</span>
-
-<span class="token comment">### 输出结果：</span>
-<span class="token comment"># 1</span>
-<span class="token comment"># 3</span>
-<span class="token comment"># 4</span>
-<span class="token comment"># 2</span>
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><Alert type="error">**注**： 此时的生成器主要用来解决占存大量数据问题，<Font type="info" fsize="ss">并没有实现遇到<Font type="error">IO 阻塞</Font>自动切换</Font></Alert><h3 id="_2-2-greenlet-实现协程" tabindex="-1"><a class="header-anchor" href="#_2-2-greenlet-实现协程" aria-hidden="true">#</a> 2.2 greenlet 实现协程</h3>
+<div class="language-python line-numbers-mode" data-highlighter="shiki" data-ext="python" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">def</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF"> func1</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">():</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">    yield</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> 1</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">    yield from</span><span style="--shiki-light:#383A42;--shiki-dark:#61AFEF"> func2</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">()	</span><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># 切换到func2 执行，并保留上下文</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">    yield</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> 2</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">def</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF"> func2</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">():</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">    yield</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> 3</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">    yield</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> 4</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">f1 </span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2">=</span><span style="--shiki-light:#383A42;--shiki-dark:#61AFEF"> func1</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">()</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">for</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> item </span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">in</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> f1:		</span><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># 返回了生成器</span></span>
+<span class="line"><span style="--shiki-light:#0184BC;--shiki-dark:#56B6C2">    print</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(item)</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">### 输出结果：</span></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># 1</span></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># 3</span></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># 4</span></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># 2</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><Alert type="error">**注**： 此时的生成器主要用来解决占存大量数据问题，<Font type="info" fsize="ss">并没有实现遇到<Font type="error">IO 阻塞</Font>自动切换</Font></Alert><h3 id="_2-2-greenlet-实现协程" tabindex="-1"><a class="header-anchor" href="#_2-2-greenlet-实现协程"><span>2.2 greenlet 实现协程</span></a></h3>
 <p>是一个用 <code v-pre>c</code> 实现的 <code v-pre>协程模块</code>，相比与<code v-pre>python</code>自带的<code v-pre>yield</code>，它能在任意函数之间随意切换，而不需把这个函数先声明为 <code v-pre>generator|生成器</code></p>
 <p>安装 <code v-pre>greenlet</code></p>
-<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code>pip <span class="token function">install</span> greenlet
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><div class="language-python ext-py line-numbers-mode"><pre v-pre class="language-python"><code><span class="token keyword">from</span> greenlet <span class="token keyword">import</span> greenlet
-
-
-<span class="token keyword">def</span> <span class="token function">func1</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>            <span class="token comment"># 第2步：打印1</span>
-    gr2<span class="token punctuation">.</span>switch<span class="token punctuation">(</span><span class="token punctuation">)</span>        <span class="token comment"># 第3步：切换到 func2 函数</span>
-    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span>            <span class="token comment"># 第6步：打印2</span>
-    gr2<span class="token punctuation">.</span>switch<span class="token punctuation">(</span><span class="token punctuation">)</span>        <span class="token comment"># 第7步：切换到 func2 函数，从上一次位置继续</span>
-
-
-<span class="token keyword">def</span> <span class="token function">func2</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span>            <span class="token comment"># 第4步：打印3</span>
-    gr1<span class="token punctuation">.</span>switch<span class="token punctuation">(</span><span class="token punctuation">)</span>        <span class="token comment"># 第5步：切换到 func1 函数，从上一次位置继续</span>
-    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span>            <span class="token comment"># 第8步：打印4</span>
-
-
-gr1 <span class="token operator">=</span> greenlet<span class="token punctuation">(</span>func1<span class="token punctuation">)</span>
-gr2 <span class="token operator">=</span> greenlet<span class="token punctuation">(</span>func2<span class="token punctuation">)</span>
-
-gr1<span class="token punctuation">.</span>switch<span class="token punctuation">(</span><span class="token punctuation">)</span>            <span class="token comment"># 第1步：执行 func1 函数</span>
-
-<span class="token comment">## 输出结果:</span>
-<span class="token comment"># 1</span>
-<span class="token comment"># 3</span>
-<span class="token comment"># 2</span>
-<span class="token comment"># 4</span>
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>与生成器相同，此时未实现遇见 <strong>IO 阻塞</strong> 自动切换，这在 <a href="/back_end/python/base/%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B/%E5%BC%82%E6%AD%A5%E5%9B%9E%E6%BA%AF#%E9%99%84%EF%BC%9A%E4%BD%BF%E7%94%A8%E4%B8%8A%E5%8F%A4%E7%A5%9E%E5%99%A8gevent%E5%B9%B6%E5%8F%91">gevent</a> 中实现了<code v-pre>sleep</code>自动切换</p>
-<h3 id="_2-3-yield-from-和装饰器实现" tabindex="-1"><a class="header-anchor" href="#_2-3-yield-from-和装饰器实现" aria-hidden="true">#</a> 2.3 yield from 和装饰器实现</h3>
+<div class="language-bash line-numbers-mode" data-highlighter="shiki" data-ext="bash" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">pip</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> install</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> greenlet</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div><div class="language-python line-numbers-mode" data-highlighter="shiki" data-ext="python" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">from</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> greenlet </span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">import</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> greenlet</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">def</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF"> func1</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">():</span></span>
+<span class="line"><span style="--shiki-light:#0184BC;--shiki-dark:#56B6C2">    print</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">1</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">)            </span><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># 第2步：打印1</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">    gr2.</span><span style="--shiki-light:#383A42;--shiki-dark:#61AFEF">switch</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">()        </span><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># 第3步：切换到 func2 函数</span></span>
+<span class="line"><span style="--shiki-light:#0184BC;--shiki-dark:#56B6C2">    print</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">2</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">)            </span><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># 第6步：打印2</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">    gr2.</span><span style="--shiki-light:#383A42;--shiki-dark:#61AFEF">switch</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">()        </span><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># 第7步：切换到 func2 函数，从上一次位置继续</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">def</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF"> func2</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">():</span></span>
+<span class="line"><span style="--shiki-light:#0184BC;--shiki-dark:#56B6C2">    print</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">3</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">)            </span><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># 第4步：打印3</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">    gr1.</span><span style="--shiki-light:#383A42;--shiki-dark:#61AFEF">switch</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">()        </span><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># 第5步：切换到 func1 函数，从上一次位置继续</span></span>
+<span class="line"><span style="--shiki-light:#0184BC;--shiki-dark:#56B6C2">    print</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">4</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">)            </span><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># 第8步：打印4</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">gr1 </span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2">=</span><span style="--shiki-light:#383A42;--shiki-dark:#61AFEF"> greenlet</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(func1)</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">gr2 </span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2">=</span><span style="--shiki-light:#383A42;--shiki-dark:#61AFEF"> greenlet</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(func2)</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">gr1.</span><span style="--shiki-light:#383A42;--shiki-dark:#61AFEF">switch</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">()            </span><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># 第1步：执行 func1 函数</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">## 输出结果:</span></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># 1</span></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># 3</span></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># 2</span></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># 4</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>与生成器相同，此时未实现遇见 <strong>IO 阻塞</strong> 自动切换，这在 <a href="/back_end/python/base/%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B/%E5%BC%82%E6%AD%A5%E5%9B%9E%E6%BA%AF#%E9%99%84%EF%BC%9A%E4%BD%BF%E7%94%A8%E4%B8%8A%E5%8F%A4%E7%A5%9E%E5%99%A8gevent%E5%B9%B6%E5%8F%91">gevent</a> 中实现了<code v-pre>sleep</code>自动切换</p>
+<h3 id="_2-3-yield-from-和装饰器实现" tabindex="-1"><a class="header-anchor" href="#_2-3-yield-from-和装饰器实现"><span>2.3 yield from 和装饰器实现</span></a></h3>
 <p><strong><a href="">yield from</a></strong> 和 <strong>@asyncio.coroutine</strong> 是官方<Badge>python 3.4</Badge>之后专门提供用于实现<code v-pre>异步I/O</code>的模块</p>
-<div class="language-python ext-py line-numbers-mode"><pre v-pre class="language-python"><code><span class="token keyword">import</span> asyncio
-
-
-<span class="token decorator annotation punctuation">@asyncio<span class="token punctuation">.</span>coroutine</span>	<span class="token comment"># 装饰一下，变为协程函数</span>
-<span class="token keyword">def</span> <span class="token function">func1</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
-    <span class="token keyword">yield</span> <span class="token keyword">from</span> asyncio<span class="token punctuation">.</span>sleep<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>	<span class="token comment"># 当遇到IO操作时，会自动化切换到tasks中的其他任务执行</span>
-    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span>
-
-
-<span class="token decorator annotation punctuation">@asyncio<span class="token punctuation">.</span>coroutine</span>
-<span class="token keyword">def</span> <span class="token function">func2</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span>
-    <span class="token keyword">yield</span> <span class="token keyword">from</span> asyncio<span class="token punctuation">.</span>sleep<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>	<span class="token comment"># 当遇到IO操作时，会自动化切换到tasks中的其他任务执行</span>
-    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span>
-
-
-tasks <span class="token operator">=</span> <span class="token punctuation">[</span>
-    asyncio<span class="token punctuation">.</span>ensure_future<span class="token punctuation">(</span>func1<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-    asyncio<span class="token punctuation">.</span>ensure_future<span class="token punctuation">(</span>func2<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-<span class="token punctuation">]</span>	<span class="token comment"># 打包任务</span>
-
-loop <span class="token operator">=</span> asyncio<span class="token punctuation">.</span>get_event_loop<span class="token punctuation">(</span><span class="token punctuation">)</span>
-loop<span class="token punctuation">.</span>run_until_complete<span class="token punctuation">(</span>asyncio<span class="token punctuation">.</span>wait<span class="token punctuation">(</span>tasks<span class="token punctuation">)</span><span class="token punctuation">)</span>
-
-<span class="token comment">### 输出结果</span>
-<span class="token comment"># 1</span>
-<span class="token comment"># 3</span>
-<span class="token comment"># 2</span>
-<span class="token comment"># 4</span>
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><blockquote>
+<div class="language-python line-numbers-mode" data-highlighter="shiki" data-ext="python" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">import</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> asyncio</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">@asyncio</span><span style="--shiki-light:#4078F2;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">coroutine</span><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">	# 装饰一下，变为协程函数</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">def</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF"> func1</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">():</span></span>
+<span class="line"><span style="--shiki-light:#0184BC;--shiki-dark:#56B6C2">    print</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">1</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">)</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">    yield from</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> asyncio.</span><span style="--shiki-light:#383A42;--shiki-dark:#61AFEF">sleep</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">1</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">)	</span><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># 当遇到IO操作时，会自动化切换到tasks中的其他任务执行</span></span>
+<span class="line"><span style="--shiki-light:#0184BC;--shiki-dark:#56B6C2">    print</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">2</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">)</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">@asyncio</span><span style="--shiki-light:#4078F2;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">coroutine</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">def</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF"> func2</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">():</span></span>
+<span class="line"><span style="--shiki-light:#0184BC;--shiki-dark:#56B6C2">    print</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">3</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">)</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">    yield from</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> asyncio.</span><span style="--shiki-light:#383A42;--shiki-dark:#61AFEF">sleep</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">1</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">)	</span><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># 当遇到IO操作时，会自动化切换到tasks中的其他任务执行</span></span>
+<span class="line"><span style="--shiki-light:#0184BC;--shiki-dark:#56B6C2">    print</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">4</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">)</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">tasks </span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2">=</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> [</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">    asyncio.</span><span style="--shiki-light:#383A42;--shiki-dark:#61AFEF">ensure_future</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#383A42;--shiki-dark:#61AFEF">func1</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">()),</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">    asyncio.</span><span style="--shiki-light:#383A42;--shiki-dark:#61AFEF">ensure_future</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#383A42;--shiki-dark:#61AFEF">func2</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">())</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">]	</span><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># 打包任务</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">loop </span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2">=</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> asyncio.</span><span style="--shiki-light:#383A42;--shiki-dark:#61AFEF">get_event_loop</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">()</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">loop.</span><span style="--shiki-light:#383A42;--shiki-dark:#61AFEF">run_until_complete</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(asyncio.</span><span style="--shiki-light:#383A42;--shiki-dark:#61AFEF">wait</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(tasks))</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">### 输出结果</span></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># 1</span></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># 3</span></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># 2</span></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># 4</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><blockquote>
 <p>以上为基于生成器的协程，<strong>已弃用</strong> 并计划在 Python 3.10 中移除。</p>
 </blockquote>
 <ul>
 <li><code v-pre>@asyncio.coroutine</code> 装饰器是协程函数的标志，等同下文 <code v-pre>async</code></li>
 <li><code v-pre>yield from</code> 等同下文 <code v-pre>await</code></li>
 </ul>
-<h3 id="_2-4-async-await-实现" tabindex="-1"><a class="header-anchor" href="#_2-4-async-await-实现" aria-hidden="true">#</a> 2.4 async/await 实现</h3>
+<h3 id="_2-4-async-await-实现" tabindex="-1"><a class="header-anchor" href="#_2-4-async-await-实现"><span>2.4 async/await 实现</span></a></h3>
 <p>把上文的 <code v-pre>装饰器</code> 替换为 <code v-pre>async</code> , <code v-pre> yield from</code> 替换为 <code v-pre>await</code> 即可</p>
-<div class="language-python ext-py line-numbers-mode"><pre v-pre class="language-python"><code><span class="token keyword">async</span> <span class="token keyword">def</span> <span class="token function">func1</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
-    <span class="token keyword">await</span> asyncio<span class="token punctuation">.</span>sleep<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
-    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span>
-
-
-<span class="token keyword">async</span> <span class="token keyword">def</span> <span class="token function">func2</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span>
-    <span class="token keyword">await</span> asyncio<span class="token punctuation">.</span>sleep<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
-    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span>
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>具体见<a href="/back_end/python/base/%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B/asyncio%E5%9F%BA%E7%A1%80">异步 I/O</a></p>
-<h3 id="_2-5-协程本质" tabindex="-1"><a class="header-anchor" href="#_2-5-协程本质" aria-hidden="true">#</a> 2.5 协程本质</h3>
-<h5 id="本质" tabindex="-1"><a class="header-anchor" href="#本质" aria-hidden="true">#</a> <strong>[本质]</strong>：</h5>
+<div class="language-python line-numbers-mode" data-highlighter="shiki" data-ext="python" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">async</span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD"> def</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF"> func1</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">():</span></span>
+<span class="line"><span style="--shiki-light:#0184BC;--shiki-dark:#56B6C2">    print</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">1</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">)</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">    await</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> asyncio.</span><span style="--shiki-light:#383A42;--shiki-dark:#61AFEF">sleep</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">1</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">)</span></span>
+<span class="line"><span style="--shiki-light:#0184BC;--shiki-dark:#56B6C2">    print</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">2</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">)</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">async</span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD"> def</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF"> func2</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">():</span></span>
+<span class="line"><span style="--shiki-light:#0184BC;--shiki-dark:#56B6C2">    print</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">3</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">)</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">    await</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> asyncio.</span><span style="--shiki-light:#383A42;--shiki-dark:#61AFEF">sleep</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">1</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">)</span></span>
+<span class="line"><span style="--shiki-light:#0184BC;--shiki-dark:#56B6C2">    print</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">4</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">)</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>具体见<a href="/back_end/python/base/%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B/asyncio%E5%9F%BA%E7%A1%80">异步 I/O</a></p>
+<h3 id="_2-5-协程本质" tabindex="-1"><a class="header-anchor" href="#_2-5-协程本质"><span>2.5 协程本质</span></a></h3>
+<h5 id="本质" tabindex="-1"><a class="header-anchor" href="#本质"><span><strong>[本质]</strong>：</span></a></h5>
 <ul>
 <li>协程拥有自己的 <code v-pre>寄存器上下文</code> 和 <code v-pre>栈</code> 。协程调度切换时，<strong>将寄存器上下文和栈保存到其他地方</strong>，在切回来的时候，<strong>恢复</strong>先前保存的寄存器上下文和栈。</li>
 <li>函数上下文通常是自己的命名空间，而 <a href="/back_end/python/base/%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B/%E5%BA%95%E5%B1%82%E5%AE%9E%E7%8E%B0#22-python%E4%B8%8A%E4%B8%8B%E6%96%87%E6%BA%90%E7%A0%81"><strong>Cpython</strong></a> 中上下文是用了<code v-pre>结构体</code>来存的，通过 <strong>*f_back</strong> 指针进行<code v-pre>链式</code>构成。</li>

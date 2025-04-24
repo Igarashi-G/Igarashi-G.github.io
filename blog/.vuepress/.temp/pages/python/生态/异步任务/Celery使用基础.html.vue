@@ -1,10 +1,10 @@
 <template><div><pre><code>Celery-分布式任务队列：
 </code></pre>
-<p>现在远程客户端发起一条命令 cmd
-sshClient ————————&gt; sshServer
-发送命令需要一个队列，交给远程去执行，要等待一个结果。若任务再 Server 端要执行 5 分钟那么就要等 5 分钟。
+<p>现在远程客户端发起一条命令 cmd<br>
+sshClient ————————&gt; sshServer<br>
+发送命令需要一个队列，交给远程去执行，要等待一个结果。若任务再 Server 端要执行 5 分钟那么就要等 5 分钟。<br>
 （rabbitmq 中执行 rpc 双向队列，我们自己也可以搞成异步的，就是麻烦一些。因此用基于它的 celery）</p>
-<p>what Anime ：它后面肯定是用分布式的处理图片这个任务。做一个分布式的运算，之后再把结果统一汇总。
+<p>what Anime ：它后面肯定是用分布式的处理图片这个任务。做一个分布式的运算，之后再把结果统一汇总。<br>
 那么再 Python 中如何实现分布式的运算效果？———— Celery</p>
 <p>一、Celery 介绍和基本使用 ：</p>
 <pre><code>Celery 是一个 基于python开发的分布式异步消息任务队列，通过它可以轻松的实现任务的异步处理， 如果你的业务场景中需要用到异步任务，
@@ -105,8 +105,8 @@ Celery基本工作流程图：见图！
 
 额外：What Anime视频 有一张图片需要快速识别，现在有一百台分布式服务器运作，那么只需要把图片推过去，100个任务同时接收，就能无限的分布式扩展。
 </code></pre>
-<p>二、在项目中如何使用 celery 　
-可以把 celery 配置成一个应用
+<p>二、在项目中如何使用 celery 　<br>
+可以把 celery 配置成一个应用<br>
 目录格式如下： - proj/<strong>init</strong>.py - /celery.py - /tasks.py</p>
 <pre><code>proj/celery.py内容：
 

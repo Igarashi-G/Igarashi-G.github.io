@@ -1,4 +1,4 @@
-export const searchIndex = [
+export const SEARCH_INDEX = [
   {
     "title": "项目主页",
     "headers": [],
@@ -7,7 +7,7 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "关于五十岚",
+    "title": "关于悦·宝宝",
     "headers": [
       {
         "level": 3,
@@ -44,7 +44,292 @@ export const searchIndex = [
   },
   {
     "title": "幻灯片页",
-    "headers": [],
+    "headers": [
+      {
+        "level": 2,
+        "title": "幻灯片演示",
+        "slug": "幻灯片演示",
+        "link": "#幻灯片演示",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "标注幻灯片",
+        "slug": "标注幻灯片",
+        "link": "#标注幻灯片",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "标注幻灯片",
+        "slug": "标注幻灯片-1",
+        "link": "#标注幻灯片-1",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "Markdown",
+        "slug": "markdown",
+        "link": "#markdown",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "Markdown",
+        "slug": "markdown-1",
+        "link": "#markdown-1",
+        "children": [
+          {
+            "level": 3,
+            "title": "这是一个 H3",
+            "slug": "这是一个-h3",
+            "link": "#这是一个-h3",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "Markdown",
+        "slug": "markdown-2",
+        "link": "#markdown-2",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "Markdown",
+        "slug": "markdown-3",
+        "link": "#markdown-3",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "Markdown",
+        "slug": "markdown-4",
+        "link": "#markdown-4",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "Markdown",
+        "slug": "markdown-5",
+        "link": "#markdown-5",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "布局",
+        "slug": "布局",
+        "link": "#布局",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "布局",
+        "slug": "布局-1",
+        "link": "#布局-1",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "布局",
+        "slug": "布局-2",
+        "link": "#布局-2",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "布局",
+        "slug": "布局-3",
+        "link": "#布局-3",
+        "children": [
+          {
+            "level": 3,
+            "title": "背景",
+            "slug": "背景",
+            "link": "#背景",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "动画片段",
+        "slug": "动画片段",
+        "link": "#动画片段",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "动画片段",
+        "slug": "动画片段-1",
+        "link": "#动画片段-1",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "动画片段",
+        "slug": "动画片段-2",
+        "link": "#动画片段-2",
+        "children": [
+          {
+            "level": 3,
+            "title": "动画 class",
+            "slug": "动画-class",
+            "link": "#动画-class",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "动画片段",
+        "slug": "动画片段-3",
+        "link": "#动画片段-3",
+        "children": [
+          {
+            "level": 3,
+            "title": "动画 class",
+            "slug": "动画-class-1",
+            "link": "#动画-class-1",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "动画片段",
+        "slug": "动画片段-4",
+        "link": "#动画片段-4",
+        "children": [
+          {
+            "level": 3,
+            "title": "多个动画片段",
+            "slug": "多个动画片段",
+            "link": "#多个动画片段",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "动画片段",
+        "slug": "动画片段-5",
+        "link": "#动画片段-5",
+        "children": [
+          {
+            "level": 3,
+            "title": "顺序",
+            "slug": "顺序",
+            "link": "#顺序",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "渐变",
+        "slug": "渐变",
+        "link": "#渐变",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "渐变",
+        "slug": "渐变-1",
+        "link": "#渐变-1",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "渐变",
+        "slug": "渐变-2",
+        "link": "#渐变-2",
+        "children": [
+          {
+            "level": 3,
+            "title": "过渡动画",
+            "slug": "过渡动画",
+            "link": "#过渡动画",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "功能",
+        "slug": "功能",
+        "link": "#功能",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "功能",
+        "slug": "功能-1",
+        "link": "#功能-1",
+        "children": [
+          {
+            "level": 3,
+            "title": "代码",
+            "slug": "代码",
+            "link": "#代码",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "功能",
+        "slug": "功能-2",
+        "link": "#功能-2",
+        "children": [
+          {
+            "level": 3,
+            "title": "预览模式",
+            "slug": "预览模式",
+            "link": "#预览模式",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "功能",
+        "slug": "功能-3",
+        "link": "#功能-3",
+        "children": [
+          {
+            "level": 3,
+            "title": "全屏模式",
+            "slug": "全屏模式",
+            "link": "#全屏模式",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "功能",
+        "slug": "功能-4",
+        "link": "#功能-4",
+        "children": [
+          {
+            "level": 3,
+            "title": "缩放",
+            "slug": "缩放",
+            "link": "#缩放",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "结束",
+        "slug": "结束",
+        "link": "#结束",
+        "children": []
+      }
+    ],
     "path": "/slides.html",
     "pathLocale": "/",
     "extraFields": []
@@ -266,6 +551,285 @@ export const searchIndex = [
     "title": "运维",
     "headers": [],
     "path": "/tool/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "asyncio Recipes",
+    "headers": [],
+    "path": "/book/python/asyncio_recipes.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "DevOps in Python",
+    "headers": [],
+    "path": "/book/python/devops_in_python.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "Fluent Python",
+    "headers": [],
+    "path": "/book/python/fluent_python.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "Python书籍",
+    "headers": [
+      {
+        "level": 2,
+        "title": "目录",
+        "slug": "目录",
+        "link": "#目录",
+        "children": []
+      }
+    ],
+    "path": "/book/python/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "Python Cookbook",
+    "headers": [],
+    "path": "/book/python/python_cookbook.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "Python源码剖析",
+    "headers": [],
+    "path": "/book/python/python%E6%BA%90%E7%A0%81%E5%89%96%E6%9E%90.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "Using Asyncio in Python",
+    "headers": [],
+    "path": "/book/python/use_asyncio.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "心理学书籍",
+    "headers": [
+      {
+        "level": 2,
+        "title": "目录",
+        "slug": "目录",
+        "link": "#目录",
+        "children": []
+      }
+    ],
+    "path": "/book/%E5%BF%83%E7%90%86%E5%AD%A6/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "亚动机与人格",
+    "headers": [],
+    "path": "/book/%E5%BF%83%E7%90%86%E5%AD%A6/%E4%BA%9A%E5%8A%A8%E6%9C%BA%E4%B8%8E%E4%BA%BA%E6%A0%BC.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "人的潜能和价值",
+    "headers": [],
+    "path": "/book/%E5%BF%83%E7%90%86%E5%AD%A6/%E4%BA%BA%E7%9A%84%E6%BD%9C%E8%83%BD%E5%92%8C%E4%BB%B7%E5%80%BC.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "好人是如何变成恶魔的",
+    "headers": [],
+    "path": "/book/%E5%BF%83%E7%90%86%E5%AD%A6/%E5%A5%BD%E4%BA%BA%E6%98%AF%E5%A6%82%E4%BD%95%E5%8F%98%E6%88%90%E6%81%B6%E9%AD%94%E7%9A%84.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "影响力",
+    "headers": [],
+    "path": "/book/%E5%BF%83%E7%90%86%E5%AD%A6/%E5%BD%B1%E5%93%8D%E5%8A%9B.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "性心理学",
+    "headers": [],
+    "path": "/book/%E5%BF%83%E7%90%86%E5%AD%A6/%E6%80%A7%E5%BF%83%E7%90%86%E5%AD%A6.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "洗脑心理学",
+    "headers": [],
+    "path": "/book/%E5%BF%83%E7%90%86%E5%AD%A6/%E6%B4%97%E8%84%91%E5%BF%83%E7%90%86%E5%AD%A6.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "进化心理学",
+    "headers": [],
+    "path": "/book/%E5%BF%83%E7%90%86%E5%AD%A6/%E8%BF%9B%E5%8C%96%E5%BF%83%E7%90%86%E5%AD%A6.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "CODE -- 编码:隐匿在计算机背后的语言",
+    "headers": [],
+    "path": "/book/%E6%8A%80%E6%9C%AF/CODE.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "技术书籍",
+    "headers": [
+      {
+        "level": 2,
+        "title": "目录",
+        "slug": "目录",
+        "link": "#目录",
+        "children": []
+      }
+    ],
+    "path": "/book/%E6%8A%80%E6%9C%AF/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "成为技术领导者",
+    "headers": [],
+    "path": "/book/%E6%8A%80%E6%9C%AF/%E6%88%90%E4%B8%BA%E6%8A%80%E6%9C%AF%E9%A2%86%E5%AF%BC%E8%80%85.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "鸟哥的Linux私房菜",
+    "headers": [],
+    "path": "/book/%E6%8A%80%E6%9C%AF/%E9%B8%9F%E5%93%A5%E7%9A%84Linux%E7%A7%81%E6%88%BF%E8%8F%9C.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "鸟哥的Linux私房菜服务器架设篇",
+    "headers": [],
+    "path": "/book/%E6%8A%80%E6%9C%AF/%E9%B8%9F%E5%93%A5%E7%9A%84Linux%E7%A7%81%E6%88%BF%E8%8F%9C%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%9E%B6%E8%AE%BE%E7%AF%87.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "黑客与画家",
+    "headers": [],
+    "path": "/book/%E6%8A%80%E6%9C%AF/%E9%BB%91%E5%AE%A2%E4%B8%8E%E7%94%BB%E5%AE%B6.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "社会学书籍",
+    "headers": [
+      {
+        "level": 2,
+        "title": "目录",
+        "slug": "目录",
+        "link": "#目录",
+        "children": []
+      }
+    ],
+    "path": "/book/%E7%A4%BE%E4%BC%9A%E5%AD%A6/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "中国人的性格",
+    "headers": [],
+    "path": "/book/%E7%A4%BE%E4%BC%9A%E5%AD%A6/%E4%B8%AD%E5%9B%BD%E4%BA%BA%E7%9A%84%E6%80%A7%E6%A0%BC.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "乌合之众",
+    "headers": [],
+    "path": "/book/%E7%A4%BE%E4%BC%9A%E5%AD%A6/%E4%B9%8C%E5%90%88%E4%B9%8B%E4%BC%97.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "娱乐至死",
+    "headers": [],
+    "path": "/book/%E7%A4%BE%E4%BC%9A%E5%AD%A6/%E5%A8%B1%E4%B9%90%E8%87%B3%E6%AD%BB.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "金融学书籍",
+    "headers": [
+      {
+        "level": 2,
+        "title": "目录",
+        "slug": "目录",
+        "link": "#目录",
+        "children": []
+      }
+    ],
+    "path": "/book/%E9%87%91%E8%9E%8D%E5%AD%A6/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "Theory of Games and Economic Behavior",
+    "headers": [],
+    "path": "/book/%E9%87%91%E8%9E%8D%E5%AD%A6/%E5%8D%9A%E5%BC%88%E8%AE%BA%E4%B8%8E%E7%BB%8F%E6%B5%8E%E8%A1%8C%E4%B8%BA.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "就业、利息和货币通论",
+    "headers": [],
+    "path": "/book/%E9%87%91%E8%9E%8D%E5%AD%A6/%E5%B0%B1%E4%B8%9A_%E5%88%A9%E6%81%AF%E5%92%8C%E8%B4%A7%E5%B8%81%E9%80%9A%E8%AE%BA.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "聪明的投资者",
+    "headers": [],
+    "path": "/book/%E9%87%91%E8%9E%8D%E5%AD%A6/%E8%81%AA%E6%98%8E%E7%9A%84%E6%8A%95%E8%B5%84%E8%80%85.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "货币金融学",
+    "headers": [],
+    "path": "/book/%E9%87%91%E8%9E%8D%E5%AD%A6/%E8%B4%A7%E5%B8%81%E9%87%91%E8%9E%8D%E5%AD%A6.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "非理性繁荣",
+    "headers": [],
+    "path": "/book/%E9%87%91%E8%9E%8D%E5%AD%A6/%E9%9D%9E%E7%90%86%E6%80%A7%E7%B9%81%E8%8D%A3.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "艺术书籍",
+    "headers": [
+      {
+        "level": 2,
+        "title": "目录",
+        "slug": "目录",
+        "link": "#目录",
+        "children": []
+      }
+    ],
+    "path": "/book/%E8%89%BA%E6%9C%AF/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "清醒思考的艺术",
+    "headers": [],
+    "path": "/book/%E8%89%BA%E6%9C%AF/%E6%B8%85%E9%86%92%E6%80%9D%E8%80%83%E7%9A%84%E8%89%BA%E6%9C%AF.html",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -1019,7 +1583,7 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "线性表",
+    "title": "数据结构概述",
     "headers": [
       {
         "level": 2,
@@ -1043,9 +1607,9 @@ export const searchIndex = [
           },
           {
             "level": 3,
-            "title": "2.2 存储结构",
-            "slug": "_2-2-存储结构",
-            "link": "#_2-2-存储结构",
+            "title": "1.3 存储结构",
+            "slug": "_1-3-存储结构",
+            "link": "#_1-3-存储结构",
             "children": []
           },
           {
@@ -1057,176 +1621,139 @@ export const searchIndex = [
           },
           {
             "level": 3,
-            "title": "三 数据的抽象数据类型",
-            "slug": "三-数据的抽象数据类型",
-            "link": "#三-数据的抽象数据类型",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "3.0 数据在计算机中的存储方式",
-            "slug": "_3-0-数据在计算机中的存储方式",
-            "link": "#_3-0-数据在计算机中的存储方式",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "3.1 抽象数据类型的表示",
-            "slug": "_3-1-抽象数据类型的表示",
-            "link": "#_3-1-抽象数据类型的表示",
+            "title": "3. 数据的抽象数据类型",
+            "slug": "_3-数据的抽象数据类型",
+            "link": "#_3-数据的抽象数据类型",
             "children": []
           }
         ]
       },
       {
         "level": 2,
-        "title": "一 算法概念",
-        "slug": "一-算法概念",
-        "link": "#一-算法概念",
+        "title": "2. 算法概述",
+        "slug": "_2-算法概述",
+        "link": "#_2-算法概述",
         "children": [
           {
             "level": 3,
-            "title": "1.1 什么是算法",
-            "slug": "_1-1-什么是算法",
-            "link": "#_1-1-什么是算法",
+            "title": "2.1 什么是算法",
+            "slug": "_2-1-什么是算法",
+            "link": "#_2-1-什么是算法",
             "children": []
           },
           {
             "level": 3,
-            "title": "1.2 算法的特性",
-            "slug": "_1-2-算法的特性",
-            "link": "#_1-2-算法的特性",
+            "title": "2.2 算法的特性",
+            "slug": "_2-2-算法的特性",
+            "link": "#_2-2-算法的特性",
             "children": []
           },
           {
             "level": 3,
-            "title": "1.3 算法的设计要求",
-            "slug": "_1-3-算法的设计要求",
-            "link": "#_1-3-算法的设计要求",
+            "title": "2.3 算法的设计要求",
+            "slug": "_2-3-算法的设计要求",
+            "link": "#_2-3-算法的设计要求",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "2.4 算法的执行次数",
+            "slug": "_2-4-算法的执行次数",
+            "link": "#_2-4-算法的执行次数",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "2.5 算法的时间复杂度",
+            "slug": "_2-5-算法的时间复杂度",
+            "link": "#_2-5-算法的时间复杂度",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "2.6 算法的空间复杂度",
+            "slug": "_2-6-算法的空间复杂度",
+            "link": "#_2-6-算法的空间复杂度",
             "children": []
           }
         ]
       },
       {
         "level": 2,
-        "title": "二 算法的度量",
-        "slug": "二-算法的度量",
-        "link": "#二-算法的度量",
+        "title": "3. 大 O 表示法",
+        "slug": "_3-大-o-表示法",
+        "link": "#_3-大-o-表示法",
         "children": [
           {
             "level": 3,
-            "title": "2.0 算法的执行次数",
-            "slug": "_2-0-算法的执行次数",
-            "link": "#_2-0-算法的执行次数",
+            "title": "3.1 大O中的几个记号",
+            "slug": "_3-1-大o中的几个记号",
+            "link": "#_3-1-大o中的几个记号",
             "children": []
           },
           {
             "level": 3,
-            "title": "2.1 算法的时间复杂度",
-            "slug": "_2-1-算法的时间复杂度",
-            "link": "#_2-1-算法的时间复杂度",
+            "title": "3.2 推导大 $O$ 阶方法",
+            "slug": "_3-2-推导大-o-阶方法",
+            "link": "#_3-2-推导大-o-阶方法",
             "children": []
           },
           {
             "level": 3,
-            "title": "2.2 算法的空间复杂度",
-            "slug": "_2-2-算法的空间复杂度",
-            "link": "#_2-2-算法的空间复杂度",
+            "title": "3.3 递归算法的推导",
+            "slug": "_3-3-递归算法的推导",
+            "link": "#_3-3-递归算法的推导",
             "children": []
           },
           {
             "level": 3,
-            "title": "2.3 总结",
-            "slug": "_2-3-总结",
-            "link": "#_2-3-总结",
+            "title": "3.4 常数阶 $O(1)$ 和线性阶 $O(n)$",
+            "slug": "_3-4-常数阶-o-1-和线性阶-o-n",
+            "link": "#_3-4-常数阶-o-1-和线性阶-o-n",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "3.5 平方阶 $O(n^2)$",
+            "slug": "_3-5-平方阶-o-n-2",
+            "link": "#_3-5-平方阶-o-n-2",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "3.6 指数阶 $O(2^n)$",
+            "slug": "_3-6-指数阶-o-2-n",
+            "link": "#_3-6-指数阶-o-2-n",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "3.7 对数阶",
+            "slug": "_3-7-对数阶",
+            "link": "#_3-7-对数阶",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "3.8 旅行商问题",
+            "slug": "_3-8-旅行商问题",
+            "link": "#_3-8-旅行商问题",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "3.9 总结常见的时间复杂度",
+            "slug": "_3-9-总结常见的时间复杂度",
+            "link": "#_3-9-总结常见的时间复杂度",
             "children": []
           }
         ]
       },
       {
         "level": 2,
-        "title": "一 大  表示法概念",
-        "slug": "一-大-表示法概念",
-        "link": "#一-大-表示法概念",
-        "children": [
-          {
-            "level": 3,
-            "title": "1.1 大中的几个记号",
-            "slug": "_1-1-大中的几个记号",
-            "link": "#_1-1-大中的几个记号",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "1.2 推导大  阶方法",
-            "slug": "_1-2-推导大-阶方法",
-            "link": "#_1-2-推导大-阶方法",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "1.3 递归算法的推导",
-            "slug": "_1-3-递归算法的推导",
-            "link": "#_1-3-递归算法的推导",
-            "children": []
-          }
-        ]
-      },
-      {
-        "level": 2,
-        "title": "二 常见大 O 阶",
-        "slug": "二-常见大-o-阶",
-        "link": "#二-常见大-o-阶",
-        "children": [
-          {
-            "level": 3,
-            "title": "2.1 常数阶  和线性阶",
-            "slug": "_2-1-常数阶-和线性阶",
-            "link": "#_2-1-常数阶-和线性阶",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "2.2 平方阶",
-            "slug": "_2-2-平方阶",
-            "link": "#_2-2-平方阶",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "2.3 指数阶",
-            "slug": "_2-3-指数阶",
-            "link": "#_2-3-指数阶",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "2.4 对数阶",
-            "slug": "_2-4-对数阶",
-            "link": "#_2-4-对数阶",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "2.5 旅行商问题",
-            "slug": "_2-5-旅行商问题",
-            "link": "#_2-5-旅行商问题",
-            "children": []
-          }
-        ]
-      },
-      {
-        "level": 2,
-        "title": "三 总结常见的时间复杂度",
-        "slug": "三-总结常见的时间复杂度",
-        "link": "#三-总结常见的时间复杂度",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "四 空间复杂度计算",
-        "slug": "四-空间复杂度计算",
-        "link": "#四-空间复杂度计算",
+        "title": "4. 空间复杂度计算",
+        "slug": "_4-空间复杂度计算",
+        "link": "#_4-空间复杂度计算",
         "children": [
           {
             "level": 3,
@@ -1489,285 +2016,6 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "asyncio Recipes",
-    "headers": [],
-    "path": "/book/python/asyncio_recipes.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "DevOps in Python",
-    "headers": [],
-    "path": "/book/python/devops_in_python.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "Fluent Python",
-    "headers": [],
-    "path": "/book/python/fluent_python.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "Python书籍",
-    "headers": [
-      {
-        "level": 2,
-        "title": "目录",
-        "slug": "目录",
-        "link": "#目录",
-        "children": []
-      }
-    ],
-    "path": "/book/python/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "Python Cookbook",
-    "headers": [],
-    "path": "/book/python/python_cookbook.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "Python源码剖析",
-    "headers": [],
-    "path": "/book/python/python%E6%BA%90%E7%A0%81%E5%89%96%E6%9E%90.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "Using Asyncio in Python",
-    "headers": [],
-    "path": "/book/python/use_asyncio.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "心理学书籍",
-    "headers": [
-      {
-        "level": 2,
-        "title": "目录",
-        "slug": "目录",
-        "link": "#目录",
-        "children": []
-      }
-    ],
-    "path": "/book/%E5%BF%83%E7%90%86%E5%AD%A6/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "亚动机与人格",
-    "headers": [],
-    "path": "/book/%E5%BF%83%E7%90%86%E5%AD%A6/%E4%BA%9A%E5%8A%A8%E6%9C%BA%E4%B8%8E%E4%BA%BA%E6%A0%BC.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "人的潜能和价值",
-    "headers": [],
-    "path": "/book/%E5%BF%83%E7%90%86%E5%AD%A6/%E4%BA%BA%E7%9A%84%E6%BD%9C%E8%83%BD%E5%92%8C%E4%BB%B7%E5%80%BC.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "好人是如何变成恶魔的",
-    "headers": [],
-    "path": "/book/%E5%BF%83%E7%90%86%E5%AD%A6/%E5%A5%BD%E4%BA%BA%E6%98%AF%E5%A6%82%E4%BD%95%E5%8F%98%E6%88%90%E6%81%B6%E9%AD%94%E7%9A%84.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "影响力",
-    "headers": [],
-    "path": "/book/%E5%BF%83%E7%90%86%E5%AD%A6/%E5%BD%B1%E5%93%8D%E5%8A%9B.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "性心理学",
-    "headers": [],
-    "path": "/book/%E5%BF%83%E7%90%86%E5%AD%A6/%E6%80%A7%E5%BF%83%E7%90%86%E5%AD%A6.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "洗脑心理学",
-    "headers": [],
-    "path": "/book/%E5%BF%83%E7%90%86%E5%AD%A6/%E6%B4%97%E8%84%91%E5%BF%83%E7%90%86%E5%AD%A6.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "进化心理学",
-    "headers": [],
-    "path": "/book/%E5%BF%83%E7%90%86%E5%AD%A6/%E8%BF%9B%E5%8C%96%E5%BF%83%E7%90%86%E5%AD%A6.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "CODE -- 编码:隐匿在计算机背后的语言",
-    "headers": [],
-    "path": "/book/%E6%8A%80%E6%9C%AF/CODE.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "技术书籍",
-    "headers": [
-      {
-        "level": 2,
-        "title": "目录",
-        "slug": "目录",
-        "link": "#目录",
-        "children": []
-      }
-    ],
-    "path": "/book/%E6%8A%80%E6%9C%AF/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "成为技术领导者",
-    "headers": [],
-    "path": "/book/%E6%8A%80%E6%9C%AF/%E6%88%90%E4%B8%BA%E6%8A%80%E6%9C%AF%E9%A2%86%E5%AF%BC%E8%80%85.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "鸟哥的Linux私房菜",
-    "headers": [],
-    "path": "/book/%E6%8A%80%E6%9C%AF/%E9%B8%9F%E5%93%A5%E7%9A%84Linux%E7%A7%81%E6%88%BF%E8%8F%9C.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "鸟哥的Linux私房菜服务器架设篇",
-    "headers": [],
-    "path": "/book/%E6%8A%80%E6%9C%AF/%E9%B8%9F%E5%93%A5%E7%9A%84Linux%E7%A7%81%E6%88%BF%E8%8F%9C%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%9E%B6%E8%AE%BE%E7%AF%87.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "黑客与画家",
-    "headers": [],
-    "path": "/book/%E6%8A%80%E6%9C%AF/%E9%BB%91%E5%AE%A2%E4%B8%8E%E7%94%BB%E5%AE%B6.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "社会学书籍",
-    "headers": [
-      {
-        "level": 2,
-        "title": "目录",
-        "slug": "目录",
-        "link": "#目录",
-        "children": []
-      }
-    ],
-    "path": "/book/%E7%A4%BE%E4%BC%9A%E5%AD%A6/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "中国人的性格",
-    "headers": [],
-    "path": "/book/%E7%A4%BE%E4%BC%9A%E5%AD%A6/%E4%B8%AD%E5%9B%BD%E4%BA%BA%E7%9A%84%E6%80%A7%E6%A0%BC.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "乌合之众",
-    "headers": [],
-    "path": "/book/%E7%A4%BE%E4%BC%9A%E5%AD%A6/%E4%B9%8C%E5%90%88%E4%B9%8B%E4%BC%97.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "娱乐至死",
-    "headers": [],
-    "path": "/book/%E7%A4%BE%E4%BC%9A%E5%AD%A6/%E5%A8%B1%E4%B9%90%E8%87%B3%E6%AD%BB.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "艺术书籍",
-    "headers": [
-      {
-        "level": 2,
-        "title": "目录",
-        "slug": "目录",
-        "link": "#目录",
-        "children": []
-      }
-    ],
-    "path": "/book/%E8%89%BA%E6%9C%AF/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "清醒思考的艺术",
-    "headers": [],
-    "path": "/book/%E8%89%BA%E6%9C%AF/%E6%B8%85%E9%86%92%E6%80%9D%E8%80%83%E7%9A%84%E8%89%BA%E6%9C%AF.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "金融学书籍",
-    "headers": [
-      {
-        "level": 2,
-        "title": "目录",
-        "slug": "目录",
-        "link": "#目录",
-        "children": []
-      }
-    ],
-    "path": "/book/%E9%87%91%E8%9E%8D%E5%AD%A6/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "Theory of Games and Economic Behavior",
-    "headers": [],
-    "path": "/book/%E9%87%91%E8%9E%8D%E5%AD%A6/%E5%8D%9A%E5%BC%88%E8%AE%BA%E4%B8%8E%E7%BB%8F%E6%B5%8E%E8%A1%8C%E4%B8%BA.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "就业、利息和货币通论",
-    "headers": [],
-    "path": "/book/%E9%87%91%E8%9E%8D%E5%AD%A6/%E5%B0%B1%E4%B8%9A_%E5%88%A9%E6%81%AF%E5%92%8C%E8%B4%A7%E5%B8%81%E9%80%9A%E8%AE%BA.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "聪明的投资者",
-    "headers": [],
-    "path": "/book/%E9%87%91%E8%9E%8D%E5%AD%A6/%E8%81%AA%E6%98%8E%E7%9A%84%E6%8A%95%E8%B5%84%E8%80%85.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "货币金融学",
-    "headers": [],
-    "path": "/book/%E9%87%91%E8%9E%8D%E5%AD%A6/%E8%B4%A7%E5%B8%81%E9%87%91%E8%9E%8D%E5%AD%A6.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "非理性繁荣",
-    "headers": [],
-    "path": "/book/%E9%87%91%E8%9E%8D%E5%AD%A6/%E9%9D%9E%E7%90%86%E6%80%A7%E7%B9%81%E8%8D%A3.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
     "title": "Docker 安装",
     "headers": [
       {
@@ -1811,29 +2059,7 @@ export const searchIndex = [
         "title": "2. 安装",
         "slug": "_2-安装",
         "link": "#_2-安装",
-        "children": [
-          {
-            "level": 3,
-            "title": "2.1 CentOS",
-            "slug": "_2-1-centos",
-            "link": "#_2-1-centos",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "2.2 Debian",
-            "slug": "_2-2-debian",
-            "link": "#_2-2-debian",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "2.3 Windows",
-            "slug": "_2-3-windows",
-            "link": "#_2-3-windows",
-            "children": []
-          }
-        ]
+        "children": []
       },
       {
         "level": 2,
@@ -2221,6 +2447,152 @@ export const searchIndex = [
       }
     ],
     "path": "/tool/Git/%E5%AE%89%E8%A3%85GitLab.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "Nginx基础",
+    "headers": [
+      {
+        "level": 2,
+        "title": "1. WEB Server",
+        "slug": "_1-web-server",
+        "link": "#_1-web-server",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "2. 安装",
+        "slug": "_2-安装",
+        "link": "#_2-安装",
+        "children": [
+          {
+            "level": 3,
+            "title": "2.1 流程",
+            "slug": "_2-1-流程",
+            "link": "#_2-1-流程",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "2.2 简单配置",
+            "slug": "_2-2-简单配置",
+            "link": "#_2-2-简单配置",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "3. 使用基础",
+        "slug": "_3-使用基础",
+        "link": "#_3-使用基础",
+        "children": [
+          {
+            "level": 3,
+            "title": "3.1 目录结构",
+            "slug": "_3-1-目录结构",
+            "link": "#_3-1-目录结构",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "3.2 命令",
+            "slug": "_3-2-命令",
+            "link": "#_3-2-命令",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "3.3 配置文件",
+            "slug": "_3-3-配置文件",
+            "link": "#_3-3-配置文件",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "4. 其他操作",
+        "slug": "_4-其他操作",
+        "link": "#_4-其他操作",
+        "children": [
+          {
+            "level": 3,
+            "title": "4.1 域名设置",
+            "slug": "_4-1-域名设置",
+            "link": "#_4-1-域名设置",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "权重",
+            "slug": "权重",
+            "link": "#权重",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "ip_hash",
+            "slug": "ip-hash",
+            "link": "#ip-hash",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "backup",
+            "slug": "backup",
+            "link": "#backup",
+            "children": []
+          }
+        ]
+      }
+    ],
+    "path": "/tool/Nginx/Nginx%E5%9F%BA%E7%A1%80.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "Django部署",
+    "headers": [
+      {
+        "level": 2,
+        "title": "1. 部署说明",
+        "slug": "_1-部署说明",
+        "link": "#_1-部署说明",
+        "children": [
+          {
+            "level": 3,
+            "title": "1.1 uWSGI 服务器",
+            "slug": "_1-1-uwsgi-服务器",
+            "link": "#_1-1-uwsgi-服务器",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "1.2 uWSGI 特点",
+            "slug": "_1-2-uwsgi-特点",
+            "link": "#_1-2-uwsgi-特点",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "1.3 uWSGI 安装使用",
+            "slug": "_1-3-uwsgi-安装使用",
+            "link": "#_1-3-uwsgi-安装使用",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "1.4 配置 Nginx",
+            "slug": "_1-4-配置-nginx",
+            "link": "#_1-4-配置-nginx",
+            "children": []
+          }
+        ]
+      }
+    ],
+    "path": "/tool/Nginx/%E5%BA%94%E7%94%A8%E9%83%A8%E7%BD%B2.html",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -2701,152 +3073,6 @@ export const searchIndex = [
       }
     ],
     "path": "/tool/Kubernetes/k8s%E8%BF%9B%E9%98%B6.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "Nginx基础",
-    "headers": [
-      {
-        "level": 2,
-        "title": "1. WEB Server",
-        "slug": "_1-web-server",
-        "link": "#_1-web-server",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "2. 安装",
-        "slug": "_2-安装",
-        "link": "#_2-安装",
-        "children": [
-          {
-            "level": 3,
-            "title": "2.1 流程",
-            "slug": "_2-1-流程",
-            "link": "#_2-1-流程",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "2.2 简单配置",
-            "slug": "_2-2-简单配置",
-            "link": "#_2-2-简单配置",
-            "children": []
-          }
-        ]
-      },
-      {
-        "level": 2,
-        "title": "3. 使用基础",
-        "slug": "_3-使用基础",
-        "link": "#_3-使用基础",
-        "children": [
-          {
-            "level": 3,
-            "title": "3.1 目录结构",
-            "slug": "_3-1-目录结构",
-            "link": "#_3-1-目录结构",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "3.2 命令",
-            "slug": "_3-2-命令",
-            "link": "#_3-2-命令",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "3.3 配置文件",
-            "slug": "_3-3-配置文件",
-            "link": "#_3-3-配置文件",
-            "children": []
-          }
-        ]
-      },
-      {
-        "level": 2,
-        "title": "4. 其他操作",
-        "slug": "_4-其他操作",
-        "link": "#_4-其他操作",
-        "children": [
-          {
-            "level": 3,
-            "title": "4.1 域名设置",
-            "slug": "_4-1-域名设置",
-            "link": "#_4-1-域名设置",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "权重",
-            "slug": "权重",
-            "link": "#权重",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "ip_hash",
-            "slug": "ip-hash",
-            "link": "#ip-hash",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "backup",
-            "slug": "backup",
-            "link": "#backup",
-            "children": []
-          }
-        ]
-      }
-    ],
-    "path": "/tool/Nginx/Nginx%E5%9F%BA%E7%A1%80.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "Django部署",
-    "headers": [
-      {
-        "level": 2,
-        "title": "1. 部署说明",
-        "slug": "_1-部署说明",
-        "link": "#_1-部署说明",
-        "children": [
-          {
-            "level": 3,
-            "title": "1.1 uWSGI 服务器",
-            "slug": "_1-1-uwsgi-服务器",
-            "link": "#_1-1-uwsgi-服务器",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "1.2 uWSGI 特点",
-            "slug": "_1-2-uwsgi-特点",
-            "link": "#_1-2-uwsgi-特点",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "1.3 uWSGI 安装使用",
-            "slug": "_1-3-uwsgi-安装使用",
-            "link": "#_1-3-uwsgi-安装使用",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "1.4 配置 Nginx",
-            "slug": "_1-4-配置-nginx",
-            "link": "#_1-4-配置-nginx",
-            "children": []
-          }
-        ]
-      }
-    ],
-    "path": "/tool/Nginx/%E5%BA%94%E7%94%A8%E9%83%A8%E7%BD%B2.html",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -4332,6 +4558,28 @@ export const searchIndex = [
     "extraFields": []
   },
   {
+    "title": "标准库链接",
+    "headers": [
+      {
+        "level": 3,
+        "title": "标准库",
+        "slug": "标准库",
+        "link": "#标准库",
+        "children": []
+      },
+      {
+        "level": 3,
+        "title": "其他第三方库",
+        "slug": "其他第三方库",
+        "link": "#其他第三方库",
+        "children": []
+      }
+    ],
+    "path": "/python/%E8%AF%AD%E8%A8%80/%E5%BA%93/%E6%A0%87%E5%87%86%E5%BA%93%E9%93%BE%E6%8E%A5.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
     "title": "Linux文件锁",
     "headers": [
       {
@@ -4509,13 +4757,6 @@ export const searchIndex = [
         "children": [
           {
             "level": 3,
-            "title": "3.1 关于 os.system os.popen 和 subprocess 的区别",
-            "slug": "_3-1-关于-os-system-os-popen-和-subprocess-的区别",
-            "link": "#_3-1-关于-os-system-os-popen-和-subprocess-的区别",
-            "children": []
-          },
-          {
-            "level": 3,
             "title": "3.2 Popen",
             "slug": "_3-2-popen",
             "link": "#_3-2-popen",
@@ -4681,28 +4922,6 @@ export const searchIndex = [
       }
     ],
     "path": "/python/%E8%AF%AD%E8%A8%80/%E5%A4%9A%E4%BB%BB%E5%8A%A1%E7%BC%96%E7%A8%8B/%E9%AB%98%E6%80%A7%E8%83%BD%E7%BC%96%E7%A8%8B.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "标准库链接",
-    "headers": [
-      {
-        "level": 3,
-        "title": "标准库",
-        "slug": "标准库",
-        "link": "#标准库",
-        "children": []
-      },
-      {
-        "level": 3,
-        "title": "其他第三方库",
-        "slug": "其他第三方库",
-        "link": "#其他第三方库",
-        "children": []
-      }
-    ],
-    "path": "/python/%E8%AF%AD%E8%A8%80/%E5%BA%93/%E6%A0%87%E5%87%86%E5%BA%93%E9%93%BE%E6%8E%A5.html",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -6658,6 +6877,50 @@ export const searchIndex = [
     "extraFields": []
   },
   {
+    "title": "认识系统服务",
+    "headers": [
+      {
+        "level": 3,
+        "title": "1. daemon 与服务（service）",
+        "slug": "_1-daemon-与服务-service",
+        "link": "#_1-daemon-与服务-service",
+        "children": []
+      }
+    ],
+    "path": "/unix/Linux/Linux%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%86%E5%91%98/%E8%AE%A4%E8%AF%86%E7%B3%BB%E7%BB%9F%E6%9C%8D%E5%8A%A1.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "Linux磁盘与文件系统管理",
+    "headers": [
+      {
+        "level": 3,
+        "title": "1. 认识 Linux 文件系统",
+        "slug": "_1-认识-linux-文件系统",
+        "link": "#_1-认识-linux-文件系统",
+        "children": []
+      }
+    ],
+    "path": "/unix/Linux/Linux%E6%96%87%E4%BB%B6/Linux%E7%A3%81%E7%9B%98%E4%B8%8E%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%86.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "文件与文件系统的压缩",
+    "headers": [],
+    "path": "/unix/Linux/Linux%E6%96%87%E4%BB%B6/%E6%96%87%E4%BB%B6%E4%B8%8E%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E5%8E%8B%E7%BC%A9.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "文件权限与目录配置",
+    "headers": [],
+    "path": "/unix/Linux/Linux%E6%96%87%E4%BB%B6/%E6%96%87%E4%BB%B6%E6%9D%83%E9%99%90%E4%B8%8E%E7%9B%AE%E5%BD%95%E9%85%8D%E7%BD%AE.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
     "title": "Shell",
     "headers": [
       {
@@ -6705,50 +6968,6 @@ export const searchIndex = [
       }
     ],
     "path": "/unix/Linux/Shell%E8%84%9A%E6%9C%AC/vim%20%E5%BF%AB%E6%8D%B7%E9%94%AE.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "认识系统服务",
-    "headers": [
-      {
-        "level": 3,
-        "title": "1. daemon 与服务（service）",
-        "slug": "_1-daemon-与服务-service",
-        "link": "#_1-daemon-与服务-service",
-        "children": []
-      }
-    ],
-    "path": "/unix/Linux/Linux%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%86%E5%91%98/%E8%AE%A4%E8%AF%86%E7%B3%BB%E7%BB%9F%E6%9C%8D%E5%8A%A1.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "Linux磁盘与文件系统管理",
-    "headers": [
-      {
-        "level": 3,
-        "title": "1. 认识 Linux 文件系统",
-        "slug": "_1-认识-linux-文件系统",
-        "link": "#_1-认识-linux-文件系统",
-        "children": []
-      }
-    ],
-    "path": "/unix/Linux/Linux%E6%96%87%E4%BB%B6/Linux%E7%A3%81%E7%9B%98%E4%B8%8E%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%86.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "文件与文件系统的压缩",
-    "headers": [],
-    "path": "/unix/Linux/Linux%E6%96%87%E4%BB%B6/%E6%96%87%E4%BB%B6%E4%B8%8E%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E5%8E%8B%E7%BC%A9.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "文件权限与目录配置",
-    "headers": [],
-    "path": "/unix/Linux/Linux%E6%96%87%E4%BB%B6/%E6%96%87%E4%BB%B6%E6%9D%83%E9%99%90%E4%B8%8E%E7%9B%AE%E5%BD%95%E9%85%8D%E7%BD%AE.html",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -6811,13 +7030,6 @@ export const searchIndex = [
             "slug": "_1-1-操作系统架构",
             "link": "#_1-1-操作系统架构",
             "children": []
-          },
-          {
-            "level": 3,
-            "title": "中断",
-            "slug": "中断",
-            "link": "#中断",
-            "children": []
           }
         ]
       }
@@ -6827,7 +7039,29 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "crul",
+    "title": "CPU",
+    "headers": [
+      {
+        "level": 2,
+        "title": "什么是 CPU",
+        "slug": "什么是-cpu",
+        "link": "#什么是-cpu",
+        "children": []
+      }
+    ],
+    "path": "/unix/%E7%A1%AC%E4%BB%B6%E5%9F%BA%E7%A1%80/CPU/CPU.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "Ubuntu系统",
+    "headers": [],
+    "path": "/unix/Ubuntu/%E4%B8%8B%E8%BD%BD/Ubuntu%E7%B3%BB%E7%BB%9F.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "curl",
     "headers": [
       {
         "level": 2,
@@ -7054,13 +7288,6 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "SSL/TLS协议",
-    "headers": [],
-    "path": "/unix/Linux/%E7%BD%91%E7%BB%9C/SSL%E5%8D%8F%E8%AE%AE.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
     "title": "命令",
     "headers": [
       {
@@ -7093,16 +7320,9 @@ export const searchIndex = [
           },
           {
             "level": 3,
-            "title": "1.1 手动/自动设置启停 IP：",
-            "slug": "_1-1-手动-自动设置启停-ip",
-            "link": "#_1-1-手动-自动设置启停-ip",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "2.ss 命令",
-            "slug": "_2-ss-命令",
-            "link": "#_2-ss-命令",
+            "title": "2.2 手动/自动设置启停 IP：",
+            "slug": "_2-2-手动-自动设置启停-ip",
+            "link": "#_2-2-手动-自动设置启停-ip",
             "children": []
           }
         ]
@@ -7113,7 +7333,7 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "Linux 网络基础",
+    "title": "网络基础",
     "headers": [
       {
         "level": 2,
@@ -7186,6 +7406,34 @@ export const searchIndex = [
     "extraFields": []
   },
   {
+    "title": "主板",
+    "headers": [],
+    "path": "/unix/%E7%A1%AC%E4%BB%B6%E5%9F%BA%E7%A1%80/%E4%B8%BB%E6%9D%BF/%E4%B8%BB%E6%9D%BF.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "内存",
+    "headers": [],
+    "path": "/unix/%E7%A1%AC%E4%BB%B6%E5%9F%BA%E7%A1%80/%E5%86%85%E5%AD%98/%E5%86%85%E5%AD%98.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "存储",
+    "headers": [],
+    "path": "/unix/%E7%A1%AC%E4%BB%B6%E5%9F%BA%E7%A1%80/%E5%AD%98%E5%82%A8/%E5%AD%98%E5%82%A8.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "扩展卡与接口",
+    "headers": [],
+    "path": "/unix/%E7%A1%AC%E4%BB%B6%E5%9F%BA%E7%A1%80/%E6%89%A9%E5%B1%95%E5%8D%A1%E4%B8%8E%E6%8E%A5%E5%8F%A3/%E6%89%A9%E5%B1%95%E5%8D%A1%E4%B8%8E%E6%8E%A5%E5%8F%A3.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
     "title": "PVE虚拟机",
     "headers": [
       {
@@ -7215,16 +7463,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "认识Ubuntu系统",
+    "title": "显卡",
     "headers": [],
-    "path": "/unix/Ubuntu/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/Ubuntu%E7%B3%BB%E5%88%97%E6%93%8D%E4%BD%9C.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "认识Linux系统二",
-    "headers": [],
-    "path": "/unix/Ubuntu/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/%E8%AE%A4%E8%AF%86Linux%E7%B3%BB%E7%BB%9F.html",
+    "path": "/unix/%E7%A1%AC%E4%BB%B6%E5%9F%BA%E7%A1%80/%E6%98%BE%E5%8D%A1/%E6%98%BE%E5%8D%A1.html",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -7320,56 +7561,6 @@ export const searchIndex = [
       }
     ],
     "path": "/unix/%E8%99%9A%E6%8B%9F%E6%9C%BA/VMware/%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "CPU",
-    "headers": [
-      {
-        "level": 2,
-        "title": "什么是 CPU",
-        "slug": "什么是-cpu",
-        "link": "#什么是-cpu",
-        "children": []
-      }
-    ],
-    "path": "/unix/%E7%A1%AC%E4%BB%B6%E5%9F%BA%E7%A1%80/CPU/CPU.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "主板",
-    "headers": [],
-    "path": "/unix/%E7%A1%AC%E4%BB%B6%E5%9F%BA%E7%A1%80/%E4%B8%BB%E6%9D%BF/%E4%B8%BB%E6%9D%BF.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "内存",
-    "headers": [],
-    "path": "/unix/%E7%A1%AC%E4%BB%B6%E5%9F%BA%E7%A1%80/%E5%86%85%E5%AD%98/%E5%86%85%E5%AD%98.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "存储",
-    "headers": [],
-    "path": "/unix/%E7%A1%AC%E4%BB%B6%E5%9F%BA%E7%A1%80/%E5%AD%98%E5%82%A8/%E5%AD%98%E5%82%A8.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "扩展卡与接口",
-    "headers": [],
-    "path": "/unix/%E7%A1%AC%E4%BB%B6%E5%9F%BA%E7%A1%80/%E6%89%A9%E5%B1%95%E5%8D%A1%E4%B8%8E%E6%8E%A5%E5%8F%A3/%E6%89%A9%E5%B1%95%E5%8D%A1%E4%B8%8E%E6%8E%A5%E5%8F%A3.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "显卡",
-    "headers": [],
-    "path": "/unix/%E7%A1%AC%E4%BB%B6%E5%9F%BA%E7%A1%80/%E6%98%BE%E5%8D%A1/%E6%98%BE%E5%8D%A1.html",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -7472,6 +7663,51 @@ export const searchIndex = [
       }
     ],
     "path": "/python/%E7%94%9F%E6%80%81/Web%E6%A1%86%E6%9E%B6/Django/Django%E6%A6%82%E8%BF%B0.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "Tornado框架",
+    "headers": [
+      {
+        "level": 2,
+        "title": "1. 简介",
+        "slug": "_1-简介",
+        "link": "#_1-简介",
+        "children": [
+          {
+            "level": 3,
+            "title": "1.1 各类框架的比较",
+            "slug": "_1-1-各类框架的比较",
+            "link": "#_1-1-各类框架的比较",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "2. 基础使用",
+        "slug": "_2-基础使用",
+        "link": "#_2-基础使用",
+        "children": [
+          {
+            "level": 3,
+            "title": "2.1 安装",
+            "slug": "_2-1-安装",
+            "link": "#_2-1-安装",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "2.2 示例",
+            "slug": "_2-2-示例",
+            "link": "#_2-2-示例",
+            "children": []
+          }
+        ]
+      }
+    ],
+    "path": "/python/%E7%94%9F%E6%80%81/Web%E6%A1%86%E6%9E%B6/Tornado/tornado.html",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -7623,51 +7859,6 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "Tornado框架",
-    "headers": [
-      {
-        "level": 2,
-        "title": "1. 简介",
-        "slug": "_1-简介",
-        "link": "#_1-简介",
-        "children": [
-          {
-            "level": 3,
-            "title": "1.1 各类框架的比较",
-            "slug": "_1-1-各类框架的比较",
-            "link": "#_1-1-各类框架的比较",
-            "children": []
-          }
-        ]
-      },
-      {
-        "level": 2,
-        "title": "2. 基础使用",
-        "slug": "_2-基础使用",
-        "link": "#_2-基础使用",
-        "children": [
-          {
-            "level": 3,
-            "title": "2.1 安装",
-            "slug": "_2-1-安装",
-            "link": "#_2-1-安装",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "2.2 示例",
-            "slug": "_2-2-示例",
-            "link": "#_2-2-示例",
-            "children": []
-          }
-        ]
-      }
-    ],
-    "path": "/python/%E7%94%9F%E6%80%81/Web%E6%A1%86%E6%9E%B6/Tornado/tornado.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
     "title": "WEB框架本质",
     "headers": [
       {
@@ -7740,51 +7931,443 @@ export const searchIndex = [
     "extraFields": []
   },
   {
+    "title": "Etcd",
+    "headers": [],
+    "path": "/database/etcd/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "Database",
+    "headers": [],
+    "path": "/database/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "My SQL",
+    "headers": [],
+    "path": "/database/MySQL/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "Postgre SQL",
+    "headers": [],
+    "path": "/database/PostgreSQL/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "Redis",
+    "headers": [],
+    "path": "/database/Redis/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "基础",
+    "headers": [],
+    "path": "/go/%E5%9F%BA%E7%A1%80/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "Go",
+    "headers": [],
+    "path": "/go/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "算法与数据结构",
+    "headers": [],
+    "path": "/go/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "Docker",
+    "headers": [],
+    "path": "/tool/Docker/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "Git",
+    "headers": [],
+    "path": "/tool/Git/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "Nginx",
+    "headers": [],
+    "path": "/tool/Nginx/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "Kubernetes",
+    "headers": [],
+    "path": "/tool/Kubernetes/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "Other",
+    "headers": [],
+    "path": "/tool/Other/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "Prometheus",
+    "headers": [],
+    "path": "/tool/Prometheus/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "异步任务",
+    "headers": [],
+    "path": "/python/%E7%94%9F%E6%80%81/%E5%BC%82%E6%AD%A5%E4%BB%BB%E5%8A%A1/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "生态",
+    "headers": [],
+    "path": "/python/%E7%94%9F%E6%80%81/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "消息队列",
+    "headers": [],
+    "path": "/python/%E7%94%9F%E6%80%81/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "远程调用",
+    "headers": [],
+    "path": "/python/%E7%94%9F%E6%80%81/%E8%BF%9C%E7%A8%8B%E8%B0%83%E7%94%A8/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "Asyncio",
+    "headers": [],
+    "path": "/python/%E8%AF%AD%E8%A8%80/asyncio/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "语言",
+    "headers": [],
+    "path": "/python/%E8%AF%AD%E8%A8%80/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "基础",
+    "headers": [],
+    "path": "/python/%E8%AF%AD%E8%A8%80/%E5%9F%BA%E7%A1%80/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "库",
+    "headers": [],
+    "path": "/python/%E8%AF%AD%E8%A8%80/%E5%BA%93/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "多任务编程",
+    "headers": [],
+    "path": "/python/%E8%AF%AD%E8%A8%80/%E5%A4%9A%E4%BB%BB%E5%8A%A1%E7%BC%96%E7%A8%8B/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "深入",
+    "headers": [],
+    "path": "/python/%E8%AF%AD%E8%A8%80/%E6%B7%B1%E5%85%A5/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "网络编程",
+    "headers": [],
+    "path": "/python/%E8%AF%AD%E8%A8%80/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "进阶",
+    "headers": [],
+    "path": "/python/%E8%AF%AD%E8%A8%80/%E8%BF%9B%E9%98%B6/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "DNS",
+    "headers": [],
+    "path": "/unix/CentOS/DNS/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "Cent OS",
+    "headers": [],
+    "path": "/unix/CentOS/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "Unix",
+    "headers": [],
+    "path": "/unix/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "LDAP",
+    "headers": [],
+    "path": "/unix/CentOS/LDAP/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "NFS",
+    "headers": [],
+    "path": "/unix/CentOS/NFS/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "NTP",
+    "headers": [],
+    "path": "/unix/CentOS/NTP/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "Samba",
+    "headers": [],
+    "path": "/unix/CentOS/Samba/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "SNMP",
+    "headers": [],
+    "path": "/unix/CentOS/SNMP/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "UFS",
+    "headers": [],
+    "path": "/unix/CentOS/UFS/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "安装",
+    "headers": [],
+    "path": "/unix/CentOS/%E5%AE%89%E8%A3%85/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "Linux使用者管理",
+    "headers": [],
+    "path": "/unix/Linux/Linux%E4%BD%BF%E7%94%A8%E8%80%85%E7%AE%A1%E7%90%86/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "Linux",
+    "headers": [],
+    "path": "/unix/Linux/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "Linux基础指引",
+    "headers": [],
+    "path": "/unix/Linux/Linux%E5%9F%BA%E7%A1%80%E6%8C%87%E5%BC%95/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "Linux系统管理员",
+    "headers": [],
+    "path": "/unix/Linux/Linux%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%86%E5%91%98/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "Linux文件",
+    "headers": [],
+    "path": "/unix/Linux/Linux%E6%96%87%E4%BB%B6/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "Shell脚本",
+    "headers": [],
+    "path": "/unix/Linux/Shell%E8%84%9A%E6%9C%AC/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "Troubleshooting",
+    "headers": [],
+    "path": "/unix/Linux/Troubleshooting/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "操作系统",
+    "headers": [],
+    "path": "/unix/Linux/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "CPU",
+    "headers": [],
+    "path": "/unix/%E7%A1%AC%E4%BB%B6%E5%9F%BA%E7%A1%80/CPU/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "硬件基础",
+    "headers": [],
+    "path": "/unix/%E7%A1%AC%E4%BB%B6%E5%9F%BA%E7%A1%80/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "下载",
+    "headers": [],
+    "path": "/unix/Ubuntu/%E4%B8%8B%E8%BD%BD/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "Ubuntu",
+    "headers": [],
+    "path": "/unix/Ubuntu/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "网络",
+    "headers": [],
+    "path": "/unix/Linux/%E7%BD%91%E7%BB%9C/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "主板",
+    "headers": [],
+    "path": "/unix/%E7%A1%AC%E4%BB%B6%E5%9F%BA%E7%A1%80/%E4%B8%BB%E6%9D%BF/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "内存",
+    "headers": [],
+    "path": "/unix/%E7%A1%AC%E4%BB%B6%E5%9F%BA%E7%A1%80/%E5%86%85%E5%AD%98/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "存储",
+    "headers": [],
+    "path": "/unix/%E7%A1%AC%E4%BB%B6%E5%9F%BA%E7%A1%80/%E5%AD%98%E5%82%A8/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "扩展卡与接口",
+    "headers": [],
+    "path": "/unix/%E7%A1%AC%E4%BB%B6%E5%9F%BA%E7%A1%80/%E6%89%A9%E5%B1%95%E5%8D%A1%E4%B8%8E%E6%8E%A5%E5%8F%A3/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "PVE",
+    "headers": [],
+    "path": "/unix/%E8%99%9A%E6%8B%9F%E6%9C%BA/PVE/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "虚拟机",
+    "headers": [],
+    "path": "/unix/%E8%99%9A%E6%8B%9F%E6%9C%BA/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "显卡",
+    "headers": [],
+    "path": "/unix/%E7%A1%AC%E4%BB%B6%E5%9F%BA%E7%A1%80/%E6%98%BE%E5%8D%A1/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "VMware",
+    "headers": [],
+    "path": "/unix/%E8%99%9A%E6%8B%9F%E6%9C%BA/VMware/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "Django",
+    "headers": [],
+    "path": "/python/%E7%94%9F%E6%80%81/Web%E6%A1%86%E6%9E%B6/Django/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "Web框架",
+    "headers": [],
+    "path": "/python/%E7%94%9F%E6%80%81/Web%E6%A1%86%E6%9E%B6/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "Tornado",
+    "headers": [],
+    "path": "/python/%E7%94%9F%E6%80%81/Web%E6%A1%86%E6%9E%B6/Tornado/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "Fast API",
+    "headers": [],
+    "path": "/python/%E7%94%9F%E6%80%81/Web%E6%A1%86%E6%9E%B6/FastAPI/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "网络框架基础",
+    "headers": [],
+    "path": "/python/%E7%94%9F%E6%80%81/Web%E6%A1%86%E6%9E%B6/%E7%BD%91%E7%BB%9C%E6%A1%86%E6%9E%B6%E5%9F%BA%E7%A1%80/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
     "title": "分类",
     "headers": [],
     "path": "/category/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "标签",
-    "headers": [],
-    "path": "/tag/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "文章",
-    "headers": [],
-    "path": "/article/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "加密",
-    "headers": [],
-    "path": "/encrypted/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "幻灯片",
-    "headers": [],
-    "path": "/slide/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "收藏",
-    "headers": [],
-    "path": "/star/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "时间轴",
-    "headers": [],
-    "path": "/timeline/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -7796,23 +8379,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "禁用 标签",
-    "headers": [],
-    "path": "/tag/%E7%A6%81%E7%94%A8/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
     "title": "兴趣 分类",
     "headers": [],
     "path": "/category/%E5%85%B4%E8%B6%A3/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "文章加密 标签",
-    "headers": [],
-    "path": "/tag/%E6%96%87%E7%AB%A0%E5%8A%A0%E5%AF%86/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -7824,23 +8393,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "Markdown 标签",
-    "headers": [],
-    "path": "/tag/markdown/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
     "title": "Go 分类",
     "headers": [],
     "path": "/category/go/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "页面配置 标签",
-    "headers": [],
-    "path": "/tag/%E9%A1%B5%E9%9D%A2%E9%85%8D%E7%BD%AE/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -7852,16 +8407,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "使用指南 标签",
+    "title": "go 分类",
     "headers": [],
-    "path": "/tag/%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "板绘 标签",
-    "headers": [],
-    "path": "/tag/%E6%9D%BF%E7%BB%98/",
+    "path": "/category/go/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -7873,23 +8421,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "ps 标签",
-    "headers": [],
-    "path": "/tag/ps/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
     "title": "Docker 分类",
     "headers": [],
     "path": "/category/docker/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "etcd 标签",
-    "headers": [],
-    "path": "/tag/etcd/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -7901,23 +8435,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "python开源库 标签",
-    "headers": [],
-    "path": "/tag/python%E5%BC%80%E6%BA%90%E5%BA%93/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
     "title": "CICD 分类",
     "headers": [],
     "path": "/category/cicd/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "kv 标签",
-    "headers": [],
-    "path": "/tag/kv/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -7929,23 +8449,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "MySQL 标签",
-    "headers": [],
-    "path": "/tag/mysql/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
     "title": "helm 分类",
     "headers": [],
     "path": "/category/helm/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "GO 标签",
-    "headers": [],
-    "path": "/tag/go/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -7957,13 +8463,6 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "速用 标签",
-    "headers": [],
-    "path": "/tag/%E9%80%9F%E7%94%A8/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
     "title": "Kombu 分类",
     "headers": [],
     "path": "/category/kombu/",
@@ -7971,23 +8470,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "速记 标签",
-    "headers": [],
-    "path": "/tag/%E9%80%9F%E8%AE%B0/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
     "title": "MQ 分类",
     "headers": [],
     "path": "/category/mq/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "数据结构 标签",
-    "headers": [],
-    "path": "/tag/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -8006,23 +8491,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "Docker 标签",
-    "headers": [],
-    "path": "/tag/docker/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
     "title": "Python 分类",
     "headers": [],
     "path": "/category/python/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "工具 标签",
-    "headers": [],
-    "path": "/tag/%E5%B7%A5%E5%85%B7/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -8034,23 +8505,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "CLI 标签",
-    "headers": [],
-    "path": "/tag/cli/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
     "title": "打包 分类",
     "headers": [],
     "path": "/category/%E6%89%93%E5%8C%85/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "gitlab 标签",
-    "headers": [],
-    "path": "/tag/gitlab/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -8062,23 +8519,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "CICD 标签",
-    "headers": [],
-    "path": "/tag/cicd/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
     "title": "协程 分类",
     "headers": [],
     "path": "/category/%E5%8D%8F%E7%A8%8B/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "git 标签",
-    "headers": [],
-    "path": "/tag/git/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -8090,23 +8533,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "helm 标签",
-    "headers": [],
-    "path": "/tag/helm/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
     "title": "线程 分类",
     "headers": [],
     "path": "/category/%E7%BA%BF%E7%A8%8B/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "存储库 标签",
-    "headers": [],
-    "path": "/tag/%E5%AD%98%E5%82%A8%E5%BA%93/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -8118,23 +8547,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "k8s 标签",
-    "headers": [],
-    "path": "/tag/k8s/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
     "title": "高性能 分类",
     "headers": [],
     "path": "/category/%E9%AB%98%E6%80%A7%E8%83%BD/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "Nginx 标签",
-    "headers": [],
-    "path": "/tag/nginx/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -8146,23 +8561,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "Web 标签",
-    "headers": [],
-    "path": "/tag/web/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
     "title": "网络编程 分类",
     "headers": [],
     "path": "/category/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "Django 标签",
-    "headers": [],
-    "path": "/tag/django/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -8174,23 +8575,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "远程 标签",
-    "headers": [],
-    "path": "/tag/%E8%BF%9C%E7%A8%8B/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
     "title": "SMB/CIFS 分类",
     "headers": [],
     "path": "/category/smbcifs/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "服务 标签",
-    "headers": [],
-    "path": "/tag/%E6%9C%8D%E5%8A%A1/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -8202,23 +8589,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "代理 标签",
-    "headers": [],
-    "path": "/tag/%E4%BB%A3%E7%90%86/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
     "title": "UFS 分类",
     "headers": [],
     "path": "/category/ufs/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "prometheus 标签",
-    "headers": [],
-    "path": "/tag/prometheus/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -8230,23 +8603,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "监控 标签",
-    "headers": [],
-    "path": "/tag/%E7%9B%91%E6%8E%A7/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
     "title": "Linux 分类",
     "headers": [],
     "path": "/category/linux/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "MQ 标签",
-    "headers": [],
-    "path": "/tag/mq/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -8258,23 +8617,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "消息队列 标签",
-    "headers": [],
-    "path": "/tag/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
     "title": "Vim 分类",
     "headers": [],
     "path": "/category/vim/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "RBMQ 标签",
-    "headers": [],
-    "path": "/tag/rbmq/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -8286,23 +8631,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "RPC 标签",
-    "headers": [],
-    "path": "/tag/rpc/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
     "title": "troubleshooting 分类",
     "headers": [],
     "path": "/category/troubleshooting/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "gRPC 标签",
-    "headers": [],
-    "path": "/tag/grpc/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -8314,23 +8645,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "Python 标签",
-    "headers": [],
-    "path": "/tag/python/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
     "title": "curl 分类",
     "headers": [],
     "path": "/category/curl/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "asyncio 标签",
-    "headers": [],
-    "path": "/tag/asyncio/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -8342,23 +8659,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "subprocess 标签",
-    "headers": [],
-    "path": "/tag/subprocess/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
     "title": "网络通信 分类",
     "headers": [],
     "path": "/category/%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "pip 标签",
-    "headers": [],
-    "path": "/tag/pip/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -8370,23 +8673,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "打包 标签",
-    "headers": [],
-    "path": "/tag/%E6%89%93%E5%8C%85/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
     "title": "WEB框架 分类",
     "headers": [],
     "path": "/category/web%E6%A1%86%E6%9E%B6/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "Pycharm 标签",
-    "headers": [],
-    "path": "/tag/pycharm/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -8398,9 +8687,9 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "文件锁 标签",
+    "title": "Tornado 分类",
     "headers": [],
-    "path": "/tag/%E6%96%87%E4%BB%B6%E9%94%81/",
+    "path": "/category/tornado/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -8412,27 +8701,6 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "协程 标签",
-    "headers": [],
-    "path": "/tag/%E5%8D%8F%E7%A8%8B/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "Tornado 分类",
-    "headers": [],
-    "path": "/category/tornado/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "多进程 标签",
-    "headers": [],
-    "path": "/tag/%E5%A4%9A%E8%BF%9B%E7%A8%8B/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
     "title": "Web框架 分类",
     "headers": [],
     "path": "/category/web%E6%A1%86%E6%9E%B6/",
@@ -8440,296 +8708,653 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "线程 标签",
+    "title": "标签",
     "headers": [],
-    "path": "/tag/%E7%BA%BF%E7%A8%8B/",
+    "path": "/tag/",
     "pathLocale": "/",
     "extraFields": []
   },
   {
-    "title": "进程 标签",
+    "title": "标签: 禁用",
     "headers": [],
-    "path": "/tag/%E8%BF%9B%E7%A8%8B/",
+    "path": "/tag/%E7%A6%81%E7%94%A8/",
     "pathLocale": "/",
     "extraFields": []
   },
   {
-    "title": "高性能 标签",
+    "title": "标签: 文章加密",
     "headers": [],
-    "path": "/tag/%E9%AB%98%E6%80%A7%E8%83%BD/",
+    "path": "/tag/%E6%96%87%E7%AB%A0%E5%8A%A0%E5%AF%86/",
     "pathLocale": "/",
     "extraFields": []
   },
   {
-    "title": "CPU 标签",
+    "title": "标签: Markdown",
     "headers": [],
-    "path": "/tag/cpu/",
+    "path": "/tag/markdown/",
     "pathLocale": "/",
     "extraFields": []
   },
   {
-    "title": "标准库 标签",
+    "title": "标签: 页面配置",
+    "headers": [],
+    "path": "/tag/%E9%A1%B5%E9%9D%A2%E9%85%8D%E7%BD%AE/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "标签: 使用指南",
+    "headers": [],
+    "path": "/tag/%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "标签: 板绘",
+    "headers": [],
+    "path": "/tag/%E6%9D%BF%E7%BB%98/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "标签: ps",
+    "headers": [],
+    "path": "/tag/ps/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "标签: etcd",
+    "headers": [],
+    "path": "/tag/etcd/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "标签: python开源库",
+    "headers": [],
+    "path": "/tag/python%E5%BC%80%E6%BA%90%E5%BA%93/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "标签: kv",
+    "headers": [],
+    "path": "/tag/kv/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "标签: MySQL",
+    "headers": [],
+    "path": "/tag/mysql/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "标签: GO",
+    "headers": [],
+    "path": "/tag/go/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "标签: 速用",
+    "headers": [],
+    "path": "/tag/%E9%80%9F%E7%94%A8/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "标签: 速记",
+    "headers": [],
+    "path": "/tag/%E9%80%9F%E8%AE%B0/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "标签: 数据结构",
+    "headers": [],
+    "path": "/tag/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "标签: go",
+    "headers": [],
+    "path": "/tag/go/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "标签: Docker",
+    "headers": [],
+    "path": "/tag/docker/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "标签: 工具",
+    "headers": [],
+    "path": "/tag/%E5%B7%A5%E5%85%B7/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "标签: CLI",
+    "headers": [],
+    "path": "/tag/cli/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "标签: gitlab",
+    "headers": [],
+    "path": "/tag/gitlab/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "标签: CICD",
+    "headers": [],
+    "path": "/tag/cicd/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "标签: git",
+    "headers": [],
+    "path": "/tag/git/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "标签: Nginx",
+    "headers": [],
+    "path": "/tag/nginx/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "标签: Web",
+    "headers": [],
+    "path": "/tag/web/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "标签: Django",
+    "headers": [],
+    "path": "/tag/django/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "标签: helm",
+    "headers": [],
+    "path": "/tag/helm/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "标签: 存储库",
+    "headers": [],
+    "path": "/tag/%E5%AD%98%E5%82%A8%E5%BA%93/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "标签: k8s",
+    "headers": [],
+    "path": "/tag/k8s/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "标签: 远程",
+    "headers": [],
+    "path": "/tag/%E8%BF%9C%E7%A8%8B/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "标签: 服务",
+    "headers": [],
+    "path": "/tag/%E6%9C%8D%E5%8A%A1/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "标签: 代理",
+    "headers": [],
+    "path": "/tag/%E4%BB%A3%E7%90%86/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "标签: prometheus",
+    "headers": [],
+    "path": "/tag/prometheus/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "标签: 监控",
+    "headers": [],
+    "path": "/tag/%E7%9B%91%E6%8E%A7/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "标签: MQ",
+    "headers": [],
+    "path": "/tag/mq/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "标签: 消息队列",
+    "headers": [],
+    "path": "/tag/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "标签: RBMQ",
+    "headers": [],
+    "path": "/tag/rbmq/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "标签: RPC",
+    "headers": [],
+    "path": "/tag/rpc/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "标签: gRPC",
+    "headers": [],
+    "path": "/tag/grpc/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "标签: Python",
+    "headers": [],
+    "path": "/tag/python/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "标签: asyncio",
+    "headers": [],
+    "path": "/tag/asyncio/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "标签: subprocess",
+    "headers": [],
+    "path": "/tag/subprocess/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "标签: pip",
+    "headers": [],
+    "path": "/tag/pip/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "标签: 打包",
+    "headers": [],
+    "path": "/tag/%E6%89%93%E5%8C%85/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "标签: Pycharm",
+    "headers": [],
+    "path": "/tag/pycharm/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "标签: 标准库",
     "headers": [],
     "path": "/tag/%E6%A0%87%E5%87%86%E5%BA%93/",
     "pathLocale": "/",
     "extraFields": []
   },
   {
-    "title": "GC 标签",
+    "title": "标签: 文件锁",
+    "headers": [],
+    "path": "/tag/%E6%96%87%E4%BB%B6%E9%94%81/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "标签: 协程",
+    "headers": [],
+    "path": "/tag/%E5%8D%8F%E7%A8%8B/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "标签: 多进程",
+    "headers": [],
+    "path": "/tag/%E5%A4%9A%E8%BF%9B%E7%A8%8B/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "标签: 线程",
+    "headers": [],
+    "path": "/tag/%E7%BA%BF%E7%A8%8B/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "标签: 进程",
+    "headers": [],
+    "path": "/tag/%E8%BF%9B%E7%A8%8B/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "标签: 高性能",
+    "headers": [],
+    "path": "/tag/%E9%AB%98%E6%80%A7%E8%83%BD/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "标签: CPU",
+    "headers": [],
+    "path": "/tag/cpu/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "标签: GC",
     "headers": [],
     "path": "/tag/gc/",
     "pathLocale": "/",
     "extraFields": []
   },
   {
-    "title": "Socket 标签",
+    "title": "标签: Socket",
     "headers": [],
     "path": "/tag/socket/",
     "pathLocale": "/",
     "extraFields": []
   },
   {
-    "title": "网络编程 标签",
+    "title": "标签: 网络编程",
     "headers": [],
     "path": "/tag/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/",
     "pathLocale": "/",
     "extraFields": []
   },
   {
-    "title": "信号量 标签",
+    "title": "标签: 信号量",
     "headers": [],
     "path": "/tag/%E4%BF%A1%E5%8F%B7%E9%87%8F/",
     "pathLocale": "/",
     "extraFields": []
   },
   {
-    "title": "函数 标签",
+    "title": "标签: 函数",
     "headers": [],
     "path": "/tag/%E5%87%BD%E6%95%B0/",
     "pathLocale": "/",
     "extraFields": []
   },
   {
-    "title": "模块 标签",
+    "title": "标签: 模块",
     "headers": [],
     "path": "/tag/%E6%A8%A1%E5%9D%97/",
     "pathLocale": "/",
     "extraFields": []
   },
   {
-    "title": "生成器 标签",
+    "title": "标签: 生成器",
     "headers": [],
     "path": "/tag/%E7%94%9F%E6%88%90%E5%99%A8/",
     "pathLocale": "/",
     "extraFields": []
   },
   {
-    "title": "装饰器 标签",
+    "title": "标签: 装饰器",
     "headers": [],
     "path": "/tag/%E8%A3%85%E9%A5%B0%E5%99%A8/",
     "pathLocale": "/",
     "extraFields": []
   },
   {
-    "title": "迭代器 标签",
+    "title": "标签: 迭代器",
     "headers": [],
     "path": "/tag/%E8%BF%AD%E4%BB%A3%E5%99%A8/",
     "pathLocale": "/",
     "extraFields": []
   },
   {
-    "title": "Linux 标签",
+    "title": "标签: Linux",
     "headers": [],
     "path": "/tag/linux/",
     "pathLocale": "/",
     "extraFields": []
   },
   {
-    "title": "AD 标签",
+    "title": "标签: AD",
     "headers": [],
     "path": "/tag/ad/",
     "pathLocale": "/",
     "extraFields": []
   },
   {
-    "title": "认证 标签",
+    "title": "标签: 认证",
     "headers": [],
     "path": "/tag/%E8%AE%A4%E8%AF%81/",
     "pathLocale": "/",
     "extraFields": []
   },
   {
-    "title": "LDAP 标签",
+    "title": "标签: LDAP",
     "headers": [],
     "path": "/tag/ldap/",
     "pathLocale": "/",
     "extraFields": []
   },
   {
-    "title": "运维 标签",
+    "title": "标签: 运维",
     "headers": [],
     "path": "/tag/%E8%BF%90%E7%BB%B4/",
     "pathLocale": "/",
     "extraFields": []
   },
   {
-    "title": "NFS 标签",
+    "title": "标签: NFS",
     "headers": [],
     "path": "/tag/nfs/",
     "pathLocale": "/",
     "extraFields": []
   },
   {
-    "title": "SMB/CIFS 标签",
+    "title": "标签: SMB/CIFS",
     "headers": [],
     "path": "/tag/smbcifs/",
     "pathLocale": "/",
     "extraFields": []
   },
   {
-    "title": "SNMP 标签",
+    "title": "标签: SNMP",
     "headers": [],
     "path": "/tag/snmp/",
     "pathLocale": "/",
     "extraFields": []
   },
   {
-    "title": "UFS 标签",
+    "title": "标签: UFS",
     "headers": [],
     "path": "/tag/ufs/",
     "pathLocale": "/",
     "extraFields": []
   },
   {
-    "title": "UUS 标签",
+    "title": "标签: UUS",
     "headers": [],
     "path": "/tag/uus/",
     "pathLocale": "/",
     "extraFields": []
   },
   {
-    "title": "CentOS 标签",
+    "title": "标签: CentOS",
     "headers": [],
     "path": "/tag/centos/",
     "pathLocale": "/",
     "extraFields": []
   },
   {
-    "title": "包管理 标签",
+    "title": "标签: 包管理",
     "headers": [],
     "path": "/tag/%E5%8C%85%E7%AE%A1%E7%90%86/",
     "pathLocale": "/",
     "extraFields": []
   },
   {
-    "title": "shell 标签",
+    "title": "标签: shell",
     "headers": [],
     "path": "/tag/shell/",
     "pathLocale": "/",
     "extraFields": []
   },
   {
-    "title": "vim 标签",
+    "title": "标签: vim",
     "headers": [],
     "path": "/tag/vim/",
     "pathLocale": "/",
     "extraFields": []
   },
   {
-    "title": "命令 标签",
+    "title": "标签: 命令",
     "headers": [],
     "path": "/tag/%E5%91%BD%E4%BB%A4/",
     "pathLocale": "/",
     "extraFields": []
   },
   {
-    "title": "troubleshooting 标签",
+    "title": "标签: troubleshooting",
     "headers": [],
     "path": "/tag/troubleshooting/",
     "pathLocale": "/",
     "extraFields": []
   },
   {
-    "title": "gdb 标签",
+    "title": "标签: gdb",
     "headers": [],
     "path": "/tag/gdb/",
     "pathLocale": "/",
     "extraFields": []
   },
   {
-    "title": "操作系统 标签",
+    "title": "标签: 操作系统",
     "headers": [],
     "path": "/tag/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/",
     "pathLocale": "/",
     "extraFields": []
   },
   {
-    "title": "curl 标签",
+    "title": "标签: curl",
     "headers": [],
     "path": "/tag/curl/",
     "pathLocale": "/",
     "extraFields": []
   },
   {
-    "title": "网络 标签",
+    "title": "标签: 网络",
     "headers": [],
     "path": "/tag/%E7%BD%91%E7%BB%9C/",
     "pathLocale": "/",
     "extraFields": []
   },
   {
-    "title": "网络通信 标签",
+    "title": "标签: 网络通信",
     "headers": [],
     "path": "/tag/%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1/",
     "pathLocale": "/",
     "extraFields": []
   },
   {
-    "title": "PVE 标签",
+    "title": "标签: PVE",
     "headers": [],
     "path": "/tag/pve/",
     "pathLocale": "/",
     "extraFields": []
   },
   {
-    "title": "VMware 标签",
+    "title": "标签: VMware",
     "headers": [],
     "path": "/tag/vmware/",
     "pathLocale": "/",
     "extraFields": []
   },
   {
-    "title": "WEB框架 标签",
+    "title": "标签: WEB框架",
     "headers": [],
     "path": "/tag/web%E6%A1%86%E6%9E%B6/",
     "pathLocale": "/",
     "extraFields": []
   },
   {
-    "title": "FastAPI 标签",
-    "headers": [],
-    "path": "/tag/fastapi/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "Tornado 标签",
+    "title": "标签: Tornado",
     "headers": [],
     "path": "/tag/tornado/",
     "pathLocale": "/",
     "extraFields": []
   },
   {
-    "title": "状态管理 标签",
+    "title": "标签: FastAPI",
+    "headers": [],
+    "path": "/tag/fastapi/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "标签: 状态管理",
     "headers": [],
     "path": "/tag/%E7%8A%B6%E6%80%81%E7%AE%A1%E7%90%86/",
     "pathLocale": "/",
     "extraFields": []
   },
   {
-    "title": "Web框架 标签",
+    "title": "标签: Web框架",
     "headers": [],
     "path": "/tag/web%E6%A1%86%E6%9E%B6/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "文章",
+    "headers": [],
+    "path": "/article/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "星标",
+    "headers": [],
+    "path": "/star/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "时间轴",
+    "headers": [],
+    "path": "/timeline/",
     "pathLocale": "/",
     "extraFields": []
   }

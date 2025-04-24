@@ -1,40 +1,40 @@
 <template><div><p>配置 <strong>Linux</strong> （<em>内网环境</em>），通过 <strong>Windows</strong> （<em>可访问外网环境</em>），上网的网络代理</p>
 <!-- more -->
-<h1 id="网络代理" tabindex="-1"><a class="header-anchor" href="#网络代理" aria-hidden="true">#</a> 网络代理</h1>
+<h1 id="网络代理" tabindex="-1"><a class="header-anchor" href="#网络代理"><span>网络代理</span></a></h1>
 <blockquote>
 <p><strong>背景：</strong> 由于一些服务器处于安全考虑，只能通过内网访问，且服务器不能够请求外网，此时需要 <code v-pre>Windows</code> 代理让 <strong>Linux 联网</strong> 来安装应用</p>
 </blockquote>
-<h3 id="_1-privoxy" tabindex="-1"><a class="header-anchor" href="#_1-privoxy" aria-hidden="true">#</a> 1. privoxy</h3>
-<p><strong>Windows</strong> 上先安装代理工具 <a href="https://www.jianshu.com/p/42a90cf33095" target="_blank" rel="noopener noreferrer">privoxy<ExternalLinkIcon/></a></p>
-<p><a href="http://www.privoxy.org/" target="_blank" rel="noopener noreferrer">下载地址<ExternalLinkIcon/></a></p>
+<h3 id="_1-privoxy" tabindex="-1"><a class="header-anchor" href="#_1-privoxy"><span>1. privoxy</span></a></h3>
+<p><strong>Windows</strong> 上先安装代理工具 <a href="https://www.jianshu.com/p/42a90cf33095" target="_blank" rel="noopener noreferrer">privoxy</a></p>
+<p><a href="http://www.privoxy.org/" target="_blank" rel="noopener noreferrer">下载地址</a></p>
 <p>安装软件后，配置启动端口：修改安装目录下的 <code v-pre>config.txt</code> 文件中的 <code v-pre>listen-address</code> （<strong>记得备份</strong>）：</p>
 <img src="@source/tool/Other/img/privoxy配置项.jpg">
 <br/>
 <p>点击 <code v-pre>privoxy.exe</code> 启动代理服务器</p>
-<h3 id="_2-在-linux-中配置代理" tabindex="-1"><a class="header-anchor" href="#_2-在-linux-中配置代理" aria-hidden="true">#</a> 2. 在 linux 中配置代理</h3>
+<h3 id="_2-在-linux-中配置代理" tabindex="-1"><a class="header-anchor" href="#_2-在-linux-中配置代理"><span>2. 在 linux 中配置代理</span></a></h3>
 <ul>
 <li>
 <p>修改 <code v-pre>/etc/profile</code> 文件：</p>
-<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code><span class="token assign-left variable">http_proxy</span><span class="token operator">=</span>http://127.0.0.1:18088/
-<span class="token assign-left variable">https_proxy</span><span class="token operator">=</span>http://127.0.0.1:18088/
-<span class="token builtin class-name">export</span> http_proxy https_proxy
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></li>
+<div class="language-shell line-numbers-mode" data-highlighter="shiki" data-ext="shell" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">http_proxy</span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2">=</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">http://127.0.0.1:18088/</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">https_proxy</span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2">=</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">http://127.0.0.1:18088/</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">export</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75"> http_proxy</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75"> https_proxy</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></li>
 <li>
 <p>执行如下命令使配置生效：</p>
-<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code><span class="token builtin class-name">source</span> /etc/profile
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div></li>
+<div class="language-shell line-numbers-mode" data-highlighter="shiki" data-ext="shell" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#0184BC;--shiki-dark:#56B6C2">source</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> /etc/profile</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div></li>
 <li>
 <p>或是通过命令 <strong>一次性</strong> 的设置、取消代理:</p>
-<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code><span class="token comment"># 直接执行命令</span>
-<span class="token builtin class-name">export</span> <span class="token assign-left variable">http_proxy</span><span class="token operator">=</span>http://127.0.0.1:18088/
-<span class="token builtin class-name">export</span> <span class="token assign-left variable">https_proxy</span><span class="token operator">=</span>http://127.0.0.1:18088/
-
-<span class="token comment"># 取消代理</span>
-<span class="token builtin class-name">unset</span> http_proxy
-<span class="token builtin class-name">unset</span> https_proxy
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></li>
+<div class="language-shell line-numbers-mode" data-highlighter="shiki" data-ext="shell" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># 直接执行命令</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">export</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75"> http_proxy</span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2">=</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">http</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">://</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">127</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">0</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">0</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">1</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">:</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">18088</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">/</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">export</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75"> https_proxy</span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2">=</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">http</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">://</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">127</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">0</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">0</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">1</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">:</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">18088</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">/</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># 取消代理</span></span>
+<span class="line"><span style="--shiki-light:#0184BC;--shiki-dark:#56B6C2">unset</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> http_proxy</span></span>
+<span class="line"><span style="--shiki-light:#0184BC;--shiki-dark:#56B6C2">unset</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> https_proxy</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></li>
 </ul>
-<h3 id="_3-配置映射" tabindex="-1"><a class="header-anchor" href="#_3-配置映射" aria-hidden="true">#</a> 3. 配置映射</h3>
+<h3 id="_3-配置映射" tabindex="-1"><a class="header-anchor" href="#_3-配置映射"><span>3. 配置映射</span></a></h3>
 <p><strong>通过 SecureCRT 配置 Linux 到本机的映射</strong></p>
 <ul>
 <li>
@@ -50,30 +50,30 @@
 </li>
 </ul>
 <p>最后测试:</p>
-<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code><span class="token function">curl</span> www.baidu.com
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><h3 id="_4-快捷配置" tabindex="-1"><a class="header-anchor" href="#_4-快捷配置" aria-hidden="true">#</a> 4. 快捷配置</h3>
-<p><strong>Windows</strong> 下，下载 <a href="https://www.youngzsoft.net/ccproxy/" target="_blank" rel="noopener noreferrer">CCProxy<ExternalLinkIcon/></a></p>
+<div class="language-shell line-numbers-mode" data-highlighter="shiki" data-ext="shell" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">curl</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> www.baidu.com</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div><h3 id="_4-快捷配置" tabindex="-1"><a class="header-anchor" href="#_4-快捷配置"><span>4. 快捷配置</span></a></h3>
+<p><strong>Windows</strong> 下，下载 <a href="https://www.youngzsoft.net/ccproxy/" target="_blank" rel="noopener noreferrer">CCProxy</a></p>
 <p>启动软件并直接执行如下命令即可</p>
-<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code><span class="token builtin class-name">export</span> <span class="token assign-left variable">all_proxy</span><span class="token operator">=</span>http://172.16.70.104:808
-
-<span class="token comment"># 或 proxy_setup.sh</span>
-<span class="token comment">#!/usr/bin/env bash</span>
-<span class="token builtin class-name">export</span> <span class="token assign-left variable">PROXY_IP</span><span class="token operator">=</span><span class="token string">"172.16.70.104"</span>
-<span class="token builtin class-name">export</span> <span class="token assign-left variable">PROXY_PORT</span><span class="token operator">=</span><span class="token string">"808"</span>
-
-<span class="token builtin class-name">export</span> <span class="token assign-left variable">http_proxy</span><span class="token operator">=</span>http://<span class="token variable">${PROXY_IP}</span><span class="token builtin class-name">:</span><span class="token variable">${PROXY_PORT}</span>
-<span class="token builtin class-name">export</span> <span class="token assign-left variable">https_proxy</span><span class="token operator">=</span>https://<span class="token variable">${PROXY_IP}</span><span class="token builtin class-name">:</span><span class="token variable">${PROXY_PORT}</span>
-
-<span class="token comment"># 配置 git 代理</span>
-<span class="token function">git</span> config <span class="token parameter variable">--global</span> http.proxy  http://<span class="token variable">${PROXY_IP}</span><span class="token builtin class-name">:</span><span class="token variable">${PROXY_PORT}</span>
-<span class="token function">git</span> config <span class="token parameter variable">--global</span> https.proxy  https://<span class="token variable">${PROXY_IP}</span><span class="token builtin class-name">:</span><span class="token variable">${PROXY_PORT}</span>
-
-<span class="token comment"># 配置 npm 代理</span>
-<span class="token function">npm</span> config <span class="token builtin class-name">set</span> proxy http://<span class="token variable">${PROXY_IP}</span><span class="token builtin class-name">:</span><span class="token variable">${PROXY_PORT}</span>
-<span class="token function">npm</span> config <span class="token builtin class-name">set</span> https-proxy https://<span class="token variable">${PROXY_IP}</span><span class="token builtin class-name">:</span><span class="token variable">${PROXY_PORT}</span>
-
-<span class="token comment"># 配置 pypi 代理</span>
-pip search tornado <span class="token parameter variable">--proxy</span><span class="token operator">=</span><span class="token string">"http://172.16.70.104:808"</span>
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></div></template>
+<div class="language-shell line-numbers-mode" data-highlighter="shiki" data-ext="shell" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">export</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75"> all_proxy</span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2">=</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">http</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">://</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">172</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">16</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">70</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">104</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">:</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">808</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># 或 proxy_setup.sh</span></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">#!/usr/bin/env bash</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">export</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75"> PROXY_IP</span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2">=</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">"172.16.70.104"</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">export</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75"> PROXY_PORT</span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2">=</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">"808"</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">export</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75"> http_proxy</span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2">=</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">http</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">://</span><span style="--shiki-light:#E45649;--shiki-dark:#ABB2BF">${</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">PROXY_IP</span><span style="--shiki-light:#E45649;--shiki-dark:#ABB2BF">}</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">:</span><span style="--shiki-light:#E45649;--shiki-dark:#ABB2BF">${</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">PROXY_PORT</span><span style="--shiki-light:#E45649;--shiki-dark:#ABB2BF">}</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">export</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75"> https_proxy</span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2">=</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">https</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">://</span><span style="--shiki-light:#E45649;--shiki-dark:#ABB2BF">${</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">PROXY_IP</span><span style="--shiki-light:#E45649;--shiki-dark:#ABB2BF">}</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">:</span><span style="--shiki-light:#E45649;--shiki-dark:#ABB2BF">${</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">PROXY_PORT</span><span style="--shiki-light:#E45649;--shiki-dark:#ABB2BF">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># 配置 git 代理</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">git</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> config</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> --global</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> http.proxy</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">  http://</span><span style="--shiki-light:#E45649;--shiki-dark:#ABB2BF">${</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">PROXY_IP</span><span style="--shiki-light:#E45649;--shiki-dark:#ABB2BF">}</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">:</span><span style="--shiki-light:#E45649;--shiki-dark:#ABB2BF">${</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">PROXY_PORT</span><span style="--shiki-light:#E45649;--shiki-dark:#ABB2BF">}</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">git</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> config</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> --global</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> https.proxy</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">  https://</span><span style="--shiki-light:#E45649;--shiki-dark:#ABB2BF">${</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">PROXY_IP</span><span style="--shiki-light:#E45649;--shiki-dark:#ABB2BF">}</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">:</span><span style="--shiki-light:#E45649;--shiki-dark:#ABB2BF">${</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">PROXY_PORT</span><span style="--shiki-light:#E45649;--shiki-dark:#ABB2BF">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># 配置 npm 代理</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">npm</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> config</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> set</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> proxy</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> http://</span><span style="--shiki-light:#E45649;--shiki-dark:#ABB2BF">${</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">PROXY_IP</span><span style="--shiki-light:#E45649;--shiki-dark:#ABB2BF">}</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">:</span><span style="--shiki-light:#E45649;--shiki-dark:#ABB2BF">${</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">PROXY_PORT</span><span style="--shiki-light:#E45649;--shiki-dark:#ABB2BF">}</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">npm</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> config</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> set</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> https-proxy</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> https://</span><span style="--shiki-light:#E45649;--shiki-dark:#ABB2BF">${</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">PROXY_IP</span><span style="--shiki-light:#E45649;--shiki-dark:#ABB2BF">}</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">:</span><span style="--shiki-light:#E45649;--shiki-dark:#ABB2BF">${</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">PROXY_PORT</span><span style="--shiki-light:#E45649;--shiki-dark:#ABB2BF">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># 配置 pypi 代理</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">pip</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> search</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> tornado</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> --proxy=</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">"http://172.16.70.104:808"</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></div></template>
 
 

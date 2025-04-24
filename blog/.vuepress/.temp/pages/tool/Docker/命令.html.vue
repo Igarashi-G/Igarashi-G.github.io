@@ -1,204 +1,204 @@
 <template><div><p><strong>Docker</strong> 常用命令大全</p>
 <!-- more -->
-<h1 id="docker-命令" tabindex="-1"><a class="header-anchor" href="#docker-命令" aria-hidden="true">#</a> Docker 命令</h1>
-<p>可以在官网找到 <a href="https://docs.docker.com/reference/" target="_blank" rel="noopener noreferrer">所有命令<ExternalLinkIcon/></a></p>
+<h1 id="docker-命令" tabindex="-1"><a class="header-anchor" href="#docker-命令"><span>Docker 命令</span></a></h1>
+<p>可以在官网找到 <a href="https://docs.docker.com/reference/" target="_blank" rel="noopener noreferrer">所有命令</a></p>
 <blockquote>
 <p>可以使用 <kbd>Ctrl</kbd> + <kbd>F</kbd> 在页面中快速搜索</p>
 </blockquote>
-<h3 id="docker-version" tabindex="-1"><a class="header-anchor" href="#docker-version" aria-hidden="true">#</a> <code v-pre>docker version</code></h3>
+<h3 id="docker-version" tabindex="-1"><a class="header-anchor" href="#docker-version"><span><code v-pre>docker version</code></span></a></h3>
 <p>查看 Docker 版本</p>
-<details class="custom-container details"><summary>示例</summary>
-<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code>Client: Docker Engine - Community
- Cloud integration: <span class="token number">1.0</span>.7
- Version:           <span class="token number">20.10</span>.2
- API version:       <span class="token number">1.41</span>
- Go version:        go1.13.15
- Git commit:        2291f61
- Built:             Mon Dec <span class="token number">28</span> <span class="token number">16</span>:14:16 <span class="token number">2020</span>
- OS/Arch:           windows/amd64
- Context:           default
- Experimental:      <span class="token boolean">true</span>
-
-Server: Docker Engine - Community
- Engine:
-  Version:          <span class="token number">20.10</span>.2
-  API version:      <span class="token number">1.41</span> <span class="token punctuation">(</span>minimum version <span class="token number">1.12</span><span class="token punctuation">)</span>
-  Go version:       go1.13.15
-  Git commit:       8891c58
-  Built:            Mon Dec <span class="token number">28</span> <span class="token number">16</span>:15:28 <span class="token number">2020</span>
-  OS/Arch:          linux/amd64
-  Experimental:     <span class="token boolean">false</span>
- containerd:
-  Version:          <span class="token number">1.4</span>.3
-  GitCommit:        269548fa27e0089a8b8278fc4fc781d7f65a939b
- runc:
-  Version:          <span class="token number">1.0</span>.0-rc92
-  GitCommit:        ff819c7e9184c13b7c2607fe6c30ae19403a7aff
- docker-init:
-  Version:          <span class="token number">0.19</span>.0
-  GitCommit:        de40ad0
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></details>
-<h3 id="docker-info" tabindex="-1"><a class="header-anchor" href="#docker-info" aria-hidden="true">#</a> <code v-pre>docker info</code></h3>
+<details class="hint-container details"><summary>示例</summary>
+<div class="language-shell line-numbers-mode" data-highlighter="shiki" data-ext="shell" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">Client:</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> Docker</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> Engine</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> -</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> Community</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF"> Cloud</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> integration:</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> 1.0.7</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF"> Version:</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">           20.10.2</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF"> API</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> version:</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">       1.41</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF"> Go</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> version:</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">        go1.13.15</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF"> Git</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> commit:</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">        2291f61</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF"> Built:</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">             Mon</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> Dec</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> 28</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> 16:14:16</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> 2020</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF"> OS/Arch:</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">           windows/amd64</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF"> Context:</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">           default</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF"> Experimental:</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">      true</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">Server:</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> Docker</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> Engine</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> -</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> Community</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF"> Engine:</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">  Version:</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">          20.10.2</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">  API</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> version:</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">      1.41</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> (minimum </span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">version</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> 1.12</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">)</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">  Go</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> version:</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">       go1.13.15</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">  Git</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> commit:</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">       8891c58</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">  Built:</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">            Mon</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> Dec</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> 28</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> 16:15:28</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> 2020</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">  OS/Arch:</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">          linux/amd64</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">  Experimental:</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">     false</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF"> containerd:</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">  Version:</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">          1.4.3</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">  GitCommit:</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">        269548fa27e0089a8b8278fc4fc781d7f65a939b</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF"> runc:</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">  Version:</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">          1.0.0-rc92</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">  GitCommit:</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">        ff819c7e9184c13b7c2607fe6c30ae19403a7aff</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF"> docker-init:</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">  Version:</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">          0.19.0</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">  GitCommit:</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">        de40ad0</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></details>
+<h3 id="docker-info" tabindex="-1"><a class="header-anchor" href="#docker-info"><span><code v-pre>docker info</code></span></a></h3>
 <p>查看 Docker 的系统信息</p>
-<details class="custom-container details"><summary>示例</summary>
-<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code>Client:
- Context:    default
- Debug Mode: <span class="token boolean">false</span>
- Plugins:
-  app: Docker App <span class="token punctuation">(</span>Docker Inc., v0.9.1-beta3<span class="token punctuation">)</span>
-  buildx: Build with BuildKit <span class="token punctuation">(</span>Docker Inc., v0.5.1-docker<span class="token punctuation">)</span>
-  scan: Docker Scan <span class="token punctuation">(</span>Docker Inc., v0.5.0<span class="token punctuation">)</span>
-
-Server:
- Containers: <span class="token number">1</span>
-  Running: <span class="token number">1</span>
-  Paused: <span class="token number">0</span>
-  Stopped: <span class="token number">0</span>
- Images: <span class="token number">1</span>
- Server Version: <span class="token number">20.10</span>.2
- Storage Driver: overlay2
-  Backing Filesystem: extfs
-  Supports d_type: <span class="token boolean">true</span>
-  Native Overlay Diff: <span class="token boolean">true</span>
- Logging Driver: json-file
- Cgroup Driver: cgroupfs
- Cgroup Version: <span class="token number">1</span>
- Plugins:
-  Volume: <span class="token builtin class-name">local</span>
-  Network: bridge <span class="token function">host</span> ipvlan macvlan null overlay
-  Log: awslogs fluentd gcplogs gelf journald json-file <span class="token builtin class-name">local</span> logentries splunk syslog
- Swarm: inactive
- Runtimes: runc io.containerd.runc.v2 io.containerd.runtime.v1.linux
- Default Runtime: runc
- Init Binary: docker-init
- containerd version: 269548fa27e0089a8b8278fc4fc781d7f65a939b
- runc version: ff819c7e9184c13b7c2607fe6c30ae19403a7aff
- init version: de40ad0
- Security Options:
-  seccomp
-   Profile: default
- Kernel Version: <span class="token number">5.4</span>.72-microsoft-standard-WSL2
- Operating System: Docker Desktop
- OSType: linux
- Architecture: x86_64
- CPUs: <span class="token number">8</span>
- Total Memory: <span class="token number">6</span>.126GiB
- Name: docker-desktop
- ID: GEVB:2QBS:GAWG:ZFNQ:7ITG:VHFB:MP2G:CKI4:7RTO:2E2M:H6SH:KQKO
- Docker Root Dir: /var/lib/docker
- Debug Mode: <span class="token boolean">false</span>
- Registry: https://index.docker.io/v1/
- Labels:
- Experimental: <span class="token boolean">false</span>
- Insecure Registries:
-  <span class="token number">127.0</span>.0.0/8
- Live Restore Enabled: <span class="token boolean">false</span>
-
-WARNING: No blkio weight support
-WARNING: No blkio weight_device support
-WARNING: No blkio throttle.read_bps_device support
-WARNING: No blkio throttle.write_bps_device support
-WARNING: No blkio throttle.read_iops_device support
-WARNING: No blkio throttle.write_iops_device support
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></details>
-<h3 id="docker-命令-help" tabindex="-1"><a class="header-anchor" href="#docker-命令-help" aria-hidden="true">#</a> <code v-pre>docker &lt;命令&gt; --help</code></h3>
+<details class="hint-container details"><summary>示例</summary>
+<div class="language-shell line-numbers-mode" data-highlighter="shiki" data-ext="shell" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">Client:</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF"> Context:</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">    default</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF"> Debug</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> Mode:</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> false</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF"> Plugins:</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">  app:</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> Docker</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> App</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> (Docker </span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">Inc.,</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> v0.9.1-beta3</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">)</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">  buildx:</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> Build</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> with</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> BuildKit</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> (Docker </span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">Inc.,</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> v0.5.1-docker</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">)</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">  scan:</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> Docker</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> Scan</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> (Docker </span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">Inc.,</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> v0.5.0</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">)</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">Server:</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF"> Containers:</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> 1</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">  Running:</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> 1</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">  Paused:</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> 0</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">  Stopped:</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> 0</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF"> Images:</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> 1</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF"> Server</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> Version:</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> 20.10.2</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF"> Storage</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> Driver:</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> overlay2</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">  Backing</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> Filesystem:</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> extfs</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">  Supports</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> d_type:</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> true</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">  Native</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> Overlay</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> Diff:</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> true</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF"> Logging</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> Driver:</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> json-file</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF"> Cgroup</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> Driver:</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> cgroupfs</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF"> Cgroup</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> Version:</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> 1</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF"> Plugins:</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">  Volume:</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> local</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">  Network:</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> bridge</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> host</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> ipvlan</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> macvlan</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> null</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> overlay</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">  Log:</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> awslogs</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> fluentd</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> gcplogs</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> gelf</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> journald</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> json-file</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> local</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> logentries</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> splunk</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> syslog</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF"> Swarm:</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> inactive</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF"> Runtimes:</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> runc</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> io.containerd.runc.v2</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> io.containerd.runtime.v1.linux</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF"> Default</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> Runtime:</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> runc</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF"> Init</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> Binary:</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> docker-init</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF"> containerd</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> version:</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> 269548fa27e0089a8b8278fc4fc781d7f65a939b</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF"> runc</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> version:</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> ff819c7e9184c13b7c2607fe6c30ae19403a7aff</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF"> init</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> version:</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> de40ad0</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF"> Security</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> Options:</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">  seccomp</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">   Profile:</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> default</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF"> Kernel</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> Version:</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> 5.4.72-microsoft-standard-WSL2</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF"> Operating</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> System:</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> Docker</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> Desktop</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF"> OSType:</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> linux</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF"> Architecture:</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> x86_64</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF"> CPUs:</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> 8</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF"> Total</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> Memory:</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> 6.126GiB</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF"> Name:</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> docker-desktop</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF"> ID:</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> GEVB:2QBS:GAWG:ZFNQ:7ITG:VHFB:MP2G:CKI4:7RTO:2E2M:H6SH:KQKO</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF"> Docker</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> Root</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> Dir:</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> /var/lib/docker</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF"> Debug</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> Mode:</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> false</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF"> Registry:</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> https://index.docker.io/v1/</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF"> Labels:</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF"> Experimental:</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> false</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF"> Insecure</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> Registries:</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">  127.0.0.0/8</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF"> Live</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> Restore</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> Enabled:</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> false</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">WARNING:</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> No</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> blkio</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> weight</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> support</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">WARNING:</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> No</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> blkio</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> weight_device</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> support</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">WARNING:</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> No</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> blkio</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> throttle.read_bps_device</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> support</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">WARNING:</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> No</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> blkio</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> throttle.write_bps_device</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> support</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">WARNING:</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> No</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> blkio</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> throttle.read_iops_device</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> support</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">WARNING:</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> No</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> blkio</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> throttle.write_iops_device</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> support</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></details>
+<h3 id="docker-命令-help" tabindex="-1"><a class="header-anchor" href="#docker-命令-help"><span><code v-pre>docker &lt;命令&gt; --help</code></span></a></h3>
 <p>查看 Docker 命令帮助</p>
-<details class="custom-container details"><summary>示例</summary>
-<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code><span class="token function">docker</span> <span class="token parameter variable">--help</span>
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><div class="language-text ext-text line-numbers-mode"><pre v-pre class="language-text"><code>Usage:  docker [OPTIONS] COMMAND
-
-A self-sufficient runtime for containers
-
-Options:
-      --config string      Location of client config files (default
-                           "C:\\Users\\Yue_plus\\.docker")
-  -c, --context string     Name of the context to use to connect to the
-                           daemon (overrides DOCKER_HOST env var and
-                           default context set with "docker context use")
-  -D, --debug              Enable debug mode
-  -H, --host list          Daemon socket(s) to connect to
-  -l, --log-level string   Set the logging level
-                           ("debug"|"info"|"warn"|"error"|"fatal")
-                           (default "info")
-      --tls                Use TLS; implied by --tlsverify
-      --tlscacert string   Trust certs signed only by this CA (default
-                           "C:\\Users\\Yue_plus\\.docker\\ca.pem")
-      --tlscert string     Path to TLS certificate file (default
-                           "C:\\Users\\Yue_plus\\.docker\\cert.pem")
-      --tlskey string      Path to TLS key file (default
-                           "C:\\Users\\Yue_plus\\.docker\\key.pem")
-      --tlsverify          Use TLS and verify the remote
-  -v, --version            Print version information and quit
-
-Management Commands:
-  app*        Docker App (Docker Inc., v0.9.1-beta3)
-  builder     Manage builds
-  buildx*     Build with BuildKit (Docker Inc., v0.5.1-docker)
-  config      Manage Docker configs
-  container   Manage containers
-  context     Manage contexts
-  image       Manage images
-  manifest    Manage Docker image manifests and manifest lists
-  network     Manage networks
-  node        Manage Swarm nodes
-  plugin      Manage plugins
-  scan*       Docker Scan (Docker Inc., v0.5.0)
-  secret      Manage Docker secrets
-  service     Manage services
-  stack       Manage Docker stacks
-  swarm       Manage Swarm
-  system      Manage Docker
-  trust       Manage trust on Docker images
-  volume      Manage volumes
-
-Commands:
-  attach      Attach local standard input, output, and error streams to a running container
-  build       Build an image from a Dockerfile
-  commit      Create a new image from a container's changes
-  cp          Copy files/folders between a container and the local filesystem
-  create      Create a new container
-  diff        Inspect changes to files or directories on a container's filesystem
-  events      Get real time events from the server
-  exec        Run a command in a running container
-  export      Export a container's filesystem as a tar archive
-  history     Show the history of an image
-  images      List images
-  import      Import the contents from a tarball to create a filesystem image
-  info        Display system-wide information
-  inspect     Return low-level information on Docker objects
-  kill        Kill one or more running containers
-  load        Load an image from a tar archive or STDIN
-  login       Log in to a Docker registry
-  logout      Log out from a Docker registry
-  logs        Fetch the logs of a container
-  pause       Pause all processes within one or more containers
-  port        List port mappings or a specific mapping for the container
-  ps          List containers
-  pull        Pull an image or a repository from a registry
-  push        Push an image or a repository to a registry
-  rename      Rename a container
-  restart     Restart one or more containers
-  rm          Remove one or more containers
-  rmi         Remove one or more images
-  run         Run a command in a new container
-  save        Save one or more images to a tar archive (streamed to STDOUT by default)
-  search      Search the Docker Hub for images
-  start       Start one or more stopped containers
-  stats       Display a live stream of container(s) resource usage statistics
-  stop        Stop one or more running containers
-  tag         Create a tag TARGET_IMAGE that refers to SOURCE_IMAGE
-  top         Display the running processes of a container
-  unpause     Unpause all processes within one or more containers
-  update      Update configuration of one or more containers
-  version     Show the Docker version information
-  wait        Block until one or more containers stop, then print their exit codes
-
-Run 'docker COMMAND --help' for more information on a command.
-
-To get more help with docker, check out our guides at https://docs.docker.com/go/guides/
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></details>
-<h3 id="docker-search" tabindex="-1"><a class="header-anchor" href="#docker-search" aria-hidden="true">#</a> <code v-pre>docker search</code></h3>
-<p>在 <a href="https://hub.docker.com/" target="_blank" rel="noopener noreferrer">Docker Hub<ExternalLinkIcon/></a> 上搜索镜像。</p>
+<details class="hint-container details"><summary>示例</summary>
+<div class="language-shell line-numbers-mode" data-highlighter="shiki" data-ext="shell" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">docker</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> --help</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div><div class="language-text line-numbers-mode" data-highlighter="shiki" data-ext="text" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span>Usage:  docker [OPTIONS] COMMAND</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>A self-sufficient runtime for containers</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>Options:</span></span>
+<span class="line"><span>      --config string      Location of client config files (default</span></span>
+<span class="line"><span>                           "C:\\Users\\Yue_plus\\.docker")</span></span>
+<span class="line"><span>  -c, --context string     Name of the context to use to connect to the</span></span>
+<span class="line"><span>                           daemon (overrides DOCKER_HOST env var and</span></span>
+<span class="line"><span>                           default context set with "docker context use")</span></span>
+<span class="line"><span>  -D, --debug              Enable debug mode</span></span>
+<span class="line"><span>  -H, --host list          Daemon socket(s) to connect to</span></span>
+<span class="line"><span>  -l, --log-level string   Set the logging level</span></span>
+<span class="line"><span>                           ("debug"|"info"|"warn"|"error"|"fatal")</span></span>
+<span class="line"><span>                           (default "info")</span></span>
+<span class="line"><span>      --tls                Use TLS; implied by --tlsverify</span></span>
+<span class="line"><span>      --tlscacert string   Trust certs signed only by this CA (default</span></span>
+<span class="line"><span>                           "C:\\Users\\Yue_plus\\.docker\\ca.pem")</span></span>
+<span class="line"><span>      --tlscert string     Path to TLS certificate file (default</span></span>
+<span class="line"><span>                           "C:\\Users\\Yue_plus\\.docker\\cert.pem")</span></span>
+<span class="line"><span>      --tlskey string      Path to TLS key file (default</span></span>
+<span class="line"><span>                           "C:\\Users\\Yue_plus\\.docker\\key.pem")</span></span>
+<span class="line"><span>      --tlsverify          Use TLS and verify the remote</span></span>
+<span class="line"><span>  -v, --version            Print version information and quit</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>Management Commands:</span></span>
+<span class="line"><span>  app*        Docker App (Docker Inc., v0.9.1-beta3)</span></span>
+<span class="line"><span>  builder     Manage builds</span></span>
+<span class="line"><span>  buildx*     Build with BuildKit (Docker Inc., v0.5.1-docker)</span></span>
+<span class="line"><span>  config      Manage Docker configs</span></span>
+<span class="line"><span>  container   Manage containers</span></span>
+<span class="line"><span>  context     Manage contexts</span></span>
+<span class="line"><span>  image       Manage images</span></span>
+<span class="line"><span>  manifest    Manage Docker image manifests and manifest lists</span></span>
+<span class="line"><span>  network     Manage networks</span></span>
+<span class="line"><span>  node        Manage Swarm nodes</span></span>
+<span class="line"><span>  plugin      Manage plugins</span></span>
+<span class="line"><span>  scan*       Docker Scan (Docker Inc., v0.5.0)</span></span>
+<span class="line"><span>  secret      Manage Docker secrets</span></span>
+<span class="line"><span>  service     Manage services</span></span>
+<span class="line"><span>  stack       Manage Docker stacks</span></span>
+<span class="line"><span>  swarm       Manage Swarm</span></span>
+<span class="line"><span>  system      Manage Docker</span></span>
+<span class="line"><span>  trust       Manage trust on Docker images</span></span>
+<span class="line"><span>  volume      Manage volumes</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>Commands:</span></span>
+<span class="line"><span>  attach      Attach local standard input, output, and error streams to a running container</span></span>
+<span class="line"><span>  build       Build an image from a Dockerfile</span></span>
+<span class="line"><span>  commit      Create a new image from a container's changes</span></span>
+<span class="line"><span>  cp          Copy files/folders between a container and the local filesystem</span></span>
+<span class="line"><span>  create      Create a new container</span></span>
+<span class="line"><span>  diff        Inspect changes to files or directories on a container's filesystem</span></span>
+<span class="line"><span>  events      Get real time events from the server</span></span>
+<span class="line"><span>  exec        Run a command in a running container</span></span>
+<span class="line"><span>  export      Export a container's filesystem as a tar archive</span></span>
+<span class="line"><span>  history     Show the history of an image</span></span>
+<span class="line"><span>  images      List images</span></span>
+<span class="line"><span>  import      Import the contents from a tarball to create a filesystem image</span></span>
+<span class="line"><span>  info        Display system-wide information</span></span>
+<span class="line"><span>  inspect     Return low-level information on Docker objects</span></span>
+<span class="line"><span>  kill        Kill one or more running containers</span></span>
+<span class="line"><span>  load        Load an image from a tar archive or STDIN</span></span>
+<span class="line"><span>  login       Log in to a Docker registry</span></span>
+<span class="line"><span>  logout      Log out from a Docker registry</span></span>
+<span class="line"><span>  logs        Fetch the logs of a container</span></span>
+<span class="line"><span>  pause       Pause all processes within one or more containers</span></span>
+<span class="line"><span>  port        List port mappings or a specific mapping for the container</span></span>
+<span class="line"><span>  ps          List containers</span></span>
+<span class="line"><span>  pull        Pull an image or a repository from a registry</span></span>
+<span class="line"><span>  push        Push an image or a repository to a registry</span></span>
+<span class="line"><span>  rename      Rename a container</span></span>
+<span class="line"><span>  restart     Restart one or more containers</span></span>
+<span class="line"><span>  rm          Remove one or more containers</span></span>
+<span class="line"><span>  rmi         Remove one or more images</span></span>
+<span class="line"><span>  run         Run a command in a new container</span></span>
+<span class="line"><span>  save        Save one or more images to a tar archive (streamed to STDOUT by default)</span></span>
+<span class="line"><span>  search      Search the Docker Hub for images</span></span>
+<span class="line"><span>  start       Start one or more stopped containers</span></span>
+<span class="line"><span>  stats       Display a live stream of container(s) resource usage statistics</span></span>
+<span class="line"><span>  stop        Stop one or more running containers</span></span>
+<span class="line"><span>  tag         Create a tag TARGET_IMAGE that refers to SOURCE_IMAGE</span></span>
+<span class="line"><span>  top         Display the running processes of a container</span></span>
+<span class="line"><span>  unpause     Unpause all processes within one or more containers</span></span>
+<span class="line"><span>  update      Update configuration of one or more containers</span></span>
+<span class="line"><span>  version     Show the Docker version information</span></span>
+<span class="line"><span>  wait        Block until one or more containers stop, then print their exit codes</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>Run 'docker COMMAND --help' for more information on a command.</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>To get more help with docker, check out our guides at https://docs.docker.com/go/guides/</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></details>
+<h3 id="docker-search" tabindex="-1"><a class="header-anchor" href="#docker-search"><span><code v-pre>docker search</code></span></a></h3>
+<p>在 <a href="https://hub.docker.com/" target="_blank" rel="noopener noreferrer">Docker Hub</a> 上搜索镜像。</p>
 <p>语法：<code v-pre>docker search [OPTIONS] TERM</code></p>
 <p>选项：</p>
 <ul>
@@ -224,11 +224,11 @@ To get more help with docker, check out our guides at https://docs.docker.com/go
 </ul>
 </li>
 </ul>
-<h3 id="docker-pull" tabindex="-1"><a class="header-anchor" href="#docker-pull" aria-hidden="true">#</a> <code v-pre>docker pull</code></h3>
+<h3 id="docker-pull" tabindex="-1"><a class="header-anchor" href="#docker-pull"><span><code v-pre>docker pull</code></span></a></h3>
 <p>从仓库拉取镜像。</p>
 <p>语法：<code v-pre>docker pull [OPTIONS] NAME[:TAG|@DIGEST]</code></p>
 <blockquote>
-<p><a href="https://docs.docker.com/engine/reference/commandline/pull/" target="_blank" rel="noopener noreferrer">参考官网手册<ExternalLinkIcon/></a></p>
+<p><a href="https://docs.docker.com/engine/reference/commandline/pull/" target="_blank" rel="noopener noreferrer">参考官网手册</a></p>
 </blockquote>
 <p>选项：</p>
 <ul>
@@ -255,11 +255,11 @@ To get more help with docker, check out our guides at https://docs.docker.com/go
 </ul>
 </li>
 </ul>
-<h3 id="docker-run" tabindex="-1"><a class="header-anchor" href="#docker-run" aria-hidden="true">#</a> <code v-pre>docker run</code></h3>
+<h3 id="docker-run" tabindex="-1"><a class="header-anchor" href="#docker-run"><span><code v-pre>docker run</code></span></a></h3>
 <p>在新容器中运行命令。</p>
 <p>语法：<code v-pre>docker run [OPTIONS] IMAGE [COMMAND] [ARG...]</code></p>
 <blockquote>
-<p><a href="https://docs.docker.com/engine/reference/commandline/run/" target="_blank" rel="noopener noreferrer">参考官方手册<ExternalLinkIcon/></a></p>
+<p><a href="https://docs.docker.com/engine/reference/commandline/run/" target="_blank" rel="noopener noreferrer">参考官方手册</a></p>
 </blockquote>
 <p>选项：</p>
 <ul>
@@ -301,9 +301,9 @@ To get more help with docker, check out our guides at https://docs.docker.com/go
 <li>`--cgroupns
 <ul>
 <li><code v-pre>1.41+</code> 可用</li>
-<li>要使用的 C 组命名空间（主机|私有）&quot;主机&quot;：
-在 Docker 主机的 cgroup 命名空间&quot;私有&quot;中运行容器：
-在其自己的专用 cgroup 命名空间中运行容器'：
+<li>要使用的 C 组命名空间（主机|私有）&quot;主机&quot;：<br>
+在 Docker 主机的 cgroup 命名空间&quot;私有&quot;中运行容器：<br>
+在其自己的专用 cgroup 命名空间中运行容器'：<br>
 使用由守护程序上的默认 cgroupns 模式选项配置的 cgroup 命名空间（默认）</li>
 </ul>
 </li>
@@ -794,11 +794,11 @@ To get more help with docker, check out our guides at https://docs.docker.com/go
 </ul>
 </li>
 </ul>
-<h3 id="docker-exec" tabindex="-1"><a class="header-anchor" href="#docker-exec" aria-hidden="true">#</a> <code v-pre>docker exec</code></h3>
+<h3 id="docker-exec" tabindex="-1"><a class="header-anchor" href="#docker-exec"><span><code v-pre>docker exec</code></span></a></h3>
 <p>在正在运行的容器中执行命令。</p>
 <p>语法：<code v-pre>docker exec [OPTIONS] CONTAINER COMMAND [ARG...]</code></p>
 <blockquote>
-<p><a href="https://docs.docker.com/engine/reference/commandline/exec/" target="_blank" rel="noopener noreferrer">参考官网手册<ExternalLinkIcon/></a></p>
+<p><a href="https://docs.docker.com/engine/reference/commandline/exec/" target="_blank" rel="noopener noreferrer">参考官网手册</a></p>
 </blockquote>
 <p>选项：</p>
 <ul>
