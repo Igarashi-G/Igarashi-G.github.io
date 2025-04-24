@@ -1,11 +1,11 @@
-<template><div><h1 id="celery-task" tabindex="-1"><a class="header-anchor" href="#celery-task" aria-hidden="true">#</a> Celery Task</h1>
+<template><div><h1 id="celery-task" tabindex="-1"><a class="header-anchor" href="#celery-task"><span>Celery Task</span></a></h1>
 <p>Celery 是一个简单、灵活且可靠的，处理大量消息的分布式系统，</p>
 <ul>
 <li>专注于实时处理的异步任务队列</li>
 <li>支持任务调度等定时任务</li>
 </ul>
-<h2 id="一、celery-概述" tabindex="-1"><a class="header-anchor" href="#一、celery-概述" aria-hidden="true">#</a> 一、celery 概述：</h2>
-<h3 id="_1-celery-组成" tabindex="-1"><a class="header-anchor" href="#_1-celery-组成" aria-hidden="true">#</a> 1.celery 组成：</h3>
+<h2 id="一、celery-概述" tabindex="-1"><a class="header-anchor" href="#一、celery-概述"><span>一、celery 概述：</span></a></h2>
+<h3 id="_1-celery-组成" tabindex="-1"><a class="header-anchor" href="#_1-celery-组成"><span>1.celery 组成：</span></a></h3>
 <p>Celery 的架构由三部分组成，消息中间件（message broker），任务执行单元（worker）和任务执行结果存储（task result store）组成。</p>
 <ul>
 <li>消息中间件
@@ -25,9 +25,9 @@
 </li>
 </ul>
 <p>【另外】： Celery 还支持不同的并发和序列化的手段</p>
-<p>并发：Prefork, Eventlet, gevent, threads/single threaded
+<p>并发：Prefork, Eventlet, gevent, threads/single threaded<br>
 序列化：pickle, json, yaml, msgpack. zlib, bzip2 compression， Cryptographic message signing 等等</p>
-<h3 id="_2-使用场景" tabindex="-1"><a class="header-anchor" href="#_2-使用场景" aria-hidden="true">#</a> 2.使用场景：</h3>
+<h3 id="_2-使用场景" tabindex="-1"><a class="header-anchor" href="#_2-使用场景"><span>2.使用场景：</span></a></h3>
 <p>celery 是一个强大的 分布式任务队列的异步处理框架，它可以让任务的执行完全脱离主程序，甚至可以被分配到其他主机上运行。我们通常使用它来实现异步任务（async task）和定时任务（crontab)。</p>
 <ul>
 <li>
@@ -37,14 +37,14 @@
 <p>定时任务：定时执行某件事情，比如每天数据统计</p>
 </li>
 </ul>
-<h3 id="_3-安装" tabindex="-1"><a class="header-anchor" href="#_3-安装" aria-hidden="true">#</a> 3. 安装：</h3>
+<h3 id="_3-安装" tabindex="-1"><a class="header-anchor" href="#_3-安装"><span>3. 安装：</span></a></h3>
 <pre><code>pip install -U Celery   or  sudo easy_install Celery
 </code></pre>
-<h3 id="_4-执行流程" tabindex="-1"><a class="header-anchor" href="#_4-执行流程" aria-hidden="true">#</a> 4.执行流程：</h3>
+<h3 id="_4-执行流程" tabindex="-1"><a class="header-anchor" href="#_4-执行流程"><span>4.执行流程：</span></a></h3>
 <pre><code>user -&gt; 初始化celery 定好borker（消息中间件，队列/redis）、定好 backend（存储位置） -&gt; 执行任务（celery执行并将结果写入中间件）
 </code></pre>
-<h2 id="二、celery-创建任务" tabindex="-1"><a class="header-anchor" href="#二、celery-创建任务" aria-hidden="true">#</a> 二、celery 创建任务：</h2>
-<h3 id="_1-创建简单任务" tabindex="-1"><a class="header-anchor" href="#_1-创建简单任务" aria-hidden="true">#</a> 1.创建简单任务</h3>
+<h2 id="二、celery-创建任务" tabindex="-1"><a class="header-anchor" href="#二、celery-创建任务"><span>二、celery 创建任务：</span></a></h2>
+<h3 id="_1-创建简单任务" tabindex="-1"><a class="header-anchor" href="#_1-创建简单任务"><span>1.创建简单任务</span></a></h3>
 <pre><code>import celery
 import time
 
@@ -59,13 +59,13 @@ def send_email(name):
     print(&quot;向%s发送邮件完成&quot; % name)
     return &quot;ok&quot;
 </code></pre>
-<h3 id="_2-通过引入单独配置文件-创建任务" tabindex="-1"><a class="header-anchor" href="#_2-通过引入单独配置文件-创建任务" aria-hidden="true">#</a> 2. 通过引入单独配置文件，创建任务</h3>
+<h3 id="_2-通过引入单独配置文件-创建任务" tabindex="-1"><a class="header-anchor" href="#_2-通过引入单独配置文件-创建任务"><span>2. 通过引入单独配置文件，创建任务</span></a></h3>
 <p>将上文简单任务部分改为如下：</p>
 <pre><code>cel = celery.Celery('test')
 cel.config_from_object('celery_test.celery_config')
 </code></pre>
 <p>将配置文件 celery_config.py 引入，路径应该为项目根目录后的绝对路径</p>
-<h4 id="配置项" tabindex="-1"><a class="header-anchor" href="#配置项" aria-hidden="true">#</a> 配置项：</h4>
+<h4 id="配置项" tabindex="-1"><a class="header-anchor" href="#配置项"><span>配置项：</span></a></h4>
 <p>celery 4.0 以上支持小写的简化配置项：（通常如下）</p>
 <pre><code>broker_url = &quot;redis://172.16.128.29:6379/0&quot;
 result_backend = &quot;redis://172.16.128.29:6379/1&quot;
@@ -82,8 +82,8 @@ imoprt = (
     'celery_test.celery_task'
 )
 </code></pre>
-<h2 id="三、celery-启动任务" tabindex="-1"><a class="header-anchor" href="#三、celery-启动任务" aria-hidden="true">#</a> 三、celery 启动任务</h2>
-<h3 id="_1-直接终端执行命令" tabindex="-1"><a class="header-anchor" href="#_1-直接终端执行命令" aria-hidden="true">#</a> 1. 直接终端执行命令：</h3>
+<h2 id="三、celery-启动任务" tabindex="-1"><a class="header-anchor" href="#三、celery-启动任务"><span>三、celery 启动任务</span></a></h2>
+<h3 id="_1-直接终端执行命令" tabindex="-1"><a class="header-anchor" href="#_1-直接终端执行命令"><span>1. 直接终端执行命令：</span></a></h3>
 <pre><code>celery -A tasks worker --loglevel=info
 or
 celery worker -A tasks -l info
@@ -99,7 +99,7 @@ celery worker -A tasks -l info
 <p>然后运行命令需携带参数 -P eventlet：</p>
 <pre><code>celery worker -A celery_task -l info -P eventlet
 </code></pre>
-<h3 id="_2-写脚本执行" tabindex="-1"><a class="header-anchor" href="#_2-写脚本执行" aria-hidden="true">#</a> 2.写脚本执行：</h3>
+<h3 id="_2-写脚本执行" tabindex="-1"><a class="header-anchor" href="#_2-写脚本执行"><span>2.写脚本执行：</span></a></h3>
 <p>建立一个 task_worker.py 文件来启动任务</p>
 <pre><code>import sys
 import os
@@ -114,15 +114,15 @@ cel.worker_main()
 <ul>
 <li>需要配置对应的正确路径，来引入相关的 celery_app</li>
 </ul>
-<h2 id="四、创建-celery-生产者" tabindex="-1"><a class="header-anchor" href="#四、创建-celery-生产者" aria-hidden="true">#</a> 四、创建 celery 生产者</h2>
+<h2 id="四、创建-celery-生产者" tabindex="-1"><a class="header-anchor" href="#四、创建-celery-生产者"><span>四、创建 celery 生产者</span></a></h2>
 <pre><code>from celery_task import send_email
 result = send_email.delay(&quot;yuan&quot;)
 print(result.id)
 result2 = send_email.delay(&quot;alex&quot;)
 print(result2.id)　
 </code></pre>
-<h2 id="五、获取任务执行结果" tabindex="-1"><a class="header-anchor" href="#五、获取任务执行结果" aria-hidden="true">#</a> 五、获取任务执行结果</h2>
-<h3 id="_1-通过-asyncresult-进行简单判断" tabindex="-1"><a class="header-anchor" href="#_1-通过-asyncresult-进行简单判断" aria-hidden="true">#</a> 1.通过 AsyncResult 进行简单判断：</h3>
+<h2 id="五、获取任务执行结果" tabindex="-1"><a class="header-anchor" href="#五、获取任务执行结果"><span>五、获取任务执行结果</span></a></h2>
+<h3 id="_1-通过-asyncresult-进行简单判断" tabindex="-1"><a class="header-anchor" href="#_1-通过-asyncresult-进行简单判断"><span>1.通过 AsyncResult 进行简单判断：</span></a></h3>
 <pre><code>from celery.result import AsyncResult
 from celery_task import cel
 

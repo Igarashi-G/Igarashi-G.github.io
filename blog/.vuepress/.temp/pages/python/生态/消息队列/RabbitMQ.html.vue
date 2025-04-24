@@ -1,56 +1,56 @@
 <template><div><p><strong>RabbitMQ</strong> 是一个 <strong>Erlang</strong> 开发的，通用多种语言、不同语言间、不同机器上实现的消息队列，其支持热插拔</p>
 <!-- more -->
-<p><a href="https://www.rabbitmq.com/download.html" target="_blank" rel="noopener noreferrer">[安装地址]<ExternalLinkIcon/></a> | <a href="https://www.rabbitmq.com/documentation.html" target="_blank" rel="noopener noreferrer">[官方文档]<ExternalLinkIcon/></a></p>
-<p><a href="https://rabbitmq.mr-ping.com/tutorials_with_python/%5B1%5DHello_World.html" target="_blank" rel="noopener noreferrer">[中文Tutorials]<ExternalLinkIcon/></a> | <a href="https://github.com/pika/pika/tree/main/examples" target="_blank" rel="noopener noreferrer">[pika examples]<ExternalLinkIcon/></a></p>
-<h3 id="_1-amqp协议" tabindex="-1"><a class="header-anchor" href="#_1-amqp协议" aria-hidden="true">#</a> 1. AMQP协议</h3>
-<p>线程 q 实现了同一个进程之间的不同线程的交互（两个进程之间的线程 q 不能互相通信）
+<p><a href="https://www.rabbitmq.com/download.html" target="_blank" rel="noopener noreferrer">[安装地址]</a> | <a href="https://www.rabbitmq.com/documentation.html" target="_blank" rel="noopener noreferrer">[官方文档]</a></p>
+<p><a href="https://rabbitmq.mr-ping.com/tutorials_with_python/%5B1%5DHello_World.html" target="_blank" rel="noopener noreferrer">[中文Tutorials]</a> | <a href="https://github.com/pika/pika/tree/main/examples" target="_blank" rel="noopener noreferrer">[pika examples]</a></p>
+<h3 id="_1-amqp协议" tabindex="-1"><a class="header-anchor" href="#_1-amqp协议"><span>1. AMQP协议</span></a></h3>
+<p>线程 q 实现了同一个进程之间的不同线程的交互（两个进程之间的线程 q 不能互相通信）<br>
 进程 Q 实现了不同进程之间的数据交互。</p>
-<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code>异步-实现大并发（专业级别的，甩py几十条街，工作原理相同）
-    前端可以写一万个命令，可能最多能承载10个并发，但是可以把一万个人的任务先接过来，慢慢执行
-    实现前提：没有同步要求，提交的任务不具备实时性（实时性：比如支付、飞机监测、自动驾驶）例如：抢购、股票分 实时的和委托，委托即队列
-    让它以某个价格去买。
-
-安装 http://www.rabbitmq.com/install-standalone-mac.html
-
-安装python rabbitMQ module（python用它专门的模块pika）
-
-pip <span class="token function">install</span> pika
-or
-easy_install pika
-or
-源码
-
-https://pypi.python.org/pypi/pika
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>一、实现最简单的队列通信
-假设有三个应用程序，都用队列但相互不影响，则可以 rabbitmq 可以开三个队列互不干涉。rabbitmq 可以开成千上万个队列。避免混淆，队列名要唯一。
-p1 ----&gt; crm &lt;----c1 : p1 给 crm 发一个消息，那么 c1 可以从 crm 中取。（为了方便理解）实际上是如下操作
+<div class="language-shell line-numbers-mode" data-highlighter="shiki" data-ext="shell" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">异步-实现大并发（专业级别的，甩py几十条街，工作原理相同）</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">    前端可以写一万个命令，可能最多能承载10个并发，但是可以把一万个人的任务先接过来，慢慢执行</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">    实现前提：没有同步要求，提交的任务不具备实时性（实时性：比如支付、飞机监测、自动驾驶）例如：抢购、股票分</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> 实时的和委托，委托即队列</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">    让它以某个价格去买。</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">安装</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> http://www.rabbitmq.com/install-standalone-mac.html</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">安装python</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> rabbitMQ</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> module（python用它专门的模块pika）</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">pip</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> install</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> pika</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">or</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">easy_install</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> pika</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">or</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">源码</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">https://pypi.python.org/pypi/pika</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>一、实现最简单的队列通信<br>
+假设有三个应用程序，都用队列但相互不影响，则可以 rabbitmq 可以开三个队列互不干涉。rabbitmq 可以开成千上万个队列。避免混淆，队列名要唯一。<br>
+p1 ----&gt; crm &lt;----c1 : p1 给 crm 发一个消息，那么 c1 可以从 crm 中取。（为了方便理解）实际上是如下操作<br>
 p1（客户端先发消息给）----&gt;EX1（交换）----&gt;crm 队列（把消息放到队列）&lt;------c1（客户端再取）现在来看 exchange 没有存在的必要。</p>
-<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code>send端：
-    见sender.py
-
-receive端：
-    见receive.py
-
-远程连接rabbitmq server的话，需要配置权限：（无论win还是linux上有一个管理工具rabbitmqctl）：
-
-    <span class="token number">1</span>.首先在rabbitmq server上创建一个用户并分配角色
-        <span class="token function">sudo</span> rabbitmqctl  add_user name pass
-        <span class="token function">sudo</span> rabbitmqctl  set_user_tags name administrator  　　
-
-    <span class="token number">2</span>.同时还要配置权限，允许从外面访问<span class="token punctuation">(</span>必须<span class="token punctuation">)</span>
-        <span class="token function">sudo</span> rabbitmqctl set_permissions <span class="token parameter variable">-p</span> / alex <span class="token string">".*"</span> <span class="token string">".*"</span> <span class="token string">".*"</span>   <span class="token comment"># 授权，表示所有ip地址都能访问</span>
-
-    <span class="token number">3</span>.客户端连接的时候需要配置认证参数
-        credentials <span class="token operator">=</span> pika.PlainCredentials<span class="token punctuation">(</span><span class="token string">'name'</span>, <span class="token string">'pass'</span><span class="token punctuation">)</span>
-
-        connection <span class="token operator">=</span> pika.BlockingConnection<span class="token punctuation">(</span>pika.ConnectionParameters<span class="token punctuation">(</span>
-            <span class="token string">'192.168.80.133'</span>,5672,<span class="token string">'/'</span>, <span class="token assign-left variable">credentials</span><span class="token operator">=</span>credentials<span class="token punctuation">))</span>
-        channel <span class="token operator">=</span> connection.channel<span class="token punctuation">(</span><span class="token punctuation">)</span>
-
-    注：用apt装的rabbitmq-server的话重启服务在/etc/init.d/rabbitmq-server restart
-
-        查看队列用list_queues记住要root 故sudo rqbbitmqctl list_queues<span class="token operator">!</span>
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><pre><code>&lt;1&gt;启动sender.py之后消息发送出去了[x] Sent 'Hello World!'，在队列中没有人接收。
+<div class="language-shell line-numbers-mode" data-highlighter="shiki" data-ext="shell" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">send端：</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">    见sender.py</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">receive端：</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">    见receive.py</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">远程连接rabbitmq</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> server的话，需要配置权限：（无论win还是linux上有一个管理工具rabbitmqctl）：</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">    1.首先在rabbitmq</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> server上创建一个用户并分配角色</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">        sudo</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> rabbitmqctl</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">  add_user</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> name</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> pass</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">        sudo</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> rabbitmqctl</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">  set_user_tags</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> name</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> administrator</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">  　　</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">    2.同时还要配置权限，允许从外面访问(必须</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">)</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">        sudo</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> rabbitmqctl</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> set_permissions</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> -p</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> /</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> alex</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> ".*"</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> ".*"</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> ".*"</span><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">   # 授权，表示所有ip地址都能访问</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">    3.客户端连接的时候需要配置认证参数</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">        credentials</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> =</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> pika.PlainCredentials</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">'name'</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">,</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> 'pass'</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">)</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">        connection</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> =</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> pika.BlockingConnection</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">pika.ConnectionParameters(</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">            '192.168.80.133'</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">,5672,</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">'/'</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">,</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> credentials=credentials</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">))</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">        channel</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> =</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> connection.channel</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">()</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">    注：用apt装的rabbitmq-server的话重启服务在/etc/init.d/rabbitmq-server</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> restart</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">        查看队列用list_queues记住要root</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> 故sudo</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> rqbbitmqctl</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> list_queues!</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><pre><code>&lt;1&gt;启动sender.py之后消息发送出去了[x] Sent 'Hello World!'，在队列中没有人接收。
 
 &lt;2&gt;在启动receive.py得到以下数据，我们分别把callback 的参数打印:
     body：[x] Received b'Hello World!' --消息主体
@@ -106,8 +106,8 @@ receive端：
 
 结论：这种改动应该使队列即消息存到了硬盘上，下次启动时读取即可。
 </code></pre>
-<p>四、消息的订阅发布：
-一面是一对一的消息，而多对多则利用发布 - 订阅模式。类似广播：你打开收音机就能听到广播，并且它这个广播是实时性的：你没打开这个消息就没了。
+<p>四、消息的订阅发布：<br>
+一面是一对一的消息，而多对多则利用发布 - 订阅模式。类似广播：你打开收音机就能听到广播，并且它这个广播是实时性的：你没打开这个消息就没了。<br>
 不像之前的一对一，消费者不在线还会帮你存着。没人接收的话广播完毕就完了。-- 因此用到了 exchange</p>
 <pre><code>exchange的作用：
     问题：你要广播，怎么广播啊？所有人监听一个队列？那么谁监听到了，谁就把消息拿走即可。那么别人把消息收到了，你就没消息可拿了。
@@ -143,25 +143,25 @@ receive端：
         web端关闭，下次重启时，获取队列消息，如库存做出了某些改动，通知消费者（同时订阅库存改动的用户）
 </code></pre>
 <p>五、消息订阅发布之组播：</p>
-<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code>问题：如何根据消息的级别，来接收不同级别的消息？
-
-改动：send端：
-        <span class="token number">1</span>.exchange_declare里面的exchange_type<span class="token operator">=</span><span class="token string">"direct"</span>组播形式。
-        <span class="token number">2</span>.severity <span class="token operator">=</span> sys.argv<span class="token punctuation">[</span><span class="token number">1</span>:<span class="token punctuation">]</span> <span class="token keyword">if</span> len<span class="token punctuation">(</span>sys.argv<span class="token punctuation">)</span> <span class="token operator">></span> <span class="token number">1</span> <span class="token keyword">else</span> <span class="token string">'info'</span>  定义严重级别、程度 ,recv端根据级别来接收
-        <span class="token number">3</span>.basic_publish中的routing_key<span class="token operator">=</span>severity  发出不同级别的组播（即发出不同组的消息）
-     recv端：
-        <span class="token number">1</span>.同上，改exchange_declare里面的exchange_type
-        <span class="token number">2</span>.severities <span class="token operator">=</span> sys.argv<span class="token punctuation">[</span><span class="token number">1</span>:<span class="token punctuation">]</span>  拿到的是一个列表，跟几个level就绑定几个severities，这里为了指定订阅消息的分组
-        <span class="token number">3</span>.if not severities:    若没有定义分组则退出，报个错
-            sys.stderr.write<span class="token punctuation">(</span><span class="token string">"Usage:%s [info] [warning] [error]<span class="token entity" title="\n">\n</span>"</span> % sys.argv<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-            sys.exit<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
-        <span class="token number">4</span>.for <span class="token for-or-select variable">severity</span> <span class="token keyword">in</span> severities:  <span class="token comment"># 循环绑定，有几个绑定几个，即绑定指定的那些组</span>
-            channel.queue_bind<span class="token punctuation">(</span>exchange<span class="token operator">=</span><span class="token string">"direct_logs"</span>,
-                               <span class="token assign-left variable">queue</span><span class="token operator">=</span>queue_name,
-                               <span class="token assign-left variable">routing_key</span><span class="token operator">=</span>severity<span class="token punctuation">)</span>  <span class="token comment"># 之后它就会监听，所有发到绑定的info、error...组的就会被监听，实现按组订阅</span>
-
-结果：
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>六、更细致的消息过滤：</p>
+<div class="language-shell line-numbers-mode" data-highlighter="shiki" data-ext="shell" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">问题：如何根据消息的级别，来接收不同级别的消息？</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">改动：send端：</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">        1.exchange_declare里面的exchange_type</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">=</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">"direct"</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">组播形式。</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">        2.severity</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> =</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> sys.argv[1:]</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> if</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> len</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">sys.argv</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">) > </span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">1</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> else</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> 'info'</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">  定义严重级别、程度</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> ,recv端根据级别来接收</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">        3.basic_publish中的routing_key</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">=severity</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">  发出不同级别的组播（即发出不同组的消息）</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">     recv端：</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">        1.同上，改exchange_declare里面的exchange_type</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">        2.severities</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> =</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> sys.argv[1:]</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">  拿到的是一个列表，跟几个level就绑定几个severities，这里为了指定订阅消息的分组</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">        3.if</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> not</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> severities:</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">    若没有定义分组则退出，报个错</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">            sys.stderr.write(</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">"Usage:%s [info] [warning] [error]\n"</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> %</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> sys.argv[0]</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">)</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">            sys.exit(1</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">)</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">        4.for</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> severity</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> in</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> severities:</span><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">  # 循环绑定，有几个绑定几个，即绑定指定的那些组</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">            channel.queue_bind(exchange</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">=</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">"direct_logs"</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">,</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">                               queue</span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2">=</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">queue_name,</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">                               routing_key</span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2">=</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">severity</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">)  </span><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># 之后它就会监听，所有发到绑定的info、error...组的就会被监听，实现按组订阅</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">结果：</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>六、更细致的消息过滤：</p>
 <pre><code>问题：若想更加细致的，比如要根据多个标准来进行路由怎么办？
 
 改动：仅需把send端和recv端的exchange_type 改为'topic'即可。

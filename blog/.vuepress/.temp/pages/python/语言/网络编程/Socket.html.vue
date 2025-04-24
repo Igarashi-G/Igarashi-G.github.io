@@ -1,8 +1,8 @@
 <template><div><p><strong>Python socket</strong> 编程</p>
 <!--more-->
-<p>请先参考：<RouterLink to="/unix/Linux/%E7%BD%91%E7%BB%9C/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80.html">网络基础</RouterLink> 熟悉 <strong>7</strong> 层模型和 <strong>传输层</strong> 协议栈下的协议</p>
-<h2 id="_1-socket-套接字" tabindex="-1"><a class="header-anchor" href="#_1-socket-套接字" aria-hidden="true">#</a> 1. Socket 套接字</h2>
-<h3 id="_1-1-进程通信" tabindex="-1"><a class="header-anchor" href="#_1-1-进程通信" aria-hidden="true">#</a> 1.1 进程通信</h3>
+<p>请先参考：<RouteLink to="/unix/Linux/%E7%BD%91%E7%BB%9C/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80.html">网络基础</RouteLink> 熟悉 <strong>7</strong> 层模型和 <strong>传输层</strong> 协议栈下的协议</p>
+<h2 id="_1-socket-套接字" tabindex="-1"><a class="header-anchor" href="#_1-socket-套接字"><span>1. Socket 套接字</span></a></h2>
+<h3 id="_1-1-进程通信" tabindex="-1"><a class="header-anchor" href="#_1-1-进程通信"><span>1.1 进程通信</span></a></h3>
 <p>通常，<strong>本地进程</strong> 间通信 <strong>IPC</strong> 有很多种方式，如：</p>
 <ul>
 <li><strong>消息传递：</strong> <strong>PIPE</strong> 管道、<strong>FIFO</strong>、消息队列</li>
@@ -13,27 +13,27 @@
 <p>像 <strong>本地</strong>，可以通过进程的 <strong>PID</strong> 来唯一标识一个进程，但网络中却是行不通的，那么 <strong>网络中的进程之间</strong> 是如何通信的呢？</p>
 <p><strong>答：</strong> 是利用 <strong>IP 地址 + 协议 + 端口号</strong> 的方式，作为 <strong>唯一标识</strong> ，它标识了网络中主机的一个应用程序（<em>进程</em> ），有了这个唯一标识就能充当网络进程，进行网络进程见 的通信了</p>
 <p>而它已经实现好了，就是基于 <strong>TCP/IP 协议簇</strong> 网络应用采用的编程接口 <strong>socket</strong> （<em><strong>套接字</strong></em> ）</p>
-<h3 id="_1-2-socket-概述" tabindex="-1"><a class="header-anchor" href="#_1-2-socket-概述" aria-hidden="true">#</a> 1.2 Socket 概述</h3>
+<h3 id="_1-2-socket-概述" tabindex="-1"><a class="header-anchor" href="#_1-2-socket-概述"><span>1.2 Socket 概述</span></a></h3>
 <p><strong>socket</strong>是在 <strong>应用层</strong> 和 <strong>传输层</strong>（<em><strong>TCP/IP</strong></em>）间的 <strong>一组抽象层接口</strong>，它把 <strong>TCP/IP 层</strong> 复杂的操作，<strong>抽象为几个简单接口供应用层调用</strong> （<em>封装了大量功能的对象</em> ），方便应用进程实现网络中的通信</p>
 <p><strong>Unix/Linux</strong> 哲学是 <strong>一切皆文件</strong>，那么既然是文件，就可以像文件的方式去 <code v-pre>open(); read(); write(); close();</code> 这样进行读写 <strong>socket</strong> 接口则是基于如上的实现</p>
 <p>其在 <strong>Linux</strong> 中对应的文件系统叫 <strong>Sockfs</strong>，每创建一个 <strong>socket</strong> 就会在 <strong>sockfs</strong> 中创建一个特殊的文件，同时创建了 <strong>sockfs</strong> 文件系统的 <strong>inode</strong> ，该 <strong>inode</strong> 唯一标识了当前 <strong>socket</strong> 的通信,如图</p>
 <img src="@source/python/语言/网络编程/img/socket文件描述符.jpg"> 
 <p>这就表示是一个 <strong>socket</strong> 类型的 <strong>fd</strong>，<code v-pre>5 -&gt; socket:[122...47]</code> 里面的数字即是 <strong>inode</strong> 号，唯一标识了当前的 <strong>socket</strong> 通信连接，进一步 <code v-pre>grep inode</code> 即可看到该 <strong>TCP</strong> 连接的所有信息（<em>16进制显示</em> ）</p>
 <p>先简单看一下 <strong>C</strong> 的接口</p>
-<div class="language-c ext-c line-numbers-mode"><pre v-pre class="language-c"><code><span class="token function">socket</span><span class="token punctuation">(</span><span class="token keyword">int</span> domain<span class="token punctuation">,</span> <span class="token keyword">int</span> type<span class="token punctuation">,</span> <span class="token keyword">int</span> protocol<span class="token punctuation">)</span>
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p>在用户进程中， 该函数用于创建 <strong>socket</strong> 并返回与其关联的 <strong>fd（<em>文件描述符</em> ）</strong>，毫无疑问，此函数实际执行的是<strong>系统调用</strong>， 即 <strong>sys_socketcall</strong></p>
-<div class="language-c ext-c line-numbers-mode"><pre v-pre class="language-c"><code><span class="token comment">/** sys_socketcall (linux/syscalls.h)*/</span>
-asmlinkage <span class="token keyword">long</span> <span class="token function">sys_socketcall</span><span class="token punctuation">(</span><span class="token keyword">int</span> call<span class="token punctuation">,</span> <span class="token keyword">unsigned</span> <span class="token keyword">long</span> __user <span class="token operator">*</span>args<span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-<span class="token comment">/** SYSCALL_DEFINE2 (net/socket.c)*/</span>
-<span class="token function">SYSCALL_DEFINE2</span><span class="token punctuation">(</span>socketcall<span class="token punctuation">,</span> <span class="token keyword">int</span><span class="token punctuation">,</span> call<span class="token punctuation">,</span> <span class="token keyword">unsigned</span> <span class="token keyword">long</span> __user <span class="token operator">*</span><span class="token punctuation">,</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token comment">// ...</span>
-<span class="token punctuation">}</span>
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p><strong>sys_socketcall</strong> 几乎是用户进程 <strong>socket</strong> 所有操作函数的入口，它又实际调用了 <strong>SYSCALL_DEFINE2</strong> ...</p>
+<div class="language-c line-numbers-mode" data-highlighter="shiki" data-ext="c" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">socket</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">int</span><span style="--shiki-light:#383A42;--shiki-light-font-style:inherit;--shiki-dark:#E06C75;--shiki-dark-font-style:italic"> domain</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">,</span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD"> int</span><span style="--shiki-light:#383A42;--shiki-light-font-style:inherit;--shiki-dark:#E06C75;--shiki-dark-font-style:italic"> type</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">,</span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD"> int</span><span style="--shiki-light:#383A42;--shiki-light-font-style:inherit;--shiki-dark:#E06C75;--shiki-dark-font-style:italic"> protocol</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">)</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div><p>在用户进程中， 该函数用于创建 <strong>socket</strong> 并返回与其关联的 <strong>fd（<em>文件描述符</em> ）</strong>，毫无疑问，此函数实际执行的是<strong>系统调用</strong>， 即 <strong>sys_socketcall</strong></p>
+<div class="language-c line-numbers-mode" data-highlighter="shiki" data-ext="c" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">/** sys_socketcall (linux/syscalls.h)*/</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">asmlinkage </span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">long</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF"> sys_socketcall</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">int</span><span style="--shiki-light:#383A42;--shiki-light-font-style:inherit;--shiki-dark:#E06C75;--shiki-dark-font-style:italic"> call</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">,</span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD"> unsigned</span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD"> long</span><span style="--shiki-light:#383A42;--shiki-dark:#E06C75"> __user </span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">*</span><span style="--shiki-light:#383A42;--shiki-light-font-style:inherit;--shiki-dark:#E06C75;--shiki-dark-font-style:italic">args</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">/** SYSCALL_DEFINE2 (net/socket.c)*/</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">SYSCALL_DEFINE2</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#383A42;--shiki-dark:#E06C75">socketcall</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">,</span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD"> int</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">,</span><span style="--shiki-light:#383A42;--shiki-dark:#E06C75"> call</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">,</span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD"> unsigned</span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD"> long</span><span style="--shiki-light:#383A42;--shiki-dark:#E06C75"> __user </span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">*</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">,</span><span style="--shiki-light:#383A42;--shiki-dark:#E06C75"> args</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">) {</span></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">    // ...</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">}</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p><strong>sys_socketcall</strong> 几乎是用户进程 <strong>socket</strong> 所有操作函数的入口，它又实际调用了 <strong>SYSCALL_DEFINE2</strong> ...</p>
 <p>因此用户态程序一旦调用了 <strong>socket</strong> 接口，就会通过系统调用陷入内核</p>
 <p>​<br>
 ​<br>
-Server端：服务器端，在服务器上运行，先建立，否则客户端没法连
+Server端：服务器端，在服务器上运行，先建立，否则客户端没法连<br>
 1-&gt;2-&gt;3-&gt;4  -&gt;6-&gt;7</p>
 <pre><code>    Client端：客户端，在客户主机上运行
             1-&gt;5  -&gt;6-&gt;7
@@ -125,8 +125,8 @@ Server端：服务器端，在服务器上运行，先建立，否则客户端�
         见Post* 代码合理利用os和判断即可
 </code></pre>
 <hr>
-<p>socketserver：
-虽说用 Python 编写简单的网络程序很方便，但复杂一点的网络程序还是用现成的框架比较好。这样就可以专心事务逻辑，而不是套接字的各种细节。
+<p>socketserver：<br>
+虽说用 Python 编写简单的网络程序很方便，但复杂一点的网络程序还是用现成的框架比较好。这样就可以专心事务逻辑，而不是套接字的各种细节。<br>
 SocketServer 模块简化了编写网络服务程序的任务。同时 SocketServer 模块也是 Python 标准库中很多服务器框架的基础。</p>
 <pre><code>socketserver模块可以简化网络服务器的编写，Python把网络服务抽象成两个主要的类，一个是Server类，用于处理连接相关的网络操作，另外一个则
 是RequestHandler类，用于处理数据相关的操作。并且提供两个MixIn 类，用于扩展 Server，实现多进程或多线程。

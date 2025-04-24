@@ -1,4 +1,4 @@
-<template><div><h1 id="redis-性能分析-一文揭秘单线程的-redis-为什么这么快" tabindex="-1"><a class="header-anchor" href="#redis-性能分析-一文揭秘单线程的-redis-为什么这么快" aria-hidden="true">#</a> Redis 性能分析：（一文揭秘单线程的 Redis 为什么这么快）</h1>
+<template><div><h1 id="redis-性能分析-一文揭秘单线程的-redis-为什么这么快" tabindex="-1"><a class="header-anchor" href="#redis-性能分析-一文揭秘单线程的-redis-为什么这么快"><span>Redis 性能分析：（一文揭秘单线程的 Redis 为什么这么快）</span></a></h1>
 <p>一、Redis 为啥快 1.纯内存操作 2.单线程 3.高效的数据结构 4.合理的数据编码 5.其他方面的优化</p>
 <pre><code>在 Redis 中，常用的 5 种数据结构和应用场景如下：
     - String：缓存、计数器、分布式锁等。
@@ -7,13 +7,13 @@
     - Set：去重、赞、踩、共同好友等。
     - Zset：访问量排行榜、点击量排行榜等。
 </code></pre>
-<p>二、SDS:
-Redis 是 C 语言开发的，但在 Redis 的 String 结构中，并没有使用 C 语言中的字符，而是用一种称为 SDS（Simple Dynamic String）的结构体来
-保存字符串。
-struct sdshdr {
-int len; //用于记录 buf 中已使用空间的长度。
-int free; //buf 中空闲空间的长度。
-char buf[]; //存储实际内容。
+<p>二、SDS:<br>
+Redis 是 C 语言开发的，但在 Redis 的 String 结构中，并没有使用 C 语言中的字符，而是用一种称为 SDS（Simple Dynamic String）的结构体来<br>
+保存字符串。<br>
+struct sdshdr {<br>
+int len; //用于记录 buf 中已使用空间的长度。<br>
+int free; //buf 中空闲空间的长度。<br>
+char buf[]; //存储实际内容。<br>
 }</p>
 <pre><code>执行命令 set key value，key 和 value 都是一个 SDS 类型的结构存储在内存中。
 

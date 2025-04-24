@@ -1,8 +1,8 @@
-<template><div><p>SQLAlchemy：
+<template><div><p>SQLAlchemy：<br>
 <img src="http://www.igarashi.icu:8999/img/sqlalchemy.png"></p>
-<p>一、sqlalchemy 安装：
-在 Python 中，最有名的 ORM 框架是 SQLAlchemy。用户包括 openstack＼Dropbox 等知名公司或应用。
-主要用户列表<a href="http://www.sqlalchemy.org/organizations.html#openstack" target="_blank" rel="noopener noreferrer">http://www.sqlalchemy.org/organizations.html#openstack<ExternalLinkIcon/></a></p>
+<p>一、sqlalchemy 安装：<br>
+在 Python 中，最有名的 ORM 框架是 SQLAlchemy。用户包括 openstack＼Dropbox 等知名公司或应用。<br>
+主要用户列表<a href="http://www.sqlalchemy.org/organizations.html#openstack" target="_blank" rel="noopener noreferrer">http://www.sqlalchemy.org/organizations.html#openstack</a></p>
 <pre><code>    安装：
         pip install SQLAlchemy
         pip install pymysql  #由于mysqldb依然不支持py3，所以这里我们用pymysql与sqlalchemy交互

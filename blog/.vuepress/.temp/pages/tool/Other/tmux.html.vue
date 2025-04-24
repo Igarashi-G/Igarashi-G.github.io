@@ -1,112 +1,112 @@
-<template><div><h2 id="tmux" tabindex="-1"><a class="header-anchor" href="#tmux" aria-hidden="true">#</a> Tmux</h2>
+<template><div><h2 id="tmux" tabindex="-1"><a class="header-anchor" href="#tmux"><span>Tmux</span></a></h2>
 <p><code v-pre>2021-07-16 15:00</code> <strong>5 楼</strong> 研发会议室</p>
 <p>你会收获什么 <strong>tmux</strong> 使用指南，更便捷的管理，开发以及运维方式，以及更炫酷的终端使用方式</p>
 <p><strong>note</strong> 配置文件</p>
-<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code><span class="token string">"shell General settings"</span>
-<span class="token builtin class-name">set</span> <span class="token parameter variable">-g</span> default-terminal 
-
-<span class="token string">"screen-256color"</span>
-set-option <span class="token parameter variable">-ga</span> terminal-overrides <span class="token string">",*256col*:Tc"</span>
-<span class="token builtin class-name">set</span> <span class="token parameter variable">-g</span> status-interval <span class="token number">1</span>
-<span class="token builtin class-name">set</span> <span class="token parameter variable">-g</span> history-limit <span class="token number">10000</span>
-<span class="token builtin class-name">set</span> <span class="token parameter variable">-g</span> history-file ~/.tmux/tmux_history
-<span class="token builtin class-name">set</span> <span class="token parameter variable">-s</span> focus-events on
-<span class="token builtin class-name">set</span> <span class="token parameter variable">-g</span> base-index <span class="token number">1</span>
-<span class="token builtin class-name">set</span> <span class="token parameter variable">-g</span> pane-base-index <span class="token number">1</span>
-setw <span class="token parameter variable">-g</span> automatic-rename on
-<span class="token builtin class-name">set</span> <span class="token parameter variable">-g</span> renumber-windows on
-<span class="token builtin class-name">set</span> <span class="token parameter variable">-g</span> set-titles on
-
-<span class="token comment"># set terminal title</span>
-<span class="token builtin class-name">set</span> <span class="token parameter variable">-g</span> set-titles-string <span class="token string">'#h ❐ #S ● #I #W'</span>
-<span class="token builtin class-name">set</span> <span class="token parameter variable">-s</span> escape-time <span class="token number">0</span>
-setw <span class="token parameter variable">-g</span> monitor-activity on
-<span class="token builtin class-name">set</span> <span class="token parameter variable">-g</span> visual-activity off
-<span class="token builtin class-name">set</span> <span class="token parameter variable">-g</span> repeat-time <span class="token number">400</span>
-
-<span class="token comment"># ==========================</span>
-<span class="token comment"># ===    Colorscheme     ===</span>
-<span class="token comment"># ==========================</span>
-<span class="token builtin class-name">set</span> <span class="token parameter variable">-g</span> message-style <span class="token assign-left variable">fg</span><span class="token operator">=</span><span class="token string">'colour222'</span>,bg<span class="token operator">=</span><span class="token string">'colour238'</span>
-<span class="token builtin class-name">set</span> <span class="token parameter variable">-g</span> message-command-style <span class="token assign-left variable">fg</span><span class="token operator">=</span><span class="token string">'colour222'</span>,bg<span class="token operator">=</span><span class="token string">'colour238'</span>
-<span class="token builtin class-name">set</span> <span class="token parameter variable">-g</span> pane-border-style <span class="token assign-left variable">fg</span><span class="token operator">=</span><span class="token string">'colour238'</span>
-<span class="token builtin class-name">set</span> <span class="token parameter variable">-g</span> pane-active-border-style <span class="token assign-left variable">fg</span><span class="token operator">=</span><span class="token string">'colour154'</span>
-set-option <span class="token parameter variable">-g</span> status-style        <span class="token assign-left variable">fg</span><span class="token operator">=</span>colour15,bg<span class="token operator">=</span><span class="token comment">#282c34</span>
-set-option <span class="token parameter variable">-g</span> pane-border-style            <span class="token assign-left variable">fg</span><span class="token operator">=</span>green
-set-option <span class="token parameter variable">-g</span> pane-active-border-style     <span class="token assign-left variable">fg</span><span class="token operator">=</span>yellow
-set-option <span class="token parameter variable">-g</span> window-status-activity-style <span class="token assign-left variable">fg</span><span class="token operator">=</span>colour111
-
-<span class="token comment"># =====================================</span>
-<span class="token comment"># ===    Appearence and status bar  ===</span>
-<span class="token comment"># ======================================</span>
-<span class="token builtin class-name">set</span> <span class="token parameter variable">-g</span> status <span class="token string">'on'</span>
-<span class="token builtin class-name">set</span> <span class="token parameter variable">-g</span> status-position <span class="token string">'top'</span>
-<span class="token builtin class-name">set</span> <span class="token parameter variable">-g</span> status-justify <span class="token string">'left'</span>
-<span class="token builtin class-name">set</span> <span class="token parameter variable">-g</span> status-left-length <span class="token string">'100'</span>
-<span class="token builtin class-name">set</span> <span class="token parameter variable">-g</span> status-right-length <span class="token string">'100'</span>
-
-set-window-option <span class="token parameter variable">-g</span> window-status-format <span class="token string">'#[bg=colour238]#[fg=colour107] #I #[bg=colour239]#[fg=colour110] #[bg=colour240]#W#[bg=colour239]#[fg=colour195]#F#[bg=colour238] '</span>
-
-set-window-option <span class="token parameter variable">-g</span> window-status-current-format <span class="token string">'#[bg=colour236]#[fg=colour215,bold] #I:#[bg=colour235]#[fg=colour167] #[bg=colour234]#W#[bg=colour235]#[fg=colour195]#F#[bg=colour236] '</span>
-
-<span class="token builtin class-name">set</span> <span class="token parameter variable">-g</span> status-left <span class="token string">'\
-#[fg=colour232,bg=#6272a4] status: #{continuum_status} \
-#[bg=#1b2b34] \
-#[fg=colour232,bg=#6272a4] %H:%M \
-#[bg=#1b2b34] \
-#{prefix_highlight} '</span>
-
-<span class="token builtin class-name">set</span> <span class="token parameter variable">-g</span> status-right <span class="token string">'\
-#[fg=colour232,bg=#6272a4] CPU:#{cpu_percentage} \
-#[bg=#1b2b34] \
-#[fg=colour232,bg=#6272a4] MEM:#{ram_percentage} '</span>
-
-<span class="token comment"># ==========================</span>
-<span class="token comment"># ===   Key bindings     ===</span>
-<span class="token comment"># ==========================</span>
-<span class="token builtin class-name">set</span> <span class="token parameter variable">-g</span> prefix C-n
-unbind C-b
-unbind <span class="token string">'"'</span>
-unbind %  
-<span class="token builtin class-name">bind</span> <span class="token operator">|</span> split-window <span class="token parameter variable">-h</span> <span class="token parameter variable">-c</span> <span class="token string">"#{pane_current_path}"</span>
-<span class="token builtin class-name">bind</span> _ split-window <span class="token parameter variable">-v</span> <span class="token parameter variable">-c</span> <span class="token string">"#{pane_current_path}"</span>
-
-<span class="token comment"># switch window</span>
-<span class="token builtin class-name">bind</span> h select-pane <span class="token parameter variable">-L</span>
-<span class="token builtin class-name">bind</span> j select-pane <span class="token parameter variable">-D</span>
-<span class="token builtin class-name">bind</span> k select-pane <span class="token parameter variable">-U</span>
-<span class="token builtin class-name">bind</span> l select-pane <span class="token parameter variable">-R</span>
-
-<span class="token comment">#unbind C-w</span>
-<span class="token builtin class-name">bind</span> C-w resize-window <span class="token parameter variable">-a</span>
-<span class="token builtin class-name">bind</span> m <span class="token builtin class-name">set</span> <span class="token parameter variable">-g</span> mouse on
-<span class="token builtin class-name">bind</span> M <span class="token builtin class-name">set</span> <span class="token parameter variable">-g</span> mouse off
-
-<span class="token comment"># reload the tmux config</span>
-<span class="token builtin class-name">bind</span> R source-file <span class="token environment constant">$HOME</span>/.tmux.conf <span class="token punctuation">\</span><span class="token punctuation">;</span> display <span class="token string">"Configuration Reloading..."</span>
-
-<span class="token comment"># ==========================</span>
-<span class="token comment"># ===   Plugin Resurrect ===</span>
-<span class="token comment"># ==========================</span>
-<span class="token builtin class-name">set</span> <span class="token parameter variable">-g</span> @resurrect-capture-pane-contents <span class="token string">'on'</span>
-
-<span class="token comment"># save vim session</span>
-<span class="token builtin class-name">set</span> <span class="token parameter variable">-g</span> @resurrect-strategy-vim <span class="token string">'session'</span>
-
-<span class="token comment"># save neovim session</span>
-<span class="token builtin class-name">set</span> <span class="token parameter variable">-g</span> @resurrect-strategy-nvim <span class="token string">'session'</span>
-<span class="token builtin class-name">set</span> <span class="token parameter variable">-g</span> @continuum-restore <span class="token string">'on'</span>
-<span class="token builtin class-name">set</span> <span class="token parameter variable">-g</span> @continuum-boot <span class="token string">'on'</span>
-<span class="token builtin class-name">set</span> <span class="token parameter variable">-g</span> @continuum-save-interval <span class="token string">'10'</span>
-<span class="token builtin class-name">set</span> <span class="token parameter variable">-g</span> @plugin <span class="token string">'tmux-plugins/tmux-cpu'</span>
-<span class="token builtin class-name">set</span> <span class="token parameter variable">-g</span> @plugin <span class="token string">'thewtex/tmux-mem-cpu-load'</span>
-<span class="token builtin class-name">set</span> <span class="token parameter variable">-g</span> @plugin <span class="token string">'tmux-plugins/tmux-net-speed'</span>
-<span class="token builtin class-name">set</span> <span class="token parameter variable">-g</span> @plugin <span class="token string">'tmux-plugins/tmux-prefix-highlight'</span>
-<span class="token builtin class-name">set</span> <span class="token parameter variable">-g</span> @plugin <span class="token string">'tmux-plugins/tmux-resurrect'</span>
-<span class="token builtin class-name">set</span> <span class="token parameter variable">-g</span> @plugin <span class="token string">'tmux-plugins/tmux-continuum'</span>
-<span class="token builtin class-name">set</span> <span class="token parameter variable">-g</span> @plugin <span class="token string">'tmux-plugins/tmux-yank'</span>
-run <span class="token string">'~/.tmux/plugins/tpm/tpm'</span>
-```
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></div></template>
+<div class="language-shell line-numbers-mode" data-highlighter="shiki" data-ext="shell" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">"shell General settings"</span></span>
+<span class="line"><span style="--shiki-light:#0184BC;--shiki-dark:#56B6C2">set</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> -g</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> default-terminal</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> </span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">"screen-256color"</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">set-option</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> -ga</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> terminal-overrides</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> ",*256col*:Tc"</span></span>
+<span class="line"><span style="--shiki-light:#0184BC;--shiki-dark:#56B6C2">set</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> -g</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> status-interval</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> 1</span></span>
+<span class="line"><span style="--shiki-light:#0184BC;--shiki-dark:#56B6C2">set</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> -g</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> history-limit</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> 10000</span></span>
+<span class="line"><span style="--shiki-light:#0184BC;--shiki-dark:#56B6C2">set</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> -g</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> history-file</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> ~/.tmux/tmux_history</span></span>
+<span class="line"><span style="--shiki-light:#0184BC;--shiki-dark:#56B6C2">set</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> -s</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> focus-events</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> on</span></span>
+<span class="line"><span style="--shiki-light:#0184BC;--shiki-dark:#56B6C2">set</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> -g</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> base-index</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> 1</span></span>
+<span class="line"><span style="--shiki-light:#0184BC;--shiki-dark:#56B6C2">set</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> -g</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> pane-base-index</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> 1</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">setw</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> -g</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> automatic-rename</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> on</span></span>
+<span class="line"><span style="--shiki-light:#0184BC;--shiki-dark:#56B6C2">set</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> -g</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> renumber-windows</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> on</span></span>
+<span class="line"><span style="--shiki-light:#0184BC;--shiki-dark:#56B6C2">set</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> -g</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> set-titles</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> on</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># set terminal title</span></span>
+<span class="line"><span style="--shiki-light:#0184BC;--shiki-dark:#56B6C2">set</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> -g</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> set-titles-string</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> '#h ❐ #S ● #I #W'</span></span>
+<span class="line"><span style="--shiki-light:#0184BC;--shiki-dark:#56B6C2">set</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> -s</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> escape-time</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> 0</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">setw</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> -g</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> monitor-activity</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> on</span></span>
+<span class="line"><span style="--shiki-light:#0184BC;--shiki-dark:#56B6C2">set</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> -g</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> visual-activity</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> off</span></span>
+<span class="line"><span style="--shiki-light:#0184BC;--shiki-dark:#56B6C2">set</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> -g</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> repeat-time</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> 400</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># ==========================</span></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># ===    Colorscheme     ===</span></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># ==========================</span></span>
+<span class="line"><span style="--shiki-light:#0184BC;--shiki-dark:#56B6C2">set</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> -g</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> message-style</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> fg='colour222',bg='colour238'</span></span>
+<span class="line"><span style="--shiki-light:#0184BC;--shiki-dark:#56B6C2">set</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> -g</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> message-command-style</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> fg='colour222',bg='colour238'</span></span>
+<span class="line"><span style="--shiki-light:#0184BC;--shiki-dark:#56B6C2">set</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> -g</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> pane-border-style</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> fg='colour238'</span></span>
+<span class="line"><span style="--shiki-light:#0184BC;--shiki-dark:#56B6C2">set</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> -g</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> pane-active-border-style</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> fg='colour154'</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">set-option</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> -g</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> status-style </span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">       fg=colour15,bg=#282c34</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">set-option</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> -g</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> pane-border-style</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">            fg=green</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">set-option</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> -g</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> pane-active-border-style</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">     fg=yellow</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">set-option</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> -g</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> window-status-activity-style</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> fg=colour111</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># =====================================</span></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># ===    Appearence and status bar  ===</span></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># ======================================</span></span>
+<span class="line"><span style="--shiki-light:#0184BC;--shiki-dark:#56B6C2">set</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> -g</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> status</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> 'on'</span></span>
+<span class="line"><span style="--shiki-light:#0184BC;--shiki-dark:#56B6C2">set</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> -g</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> status-position</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> 'top'</span></span>
+<span class="line"><span style="--shiki-light:#0184BC;--shiki-dark:#56B6C2">set</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> -g</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> status-justify</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> 'left'</span></span>
+<span class="line"><span style="--shiki-light:#0184BC;--shiki-dark:#56B6C2">set</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> -g</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> status-left-length</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> '100'</span></span>
+<span class="line"><span style="--shiki-light:#0184BC;--shiki-dark:#56B6C2">set</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> -g</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> status-right-length</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> '100'</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">set-window-option</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> -g</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> window-status-format</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> '#[bg=colour238]#[fg=colour107] #I #[bg=colour239]#[fg=colour110] #[bg=colour240]#W#[bg=colour239]#[fg=colour195]#F#[bg=colour238] '</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">set-window-option</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> -g</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> window-status-current-format</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> '#[bg=colour236]#[fg=colour215,bold] #I:#[bg=colour235]#[fg=colour167] #[bg=colour234]#W#[bg=colour235]#[fg=colour195]#F#[bg=colour236] '</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#0184BC;--shiki-dark:#56B6C2">set</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> -g</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> status-left</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> '\</span></span>
+<span class="line"><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">#[fg=colour232,bg=#6272a4] status: #{continuum_status} \</span></span>
+<span class="line"><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">#[bg=#1b2b34] \</span></span>
+<span class="line"><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">#[fg=colour232,bg=#6272a4] %H:%M \</span></span>
+<span class="line"><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">#[bg=#1b2b34] \</span></span>
+<span class="line"><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">#{prefix_highlight} '</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#0184BC;--shiki-dark:#56B6C2">set</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> -g</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> status-right</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> '\</span></span>
+<span class="line"><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">#[fg=colour232,bg=#6272a4] CPU:#{cpu_percentage} \</span></span>
+<span class="line"><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">#[bg=#1b2b34] \</span></span>
+<span class="line"><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">#[fg=colour232,bg=#6272a4] MEM:#{ram_percentage} '</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># ==========================</span></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># ===   Key bindings     ===</span></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># ==========================</span></span>
+<span class="line"><span style="--shiki-light:#0184BC;--shiki-dark:#56B6C2">set</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> -g</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> prefix</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> C-n</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">unbind</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> C-b</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">unbind</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> '"'</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">unbind</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> %</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">  </span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">bind</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> | </span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">split-window</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> -h</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> -c</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> "#{pane_current_path}"</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">bind</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> _</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> split-window</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> -v</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> -c</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> "#{pane_current_path}"</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># switch window</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">bind</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> h</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> select-pane</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> -L</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">bind</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> j</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> select-pane</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> -D</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">bind</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> k</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> select-pane</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> -U</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">bind</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> l</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> select-pane</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> -R</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">#unbind C-w</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">bind</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> C-w</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> resize-window</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> -a</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">bind</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> m</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> set</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> -g</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> mouse</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> on</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">bind</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> M</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> set</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> -g</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> mouse</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> off</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># reload the tmux config</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">bind</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> R</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> source-file</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75"> $HOME</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">/.tmux.conf</span><span style="--shiki-light:#0184BC;--shiki-dark:#56B6C2"> \;</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> display</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> "Configuration Reloading..."</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># ==========================</span></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># ===   Plugin Resurrect ===</span></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># ==========================</span></span>
+<span class="line"><span style="--shiki-light:#0184BC;--shiki-dark:#56B6C2">set</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> -g</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> @resurrect-capture-pane-contents</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> 'on'</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># save vim session</span></span>
+<span class="line"><span style="--shiki-light:#0184BC;--shiki-dark:#56B6C2">set</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> -g</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> @resurrect-strategy-vim</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> 'session'</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># save neovim session</span></span>
+<span class="line"><span style="--shiki-light:#0184BC;--shiki-dark:#56B6C2">set</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> -g</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> @resurrect-strategy-nvim</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> 'session'</span></span>
+<span class="line"><span style="--shiki-light:#0184BC;--shiki-dark:#56B6C2">set</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> -g</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> @continuum-restore</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> 'on'</span></span>
+<span class="line"><span style="--shiki-light:#0184BC;--shiki-dark:#56B6C2">set</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> -g</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> @continuum-boot</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> 'on'</span></span>
+<span class="line"><span style="--shiki-light:#0184BC;--shiki-dark:#56B6C2">set</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> -g</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> @continuum-save-interval</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> '10'</span></span>
+<span class="line"><span style="--shiki-light:#0184BC;--shiki-dark:#56B6C2">set</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> -g</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> @plugin</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> 'tmux-plugins/tmux-cpu'</span></span>
+<span class="line"><span style="--shiki-light:#0184BC;--shiki-dark:#56B6C2">set</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> -g</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> @plugin</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> 'thewtex/tmux-mem-cpu-load'</span></span>
+<span class="line"><span style="--shiki-light:#0184BC;--shiki-dark:#56B6C2">set</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> -g</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> @plugin</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> 'tmux-plugins/tmux-net-speed'</span></span>
+<span class="line"><span style="--shiki-light:#0184BC;--shiki-dark:#56B6C2">set</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> -g</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> @plugin</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> 'tmux-plugins/tmux-prefix-highlight'</span></span>
+<span class="line"><span style="--shiki-light:#0184BC;--shiki-dark:#56B6C2">set</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> -g</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> @plugin</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> 'tmux-plugins/tmux-resurrect'</span></span>
+<span class="line"><span style="--shiki-light:#0184BC;--shiki-dark:#56B6C2">set</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> -g</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> @plugin</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> 'tmux-plugins/tmux-continuum'</span></span>
+<span class="line"><span style="--shiki-light:#0184BC;--shiki-dark:#56B6C2">set</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> -g</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> @plugin</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> 'tmux-plugins/tmux-yank'</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">run</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> '~/.tmux/plugins/tpm/tpm'</span></span>
+<span class="line"><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">```</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></div></template>
 
 

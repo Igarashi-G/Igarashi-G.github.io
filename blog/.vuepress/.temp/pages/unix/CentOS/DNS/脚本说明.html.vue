@@ -1,10 +1,10 @@
-<template><div><h1 id="说明" tabindex="-1"><a class="header-anchor" href="#说明" aria-hidden="true">#</a> 说明</h1>
-<h4 id="文件路径" tabindex="-1"><a class="header-anchor" href="#文件路径" aria-hidden="true">#</a> 文件路径：</h4>
+<template><div><h1 id="说明" tabindex="-1"><a class="header-anchor" href="#说明"><span>说明</span></a></h1>
+<h4 id="文件路径" tabindex="-1"><a class="header-anchor" href="#文件路径"><span>文件路径：</span></a></h4>
 <pre><code>测试环境：172.18.70.203
 路径：
     /usr/lib/uraid/scripts/dns
 </code></pre>
-<h4 id="命令参数" tabindex="-1"><a class="header-anchor" href="#命令参数" aria-hidden="true">#</a> 命令参数:</h4>
+<h4 id="命令参数" tabindex="-1"><a class="header-anchor" href="#命令参数"><span>命令参数:</span></a></h4>
 <p>通过 sh 启动：/usr/lib/uraid/scripts/dns/dns-bind.sh</p>
 <pre><code>optional arguments:
   -h, --help        show this help message and exit
@@ -20,7 +20,7 @@
 </code></pre>
 <ul>
 <li>
-<p>首先要从 utecd 中导入数据,启动 bind:
+<p>首先要从 utecd 中导入数据,启动 bind:<br>
 /usr/lib/uraid/scripts/dns/dns-bind.sh -method start_bind</p>
 </li>
 <li>
@@ -36,15 +36,15 @@
 </code></pre>
 </li>
 <li>
-<p>列出所有域名：
+<p>列出所有域名：<br>
 /usr/lib/uraid/scripts/dns/dns-bind.sh -method list</p>
 </li>
 <li>
-<p>列出对应域名的 ip：
-/usr/lib/uraid/scripts/dns/dns-bind.sh -method list -addr <a href="http://abc.com" target="_blank" rel="noopener noreferrer">abc.com<ExternalLinkIcon/></a></p>
+<p>列出对应域名的 ip：<br>
+/usr/lib/uraid/scripts/dns/dns-bind.sh -method list -addr <a href="http://abc.com" target="_blank" rel="noopener noreferrer">abc.com</a></p>
 </li>
 </ul>
-<h4 id="返回值类型" tabindex="-1"><a class="header-anchor" href="#返回值类型" aria-hidden="true">#</a> 返回值类型：</h4>
+<h4 id="返回值类型" tabindex="-1"><a class="header-anchor" href="#返回值类型"><span>返回值类型：</span></a></h4>
 <pre><code>    添加配置项:
     {'result': {'code': 0, 'msg': ['添加IP成功', '添加域名成功']},
      'data': [{'www.kkk.com.': ['172.14.1.1', '172.14.1.3']},
@@ -62,7 +62,7 @@
      'end': 1,
      'result': {'code': 0, 'msg': ['找到配置文件：kkk.come 对应的ip']}}
 </code></pre>
-<h4 id="定义文件" tabindex="-1"><a class="header-anchor" href="#定义文件" aria-hidden="true">#</a> 定义文件</h4>
+<h4 id="定义文件" tabindex="-1"><a class="header-anchor" href="#定义文件"><span>定义文件</span></a></h4>
 <p>/usr/lib/uraid/scripts/const.py</p>
 <pre><code>    NAMED_PATH = '/etc/named.conf'  - named配置文件地址
     ZONE_CONF_PATH = '/var/named/'  - zone配置文件地址
@@ -71,28 +71,28 @@
 
     返回值：CODE...
 </code></pre>
-<h4 id="日志" tabindex="-1"><a class="header-anchor" href="#日志" aria-hidden="true">#</a> 日志</h4>
+<h4 id="日志" tabindex="-1"><a class="header-anchor" href="#日志"><span>日志</span></a></h4>
 <p>/usr/local/bind/bind.log</p>
 <pre><code>用于记录添加或删除配置项的操作日志
 如 add_conf 添加信息 to /var/named/配置文件.zone
 </code></pre>
-<h4 id="使用-uetcdctl-命令查看" tabindex="-1"><a class="header-anchor" href="#使用-uetcdctl-命令查看" aria-hidden="true">#</a> 使用 uetcdctl 命令查看</h4>
+<h4 id="使用-uetcdctl-命令查看" tabindex="-1"><a class="header-anchor" href="#使用-uetcdctl-命令查看"><span>使用 uetcdctl 命令查看</span></a></h4>
 <ul>
-<li>查看 named.rfc1912.zones 文件
-uetcdctl ls dns-bind
+<li>查看 named.rfc1912.zones 文件<br>
+uetcdctl ls dns-bind<br>
 uetcdctl get dns-bind/named.rfc1912.zones</li>
-<li>查看 zone 的配置文件
-uetcdctl ls dns-bind/var-named
-uetcdctl get dns-bind/var-named/{文件名}.zone
-and
+<li>查看 zone 的配置文件<br>
+uetcdctl ls dns-bind/var-named<br>
+uetcdctl get dns-bind/var-named/{文件名}.zone<br>
+and<br>
 uetcdctl get dns-bind/var-named/{文件名}.arpa</li>
 </ul>
-<h3 id="脚本业务规则说明" tabindex="-1"><a class="header-anchor" href="#脚本业务规则说明" aria-hidden="true">#</a> 脚本业务规则说明：</h3>
-<h4 id="_1-删除-ip-和域名" tabindex="-1"><a class="header-anchor" href="#_1-删除-ip-和域名" aria-hidden="true">#</a> 1.删除 ip 和域名：</h4>
+<h3 id="脚本业务规则说明" tabindex="-1"><a class="header-anchor" href="#脚本业务规则说明"><span>脚本业务规则说明：</span></a></h3>
+<h4 id="_1-删除-ip-和域名" tabindex="-1"><a class="header-anchor" href="#_1-删除-ip-和域名"><span>1.删除 ip 和域名：</span></a></h4>
 <ul>
 <li>
 <p>当前规则为执行删除命令必须要有 -addr 参数，通常执行</p>
-<p>python3 <a href="http://dns.py" target="_blank" rel="noopener noreferrer">dns.py<ExternalLinkIcon/></a> -method del_conf -addr <a href="http://www.abc.com" target="_blank" rel="noopener noreferrer">www.abc.com<ExternalLinkIcon/></a> -ip 192.168.1.1</p>
+<p>python3 <a href="http://dns.py" target="_blank" rel="noopener noreferrer">dns.py</a> -method del_conf -addr <a href="http://www.abc.com" target="_blank" rel="noopener noreferrer">www.abc.com</a> -ip 192.168.1.1</p>
 </li>
 <li>
 <p>执行上述命令：</p>

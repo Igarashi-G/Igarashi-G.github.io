@@ -1,103 +1,103 @@
-<template><div><h1 id="安装-gitlab" tabindex="-1"><a class="header-anchor" href="#安装-gitlab" aria-hidden="true">#</a> 安装 GitLab</h1>
-<h3 id="_1-配置-yum-仓库" tabindex="-1"><a class="header-anchor" href="#_1-配置-yum-仓库" aria-hidden="true">#</a> 1. 配置 yum 仓库</h3>
+<template><div><h1 id="安装-gitlab" tabindex="-1"><a class="header-anchor" href="#安装-gitlab"><span>安装 GitLab</span></a></h1>
+<h3 id="_1-配置-yum-仓库" tabindex="-1"><a class="header-anchor" href="#_1-配置-yum-仓库"><span>1. 配置 yum 仓库</span></a></h3>
 <ul>
 <li>
 <p>新建 <code v-pre>/etc/yum.repos.d/gitlab-ce.repo</code> 内容如下</p>
-<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code><span class="token punctuation">[</span>gitlab-ce<span class="token punctuation">]</span>
-<span class="token assign-left variable">name</span><span class="token operator">=</span>Gitlab CE Repository
-<span class="token assign-left variable">baseurl</span><span class="token operator">=</span>https://mirrors.tuna.tsinghua.edu.cn/gitlab-ce/yum/el<span class="token variable">$releasever</span>/
-<span class="token assign-left variable">gpgcheck</span><span class="token operator">=</span><span class="token number">0</span>
-<span class="token assign-left variable">enabled</span><span class="token operator">=</span><span class="token number">1</span>
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></li>
+<div class="language-shell line-numbers-mode" data-highlighter="shiki" data-ext="shell" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">[gitlab-ce]</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">name</span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2">=</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">Gitlab</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF"> CE</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> Repository</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">baseurl</span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2">=</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">https://mirrors.tuna.tsinghua.edu.cn/gitlab-ce/yum/el</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">$releasever</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">/</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">gpgcheck</span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2">=</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">0</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">enabled</span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2">=</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">1</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></li>
 <li>
 <p>再执行：</p>
-<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code><span class="token function">sudo</span> yum makecache
-<span class="token function">sudo</span> yum <span class="token function">install</span> gitlab-ce
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div></div></div></li>
+<div class="language-shell line-numbers-mode" data-highlighter="shiki" data-ext="shell" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">sudo</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> yum</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> makecache</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">sudo</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> yum</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> install</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> gitlab-ce</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div></div></div></li>
 </ul>
-<h3 id="_2-安装依赖包" tabindex="-1"><a class="header-anchor" href="#_2-安装依赖包" aria-hidden="true">#</a> 2. 安装依赖包</h3>
-<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code><span class="token function">sudo</span> yum <span class="token function">install</span> <span class="token parameter variable">-y</span> <span class="token function">curl</span> policycoreutils-python openssh-server perl
-
-<span class="token comment"># Enable OpenSSH server daemon if not enabled: sudo systemctl status sshd</span>
-<span class="token function">sudo</span> systemctl <span class="token builtin class-name">enable</span> sshd
-<span class="token function">sudo</span> systemctl start sshd
-
-<span class="token comment"># Check if opening the firewall is needed with: sudo systemctl status firewalld</span>
-<span class="token function">sudo</span> firewall-cmd <span class="token parameter variable">--permanent</span> --add-service<span class="token operator">=</span>http
-<span class="token function">sudo</span> firewall-cmd <span class="token parameter variable">--permanent</span> --add-service<span class="token operator">=</span>https
-<span class="token function">sudo</span> systemctl reload firewalld
-
-
-<span class="token function">sudo</span> yum <span class="token function">install</span> postfix
-<span class="token function">sudo</span> systemctl <span class="token builtin class-name">enable</span> postfix
-<span class="token function">sudo</span> systemctl start postfix
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_3-安装-gitlab" tabindex="-1"><a class="header-anchor" href="#_3-安装-gitlab" aria-hidden="true">#</a> 3. 安装 GitLab</h3>
-<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code><span class="token function">sudo</span> yum <span class="token function">install</span> <span class="token parameter variable">-y</span> gitlab-ce
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><h3 id="_4-初始化-gitlab" tabindex="-1"><a class="header-anchor" href="#_4-初始化-gitlab" aria-hidden="true">#</a> 4. 初始化 GitLab</h3>
-<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code><span class="token function">sudo</span> <span class="token function">vim</span> /etc/gitlab/gitlab.rb
-
-<span class="token comment"># 修改 gitlab 配置文件，将 external_url='http://gitlab.example.com' 地址修改成服务器的IP或者域名</span>
-external_url <span class="token string">"https://192.168.2.90"</span>
-
-<span class="token comment"># 修改 gitlab 配置文件，配置初始密码</span>
-gitlab_rails<span class="token punctuation">[</span><span class="token string">'initial_root_password'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">'&lt;my_strong_password>'</span>
-
-<span class="token comment"># 配置监听网络：tcp</span>
-gitlab_workhorse<span class="token punctuation">[</span><span class="token string">'listen_network'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">"tcp"</span>
-
-<span class="token comment"># 配置地址和端口</span>
-gitlab_workhorse<span class="token punctuation">[</span><span class="token string">'listen_addr'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">"192.168.2.908888"</span>
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_5-修改网络端口" tabindex="-1"><a class="header-anchor" href="#_5-修改网络端口" aria-hidden="true">#</a> 5. 修改网络端口</h3>
-<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code><span class="token comment"># 禁用内置NG</span>
-nginx<span class="token punctuation">[</span><span class="token string">'enable'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">false</span>
-
-<span class="token comment"># 指定NG的用户名</span>
-web_server<span class="token punctuation">[</span><span class="token string">'external_users'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'nginx'</span><span class="token punctuation">]</span>
-
-<span class="token comment">#  添加NG地址到信任列表，我这里就是本机地址</span>
-gitlab_rails<span class="token punctuation">[</span><span class="token string">'trusted_proxies'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'127.0.0.1'</span><span class="token punctuation">]</span>
-
-<span class="token comment"># 配置监听网络：tcp</span>
-gitlab_workhorse<span class="token punctuation">[</span><span class="token string">'listen_network'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">"tcp"</span>
-
-<span class="token comment"># 配置地址和端口</span>
-gitlab_workhorse<span class="token punctuation">[</span><span class="token string">'listen_addr'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">"192.168.11.20:8888"</span>
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_6-常用命令" tabindex="-1"><a class="header-anchor" href="#_6-常用命令" aria-hidden="true">#</a> 6. 常用命令</h3>
+<h3 id="_2-安装依赖包" tabindex="-1"><a class="header-anchor" href="#_2-安装依赖包"><span>2. 安装依赖包</span></a></h3>
+<div class="language-shell line-numbers-mode" data-highlighter="shiki" data-ext="shell" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">sudo</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> yum</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> install</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> -y</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> curl</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> policycoreutils-python</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> openssh-server</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> perl</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># Enable OpenSSH server daemon if not enabled: sudo systemctl status sshd</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">sudo</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> systemctl</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> enable</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> sshd</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">sudo</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> systemctl</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> start</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> sshd</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># Check if opening the firewall is needed with: sudo systemctl status firewalld</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">sudo</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> firewall-cmd</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> --permanent</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> --add-service=http</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">sudo</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> firewall-cmd</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> --permanent</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> --add-service=https</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">sudo</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> systemctl</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> reload</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> firewalld</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">sudo</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> yum</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> install</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> postfix</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">sudo</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> systemctl</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> enable</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> postfix</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">sudo</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> systemctl</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> start</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> postfix</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_3-安装-gitlab" tabindex="-1"><a class="header-anchor" href="#_3-安装-gitlab"><span>3. 安装 GitLab</span></a></h3>
+<div class="language-shell line-numbers-mode" data-highlighter="shiki" data-ext="shell" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">sudo</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> yum</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> install</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> -y</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> gitlab-ce</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div><h3 id="_4-初始化-gitlab" tabindex="-1"><a class="header-anchor" href="#_4-初始化-gitlab"><span>4. 初始化 GitLab</span></a></h3>
+<div class="language-shell line-numbers-mode" data-highlighter="shiki" data-ext="shell" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">sudo</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> vim</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> /etc/gitlab/gitlab.rb</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># 修改 gitlab 配置文件，将 external_url='http://gitlab.example.com' 地址修改成服务器的IP或者域名</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">external_url</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> "https://192.168.2.90"</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># 修改 gitlab 配置文件，配置初始密码</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">gitlab_rails[</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">'initial_root_password'</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">]</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> =</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> '&#x3C;my_strong_password>'</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># 配置监听网络：tcp</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">gitlab_workhorse[</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">'listen_network'</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">]</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> =</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> "tcp"</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># 配置地址和端口</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">gitlab_workhorse[</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">'listen_addr'</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">]</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> =</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> "192.168.2.908888"</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_5-修改网络端口" tabindex="-1"><a class="header-anchor" href="#_5-修改网络端口"><span>5. 修改网络端口</span></a></h3>
+<div class="language-shell line-numbers-mode" data-highlighter="shiki" data-ext="shell" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># 禁用内置NG</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">nginx[</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">'enable'</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">]</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> =</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> false</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># 指定NG的用户名</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">web_server[</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">'external_users'</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">]</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> =</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> [</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">'nginx'</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">]</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">#  添加NG地址到信任列表，我这里就是本机地址</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">gitlab_rails[</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">'trusted_proxies'</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">]</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> =</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> [</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">'127.0.0.1'</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">]</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># 配置监听网络：tcp</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">gitlab_workhorse[</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">'listen_network'</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">]</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> =</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> "tcp"</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># 配置地址和端口</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">gitlab_workhorse[</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">'listen_addr'</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">]</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> =</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> "192.168.11.20:8888"</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_6-常用命令" tabindex="-1"><a class="header-anchor" href="#_6-常用命令"><span>6. 常用命令</span></a></h3>
 <ul>
 <li>
 <p>重新编译配置，并启动 <code v-pre>GitLab</code> 服务</p>
-<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code><span class="token function">sudo</span> gitlab-ctl reconfigure
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div></li>
+<div class="language-shell line-numbers-mode" data-highlighter="shiki" data-ext="shell" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">sudo</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> gitlab-ctl</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> reconfigure</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div></li>
 <li>
 <p>启动所有 <code v-pre>GitLab</code></p>
-<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code><span class="token function">sudo</span> gitlab-ctl start
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div></li>
+<div class="language-shell line-numbers-mode" data-highlighter="shiki" data-ext="shell" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">sudo</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> gitlab-ctl</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> start</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div></li>
 <li>
 <p>重新启动 <code v-pre>GitLab</code></p>
-<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code><span class="token function">sudo</span> gitlab-ctl restart
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div></li>
+<div class="language-shell line-numbers-mode" data-highlighter="shiki" data-ext="shell" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">sudo</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> gitlab-ctl</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> restart</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div></li>
 <li>
 <p>停止所有 <code v-pre>GitLab</code></p>
-<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code><span class="token function">sudo</span> gitlab-ctl stop
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div></li>
+<div class="language-shell line-numbers-mode" data-highlighter="shiki" data-ext="shell" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">sudo</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> gitlab-ctl</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> stop</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div></li>
 <li>
 <p>查看服务状态</p>
-<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code><span class="token function">sudo</span> gitlab-ctl status
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div></li>
+<div class="language-shell line-numbers-mode" data-highlighter="shiki" data-ext="shell" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">sudo</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> gitlab-ctl</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> status</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div></li>
 <li>
 <p>查看 <code v-pre>Gitlab</code> 日志</p>
-<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code><span class="token function">sudo</span> gitlab-ctl <span class="token function">tail</span>
-
-<span class="token function">sudo</span> gitlab-ctl <span class="token function">tail</span> nginx/gitlab_access.log
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></li>
+<div class="language-shell line-numbers-mode" data-highlighter="shiki" data-ext="shell" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">sudo</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> gitlab-ctl</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> tail</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">sudo</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> gitlab-ctl</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> tail</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> nginx/gitlab_access.log</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></li>
 <li>
 <p>修改默认的配置文件</p>
-<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code><span class="token function">sudo</span> <span class="token function">vim</span> /etc/gitlab/gitlab.rb
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div></li>
+<div class="language-shell line-numbers-mode" data-highlighter="shiki" data-ext="shell" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">sudo</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> vim</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> /etc/gitlab/gitlab.rb</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div></li>
 <li>
 <p>检查 <code v-pre>Gitlab</code></p>
-<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code>gitlab-rake gitlab:check <span class="token assign-left variable">SANITIZE</span><span class="token operator">=</span>true <span class="token parameter variable">--trace</span>
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div></li>
+<div class="language-shell line-numbers-mode" data-highlighter="shiki" data-ext="shell" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">gitlab-rake</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> gitlab:check</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> SANITIZE=</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">true</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> --trace</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div></li>
 </ul>
 </div></template>
 

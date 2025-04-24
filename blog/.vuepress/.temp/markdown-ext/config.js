@@ -1,0 +1,2 @@
+    import "D:/Program/Igarashi-G.github.io/node_modules/.pnpm/@vuepress+plugin-markdown-ext@2.0.0-rc.94_z4pf6qgh3znnahnd4ixs62rkoy/node_modules/@vuepress/plugin-markdown-ext/lib/client/styles/footnote.css"
+    import "D:/Program/Igarashi-G.github.io/node_modules/.pnpm/@vuepress+plugin-markdown-ext@2.0.0-rc.94_z4pf6qgh3znnahnd4ixs62rkoy/node_modules/@vuepress/plugin-markdown-ext/lib/client/styles/tasklist.css"

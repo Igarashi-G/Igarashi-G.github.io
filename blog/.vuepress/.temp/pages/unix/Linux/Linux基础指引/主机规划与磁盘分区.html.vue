@@ -1,5 +1,5 @@
-<template><div><h1 id="主机规划与磁盘分区" tabindex="-1"><a class="header-anchor" href="#主机规划与磁盘分区" aria-hidden="true">#</a> 主机规划与磁盘分区</h1>
-<h3 id="硬件设备在-linux-中的文件名" tabindex="-1"><a class="header-anchor" href="#硬件设备在-linux-中的文件名" aria-hidden="true">#</a> 硬件设备在 Linux 中的文件名</h3>
+<template><div><h1 id="主机规划与磁盘分区" tabindex="-1"><a class="header-anchor" href="#主机规划与磁盘分区"><span>主机规划与磁盘分区</span></a></h1>
+<h3 id="硬件设备在-linux-中的文件名" tabindex="-1"><a class="header-anchor" href="#硬件设备在-linux-中的文件名"><span>硬件设备在 Linux 中的文件名</span></a></h3>
 <table>
 <thead>
 <tr>

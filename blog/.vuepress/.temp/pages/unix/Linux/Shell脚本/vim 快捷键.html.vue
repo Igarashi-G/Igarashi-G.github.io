@@ -1,15 +1,15 @@
 <template><div><p><strong>vim</strong> 的使用方法 <strong>&amp;</strong> 快捷键</p>
 <!-- more -->
-<h3 id="_1-查询" tabindex="-1"><a class="header-anchor" href="#_1-查询" aria-hidden="true">#</a> 1. 查询</h3>
+<h3 id="_1-查询" tabindex="-1"><a class="header-anchor" href="#_1-查询"><span>1. 查询</span></a></h3>
 <p><strong>vim</strong> 下要查找字符串的时候， 都是输入 <code v-pre>/要查找的字段</code> 或者 <code v-pre>?name</code>，区别是前者是从上往下搜索，后者是从下往上搜索</p>
 <ul>
-<li>&lt;1&gt; 但最快的方式是让光标停留在想要查找的单词的任意一个字母上面， 然后输入 <kbd>Shift + *</kbd> 即可快速选中该单词，
+<li>&lt;1&gt; 但最快的方式是让光标停留在想要查找的单词的任意一个字母上面， 然后输入 <kbd>Shift + *</kbd> 即可快速选中该单词，<br>
 并且可以通过 <strong>n</strong> 或 <strong>N</strong> 进行上一个或下一个的匹配</li>
-<li>&lt;2&gt; 让光标停留在单词的第一个字母上， 然后输入 <strong>yw</strong> 拷贝该单词， 然后输入 / (<kbd>Ctrl + R</kbd>) 0 （即 /”0），回车，
+<li>&lt;2&gt; 让光标停留在单词的第一个字母上， 然后输入 <strong>yw</strong> 拷贝该单词， 然后输入 / (<kbd>Ctrl + R</kbd>) 0 （即 /”0），回车，<br>
 就查找到了第一个匹配的单词， 并且可以通过 <strong>n</strong> 或 <strong>N</strong> 进行上一个或下一个的匹配</li>
 <li>&lt;3&gt; 将单词拷贝到系统剪贴板， 然后再从系统剪贴板拿出来。 即选中需要查找的单词， 然后输入 “+y， 然后输入/（<kbd>Shfit + Ctrl + v</kbd>）就查找到了第一个匹配的单词， 并且可以通过 n 或 N 进行上一个或下一个的匹配</li>
 </ul>
-<h3 id="_2-跳行和换首尾" tabindex="-1"><a class="header-anchor" href="#_2-跳行和换首尾" aria-hidden="true">#</a> 2. 跳行和换首尾</h3>
+<h3 id="_2-跳行和换首尾" tabindex="-1"><a class="header-anchor" href="#_2-跳行和换首尾"><span>2. 跳行和换首尾</span></a></h3>
 <ul>
 <li>跳到第一行
 <ul>
@@ -32,11 +32,11 @@
 <li>换至行尾
 <ul>
 <li>&lt;1&gt; 编辑键 End</li>
-<li>&lt;2&gt; &quot;<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">&quot;</mi><mtext>（</mtext><mo>&lt;</mo><mi>k</mi><mi>b</mi><mi>d</mi><mo>&gt;</mo><mi>S</mi><mi>h</mi><mi>i</mi><mi>f</mi><mi>t</mi><mo>+</mo><mn>4</mn><mo>&lt;</mo><mi mathvariant="normal">/</mi><mi>k</mi><mi>b</mi><mi>d</mi><mo>&gt;</mo><mtext>）使用</mtext><mi mathvariant="normal">&quot;</mi><mn>1</mn></mrow><annotation encoding="application/x-tex">&quot;（&lt;kbd&gt;Shift + 4&lt;/kbd&gt;）使用&quot;1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7335em;vertical-align:-0.0391em;"></span><span class="mord">&quot;</span><span class="mord cjk_fallback">（</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7335em;vertical-align:-0.0391em;"></span><span class="mord mathnormal">kb</span><span class="mord mathnormal">d</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="mord mathnormal">hi</span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mord mathnormal">t</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6835em;vertical-align:-0.0391em;"></span><span class="mord">4</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">/</span><span class="mord mathnormal">kb</span><span class="mord mathnormal">d</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord cjk_fallback">）使用</span><span class="mord">&quot;1</span></span></span></span>&quot;表示当前行的行尾，&quot;2$&quot;表示当前行的下一行的行尾。</li>
+<li>&lt;2&gt; &quot;$&quot;（<kbd>Shift + 4</kbd>）使用&quot;1$&quot;表示当前行的行尾，&quot;2$&quot;表示当前行的下一行的行尾。</li>
 </ul>
 </li>
 </ul>
-<h3 id="_3-复制和粘贴" tabindex="-1"><a class="header-anchor" href="#_3-复制和粘贴" aria-hidden="true">#</a> 3. 复制和粘贴</h3>
+<h3 id="_3-复制和粘贴" tabindex="-1"><a class="header-anchor" href="#_3-复制和粘贴"><span>3. 复制和粘贴</span></a></h3>
 <p>最简单的办法 鼠标选中 <kbd>ctrl/shift + insert</kbd> 但是这样看上去就会很傻</p>
 <ul>
 <li>
@@ -73,65 +73,65 @@
 <p>恢复上一次操作：<kbd>ctrl + r</kbd></p>
 </li>
 </ul>
-<h3 id="vim-配置" tabindex="-1"><a class="header-anchor" href="#vim-配置" aria-hidden="true">#</a> VIM 配置</h3>
+<h3 id="vim-配置" tabindex="-1"><a class="header-anchor" href="#vim-配置"><span>VIM 配置</span></a></h3>
 <p>下载 <strong>vim-colorschemes、vim-tarbar</strong> 等 <strong>Vim</strong> 插件，将它们解压放置在 <code v-pre>~/.vim</code> 目录中</p>
-<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code><span class="token function">wget</span> https://github.com/flazz/vim-colorschemes/archive/master.zip
-
-<span class="token function">wget</span> https://github.com/majutsushi/tagbar/archive/master.zip
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>配置文件 <code v-pre>~/.vimrc</code> 内容如下</p>
-<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code><span class="token string">"common setting
-set t_Co=256
-colorscheme molokai
-set autoindent
-set smartindent
-set tabstop=4
-set shiftwidth=4
-set softtabstop=4
-set number
-set nobackup
-set noundofile
-filetype plugin on
-syntax on
-
-"</span>hi Type <span class="token assign-left variable">ctermfg</span><span class="token operator">=</span><span class="token number">118</span> <span class="token assign-left variable">cterm</span><span class="token operator">=</span>none
-<span class="token string">"hi Structure ctermfg=118 cterm=none
-"</span>hi Macro <span class="token assign-left variable">ctermfg</span><span class="token operator">=</span><span class="token number">161</span> <span class="token assign-left variable">cterm</span><span class="token operator">=</span>bold
-<span class="token string">"hi PreCondit ctermfg=161 cterm=bold
-set cursorline
-
-"</span><span class="token operator">>></span><span class="token operator">></span>ctags begin
-nmap <span class="token operator">&lt;</span>F<span class="token operator"><span class="token file-descriptor important">8</span>></span> :TagbarToggle<span class="token operator">&lt;</span>CR<span class="token operator">></span>
-nmap <span class="token operator">&lt;</span>F<span class="token operator"><span class="token file-descriptor important">5</span>></span> :tprev<span class="token operator">&lt;</span>CR<span class="token operator">></span>
-nmap <span class="token operator">&lt;</span>F<span class="token operator"><span class="token file-descriptor important">6</span>></span> :tnext<span class="token operator">&lt;</span>CR<span class="token operator">></span>
-<span class="token string">"&lt;&lt;&lt;ctags end
-
-"</span><span class="token operator">>></span><span class="token operator">></span>for windows begin 
-<span class="token builtin class-name">set</span> <span class="token assign-left variable">encoding</span><span class="token operator">=</span>utf-8
-<span class="token builtin class-name">set</span> <span class="token assign-left variable">fileencodings</span><span class="token operator">=</span>utf-8,chinese,latin-1
-<span class="token keyword">if</span> has<span class="token punctuation">(</span><span class="token string">"win32"</span><span class="token punctuation">)</span>
-  <span class="token builtin class-name">set</span> <span class="token assign-left variable">fileencoding</span><span class="token operator">=</span>chinese
-<span class="token keyword">else</span>
-  <span class="token builtin class-name">set</span> <span class="token assign-left variable">fileencoding</span><span class="token operator">=</span>utf-8
-endif
-
-<span class="token builtin class-name">source</span> <span class="token variable">$VIMRUNTIME</span>/delmenu.vim
-<span class="token builtin class-name">source</span> <span class="token variable">$VIMRUNTIME</span>/menu.vim
-
-<span class="token builtin class-name">set</span> <span class="token assign-left variable">guifont</span><span class="token operator">=</span>Consolas:h11
-language messages zh_CN.utf-8
-<span class="token string">"&lt;&lt;&lt;for windows end 
-
-"</span><span class="token operator">>></span><span class="token operator">></span>set max window bengin
-<span class="token keyword">if</span> has<span class="token punctuation">(</span><span class="token string">'win32'</span><span class="token punctuation">)</span>
-    au GUIEnter * simalt ~x
-<span class="token keyword">else</span>
-    au GUIEnter * call MaximizeWindow<span class="token punctuation">(</span><span class="token punctuation">)</span>
-endif
-
-function<span class="token operator">!</span> MaximizeWindow<span class="token punctuation">(</span><span class="token punctuation">)</span>
-    silent <span class="token operator">!</span>wmctrl <span class="token parameter variable">-r</span> :ACTIVE: <span class="token parameter variable">-b</span> add,maximized_vert,maximized_horz
-endfunction
-"<span class="token operator">&lt;&lt;&lt;</span>set max window end
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></div></template>
+<div class="language-shell line-numbers-mode" data-highlighter="shiki" data-ext="shell" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">wget</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> https://github.com/flazz/vim-colorschemes/archive/master.zip</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">wget</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> https://github.com/majutsushi/tagbar/archive/master.zip</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>配置文件 <code v-pre>~/.vimrc</code> 内容如下</p>
+<div class="language-shell line-numbers-mode" data-highlighter="shiki" data-ext="shell" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">"common setting</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">set t_Co=256</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">colorscheme molokai</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">set autoindent</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">set smartindent</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">set tabstop=4</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">set shiftwidth=4</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">set softtabstop=4</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">set number</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">set nobackup</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">set noundofile</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">filetype plugin on</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">syntax on</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">"</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">hi</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> Type</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> ctermfg=</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">118</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> cterm=none</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">"hi Structure ctermfg=118 cterm=none</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">"</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">hi</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> Macro</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> ctermfg=</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">161</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> cterm=bold</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">"hi PreCondit ctermfg=161 cterm=bold</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">set cursorline</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">"</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">>>></span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">ctags</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> begin</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">nmap</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> &#x3C;</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">F</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">8> </span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">:TagbarToggle</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">&#x3C;</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">C</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">R></span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">nmap</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> &#x3C;</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">F</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">5> </span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">:tprev</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">&#x3C;</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">C</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">R></span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">nmap</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> &#x3C;</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">F</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">6> </span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">:tnext</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">&#x3C;</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">C</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">R></span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">"&#x3C;&#x3C;&#x3C;ctags end</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">"</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">>>></span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">for</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> windows</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> begin</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> </span></span>
+<span class="line"><span style="--shiki-light:#0184BC;--shiki-dark:#56B6C2">set</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> encoding=utf-8</span></span>
+<span class="line"><span style="--shiki-light:#0184BC;--shiki-dark:#56B6C2">set</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> fileencodings=utf-8,chinese,latin-1</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">if</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF"> has(</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">"win32"</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">)</span></span>
+<span class="line"><span style="--shiki-light:#0184BC;--shiki-dark:#56B6C2">  set</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> fileencoding=chinese</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">else</span></span>
+<span class="line"><span style="--shiki-light:#0184BC;--shiki-dark:#56B6C2">  set</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> fileencoding=utf-8</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">endif</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#0184BC;--shiki-dark:#56B6C2">source</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75"> $VIMRUNTIME</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">/delmenu.vim</span></span>
+<span class="line"><span style="--shiki-light:#0184BC;--shiki-dark:#56B6C2">source</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75"> $VIMRUNTIME</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">/menu.vim</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#0184BC;--shiki-dark:#56B6C2">set</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> guifont=Consolas:h11</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">language</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> messages</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> zh_CN.utf-8</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">"&#x3C;&#x3C;&#x3C;for windows end </span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">"</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">>>></span><span style="--shiki-light:#0184BC;--shiki-dark:#56B6C2">set</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> max</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> window</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> bengin</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">if</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF"> has(</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">'win32'</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">)</span></span>
+<span class="line"><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">    au</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> GUIEnter</span><span style="--shiki-light:#E45649;--shiki-dark:#E5C07B"> *</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> simalt</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> ~x</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">else</span></span>
+<span class="line"><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">    au</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> GUIEnter</span><span style="--shiki-light:#E45649;--shiki-dark:#E5C07B"> *</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> call</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> MaximizeWindow</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">()</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">endif</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">function</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">!</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF"> MaximizeWindow</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">()</span></span>
+<span class="line"><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">    silent</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> !wmctrl</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> -r</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> :ACTIVE:</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> -b</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> add,maximized_vert,maximized_horz</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">endfunction</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">"&#x3C;&#x3C;&#x3C;set max window end</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></div></template>
 
 

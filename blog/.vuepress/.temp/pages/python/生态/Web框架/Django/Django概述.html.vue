@@ -1,21 +1,21 @@
 <template><div><p><strong>Python Django Web</strong> 框架的简要概述</p>
 <!--more-->
-<p><a href="https://docs.djangoproject.com/zh-hans" target="_blank" rel="noopener noreferrer">文档<ExternalLinkIcon/></a> | <a href="https://docs.djangoproject.com/zh-hans/4.1/howto/" target="_blank" rel="noopener noreferrer">操作指南<ExternalLinkIcon/></a> | <a href="https://github.com/django/django" target="_blank" rel="noopener noreferrer">Github<ExternalLinkIcon/></a></p>
-<h2 id="_1-初始化" tabindex="-1"><a class="header-anchor" href="#_1-初始化" aria-hidden="true">#</a> 1. 初始化</h2>
-<h3 id="_1-1-安装" tabindex="-1"><a class="header-anchor" href="#_1-1-安装" aria-hidden="true">#</a> 1.1 安装</h3>
+<p><a href="https://docs.djangoproject.com/zh-hans" target="_blank" rel="noopener noreferrer">文档</a> | <a href="https://docs.djangoproject.com/zh-hans/4.1/howto/" target="_blank" rel="noopener noreferrer">操作指南</a> | <a href="https://github.com/django/django" target="_blank" rel="noopener noreferrer">Github</a></p>
+<h2 id="_1-初始化" tabindex="-1"><a class="header-anchor" href="#_1-初始化"><span>1. 初始化</span></a></h2>
+<h3 id="_1-1-安装" tabindex="-1"><a class="header-anchor" href="#_1-1-安装"><span>1.1 安装</span></a></h3>
 <p>安装 <strong>Django</strong> 框架</p>
-<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code>$ pip <span class="token function">install</span> Django
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><h3 id="_1-2-创建项目" tabindex="-1"><a class="header-anchor" href="#_1-2-创建项目" aria-hidden="true">#</a> 1.2 创建项目</h3>
+<div class="language-shell line-numbers-mode" data-highlighter="shiki" data-ext="shell" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">$</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> pip</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> install</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> Django</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div><h3 id="_1-2-创建项目" tabindex="-1"><a class="header-anchor" href="#_1-2-创建项目"><span>1.2 创建项目</span></a></h3>
 <blockquote>
 <p>一个网站 <strong>配置</strong> 和 <strong>应用</strong> 的集合</p>
 </blockquote>
-<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code><span class="token comment"># cd 到 uci-dashboard 项目文件夹</span>
-$ <span class="token builtin class-name">cd</span> uci-dashboard
-
-<span class="token comment"># 创建 Django 项目 uci</span>
-$ django-admin startproject uci <span class="token builtin class-name">.</span>
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><ul>
-<li><span style="color: blue"><a href="http://django-admin.py" target="_blank" rel="noopener noreferrer">django-admin.py<ExternalLinkIcon/></a>：</span>用于管理任务的 <strong>CLI</strong> 工具</li>
+<div class="language-shell line-numbers-mode" data-highlighter="shiki" data-ext="shell" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># cd 到 uci-dashboard 项目文件夹</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">$</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> cd</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> uci-dashboard</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># 创建 Django 项目 uci</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">$</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> django-admin</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> startproject</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> uci</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> .</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><ul>
+<li><span style="color: blue"><a href="http://django-admin.py" target="_blank" rel="noopener noreferrer">django-admin.py</a>：</span>用于管理任务的 <strong>CLI</strong> 工具</li>
 </ul>
 <p>其目录结构如下</p>
   <ul>
@@ -50,16 +50,16 @@ $ django-admin startproject uci <span class="token builtin class-name">.</span>
       </li>
   </ul>
 <p>启动项目</p>
-<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code>$ python manage.py runserver <span class="token comment"># 0.0.0.0:8088</span>
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><ul>
-<li><span style="color: blue"><a href="http://manage.py" target="_blank" rel="noopener noreferrer">manage.py<ExternalLinkIcon/></a>：</span>管理 <strong>Django</strong> 项目的 <strong>CLI</strong> 工具，是 <code v-pre>django-admin.py</code> 的简单包装</li>
+<div class="language-shell line-numbers-mode" data-highlighter="shiki" data-ext="shell" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">$</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> python</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> manage.py</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> runserver</span><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"> # 0.0.0.0:8088</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div><ul>
+<li><span style="color: blue"><a href="http://manage.py" target="_blank" rel="noopener noreferrer">manage.py</a>：</span>管理 <strong>Django</strong> 项目的 <strong>CLI</strong> 工具，是 <code v-pre>django-admin.py</code> 的简单包装</li>
 </ul>
-<h3 id="_1-3-创建应用" tabindex="-1"><a class="header-anchor" href="#_1-3-创建应用" aria-hidden="true">#</a> 1.3 创建应用</h3>
+<h3 id="_1-3-创建应用" tabindex="-1"><a class="header-anchor" href="#_1-3-创建应用"><span>1.3 创建应用</span></a></h3>
 <blockquote>
 <p>应用是 <strong>专做某件事</strong> 的 网络应用程序，项目可以包含 <strong>多个应用</strong></p>
 </blockquote>
-<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code>$ python manage.py startapp account
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p>此时目录为</p>
+<div class="language-shell line-numbers-mode" data-highlighter="shiki" data-ext="shell" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">$</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> python</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> manage.py</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> startapp</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> account</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div><p>此时目录为</p>
   <ul>
       <li>
           account
@@ -120,9 +120,9 @@ $ django-admin startproject uci <span class="token builtin class-name">.</span>
 <li>多了个 <strong>url 映射器</strong>（<em>路由</em>），用来分发请求给 <strong>View 层</strong> 处理</li>
 </ul>
 <img src="@source/python/生态/Web框架/Django/img/MTV.png">
-<h2 id="_2-应用指北" tabindex="-1"><a class="header-anchor" href="#_2-应用指北" aria-hidden="true">#</a> 2. 应用指北</h2>
-<h3 id="_2-1-views" tabindex="-1"><a class="header-anchor" href="#_2-1-views" aria-hidden="true">#</a> 2.1 views</h3>
-<p><a href="https://docs.djangoproject.com/zh-hans/4.1/topics/http/views/" target="_blank" rel="noopener noreferrer">views.py 文档<ExternalLinkIcon/></a> | <a href="https://docs.djangoproject.com/zh-hans/4.1/topics/async/#async-views" target="_blank" rel="noopener noreferrer">异步视图<ExternalLinkIcon/></a></p>
+<h2 id="_2-应用指北" tabindex="-1"><a class="header-anchor" href="#_2-应用指北"><span>2. 应用指北</span></a></h2>
+<h3 id="_2-1-views" tabindex="-1"><a class="header-anchor" href="#_2-1-views"><span>2.1 views</span></a></h3>
+<p><a href="https://docs.djangoproject.com/zh-hans/4.1/topics/http/views/" target="_blank" rel="noopener noreferrer">views.py 文档</a> | <a href="https://docs.djangoproject.com/zh-hans/4.1/topics/async/#async-views" target="_blank" rel="noopener noreferrer">异步视图</a></p>
 <p>处理逻辑，类比 <strong>MVC</strong> 的 <strong>Controller</strong>（<em>控制层</em>），有两个核心对象，<strong>请求</strong> 与 <strong>响应</strong></p>
 <ul>
 <li>
@@ -136,48 +136,48 @@ $ django-admin startproject uci <span class="token builtin class-name">.</span>
 <p><strong>HttpResponse：</strong> 响应对象，<strong>view 层</strong> 需要 <strong>手动创建</strong> 返回</p>
 </li>
 </ul>
-<p><a href="https://docs.djangoproject.com/zh-hans/4.1/ref/request-response/" target="_blank" rel="noopener noreferrer">属性 &amp; 方法<ExternalLinkIcon/></a> | <code v-pre>django.shortcuts</code>：<a href="https://docs.djangoproject.com/zh-hans/4.1/topics/http/shortcuts/" target="_blank" rel="noopener noreferrer">便捷函数<ExternalLinkIcon/></a> 快捷方式</p>
+<p><a href="https://docs.djangoproject.com/zh-hans/4.1/ref/request-response/" target="_blank" rel="noopener noreferrer">属性 &amp; 方法</a> | <code v-pre>django.shortcuts</code>：<a href="https://docs.djangoproject.com/zh-hans/4.1/topics/http/shortcuts/" target="_blank" rel="noopener noreferrer">便捷函数</a> 快捷方式</p>
 <p><strong>FBV</strong> 与 <strong>CBV</strong></p>
-<h3 id="_2-2-urls" tabindex="-1"><a class="header-anchor" href="#_2-2-urls" aria-hidden="true">#</a> 2.2 urls</h3>
-<p><a href="https://docs.djangoproject.com/zh-hans/4.1/topics/http/urls/" target="_blank" rel="noopener noreferrer">urls.py 文档<ExternalLinkIcon/></a></p>
+<h3 id="_2-2-urls" tabindex="-1"><a class="header-anchor" href="#_2-2-urls"><span>2.2 urls</span></a></h3>
+<p><a href="https://docs.djangoproject.com/zh-hans/4.1/topics/http/urls/" target="_blank" rel="noopener noreferrer">urls.py 文档</a></p>
 <p>将 <strong>路由</strong> 和 <strong>视图</strong> 做映射绑定</p>
 <ul>
 <li>
 <p>支持 <strong>函数</strong> 映射</p>
-<div class="language-python ext-py line-numbers-mode"><pre v-pre class="language-python"><code><span class="token keyword">from</span> account <span class="token keyword">import</span> views
-
-urlpatterns <span class="token operator">=</span> <span class="token punctuation">[</span>
-    <span class="token comment"># path(正则表达式, views视图函数，参数，别名)</span>
-    path<span class="token punctuation">(</span><span class="token string">'admin/'</span><span class="token punctuation">,</span> admin<span class="token punctuation">.</span>site<span class="token punctuation">.</span>urls<span class="token punctuation">)</span><span class="token punctuation">,</span>
-<span class="token operator">+</span>    path<span class="token punctuation">(</span><span class="token string">'account/'</span><span class="token punctuation">,</span> views<span class="token punctuation">.</span>login<span class="token punctuation">,</span> name<span class="token operator">=</span><span class="token string">'account'</span><span class="token punctuation">)</span>
-<span class="token punctuation">]</span>
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></li>
+<div class="language-python line-numbers-mode" data-highlighter="shiki" data-ext="python" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">from</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> account </span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">import</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> views</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">urlpatterns </span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2">=</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> [</span></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">    # path(正则表达式, views视图函数，参数，别名)</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#61AFEF">    path</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">'admin/'</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">, admin.site.urls),</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2">+</span><span style="--shiki-light:#383A42;--shiki-dark:#61AFEF">    path</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">'account/'</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">, views.login, </span><span style="--shiki-light:#986801;--shiki-light-font-style:inherit;--shiki-dark:#E06C75;--shiki-dark-font-style:italic">name</span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2">=</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">'account'</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">)</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">]</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></li>
 <li>
 <p>支持 <strong>类</strong> 映射</p>
-<div class="language-python ext-py line-numbers-mode"><pre v-pre class="language-python"><code><span class="token keyword">from</span> account<span class="token punctuation">.</span>views <span class="token keyword">import</span> Account
-
-<span class="token operator">+</span>    path<span class="token punctuation">(</span><span class="token string">'account/'</span><span class="token punctuation">,</span> Account<span class="token punctuation">.</span>as_view<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> name<span class="token operator">=</span><span class="token string">'account'</span><span class="token punctuation">)</span>
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></li>
+<div class="language-python line-numbers-mode" data-highlighter="shiki" data-ext="python" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">from</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> account.views </span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">import</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> Account</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2">+</span><span style="--shiki-light:#383A42;--shiki-dark:#61AFEF">    path</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">'account/'</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">, Account.</span><span style="--shiki-light:#383A42;--shiki-dark:#61AFEF">as_view</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(), </span><span style="--shiki-light:#986801;--shiki-light-font-style:inherit;--shiki-dark:#E06C75;--shiki-dark-font-style:italic">name</span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2">=</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">'account'</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">)</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></li>
 <li>
 <p>支持 <strong>子路由</strong> 分发</p>
 <ul>
 <li>
 <p>在 <code v-pre>account</code> 应用下创建 <code v-pre>urls.py</code> 文件，并写入路由</p>
-<div class="language-python ext-py line-numbers-mode"><pre v-pre class="language-python"><code><span class="token keyword">from</span> django<span class="token punctuation">.</span>urls <span class="token keyword">import</span> path
-
-<span class="token keyword">from</span> <span class="token punctuation">.</span> <span class="token keyword">import</span> views
-
-urlpatterns <span class="token operator">=</span> <span class="token punctuation">[</span>
-    path<span class="token punctuation">(</span><span class="token string">''</span><span class="token punctuation">,</span> views<span class="token punctuation">.</span>index<span class="token punctuation">,</span> name<span class="token operator">=</span><span class="token string">'index'</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token comment"># name 起别名</span>
-<span class="token punctuation">]</span>
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></li>
+<div class="language-python line-numbers-mode" data-highlighter="shiki" data-ext="python" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">from</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> django.urls </span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">import</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> path</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">from</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> . </span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">import</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> views</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">urlpatterns </span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2">=</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> [</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#61AFEF">    path</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">''</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">, views.index, </span><span style="--shiki-light:#986801;--shiki-light-font-style:inherit;--shiki-dark:#E06C75;--shiki-dark-font-style:italic">name</span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2">=</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">'index'</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">), </span><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># name 起别名</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">]</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></li>
 <li>
 <p>项目的 <code v-pre>urls.py</code> 下引入</p>
-<div class="language-python ext-py line-numbers-mode"><pre v-pre class="language-python"><code><span class="token comment"># 在应用下创建 urls.py 文件</span>
-<span class="token keyword">from</span> django<span class="token punctuation">.</span>urls <span class="token keyword">import</span> include<span class="token punctuation">,</span> path
-
-<span class="token operator">+</span>	path<span class="token punctuation">(</span><span class="token string">'account/'</span><span class="token punctuation">,</span> include<span class="token punctuation">(</span><span class="token string">'account.urls'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></li>
+<div class="language-python line-numbers-mode" data-highlighter="shiki" data-ext="python" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># 在应用下创建 urls.py 文件</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">from</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> django.urls </span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">import</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> include, path</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2">+</span><span style="--shiki-light:#383A42;--shiki-dark:#61AFEF">	path</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">'account/'</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">, </span><span style="--shiki-light:#383A42;--shiki-dark:#61AFEF">include</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">'account.urls'</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">))</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></li>
 </ul>
 </li>
 <li>
@@ -187,15 +187,15 @@ urlpatterns <span class="token operator">=</span> <span class="token punctuation
 <p>支持 <strong>额外字典参数</strong> ，在 <strong>view 层</strong> 可利用参数 <code v-pre>key值</code> 接收</p>
 </li>
 </ul>
-<h3 id="_2-3-models" tabindex="-1"><a class="header-anchor" href="#_2-3-models" aria-hidden="true">#</a> 2.3 models</h3>
-<p><a href="https://docs.djangoproject.com/zh-hans/4.1/topics/db/models/" target="_blank" rel="noopener noreferrer">models.py 文档<ExternalLinkIcon/></a> | <a href="">ORM 映射</a></p>
+<h3 id="_2-3-models" tabindex="-1"><a class="header-anchor" href="#_2-3-models"><span>2.3 models</span></a></h3>
+<p><a href="https://docs.djangoproject.com/zh-hans/4.1/topics/db/models/" target="_blank" rel="noopener noreferrer">models.py 文档</a> | <a href="">ORM 映射</a></p>
 <p>定义应用的 <strong>数据模型</strong></p>
 <ul>
 <li>
 <p>自动创建数据库</p>
-<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code>$ python manage.py makemigrations
-$ python manage.py migrate
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div></div></div></li>
+<div class="language-shell line-numbers-mode" data-highlighter="shiki" data-ext="shell" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">$</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> python</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> manage.py</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> makemigrations</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">$</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> python</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> manage.py</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> migrate</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div></div></div></li>
 <li>
 <p>异常时简单粗暴处理方式</p>
 <ul>
@@ -219,97 +219,97 @@ $ python manage.py migrate
 </li>
 <li>
 <p>清空数据库</p>
-<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code>$ python manage.py flush
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div></li>
+<div class="language-shell line-numbers-mode" data-highlighter="shiki" data-ext="shell" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">$</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> python</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> manage.py</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> flush</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div></li>
 <li>
 <p>创建管理后台超级用户</p>
-<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code>$ python manage.py createsuperuser
-<span class="token comment">## Username (leave blank to use 'igarashi'): igarashi</span>
-<span class="token comment">## Email address: igarashi@github.com</span>
-<span class="token comment">## Password:</span>
-<span class="token comment">## Password (again):</span>
-<span class="token comment">## The password is too similar to the username.</span>
-<span class="token comment">## Bypass password validation and create user anyway? [y/N]: y</span>
-<span class="token comment">## Superuser created successfully.</span>
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></li>
+<div class="language-shell line-numbers-mode" data-highlighter="shiki" data-ext="shell" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">$</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> python</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> manage.py</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> createsuperuser</span></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">## Username (leave blank to use 'igarashi'): igarashi</span></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">## Email address: igarashi@github.com</span></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">## Password:</span></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">## Password (again):</span></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">## The password is too similar to the username.</span></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">## Bypass password validation and create user anyway? [y/N]: y</span></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">## Superuser created successfully.</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></li>
 </ul>
-<h3 id="_2-4-settings" tabindex="-1"><a class="header-anchor" href="#_2-4-settings" aria-hidden="true">#</a> 2.4 settings</h3>
-<p><a href="https://docs.djangoproject.com/zh-hans/4.1/ref/settings/" target="_blank" rel="noopener noreferrer">settings.py 文档<ExternalLinkIcon/></a></p>
+<h3 id="_2-4-settings" tabindex="-1"><a class="header-anchor" href="#_2-4-settings"><span>2.4 settings</span></a></h3>
+<p><a href="https://docs.djangoproject.com/zh-hans/4.1/ref/settings/" target="_blank" rel="noopener noreferrer">settings.py 文档</a></p>
 <p>定义项目配置</p>
 <p>增加 <strong>APP</strong> 应用</p>
-<div class="language-python ext-py line-numbers-mode"><pre v-pre class="language-python"><code>INSTALLED_APPS <span class="token operator">=</span> <span class="token punctuation">[</span>										<span class="token comment"># 添加 APP 应用</span>
-	<span class="token string">"django.contrib.staticfiles"</span><span class="token punctuation">,</span>						<span class="token comment"># 开发支持静态，见下文</span>
-    <span class="token comment"># ...</span>
-    <span class="token string">"uci.account"</span><span class="token punctuation">,</span>
-<span class="token punctuation">]</span>
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p><a href="https://docs.djangoproject.com/zh-hans/4.1/howto/static-files/" target="_blank" rel="noopener noreferrer">静态文件<ExternalLinkIcon/></a> 相关</p>
-<div class="language-python ext-py line-numbers-mode"><pre v-pre class="language-python"><code>TEMPLATES <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>										<span class="token comment"># 配置模板</span>
-
-PROJECT_ROOT <span class="token operator">=</span> <span class="token string">"项目绝对路径"</span>
-
-MEDIA_ROOT <span class="token operator">=</span> os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>join<span class="token punctuation">(</span>PROJECT_ROOT<span class="token punctuation">,</span> <span class="token string">"media"</span><span class="token punctuation">)</span>		<span class="token comment"># 上传文件 - 绝对路径</span>
-MEDIA_URL <span class="token operator">=</span> os<span class="token punctuation">.</span>environ<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">"MEDIA_URL"</span><span class="token punctuation">,</span> <span class="token string">"/media/"</span><span class="token punctuation">)</span>		<span class="token comment"># 上传应用的 - URL路径</span>
-
-STATIC_ROOT <span class="token operator">=</span> os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>join<span class="token punctuation">(</span>PROJECT_ROOT<span class="token punctuation">,</span> <span class="token string">"static"</span><span class="token punctuation">)</span>		<span class="token comment"># 静态文件 [部署] 的 - 绝对路径</span>
-STATIC_URL <span class="token operator">=</span> os<span class="token punctuation">.</span>environ<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">"STATIC_URL"</span><span class="token punctuation">,</span> <span class="token string">"/static/"</span><span class="token punctuation">)</span>	<span class="token comment"># 静态文件应用的 - URL路径</span>
-STATICFILES_DIRS <span class="token operator">=</span> <span class="token punctuation">[</span>									<span class="token comment"># 静态文件的 目录列表</span>
-    <span class="token punctuation">(</span><span class="token string">"images"</span><span class="token punctuation">,</span> os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>join<span class="token punctuation">(</span>PROJECT_ROOT<span class="token punctuation">,</span> <span class="token string">"app_name"</span><span class="token punctuation">,</span> <span class="token string">"static"</span><span class="token punctuation">,</span> <span class="token string">"images"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-    <span class="token comment"># ...</span>
-<span class="token punctuation">]</span>
-<span class="token comment"># template can find file to "images/静态图片.png"</span>
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p><strong>开发环境</strong> 支持静态文件</p>
+<div class="language-python line-numbers-mode" data-highlighter="shiki" data-ext="python" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#D19A66">INSTALLED_APPS</span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2"> =</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> [										</span><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># 添加 APP 应用</span></span>
+<span class="line"><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">	"django.contrib.staticfiles"</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">,						</span><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># 开发支持静态，见下文</span></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">    # ...</span></span>
+<span class="line"><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">    "uci.account"</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">,</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">]</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p><a href="https://docs.djangoproject.com/zh-hans/4.1/howto/static-files/" target="_blank" rel="noopener noreferrer">静态文件</a> 相关</p>
+<div class="language-python line-numbers-mode" data-highlighter="shiki" data-ext="python" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#D19A66">TEMPLATES</span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2"> =</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> []										</span><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># 配置模板</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#D19A66">PROJECT_ROOT</span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2"> =</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> "项目绝对路径"</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#D19A66">MEDIA_ROOT</span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2"> =</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> os.path.</span><span style="--shiki-light:#383A42;--shiki-dark:#61AFEF">join</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#383A42;--shiki-dark:#D19A66">PROJECT_ROOT</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">, </span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">"media"</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">)		</span><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># 上传文件 - 绝对路径</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#D19A66">MEDIA_URL</span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2"> =</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> os.environ.</span><span style="--shiki-light:#383A42;--shiki-dark:#61AFEF">get</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">"MEDIA_URL"</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">, </span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">"/media/"</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">)		</span><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># 上传应用的 - URL路径</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#D19A66">STATIC_ROOT</span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2"> =</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> os.path.</span><span style="--shiki-light:#383A42;--shiki-dark:#61AFEF">join</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#383A42;--shiki-dark:#D19A66">PROJECT_ROOT</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">, </span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">"static"</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">)		</span><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># 静态文件 [部署] 的 - 绝对路径</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#D19A66">STATIC_URL</span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2"> =</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> os.environ.</span><span style="--shiki-light:#383A42;--shiki-dark:#61AFEF">get</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">"STATIC_URL"</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">, </span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">"/static/"</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">)	</span><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># 静态文件应用的 - URL路径</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#D19A66">STATICFILES_DIRS</span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2"> =</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> [									</span><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># 静态文件的 目录列表</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">    (</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">"images"</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">, os.path.</span><span style="--shiki-light:#383A42;--shiki-dark:#61AFEF">join</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#383A42;--shiki-dark:#D19A66">PROJECT_ROOT</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">, </span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">"app_name"</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">, </span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">"static"</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">, </span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">"images"</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">)),</span></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">    # ...</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">]</span></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># template can find file to "images/静态图片.png"</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p><strong>开发环境</strong> 支持静态文件</p>
 <ul>
 <li>
 <p>在 <code v-pre>urls.py</code> 下的 <code v-pre>urlpatterns</code> 增加应用</p>
-<div class="language-python ext-py line-numbers-mode"><pre v-pre class="language-python"><code><span class="token keyword">from</span> django<span class="token punctuation">.</span>contrib<span class="token punctuation">.</span>staticfiles<span class="token punctuation">.</span>views <span class="token keyword">import</span> serve
-
-<span class="token keyword">if</span> settings<span class="token punctuation">.</span>DEBUG<span class="token punctuation">:</span>
-    urlpatterns <span class="token operator">+=</span> static<span class="token punctuation">(</span><span class="token string">"/media/"</span><span class="token punctuation">,</span> document_root<span class="token operator">=</span>settings<span class="token punctuation">.</span>MEDIA_ROOT<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token punctuation">[</span>
-            url<span class="token punctuation">(</span><span class="token string">r"^static/(?P&lt;path>.*)$"</span><span class="token punctuation">,</span> serve<span class="token punctuation">)</span><span class="token punctuation">,</span>
-        <span class="token punctuation">]</span>
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></li>
+<div class="language-python line-numbers-mode" data-highlighter="shiki" data-ext="python" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">from</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> django.contrib.staticfiles.views </span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">import</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> serve</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">if</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> settings.</span><span style="--shiki-light:#383A42;--shiki-dark:#D19A66">DEBUG</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">:</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">    urlpatterns </span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2">+=</span><span style="--shiki-light:#383A42;--shiki-dark:#61AFEF"> static</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">"/media/"</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">, </span><span style="--shiki-light:#986801;--shiki-light-font-style:inherit;--shiki-dark:#E06C75;--shiki-dark-font-style:italic">document_root</span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2">=</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">settings.</span><span style="--shiki-light:#383A42;--shiki-dark:#D19A66">MEDIA_ROOT</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">) </span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2">+</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> [</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#61AFEF">            url</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">r</span><span style="--shiki-light:#0184BC;--shiki-dark:#E06C75">"^static/</span><span style="--shiki-light:#0184BC;--shiki-dark:#D19A66">(</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">?P&#x3C;path></span><span style="--shiki-light:#0184BC;--shiki-dark:#E06C75">.</span><span style="--shiki-light:#383A42;--shiki-dark:#D19A66">*</span><span style="--shiki-light:#0184BC;--shiki-dark:#D19A66">)</span><span style="--shiki-light:#0184BC;--shiki-dark:#E06C75">$"</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">, serve),</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">        ]</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></li>
 </ul>
 <p>部署时使用命令，将静态目录下所有文件拷贝到 <code v-pre>STATIC_ROOT</code> 目录</p>
-<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code>$ python manage.py collectstatic
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><h3 id="_2-5-数据库" tabindex="-1"><a class="header-anchor" href="#_2-5-数据库" aria-hidden="true">#</a> 2.5 数据库</h3>
+<div class="language-shell line-numbers-mode" data-highlighter="shiki" data-ext="shell" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">$</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> python</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> manage.py</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> collectstatic</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div><h3 id="_2-5-数据库" tabindex="-1"><a class="header-anchor" href="#_2-5-数据库"><span>2.5 数据库</span></a></h3>
 <p><a href="/data-base/postgre-sql/postgresql%E5%9F%BA%E7%A1%80">PostgreSQL</a> 为例</p>
-<p><a href="https://docs.djangoproject.com/zh-hans/4.1/ref/databases/#postgresql-notes" target="_blank" rel="noopener noreferrer">PostgreSQL - Django 文档<ExternalLinkIcon/></a> | <a href="https://www.psycopg.org/docs/install.html#quick-install" target="_blank" rel="noopener noreferrer">适配器 psycopg2<ExternalLinkIcon/></a></p>
+<p><a href="https://docs.djangoproject.com/zh-hans/4.1/ref/databases/#postgresql-notes" target="_blank" rel="noopener noreferrer">PostgreSQL - Django 文档</a> | <a href="https://www.psycopg.org/docs/install.html#quick-install" target="_blank" rel="noopener noreferrer">适配器 psycopg2</a></p>
 <p>目前 <strong>Django v4.1</strong> 配套使用的还是 <code v-pre>psycopg2</code> ， 源码 <code v-pre>\django\db\backends\postgresql\base.py</code></p>
-<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code>pip <span class="token function">install</span> psycopg2-binary
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p>未来或许会使用 <a href="https://www.psycopg.org/psycopg3/docs/index.html" target="_blank" rel="noopener noreferrer">适配器 psycopg3<ExternalLinkIcon/></a></p>
+<div class="language-shell line-numbers-mode" data-highlighter="shiki" data-ext="shell" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">pip</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> install</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> psycopg2-binary</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div><p>未来或许会使用 <a href="https://www.psycopg.org/psycopg3/docs/index.html" target="_blank" rel="noopener noreferrer">适配器 psycopg3</a></p>
 <ul>
 <li>
 <p>安装 <code v-pre>psycopg3</code></p>
-<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code>pip <span class="token function">install</span> <span class="token parameter variable">--upgrade</span> pip           <span class="token comment"># upgrade pip to at least 20.3</span>
-pip <span class="token function">install</span> psycopg
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div></div></div><p>若在 <strong>Debian</strong> 上需要</p>
-<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code><span class="token function">apt</span> <span class="token function">install</span> libpq5
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div></li>
+<div class="language-shell line-numbers-mode" data-highlighter="shiki" data-ext="shell" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">pip</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> install</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> --upgrade</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> pip</span><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">           # upgrade pip to at least 20.3</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">pip</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> install</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> psycopg</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div></div></div><p>若在 <strong>Debian</strong> 上需要</p>
+<div class="language-shell line-numbers-mode" data-highlighter="shiki" data-ext="shell" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">apt</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> install</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> libpq5</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div></li>
 <li>
 <p>安装连接池</p>
-<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code>pip <span class="token function">install</span> psycopg_pool
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div></li>
+<div class="language-shell line-numbers-mode" data-highlighter="shiki" data-ext="shell" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">pip</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> install</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> psycopg_pool</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div></li>
 </ul>
-<p><a href="https://docs.djangoproject.com/zh-hans/4.1/ref/settings/#std-setting-HOST" target="_blank" rel="noopener noreferrer">配置项 文档<ExternalLinkIcon/></a></p>
+<p><a href="https://docs.djangoproject.com/zh-hans/4.1/ref/settings/#std-setting-HOST" target="_blank" rel="noopener noreferrer">配置项 文档</a></p>
 <p>更为便利的库 <code v-pre>dj-database-url</code></p>
-<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code>pip <span class="token function">install</span> dj-database-url
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><ul>
+<div class="language-shell line-numbers-mode" data-highlighter="shiki" data-ext="shell" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">pip</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> install</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> dj-database-url</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div><ul>
 <li>
 <p>配置则更换为如下方式</p>
-<div class="language-python ext-py line-numbers-mode"><pre v-pre class="language-python"><code><span class="token keyword">import</span> dj_database_url
-
-DATABASE_CONNECTION_DEFAULT_NAME <span class="token operator">=</span> <span class="token string">"default"</span>
-
-DATABASES <span class="token operator">=</span> <span class="token punctuation">{</span>
-    DATABASE_CONNECTION_DEFAULT_NAME<span class="token punctuation">:</span> dj_database_url<span class="token punctuation">.</span>config<span class="token punctuation">(</span>
-        default<span class="token operator">=</span><span class="token string">"postgres://uci:uci@localhost:5432/uci"</span><span class="token punctuation">,</span> conn_max_age<span class="token operator">=</span><span class="token number">600</span>
-    <span class="token punctuation">)</span><span class="token punctuation">,</span>
-<span class="token punctuation">}</span>
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></li>
+<div class="language-python line-numbers-mode" data-highlighter="shiki" data-ext="python" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">import</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> dj_database_url</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#D19A66">DATABASE_CONNECTION_DEFAULT_NAME</span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2"> =</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> "default"</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#D19A66">DATABASES</span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2"> =</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> {</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#D19A66">    DATABASE_CONNECTION_DEFAULT_NAME</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">: dj_database_url.</span><span style="--shiki-light:#383A42;--shiki-dark:#61AFEF">config</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span></span>
+<span class="line"><span style="--shiki-light:#986801;--shiki-light-font-style:inherit;--shiki-dark:#E06C75;--shiki-dark-font-style:italic">        default</span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2">=</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">"postgres://uci:uci@localhost:5432/uci"</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">, </span><span style="--shiki-light:#986801;--shiki-light-font-style:inherit;--shiki-dark:#E06C75;--shiki-dark-font-style:italic">conn_max_age</span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2">=</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">600</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">    ),</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">}</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></li>
 </ul>
-<h3 id="_2-6-模板系统" tabindex="-1"><a class="header-anchor" href="#_2-6-模板系统" aria-hidden="true">#</a> <s>2.6 模板系统</s></h3>
+<h3 id="_2-6-模板系统" tabindex="-1"><a class="header-anchor" href="#_2-6-模板系统"><span><s>2.6 模板系统</s></span></a></h3>
 <p>将 <strong>HTML</strong> 作为字符串，利用模板引擎，硬编码到 <strong>Django</strong> 视图，进行前后不分离的 <strong>SSR</strong> 渲染，如 <strong>Jinja</strong></p>
-<p><a href="https://docs.djangoproject.com/zh-hans/4.1/topics/templates/" target="_blank" rel="noopener noreferrer">模板概述<ExternalLinkIcon/></a> | <a href="https://docs.djangoproject.com/zh-hans/4.1/ref/templates/language/" target="_blank" rel="noopener noreferrer">使用 &amp; 语法<ExternalLinkIcon/></a></p>
+<p><a href="https://docs.djangoproject.com/zh-hans/4.1/topics/templates/" target="_blank" rel="noopener noreferrer">模板概述</a> | <a href="https://docs.djangoproject.com/zh-hans/4.1/ref/templates/language/" target="_blank" rel="noopener noreferrer">使用 &amp; 语法</a></p>
 </div></template>
 
 

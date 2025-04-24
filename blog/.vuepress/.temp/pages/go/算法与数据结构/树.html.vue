@@ -1,7 +1,7 @@
 <template><div><p><strong>Golang</strong> 数据结构，树相关</p>
 <!-- more -->
-<h2 id="_1-树" tabindex="-1"><a class="header-anchor" href="#_1-树" aria-hidden="true">#</a> 1. 树</h2>
-<h3 id="_1-1-树形结构" tabindex="-1"><a class="header-anchor" href="#_1-1-树形结构" aria-hidden="true">#</a> 1.1 树形结构</h3>
+<h2 id="_1-树" tabindex="-1"><a class="header-anchor" href="#_1-树"><span>1. 树</span></a></h2>
+<h3 id="_1-1-树形结构" tabindex="-1"><a class="header-anchor" href="#_1-1-树形结构"><span>1.1 树形结构</span></a></h3>
 <p>现实中，有很多一对多的情况，如公司的行政架构图，文件系统中不同层级的文件，如果用链表这样的线性结构存储，显然很难做到，此时可以用树来表示</p>
 <p><strong>树</strong>（<em>Tree</em>）是一种 <strong>非线性数据结构</strong>，经常用来 <strong>存储具有层级关系的数据</strong>，它是 <code v-pre>n（n&gt;=0）</code>个结点的有限集，<code v-pre>n=0</code> 时称为空树</p>
 <p>在任意一棵非空的树中：</p>
@@ -11,7 +11,7 @@
 </ul>
 <p>如图所示</p>
 <img src="@source/go/算法与数据结构/img/tree-01.png">
-<h3 id="_1-2-树的理解" tabindex="-1"><a class="header-anchor" href="#_1-2-树的理解" aria-hidden="true">#</a> 1.2 树的理解</h3>
+<h3 id="_1-2-树的理解" tabindex="-1"><a class="header-anchor" href="#_1-2-树的理解"><span>1.2 树的理解</span></a></h3>
 <p>树的定义其实采用了 <strong>递归</strong> 的方法，如图所示，两个子树其实是根结点 <strong>A</strong> 的子树，当然 <strong>D,G,H,I</strong> 组成的树又是 <strong>B</strong> 为根结点的子树，以此类推：</p>
 <img src="@source/go/算法与数据结构/img/tree-02.png">
 <p>除了要主要根结点的唯一性以外，<strong>子树之间一定是互不相交的</strong>，如下所示并不符合树的定义：</p>
@@ -33,29 +33,29 @@
 <li><strong>有序树</strong>：树中的结点的各个子树看成从左至右有次序不可互换</li>
 <li><strong>无序树</strong>：与有序树相反</li>
 </ul>
-<h2 id="_2-树的存储结构" tabindex="-1"><a class="header-anchor" href="#_2-树的存储结构" aria-hidden="true">#</a> 2. 树的存储结构</h2>
-<h4 id="树的三种结构" tabindex="-1"><a class="header-anchor" href="#树的三种结构" aria-hidden="true">#</a> 树的三种结构</h4>
+<h2 id="_2-树的存储结构" tabindex="-1"><a class="header-anchor" href="#_2-树的存储结构"><span>2. 树的存储结构</span></a></h2>
+<h4 id="树的三种结构" tabindex="-1"><a class="header-anchor" href="#树的三种结构"><span>树的三种结构</span></a></h4>
 <p>由于树中的结点具备父子关系，使用顺序存储实现比较困难。树的存储结构主要有三种：</p>
 <ul>
 <li>双亲表示法</li>
 <li>孩子表示法</li>
 <li>孩子兄弟表示法。</li>
 </ul>
-<h3 id="_2-1-双亲表示法" tabindex="-1"><a class="header-anchor" href="#_2-1-双亲表示法" aria-hidden="true">#</a> 2.1 双亲表示法</h3>
+<h3 id="_2-1-双亲表示法" tabindex="-1"><a class="header-anchor" href="#_2-1-双亲表示法"><span>2.1 双亲表示法</span></a></h3>
 <p>树的每个结点不一定有孩子，但是 <strong>一定有且仅有一个双亲</strong> 结点（<em>根结点除外</em>），所以可以通过其双亲表示一个完整的树</p>
-<div class="language-go ext-go line-numbers-mode"><pre v-pre class="language-go"><code><span class="token comment">// 树种的结点</span>
-<span class="token keyword">type</span> node <span class="token keyword">struct</span> <span class="token punctuation">{</span>
-    data    <span class="token keyword">interface</span><span class="token punctuation">{</span><span class="token punctuation">}</span>         <span class="token comment">// 数据域：存储结点中的数据</span>
-    parent  <span class="token builtin">int</span>                 <span class="token comment">// 指针域：存储双亲在数组中的下标</span>
-<span class="token punctuation">}</span>
-
-<span class="token comment">// 树</span>
-<span class="token keyword">type</span> Tree <span class="token keyword">struct</span> <span class="token punctuation">{</span>
-    nodes   <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token operator">*</span>node             <span class="token comment">// 结点指针数组</span>
-    root    <span class="token builtin">int</span>                 <span class="token comment">// 根结点位置</span>
-    num     <span class="token builtin">int</span>                 <span class="token comment">// 结点数</span>
-<span class="token punctuation">}</span>
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>其存储的数据格式如下：</p>
+<div class="language-go line-numbers-mode" data-highlighter="shiki" data-ext="go" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">// 树种的结点</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">type</span><span style="--shiki-light:#C18401;--shiki-dark:#E5C07B"> node</span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD"> struct</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> {</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">    data</span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">    interface</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">{}         </span><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">// 数据域：存储结点中的数据</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">    parent</span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">  int</span><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">                 // 指针域：存储双亲在数组中的下标</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">// 树</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">type</span><span style="--shiki-light:#C18401;--shiki-dark:#E5C07B"> Tree</span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD"> struct</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> {</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">    nodes</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">   []</span><span style="--shiki-light:#383A42;--shiki-dark:#C678DD">*</span><span style="--shiki-light:#C18401;--shiki-dark:#E5C07B">node</span><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">             // 结点指针数组</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">    root</span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">    int</span><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">                 // 根结点位置</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">    num</span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">     int</span><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">                 // 结点数</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">}</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>其存储的数据格式如下：</p>
 <img src="@source/go/算法与数据结构/img/tree-06.png">
 <p><strong>双亲表示法的优点</strong>：可以迅速找到当前结点的父结点，当 <strong>parent</strong> 为 <strong>-1</strong> 时，是根结点</p>
 <p><strong>双亲表示法的缺点</strong>：查找当前结点的子结点时，<strong>必须遍历整个树</strong></p>
@@ -67,27 +67,27 @@
 </ul>
 </li>
 </ul>
-<h3 id="_2-2-孩子表示法" tabindex="-1"><a class="header-anchor" href="#_2-2-孩子表示法" aria-hidden="true">#</a> 2.2 孩子表示法</h3>
+<h3 id="_2-2-孩子表示法" tabindex="-1"><a class="header-anchor" href="#_2-2-孩子表示法"><span>2.2 孩子表示法</span></a></h3>
 <p>把每个结点的孩子结点排列起来，<strong>以链表存储</strong>，如果树有 <strong>n</strong> 个结点，就会有 <strong>n</strong> 个链表，如果是叶结点，则此单链表为 <strong>空链表</strong>，然后 <strong>链表的头指针放在一个数组中</strong></p>
-<div class="language-go ext-go line-numbers-mode"><pre v-pre class="language-go"><code><span class="token comment">// 链表中的每个结点存储的不再是数据本身，而是数据在数组中的下标</span>
-<span class="token keyword">type</span> node <span class="token keyword">struct</span> <span class="token punctuation">{</span>
-    child   <span class="token builtin">int</span>                 <span class="token comment">// 数据域：数组下标 如 A、B、C 对应 1、2、3</span>
-    next    <span class="token operator">*</span>node              <span class="token comment">// 指针域：指向该结点的下一个孩子结点的指针</span>
-<span class="token punctuation">}</span>
-
-<span class="token comment">// 表头结构</span>
-<span class="token keyword">type</span> first <span class="token keyword">struct</span> <span class="token punctuation">{</span>
-    data    <span class="token keyword">interface</span><span class="token punctuation">{</span><span class="token punctuation">}</span>        <span class="token comment">// 数据域：存储结点数据</span>
-    first   <span class="token operator">*</span>node              <span class="token comment">// 头指针域：存储该结点的孩子链表的头指针</span>
-<span class="token punctuation">}</span>
-
-<span class="token comment">// 树结构</span>
-<span class="token keyword">type</span> Tree <span class="token keyword">struct</span> <span class="token punctuation">{</span>
-    nodes <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token operator">*</span>node
-    root <span class="token builtin">int</span>
-    num <span class="token builtin">int</span>
-<span class="token punctuation">}</span>
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>孩子表示法如图所示：</p>
+<div class="language-go line-numbers-mode" data-highlighter="shiki" data-ext="go" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">// 链表中的每个结点存储的不再是数据本身，而是数据在数组中的下标</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">type</span><span style="--shiki-light:#C18401;--shiki-dark:#E5C07B"> node</span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD"> struct</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> {</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">    child</span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">   int</span><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">                 // 数据域：数组下标 如 A、B、C 对应 1、2、3</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">    next</span><span style="--shiki-light:#383A42;--shiki-dark:#C678DD">    *</span><span style="--shiki-light:#C18401;--shiki-dark:#E5C07B">node</span><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">              // 指针域：指向该结点的下一个孩子结点的指针</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">// 表头结构</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">type</span><span style="--shiki-light:#C18401;--shiki-dark:#E5C07B"> first</span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD"> struct</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> {</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">    data</span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">    interface</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">{}        </span><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">// 数据域：存储结点数据</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">    first</span><span style="--shiki-light:#383A42;--shiki-dark:#C678DD">   *</span><span style="--shiki-light:#C18401;--shiki-dark:#E5C07B">node</span><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">              // 头指针域：存储该结点的孩子链表的头指针</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">// 树结构</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">type</span><span style="--shiki-light:#C18401;--shiki-dark:#E5C07B"> Tree</span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD"> struct</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> {</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">    nodes</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> []</span><span style="--shiki-light:#383A42;--shiki-dark:#C678DD">*</span><span style="--shiki-light:#C18401;--shiki-dark:#E5C07B">node</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">    root</span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD"> int</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">    num</span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD"> int</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">}</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>孩子表示法如图所示：</p>
 <img src="@source/go/算法与数据结构/img/tree-06-2.png">
 <p><strong>适用于查找某结点的孩子结点，不适用于查找其父结点</strong></p>
 <blockquote>
@@ -98,19 +98,19 @@
 <blockquote>
 <p>再对每个 <strong>node</strong> 加个 <strong>parent</strong> 变量，来存储每个结点的父结点</p>
 </blockquote>
-<h3 id="_2-3-孩子兄弟表示法" tabindex="-1"><a class="header-anchor" href="#_2-3-孩子兄弟表示法" aria-hidden="true">#</a> 2.3 孩子兄弟表示法</h3>
+<h3 id="_2-3-孩子兄弟表示法" tabindex="-1"><a class="header-anchor" href="#_2-3-孩子兄弟表示法"><span>2.3 孩子兄弟表示法</span></a></h3>
 <p>任意一棵树，它的结点的第一个孩子如果存在就是唯一的，它的右兄弟如果存在也是唯一的，因此设置两个指针，分别指向该结点的 <strong>第一个孩子</strong> 和此结点的 <strong>右兄弟</strong> 即可</p>
-<div class="language-go ext-go line-numbers-mode"><pre v-pre class="language-go"><code><span class="token keyword">type</span> node <span class="token keyword">struct</span> <span class="token punctuation">{</span>
-    data <span class="token keyword">interface</span><span class="token punctuation">{</span><span class="token punctuation">}</span>
-    firstchild <span class="token operator">*</span>node
-    rightchild <span class="token operator">*</span>node
-<span class="token punctuation">}</span>
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>如图所示：</p>
+<div class="language-go line-numbers-mode" data-highlighter="shiki" data-ext="go" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">type</span><span style="--shiki-light:#C18401;--shiki-dark:#E5C07B"> node</span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD"> struct</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> {</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">    data</span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD"> interface</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">{}</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">    firstchild</span><span style="--shiki-light:#383A42;--shiki-dark:#C678DD"> *</span><span style="--shiki-light:#C18401;--shiki-dark:#E5C07B">node</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">    rightchild</span><span style="--shiki-light:#383A42;--shiki-dark:#C678DD"> *</span><span style="--shiki-light:#C18401;--shiki-dark:#E5C07B">node</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">}</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>如图所示：</p>
 <img src="@source/go/算法与数据结构/img/tree-06-4.png">
 <p>上述的表示方法，给查找某个结点的某个孩子带来了方便，只需要通过 <strong>firstchild</strong> 找到此结点的长子，然后再通过长子结点的 <strong>rightsib</strong> 找到它的二弟，依次类推，直到找到具体的孩子</p>
 <p>当然如果要<strong>找到双亲，依然有困难</strong>（<em>添加 <strong>parent</strong> 指针域可以解决</em>）</p>
 <p>孩子兄弟表示法其实是 <strong>将一棵 复杂的树 表示为了 二叉树</strong></p>
-<h2 id="_3-二叉树" tabindex="-1"><a class="header-anchor" href="#_3-二叉树" aria-hidden="true">#</a> 3. 二叉树</h2>
+<h2 id="_3-二叉树" tabindex="-1"><a class="header-anchor" href="#_3-二叉树"><span>3. 二叉树</span></a></h2>
 <p><strong>二叉树</strong>（<em>Binary Tree</em>）： 树的每个结点的度最大为 <strong>2</strong>，即最多拥有 <strong>2</strong> 棵子树</p>
 <p>二叉树有五种形态：</p>
 <ul>
@@ -127,21 +127,21 @@
 <li><strong>真二叉树（<em>Proper Binary Tree</em>）</strong>：所有结点的度要么为 <strong>0</strong>，要么为 <strong>2</strong></li>
 <li><strong>满二叉树（<em>Full Binary Tree</em>）</strong>：所有结点的度要么为 <strong>0</strong>，要么为 <strong>2</strong>，且叶结点都在最后一层（<em>其实是在 <strong>真二叉树</strong> 基础上添加了限制</em>）</li>
 </ul>
-<h3 id="_3-1-非空二叉树的特性" tabindex="-1"><a class="header-anchor" href="#_3-1-非空二叉树的特性" aria-hidden="true">#</a> 3.1 非空二叉树的特性</h3>
+<h3 id="_3-1-非空二叉树的特性" tabindex="-1"><a class="header-anchor" href="#_3-1-非空二叉树的特性"><span>3.1 非空二叉树的特性</span></a></h3>
 <ul>
 <li><strong>每层结点数</strong>：二叉树的第 <strong>i</strong> 层上至多有 <strong>2<sup>i-1</sup></strong> 个 结点 <strong>（i&gt;=1）</strong></li>
-<li><strong>全部结点数</strong>：高度为 <strong>h</strong> 的二叉树至多有 <strong>2<sup>k</sup>-1</strong> 个结点 <strong>（h&gt;=1，也是叶结点所在的最大层数）</strong> 相应的高度 <strong>h = log<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mrow></mrow><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">_2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4511em;vertical-align:-0.15em;"></span><span class="mord"><span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>n+1</strong></li>
+<li><strong>全部结点数</strong>：高度为 <strong>h</strong> 的二叉树至多有 <strong>2<sup>k</sup>-1</strong> 个结点 <strong>（h&gt;=1，也是叶结点所在的最大层数）</strong> 相应的高度 <strong>h = log$_2$n+1</strong></li>
 <li><strong>叶结点数与度关系</strong>：<strong>叶结点数 = 度为 2 结点数 + 1</strong></li>
 </ul>
 <p>叶结点与度关系推导：</p>
-<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code><span class="token comment"># n0 是叶结点数，n1 是度为1的结点数，n2 是度为2的结点数，T为二叉树的结点连线总数：</span>
-T <span class="token operator">=</span> <span class="token number">1</span>*n1 + <span class="token number">2</span>*n2
-T <span class="token operator">=</span> n - <span class="token number">1</span>
-n <span class="token operator">=</span> n0 + n1 + n2
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>其实还可以得到一个公式： <strong>n = 2n0 + n1 - 1</strong></p>
+<div class="language-shell line-numbers-mode" data-highlighter="shiki" data-ext="shell" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># n0 是叶结点数，n1 是度为1的结点数，n2 是度为2的结点数，T为二叉树的结点连线总数：</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">T</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> =</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> 1</span><span style="--shiki-light:#E45649;--shiki-dark:#E5C07B">*</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">n1</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> +</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> 2</span><span style="--shiki-light:#E45649;--shiki-dark:#E5C07B">*</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">n2</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">T</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> =</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> n</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> -</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> 1</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">n</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> =</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> n0</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> +</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> n1</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> +</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> n2</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>其实还可以得到一个公式： <strong>n = 2n0 + n1 - 1</strong></p>
 <p>如图所示：</p>
 <img src="@source/go/算法与数据结构/img/binarytree-03.png">
-<h3 id="_3-3-完全二叉树" tabindex="-1"><a class="header-anchor" href="#_3-3-完全二叉树" aria-hidden="true">#</a> 3.3 完全二叉树</h3>
+<h3 id="_3-3-完全二叉树" tabindex="-1"><a class="header-anchor" href="#_3-3-完全二叉树"><span>3.3 完全二叉树</span></a></h3>
 <p><strong>完全二叉树（<em>Complete Binary Tree</em>）</strong>：叶子结点只会出现在最后 <strong>2</strong> 层，且最后 <strong>1</strong> 层的叶子结点都靠左对其</p>
 <p>如图：</p>
 <img src="@source/go/算法与数据结构/img/binarytree-02.png">
@@ -151,7 +151,7 @@ n <span class="token operator">=</span> n0 + n1 + n2
 <li>满二叉树一定是完全二叉树</li>
 <li>完全二叉树的根结点到倒数第二层之间的树是一棵满二叉树</li>
 </ul>
-<h4 id="特性" tabindex="-1"><a class="header-anchor" href="#特性" aria-hidden="true">#</a> 特性</h4>
+<h4 id="特性" tabindex="-1"><a class="header-anchor" href="#特性"><span>特性</span></a></h4>
 <p>完全二叉树的特点：</p>
 <ul>
 <li>度为 <strong>1</strong> 的结点只有左子树</li>
@@ -170,10 +170,10 @@ n <span class="token operator">=</span> n0 + n1 + n2
 <li>也即 <strong>h - 1 &lt;= log2n &lt; h</strong>，由于 <strong>h</strong> 是整数，<strong>h = floor(log2n) + 1</strong> (<em>向下取整</em>)</li>
 </ul>
 <p><strong>n0</strong> 是叶结点数，<strong>n1</strong> 是度为 <strong>1</strong> 的结点数，<strong>n2</strong> 是度为 <strong>2</strong> 的结点数：</p>
-<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code><span class="token comment"># 二叉树本身的规律</span>
-n <span class="token operator">=</span> 2n0 + n1 - <span class="token number">1</span>
-<span class="token comment"># 完全二叉树的n1要么是1，要么是0</span>
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>一颗有 <strong>n(n&gt;0)</strong> 个结点的完全二叉树，从上到下，从左到右，给结点从 <strong>1</strong> 编号，则第 <strong>i</strong> 个结点有：</p>
+<div class="language-shell line-numbers-mode" data-highlighter="shiki" data-ext="shell" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># 二叉树本身的规律</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">n</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> =</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> 2n0</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> +</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> n1</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> -</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> 1</span></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># 完全二叉树的n1要么是1，要么是0</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>一颗有 <strong>n(n&gt;0)</strong> 个结点的完全二叉树，从上到下，从左到右，给结点从 <strong>1</strong> 编号，则第 <strong>i</strong> 个结点有：</p>
 <ul>
 <li><strong>i=1</strong>，是根结点</li>
 <li><strong>i&gt;2</strong>，其父结点编号是 <strong>floor(i/2)</strong></li>
@@ -182,19 +182,19 @@ n <span class="token operator">=</span> 2n0 + n1 - <span class="token number">1<
 <li><strong>2i+1&lt;=n</strong>，则其右子结点编号为 <strong>2i+1</strong></li>
 <li><strong>2i+1&gt;n</strong>,则其无右子结点</li>
 </ul>
-<h3 id="_3-4-二叉树存储结构" tabindex="-1"><a class="header-anchor" href="#_3-4-二叉树存储结构" aria-hidden="true">#</a> 3.4 二叉树存储结构</h3>
+<h3 id="_3-4-二叉树存储结构" tabindex="-1"><a class="header-anchor" href="#_3-4-二叉树存储结构"><span>3.4 二叉树存储结构</span></a></h3>
 <p>树使用顺序存储是非常困难的，<strong>但是二叉树结构特殊，使用顺序存储也能实现</strong>，即：用一维数组存储二叉树中的结点和结点关系</p>
 <img src="@source/go/算法与数据结构/img/binarytree-05.png">
 <p>图中 <strong>4，6，8，9</strong> 结点不存在。顺序存储虽然能够表述二叉树，但是实用性不强，比如一种极端的情况，树的深度为 <strong>k</strong>，但是是右倾斜树，只有 <strong>k</strong> 个结点，却需要分配 <strong>2k-1</strong> 个存储单元，<strong>造成了空间的极大浪费</strong></p>
 <p><strong>推荐使用链式存储，即二叉链表</strong>：每个结点最多有两个孩子，结点分别设计一个数据域、两个指针域，即可表示一个结点</p>
-<div class="language-go ext-go line-numbers-mode"><pre v-pre class="language-go"><code><span class="token keyword">type</span> node <span class="token keyword">struct</span> <span class="token punctuation">{</span>
-    data        <span class="token keyword">interface</span><span class="token punctuation">{</span><span class="token punctuation">}</span>
-    lchild      <span class="token operator">*</span>node
-    rchild      <span class="token operator">*</span>node
-<span class="token punctuation">}</span>
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>二叉链表示意图：</p>
+<div class="language-go line-numbers-mode" data-highlighter="shiki" data-ext="go" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">type</span><span style="--shiki-light:#C18401;--shiki-dark:#E5C07B"> node</span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD"> struct</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> {</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">    data</span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">        interface</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">{}</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">    lchild</span><span style="--shiki-light:#383A42;--shiki-dark:#C678DD">      *</span><span style="--shiki-light:#C18401;--shiki-dark:#E5C07B">node</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">    rchild</span><span style="--shiki-light:#383A42;--shiki-dark:#C678DD">      *</span><span style="--shiki-light:#C18401;--shiki-dark:#E5C07B">node</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">}</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>二叉链表示意图：</p>
 <img src="@source/go/算法与数据结构/img/binarytree-06.png">
-<h3 id="_3-5-二叉树的四种遍历方式" tabindex="-1"><a class="header-anchor" href="#_3-5-二叉树的四种遍历方式" aria-hidden="true">#</a> 3.5 二叉树的四种遍历方式</h3>
+<h3 id="_3-5-二叉树的四种遍历方式" tabindex="-1"><a class="header-anchor" href="#_3-5-二叉树的四种遍历方式"><span>3.5 二叉树的四种遍历方式</span></a></h3>
 <p>二叉树要对其遍历如图：</p>
 <img src="@source/go/算法与数据结构/img/binarytree-07.png">
 <p>遍历一般是 <strong>从根结点开始</strong>，当然我们也可以限制左右顺序遍历是从左开始，主要遍历方法有下列多种：</p>
@@ -224,133 +224,133 @@ n <span class="token operator">=</span> 2n0 + n1 - <span class="token number">1<
 </ul>
 </li>
 </ul>
-<h3 id="_3-6-实现" tabindex="-1"><a class="header-anchor" href="#_3-6-实现" aria-hidden="true">#</a> 3.6 实现</h3>
+<h3 id="_3-6-实现" tabindex="-1"><a class="header-anchor" href="#_3-6-实现"><span>3.6 实现</span></a></h3>
 <p>二叉树的定义和遍历都需要利用递归原理</p>
-<div class="language-go ext-go line-numbers-mode"><pre v-pre class="language-go"><code><span class="token keyword">package</span> main
-
-<span class="token keyword">import</span> <span class="token punctuation">(</span>
-	<span class="token string">"fmt"</span>
-	<span class="token string">"reflect"</span>
-<span class="token punctuation">)</span>
-
-<span class="token keyword">type</span> BinaryTree <span class="token keyword">struct</span> <span class="token punctuation">{</span>
-	data  <span class="token keyword">interface</span><span class="token punctuation">{</span><span class="token punctuation">}</span>
-	left  <span class="token operator">*</span>BinaryTree
-	right <span class="token operator">*</span>BinaryTree
-<span class="token punctuation">}</span>
-
-<span class="token keyword">func</span> <span class="token function">NewBinaryTree</span><span class="token punctuation">(</span>e <span class="token keyword">interface</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token operator">*</span>BinaryTree <span class="token punctuation">{</span>
-	<span class="token keyword">return</span> <span class="token operator">&amp;</span>BinaryTree<span class="token punctuation">{</span>
-		data<span class="token punctuation">:</span>  e<span class="token punctuation">,</span>
-		left<span class="token punctuation">:</span>  <span class="token boolean">nil</span><span class="token punctuation">,</span>
-		right<span class="token punctuation">:</span> <span class="token boolean">nil</span><span class="token punctuation">,</span>
-	<span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-
-<span class="token keyword">func</span> <span class="token function">Appoint</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">*</span>BinaryTree <span class="token punctuation">{</span>
-	<span class="token comment">/*手动指定如上图的一颗树
-							A
-				B						C
-		D						E				F
-	G		H						I
-	*/</span>
-	A <span class="token operator">:=</span> <span class="token function">NewBinaryTree</span><span class="token punctuation">(</span><span class="token string">"A"</span><span class="token punctuation">)</span>
-	B <span class="token operator">:=</span> <span class="token function">NewBinaryTree</span><span class="token punctuation">(</span><span class="token string">"B"</span><span class="token punctuation">)</span>
-	C <span class="token operator">:=</span> <span class="token function">NewBinaryTree</span><span class="token punctuation">(</span><span class="token string">"C"</span><span class="token punctuation">)</span>
-	D <span class="token operator">:=</span> <span class="token function">NewBinaryTree</span><span class="token punctuation">(</span><span class="token string">"D"</span><span class="token punctuation">)</span>
-	E <span class="token operator">:=</span> <span class="token function">NewBinaryTree</span><span class="token punctuation">(</span><span class="token string">"E"</span><span class="token punctuation">)</span>
-	F <span class="token operator">:=</span> <span class="token function">NewBinaryTree</span><span class="token punctuation">(</span><span class="token string">"F"</span><span class="token punctuation">)</span>
-	G <span class="token operator">:=</span> <span class="token function">NewBinaryTree</span><span class="token punctuation">(</span><span class="token string">"G"</span><span class="token punctuation">)</span>
-	H <span class="token operator">:=</span> <span class="token function">NewBinaryTree</span><span class="token punctuation">(</span><span class="token string">"H"</span><span class="token punctuation">)</span>
-	I <span class="token operator">:=</span> <span class="token function">NewBinaryTree</span><span class="token punctuation">(</span><span class="token string">"I"</span><span class="token punctuation">)</span>
-	A<span class="token punctuation">.</span>left <span class="token operator">=</span> B
-	A<span class="token punctuation">.</span>right <span class="token operator">=</span> C
-	B<span class="token punctuation">.</span>left <span class="token operator">=</span> D
-	D<span class="token punctuation">.</span>left <span class="token operator">=</span> G
-	D<span class="token punctuation">.</span>right <span class="token operator">=</span> H
-	C<span class="token punctuation">.</span>left <span class="token operator">=</span> E
-	C<span class="token punctuation">.</span>right <span class="token operator">=</span> F
-	E<span class="token punctuation">.</span>right <span class="token operator">=</span> I
-	<span class="token keyword">return</span> A
-<span class="token punctuation">}</span>
-
-<span class="token comment">// 对于所有的树来说，遍历都是通用的</span>
-<span class="token comment">// 前序遍历</span>
-<span class="token keyword">func</span> <span class="token function">PreOrderTraverse</span><span class="token punctuation">(</span>t <span class="token operator">*</span>BinaryTree<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-	<span class="token keyword">if</span> t <span class="token operator">==</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
-		<span class="token keyword">return</span>
-	<span class="token punctuation">}</span>
-	fmt<span class="token punctuation">.</span><span class="token function">Print</span><span class="token punctuation">(</span>t<span class="token punctuation">.</span>data<span class="token punctuation">)</span>			<span class="token comment">// 前序遍历就是从node开始遍历，所以要先打印	ABDGHCEIF</span>
-	<span class="token function">PreOrderTraverse</span><span class="token punctuation">(</span>t<span class="token punctuation">.</span>left<span class="token punctuation">)</span>
-	<span class="token function">PreOrderTraverse</span><span class="token punctuation">(</span>t<span class="token punctuation">.</span>right<span class="token punctuation">)</span>
-<span class="token punctuation">}</span>
-
-<span class="token keyword">func</span> <span class="token function">InOrderTraverse</span><span class="token punctuation">(</span>t <span class="token operator">*</span>BinaryTree<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-	<span class="token keyword">if</span> t <span class="token operator">==</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
-		<span class="token keyword">return</span>
-	<span class="token punctuation">}</span>
-    <span class="token comment">// 会产生式升序结果	GDHBAEICF</span>
-	<span class="token function">InOrderTraverse</span><span class="token punctuation">(</span>t<span class="token punctuation">.</span>left<span class="token punctuation">)</span>
-	fmt<span class="token punctuation">.</span><span class="token function">Print</span><span class="token punctuation">(</span>t<span class="token punctuation">.</span>data<span class="token punctuation">)</span>
-	<span class="token function">InOrderTraverse</span><span class="token punctuation">(</span>t<span class="token punctuation">.</span>right<span class="token punctuation">)</span>
-    
-    <span class="token comment">// 会产生降序结果	FCIEABHDG</span>
-	<span class="token comment">//InOrderTraverse(t.right)</span>
-	<span class="token comment">//fmt.Print(t.data)</span>
-    <span class="token comment">//InOrderTraverse(t.left)</span>
-<span class="token punctuation">}</span>
-
-<span class="token comment">// 后序遍历</span>
-<span class="token keyword">func</span> <span class="token function">PostOrderTraverse</span><span class="token punctuation">(</span>t <span class="token operator">*</span>BinaryTree<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-	<span class="token keyword">if</span> t <span class="token operator">==</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
-		<span class="token keyword">return</span>
-	<span class="token punctuation">}</span>
-	<span class="token function">PostOrderTraverse</span><span class="token punctuation">(</span>t<span class="token punctuation">.</span>left<span class="token punctuation">)</span>
-	<span class="token function">PostOrderTraverse</span><span class="token punctuation">(</span>t<span class="token punctuation">.</span>right<span class="token punctuation">)</span>
-	fmt<span class="token punctuation">.</span><span class="token function">Print</span><span class="token punctuation">(</span>t<span class="token punctuation">.</span>data<span class="token punctuation">)</span>				<span class="token comment">// GHDBIEFCA</span>
-<span class="token punctuation">}</span>
-
-<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-	t <span class="token operator">:=</span> <span class="token function">Appoint</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-	fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span>t<span class="token punctuation">,</span> reflect<span class="token punctuation">.</span><span class="token function">TypeOf</span><span class="token punctuation">(</span>t<span class="token punctuation">)</span><span class="token punctuation">)</span>
-	<span class="token function">PreOrderTraverse</span><span class="token punctuation">(</span>t<span class="token punctuation">)</span>
-	fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-	<span class="token function">InOrderTraverse</span><span class="token punctuation">(</span>t<span class="token punctuation">)</span>
-	fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-	<span class="token function">PostOrderTraverse</span><span class="token punctuation">(</span>t<span class="token punctuation">)</span>
-<span class="token punctuation">}</span>
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="custom-container tip">
-<p class="custom-container-title">二叉树递归缺陷</p>
+<div class="language-go line-numbers-mode" data-highlighter="shiki" data-ext="go" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">package</span><span style="--shiki-light:#C18401;--shiki-dark:#E5C07B"> main</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">import</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> (</span></span>
+<span class="line"><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">	"fmt"</span></span>
+<span class="line"><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">	"reflect"</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">)</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">type</span><span style="--shiki-light:#C18401;--shiki-dark:#E5C07B"> BinaryTree</span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD"> struct</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> {</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">	data</span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">  interface</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">{}</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">	left</span><span style="--shiki-light:#383A42;--shiki-dark:#C678DD">  *</span><span style="--shiki-light:#C18401;--shiki-dark:#E5C07B">BinaryTree</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">	right</span><span style="--shiki-light:#383A42;--shiki-dark:#C678DD"> *</span><span style="--shiki-light:#C18401;--shiki-dark:#E5C07B">BinaryTree</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">func</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF"> NewBinaryTree</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#383A42;--shiki-light-font-style:inherit;--shiki-dark:#E06C75;--shiki-dark-font-style:italic">e</span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD"> interface</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">{}) </span><span style="--shiki-light:#383A42;--shiki-dark:#C678DD">*</span><span style="--shiki-light:#C18401;--shiki-dark:#E5C07B">BinaryTree</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> {</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">	return</span><span style="--shiki-light:#383A42;--shiki-dark:#C678DD"> &#x26;</span><span style="--shiki-light:#C18401;--shiki-dark:#E5C07B">BinaryTree</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">{</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">		data</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">:  </span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">e</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">,</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">		left</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">:  </span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">nil</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">,</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">		right</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">: </span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">nil</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">,</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">	}</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">func</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF"> Appoint</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">() </span><span style="--shiki-light:#383A42;--shiki-dark:#C678DD">*</span><span style="--shiki-light:#C18401;--shiki-dark:#E5C07B">BinaryTree</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> {</span></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">	/*手动指定如上图的一颗树</span></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">							A</span></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">				B						C</span></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">		D						E				F</span></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">	G		H						I</span></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">	*/</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">	A</span><span style="--shiki-light:#383A42;--shiki-dark:#E5C07B"> :=</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF"> NewBinaryTree</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">"A"</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">)</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">	B</span><span style="--shiki-light:#383A42;--shiki-dark:#E5C07B"> :=</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF"> NewBinaryTree</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">"B"</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">)</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">	C</span><span style="--shiki-light:#383A42;--shiki-dark:#E5C07B"> :=</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF"> NewBinaryTree</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">"C"</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">)</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">	D</span><span style="--shiki-light:#383A42;--shiki-dark:#E5C07B"> :=</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF"> NewBinaryTree</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">"D"</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">)</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">	E</span><span style="--shiki-light:#383A42;--shiki-dark:#E5C07B"> :=</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF"> NewBinaryTree</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">"E"</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">)</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">	F</span><span style="--shiki-light:#383A42;--shiki-dark:#E5C07B"> :=</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF"> NewBinaryTree</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">"F"</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">)</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">	G</span><span style="--shiki-light:#383A42;--shiki-dark:#E5C07B"> :=</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF"> NewBinaryTree</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">"G"</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">)</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">	H</span><span style="--shiki-light:#383A42;--shiki-dark:#E5C07B"> :=</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF"> NewBinaryTree</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">"H"</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">)</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">	I</span><span style="--shiki-light:#383A42;--shiki-dark:#E5C07B"> :=</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF"> NewBinaryTree</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">"I"</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">)</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">	A</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">left</span><span style="--shiki-light:#383A42;--shiki-dark:#E5C07B"> =</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75"> B</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">	A</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">right</span><span style="--shiki-light:#383A42;--shiki-dark:#E5C07B"> =</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75"> C</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">	B</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">left</span><span style="--shiki-light:#383A42;--shiki-dark:#E5C07B"> =</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75"> D</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">	D</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">left</span><span style="--shiki-light:#383A42;--shiki-dark:#E5C07B"> =</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75"> G</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">	D</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">right</span><span style="--shiki-light:#383A42;--shiki-dark:#E5C07B"> =</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75"> H</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">	C</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">left</span><span style="--shiki-light:#383A42;--shiki-dark:#E5C07B"> =</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75"> E</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">	C</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">right</span><span style="--shiki-light:#383A42;--shiki-dark:#E5C07B"> =</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75"> F</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">	E</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">right</span><span style="--shiki-light:#383A42;--shiki-dark:#E5C07B"> =</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75"> I</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">	return</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75"> A</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">// 对于所有的树来说，遍历都是通用的</span></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">// 前序遍历</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">func</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF"> PreOrderTraverse</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#383A42;--shiki-light-font-style:inherit;--shiki-dark:#E06C75;--shiki-dark-font-style:italic">t</span><span style="--shiki-light:#383A42;--shiki-dark:#C678DD"> *</span><span style="--shiki-light:#C18401;--shiki-dark:#E5C07B">BinaryTree</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">) {</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">	if</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75"> t</span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2"> ==</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> nil</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> {</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">		return</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">	}</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">	fmt</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">Print</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">t</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">data</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">)			</span><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">// 前序遍历就是从node开始遍历，所以要先打印	ABDGHCEIF</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">	PreOrderTraverse</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">t</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">left</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">)</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">	PreOrderTraverse</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">t</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">right</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">)</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">func</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF"> InOrderTraverse</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#383A42;--shiki-light-font-style:inherit;--shiki-dark:#E06C75;--shiki-dark-font-style:italic">t</span><span style="--shiki-light:#383A42;--shiki-dark:#C678DD"> *</span><span style="--shiki-light:#C18401;--shiki-dark:#E5C07B">BinaryTree</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">) {</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">	if</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75"> t</span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2"> ==</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> nil</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> {</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">		return</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">	}</span></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">    // 会产生式升序结果	GDHBAEICF</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">	InOrderTraverse</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">t</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">left</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">)</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">	fmt</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">Print</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">t</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">data</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">)</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">	InOrderTraverse</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">t</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">right</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">)</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">    </span></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">    // 会产生降序结果	FCIEABHDG</span></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">	//InOrderTraverse(t.right)</span></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">	//fmt.Print(t.data)</span></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">    //InOrderTraverse(t.left)</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">// 后序遍历</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">func</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF"> PostOrderTraverse</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#383A42;--shiki-light-font-style:inherit;--shiki-dark:#E06C75;--shiki-dark-font-style:italic">t</span><span style="--shiki-light:#383A42;--shiki-dark:#C678DD"> *</span><span style="--shiki-light:#C18401;--shiki-dark:#E5C07B">BinaryTree</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">) {</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">	if</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75"> t</span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2"> ==</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> nil</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> {</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">		return</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">	}</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">	PostOrderTraverse</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">t</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">left</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">)</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">	PostOrderTraverse</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">t</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">right</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">)</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">	fmt</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">Print</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">t</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">data</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">)				</span><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">// GHDBIEFCA</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">func</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF"> main</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">() {</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">	t</span><span style="--shiki-light:#383A42;--shiki-dark:#E5C07B"> :=</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF"> Appoint</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">()</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">	fmt</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">Println</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">t</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">, </span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">reflect</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">TypeOf</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">t</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">))</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">	PreOrderTraverse</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">t</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">)</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">	fmt</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">Println</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">()</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">	InOrderTraverse</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">t</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">)</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">	fmt</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">Println</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">()</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">	PostOrderTraverse</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">t</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">)</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">}</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="hint-container tip">
+<p class="hint-container-title">二叉树递归缺陷</p>
 <p>每次递归调用都会开辟一个函数栈空间，递归次数很多时，就会出现内存的急剧消耗，所以 <strong>最好的遍历方式仍然是迭代方式遍历</strong></p>
 <p><strong>迭代方式实现遍历与层序遍历的思路相似，都需要借助一个数据结构来实现，一般是 栈 或 队列</strong></p>
 </div>
-<h4 id="层序遍历" tabindex="-1"><a class="header-anchor" href="#层序遍历" aria-hidden="true">#</a> 层序遍历</h4>
+<h4 id="层序遍历" tabindex="-1"><a class="header-anchor" href="#层序遍历"><span>层序遍历</span></a></h4>
 <p><strong>使用队列</strong>，将根节点入队，循环（<em>队列为空则表示所有结点出队完成</em>），从根结点开始，对出的同时，将其左右子结点入队</p>
-<div class="language-go ext-go line-numbers-mode"><pre v-pre class="language-go"><code><span class="token keyword">import</span> <span class="token punctuation">(</span>
-	<span class="token string">"container/list"</span>
-<span class="token punctuation">)</span>
-
-<span class="token keyword">func</span> <span class="token function">LevelOrderTraverse</span><span class="token punctuation">(</span>t <span class="token operator">*</span>BinaryTree<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-	<span class="token keyword">if</span> t <span class="token operator">==</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
-		<span class="token keyword">return</span>
-	<span class="token punctuation">}</span>
-
-	queue <span class="token operator">:=</span> list<span class="token punctuation">.</span><span class="token function">New</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-	queue<span class="token punctuation">.</span><span class="token function">PushBack</span><span class="token punctuation">(</span>t<span class="token punctuation">)</span>
-	<span class="token comment">// 循环，将一层层的父结点出队，关联子结点依次入队</span>
-	<span class="token keyword">for</span> queue<span class="token punctuation">.</span><span class="token function">Len</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">!=</span> <span class="token number">0</span> <span class="token punctuation">{</span>
-		queueHead <span class="token operator">:=</span> queue<span class="token punctuation">.</span><span class="token function">Remove</span><span class="token punctuation">(</span>queue<span class="token punctuation">.</span><span class="token function">Front</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>	<span class="token comment">// 队首出队 即上文入队的t</span>
-		tempNode<span class="token operator">:=</span> queueHead<span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token operator">*</span>BinaryTree<span class="token punctuation">)</span>		<span class="token comment">// 类型断言</span>
-		fmt<span class="token punctuation">.</span><span class="token function">Print</span><span class="token punctuation">(</span>tempNode<span class="token punctuation">.</span>data<span class="token punctuation">)</span>
-		<span class="token keyword">if</span> tempNode<span class="token punctuation">.</span>left <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
-			queue<span class="token punctuation">.</span><span class="token function">PushBack</span><span class="token punctuation">(</span>tempNode<span class="token punctuation">.</span>left<span class="token punctuation">)</span>
-		<span class="token punctuation">}</span>
-		<span class="token keyword">if</span> tempNode<span class="token punctuation">.</span>right <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
-			queue<span class="token punctuation">.</span><span class="token function">PushBack</span><span class="token punctuation">(</span>tempNode<span class="token punctuation">.</span>right<span class="token punctuation">)</span>
-		<span class="token punctuation">}</span>
-	<span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h4 id="遍历的应用" tabindex="-1"><a class="header-anchor" href="#遍历的应用" aria-hidden="true">#</a> 遍历的应用</h4>
+<div class="language-go line-numbers-mode" data-highlighter="shiki" data-ext="go" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">import</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> (</span></span>
+<span class="line"><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">	"container/list"</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">)</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">func</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF"> LevelOrderTraverse</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#383A42;--shiki-light-font-style:inherit;--shiki-dark:#E06C75;--shiki-dark-font-style:italic">t</span><span style="--shiki-light:#383A42;--shiki-dark:#C678DD"> *</span><span style="--shiki-light:#C18401;--shiki-dark:#E5C07B">BinaryTree</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">) {</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">	if</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75"> t</span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2"> ==</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> nil</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> {</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">		return</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">	}</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">	queue</span><span style="--shiki-light:#383A42;--shiki-dark:#E5C07B"> :=</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75"> list</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">New</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">()</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">	queue</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">PushBack</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">t</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">)</span></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">	// 循环，将一层层的父结点出队，关联子结点依次入队</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">	for</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75"> queue</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">Len</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">() </span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2">!=</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> 0</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> {</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">		queueHead</span><span style="--shiki-light:#383A42;--shiki-dark:#E5C07B"> :=</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75"> queue</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">Remove</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">queue</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">Front</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">())	</span><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">// 队首出队 即上文入队的t</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">		tempNode</span><span style="--shiki-light:#383A42;--shiki-dark:#E5C07B">:=</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75"> queueHead</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.(</span><span style="--shiki-light:#383A42;--shiki-dark:#C678DD">*</span><span style="--shiki-light:#C18401;--shiki-dark:#E5C07B">BinaryTree</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">)		</span><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">// 类型断言</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">		fmt</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">Print</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">tempNode</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">data</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">)</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">		if</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75"> tempNode</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">left</span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2"> !=</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> nil</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> {</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">			queue</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">PushBack</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">tempNode</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">left</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">)</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">		}</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">		if</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75"> tempNode</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">right</span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2"> !=</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> nil</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> {</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">			queue</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">PushBack</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">tempNode</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">right</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">)</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">		}</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">	}</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">}</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h4 id="遍历的应用" tabindex="-1"><a class="header-anchor" href="#遍历的应用"><span>遍历的应用</span></a></h4>
 <p>层序遍历可以用来：</p>
 <ul>
 <li>计算二叉树的高度</li>
@@ -361,7 +361,7 @@ n <span class="token operator">=</span> 2n0 + n1 - <span class="token number">1<
 <li>前序遍历总是从 <strong>root</strong> 结点开始：根结点 -&gt; 左子树 -&gt; 右子树，此时可以找到其根结点 ，<strong>前缀定左</strong></li>
 <li>中序遍历从是从左子树开始：左子树 -&gt; 根结点 -&gt; 右子树，从前序遍历已经知道了根结点位置，依据中序就能知道其左右子结点 <strong>中缀定左右</strong></li>
 </ul>
-<h4 id="二叉树与四则运算" tabindex="-1"><a class="header-anchor" href="#二叉树与四则运算" aria-hidden="true">#</a> 二叉树与四则运算</h4>
+<h4 id="二叉树与四则运算" tabindex="-1"><a class="header-anchor" href="#二叉树与四则运算"><span>二叉树与四则运算</span></a></h4>
 <p>四则运算（+、-、*、/）一般有三种：</p>
 <ul>
 <li>前缀表达式（<em>prefix expression</em>），也称为波兰表达式</li>
@@ -370,28 +370,28 @@ n <span class="token operator">=</span> 2n0 + n1 - <span class="token number">1<
 </ul>
 <p>所谓的前缀、后缀、中缀指的是运算的位置是在两个操作数的左中右位置，如下所示：</p>
 <img src="@source/go/算法与数据结构/img/expression-01.png"> 
-<div class="language-go ext-go line-numbers-mode"><pre v-pre class="language-go"><code><span class="token keyword">func</span> <span class="token function">Appoint2</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">*</span>BinaryTree <span class="token punctuation">{</span>
-	A <span class="token operator">:=</span> <span class="token function">NewBinaryTree</span><span class="token punctuation">(</span><span class="token string">"+"</span><span class="token punctuation">)</span>
-	B <span class="token operator">:=</span> <span class="token function">NewBinaryTree</span><span class="token punctuation">(</span><span class="token string">"9"</span><span class="token punctuation">)</span>
-	C <span class="token operator">:=</span> <span class="token function">NewBinaryTree</span><span class="token punctuation">(</span><span class="token string">"*"</span><span class="token punctuation">)</span>
-
-	D <span class="token operator">:=</span> <span class="token function">NewBinaryTree</span><span class="token punctuation">(</span><span class="token string">"-"</span><span class="token punctuation">)</span>
-	E <span class="token operator">:=</span> <span class="token function">NewBinaryTree</span><span class="token punctuation">(</span><span class="token string">"2"</span><span class="token punctuation">)</span>
-	F <span class="token operator">:=</span> <span class="token function">NewBinaryTree</span><span class="token punctuation">(</span><span class="token string">"4"</span><span class="token punctuation">)</span>
-	G <span class="token operator">:=</span> <span class="token function">NewBinaryTree</span><span class="token punctuation">(</span><span class="token string">"1"</span><span class="token punctuation">)</span>
-
-	A<span class="token punctuation">.</span>left <span class="token operator">=</span> B
-	A<span class="token punctuation">.</span>right <span class="token operator">=</span> C
-	C<span class="token punctuation">.</span>left <span class="token operator">=</span> D
-	C<span class="token punctuation">.</span>right <span class="token operator">=</span> E
-	D<span class="token punctuation">.</span>left <span class="token operator">=</span> F
-	D<span class="token punctuation">.</span>right <span class="token operator">=</span> G
-	<span class="token keyword">return</span> A
-<span class="token punctuation">}</span>
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>如果将四则运算表达式的操作数作为叶子结点，运算符作为父结点，则可组成一棵二叉树，如 <code v-pre>A / B + C * D - E</code>：</p>
+<div class="language-go line-numbers-mode" data-highlighter="shiki" data-ext="go" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">func</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF"> Appoint2</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">() </span><span style="--shiki-light:#383A42;--shiki-dark:#C678DD">*</span><span style="--shiki-light:#C18401;--shiki-dark:#E5C07B">BinaryTree</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> {</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">	A</span><span style="--shiki-light:#383A42;--shiki-dark:#E5C07B"> :=</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF"> NewBinaryTree</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">"+"</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">)</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">	B</span><span style="--shiki-light:#383A42;--shiki-dark:#E5C07B"> :=</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF"> NewBinaryTree</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">"9"</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">)</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">	C</span><span style="--shiki-light:#383A42;--shiki-dark:#E5C07B"> :=</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF"> NewBinaryTree</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">"*"</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">)</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">	D</span><span style="--shiki-light:#383A42;--shiki-dark:#E5C07B"> :=</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF"> NewBinaryTree</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">"-"</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">)</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">	E</span><span style="--shiki-light:#383A42;--shiki-dark:#E5C07B"> :=</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF"> NewBinaryTree</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">"2"</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">)</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">	F</span><span style="--shiki-light:#383A42;--shiki-dark:#E5C07B"> :=</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF"> NewBinaryTree</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">"4"</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">)</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">	G</span><span style="--shiki-light:#383A42;--shiki-dark:#E5C07B"> :=</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF"> NewBinaryTree</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">"1"</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">)</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">	A</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">left</span><span style="--shiki-light:#383A42;--shiki-dark:#E5C07B"> =</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75"> B</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">	A</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">right</span><span style="--shiki-light:#383A42;--shiki-dark:#E5C07B"> =</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75"> C</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">	C</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">left</span><span style="--shiki-light:#383A42;--shiki-dark:#E5C07B"> =</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75"> D</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">	C</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">right</span><span style="--shiki-light:#383A42;--shiki-dark:#E5C07B"> =</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75"> E</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">	D</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">left</span><span style="--shiki-light:#383A42;--shiki-dark:#E5C07B"> =</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75"> F</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">	D</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">right</span><span style="--shiki-light:#383A42;--shiki-dark:#E5C07B"> =</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75"> G</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">	return</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75"> A</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">}</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>如果将四则运算表达式的操作数作为叶子结点，运算符作为父结点，则可组成一棵二叉树，如 <code v-pre>A / B + C * D - E</code>：</p>
 <img src="@source/go/算法与数据结构/img/expression-02.png">
 <p>如果对该二叉树进行前序遍历，就会生成前缀表达式。如果进行中序遍历，则会生成中缀表达式，同理进行后序遍历，则生成后缀表达式</p>
-<h2 id="_4-二叉搜索树" tabindex="-1"><a class="header-anchor" href="#_4-二叉搜索树" aria-hidden="true">#</a> 4. 二叉搜索树</h2>
+<h2 id="_4-二叉搜索树" tabindex="-1"><a class="header-anchor" href="#_4-二叉搜索树"><span>4. 二叉搜索树</span></a></h2>
 <p><strong>二叉搜索树 BST</strong>（<em>Binary Search Tree</em>），也称为 <strong>二叉排序树，二叉查找树</strong></p>
 <p>二叉搜索树可以为空。如果不为空，则满足：</p>
 <ul>
@@ -401,7 +401,7 @@ n <span class="token operator">=</span> 2n0 + n1 - <span class="token number">1<
 </ul>
 <p>如图所示，红勾表示的即是二叉搜索树：</p>
 <img src="@source/go/算法与数据结构/img/bstree-01.png">
-<h3 id="_4-1-二叉搜索树查找思想" tabindex="-1"><a class="header-anchor" href="#_4-1-二叉搜索树查找思想" aria-hidden="true">#</a> 4.1 二叉搜索树查找思想</h3>
+<h3 id="_4-1-二叉搜索树查找思想" tabindex="-1"><a class="header-anchor" href="#_4-1-二叉搜索树查找思想"><span>4.1 二叉搜索树查找思想</span></a></h3>
 <p>如其名称定义，二叉搜索树的查找很便利。如果要对下列混乱的数据进行查找 <strong>7</strong> 是否在数据中：<code v-pre>{1,3,6,7,9,0,4,2,5,8}</code>。对这种无序的数据，我们可以使用循环操作挨个遍历，或者使用 <strong>哈希表</strong> 方式</p>
 <p>如果现在要对一个有序的数据进行查找<code v-pre>{0,1,2,3,4,5,6,7,8,9}</code>，可以使用二分查找即可快速找出 7 是否在数据中。</p>
 <p>其实这和二叉搜索树的概念是一致的，<strong>利用折半的思想</strong>，这个数据序列转换为二叉搜索树后如图：</p>
@@ -412,214 +412,214 @@ n <span class="token operator">=</span> 2n0 + n1 - <span class="token number">1<
 <li>哈希表的数据是无序的，二叉搜索树其实是有序数据利用二分查找思想的转换</li>
 </ul>
 <p>二叉搜索树在插入结点的时候，<strong>也需要一层层比较大小</strong>，由此也带来新的特性：<strong>很容易获取最大值，最小值</strong></p>
-<div class="custom-container tip">
-<p class="custom-container-title">注意</p>
+<div class="hint-container tip">
+<p class="hint-container-title">注意</p>
 <p>其实二叉搜索就是二分搜索法的是数据结构实现，<strong>中序遍历可以得到从小到大的结果</strong>！！（<em>右左逆序则从大到小</em>）</p>
 </div>
-<h3 id="_4-2-插入实现" tabindex="-1"><a class="header-anchor" href="#_4-2-插入实现" aria-hidden="true">#</a> 4.2 插入实现</h3>
-<h4 id="递归插入" tabindex="-1"><a class="header-anchor" href="#递归插入" aria-hidden="true">#</a> 递归插入</h4>
-<div class="language-go ext-go line-numbers-mode"><pre v-pre class="language-go"><code><span class="token keyword">package</span> main
-
-<span class="token keyword">import</span> <span class="token punctuation">(</span>
-	<span class="token string">"fmt"</span>
-	<span class="token string">"math/rand"</span>
-	<span class="token string">"time"</span>
-<span class="token punctuation">)</span>
-
-<span class="token keyword">type</span> BSTree <span class="token keyword">struct</span> <span class="token punctuation">{</span>
-	data   <span class="token builtin">int</span>
-	left   <span class="token operator">*</span>BSTree
-	right  <span class="token operator">*</span>BSTree
-	parent <span class="token operator">*</span>BSTree <span class="token comment">// 记录父结点的原因是便于删除操作，以及对红黑树的演化</span>
-<span class="token punctuation">}</span>
-
-<span class="token keyword">func</span> <span class="token function">NewBSTree</span><span class="token punctuation">(</span>e <span class="token builtin">int</span><span class="token punctuation">)</span> <span class="token operator">*</span>BSTree <span class="token punctuation">{</span>
-	<span class="token keyword">return</span> <span class="token operator">&amp;</span>BSTree<span class="token punctuation">{</span>
-		data<span class="token punctuation">:</span>   e<span class="token punctuation">,</span>
-		left<span class="token punctuation">:</span>   <span class="token boolean">nil</span><span class="token punctuation">,</span>
-		right<span class="token punctuation">:</span>  <span class="token boolean">nil</span><span class="token punctuation">,</span>
-		parent<span class="token punctuation">:</span> <span class="token boolean">nil</span><span class="token punctuation">,</span>
-	<span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-
-<span class="token comment">// 递归实现</span>
-<span class="token keyword">func</span> <span class="token function">InsertRC</span><span class="token punctuation">(</span>bst <span class="token operator">*</span>BSTree<span class="token punctuation">,</span> e <span class="token builtin">int</span><span class="token punctuation">)</span> <span class="token operator">*</span>BSTree <span class="token punctuation">{</span>
-	<span class="token keyword">if</span> bst <span class="token operator">==</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
-		<span class="token keyword">return</span> <span class="token function">NewBSTree</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span>
-	<span class="token punctuation">}</span>
-	<span class="token keyword">if</span> e <span class="token operator">&lt;</span> bst<span class="token punctuation">.</span>data <span class="token punctuation">{</span>
-		bst<span class="token punctuation">.</span>left <span class="token operator">=</span> <span class="token function">InsertRC</span><span class="token punctuation">(</span>bst<span class="token punctuation">.</span>left<span class="token punctuation">,</span> e<span class="token punctuation">)</span>
-		bst<span class="token punctuation">.</span>left<span class="token punctuation">.</span>parent <span class="token operator">=</span> bst
-	<span class="token punctuation">}</span>
-	<span class="token keyword">if</span> e <span class="token operator">></span> bst<span class="token punctuation">.</span>data <span class="token punctuation">{</span>
-		bst<span class="token punctuation">.</span>right <span class="token operator">=</span> <span class="token function">InsertRC</span><span class="token punctuation">(</span>bst<span class="token punctuation">.</span>right<span class="token punctuation">,</span> e<span class="token punctuation">)</span>
-		bst<span class="token punctuation">.</span>right<span class="token punctuation">.</span>parent <span class="token operator">=</span> bst
-	<span class="token punctuation">}</span>
-	<span class="token keyword">return</span> bst
-<span class="token punctuation">}</span>
-
-<span class="token keyword">func</span> <span class="token function">InOrderTraverse</span><span class="token punctuation">(</span>tree <span class="token operator">*</span>BSTree<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-	<span class="token keyword">if</span> tree <span class="token operator">==</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
-		<span class="token keyword">return</span>
-	<span class="token punctuation">}</span>
-	<span class="token function">InOrderTraverse</span><span class="token punctuation">(</span>tree<span class="token punctuation">.</span>left<span class="token punctuation">)</span>
-	fmt<span class="token punctuation">.</span><span class="token function">Print</span><span class="token punctuation">(</span>tree<span class="token punctuation">.</span>data<span class="token punctuation">,</span> <span class="token string">" "</span><span class="token punctuation">)</span>
-	<span class="token function">InOrderTraverse</span><span class="token punctuation">(</span>tree<span class="token punctuation">.</span>right<span class="token punctuation">)</span>
-<span class="token punctuation">}</span>
-
-<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-	rand<span class="token punctuation">.</span><span class="token function">Seed</span><span class="token punctuation">(</span>time<span class="token punctuation">.</span><span class="token function">Now</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">UnixNano</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-	arr <span class="token operator">:=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token builtin">int</span><span class="token punctuation">{</span><span class="token punctuation">}</span>
-	<span class="token keyword">for</span> i <span class="token operator">:=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">20</span><span class="token punctuation">;</span> i<span class="token operator">++</span> <span class="token punctuation">{</span>
-		arr <span class="token operator">=</span> <span class="token function">append</span><span class="token punctuation">(</span>arr<span class="token punctuation">,</span> rand<span class="token punctuation">.</span><span class="token function">Intn</span><span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-	<span class="token punctuation">}</span>
-	fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span>arr<span class="token punctuation">)</span>
-
-	<span class="token keyword">var</span> head <span class="token operator">*</span>BSTree
-	<span class="token keyword">for</span> <span class="token boolean">_</span><span class="token punctuation">,</span> item <span class="token operator">:=</span> <span class="token keyword">range</span> arr <span class="token punctuation">{</span>
-		head <span class="token operator">=</span> <span class="token function">InsertRC</span><span class="token punctuation">(</span>head<span class="token punctuation">,</span> item<span class="token punctuation">)</span>
-	<span class="token punctuation">}</span>
-
-	<span class="token function">InOrderTraverse</span><span class="token punctuation">(</span>head<span class="token punctuation">)</span>
-<span class="token punctuation">}</span>
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h4 id="循环指针插入" tabindex="-1"><a class="header-anchor" href="#循环指针插入" aria-hidden="true">#</a> 循环指针插入</h4>
+<h3 id="_4-2-插入实现" tabindex="-1"><a class="header-anchor" href="#_4-2-插入实现"><span>4.2 插入实现</span></a></h3>
+<h4 id="递归插入" tabindex="-1"><a class="header-anchor" href="#递归插入"><span>递归插入</span></a></h4>
+<div class="language-go line-numbers-mode" data-highlighter="shiki" data-ext="go" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">package</span><span style="--shiki-light:#C18401;--shiki-dark:#E5C07B"> main</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">import</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> (</span></span>
+<span class="line"><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">	"fmt"</span></span>
+<span class="line"><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">	"math/rand"</span></span>
+<span class="line"><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">	"time"</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">)</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">type</span><span style="--shiki-light:#C18401;--shiki-dark:#E5C07B"> BSTree</span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD"> struct</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> {</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">	data</span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">   int</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">	left</span><span style="--shiki-light:#383A42;--shiki-dark:#C678DD">   *</span><span style="--shiki-light:#C18401;--shiki-dark:#E5C07B">BSTree</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">	right</span><span style="--shiki-light:#383A42;--shiki-dark:#C678DD">  *</span><span style="--shiki-light:#C18401;--shiki-dark:#E5C07B">BSTree</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">	parent</span><span style="--shiki-light:#383A42;--shiki-dark:#C678DD"> *</span><span style="--shiki-light:#C18401;--shiki-dark:#E5C07B">BSTree</span><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"> // 记录父结点的原因是便于删除操作，以及对红黑树的演化</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">func</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF"> NewBSTree</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#383A42;--shiki-light-font-style:inherit;--shiki-dark:#E06C75;--shiki-dark-font-style:italic">e</span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD"> int</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">) </span><span style="--shiki-light:#383A42;--shiki-dark:#C678DD">*</span><span style="--shiki-light:#C18401;--shiki-dark:#E5C07B">BSTree</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> {</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">	return</span><span style="--shiki-light:#383A42;--shiki-dark:#C678DD"> &#x26;</span><span style="--shiki-light:#C18401;--shiki-dark:#E5C07B">BSTree</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">{</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">		data</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">:   </span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">e</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">,</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">		left</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">:   </span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">nil</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">,</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">		right</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">:  </span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">nil</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">,</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">		parent</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">: </span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">nil</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">,</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">	}</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">// 递归实现</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">func</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF"> InsertRC</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#383A42;--shiki-light-font-style:inherit;--shiki-dark:#E06C75;--shiki-dark-font-style:italic">bst</span><span style="--shiki-light:#383A42;--shiki-dark:#C678DD"> *</span><span style="--shiki-light:#C18401;--shiki-dark:#E5C07B">BSTree</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">, </span><span style="--shiki-light:#383A42;--shiki-light-font-style:inherit;--shiki-dark:#E06C75;--shiki-dark-font-style:italic">e</span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD"> int</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">) </span><span style="--shiki-light:#383A42;--shiki-dark:#C678DD">*</span><span style="--shiki-light:#C18401;--shiki-dark:#E5C07B">BSTree</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> {</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">	if</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75"> bst</span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2"> ==</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> nil</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> {</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">		return</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF"> NewBSTree</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">e</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">)</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">	}</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">	if</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75"> e</span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2"> &#x3C;</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75"> bst</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">data</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> {</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">		bst</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">left</span><span style="--shiki-light:#383A42;--shiki-dark:#E5C07B"> =</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF"> InsertRC</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">bst</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">left</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">, </span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">e</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">)</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">		bst</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">left</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">parent</span><span style="--shiki-light:#383A42;--shiki-dark:#E5C07B"> =</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75"> bst</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">	}</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">	if</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75"> e</span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2"> ></span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75"> bst</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">data</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> {</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">		bst</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">right</span><span style="--shiki-light:#383A42;--shiki-dark:#E5C07B"> =</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF"> InsertRC</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">bst</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">right</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">, </span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">e</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">)</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">		bst</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">right</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">parent</span><span style="--shiki-light:#383A42;--shiki-dark:#E5C07B"> =</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75"> bst</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">	}</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">	return</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75"> bst</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">func</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF"> InOrderTraverse</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#383A42;--shiki-light-font-style:inherit;--shiki-dark:#E06C75;--shiki-dark-font-style:italic">tree</span><span style="--shiki-light:#383A42;--shiki-dark:#C678DD"> *</span><span style="--shiki-light:#C18401;--shiki-dark:#E5C07B">BSTree</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">) {</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">	if</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75"> tree</span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2"> ==</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> nil</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> {</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">		return</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">	}</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">	InOrderTraverse</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">tree</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">left</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">)</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">	fmt</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">Print</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">tree</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">data</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">, </span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">" "</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">)</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">	InOrderTraverse</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">tree</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">right</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">)</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">func</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF"> main</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">() {</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">	rand</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">Seed</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">time</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">Now</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">().</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">UnixNano</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">())</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">	arr</span><span style="--shiki-light:#383A42;--shiki-dark:#E5C07B"> :=</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> []</span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">int</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">{}</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">	for</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75"> i</span><span style="--shiki-light:#383A42;--shiki-dark:#E5C07B"> :=</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> 0</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">; </span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">i</span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2"> &#x3C;</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> 20</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">; </span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">i</span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2">++</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> {</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">		arr</span><span style="--shiki-light:#383A42;--shiki-dark:#E5C07B"> =</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF"> append</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">arr</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">, </span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">rand</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">Intn</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">100</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">))</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">	}</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">	fmt</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">Println</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">arr</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">)</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">	var</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75"> head</span><span style="--shiki-light:#383A42;--shiki-dark:#C678DD"> *</span><span style="--shiki-light:#C18401;--shiki-dark:#E5C07B">BSTree</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">	for</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75"> _</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">, </span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">item</span><span style="--shiki-light:#383A42;--shiki-dark:#E5C07B"> :=</span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD"> range</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75"> arr</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> {</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">		head</span><span style="--shiki-light:#383A42;--shiki-dark:#E5C07B"> =</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF"> InsertRC</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">head</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">, </span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">item</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">)</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">	}</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">	InOrderTraverse</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">head</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">)</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">}</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h4 id="循环指针插入" tabindex="-1"><a class="header-anchor" href="#循环指针插入"><span>循环指针插入</span></a></h4>
 <p>遍历形式插入，类似于链表通过 <strong>链式指针 p</strong> 不断比较遍历至空结点再进行插入操作</p>
-<div class="language-go ext-go line-numbers-mode"><pre v-pre class="language-go"><code><span class="token keyword">package</span> main
-
-<span class="token keyword">import</span> <span class="token punctuation">(</span>
-	<span class="token string">"fmt"</span>
-	<span class="token string">"math/rand"</span>
-	<span class="token string">"reflect"</span>
-	<span class="token string">"time"</span>
-<span class="token punctuation">)</span>
-
-<span class="token keyword">type</span> TreeNode <span class="token keyword">struct</span> <span class="token punctuation">{</span>
-	data   <span class="token builtin">int</span>
-	left   <span class="token operator">*</span>TreeNode
-	right  <span class="token operator">*</span>TreeNode
-	parent <span class="token operator">*</span>TreeNode <span class="token comment">// 便于删除</span>
-<span class="token punctuation">}</span>
-
-<span class="token keyword">func</span> <span class="token function">NewTreeNode</span><span class="token punctuation">(</span>e <span class="token builtin">int</span><span class="token punctuation">)</span> <span class="token operator">*</span>TreeNode <span class="token punctuation">{</span>
-	<span class="token keyword">return</span> <span class="token operator">&amp;</span>TreeNode<span class="token punctuation">{</span>
-		data<span class="token punctuation">:</span>   e<span class="token punctuation">,</span>
-		left<span class="token punctuation">:</span>   <span class="token boolean">nil</span><span class="token punctuation">,</span>
-		right<span class="token punctuation">:</span>  <span class="token boolean">nil</span><span class="token punctuation">,</span>
-		parent<span class="token punctuation">:</span> <span class="token boolean">nil</span><span class="token punctuation">,</span>
-	<span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-
-<span class="token comment">// BSTree 二叉搜索树对象</span>
-<span class="token keyword">type</span> BSTree <span class="token keyword">struct</span> <span class="token punctuation">{</span>
-	root   <span class="token operator">*</span>TreeNode
-	length <span class="token builtin">int</span>
-<span class="token punctuation">}</span>
-
-<span class="token keyword">func</span> <span class="token function">NewBSTree</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">*</span>BSTree <span class="token punctuation">{</span>
-	<span class="token keyword">return</span> <span class="token operator">&amp;</span>BSTree<span class="token punctuation">{</span>
-		root<span class="token punctuation">:</span>   <span class="token boolean">nil</span><span class="token punctuation">,</span>
-		length<span class="token punctuation">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
-	<span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-
-<span class="token comment">// Insert 插入元素：迭代方式</span>
-<span class="token keyword">func</span> <span class="token punctuation">(</span>bst <span class="token operator">*</span>BSTree<span class="token punctuation">)</span> <span class="token function">Insert</span><span class="token punctuation">(</span>e <span class="token builtin">int</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-	<span class="token keyword">if</span> bst<span class="token punctuation">.</span>root <span class="token operator">==</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
-		bst<span class="token punctuation">.</span>root <span class="token operator">=</span> <span class="token function">NewTreeNode</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span>
-		bst<span class="token punctuation">.</span>length<span class="token operator">++</span>
-		<span class="token keyword">return</span>
-	<span class="token punctuation">}</span>
-
-	p <span class="token operator">:=</span> bst<span class="token punctuation">.</span>root
-	<span class="token keyword">for</span> p <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
-		<span class="token keyword">if</span> e <span class="token operator">&lt;</span> p<span class="token punctuation">.</span>data <span class="token punctuation">{</span>
-			<span class="token keyword">if</span> p<span class="token punctuation">.</span>left <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
-				p <span class="token operator">=</span> p<span class="token punctuation">.</span>left
-			<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
-				p<span class="token punctuation">.</span>left <span class="token operator">=</span> <span class="token function">NewTreeNode</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span>
-				p<span class="token punctuation">.</span>left<span class="token punctuation">.</span>parent <span class="token operator">=</span> p
-				<span class="token keyword">break</span>
-			<span class="token punctuation">}</span>
-		<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> e <span class="token operator">></span> p<span class="token punctuation">.</span>data <span class="token punctuation">{</span>
-			<span class="token keyword">if</span> p<span class="token punctuation">.</span>right <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
-				p <span class="token operator">=</span> p<span class="token punctuation">.</span>right
-			<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
-				p<span class="token punctuation">.</span>right <span class="token operator">=</span> <span class="token function">NewTreeNode</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span>
-				p<span class="token punctuation">.</span>right<span class="token punctuation">.</span>parent <span class="token operator">=</span> p
-				<span class="token keyword">break</span>
-			<span class="token punctuation">}</span>
-		<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
-			<span class="token keyword">break</span>
-		<span class="token punctuation">}</span>
-	<span class="token punctuation">}</span>
-	bst<span class="token punctuation">.</span>length<span class="token operator">++</span>
-	<span class="token keyword">return</span>
-<span class="token punctuation">}</span>
-
-<span class="token keyword">func</span> <span class="token function">InOrderTraverse</span><span class="token punctuation">(</span>root <span class="token operator">*</span>TreeNode<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-	<span class="token keyword">if</span> root <span class="token operator">==</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
-		<span class="token keyword">return</span>
-	<span class="token punctuation">}</span>
-	<span class="token function">InOrderTraverse</span><span class="token punctuation">(</span>root<span class="token punctuation">.</span>left<span class="token punctuation">)</span>
-	fmt<span class="token punctuation">.</span><span class="token function">Print</span><span class="token punctuation">(</span>root<span class="token punctuation">.</span>data<span class="token punctuation">,</span> <span class="token string">" "</span><span class="token punctuation">)</span>
-	<span class="token function">InOrderTraverse</span><span class="token punctuation">(</span>root<span class="token punctuation">.</span>right<span class="token punctuation">)</span>
-<span class="token punctuation">}</span>
-
-<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-	rand<span class="token punctuation">.</span><span class="token function">Seed</span><span class="token punctuation">(</span>time<span class="token punctuation">.</span><span class="token function">Now</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">UnixNano</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-	arr <span class="token operator">:=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token builtin">int</span><span class="token punctuation">{</span><span class="token punctuation">}</span>
-	<span class="token keyword">for</span> i <span class="token operator">:=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">20</span><span class="token punctuation">;</span> i<span class="token operator">++</span> <span class="token punctuation">{</span>
-		arr <span class="token operator">=</span> <span class="token function">append</span><span class="token punctuation">(</span>arr<span class="token punctuation">,</span> rand<span class="token punctuation">.</span><span class="token function">Intn</span><span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-	<span class="token punctuation">}</span>
-	fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span>arr<span class="token punctuation">)</span>
-
-	bst <span class="token operator">:=</span> <span class="token function">NewBSTree</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-	fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span>bst<span class="token punctuation">,</span> reflect<span class="token punctuation">.</span><span class="token function">TypeOf</span><span class="token punctuation">(</span>bst<span class="token punctuation">)</span><span class="token punctuation">)</span>
-	<span class="token keyword">for</span> <span class="token boolean">_</span><span class="token punctuation">,</span> item <span class="token operator">:=</span> <span class="token keyword">range</span> arr <span class="token punctuation">{</span>
-		bst<span class="token punctuation">.</span><span class="token function">Insert</span><span class="token punctuation">(</span>item<span class="token punctuation">)</span>
-	<span class="token punctuation">}</span>
-	<span class="token function">InOrderTraverse</span><span class="token punctuation">(</span>bst<span class="token punctuation">.</span>root<span class="token punctuation">)</span>
-	fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">"\nNon -repeatable tree length is:"</span><span class="token punctuation">,</span> bst<span class="token punctuation">.</span>length<span class="token punctuation">)</span>
-<span class="token punctuation">}</span>
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><blockquote>
+<div class="language-go line-numbers-mode" data-highlighter="shiki" data-ext="go" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">package</span><span style="--shiki-light:#C18401;--shiki-dark:#E5C07B"> main</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">import</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> (</span></span>
+<span class="line"><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">	"fmt"</span></span>
+<span class="line"><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">	"math/rand"</span></span>
+<span class="line"><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">	"reflect"</span></span>
+<span class="line"><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">	"time"</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">)</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">type</span><span style="--shiki-light:#C18401;--shiki-dark:#E5C07B"> TreeNode</span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD"> struct</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> {</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">	data</span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">   int</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">	left</span><span style="--shiki-light:#383A42;--shiki-dark:#C678DD">   *</span><span style="--shiki-light:#C18401;--shiki-dark:#E5C07B">TreeNode</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">	right</span><span style="--shiki-light:#383A42;--shiki-dark:#C678DD">  *</span><span style="--shiki-light:#C18401;--shiki-dark:#E5C07B">TreeNode</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">	parent</span><span style="--shiki-light:#383A42;--shiki-dark:#C678DD"> *</span><span style="--shiki-light:#C18401;--shiki-dark:#E5C07B">TreeNode</span><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"> // 便于删除</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">func</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF"> NewTreeNode</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#383A42;--shiki-light-font-style:inherit;--shiki-dark:#E06C75;--shiki-dark-font-style:italic">e</span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD"> int</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">) </span><span style="--shiki-light:#383A42;--shiki-dark:#C678DD">*</span><span style="--shiki-light:#C18401;--shiki-dark:#E5C07B">TreeNode</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> {</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">	return</span><span style="--shiki-light:#383A42;--shiki-dark:#C678DD"> &#x26;</span><span style="--shiki-light:#C18401;--shiki-dark:#E5C07B">TreeNode</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">{</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">		data</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">:   </span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">e</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">,</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">		left</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">:   </span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">nil</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">,</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">		right</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">:  </span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">nil</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">,</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">		parent</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">: </span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">nil</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">,</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">	}</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">// BSTree 二叉搜索树对象</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">type</span><span style="--shiki-light:#C18401;--shiki-dark:#E5C07B"> BSTree</span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD"> struct</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> {</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">	root</span><span style="--shiki-light:#383A42;--shiki-dark:#C678DD">   *</span><span style="--shiki-light:#C18401;--shiki-dark:#E5C07B">TreeNode</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">	length</span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD"> int</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">func</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF"> NewBSTree</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">() </span><span style="--shiki-light:#383A42;--shiki-dark:#C678DD">*</span><span style="--shiki-light:#C18401;--shiki-dark:#E5C07B">BSTree</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> {</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">	return</span><span style="--shiki-light:#383A42;--shiki-dark:#C678DD"> &#x26;</span><span style="--shiki-light:#C18401;--shiki-dark:#E5C07B">BSTree</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">{</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">		root</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">:   </span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">nil</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">,</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">		length</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">: </span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">0</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">,</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">	}</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">// Insert 插入元素：迭代方式</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">func</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> (</span><span style="--shiki-light:#383A42;--shiki-light-font-style:inherit;--shiki-dark:#E06C75;--shiki-dark-font-style:italic">bst </span><span style="--shiki-light:#383A42;--shiki-dark:#C678DD">*</span><span style="--shiki-light:#C18401;--shiki-dark:#E5C07B">BSTree</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">) </span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">Insert</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#383A42;--shiki-light-font-style:inherit;--shiki-dark:#E06C75;--shiki-dark-font-style:italic">e</span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD"> int</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">) {</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">	if</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75"> bst</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">root</span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2"> ==</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> nil</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> {</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">		bst</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">root</span><span style="--shiki-light:#383A42;--shiki-dark:#E5C07B"> =</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF"> NewTreeNode</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">e</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">)</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">		bst</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">length</span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2">++</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">		return</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">	}</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">	p</span><span style="--shiki-light:#383A42;--shiki-dark:#E5C07B"> :=</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75"> bst</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">root</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">	for</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75"> p</span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2"> !=</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> nil</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> {</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">		if</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75"> e</span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2"> &#x3C;</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75"> p</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">data</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> {</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">			if</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75"> p</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">left</span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2"> !=</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> nil</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> {</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">				p</span><span style="--shiki-light:#383A42;--shiki-dark:#E5C07B"> =</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75"> p</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">left</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">			} </span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">else</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> {</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">				p</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">left</span><span style="--shiki-light:#383A42;--shiki-dark:#E5C07B"> =</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF"> NewTreeNode</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">e</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">)</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">				p</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">left</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">parent</span><span style="--shiki-light:#383A42;--shiki-dark:#E5C07B"> =</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75"> p</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">				break</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">			}</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">		} </span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">else</span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD"> if</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75"> e</span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2"> ></span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75"> p</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">data</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> {</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">			if</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75"> p</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">right</span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2"> !=</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> nil</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> {</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">				p</span><span style="--shiki-light:#383A42;--shiki-dark:#E5C07B"> =</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75"> p</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">right</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">			} </span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">else</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> {</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">				p</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">right</span><span style="--shiki-light:#383A42;--shiki-dark:#E5C07B"> =</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF"> NewTreeNode</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">e</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">)</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">				p</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">right</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">parent</span><span style="--shiki-light:#383A42;--shiki-dark:#E5C07B"> =</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75"> p</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">				break</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">			}</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">		} </span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">else</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> {</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">			break</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">		}</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">	}</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">	bst</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">length</span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2">++</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">	return</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">func</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF"> InOrderTraverse</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#383A42;--shiki-light-font-style:inherit;--shiki-dark:#E06C75;--shiki-dark-font-style:italic">root</span><span style="--shiki-light:#383A42;--shiki-dark:#C678DD"> *</span><span style="--shiki-light:#C18401;--shiki-dark:#E5C07B">TreeNode</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">) {</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">	if</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75"> root</span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2"> ==</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> nil</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> {</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">		return</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">	}</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">	InOrderTraverse</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">root</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">left</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">)</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">	fmt</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">Print</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">root</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">data</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">, </span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">" "</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">)</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">	InOrderTraverse</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">root</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">right</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">)</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">func</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF"> main</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">() {</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">	rand</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">Seed</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">time</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">Now</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">().</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">UnixNano</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">())</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">	arr</span><span style="--shiki-light:#383A42;--shiki-dark:#E5C07B"> :=</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> []</span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">int</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">{}</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">	for</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75"> i</span><span style="--shiki-light:#383A42;--shiki-dark:#E5C07B"> :=</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> 0</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">; </span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">i</span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2"> &#x3C;</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> 20</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">; </span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">i</span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2">++</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> {</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">		arr</span><span style="--shiki-light:#383A42;--shiki-dark:#E5C07B"> =</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF"> append</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">arr</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">, </span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">rand</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">Intn</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">100</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">))</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">	}</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">	fmt</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">Println</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">arr</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">)</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">	bst</span><span style="--shiki-light:#383A42;--shiki-dark:#E5C07B"> :=</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF"> NewBSTree</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">()</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">	fmt</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">Println</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">bst</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">, </span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">reflect</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">TypeOf</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">bst</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">))</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">	for</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75"> _</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">, </span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">item</span><span style="--shiki-light:#383A42;--shiki-dark:#E5C07B"> :=</span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD"> range</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75"> arr</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> {</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">		bst</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">Insert</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">item</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">)</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">	}</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">	InOrderTraverse</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">bst</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">root</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">)</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">	fmt</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">Println</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">"</span><span style="--shiki-light:#0184BC;--shiki-dark:#56B6C2">\n</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">Non -repeatable tree length is:"</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">, </span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">bst</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">length</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">)</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">}</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><blockquote>
 <p>若数据重复，每个结点还需添加额外字段 <strong>count</strong> 可以用来计数</p>
 </blockquote>
-<h4 id="二叉搜索树的-adt" tabindex="-1"><a class="header-anchor" href="#二叉搜索树的-adt" aria-hidden="true">#</a> 二叉搜索树的 ADT</h4>
+<h4 id="二叉搜索树的-adt" tabindex="-1"><a class="header-anchor" href="#二叉搜索树的-adt"><span>二叉搜索树的 ADT</span></a></h4>
 <p>对于二叉搜索树来说，只需要保存根结点即可，因为其他结点都可以通过根结点找到。</p>
 <p>二叉树的结点内部必须保留左右子结点信息，<strong>若保留了父结点信息，更便于删除操作</strong>，此外 <strong>还可以用无父结点的二叉搜索树</strong></p>
-<h3 id="_4-3-二叉搜索树其他操作" tabindex="-1"><a class="header-anchor" href="#_4-3-二叉搜索树其他操作" aria-hidden="true">#</a> 4.3 二叉搜索树其他操作</h3>
-<div class="language-go ext-go line-numbers-mode"><pre v-pre class="language-go"><code><span class="token comment">// 判断存在元素 （查找思路一致）</span>
-<span class="token keyword">func</span> <span class="token punctuation">(</span>bst <span class="token operator">*</span>BSTree<span class="token punctuation">)</span><span class="token function">hasElement</span><span class="token punctuation">(</span>e <span class="token builtin">int</span><span class="token punctuation">)</span> <span class="token builtin">bool</span> <span class="token punctuation">{</span>
-	p <span class="token operator">:=</span> bst<span class="token punctuation">.</span>root
-	<span class="token keyword">for</span> p <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
-		<span class="token keyword">if</span> e <span class="token operator">></span> p<span class="token punctuation">.</span>data <span class="token punctuation">{</span>
-			p <span class="token operator">=</span> p<span class="token punctuation">.</span>right
-		<span class="token punctuation">}</span><span class="token keyword">else</span> <span class="token keyword">if</span> e <span class="token operator">&lt;</span> p<span class="token punctuation">.</span>data <span class="token punctuation">{</span>
-			p <span class="token operator">=</span> p<span class="token punctuation">.</span>left
-		<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
-			<span class="token keyword">return</span> <span class="token boolean">true</span>
-		<span class="token punctuation">}</span>
-	<span class="token punctuation">}</span>
-	<span class="token keyword">return</span> <span class="token boolean">false</span>
-<span class="token punctuation">}</span>
-
-<span class="token comment">// 获取最小值 （最大值思路一致）</span>
-<span class="token keyword">func</span> <span class="token punctuation">(</span>bst <span class="token operator">*</span>BSTree<span class="token punctuation">)</span> <span class="token function">getMin</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">interface</span><span class="token punctuation">{</span><span class="token punctuation">}</span> <span class="token punctuation">{</span>
-	p <span class="token operator">:=</span> bst<span class="token punctuation">.</span>root
-	<span class="token keyword">var</span> data <span class="token keyword">interface</span><span class="token punctuation">{</span><span class="token punctuation">}</span>
-	<span class="token keyword">for</span> p <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
-		data <span class="token operator">=</span> p<span class="token punctuation">.</span>data
-		p <span class="token operator">=</span> p<span class="token punctuation">.</span>left
-	<span class="token punctuation">}</span>
-	<span class="token keyword">return</span> data
-<span class="token punctuation">}</span>
-
-<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token comment">//...</span>
-	fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">"Min Value:"</span><span class="token punctuation">,</span> bst<span class="token punctuation">.</span><span class="token function">getMin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-	fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">"has 13:"</span><span class="token punctuation">,</span> bst<span class="token punctuation">.</span><span class="token function">hasElement</span><span class="token punctuation">(</span><span class="token number">13</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-<span class="token punctuation">}</span>
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h4 id="查找结点的前驱" tabindex="-1"><a class="header-anchor" href="#查找结点的前驱" aria-hidden="true">#</a> 查找结点的前驱</h4>
+<h3 id="_4-3-二叉搜索树其他操作" tabindex="-1"><a class="header-anchor" href="#_4-3-二叉搜索树其他操作"><span>4.3 二叉搜索树其他操作</span></a></h3>
+<div class="language-go line-numbers-mode" data-highlighter="shiki" data-ext="go" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">// 判断存在元素 （查找思路一致）</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">func</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> (</span><span style="--shiki-light:#383A42;--shiki-light-font-style:inherit;--shiki-dark:#E06C75;--shiki-dark-font-style:italic">bst </span><span style="--shiki-light:#383A42;--shiki-dark:#C678DD">*</span><span style="--shiki-light:#C18401;--shiki-dark:#E5C07B">BSTree</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">)</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">hasElement</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#383A42;--shiki-light-font-style:inherit;--shiki-dark:#E06C75;--shiki-dark-font-style:italic">e</span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD"> int</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">) </span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">bool</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> {</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">	p</span><span style="--shiki-light:#383A42;--shiki-dark:#E5C07B"> :=</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75"> bst</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">root</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">	for</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75"> p</span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2"> !=</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> nil</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> {</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">		if</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75"> e</span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2"> ></span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75"> p</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">data</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> {</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">			p</span><span style="--shiki-light:#383A42;--shiki-dark:#E5C07B"> =</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75"> p</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">right</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">		}</span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">else</span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD"> if</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75"> e</span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2"> &#x3C;</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75"> p</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">data</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> {</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">			p</span><span style="--shiki-light:#383A42;--shiki-dark:#E5C07B"> =</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75"> p</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">left</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">		} </span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">else</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> {</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">			return</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> true</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">		}</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">	}</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">	return</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> false</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">// 获取最小值 （最大值思路一致）</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">func</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> (</span><span style="--shiki-light:#383A42;--shiki-light-font-style:inherit;--shiki-dark:#E06C75;--shiki-dark-font-style:italic">bst </span><span style="--shiki-light:#383A42;--shiki-dark:#C678DD">*</span><span style="--shiki-light:#C18401;--shiki-dark:#E5C07B">BSTree</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">) </span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">getMin</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">() </span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">interface</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">{} {</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">	p</span><span style="--shiki-light:#383A42;--shiki-dark:#E5C07B"> :=</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75"> bst</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">root</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">	var</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75"> data</span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD"> interface</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">{}</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">	for</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75"> p</span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2"> !=</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> nil</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> {</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">		data</span><span style="--shiki-light:#383A42;--shiki-dark:#E5C07B"> =</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75"> p</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">data</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">		p</span><span style="--shiki-light:#383A42;--shiki-dark:#E5C07B"> =</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75"> p</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">left</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">	}</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">	return</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75"> data</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">func</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF"> main</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">() {</span></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">    //...</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">	fmt</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">Println</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">"Min Value:"</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">, </span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">bst</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">getMin</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">())</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">	fmt</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">Println</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">"has 13:"</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">, </span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">bst</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">hasElement</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">13</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">))</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">}</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h4 id="查找结点的前驱" tabindex="-1"><a class="header-anchor" href="#查找结点的前驱"><span>查找结点的前驱</span></a></h4>
 <p>前驱结点其实就是中序遍历时，当前结点的前一个结点，即从左侧找，会找到小一点的数据，<strong>该数据一定是删除结点左子树的最大值</strong>，称之为 <strong>前驱</strong></p>
 <p>假设要当前结点为 <strong>n</strong> ，则查找时有三种情况</p>
 <ul>
@@ -641,8 +641,8 @@ n <span class="token operator">=</span> 2n0 + n1 - <span class="token number">1<
 </ul>
 </li>
 </ul>
-<div class="language-go ext-go line-numbers-mode"><pre v-pre class="language-go"><code>
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><h4 id="查找结点的后继" tabindex="-1"><a class="header-anchor" href="#查找结点的后继" aria-hidden="true">#</a> 查找结点的后继</h4>
+<div class="language-go line-numbers-mode" data-highlighter="shiki" data-ext="go" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div><h4 id="查找结点的后继" tabindex="-1"><a class="header-anchor" href="#查找结点的后继"><span>查找结点的后继</span></a></h4>
 <p>后继结点其实就是中序遍历时，当前结点的后一个结点，即从右侧找，会找到大一点的数据，<strong>该数据一定是删除结点右子树的最小值</strong>，称之为 <strong>后继</strong></p>
 <p>假设当前结点为 <strong>n</strong> ，则查找有三种情况</p>
 <ul>
@@ -664,8 +664,8 @@ n <span class="token operator">=</span> 2n0 + n1 - <span class="token number">1<
 </ul>
 </li>
 </ul>
-<div class="language-go ext-go line-numbers-mode"><pre v-pre class="language-go"><code>
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><h4 id="删除结点" tabindex="-1"><a class="header-anchor" href="#删除结点" aria-hidden="true">#</a> 删除结点</h4>
+<div class="language-go line-numbers-mode" data-highlighter="shiki" data-ext="go" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div><h4 id="删除结点" tabindex="-1"><a class="header-anchor" href="#删除结点"><span>删除结点</span></a></h4>
 <p>删除结点对应需要先确定结点是否存在，即找到值对应的结点，然后依据找到的结点的不同，执行不同的操作：</p>
 <ul>
 <li>度为 <strong>0</strong> 结点： <strong>直接删除</strong> 即可，如果删除的结点也是根结点，则还需要将根结点掷空</li>
@@ -695,13 +695,13 @@ n <span class="token operator">=</span> 2n0 + n1 - <span class="token number">1<
 </ul>
 </li>
 </ul>
-<div class="language-go ext-go line-numbers-mode"><pre v-pre class="language-go"><code>
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><h3 id="_4-4-时间复杂度与平衡树" tabindex="-1"><a class="header-anchor" href="#_4-4-时间复杂度与平衡树" aria-hidden="true">#</a> 4.4 时间复杂度与平衡树</h3>
+<div class="language-go line-numbers-mode" data-highlighter="shiki" data-ext="go" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div><h3 id="_4-4-时间复杂度与平衡树" tabindex="-1"><a class="header-anchor" href="#_4-4-时间复杂度与平衡树"><span>4.4 时间复杂度与平衡树</span></a></h3>
 <p>二叉搜索树其实就是 二分查找法 的数据结构实现，其时间复杂度大致为：<strong>O(logn)</strong></p>
-<h4 id="二叉搜索树的缺陷" tabindex="-1"><a class="header-anchor" href="#二叉搜索树的缺陷" aria-hidden="true">#</a> 二叉搜索树的缺陷</h4>
+<h4 id="二叉搜索树的缺陷" tabindex="-1"><a class="header-anchor" href="#二叉搜索树的缺陷"><span>二叉搜索树的缺陷</span></a></h4>
 <p>但是如果二叉搜索树在插入时，如果相继插入的 <strong>数据都是有序</strong> 的，会造成树形成一个 <strong>类似链表</strong> 的结构 ，按照下列规则添加：</p>
-<div class="language-text ext-text line-numbers-mode"><pre v-pre class="language-text"><code>9,8,7,6,5,4,3,2,1
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p>那么此时二叉搜索树就会像 <strong>链表</strong> 一样存在，其查找速度也会变化为 <strong>O(n)</strong>，<strong>引起查找的极大性能缺失</strong>，这种插入连续数据形成的 <strong>分布不均匀的二叉树 为 非平衡树（<em>No-Balance</em>）</strong> 只有 <strong>平衡二叉搜索树 才能更加符合实际的业务需求</strong></p>
+<div class="language- line-numbers-mode" data-highlighter="shiki" data-ext="" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span>9,8,7,6,5,4,3,2,1</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div><p>那么此时二叉搜索树就会像 <strong>链表</strong> 一样存在，其查找速度也会变化为 <strong>O(n)</strong>，<strong>引起查找的极大性能缺失</strong>，这种插入连续数据形成的 <strong>分布不均匀的二叉树 为 非平衡树（<em>No-Balance</em>）</strong> 只有 <strong>平衡二叉搜索树 才能更加符合实际的业务需求</strong></p>
 <ul>
 <li>对于一棵平衡二叉树，查找操作效率是 <strong>O(logn)</strong></li>
 <li>对于一棵非平衡二叉树，<strong>相当于编写了一个链表</strong>，查找效率上升为 <strong>O(n)</strong></li>
@@ -709,7 +709,7 @@ n <span class="token operator">=</span> 2n0 + n1 - <span class="token number">1<
 <blockquote>
 <p>为了避免这种现象，即保证树是平衡的，就要让树的 <strong>每个结点的左边子孙结点个数尽量等于右边的子孙结点的个数</strong></p>
 </blockquote>
-<h4 id="平衡二叉搜索树" tabindex="-1"><a class="header-anchor" href="#平衡二叉搜索树" aria-hidden="true">#</a> 平衡二叉搜索树</h4>
+<h4 id="平衡二叉搜索树" tabindex="-1"><a class="header-anchor" href="#平衡二叉搜索树"><span>平衡二叉搜索树</span></a></h4>
 <p>如果要让链表一样的二叉搜索树恢复平衡，其做法一般是 <strong>缩小树的高度</strong>，即 <strong>让左右子树的高度都尽量接近或者一致</strong>，这样达到平衡的二叉搜索树，我们称之为 <strong>平衡二叉搜索树</strong>（<em>Ballanced Binary Search Tree</em>）</p>
 <p>常见的平衡二叉搜索树有：</p>
 <ul>
@@ -717,8 +717,8 @@ n <span class="token operator">=</span> 2n0 + n1 - <span class="token number">1<
 <li><strong>B+ 树：</strong> 数据库索引使用</li>
 <li><strong>红黑树：</strong> 最重要的平衡二叉搜索树，<strong>C++</strong> 的 <strong>STL</strong> 库，<strong>Java</strong> 中的哈希表（<em>碰撞超过  <strong>8</strong> 个时，链表转换为红黑树</em>）</li>
 </ul>
-<div class="custom-container info">
-<p class="custom-container-title">AVL树</p>
+<div class="hint-container info">
+<p class="hint-container-title">AVL树</p>
 <p><strong>AVL</strong> 树是早期的 <strong>平衡树</strong>，可以实现树的平衡，因为其每个结点 <strong>多存储了一个额外的数据</strong>，<strong>插入/删除效率不及红黑树，所以整体效率不及红黑树</strong></p>
 </div>
 </div></template>

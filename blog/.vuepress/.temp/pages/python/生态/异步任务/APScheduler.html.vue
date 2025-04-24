@@ -1,15 +1,15 @@
-<template><div><h1 id="apscheduler" tabindex="-1"><a class="header-anchor" href="#apscheduler" aria-hidden="true">#</a> APScheduler</h1>
-<p><a href="http://apscheduler.readthedocs.io/en/latest/" target="_blank" rel="noopener noreferrer">http://apscheduler.readthedocs.io/en/latest/<ExternalLinkIcon/></a></p>
-<h2 id="一、apscheduler-简介" tabindex="-1"><a class="header-anchor" href="#一、apscheduler-简介" aria-hidden="true">#</a> 一、APScheduler 简介：</h2>
-<p>APScheduler 基于 Quartz （开源作业调度框架）的一个 Python 定时任务框架，实现了 Quartz 的所有功能，使用起来十分方便。提供了基于日期、
+<template><div><h1 id="apscheduler" tabindex="-1"><a class="header-anchor" href="#apscheduler"><span>APScheduler</span></a></h1>
+<p><a href="http://apscheduler.readthedocs.io/en/latest/" target="_blank" rel="noopener noreferrer">http://apscheduler.readthedocs.io/en/latest/</a></p>
+<h2 id="一、apscheduler-简介" tabindex="-1"><a class="header-anchor" href="#一、apscheduler-简介"><span>一、APScheduler 简介：</span></a></h2>
+<p>APScheduler 基于 Quartz （开源作业调度框架）的一个 Python 定时任务框架，实现了 Quartz 的所有功能，使用起来十分方便。提供了基于日期、<br>
 固定时间间隔以及 crontab 类型的任务，并且可以持久化任务。基于这些功能，我们可以很方便的实现一个 python 定时任务系统。</p>
 <pre><code>除此之外，建立高效能的定时任务可参考celery
 </code></pre>
-<h2 id="二、安装-示例" tabindex="-1"><a class="header-anchor" href="#二、安装-示例" aria-hidden="true">#</a> 二、安装&amp;示例：</h2>
+<h2 id="二、安装-示例" tabindex="-1"><a class="header-anchor" href="#二、安装-示例"><span>二、安装&amp;示例：</span></a></h2>
 <pre><code>pip install apscheduler
 </code></pre>
-<p>注意：
-若出现由于安装问题导致的出错，先确认是否安装版本正确，若安装和配置文件中的版本一致，运行 pip install setuptools --upgrade
+<p>注意：<br>
+若出现由于安装问题导致的出错，先确认是否安装版本正确，若安装和配置文件中的版本一致，运行 pip install setuptools --upgrade<br>
 之后再运行试试。</p>
 <pre><code>例：
 from apscheduler.schedulers.blocking import BlockingScheduler   # 导入，调度程序是您的进程中唯一运行的时候使用
@@ -35,9 +35,9 @@ scheduler.start()
         'apscheduler.timezone': 'Asia/Shanghai'     # Shanghai作为调度程序的时区
     })
 </code></pre>
-<h2 id="三、apscheduler-的四种组成部分" tabindex="-1"><a class="header-anchor" href="#三、apscheduler-的四种组成部分" aria-hidden="true">#</a> 三、APScheduler 的四种组成部分：</h2>
-<h3 id="_1-触发器-trigger" tabindex="-1"><a class="header-anchor" href="#_1-触发器-trigger" aria-hidden="true">#</a> 1.触发器(trigger)：</h3>
-<p>包含调度逻辑，每一个作业有它自己的触发器，用于决定接下来哪一个作业会运行。除了他们自己初始配置意外，触发器完全是无状态的。
+<h2 id="三、apscheduler-的四种组成部分" tabindex="-1"><a class="header-anchor" href="#三、apscheduler-的四种组成部分"><span>三、APScheduler 的四种组成部分：</span></a></h2>
+<h3 id="_1-触发器-trigger" tabindex="-1"><a class="header-anchor" href="#_1-触发器-trigger"><span>1.触发器(trigger)：</span></a></h3>
+<p>包含调度逻辑，每一个作业有它自己的触发器，用于决定接下来哪一个作业会运行。除了他们自己初始配置意外，触发器完全是无状态的。<br>
 上面代码中用了 cron，共有 date, interval, cron 可供选择。</p>
 <ul>
 <li>date：表示具体的一次性任务</li>
@@ -45,15 +45,15 @@ scheduler.start()
 <li>cron：表示定时任务</li>
 </ul>
 <p>可参照文档查看 不同触发器的任务 传入的时间类型</p>
-<h3 id="_2-作业存储-job-store" tabindex="-1"><a class="header-anchor" href="#_2-作业存储-job-store" aria-hidden="true">#</a> 2.作业存储(job store)：</h3>
+<h3 id="_2-作业存储-job-store" tabindex="-1"><a class="header-anchor" href="#_2-作业存储-job-store"><span>2.作业存储(job store)：</span></a></h3>
 <p>存储被调度的作业，默认的作业存储是简单地把作业保存在内存中，其他的作业存储是将作业保存在数据库中。</p>
 <p>一个作业的数据保存在持久化作业存储时被序列化，并在加载时被反序列化。调度器不能分享同一个作业存储。</p>
-<h3 id="_3-执行器-executor" tabindex="-1"><a class="header-anchor" href="#_3-执行器-executor" aria-hidden="true">#</a> 3.执行器(executor)：</h3>
+<h3 id="_3-执行器-executor" tabindex="-1"><a class="header-anchor" href="#_3-执行器-executor"><span>3.执行器(executor)：</span></a></h3>
 <p>处理作业的运行，他们通常通过在作业中提交制定的可调用对象到一个线程或者进程池来进行。当作业完成时，执行器将会通知调度器。</p>
-<h3 id="_4-调度器-scheduler" tabindex="-1"><a class="header-anchor" href="#_4-调度器-scheduler" aria-hidden="true">#</a> 4.调度器(scheduler)：</h3>
-<p>是其他的组成部分。你通常在应用只有一个调度器，应用的开发者通常不会直接处理作业存储、调度器和触发器，相反，调度器提供了处理这些的合适
+<h3 id="_4-调度器-scheduler" tabindex="-1"><a class="header-anchor" href="#_4-调度器-scheduler"><span>4.调度器(scheduler)：</span></a></h3>
+<p>是其他的组成部分。你通常在应用只有一个调度器，应用的开发者通常不会直接处理作业存储、调度器和触发器，相反，调度器提供了处理这些的合适<br>
 的接口。配置作业存储和执行器可以在调度器中完成，例如添加、修改和移除作业。</p>
-<p>[配置调度器的 3 种方式]：
+<p>[配置调度器的 3 种方式]：<br>
 [方式一]：</p>
 <pre><code>from pytz import utc
 from apscheduler.schedulers.background import BackgroundScheduler
@@ -113,8 +113,8 @@ scheduler = BackgroundScheduler({
 }
 scheduler = BackgroundScheduler(**init_scheduler_options)
 </code></pre>
-<h2 id="四、操作作业" tabindex="-1"><a class="header-anchor" href="#四、操作作业" aria-hidden="true">#</a> 四、操作作业</h2>
-<h3 id="_1-添加作业" tabindex="-1"><a class="header-anchor" href="#_1-添加作业" aria-hidden="true">#</a> 1.添加作业：</h3>
+<h2 id="四、操作作业" tabindex="-1"><a class="header-anchor" href="#四、操作作业"><span>四、操作作业</span></a></h2>
+<h3 id="_1-添加作业" tabindex="-1"><a class="header-anchor" href="#_1-添加作业"><span>1.添加作业：</span></a></h3>
 <p>通常除了示例之外，常用的方式是通过@ .scheduled_job()装饰器装饰 my_job 进行添加作业</p>
 <pre><code>    scheduler = BlockingScheduler()
 
@@ -130,7 +130,7 @@ scheduler = BackgroundScheduler(**init_scheduler_options)
         1.只有一次性任务的 trigger 可以不用写，源码中判断若trigger is None 则直接定义为'date'类型
         2.如果实现web的异步任务。假设接到一个移动端任务，任务完成后，发送一个推送到移动端，用date类型的trigger完成可以做的很好。
 </code></pre>
-<h3 id="_2-移除作业" tabindex="-1"><a class="header-anchor" href="#_2-移除作业" aria-hidden="true">#</a> 2.移除作业：</h3>
+<h3 id="_2-移除作业" tabindex="-1"><a class="header-anchor" href="#_2-移除作业"><span>2.移除作业：</span></a></h3>
 <p>当要求执行一定阶段任务以后，删除某一个循环任务，其他任务照常进行时考虑使用。</p>
 <pre><code>job = scheduler.add_job(aps_date, 'interval', minutes=2)
 job.remove()    # 若存在两个任务，默认的应该是移除第一个任务，因此不要写在执行体中，写到要移除的函数中更好
@@ -143,15 +143,15 @@ def aps_date():
 <pre><code>scheduler.add_job(myfunc, 'interval', minutes=2, id='my_job_id')
 scheduler.remove_job('my_job_id')   # 若没有找到任务id则报错
 </code></pre>
-<h3 id="_3-暂停和恢复作业" tabindex="-1"><a class="header-anchor" href="#_3-暂停和恢复作业" aria-hidden="true">#</a> 3. 暂停和恢复作业：</h3>
+<h3 id="_3-暂停和恢复作业" tabindex="-1"><a class="header-anchor" href="#_3-暂停和恢复作业"><span>3. 暂停和恢复作业：</span></a></h3>
 <p>和上的删除任务用法基本一致</p>
 <pre><code>job.pause()
 job.resume()
 scheduler.pause_job('interval_task') # 需要id
 scheduler.resume_job('interval_task')
 </code></pre>
-<h3 id="_4-获得-job-列表" tabindex="-1"><a class="header-anchor" href="#_4-获得-job-列表" aria-hidden="true">#</a> 4. 获得 job 列表：</h3>
-<p>获得调度作业的列表，可以使用 get_jobs()来完成，它会返回所有的 job 实例。
+<h3 id="_4-获得-job-列表" tabindex="-1"><a class="header-anchor" href="#_4-获得-job-列表"><span>4. 获得 job 列表：</span></a></h3>
+<p>获得调度作业的列表，可以使用 get_jobs()来完成，它会返回所有的 job 实例。<br>
 则会返回每个 job 的 id（没有设置系统默认）和 name 的列表 如：</p>
 <pre><code>[&lt;Job (id=f9f29b9c3a594e21a7fae10c92e5fcb2 name=my_job)&gt;, &lt;Job (id=23 name=aps_date)&gt;]形式
 </code></pre>
@@ -159,9 +159,9 @@ scheduler.resume_job('interval_task')
 <pre><code>Jobstore default:
     aps_date (trigger: interval[0:00:03], paused) 的形式
 </code></pre>
-<p>也可以利用 get_job(任务 ID)获取指定任务的作业列表
+<p>也可以利用 get_job(任务 ID)获取指定任务的作业列表<br>
 返回类似 aps_date (trigger: interval[0:00:03], pending)的形式</p>
-<h3 id="_5-关闭调度器" tabindex="-1"><a class="header-anchor" href="#_5-关闭调度器" aria-hidden="true">#</a> 5. 关闭调度器：</h3>
+<h3 id="_5-关闭调度器" tabindex="-1"><a class="header-anchor" href="#_5-关闭调度器"><span>5. 关闭调度器：</span></a></h3>
 <p>默认情况下调度器会等待所有正在运行的作业完成后，关闭所有的调度器和作业存储。如果你不想等待，可以将 wait 选项设置为 False。</p>
 <pre><code>    scheduler.shutdown()
 </code></pre>
@@ -169,15 +169,15 @@ scheduler.resume_job('interval_task')
 <pre><code>    scheduler.shutdown(wait=False)
 </code></pre>
 <p>当设置 wait 为 False 时则不会直接触发异常，而是正常关闭。</p>
-<h2 id="五、日志" tabindex="-1"><a class="header-anchor" href="#五、日志" aria-hidden="true">#</a> 五、日志：</h2>
-<p>当某个循环执行的脚本出现异常时，需要通过日志进行记录，否则任务依旧不断的执行，控制台不断报错（或在老版本中看不到报错详细）
+<h2 id="五、日志" tabindex="-1"><a class="header-anchor" href="#五、日志"><span>五、日志：</span></a></h2>
+<p>当某个循环执行的脚本出现异常时，需要通过日志进行记录，否则任务依旧不断的执行，控制台不断报错（或在老版本中看不到报错详细）<br>
 因此需要日志记录。</p>
 <pre><code>引入logging，参考3.5 中7.logging模块
 
 scheduler._logger = logging  # 让其日志记录为已添加的日志文件，即可把错误存放到日志中。免的在控制台打印
 </code></pre>
-<h2 id="六、异常" tabindex="-1"><a class="header-anchor" href="#六、异常" aria-hidden="true">#</a> 六、异常：</h2>
-<p>任何代码都可能发生意外，关键是，发生意外了，如何第一时间知道。因此 apscheduler 提供了监听，将事件侦听器附加到调度程序。
+<h2 id="六、异常" tabindex="-1"><a class="header-anchor" href="#六、异常"><span>六、异常：</span></a></h2>
+<p>任何代码都可能发生意外，关键是，发生意外了，如何第一时间知道。因此 apscheduler 提供了监听，将事件侦听器附加到调度程序。<br>
 部分事件代码：（其他参阅文档）</p>
 <pre><code>    EVENT_JOB_MISSED：工作的执行被遗漏了
     EVENT_JOB_ERROR：一项工作在执行期间引发了异常
@@ -194,7 +194,7 @@ scheduler._logger = logging  # 让其日志记录为已添加的日志文件，�
 
 scheduler.add_listener(my_listener, EVENT_JOB_EXECUTED | EVENT_JOB_ERROR)
 </code></pre>
-<p>[注]：
+<p>[注]：<br>
 在生产环境中，可以把出错信息换成发送一封邮件或者发送一个短信，这样定时任务出错就可以立马就知道了。</p>
 </div></template>
 

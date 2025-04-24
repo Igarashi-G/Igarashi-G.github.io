@@ -1,7 +1,7 @@
-<template><div><h1 id="redis" tabindex="-1"><a class="header-anchor" href="#redis" aria-hidden="true">#</a> Redis</h1>
-<p>一、缓存数据库介绍：
-WEB2.0:
-UGC：user generate content。用户不再被动的接收信息，而是自己产生信息
+<template><div><h1 id="redis" tabindex="-1"><a class="header-anchor" href="#redis"><span>Redis</span></a></h1>
+<p>一、缓存数据库介绍：<br>
+WEB2.0:<br>
+UGC：user generate content。用户不再被动的接收信息，而是自己产生信息<br>
 SNS：social network society 社交网络，如 facebook、推特、wechat 等</p>
 <pre><code>NoSQL(NoSQL = Not Only SQL )，意即&quot;不仅仅是SQL&quot;，泛指非关系型的数据库,随着互联网web2.0网站的兴起，传统的关系数据库在应付web2.0网站，
 特别是超大规模和高并发的SNS类型的web2.0纯动态网站已经显得力不从心，暴露了很多难以克服的问题，而非关系型的数据库则由于其本身的特点得到了
@@ -58,12 +58,12 @@ NoSQL数据库的四大分类：
     优点：利用图结构相关算法。比如最短路径寻址，N度关系查找等
     缺点：很多时候需要对整个图做计算才能得出需要的信息，而且这种结构不太好做分布式的集群方案。
 </code></pre>
-<p>二、redis：
-介绍：
-redis 是业界主流的 key-value nosql 数据库之一。和 Memcached 类似，它支持存储的 value 类型相对更多，包括 string(字符串)、list(列表)、
-set(集合)、zset(sorted set --有序集合)和 hash（哈希类型）。这些数据类型都支持 push/pop、add/remove 及取交集并集和差集及更丰富的操作，
-而且这些操作都是原子性的。在此基础上，redis 支持各种不同方式的排序。与 memcached 一样，为了保证效率，数据都是缓存在内存中。
-但是它是可以持久化的，即把数据写在磁盘上：redis 会周期性的把更新的数据写入磁盘或者把修改操作写入追加的记录文件，并且在此基础上实现
+<p>二、redis：<br>
+介绍：<br>
+redis 是业界主流的 key-value nosql 数据库之一。和 Memcached 类似，它支持存储的 value 类型相对更多，包括 string(字符串)、list(列表)、<br>
+set(集合)、zset(sorted set --有序集合)和 hash（哈希类型）。这些数据类型都支持 push/pop、add/remove 及取交集并集和差集及更丰富的操作，<br>
+而且这些操作都是原子性的。在此基础上，redis 支持各种不同方式的排序。与 memcached 一样，为了保证效率，数据都是缓存在内存中。<br>
+但是它是可以持久化的，即把数据写在磁盘上：redis 会周期性的把更新的数据写入磁盘或者把修改操作写入追加的记录文件，并且在此基础上实现<br>
 了 master-slave(主从)同步。</p>
 <pre><code>Redis优点
     1.异常快速 : Redis是非常快的，每秒可以执行大约110000设置操作，81000个/每秒的读取操作。为什么快？
@@ -111,7 +111,7 @@ Python操作Redis
 
     Redis 桌面管理器会给你用户界面来管理 Redis 键和数据。
 </code></pre>
-<p>三、Redis API 使用
+<p>三、Redis API 使用<br>
 redis-py 的 API 的使用可以分类为：</p>
 <pre><code>    1.连接方式
     2.连接池
@@ -268,9 +268,9 @@ redis-py 的 API 的使用可以分类为：</p>
     scan(cursor=0, match=None, count=None)
     scan_iter(match=None, count=None)同字符串操作，用于增量迭代获取key
 </code></pre>
-<p>四、连接方式
-1、远程连接:
-redis-py 提供两个类 Redis 和 StrictRedis 用于实现 Redis 的命令，StrictRedis 用于实现大部分官方的命令，并使用官方的语法和命令，
+<p>四、连接方式<br>
+1、远程连接:<br>
+redis-py 提供两个类 Redis 和 StrictRedis 用于实现 Redis 的命令，StrictRedis 用于实现大部分官方的命令，并使用官方的语法和命令，<br>
 Redis 是 StrictRedis 的子类，用于向后兼容旧版本的 redis-py。</p>
 <pre><code>    1.第一次连接Vmware 发现不通，先ping虚拟机地址ping 192.168.80.133 通的话再telnet 端口，若没有打开则在window功能中打开telnet
     2.telnet 192.168.80.133 6379(redis的默认端口) 若不通则说明虚拟机的端口未打开或墙了，此时切换到虚拟机
@@ -298,8 +298,8 @@ Redis 是 StrictRedis 的子类，用于向后兼容旧版本的 redis-py。</p>
     redis-py使用connection pool来管理对一个redis server的所有连接，避免每次建立、释放连接的开销。默认，每个Redis实例都会维护一
     个自己的连接池。可以直接建立一个连接池，然后作为参数Redis，这样就可以实现多个Redis实例共享一个连接池。
 </code></pre>
-<p>五、管道（提高数据库性能办法二）
-redis-py 默认在执行每次请求都会创建（连接池申请连接）和断开（归还连接池）一次连接操作。如果想要在一次请求中指定多个命令，则可以使用 pipline
+<p>五、管道（提高数据库性能办法二）<br>
+redis-py 默认在执行每次请求都会创建（连接池申请连接）和断开（归还连接池）一次连接操作。如果想要在一次请求中指定多个命令，则可以使用 pipline<br>
 实现一次请求指定多个命令，并且默认情况下一次 pipline 是原子性操作。</p>
 <pre><code>每次请求数据库，其实都要向连接池申请连接。多次操作就要不断的申请，断开。若要一次性申请多次连接，此时就开一个管道批量申请连接。
 
@@ -317,7 +317,7 @@ pipe.execute()#只要这句执行，才会set完毕。
 
 这种即是优化redis性能的办法。redis是单线程的，典型的IO多路复用，速度快用的epoll。(select的server端就维持了一个连接)
 </code></pre>
-<p>六、发布订阅：
+<p>六、发布订阅：<br>
 和 rabbitmq 基本一致。 发布者：服务器。 订阅者：Dashboad 和数据处理</p>
 <pre><code>见类redis_helper：
     1.先开连接池
@@ -327,8 +327,8 @@ pipe.execute()#只要这句执行，才会set完毕。
 
     之后public进行发送消息subscribe进行阻塞式的监听，没有数据就卡着。
 </code></pre>
-<p>七、额外操作： 1.持久化周期配置：
-在 vim /etc/redis/redis.conf 配置文件中/save 找到 save
+<p>七、额外操作： 1.持久化周期配置：<br>
+在 vim /etc/redis/redis.conf 配置文件中/save 找到 save<br>
 出现 save 900 1 见如上注释，900s 存一次，若对数据安全要求高的话，可能 30s 存一次</p>
 <pre><code>    若要杀死进程 ps -ef |grep redis   kill xxxx   此时进程则会自己起来。为啥？
     因为有守护进程，发现它宕了就自己起来了。因此判断它有种技术能在这15分钟间进程崩坏保留数据，但应该不会写字磁盘上，即断电丢失。
@@ -336,9 +336,9 @@ pipe.execute()#只要这句执行，才会set完毕。
 
     若要手动的去存-刷磁盘：就直接save一下，则直接保留数据。
 </code></pre>
-<p>八、更多参见：
-<a href="https://github.com/andymccurdy/redis-py/" target="_blank" rel="noopener noreferrer">https://github.com/andymccurdy/redis-py/<ExternalLinkIcon/></a>
-<a href="http://doc.redisfans.com/" target="_blank" rel="noopener noreferrer">http://doc.redisfans.com/<ExternalLinkIcon/></a></p>
+<p>八、更多参见：<br>
+<a href="https://github.com/andymccurdy/redis-py/" target="_blank" rel="noopener noreferrer">https://github.com/andymccurdy/redis-py/</a><br>
+<a href="http://doc.redisfans.com/" target="_blank" rel="noopener noreferrer">http://doc.redisfans.com/</a></p>
 <pre><code>新浪微博：大量使用Redis。好几亿的用户每天大量产生几个T的数据，因此不会在单台RedisServer上，此时便会有Redis集群。
 
 Redis可以搞集群，虽然不需要开发去配置，集群也能作为数据主从备份，都会考虑安全之类的这些问题。codereview

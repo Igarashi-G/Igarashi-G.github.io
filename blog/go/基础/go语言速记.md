@@ -346,6 +346,26 @@ ret, err := strconv.ParseBool("True")
 
 若情况复杂，可以使用 **[cast](https://github.com/spf13/cast)** 转换 , 但注意，**cast** 不能转换自定义类型，比如声明 `type StringType string` **ToString()** 无法获取到想转义的字符串
 
+
+
+::: caution Go 语言中 json 安全序/反序列化大数
+
+源于对包含 **int64** 类型的 `snowflake_id` 结构体进行序列化后，又反序列化赋值给 `map[string]interface{}` 时的异常
+
+```go
+// 使用 UseNumber 避免损失精度
+callbackJson := make(map[string]interface{})
+decoder := json.NewDecoder(bytes.NewReader(jsonStr)) // 返回一个新的dedocer
+decoder.UseNumber() // 作为一个Number而不是一个float64数值, 解码成一个接口（interface{}）
+if err = decoder.Decode(&callbackJson); err != nil {
+    return "", err
+}
+```
+
+若反序列化为结构体则不会
+
+:::
+
 ---
 
 ## 2. 容器

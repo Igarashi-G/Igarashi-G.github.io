@@ -1,22 +1,22 @@
-<template><div><h1 id="一、线程辅助" tabindex="-1"><a class="header-anchor" href="#一、线程辅助" aria-hidden="true">#</a> 一、线程辅助</h1>
-<h2 id="一-信号量-semaphore" tabindex="-1"><a class="header-anchor" href="#一-信号量-semaphore" aria-hidden="true">#</a> 一.信号量(Semaphore)：</h2>
-<p>首先，它也是一把锁。和 RLock()类似的是它内部也是维护这多把锁，但区别在于它是并行的锁，而不是像递归锁那样嵌套的。假设现在的锁的数量
-count = 4 那么此时开辟一百个线程只有 4 个线程可以进来。（这不是真正的并行，也有先后进入，就好似 CPU 只让它在先进入的四个线程中切换执行，
+<template><div><h1 id="一、线程辅助" tabindex="-1"><a class="header-anchor" href="#一、线程辅助"><span>一、线程辅助</span></a></h1>
+<h2 id="一-信号量-semaphore" tabindex="-1"><a class="header-anchor" href="#一-信号量-semaphore"><span>一.信号量(Semaphore)：</span></a></h2>
+<p>首先，它也是一把锁。和 RLock()类似的是它内部也是维护这多把锁，但区别在于它是并行的锁，而不是像递归锁那样嵌套的。假设现在的锁的数量<br>
+count = 4 那么此时开辟一百个线程只有 4 个线程可以进来。（这不是真正的并行，也有先后进入，就好似 CPU 只让它在先进入的四个线程中切换执行，<br>
 因此达到控制 100 个线程中的 4 个线程进行并发执行）一旦 count 变为 0，此时其他的线程不能在进去（CPU 只执行这四个线程的切换）。</p>
-<p>线程不是越多越好，撑死开到一千多个了，再开下去效率反而会大打折扣
+<p>线程不是越多越好，撑死开到一千多个了，再开下去效率反而会大打折扣<br>
 信号量用来控制线程并发数的，BoundedSemaphore 或 Semaphore 管理一个内置的计数 器，每当调用 acquire()时-1，调用 release()时+1。</p>
 <p>计数器不能小于 0，当计数器为 0 时，acquire()将阻塞线程至同步锁定状态，直到其他线程调用 release()。(类似于停车位的概念)</p>
 <p>（同步锁： 同时只允许一个线程更改数据，而 Semaphore 是同时允许一定数量的线程更改数据）</p>
 <p>BoundedSemaphore 与 Semaphore 的唯一区别在于前者将在调用 release()时检查计数器的值是否超过了计数器的初始值，如果超过了将抛出一个异常。</p>
 <p>数据库的连接问题:（线程池&amp;数据库连接池）</p>
-<h4 id="_1-传统的数据库连接" tabindex="-1"><a class="header-anchor" href="#_1-传统的数据库连接" aria-hidden="true">#</a> 1.传统的数据库连接：</h4>
+<h4 id="_1-传统的数据库连接" tabindex="-1"><a class="header-anchor" href="#_1-传统的数据库连接"><span>1.传统的数据库连接：</span></a></h4>
 <pre><code>用户访问---&gt; 申请连接---&gt; 查询并返回结果---&gt; 断开连接          的这种形式。
 </code></pre>
-<h4 id="_2-利用信号量机制限制多线程-线程池" tabindex="-1"><a class="header-anchor" href="#_2-利用信号量机制限制多线程-线程池" aria-hidden="true">#</a> 2.利用信号量机制限制多线程（线程池）</h4>
+<h4 id="_2-利用信号量机制限制多线程-线程池" tabindex="-1"><a class="header-anchor" href="#_2-利用信号量机制限制多线程-线程池"><span>2.利用信号量机制限制多线程（线程池）</span></a></h4>
 <pre><code>若同时有一百个线程（即一百个访问者）进行连接数据库的请求，此时的开销对于数据库来说较大，承受不了。此时设置信号量，允许5个线程
 的同时访问。此时即可缓解多线程同时访问造成的开销。
 </code></pre>
-<h4 id="_3-创建连接池再优化" tabindex="-1"><a class="header-anchor" href="#_3-创建连接池再优化" aria-hidden="true">#</a> 3.创建连接池再优化：</h4>
+<h4 id="_3-创建连接池再优化" tabindex="-1"><a class="header-anchor" href="#_3-创建连接池再优化"><span>3.创建连接池再优化：</span></a></h4>
 <pre><code>虽然利用了信号量控制了多线程的并发数。但传统的访问模式需要创建连接。假设一天10万的访问量，那么数据库服务器就要创建10万次的连接。
 这极大的浪费了数据库的资源。并且容易使数据库内存溢出&amp;宕机。
 N用户---&gt;访问数据库----&gt;向数据库请求---&gt;开辟N次连接
@@ -26,7 +26,7 @@ N用户---&gt;访问数据库----&gt;向数据库请求---&gt;开辟N次连接
 用户每次请求都向连接池发起请求集合取连接get()。每次访问完再释放回连接池中集合再put()，即可极大的减少开销。
 N用户----&gt;访问数据库-----&gt;向数据库连接池请求----&gt;线程池中获取连接
 </code></pre>
-<p>4.数据库连接池：
+<p>4.数据库连接池：<br>
 负责分配、管理和释放数据库连接，它允许应用程序重复使用一个现有的数据库连接，而不是重新建立一个。</p>
 <pre><code>&lt;1&gt;数据库连接池在初始化时将创建一定数量的数据库连接放到连接池中，这些数据库连接的数量是由最小数据库连接数来设定的。
 &lt;2&gt;无论这些数据库连接是否被使用，连接池都将一直保证至少拥有这么多的连接数量。
@@ -40,10 +40,10 @@ N用户----&gt;访问数据库-----&gt;向数据库连接池请求----&gt;线程
     3.如何确保连接池中的最小连接数呢？有动态和静态两种策略。动态即每隔一定时间就对连接池进行检测，如果发现连接数量小于最小连接数，
     则补充相应数量的新连接,以保证连接池的正常运转。静态是发现空闲连接不够时再去检查。
 </code></pre>
-<p>条件变量同步(Condition)：
-条件变量是什么呢，还是一把锁，也是最复杂的一把锁，除了是最后一把锁以外，还能实现线程间的通信，因此是条件变量。
-场景：比如一个线程要继续走，需要等待其他线程给出一个通知。（通过标识符进行一个通信）
-有一类线程需要满足条件之后才能够继续执行，Python 提供了 threading.Condition 对象用于条件变量线程的支持，它除了能提供 RLock()或 Lock()的方
+<p>条件变量同步(Condition)：<br>
+条件变量是什么呢，还是一把锁，也是最复杂的一把锁，除了是最后一把锁以外，还能实现线程间的通信，因此是条件变量。<br>
+场景：比如一个线程要继续走，需要等待其他线程给出一个通知。（通过标识符进行一个通信）<br>
+有一类线程需要满足条件之后才能够继续执行，Python 提供了 threading.Condition 对象用于条件变量线程的支持，它除了能提供 RLock()或 Lock()的方<br>
 法外，还提供了 wait()、notify()、notifyAll()方法。</p>
 <pre><code>lock_con=threading.Condition([Lock/Rlock])： 锁是可选选项，不传入锁，对象自动创建一个RLock()。
 
@@ -59,9 +59,9 @@ notifyAll()：条件创造后调用，通知等待池激活所有线程。
 
 因此条件同步变量良好的保持了生产和消费的线程不会混乱，合理进行。
 </code></pre>
-<p>同步条件对象(Event)：
-先说说同步：
-当你进程处于一个 io 操作的情况下，你的进程只能乖乖的等着，不能进行任何其他的操作。而异步则是我跑我的，你什么时候数据过来了，我再返回来
+<p>同步条件对象(Event)：<br>
+先说说同步：<br>
+当你进程处于一个 io 操作的情况下，你的进程只能乖乖的等着，不能进行任何其他的操作。而异步则是我跑我的，你什么时候数据过来了，我再返回来<br>
 处理即可。两个线程按理说是同步的吗？当然不是，你走你的我走我的，互不影响。而同步则是为了让两个线程之间处于一个同步状态。</p>
 <pre><code>这回不是一把锁了，它的功能类似于Condition，他也可以进行线程之间的信息交换，只不过不需要锁了（用锁其实是为了保证公共数据的）若没有锁也想相
 互通信，此时就需要Event，Event比Condition用的更广。
@@ -80,47 +80,47 @@ event.clear()：恢复event的状态值为False。（把标志位改为Flase）
 加班示例：（很简单，看代码）
     老板说加班，工人喊命苦，但老板要先说加班后才会触发工人命苦
 </code></pre>
-<h2 id="线程变量利器-threadlocal" tabindex="-1"><a class="header-anchor" href="#线程变量利器-threadlocal" aria-hidden="true">#</a> 线程变量利器----ThreadLocal：</h2>
-<p>在多线程环境下，每个线程都有自己的数据。一个线程使用自己的局部变量比使用全局变量好，因为局部变量只有线程自己能看见，不会影响其他线程，
-而全局变量的修改必须加锁。
-但是局部变量也有问题，就是在函数调用的时候，传递起来很麻烦。
-用全局变量也不行，因为每个线程处理不同的对象，不能共享。
-如果用一个全局 dict 存放所有的对象，然后以 thread 自身作为 key 获得线程对应的对象如何？
-这种方式理论上是可行的，它最大的优点是消除了对象在每层函数中的传递问题，但是，每个函数获取对象的代码有点丑。
+<h2 id="线程变量利器-threadlocal" tabindex="-1"><a class="header-anchor" href="#线程变量利器-threadlocal"><span>线程变量利器----ThreadLocal：</span></a></h2>
+<p>在多线程环境下，每个线程都有自己的数据。一个线程使用自己的局部变量比使用全局变量好，因为局部变量只有线程自己能看见，不会影响其他线程，<br>
+而全局变量的修改必须加锁。<br>
+但是局部变量也有问题，就是在函数调用的时候，传递起来很麻烦。<br>
+用全局变量也不行，因为每个线程处理不同的对象，不能共享。<br>
+如果用一个全局 dict 存放所有的对象，然后以 thread 自身作为 key 获得线程对应的对象如何？<br>
+这种方式理论上是可行的，它最大的优点是消除了对象在每层函数中的传递问题，但是，每个函数获取对象的代码有点丑。<br>
 有没有更简单的方式？</p>
 <p>ThreadLocal 应运而生，不用查找 dict，ThreadLocal 帮你自动做这件事：</p>
-<div class="language-python ext-py line-numbers-mode"><pre v-pre class="language-python"><code><span class="token keyword">import</span> threading
-
-<span class="token comment"># 创建全局ThreadLocal对象:</span>
-local_school <span class="token operator">=</span> threading<span class="token punctuation">.</span>local<span class="token punctuation">(</span><span class="token punctuation">)</span>
-
-<span class="token keyword">def</span> <span class="token function">process_student</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token comment"># 获取当前线程关联的student:</span>
-    std <span class="token operator">=</span> local_school<span class="token punctuation">.</span>student
-    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'Hello, %s (in %s)'</span> <span class="token operator">%</span> <span class="token punctuation">(</span>std<span class="token punctuation">,</span> threading<span class="token punctuation">.</span>current_thread<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>name<span class="token punctuation">)</span><span class="token punctuation">)</span>
-
-<span class="token keyword">def</span> <span class="token function">process_thread</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token comment"># 绑定ThreadLocal的student:</span>
-    local_school<span class="token punctuation">.</span>student <span class="token operator">=</span> name
-    process_student<span class="token punctuation">(</span><span class="token punctuation">)</span>
-
-t1 <span class="token operator">=</span> threading<span class="token punctuation">.</span>Thread<span class="token punctuation">(</span>target<span class="token operator">=</span> process_thread<span class="token punctuation">,</span> args<span class="token operator">=</span><span class="token punctuation">(</span><span class="token string">'Alice'</span><span class="token punctuation">,</span><span class="token punctuation">)</span><span class="token punctuation">,</span> name<span class="token operator">=</span><span class="token string">'Thread-A'</span><span class="token punctuation">)</span>
-t2 <span class="token operator">=</span> threading<span class="token punctuation">.</span>Thread<span class="token punctuation">(</span>target<span class="token operator">=</span> process_thread<span class="token punctuation">,</span> args<span class="token operator">=</span><span class="token punctuation">(</span><span class="token string">'Bob'</span><span class="token punctuation">,</span><span class="token punctuation">)</span><span class="token punctuation">,</span> name<span class="token operator">=</span><span class="token string">'Thread-B'</span><span class="token punctuation">)</span>
-t1<span class="token punctuation">.</span>start<span class="token punctuation">(</span><span class="token punctuation">)</span>
-t2<span class="token punctuation">.</span>start<span class="token punctuation">(</span><span class="token punctuation">)</span>
-t1<span class="token punctuation">.</span>join<span class="token punctuation">(</span><span class="token punctuation">)</span>
-t2<span class="token punctuation">.</span>join<span class="token punctuation">(</span><span class="token punctuation">)</span>
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>执行结果：</p>
+<div class="language-python line-numbers-mode" data-highlighter="shiki" data-ext="python" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">import</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> threading</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># 创建全局ThreadLocal对象:</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">local_school </span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2">=</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> threading.</span><span style="--shiki-light:#383A42;--shiki-dark:#61AFEF">local</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">()</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">def</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF"> process_student</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">():</span></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">    # 获取当前线程关联的student:</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">    std </span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2">=</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> local_school.student</span></span>
+<span class="line"><span style="--shiki-light:#0184BC;--shiki-dark:#56B6C2">    print</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">'Hello, </span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">%s</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> (in </span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">%s</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">)'</span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2"> %</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> (std, threading.</span><span style="--shiki-light:#383A42;--shiki-dark:#61AFEF">current_thread</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">().name))</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">def</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF"> process_thread</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#986801;--shiki-light-font-style:inherit;--shiki-dark:#D19A66;--shiki-dark-font-style:italic">name</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">):</span></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">    # 绑定ThreadLocal的student:</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">    local_school.student </span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2">=</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> name</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#61AFEF">    process_student</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">()</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">t1 </span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2">=</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> threading.</span><span style="--shiki-light:#383A42;--shiki-dark:#61AFEF">Thread</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#986801;--shiki-light-font-style:inherit;--shiki-dark:#E06C75;--shiki-dark-font-style:italic">target</span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2">=</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> process_thread, </span><span style="--shiki-light:#986801;--shiki-light-font-style:inherit;--shiki-dark:#E06C75;--shiki-dark-font-style:italic">args</span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2">=</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">'Alice'</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">,), </span><span style="--shiki-light:#986801;--shiki-light-font-style:inherit;--shiki-dark:#E06C75;--shiki-dark-font-style:italic">name</span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2">=</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">'Thread-A'</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">)</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">t2 </span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2">=</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> threading.</span><span style="--shiki-light:#383A42;--shiki-dark:#61AFEF">Thread</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#986801;--shiki-light-font-style:inherit;--shiki-dark:#E06C75;--shiki-dark-font-style:italic">target</span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2">=</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> process_thread, </span><span style="--shiki-light:#986801;--shiki-light-font-style:inherit;--shiki-dark:#E06C75;--shiki-dark-font-style:italic">args</span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2">=</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">'Bob'</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">,), </span><span style="--shiki-light:#986801;--shiki-light-font-style:inherit;--shiki-dark:#E06C75;--shiki-dark-font-style:italic">name</span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2">=</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">'Thread-B'</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">)</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">t1.</span><span style="--shiki-light:#383A42;--shiki-dark:#61AFEF">start</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">()</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">t2.</span><span style="--shiki-light:#383A42;--shiki-dark:#61AFEF">start</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">()</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">t1.</span><span style="--shiki-light:#383A42;--shiki-dark:#61AFEF">join</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">()</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">t2.</span><span style="--shiki-light:#383A42;--shiki-dark:#61AFEF">join</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">()</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>执行结果：</p>
 <pre><code>Hello, Alice (in Thread-A)
 Hello, Bob (in Thread-B)
 </code></pre>
-<p>全局变量 local_school 就是一个 ThreadLocal 对象，每个 Thread 对它都可以读写 student 属性，但互不影响。你可以把 local_school 看成全局变量，
-但每个属性如 local_school.student 都是线程的局部变量，可以任意读写而互不干扰，也不用管理锁的问题，ThreadLocal 内部会处理。
-ThreadLocal 最常用的地方就是为每个线程绑定一个数据库连接，HTTP 请求，用户身份信息等，这样一个线程的所有调用到的处理函数都可以非常方便
+<p>全局变量 local_school 就是一个 ThreadLocal 对象，每个 Thread 对它都可以读写 student 属性，但互不影响。你可以把 local_school 看成全局变量，<br>
+但每个属性如 local_school.student 都是线程的局部变量，可以任意读写而互不干扰，也不用管理锁的问题，ThreadLocal 内部会处理。<br>
+ThreadLocal 最常用的地方就是为每个线程绑定一个数据库连接，HTTP 请求，用户身份信息等，这样一个线程的所有调用到的处理函数都可以非常方便<br>
 地访问这些资源。</p>
-<p>多线程利器----队列(queue)：（非常重要！！！）
-其实和数据结构的队列差不多。与栈不同 FIFO：先进先出。这就像一个管道
-队列只在多线程的情况下才有用，因为单线程时队列若是 get 不到或是 put 超了都会阻塞，而没救了。列表则是一个线程不安全的，因为任何线程都可以对列表
+<p>多线程利器----队列(queue)：（非常重要！！！）<br>
+其实和数据结构的队列差不多。与栈不同 FIFO：先进先出。这就像一个管道<br>
+队列只在多线程的情况下才有用，因为单线程时队列若是 get 不到或是 put 超了都会阻塞，而没救了。列表则是一个线程不安全的，因为任何线程都可以对列表<br>
 进行更改，对于多线程来说不好控制（主要就是不安全）</p>
 <pre><code>而队列就和列表不同，无论是几个线程，当并发get()时绝对不会像list那样获取到同一个值，这是因为队列的数据结构内部自带一把锁
 
@@ -169,29 +169,29 @@ q.task_done() 在完成一项工作之后，q.task_done() 函数向任务已经�
 
 q.join() 实际上意味着等到队列为空，再执行别的操作。接收task_done()发送来的信号，后面的才会继续执行
 </code></pre>
-<p>生产者消费者-队列模型：
+<p>生产者消费者-队列模型：<br>
 此时则无需 condition 条件同步变量来控制资源为空时的线程挂起。而是 get 空、put 满时自动挂起。</p>
-<h4 id="concurrent-futures-启动并行任务" tabindex="-1"><a class="header-anchor" href="#concurrent-futures-启动并行任务" aria-hidden="true">#</a> concurrent.futures -- 启动并行任务</h4>
+<h4 id="concurrent-futures-启动并行任务" tabindex="-1"><a class="header-anchor" href="#concurrent-futures-启动并行任务"><span>concurrent.futures -- 启动并行任务</span></a></h4>
 <hr>
-<p><a href="https://docs.python.org/zh-cn/3/library/concurrent.futures.html#module-concurrent.futures" target="_blank" rel="noopener noreferrer"><code v-pre>concurrent.futures</code><ExternalLinkIcon/></a> 模块提供异步执行回调高层接口。</p>
+<p><a href="https://docs.python.org/zh-cn/3/library/concurrent.futures.html#module-concurrent.futures" target="_blank" rel="noopener noreferrer"><code v-pre>concurrent.futures</code></a> 模块提供异步执行回调高层接口。</p>
 <p>使用 <strong>线程池</strong><a href=""><code v-pre>ThreadPoolExecutor</code></a> ，<strong>进程池</strong><a href=""><code v-pre>ProcessPoolExecutor</code></a> 来实现异步操作，两者都是抽像类 <a href=""><code v-pre>Executor</code></a> 的实现。</p>
 <p>创建线程池</p>
 <p>ThreadPoolExecutor</p>
-<div class="language-python ext-py line-numbers-mode"><pre v-pre class="language-python"><code><span class="token keyword">def</span> <span class="token function">func</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    time<span class="token punctuation">.</span>sleep<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
-    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"value:"</span><span class="token punctuation">,</span> value<span class="token punctuation">)</span>
-    <span class="token keyword">return</span> <span class="token number">111</span>
-
-
-<span class="token keyword">def</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    pool <span class="token operator">=</span> ThreadPoolExecutor<span class="token punctuation">(</span>max_workers<span class="token operator">=</span><span class="token number">5</span><span class="token punctuation">)</span>
-    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-		<span class="token comment"># 将函数放在池里面并返回一个future对象</span>
-        fut <span class="token operator">=</span> pool<span class="token punctuation">.</span>submit<span class="token punctuation">(</span>func<span class="token punctuation">,</span> i<span class="token punctuation">)</span>
-        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"future:"</span><span class="token punctuation">,</span> fut<span class="token punctuation">,</span> <span class="token builtin">type</span><span class="token punctuation">(</span>fut<span class="token punctuation">)</span><span class="token punctuation">)</span>
-
-
-main<span class="token punctuation">(</span><span class="token punctuation">)</span>
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></div></template>
+<div class="language-python line-numbers-mode" data-highlighter="shiki" data-ext="python" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">def</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF"> func</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#986801;--shiki-light-font-style:inherit;--shiki-dark:#D19A66;--shiki-dark-font-style:italic">value</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">):</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">    time.</span><span style="--shiki-light:#383A42;--shiki-dark:#61AFEF">sleep</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">1</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">)</span></span>
+<span class="line"><span style="--shiki-light:#0184BC;--shiki-dark:#56B6C2">    print</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">"value:"</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">, value)</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">    return</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> 111</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">def</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF"> main</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">():</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">    pool </span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2">=</span><span style="--shiki-light:#383A42;--shiki-dark:#61AFEF"> ThreadPoolExecutor</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#986801;--shiki-light-font-style:inherit;--shiki-dark:#E06C75;--shiki-dark-font-style:italic">max_workers</span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2">=</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">5</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">)</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">    for</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> i </span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">in</span><span style="--shiki-light:#0184BC;--shiki-dark:#56B6C2"> range</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">10</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">):</span></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">		# 将函数放在池里面并返回一个future对象</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">        fut </span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2">=</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> pool.</span><span style="--shiki-light:#383A42;--shiki-dark:#61AFEF">submit</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(func, i)</span></span>
+<span class="line"><span style="--shiki-light:#0184BC;--shiki-dark:#56B6C2">        print</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">"future:"</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">, fut, </span><span style="--shiki-light:#0184BC;--shiki-dark:#56B6C2">type</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(fut))</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#61AFEF">main</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">()</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></div></template>
 
 

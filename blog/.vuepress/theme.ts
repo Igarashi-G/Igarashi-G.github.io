@@ -6,7 +6,7 @@ export default hopeTheme({
   hostname: "https://igarashi-g.github.io/",
 
   author: {
-    name: "五十岚",
+    name: "悦·宝宝",
     url: "https://github.com/Igarashi-G",
   },
 
@@ -31,10 +31,10 @@ export default hopeTheme({
   pageInfo: ["Author", "Original", "Date", "Category", "Tag", "ReadingTime"],
 
   blog: {
-    name: "五十岚",
+    name: "悦·宝宝",
     avatar: "avatar.jpg",
     roundAvatar: true,
-    description: "啥也不会的Python混子，好吃懒做的大摆锤",
+    description: "啥也不会滴好牛马，好吃懒做的大摆锤",
     intro: "/intro",
     medias: {
       // Baidu: "https://example.com",

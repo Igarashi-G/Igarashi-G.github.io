@@ -1,4 +1,4 @@
-<template><div><h1 id="navicat" tabindex="-1"><a class="header-anchor" href="#navicat" aria-hidden="true">#</a> Navicat：</h1>
+<template><div><h1 id="navicat" tabindex="-1"><a class="header-anchor" href="#navicat"><span>Navicat：</span></a></h1>
 <pre><code>可视化管理，用于连接数据库，可以帮咱们做各种操作（点点点——&gt;SQL语句）
 下载：navicat，简化简单操作：创建表、修改表结构、增删改查等等。（但是不能看靠鼠标完成连表等复杂操作，只用于提高效率，因此应掌握各种命令）
 （对于不太规范的公司，允许直接用navicat直连，进行操作。但大部分公司担心第三方种了木马（不安全，公司不给掏钱买正版而用破解版），可能导致输
@@ -9,9 +9,9 @@ Navicat复制数据库：
     找到目标数据库的表，右键转储SQL数据和结构 -&gt; 新建数据库（名称，字符集utf8）-&gt; 右键运行SQL文件-&gt; 找到转储的文件路径
     -&gt; 刷新
 </code></pre>
-<p>二、练习题：
-练习：<a href="http://www.cnblogs.com/wupeiqi/articles/5748496.html" target="_blank" rel="noopener noreferrer">http://www.cnblogs.com/wupeiqi/articles/5748496.html<ExternalLinkIcon/></a>
-往往那些独立存在的表，如：班级表只有 cid 和班号的，通常称为字典表。可以用于其他表的关联（也就是外键，如学生对班级）而多关联的
+<p>二、练习题：<br>
+练习：<a href="http://www.cnblogs.com/wupeiqi/articles/5748496.html" target="_blank" rel="noopener noreferrer">http://www.cnblogs.com/wupeiqi/articles/5748496.html</a><br>
+往往那些独立存在的表，如：班级表只有 cid 和班号的，通常称为字典表。可以用于其他表的关联（也就是外键，如学生对班级）而多关联的<br>
 则就是多个外键。（如课程对班级和老师、成绩表对应关联了学生和课程）</p>
 <pre><code>    三连表操作：
         select score.sid, student.sid, student_id, course_id, num from score（虽然这种写法没错，但不推荐这么写）
@@ -119,11 +119,11 @@ Navicat复制数据库：
     -去重 distinct
     -avg、in、not in
 </code></pre>
-<p>三、python 操作 MySql：
-pip3 install pymysql：执行命令即可安装
-pipy：就像一个市场一样（谷歌 store）。但是这是个无毒、安全、的模块组织。以后通过 pip install： 1.自动下载到本地。2.解压到目录 site-packages 下
-py2 默认无命令
-py3 默认自带 pip3 命令（在 script 下有一堆可执行文件，+环境变量）
+<p>三、python 操作 MySql：<br>
+pip3 install pymysql：执行命令即可安装<br>
+pipy：就像一个市场一样（谷歌 store）。但是这是个无毒、安全、的模块组织。以后通过 pip install： 1.自动下载到本地。2.解压到目录 site-packages 下<br>
+py2 默认无命令<br>
+py3 默认自带 pip3 命令（在 script 下有一堆可执行文件，+环境变量）<br>
 若报错，通常是版本问题 执行 python3 -m pip install --upgrade pip 进行 pip 更新（通常情况在 pip 上都有）</p>
 <pre><code>    yum、apt-get、brew、easy install ... （linux下）都是一样的,python下的一般都是pip
 
@@ -178,11 +178,11 @@ pymysql（一共就掌握二十行代码，其中十行代码还不用变，简�
 
 操作总结：连接、游标、系列操作、关闭游标、关闭连接
 </code></pre>
-<p>四、用户管理：
-参考表结构：
-用户类型：（管理员、普通用户）
-用户信息：
-权限：
+<p>四、用户管理：<br>
+参考表结构：<br>
+用户类型：（管理员、普通用户）<br>
+用户信息：<br>
+权限：<br>
 用户类型&amp;权限：</p>
 <pre><code>功能：
     #登录、注册、找回密码
@@ -194,16 +194,16 @@ pymysql（一共就掌握二十行代码，其中十行代码还不用变，简�
 特别的：程序仅一个可执行文件
 </code></pre>
 <hr>
-<p>番外：工作中开发者 DBA 的职责：
-在一个小公司中，开发完就意味着开发完了。程序员的水平参差不齐，主要体现在设计同样的库，实现同样功能的使用效率上（比如傻逼的可能一条 sql 要
-二十秒，而 nb 的一条可能只要 0.2s。一般来说页面访问的特别慢，百分之九十五都是 sql 语句写的有问题）然而傻逼的公司执行慢了买服务器（毕竟服务器
-性能高了好吧快一些）但没有从根源上解决问题。因此后来就有了专门来管理 SQL 语句的人————DBA。
-职责：
-例如 MySql 装什么版本的、装的时候配置什么文件（毕竟权威，这么设置就是性能高）各种表结构（但规模大的话成千上万个表就由程序员创建，DBA 审核）
-技巧：
-因此 DBA 属于运维部、背锅的也通常是运维部的。因此程序员以后执行个什么表操作自己先别执行，先问问 DBA（学会甩黑锅技巧）。
-工作：
-但由于 DBA 部门建立的晚，100 个人也就一个 DBA，因此它不可能一一审核。因此 DBA 会先解决历史遗留问题（看当前程序有哪些慢的 SQL 语言，进行优化）
+<p>番外：工作中开发者 DBA 的职责：<br>
+在一个小公司中，开发完就意味着开发完了。程序员的水平参差不齐，主要体现在设计同样的库，实现同样功能的使用效率上（比如傻逼的可能一条 sql 要<br>
+二十秒，而 nb 的一条可能只要 0.2s。一般来说页面访问的特别慢，百分之九十五都是 sql 语句写的有问题）然而傻逼的公司执行慢了买服务器（毕竟服务器<br>
+性能高了好吧快一些）但没有从根源上解决问题。因此后来就有了专门来管理 SQL 语句的人————DBA。<br>
+职责：<br>
+例如 MySql 装什么版本的、装的时候配置什么文件（毕竟权威，这么设置就是性能高）各种表结构（但规模大的话成千上万个表就由程序员创建，DBA 审核）<br>
+技巧：<br>
+因此 DBA 属于运维部、背锅的也通常是运维部的。因此程序员以后执行个什么表操作自己先别执行，先问问 DBA（学会甩黑锅技巧）。<br>
+工作：<br>
+但由于 DBA 部门建立的晚，100 个人也就一个 DBA，因此它不可能一一审核。因此 DBA 会先解决历史遗留问题（看当前程序有哪些慢的 SQL 语言，进行优化）<br>
 可能一年都干这个事。因此 DBA 会一直和慢 SQL 打交道。因此有时会直接找主管把程序员找出来——写的什么垃圾玩意。因此 DBA 多为充当一个辅助角色。</p>
 <pre><code>MYSQL虽然会把执行慢的SQL语句记录下来，方便DBA在慢预制里面找，但是DBA还是不好干，老恶心了。
 因此程序员生成慢SQL————DBA解决慢SQL（好的DBA，指高级（源码级别需要了解），挣得还不少5、6万？）毕竟哪门干的nb挣得都不少。

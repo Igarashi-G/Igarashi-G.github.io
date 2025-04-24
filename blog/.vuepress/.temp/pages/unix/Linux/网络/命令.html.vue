@@ -1,20 +1,20 @@
 <template><div><p>常用的一些网络命令</p>
 <!-- more --> 
-<h1 id="centos-网络命令及工具" tabindex="-1"><a class="header-anchor" href="#centos-网络命令及工具" aria-hidden="true">#</a> CentOS 网络命令及工具</h1>
-<h2 id="_1-好用工具" tabindex="-1"><a class="header-anchor" href="#_1-好用工具" aria-hidden="true">#</a> 1. 好用工具</h2>
-<h3 id="_1-1-network-manager" tabindex="-1"><a class="header-anchor" href="#_1-1-network-manager" aria-hidden="true">#</a> 1.1 network-manager</h3>
+<h1 id="centos-网络命令及工具" tabindex="-1"><a class="header-anchor" href="#centos-网络命令及工具"><span>CentOS 网络命令及工具</span></a></h1>
+<h2 id="_1-好用工具" tabindex="-1"><a class="header-anchor" href="#_1-好用工具"><span>1. 好用工具</span></a></h2>
+<h3 id="_1-1-network-manager" tabindex="-1"><a class="header-anchor" href="#_1-1-network-manager"><span>1.1 network-manager</span></a></h3>
 <p><strong>nmtui：</strong> 网络配置图形化工具，方便好用</p>
-<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code>$ <span class="token function">sudo</span> <span class="token function">apt</span> <span class="token function">install</span> network-manager
-
-<span class="token comment"># user nmcli and nmtui</span>
-
-<span class="token comment"># show net device</span>
-$ nmcli device
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="_2-常用网络命令" tabindex="-1"><a class="header-anchor" href="#_2-常用网络命令" aria-hidden="true">#</a> 2. 常用网络命令</h2>
+<div class="language-shell line-numbers-mode" data-highlighter="shiki" data-ext="shell" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">$</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> sudo</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> apt</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> install</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> network-manager</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># user nmcli and nmtui</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># show net device</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">$</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> nmcli</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> device</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="_2-常用网络命令" tabindex="-1"><a class="header-anchor" href="#_2-常用网络命令"><span>2. 常用网络命令</span></a></h2>
 <p><strong>CentOS7</strong> 正式废弃了旧工具包：<strong>ifconfig</strong>、<strong>netstat</strong>、<strong>locate</strong> 等命令（<em>也可以用，不推荐</em> ）</p>
 <p>新系统使用 <strong>ip</strong>、<strong>ss</strong>、<strong>net</strong> 等命令代替</p>
-<h3 id="_2-1-ip-指令集合" tabindex="-1"><a class="header-anchor" href="#_2-1-ip-指令集合" aria-hidden="true">#</a> 2.1 IP 指令集合</h3>
-<h4 id="网络参数设定" tabindex="-1"><a class="header-anchor" href="#网络参数设定" aria-hidden="true">#</a> 网络参数设定</h4>
+<h3 id="_2-1-ip-指令集合" tabindex="-1"><a class="header-anchor" href="#_2-1-ip-指令集合"><span>2.1 IP 指令集合</span></a></h3>
+<h4 id="网络参数设定" tabindex="-1"><a class="header-anchor" href="#网络参数设定"><span>网络参数设定</span></a></h4>
 <p>任何時刻如果你想要做好你的网络参数设定（<code v-pre>IP</code>、路由、无线网络）就要了解如下指令</p>
 <ul>
 <li><strong>ifconfig</strong> ：查詢、设定网卡与 <code v-pre>IP</code> 网域等相关参数</li>
@@ -22,14 +22,14 @@ $ nmcli device
 <li><strong>route</strong> ：查询、设置路由表 (route table)</li>
 <li><strong>ip</strong> ：复合式的新指令， 可以直接修改上述提到的功能；</li>
 </ul>
-<h3 id="_1-1-手动-自动设置启停-ip" tabindex="-1"><a class="header-anchor" href="#_1-1-手动-自动设置启停-ip" aria-hidden="true">#</a> 1.1 手动/自动设置启停 IP：</h3>
+<h3 id="_2-2-手动-自动设置启停-ip" tabindex="-1"><a class="header-anchor" href="#_2-2-手动-自动设置启停-ip"><span>2.2 手动/自动设置启停 IP：</span></a></h3>
 <p><code v-pre>ifup</code> 和 <code v-pre>ifdown</code> 只能启动 <code v-pre>/etc/sysconfig/network-scripts</code> 下的 <code v-pre>ifcfg-ethX</code> (X 為數字) ，并不能直接修改网络参数，除非手动调整 <code v-pre>ifcfg-ethX</code> 配置文件才行。但 <code v-pre>ifconfig</code> 可以手动调参。</p>
 <hr>
-<h4 id="ifconfig" tabindex="-1"><a class="header-anchor" href="#ifconfig" aria-hidden="true">#</a> **ifconfig: **</h4>
+<h4 id="ifconfig" tabindex="-1"><a class="header-anchor" href="#ifconfig"><span>ifconfig</span></a></h4>
 <p>可以手动启动、观察与修改网络界面的相关参数，語法如下：</p>
 <p><strong>列所有网卡</strong>：</p>
-<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code><span class="token function">ifconfig</span>
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p>列出已经启动的网卡，无论该网卡是否分配了<code v-pre>IP</code>，均显示</p>
+<div class="language-shell line-numbers-mode" data-highlighter="shiki" data-ext="shell" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">ifconfig</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div><p>列出已经启动的网卡，无论该网卡是否分配了<code v-pre>IP</code>，均显示</p>
 <p>各参数含义如下：</p>
 <ul>
 <li><strong>HWaddr</strong>：网卡的硬件地址，即 <code v-pre>MAC</code> 地址</li>
@@ -43,132 +43,133 @@ $ nmcli device
 <li><strong>RX bytes, TX bytes</strong>：總接收、傳送的位元組總量</li>
 </ul>
 <p><strong>列出指定网卡信息</strong>：</p>
-<div class="language-text ext-text line-numbers-mode"><pre v-pre class="language-text"><code>ifconfig {interface}
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><ul>
+<div class="language- line-numbers-mode" data-highlighter="shiki" data-ext="" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span>ifconfig {interface}</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div><ul>
 <li><code v-pre>interface</code>：网卡， 如 <code v-pre>lo：</code> （<code v-pre>loopback</code> 表示本机回环地址）、<code v-pre>eth0</code>、<code v-pre>eth1</code> 等网卡代号</li>
 </ul>
 <p><strong>开启，关闭网卡</strong>：</p>
-<div class="language-text ext-text line-numbers-mode"><pre v-pre class="language-text"><code>ifconfig {interface} {up|down}
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code><span class="token comment"># 设置其他选项</span>
-<span class="token function">ifconfig</span> interface <span class="token punctuation">{</span>options<span class="token punctuation">}</span>
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div></div></div><ul>
-<li></li>
-</ul>
-<p>二级命令非常多，很难记。最常用的是 ip addr 也可以简写为 ip a . 操作网络地址相关内容，比如列出 ip 地址，添加 ip 地址，删除 ip 等待</p>
-<pre><code>列出ip地址： addr 常用 a 代替
-ip addr show    -&gt;  简化 ip a
-
-显示 V4 、V6 地址
-ip -4 a     /   ip -6 a
-
-# 显示 eth0 网卡
-ip a show eth0
-
-# 显示正在运行网卡
-ip link ls up
-
-# 添加 ip 地址
-ip a add {ip_addr/mask} dev {intereface} [label label_name] // 可选的设置一个label
-ip addr add 192.168.0.123/24 dev eth0
-</code></pre>
+<div class="language- line-numbers-mode" data-highlighter="shiki" data-ext="" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span>ifconfig {interface} {up|down}</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div><div class="language-shell line-numbers-mode" data-highlighter="shiki" data-ext="shell" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># 设置其他选项</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">ifconfig</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> interface</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> {options}</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div></div></div><hr>
+<h4 id="ip命令" tabindex="-1"><a class="header-anchor" href="#ip命令"><span>ip命令</span></a></h4>
+<p><code v-pre>ip</code>命令是Linux中管理网络配置的强大工具，替代了旧的<code v-pre>ifconfig</code>、<code v-pre>route</code>等命令。</p>
+<h5 id="ip地址管理" tabindex="-1"><a class="header-anchor" href="#ip地址管理"><span>IP地址管理</span></a></h5>
+<div class="language-bash line-numbers-mode" data-highlighter="shiki" data-ext="bash" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># 列出所有IP地址(简化版)</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">ip</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> addr</span><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">        # 完整命令</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">ip</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> a</span><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">           # 简化命令</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># 按IP版本过滤</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">ip</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> -4</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> a</span><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">        # 只显示IPv4地址</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">ip</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> -6</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> a</span><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">        # 只显示IPv6地址</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># 显示特定网卡信息</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">ip</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> a</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> show</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> eth0</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># 显示运行中的网卡</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">ip</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> link</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> ls</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> up</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h5 id="添加-删除ip地址" tabindex="-1"><a class="header-anchor" href="#添加-删除ip地址"><span>添加/删除IP地址</span></a></h5>
+<div class="language-bash line-numbers-mode" data-highlighter="shiki" data-ext="bash" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># 添加IP地址</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">ip</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> a</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> add</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> {ip_addr/mask}</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> dev</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> {interface}</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> [label </span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">label_name]</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">ip</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> addr</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> add</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> 192.168.0.123/24</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> dev</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> eth0</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># 添加IP后执行arping(返回值为0时)</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">arping</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> -I</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> eth0</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> -c</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> 3</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> -b</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> -s</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> 192.168.10.23</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> 1.1.1.1</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># 删除IP地址</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">ip</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> a</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> del</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> {ip_addr}</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> dev</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> {interface}</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">ip</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> addr</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> del</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> 192.168.0.123</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> dev</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> eth0</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># 清空IP地址</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">ip</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> a</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> flush</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> label</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> "label"</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">ip</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> -s</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> a</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> f</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> to</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> 192.168.2.0/24</span><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">  # -s输出统计信息，to限制到特定地址/前缀</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h5 id="网卡管理" tabindex="-1"><a class="header-anchor" href="#网卡管理"><span>网卡管理</span></a></h5>
+<div class="language-bash line-numbers-mode" data-highlighter="shiki" data-ext="bash" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># 启用/禁用网卡</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">ip</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> link</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> set</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> dev</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> {interface}</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> {up</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">|</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">down}</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">ip</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> l</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> set</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> dev</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> eth0</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> down</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h5 id="link设置选项" tabindex="-1"><a class="header-anchor" href="#link设置选项"><span>link设置选项</span></a></h5>
+<p><code v-pre>ip link set</code>命令可以设置多种网卡参数：</p>
+<div class="language-bash line-numbers-mode" data-highlighter="shiki" data-ext="bash" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">$</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> ip</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> l</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> set</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> &#x3C;</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">ta</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">b></span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">address</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">     --</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> 指定单播链路层</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">MAC</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">)</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">地址</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">arp</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">         --</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> 更改设备上的ARP标志</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">brd</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">         --</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> 指定广播链路层</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">MAC</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">)</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">地址</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">broadcast</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">   --</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> 指定广播链路层</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">MAC</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">)</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">地址</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">dev</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">         --</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> 指定设备</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">down</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">        --</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> 更改状态为down</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">dynamic</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">     --</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> 更改设备上的DYNAMIC标志</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">mtu</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">         --</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> 指定最大传输单元</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">multicast</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">   --</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> 更改设备上的MULTICAST标志</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">name</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">        --</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> 更改设备名称</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">peer</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">        --</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> 指定对等链路层</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">MAC</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">)</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">地址</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">promisc</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">     --</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> 设置混杂模式</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">txqlen</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">      --</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> 指定传输队列长度</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">txqueuelen</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">  --</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> 指定传输队列长度</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">up</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">          --</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> 更改状态为up</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>常用格式：<code v-pre>ip link set {cmd} dev {interface}</code></p>
+<div class="language-bash line-numbers-mode" data-highlighter="shiki" data-ext="bash" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># 设置MTU示例</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">ip</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> link</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> set</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> mtu</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> 3000</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> dev</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> eth0</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div></div></div><h5 id="邻居表管理" tabindex="-1"><a class="header-anchor" href="#邻居表管理"><span>邻居表管理</span></a></h5>
+<div class="language-bash line-numbers-mode" data-highlighter="shiki" data-ext="bash" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># 显示邻居表(ARP表)</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">ip</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> n</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> show</span><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">         # 等同于 ip neigh show</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># 添加邻居项</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">ip</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> n</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> add</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> {ip_addr}</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> lladdr</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> {MAC/LLADDRESS}</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> dev</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> {interface}</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> nud</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> {perm</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">|</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">noarp</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">|</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">stale</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">|</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">reachable}</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># 删除邻居项</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">ip</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> n</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> del</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> {ip_addr}</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> dev</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> eth0</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h5 id="路由表管理" tabindex="-1"><a class="header-anchor" href="#路由表管理"><span>路由表管理</span></a></h5>
+<div class="language-bash line-numbers-mode" data-highlighter="shiki" data-ext="bash" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># 列出路由表</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">ip</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> r</span><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">              # 等同于 ip route</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># 显示特定网络的路由</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">ip</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> r</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> list</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> 192.168.0.0/24</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># 添加路由</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">ip</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> r</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> add</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> {network/mask}</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> dev</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> {interface}</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">ip</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> r</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> add</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> {network/mask}</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> via</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> {gateway_ip}</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">ip</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> r</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> add</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> default</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> via</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> {gateway_ip}</span><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">  # 添加默认路由</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># 删除路由</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">ip</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> r</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> del</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> default</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">ip</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> r</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> del</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> {network/mask}</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> dev</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> eth0</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><hr>
+<h4 id="ss命令" tabindex="-1"><a class="header-anchor" href="#ss命令"><span>ss命令</span></a></h4>
+<p><code v-pre>ss</code>(socket statistics)命令用于替代旧的<code v-pre>netstat</code>命令，显示套接字统计信息。它直接从内核空间获取信息，比<code v-pre>netstat</code>更快、更详细。</p>
+<h5 id="常用选项" tabindex="-1"><a class="header-anchor" href="#常用选项"><span>常用选项</span></a></h5>
+<div class="language-bash line-numbers-mode" data-highlighter="shiki" data-ext="bash" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">-n</span><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">  # 显示端口数字而非服务名(如显示80而非http)</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">-t</span><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">  # 显示TCP套接字</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">-u</span><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">  # 显示UDP套接字</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">-l</span><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">  # 只显示监听中的套接字</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">-4</span><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">  # 只显示IPv4</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">-6</span><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">  # 只显示IPv6</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">-p</span><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">  # 显示使用套接字的进程ID(需要sudo权限)</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">-s</span><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">  # 显示套接字使用的统计信息</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">-o</span><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">  # 显示计时器信息</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>常用组合：</p>
+<div class="language-bash line-numbers-mode" data-highlighter="shiki" data-ext="bash" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">ss</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> -ntpl</span><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">  # 显示所有监听的TCP端口和对应进程</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div><h5 id="按状态过滤" tabindex="-1"><a class="header-anchor" href="#按状态过滤"><span>按状态过滤</span></a></h5>
+<div class="language-bash line-numbers-mode" data-highlighter="shiki" data-ext="bash" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">ss</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> -t4</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> state</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> established</span><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">  # 显示已建立的IPv4 TCP连接</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">ss</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> -t4</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> state</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> time-wait</span><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">    # 显示处于time-wait状态的IPv4 TCP连接</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div></div></div><p>常用连接状态：</p>
 <ul>
-<li>
-<p>如果返回值为 0 执行 arping -I $dev -c 3 -b -s $ip 1.1.1.1</p>
-<pre><code>  arping -I eth0 -c 3 -b -s 192.168.10.23 1.1.1.1
-</code></pre>
-<h1 id="删除-ip-地址" tabindex="-1"><a class="header-anchor" href="#删除-ip-地址" aria-hidden="true">#</a> 删除 ip 地址</h1>
-<p>ip a del {ip_addr} dev {interface}
-ip addr del 192.168.0.123 dev eth0</p>
-<h1 id="flush-ip-address-delete-all-the-ip-addresses-matches" tabindex="-1"><a class="header-anchor" href="#flush-ip-address-delete-all-the-ip-addresses-matches" aria-hidden="true">#</a> flush ip address; delete all the IP addresses matches</h1>
-<h1 id="可以-flush-一个地址或者一个-label-标记的所有地址" tabindex="-1"><a class="header-anchor" href="#可以-flush-一个地址或者一个-label-标记的所有地址" aria-hidden="true">#</a> 可以 flush 一个地址或者一个 label 标记的所有地址</h1>
-<p>ip a flush label &quot;label&quot;
-ip -s a f to 192.168.2.0/24 // -s 输出统计信息 to limit to given IP address/prefix</p>
-<h1 id="up-or-down-a-device" tabindex="-1"><a class="header-anchor" href="#up-or-down-a-device" aria-hidden="true">#</a> up or down a device</h1>
-<p>ip link set dev {interface} {up|down}
-ip l set dev eth0 down</p>
-</li>
+<li>established</li>
+<li>syn-sent</li>
+<li>syn-recv</li>
+<li>time-wait</li>
+<li>closed</li>
+<li>closing</li>
+<li>all</li>
+<li>connected</li>
 </ul>
-<p>ip link set 命令可以设置很多的值，看一下自动补全提示： link 简化 l</p>
-<pre><code>$ ip l set &lt;tab&gt;
-address     -- specify unicast link layer (MAC) ad
-arp         -- change ARP flag on device
-brd         -- specify broadcast link layer (MAC)
-broadcast   -- specify broadcast link layer (MAC)
-dev         -- specify device
-down        -- change state do down
-dynamic     -- change DYNAMIC flag on device
-mtu         -- specify maximum transmit unit
-multicast   -- change MULTICAST flag on device
-name        -- change name of device
-peer        -- specify peer link layer (MAC) addre
-promisc     -- set promiscious mode
-txqlen      -- specify length of transmit queue
-txqueuelen  -- specify length of transmit queue
-up          -- change state to up
-</code></pre>
-<p>一般用法都是 ip link set {cmd} dev {interface}。比如设置 mtu：</p>
-<pre><code>ip link set mtu 3000 dev eth0
-</code></pre>
-<p>ip 命令还能查看与邻近节点（neighbour）的可达性：</p>
-<pre><code>ip n show         // same as ip neigh show
-ip n add {ip_addr} lladdr {MAC/LLADDRESS} dev {interface} nud {perm|noarp|stale|reachable}
-ip n del {ip_addr} dev eth0
-</code></pre>
-<p>会输出附近节点的 arp 信息。可以手动添加这些 arp 条目。</p>
-<p>路由表信息也由 ip 命令提供，使用 route/r 子命令操作：</p>
-<pre><code># list route table
-ip r
-ip r list 192.168.0.0/24
-ip r add {default} {network/mask} dev {interface}
-ip r add (default) {network/mask} via {gateway_ip}
-ip r del default
-ip r del network/mask dev wth0
-</code></pre>
-<h3 id="_2-ss-命令" tabindex="-1"><a class="header-anchor" href="#_2-ss-命令" aria-hidden="true">#</a> 2.ss 命令</h3>
-<p>ss 是另一个很重要的工具，ss 是 socket statistics 的缩写，用于代替之前使用 netstat 命令。ss 能够显示比 netstat 更多的信息并且速度也更快。</p>
-<p>netstat 是从 /proc 下的文件中读取信息再整理显示的，而 ss 命令直接从内核空间获取信息。</p>
-<pre><code>-n –numeric，显示端口数字而不是服务名字，比如显示 80 而不是 http
--t –tcp， 即显示 tcp 套接字，同理常用 -u 表示 udo 套接字
--l –listening，也好理解，默认不显示监听的套接字，这个参数指明只显示监听中的套接字
--4 –ipv4也是常用的，在查看服务监听状态时，常指定 -4 或者 -6 结果更加清晰
--p –processes,显示使用这个套接字的进程id，这个参数需要 sudo 权限
--s –summary，显示套接字使用的统计信息
--o –options，显示相关的时间信息
-
-netstat -ntpl -&gt;  ss -ntpl
-</code></pre>
-<p>还可以更具套接字状态过滤输出，比如下面的命令：</p>
-<pre><code>ss -t4 state established
-ss -t4 state time-wait
-</code></pre>
-<p>连接的状态有很多中，常用如下：</p>
-<pre><code>established
-syn-sent
-syn-recv
-time-wait
-closed
-closing
-all
-connected
-</code></pre>
-<p>还可以通过指定 dport 和 sport 过滤输出：</p>
-<pre><code># 还可以使用 or，666
-ss -nt dst :443 or dst :80
-// dport 大于1024的连接
-ss -nt dst gt :1024
-</code></pre>
-<p>要监控网络流量的动态，可以用 top 相关命令，也可以用 watch 工具：</p>
-<pre><code>watch -n 1 &quot;ss -t4&quot;
-这样每秒中会刷新一次ss的结果。
-</code></pre>
-<p>​<br>
-​<br>
-​<br>
-​<br>
-​<br>
-​<br>
-​<br>
-​</p>
-</div></template>
+<h5 id="按端口-ip过滤" tabindex="-1"><a class="header-anchor" href="#按端口-ip过滤"><span>按端口/IP过滤</span></a></h5>
+<div class="language-bash line-numbers-mode" data-highlighter="shiki" data-ext="bash" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># 过滤目标端口为443或80的连接</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">ss</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> -nt</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> dst</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> :443</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> or</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> dst</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> :80</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># 过滤目标端口大于1024的连接</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">ss</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> -nt</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> dst</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> gt</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> :1024</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h5 id="动态监控" tabindex="-1"><a class="header-anchor" href="#动态监控"><span>动态监控</span></a></h5>
+<div class="language-bash line-numbers-mode" data-highlighter="shiki" data-ext="bash" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># 每秒更新一次TCP连接状态</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">watch</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> -n</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> 1</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> "ss -t4"</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div></div></div></div></template>
 
 

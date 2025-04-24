@@ -1,22 +1,22 @@
-<template><div><h1 id="面向对象" tabindex="-1"><a class="header-anchor" href="#面向对象" aria-hidden="true">#</a> 面向对象</h1>
+<template><div><h1 id="面向对象" tabindex="-1"><a class="header-anchor" href="#面向对象"><span>面向对象</span></a></h1>
 <Alert type="queen"> <Font type="queen">Python</Font> 里面一切皆对象</Alert><p>计算机中，一切皆对象，世界里，万物皆对象，对象皆分类</p>
 <p>因此描述对象先不直接写一个对象而是先思考一类对象的共性</p>
-<h2 id="_1-对象" tabindex="-1"><a class="header-anchor" href="#_1-对象" aria-hidden="true">#</a> 1. 对象</h2>
+<h2 id="_1-对象" tabindex="-1"><a class="header-anchor" href="#_1-对象"><span>1. 对象</span></a></h2>
 <p>学过<code v-pre>Java</code> 的都知道<code v-pre> Object</code>是 <code v-pre>class</code> 的一个实例， python 其实比 JAVA 面向对象更彻底，它的类和函数都是对象，它具有以下</p>
 <p>【特性】：</p>
 <ul>
 <li>
 <p>赋值给一个变量</p>
-<div class="language-python ext-py line-numbers-mode"><pre v-pre class="language-python"><code><span class="token keyword">def</span> <span class="token function">ask</span><span class="token punctuation">(</span>name<span class="token operator">=</span><span class="token string">"YKB"</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token keyword">print</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span>
-func <span class="token operator">=</span> ask
-func<span class="token punctuation">(</span><span class="token string">"PDA"</span><span class="token punctuation">)</span>
-
-<span class="token keyword">class</span> <span class="token class-name">Person</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> name<span class="token operator">=</span><span class="token string">"YKB"</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token keyword">print</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span>
-
-my_class <span class="token operator">=</span> Person
-my_class<span class="token punctuation">(</span><span class="token string">"PDA"</span><span class="token punctuation">)</span>
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></li>
+<div class="language-python line-numbers-mode" data-highlighter="shiki" data-ext="python" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">def</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF"> ask</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#986801;--shiki-light-font-style:inherit;--shiki-dark:#D19A66;--shiki-dark-font-style:italic">name</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">=</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">"YKB"</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">): </span><span style="--shiki-light:#0184BC;--shiki-dark:#56B6C2">print</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(name)</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">func </span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2">=</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> ask</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#61AFEF">func</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">"PDA"</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">)</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">class</span><span style="--shiki-light:#C18401;--shiki-dark:#E5C07B"> Person</span><span style="--shiki-light:#C18401;--shiki-dark:#ABB2BF">()</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">:</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">    def</span><span style="--shiki-light:#0184BC;--shiki-dark:#56B6C2"> __init__</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#986801;--shiki-light-font-style:inherit;--shiki-dark:#E5C07B;--shiki-dark-font-style:italic">self</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">,</span><span style="--shiki-light:#986801;--shiki-light-font-style:inherit;--shiki-dark:#D19A66;--shiki-dark-font-style:italic"> name</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">=</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">"YKB"</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">): </span><span style="--shiki-light:#0184BC;--shiki-dark:#56B6C2">print</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(name)</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">my_class </span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2">=</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> Person</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#61AFEF">my_class</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">"PDA"</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">)</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></li>
 <li>
 <p>可以添加到集合对象中</p>
 </li>
@@ -293,8 +293,8 @@ extra:（根据字符串动态导入模块）
 
 #对于每一个请求来的时候，你想让它为你封装一部分数据的时候，就选用面向对象的类，这就对了（或是多个方法用到同一个字段时）
 </code></pre>
-<h2 id="理解-mateclass" tabindex="-1"><a class="header-anchor" href="#理解-mateclass" aria-hidden="true">#</a> 理解 mateclass</h2>
-<h3 id="_1-什么是-metaclass" tabindex="-1"><a class="header-anchor" href="#_1-什么是-metaclass" aria-hidden="true">#</a> 1.什么是 metaclass</h3>
+<h2 id="理解-mateclass" tabindex="-1"><a class="header-anchor" href="#理解-mateclass"><span>理解 mateclass</span></a></h2>
+<h3 id="_1-什么是-metaclass" tabindex="-1"><a class="header-anchor" href="#_1-什么是-metaclass"><span>1.什么是 metaclass</span></a></h3>
 <p>mate: 一词来源于希腊，大部分书籍中翻译为元</p>
 <ul>
 <li>
@@ -305,9 +305,9 @@ extra:（根据字符串动态导入模块）
 </li>
 </ul>
 <p>但 python 中，应该理解为描述类的超类，同时可以改变子类的形态。</p>
-<p>【特性】：没有 metaclass 的情况下，子类继承父类，父类是无法对子类进行操作的。说白了，metaclass 的作用就是可是父类对子类进行操作，可以
+<p>【特性】：没有 metaclass 的情况下，子类继承父类，父类是无法对子类进行操作的。说白了，metaclass 的作用就是可是父类对子类进行操作，可以<br>
 像装饰器一样动态定制和修改继承它的子类，</p>
-<h3 id="_2-metaclass-能解决什么问题" tabindex="-1"><a class="header-anchor" href="#_2-metaclass-能解决什么问题" aria-hidden="true">#</a> 2.metaclass 能解决什么问题</h3>
+<h3 id="_2-metaclass-能解决什么问题" tabindex="-1"><a class="header-anchor" href="#_2-metaclass-能解决什么问题"><span>2.metaclass 能解决什么问题</span></a></h3>
 <pre><code>class Mymeta(type):
     def __init__(cls, name, bases, dic):
         super().__init__(name, bases, dic)
@@ -327,15 +327,15 @@ extra:（根据字符串动态导入模块）
         cls.__init__(cls, *args, **kwargs)
         return obj
 </code></pre>
-<p>class Foo(metaclass=Mymeta):
-​ yaml_tag = '!Foo'
+<p>class Foo(metaclass=Mymeta):<br>
+​ yaml_tag = '!Foo'<br>
 ​<br>
-​ def <strong>init</strong>(self, name):
-​ print('Foo.<strong>init</strong>')
-​ <a href="http://self.name" target="_blank" rel="noopener noreferrer">self.name<ExternalLinkIcon/></a> = name
+​ def <strong>init</strong>(self, name):<br>
+​ print('Foo.<strong>init</strong>')<br>
+​ <a href="http://self.name" target="_blank" rel="noopener noreferrer">self.name</a> = name<br>
 ​<br>
-def <strong>new</strong>(cls, *args, **kwargs):
-print('Foo.<strong>new</strong>')
+def <strong>new</strong>(cls, *args, **kwargs):<br>
+print('Foo.<strong>new</strong>')<br>
 return object.<strong>new</strong>(cls)</p>
 <pre><code>f = Foo(&quot;ykb&quot;)
 </code></pre>
@@ -352,11 +352,11 @@ return object.<strong>new</strong>(cls)</p>
 </li>
 </ul>
 <p>正常情况下我们在父类中是不能对子类的属性进行操作，但是元类可以。换种方式理解：元类、装饰器、类装饰器都可以归为元编程。</p>
-<h3 id="_3-python-底层语言设计层面是如何实现-metaclass-的" tabindex="-1"><a class="header-anchor" href="#_3-python-底层语言设计层面是如何实现-metaclass-的" aria-hidden="true">#</a> 3.Python 底层语言设计层面是如何实现 metaclass 的</h3>
+<h3 id="_3-python-底层语言设计层面是如何实现-metaclass-的" tabindex="-1"><a class="header-anchor" href="#_3-python-底层语言设计层面是如何实现-metaclass-的"><span>3.Python 底层语言设计层面是如何实现 metaclass 的</span></a></h3>
 <p>Python 中所有定义的类，都是 type 类的实例，type 类即上帝类</p>
-<h4 id="python-上帝类-type" tabindex="-1"><a class="header-anchor" href="#python-上帝类-type" aria-hidden="true">#</a> python 上帝类 type：</h4>
-<p>上帝类：（object 被默认继承的类，注意不是 type，而是 type 的基类）
-#######################
+<h4 id="python-上帝类-type" tabindex="-1"><a class="header-anchor" href="#python-上帝类-type"><span>python 上帝类 type：</span></a></h4>
+<p>上帝类：（object 被默认继承的类，注意不是 type，而是 type 的基类）<br>
+#######################<br>
 a.始终记住，在 Python 中，一起事物皆对象 例：</p>
 <p>b.</p>
 <pre><code>class Foo: pass
@@ -390,7 +390,7 @@ print(type)
 &lt;class 'type'&gt;
 </code></pre>
 <p>可证明，MyClass 的实例类型为 MyClass，但 MyClass 和 type 的类型都是 type，表明，MyClass 继承与 type 类，为上帝类的子类</p>
-<h4 id="type-类" tabindex="-1"><a class="header-anchor" href="#type-类" aria-hidden="true">#</a> type 类：</h4>
+<h4 id="type-类" tabindex="-1"><a class="header-anchor" href="#type-类"><span>type 类：</span></a></h4>
 <p>正常创建一个类 还可以利用 type 方法 如下:</p>
 <pre><code>def f(self):    # 注意此处有self
     print(&quot;另一种写法&quot;)
@@ -413,8 +413,8 @@ Foo = type(&quot;Foo&quot;, (object,), {&quot;func&quot;: f})
 <pre><code>即：  Foo = type()
 </code></pre>
 <p>metaclass = 类 :则可更改普通类的默认值（继承 type 类）</p>
-<h4 id="type-类的-call-运算符重载" tabindex="-1"><a class="header-anchor" href="#type-类的-call-运算符重载" aria-hidden="true">#</a> type 类的 <strong>call</strong> 运算符重载</h4>
-<p>由上文可知，所有类的父类都是上帝类，我们知道，当 Foo()() 时会触发 Foo 的 <strong>call</strong> 方法。那么当实例化 mateclass 改写的类时
+<h4 id="type-类的-call-运算符重载" tabindex="-1"><a class="header-anchor" href="#type-类的-call-运算符重载"><span>type 类的 <strong>call</strong> 运算符重载</span></a></h4>
+<p>由上文可知，所有类的父类都是上帝类，我们知道，当 Foo()() 时会触发 Foo 的 <strong>call</strong> 方法。那么当实例化 mateclass 改写的类时<br>
 Baz() 就会触发 type 的 <strong>call</strong> 方法。</p>
 <pre><code>class Foo:
     def __call__(self, *args, **kwargs):
@@ -445,7 +445,7 @@ class = type(classname, superclasses, attributedict)      # 见上文 type 类
 <pre><code>type.__new__(typeclass, classname, superclasses, attributedict)
 type.__init__(class, classname, superclasses, attributedict)
 </code></pre>
-<h4 id="metaclass-本质" tabindex="-1"><a class="header-anchor" href="#metaclass-本质" aria-hidden="true">#</a> metaclass 本质</h4>
+<h4 id="metaclass-本质" tabindex="-1"><a class="header-anchor" href="#metaclass-本质"><span>metaclass 本质</span></a></h4>
 <p>metaclass 是 type 的子类，通过替换 type 的 <strong>call</strong> 运算符重载机制，“超越变形”正常的类</p>
 <p>其实，理解了以上几点，我们就会明白，正是 Python 的类创建机制，给了 metaclass 大展身手的机会。</p>
 <p>一旦你把一个类型 MyClass 的 metaclass 设置成 MyMeta，MyClass 就不再由原生的 type 创建，而是会调用 MyMeta 的 <strong>call</strong> 运算符重载。</p>

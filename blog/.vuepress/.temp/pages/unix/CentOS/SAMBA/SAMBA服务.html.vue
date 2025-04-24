@@ -1,34 +1,34 @@
-<template><div><p><a href="https://www.samba.org/" target="_blank" rel="noopener noreferrer">Samba 文档<ExternalLinkIcon/></a></p>
+<template><div><p><a href="https://www.samba.org/" target="_blank" rel="noopener noreferrer">Samba 文档</a></p>
 <!-- more -->
-<h1 id="samba" tabindex="-1"><a class="header-anchor" href="#samba" aria-hidden="true">#</a> SAMBA</h1>
-<h2 id="_1-概述" tabindex="-1"><a class="header-anchor" href="#_1-概述" aria-hidden="true">#</a> 1. 概述</h2>
-<h2 id="_2-安装-配置" tabindex="-1"><a class="header-anchor" href="#_2-安装-配置" aria-hidden="true">#</a> 2.安装&amp;配置</h2>
-<h3 id="_2-1-客户端安装" tabindex="-1"><a class="header-anchor" href="#_2-1-客户端安装" aria-hidden="true">#</a> 2.1 客户端安装</h3>
-<Tabs :data='[]'>
+<h1 id="samba" tabindex="-1"><a class="header-anchor" href="#samba"><span>SAMBA</span></a></h1>
+<h2 id="_1-概述" tabindex="-1"><a class="header-anchor" href="#_1-概述"><span>1. 概述</span></a></h2>
+<h2 id="_2-安装-配置" tabindex="-1"><a class="header-anchor" href="#_2-安装-配置"><span>2.安装&amp;配置</span></a></h2>
+<h3 id="_2-1-客户端安装" tabindex="-1"><a class="header-anchor" href="#_2-1-客户端安装"><span>2.1 客户端安装</span></a></h3>
+<Tabs id="16" :data='[]'>
 </Tabs>
-<h3 id="_2-2-服务端安装" tabindex="-1"><a class="header-anchor" href="#_2-2-服务端安装" aria-hidden="true">#</a> 2.2 服务端安装</h3>
-<h3 id="_2-3-服务端配置" tabindex="-1"><a class="header-anchor" href="#_2-3-服务端配置" aria-hidden="true">#</a> 2.3 服务端配置</h3>
+<h3 id="_2-2-服务端安装" tabindex="-1"><a class="header-anchor" href="#_2-2-服务端安装"><span>2.2 服务端安装</span></a></h3>
+<h3 id="_2-3-服务端配置" tabindex="-1"><a class="header-anchor" href="#_2-3-服务端配置"><span>2.3 服务端配置</span></a></h3>
 <p>通常在 <code v-pre>/etc/samba/smb.conf</code> 文件中指定 <strong>日志</strong> 文件名称和 <strong>共享</strong> 存放路径</p>
-<h5 id="常规全局配置" tabindex="-1"><a class="header-anchor" href="#常规全局配置" aria-hidden="true">#</a> 常规全局配置：</h5>
+<h5 id="常规全局配置" tabindex="-1"><a class="header-anchor" href="#常规全局配置"><span>常规全局配置：</span></a></h5>
 <blockquote>
 <p><code v-pre>#</code> 号开头：默认的文字注释信息</p>
 <p><code v-pre>;</code> 号开头：默认的注释配置项</p>
 </blockquote>
-<div class="language-ini ext-ini line-numbers-mode"><pre v-pre class="language-ini"><code><span class="token section"><span class="token punctuation">[</span><span class="token section-name selector">global</span><span class="token punctuation">]</span></span>
-	<span class="token key attr-name">workgroup</span> <span class="token punctuation">=</span> <span class="token value attr-value">SAMBA</span>
-	<span class="token key attr-name">security</span> <span class="token punctuation">=</span> <span class="token value attr-value">user</span>
-
-<span class="token comment"># 注释网卡配置项</span>
-<span class="token comment">;	interfaces = lo eth0 192.168.1.12/24 172.168.13.2/24</span>
-	<span class="token key attr-name">passdb backend</span> <span class="token punctuation">=</span> <span class="token value attr-value">tdbsam</span>
-
-	<span class="token key attr-name">printing</span> <span class="token punctuation">=</span> <span class="token value attr-value">cups</span>
-	<span class="token key attr-name">printcap name</span> <span class="token punctuation">=</span> <span class="token value attr-value">cups</span>
-	<span class="token key attr-name">load printers</span> <span class="token punctuation">=</span> <span class="token value attr-value">yes</span>
-	<span class="token key attr-name">cups options</span> <span class="token punctuation">=</span> <span class="token value attr-value">raw</span>
-
-	<span class="token key attr-name">include</span> <span class="token punctuation">=</span> <span class="token value attr-value">/etc/samba/smb_share.conf</span>
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p><strong>[global]</strong>: 关键字，全局配置</p>
+<div class="language-ini line-numbers-mode" data-highlighter="shiki" data-ext="ini" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">[global]</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#C678DD">	workgroup</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> =</span><span style="--shiki-light:#383A42;--shiki-dark:#98C379"> SAMBA</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#C678DD">	security</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> =</span><span style="--shiki-light:#383A42;--shiki-dark:#98C379"> user</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># 注释网卡配置项</span></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">;	interfaces = lo eth0 192.168.1.12/24 172.168.13.2/24</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#98C379">	passdb </span><span style="--shiki-light:#E45649;--shiki-dark:#C678DD">backend</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> =</span><span style="--shiki-light:#383A42;--shiki-dark:#98C379"> tdbsam</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#C678DD">	printing</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> =</span><span style="--shiki-light:#383A42;--shiki-dark:#98C379"> cups</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#98C379">	printcap </span><span style="--shiki-light:#E45649;--shiki-dark:#C678DD">name</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> =</span><span style="--shiki-light:#383A42;--shiki-dark:#98C379"> cups</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#98C379">	load </span><span style="--shiki-light:#E45649;--shiki-dark:#C678DD">printers</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> =</span><span style="--shiki-light:#383A42;--shiki-dark:#98C379"> yes</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#98C379">	cups </span><span style="--shiki-light:#E45649;--shiki-dark:#C678DD">options</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> =</span><span style="--shiki-light:#383A42;--shiki-dark:#98C379"> raw</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#C678DD">	include</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> =</span><span style="--shiki-light:#383A42;--shiki-dark:#98C379"> /etc/samba/smb_share.conf</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p><strong>[global]</strong>: 关键字，全局配置</p>
 <ul>
 <li>
 <p><code v-pre>workgroup = SAMBA</code> # Windows NT 域名（域环境为域名） 或 工作组名</p>
@@ -86,47 +86,47 @@
 <blockquote>
 <p>当配置 <code v-pre>include = registry</code> 时，不是键入当前目录下的 <code v-pre>registry</code> 文件，是从注册表中读取全局配置选项，此时可以通过 <code v-pre>net conf</code> 进行对 <code v-pre>samba</code> 的配置，如：</p>
 </blockquote>
-<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code>$ net conf addshare igarashi /export/nas/igarashi
-$ net conf list
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div></div></div></li>
+<div class="language-shell line-numbers-mode" data-highlighter="shiki" data-ext="shell" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">$</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> net</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> conf</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> addshare</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> igarashi</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> /export/nas/igarashi</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">$</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> net</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> conf</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> list</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div></div></div></li>
 </ul>
 <hr>
-<div class="language-ini ext-ini line-numbers-mode"><pre v-pre class="language-ini"><code><span class="token section"><span class="token punctuation">[</span><span class="token section-name selector">homes</span><span class="token punctuation">]</span></span>
-	<span class="token key attr-name">comment</span> <span class="token punctuation">=</span> <span class="token value attr-value">Home Directories</span>
-	<span class="token key attr-name">valid users</span> <span class="token punctuation">=</span> <span class="token value attr-value">%S, %D%w%S</span>
-	<span class="token key attr-name">browseable</span> <span class="token punctuation">=</span> <span class="token value attr-value">No</span>
-	<span class="token key attr-name">read only</span> <span class="token punctuation">=</span> <span class="token value attr-value">No</span>
-	<span class="token key attr-name">inherit acls</span> <span class="token punctuation">=</span> <span class="token value attr-value">Yes</span>
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p><strong>[home]</strong>: 默认共享，特殊共享目录，表示用户主目录</p>
+<div class="language-ini line-numbers-mode" data-highlighter="shiki" data-ext="ini" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">[homes]</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#C678DD">	comment</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> =</span><span style="--shiki-light:#383A42;--shiki-dark:#98C379"> Home Directories</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#98C379">	valid </span><span style="--shiki-light:#E45649;--shiki-dark:#C678DD">users</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> =</span><span style="--shiki-light:#383A42;--shiki-dark:#98C379"> %S, %D%w%S</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#C678DD">	browseable</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> =</span><span style="--shiki-light:#383A42;--shiki-dark:#98C379"> No</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#98C379">	read </span><span style="--shiki-light:#E45649;--shiki-dark:#C678DD">only</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> =</span><span style="--shiki-light:#383A42;--shiki-dark:#98C379"> No</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#98C379">	inherit </span><span style="--shiki-light:#E45649;--shiki-dark:#C678DD">acls</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> =</span><span style="--shiki-light:#383A42;--shiki-dark:#98C379"> Yes</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p><strong>[home]</strong>: 默认共享，特殊共享目录，表示用户主目录</p>
 <hr>
-<div class="language-ini ext-ini line-numbers-mode"><pre v-pre class="language-ini"><code><span class="token section"><span class="token punctuation">[</span><span class="token section-name selector">printers</span><span class="token punctuation">]</span></span>
-	<span class="token key attr-name">comment</span> <span class="token punctuation">=</span> <span class="token value attr-value">All Printers</span>
-	<span class="token key attr-name">path</span> <span class="token punctuation">=</span> <span class="token value attr-value">/var/tmp</span>
-	<span class="token key attr-name">printable</span> <span class="token punctuation">=</span> <span class="token value attr-value">Yes</span>
-	<span class="token key attr-name">create mask</span> <span class="token punctuation">=</span> <span class="token value attr-value">0600</span>
-	<span class="token key attr-name">browseable</span> <span class="token punctuation">=</span> <span class="token value attr-value">No</span>
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p><strong>[printers]</strong>: 默认共享，表示共享打印机</p>
+<div class="language-ini line-numbers-mode" data-highlighter="shiki" data-ext="ini" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">[printers]</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#C678DD">	comment</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> =</span><span style="--shiki-light:#383A42;--shiki-dark:#98C379"> All Printers</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#C678DD">	path</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> =</span><span style="--shiki-light:#383A42;--shiki-dark:#98C379"> /var/tmp</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#C678DD">	printable</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> =</span><span style="--shiki-light:#383A42;--shiki-dark:#98C379"> Yes</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#98C379">	create </span><span style="--shiki-light:#E45649;--shiki-dark:#C678DD">mask</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> =</span><span style="--shiki-light:#383A42;--shiki-dark:#98C379"> 0600</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#C678DD">	browseable</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> =</span><span style="--shiki-light:#383A42;--shiki-dark:#98C379"> No</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p><strong>[printers]</strong>: 默认共享，表示共享打印机</p>
 <hr>
-<h5 id="常规共享配置" tabindex="-1"><a class="header-anchor" href="#常规共享配置" aria-hidden="true">#</a> 常规共享配置：</h5>
+<h5 id="常规共享配置" tabindex="-1"><a class="header-anchor" href="#常规共享配置"><span>常规共享配置：</span></a></h5>
 <p>以一个常规 <code v-pre>ufs目录</code> 导出配置为例</p>
-<div class="language-ini ext-ini line-numbers-mode"><pre v-pre class="language-ini"><code><span class="token section"><span class="token punctuation">[</span><span class="token section-name selector">ufs</span><span class="token punctuation">]</span></span>
-	<span class="token key attr-name">comment</span> <span class="token punctuation">=</span> <span class="token value attr-value">UFS</span>
-	<span class="token key attr-name">path</span> <span class="token punctuation">=</span> <span class="token value attr-value">/export/nas</span>
-	<span class="token key attr-name">browseable</span> <span class="token punctuation">=</span> <span class="token value attr-value">yes</span>
-	<span class="token key attr-name">public</span> <span class="token punctuation">=</span> <span class="token value attr-value">yes</span>
-	<span class="token key attr-name">hosts allow</span> <span class="token punctuation">=</span> <span class="token value attr-value">172.16.120.121/255.255.255.0</span>
-	<span class="token key attr-name">hosts deny</span> <span class="token punctuation">=</span> <span class="token value attr-value">172.16.120.122</span>
-	<span class="token key attr-name">admin users</span> <span class="token punctuation">=</span> <span class="token value attr-value">root, @root</span>
-	<span class="token key attr-name">valid users</span> <span class="token punctuation">=</span> <span class="token value attr-value">root, @root</span>
-	<span class="token key attr-name">invalid users</span> <span class="token punctuation">=</span> <span class="token value attr-value">fred admin @wheel</span>
-	<span class="token key attr-name">read only</span> <span class="token punctuation">=</span> <span class="token value attr-value">no</span>
-	<span class="token key attr-name">writable</span> <span class="token punctuation">=</span> <span class="token value attr-value">yes</span>
-	<span class="token key attr-name">read list</span> <span class="token punctuation">=</span> <span class="token value attr-value">root</span>
-	<span class="token key attr-name">write list</span> <span class="token punctuation">=</span> <span class="token value attr-value">root</span>
-	<span class="token key attr-name">inherit acls</span> <span class="token punctuation">=</span> <span class="token value attr-value">yes</span>
-	<span class="token key attr-name">create mask</span> <span class="token punctuation">=</span> <span class="token value attr-value">0664</span>
-	<span class="token key attr-name">directory mask</span> <span class="token punctuation">=</span> <span class="token value attr-value">0775</span>
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p><strong>[ufs]</strong>: 共享资源名</p>
+<div class="language-ini line-numbers-mode" data-highlighter="shiki" data-ext="ini" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">[ufs]</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#C678DD">	comment</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> =</span><span style="--shiki-light:#383A42;--shiki-dark:#98C379"> UFS</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#C678DD">	path</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> =</span><span style="--shiki-light:#383A42;--shiki-dark:#98C379"> /export/nas</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#C678DD">	browseable</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> =</span><span style="--shiki-light:#383A42;--shiki-dark:#98C379"> yes</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#C678DD">	public</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> =</span><span style="--shiki-light:#383A42;--shiki-dark:#98C379"> yes</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#98C379">	hosts </span><span style="--shiki-light:#E45649;--shiki-dark:#C678DD">allow</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> =</span><span style="--shiki-light:#383A42;--shiki-dark:#98C379"> 172.16.120.121/255.255.255.0</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#98C379">	hosts </span><span style="--shiki-light:#E45649;--shiki-dark:#C678DD">deny</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> =</span><span style="--shiki-light:#383A42;--shiki-dark:#98C379"> 172.16.120.122</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#98C379">	admin </span><span style="--shiki-light:#E45649;--shiki-dark:#C678DD">users</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> =</span><span style="--shiki-light:#383A42;--shiki-dark:#98C379"> root, @root</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#98C379">	valid </span><span style="--shiki-light:#E45649;--shiki-dark:#C678DD">users</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> =</span><span style="--shiki-light:#383A42;--shiki-dark:#98C379"> root, @root</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#98C379">	invalid </span><span style="--shiki-light:#E45649;--shiki-dark:#C678DD">users</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> =</span><span style="--shiki-light:#383A42;--shiki-dark:#98C379"> fred admin @wheel</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#98C379">	read </span><span style="--shiki-light:#E45649;--shiki-dark:#C678DD">only</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> =</span><span style="--shiki-light:#383A42;--shiki-dark:#98C379"> no</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#C678DD">	writable</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> =</span><span style="--shiki-light:#383A42;--shiki-dark:#98C379"> yes</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#98C379">	read </span><span style="--shiki-light:#E45649;--shiki-dark:#C678DD">list</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> =</span><span style="--shiki-light:#383A42;--shiki-dark:#98C379"> root</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#98C379">	write </span><span style="--shiki-light:#E45649;--shiki-dark:#C678DD">list</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> =</span><span style="--shiki-light:#383A42;--shiki-dark:#98C379"> root</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#98C379">	inherit </span><span style="--shiki-light:#E45649;--shiki-dark:#C678DD">acls</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> =</span><span style="--shiki-light:#383A42;--shiki-dark:#98C379"> yes</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#98C379">	create </span><span style="--shiki-light:#E45649;--shiki-dark:#C678DD">mask</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> =</span><span style="--shiki-light:#383A42;--shiki-dark:#98C379"> 0664</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#98C379">	directory </span><span style="--shiki-light:#E45649;--shiki-dark:#C678DD">mask</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> =</span><span style="--shiki-light:#383A42;--shiki-dark:#98C379"> 0775</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p><strong>[ufs]</strong>: 共享资源名</p>
 <ul>
 <li>
 <p><code v-pre>comment = UFS</code> # 共享的注释说明</p>
@@ -186,24 +186,24 @@ $ net conf list
 </li>
 <li></li>
 </ul>
-<h2 id="_3-命令" tabindex="-1"><a class="header-anchor" href="#_3-命令" aria-hidden="true">#</a> 3. 命令</h2>
-<h3 id="_3-1-挂载smb文件系统" tabindex="-1"><a class="header-anchor" href="#_3-1-挂载smb文件系统" aria-hidden="true">#</a> 3.1 挂载SMB文件系统</h3>
+<h2 id="_3-命令" tabindex="-1"><a class="header-anchor" href="#_3-命令"><span>3. 命令</span></a></h2>
+<h3 id="_3-1-挂载smb文件系统" tabindex="-1"><a class="header-anchor" href="#_3-1-挂载smb文件系统"><span>3.1 挂载SMB文件系统</span></a></h3>
 <p>基本挂载</p>
-<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code><span class="token comment"># 挂载命令格式如下</span>
-$ <span class="token function">mount</span> <span class="token parameter variable">-t</span> cifs //<span class="token operator">&lt;</span>挂载点<span class="token operator">></span>/share <span class="token operator">&lt;</span>挂载目录<span class="token operator">></span> <span class="token parameter variable">-o</span> <span class="token operator">&lt;</span>挂载选项<span class="token operator">></span>
-
-<span class="token comment"># 通过IP挂载</span>
-$ <span class="token function">mount</span> <span class="token parameter variable">-t</span> cifs //172.16.120./test /mnt/uit-share02/
-$ Password <span class="token keyword">for</span> root@//10.10.10.223/test
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>挂载 <strong>SMB v2.1</strong></p>
-<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code>$ <span class="token function">mount</span> <span class="token parameter variable">-t</span> cifs //nas.uds.local/share /mnt/smb <span class="token parameter variable">-o</span> <span class="token assign-left variable">vers</span><span class="token operator">=</span><span class="token number">2.1</span>,uid<span class="token operator">=</span><span class="token number">0</span>,gid<span class="token operator">=</span><span class="token number">0</span>,dir_mode<span class="token operator">=</span>0755,file_mode<span class="token operator">=</span>0755,mfsymlinks,cache<span class="token operator">=</span>strict,rsize<span class="token operator">=</span><span class="token number">1048576</span>,wsize<span class="token operator">=</span><span class="token number">1048576</span>
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p>挂载 <strong>SMB v3.0</strong></p>
-<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code>$ <span class="token function">mount</span> <span class="token parameter variable">-t</span> cifs //nas.uds.local/share /mnt/smb <span class="token parameter variable">-o</span> <span class="token assign-left variable">vers</span><span class="token operator">=</span><span class="token number">3.0</span>,uid<span class="token operator">=</span><span class="token number">0</span>,gid<span class="token operator">=</span><span class="token number">0</span>,dir_mode<span class="token operator">=</span>0755,file_mode<span class="token operator">=</span>0755,mfsymlinks,cache<span class="token operator">=</span>strict,rsize<span class="token operator">=</span><span class="token number">1048576</span>,wsize<span class="token operator">=</span><span class="token number">1048576</span>
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p>以 <strong>Guest</strong> 匿名身份进行挂载</p>
-<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code>$ <span class="token function">mount</span> <span class="token parameter variable">-t</span> cifs //nas.uds.local/share /mnt/smb <span class="token parameter variable">-o</span> <span class="token assign-left variable">vers</span><span class="token operator">=</span><span class="token number">2.0</span>,guest,uid<span class="token operator">=</span><span class="token number">0</span>,gid<span class="token operator">=</span><span class="token number">0</span>,dir_mode<span class="token operator">=</span>0755,file_mode<span class="token operator">=</span>0755,mfsymlinks,cache<span class="token operator">=</span>strict,rsize<span class="token operator">=</span><span class="token number">1048576</span>,wsize<span class="token operator">=</span><span class="token number">1048576</span>
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p>以 <strong>username + password</strong> 身份进行挂载</p>
-<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code>$ <span class="token function">mount</span> <span class="token parameter variable">-t</span> cifs //nas.uds.local/share /mnt/smb <span class="token parameter variable">-o</span> <span class="token assign-left variable">vers</span><span class="token operator">=</span><span class="token number">2.0</span>,username<span class="token operator">=</span>uds,password<span class="token operator">=</span>udspass,uid<span class="token operator">=</span><span class="token number">0</span>,gid<span class="token operator">=</span><span class="token number">0</span>,dir_mode<span class="token operator">=</span>0755,file_mode<span class="token operator">=</span>0755,mfsymlinks,cache<span class="token operator">=</span>strict,rsize<span class="token operator">=</span><span class="token number">1048576</span>,wsize<span class="token operator">=</span><span class="token number">1048576</span>
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><h5 id="参数说明" tabindex="-1"><a class="header-anchor" href="#参数说明" aria-hidden="true">#</a> <strong>参数说明</strong></h5>
+<div class="language-shell line-numbers-mode" data-highlighter="shiki" data-ext="shell" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># 挂载命令格式如下</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">$</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> mount</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> -t</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> cifs</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> //</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">&#x3C;</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">挂载</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">点></span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">/share</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> &#x3C;</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">挂载目</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">录> </span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">-o</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> &#x3C;</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">挂载选</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">项></span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># 通过IP挂载</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">$</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> mount</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> -t</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> cifs</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> //172.16.120./test</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> /mnt/uit-share02/</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">$</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> Password</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> for</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> root@//10.10.10.223/test</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>挂载 <strong>SMB v2.1</strong></p>
+<div class="language-shell line-numbers-mode" data-highlighter="shiki" data-ext="shell" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">$</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> mount</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> -t</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> cifs</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> //nas.uds.local/share</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> /mnt/smb</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> -o</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> vers=2.1,uid=0,gid=0,dir_mode=0755,file_mode=0755,mfsymlinks,cache=strict,rsize=1048576,wsize=</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">1048576</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div><p>挂载 <strong>SMB v3.0</strong></p>
+<div class="language-shell line-numbers-mode" data-highlighter="shiki" data-ext="shell" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">$</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> mount</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> -t</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> cifs</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> //nas.uds.local/share</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> /mnt/smb</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> -o</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> vers=3.0,uid=0,gid=0,dir_mode=0755,file_mode=0755,mfsymlinks,cache=strict,rsize=1048576,wsize=</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">1048576</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div><p>以 <strong>Guest</strong> 匿名身份进行挂载</p>
+<div class="language-shell line-numbers-mode" data-highlighter="shiki" data-ext="shell" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">$</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> mount</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> -t</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> cifs</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> //nas.uds.local/share</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> /mnt/smb</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> -o</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> vers=2.0,guest,uid=0,gid=0,dir_mode=0755,file_mode=0755,mfsymlinks,cache=strict,rsize=1048576,wsize=</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">1048576</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div><p>以 <strong>username + password</strong> 身份进行挂载</p>
+<div class="language-shell line-numbers-mode" data-highlighter="shiki" data-ext="shell" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">$</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> mount</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> -t</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> cifs</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> //nas.uds.local/share</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> /mnt/smb</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> -o</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> vers=2.0,username=uds,password=udspass,uid=0,gid=0,dir_mode=0755,file_mode=0755,mfsymlinks,cache=strict,rsize=1048576,wsize=</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">1048576</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div><h5 id="参数说明" tabindex="-1"><a class="header-anchor" href="#参数说明"><span><strong>参数说明</strong></span></a></h5>
 <ul>
 <li><span style="color: blue"><strong>文件系统类型：</strong></span> 必须配置 <strong>-t cifs</strong> 参数</li>
 <li><span style="color: blue"><strong>&lt;挂载点&gt;：</strong></span> 创建文件系统挂载点时，需根据实际值替换自动生成的挂载点</li>
@@ -224,28 +224,28 @@ $ Password <span class="token keyword">for</span> root@//10.10.10.223/test
 </li>
 <li><span style="color: blue"><strong>atime：</strong></span></li>
 </ul>
-<h5 id="查看挂载结果" tabindex="-1"><a class="header-anchor" href="#查看挂载结果" aria-hidden="true">#</a> <strong>查看挂载结果</strong></h5>
+<h5 id="查看挂载结果" tabindex="-1"><a class="header-anchor" href="#查看挂载结果"><span><strong>查看挂载结果</strong></span></a></h5>
 <p>执行如下命令，查看挂载结果，若包含如下类似返回信息，说明挂载成功</p>
-<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code>$ <span class="token function">mount</span> <span class="token parameter variable">-l</span>
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><img src="@source/unix/CentOS/Samba/img/smb挂载结果.png" /> 
+<div class="language-shell line-numbers-mode" data-highlighter="shiki" data-ext="shell" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">$</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> mount</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> -l</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div><img src="@source/unix/CentOS/Samba/img/smb挂载结果.png" /> 
 <p>挂载成功后，查看当前文件系统的容量信息</p>
-<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code>$ <span class="token function">df</span> <span class="token parameter variable">-h</span>
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p><img src="@source/unix/CentOS/Samba/img/smb容量信息.png" /> 如果挂载失败，请进行错误排查</p>
-<h5 id="访问smb" tabindex="-1"><a class="header-anchor" href="#访问smb" aria-hidden="true">#</a> <strong>访问SMB</strong></h5>
+<div class="language-shell line-numbers-mode" data-highlighter="shiki" data-ext="shell" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">$</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> df</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> -h</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div><p><img src="@source/unix/CentOS/Samba/img/smb容量信息.png" /> 如果挂载失败，请进行错误排查</p>
+<h5 id="访问smb" tabindex="-1"><a class="header-anchor" href="#访问smb"><span><strong>访问SMB</strong></span></a></h5>
 <p>挂载成功后，可在 <strong>Linux</strong> 上访问 <strong>NAS</strong> 文件系统，执行 读取 或 写入 操作，可把其当作一个普通的目录来访问和使用</p>
 <img src="@source/unix/CentOS/Samba/img/访问smb.png" /> 
-<h5 id="自动挂载smb客户端" tabindex="-1"><a class="header-anchor" href="#自动挂载smb客户端" aria-hidden="true">#</a> <strong>自动挂载SMB客户端</strong></h5>
+<h5 id="自动挂载smb客户端" tabindex="-1"><a class="header-anchor" href="#自动挂载smb客户端"><span><strong>自动挂载SMB客户端</strong></span></a></h5>
 <p>为避免已挂载 <strong>SMB</strong> 文件系统的服务器重启后，挂载信息丢失，可在 <strong>Linux</strong> 系统中配置 <code v-pre>/etc/fstab</code> 文件，实现服务器设置重启时，<strong>SMB</strong> 文件系统自动挂载。</p>
 <p>打开 <code v-pre>/etc/fstab</code> 配置文件，添加挂载配置</p>
 <ul>
 <li>
 <p>使用 <strong>SMB v2.1</strong> 协议挂载文件系统</p>
-<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code> //nas.uds.local/share /mnt/smb cifs auto,username<span class="token operator">=</span>uds,password<span class="token operator">=</span>udspass,vers<span class="token operator">=</span><span class="token number">2.1</span>,uid<span class="token operator">=</span><span class="token number">0</span>,gid<span class="token operator">=</span><span class="token number">0</span>,dir_mode<span class="token operator">=</span>0755,file_mode<span class="token operator">=</span>0755,mfsymlinks,cache<span class="token operator">=</span>strict,rsize<span class="token operator">=</span><span class="token number">1048576</span>,wsize<span class="token operator">=</span><span class="token number">1048576</span> <span class="token number">0</span> <span class="token number">0</span>
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div></li>
+<div class="language-shell line-numbers-mode" data-highlighter="shiki" data-ext="shell" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF"> //nas.uds.local/share</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> /mnt/smb</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> cifs</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> auto,username=uds,password=udspass,vers=2.1,uid=0,gid=0,dir_mode=0755,file_mode=0755,mfsymlinks,cache=strict,rsize=1048576,wsize=</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">1048576</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> 0</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> 0</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div></li>
 <li>
 <p>使用 <strong>SMB v3.0</strong> 协议挂载文件系统</p>
-<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code> //nas.uds.local/share /mnt/smb cifs auto,username<span class="token operator">=</span>uds,password<span class="token operator">=</span>udspass,vers<span class="token operator">=</span><span class="token number">3.0</span>,uid<span class="token operator">=</span><span class="token number">0</span>,gid<span class="token operator">=</span><span class="token number">0</span>,dir_mode<span class="token operator">=</span>0755,file_mode<span class="token operator">=</span>0755,mfsymlinks,cache<span class="token operator">=</span>strict,rsize<span class="token operator">=</span><span class="token number">1048576</span>,wsize<span class="token operator">=</span><span class="token number">1048576</span> <span class="token number">0</span> <span class="token number">0</span>
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div></li>
+<div class="language-shell line-numbers-mode" data-highlighter="shiki" data-ext="shell" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF"> //nas.uds.local/share</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> /mnt/smb</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> cifs</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> auto,username=uds,password=udspass,vers=3.0,uid=0,gid=0,dir_mode=0755,file_mode=0755,mfsymlinks,cache=strict,rsize=1048576,wsize=</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">1048576</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> 0</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> 0</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div></li>
 </ul>
 <p>其参数说明如上挂载，其余参数说明如下：</p>
 <ul>
@@ -255,112 +255,116 @@ $ Password <span class="token keyword">for</span> root@//10.10.10.223/test
 <li><span style="color: blue"><strong>0（wsize后第一项）：</strong></span> 非零值表示文件系统应由 <strong>dump</strong> 备份，对于 <strong>NAS</strong> 文件系统而言，此值默认为 <strong>0</strong></li>
 <li><span style="color: blue"><strong>0（wsize后第二项）：</strong></span> 该值表示 <strong>fsck</strong> 在启动时检查文件系统的顺序，对于 <strong>NAS</strong> 文件系统而言，此值默认为 <strong>0</strong>，表示 <strong>fsck</strong> 不应在启动时运行</li>
 </ul>
-<h5 id="验证自动挂载" tabindex="-1"><a class="header-anchor" href="#验证自动挂载" aria-hidden="true">#</a> <strong>验证自动挂载</strong></h5>
+<h5 id="验证自动挂载" tabindex="-1"><a class="header-anchor" href="#验证自动挂载"><span><strong>验证自动挂载</strong></span></a></h5>
 <p>执行重启命令，重启应用服务器，验证 <strong>SMB</strong> 客户端自动挂载</p>
-<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code>$ <span class="token function">reboot</span>
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><h3 id="_3-2-卸载" tabindex="-1"><a class="header-anchor" href="#_3-2-卸载" aria-hidden="true">#</a> 3.2 卸载</h3>
+<div class="language-shell line-numbers-mode" data-highlighter="shiki" data-ext="shell" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">$</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> reboot</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div><h3 id="_3-2-卸载" tabindex="-1"><a class="header-anchor" href="#_3-2-卸载"><span>3.2 卸载</span></a></h3>
 <p>强制卸载</p>
-<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code>$ <span class="token function">umount</span> <span class="token parameter variable">-f</span> <span class="token parameter variable">-a</span> <span class="token parameter variable">-t</span> cifs <span class="token parameter variable">-l</span> /挂载点
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><h3 id="_3-3-关于-windows客户端-的注意事项" tabindex="-1"><a class="header-anchor" href="#_3-3-关于-windows客户端-的注意事项" aria-hidden="true">#</a> 3.3 关于 Windows客户端 的注意事项</h3>
+<div class="language-shell line-numbers-mode" data-highlighter="shiki" data-ext="shell" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">$</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> umount</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> -f</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> -a</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> -t</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> cifs</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> -l</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> /挂载点</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div><h3 id="_3-3-关于-windows客户端-的注意事项" tabindex="-1"><a class="header-anchor" href="#_3-3-关于-windows客户端-的注意事项"><span>3.3 关于 Windows客户端 的注意事项</span></a></h3>
 <p><strong>windows</strong> 默认 不允许同一台机器使用多个用户身份去登录 <strong>SMB</strong>，因此切换用户时需要先清除缓存</p>
-<h5 id="清除-window-下-samba-的缓存" tabindex="-1"><a class="header-anchor" href="#清除-window-下-samba-的缓存" aria-hidden="true">#</a> <strong>清除 Window 下 samba 的缓存</strong></h5>
+<h5 id="清除-window-下-samba-的缓存" tabindex="-1"><a class="header-anchor" href="#清除-window-下-samba-的缓存"><span><strong>清除 Window 下 samba 的缓存</strong></span></a></h5>
 <ul>
 <li>
 <p>查看缓存列表</p>
-<div class="language-powershell ext-powershell line-numbers-mode"><pre v-pre class="language-powershell"><code>$ net use
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div></li>
+<div class="language-powershell line-numbers-mode" data-highlighter="shiki" data-ext="powershell" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">$ net use</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div></li>
 <li>
 <p>删除所有缓存</p>
-<div class="language-powershell ext-powershell line-numbers-mode"><pre v-pre class="language-powershell"><code>$ net use <span class="token operator">*</span> <span class="token operator">/</span><span class="token function">del</span>
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><blockquote>
+<div class="language-powershell line-numbers-mode" data-highlighter="shiki" data-ext="powershell" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">$ net use </span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2">*</span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2"> /</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">del</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div><blockquote>
 <p>再去 任务管理器 - 重启文件资源管理器，确保刷新</p>
 </blockquote>
 </li>
 </ul>
-<h3 id="_3-4-pdbedit-的使用" tabindex="-1"><a class="header-anchor" href="#_3-4-pdbedit-的使用" aria-hidden="true">#</a> 3.4 pdbedit 的使用</h3>
-<h5 id="pdbedit-操作用户" tabindex="-1"><a class="header-anchor" href="#pdbedit-操作用户" aria-hidden="true">#</a> pdbedit 操作用户</h5>
+<h3 id="_3-4-pdbedit-的使用" tabindex="-1"><a class="header-anchor" href="#_3-4-pdbedit-的使用"><span>3.4 pdbedit 的使用</span></a></h3>
+<h5 id="pdbedit-操作用户" tabindex="-1"><a class="header-anchor" href="#pdbedit-操作用户"><span>pdbedit 操作用户</span></a></h5>
 <ul>
 <li>
 <p>列出当前用户：</p>
-<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code><span class="token comment"># 全部用户</span>
-$ pdbedit <span class="token parameter variable">-L</span>
-
-<span class="token comment"># 指定用户</span>
-$ pdbedit <span class="token parameter variable">-L</span> <span class="token parameter variable">--user</span><span class="token operator">=</span>zz
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></li>
+<div class="language-shell line-numbers-mode" data-highlighter="shiki" data-ext="shell" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># 全部用户</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">$</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> pdbedit</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> -L</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># 指定用户</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">$</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> pdbedit</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> -L</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> --user=zz</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></li>
 <li>
 <p>添加用户：</p>
-<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code><span class="token comment"># 无需回车确认输入</span>
-$ <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"12345<span class="token entity" title="\n">\n</span>12345<span class="token entity" title="\n">\n</span>"</span> <span class="token operator">|</span> pdbedit <span class="token parameter variable">-t</span> <span class="token parameter variable">-a</span> zz
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div></div></div></li>
+<div class="language-shell line-numbers-mode" data-highlighter="shiki" data-ext="shell" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># 无需回车确认输入</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">$</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> echo</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> -e</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> "12345\n12345\n"</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> | </span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">pdbedit</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> -t</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> -a</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> zz</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div></div></div></li>
 <li>
 <p>更新用户：</p>
-<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code><span class="token comment"># 也许这只是针对于修改密码</span>
-$ <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"233333<span class="token entity" title="\n">\n</span>233333<span class="token entity" title="\n">\n</span>"</span> <span class="token operator">|</span> pdbedit <span class="token parameter variable">-t</span> <span class="token parameter variable">-r</span> <span class="token parameter variable">-u</span> zz
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div></div></div></li>
+<div class="language-shell line-numbers-mode" data-highlighter="shiki" data-ext="shell" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># 也许这只是针对于修改密码</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">$</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> echo</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> -e</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> "233333\n233333\n"</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> | </span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">pdbedit</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> -t</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> -r</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> -u</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> zz</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div></div></div></li>
 <li>
 <p>删除用户：</p>
-<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code>$ pdbedit <span class="token parameter variable">-x</span> zz
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div></li>
+<div class="language-shell line-numbers-mode" data-highlighter="shiki" data-ext="shell" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">$</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> pdbedit</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> -x</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> zz</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div></li>
 </ul>
-<h2 id="_4-公网smb连接" tabindex="-1"><a class="header-anchor" href="#_4-公网smb连接" aria-hidden="true">#</a> 4. 公网SMB连接</h2>
-<h3 id="_4-1-linux-samba-服务端" tabindex="-1"><a class="header-anchor" href="#_4-1-linux-samba-服务端" aria-hidden="true">#</a> 4.1 Linux Samba 服务端</h3>
+<h2 id="_4-公网smb连接" tabindex="-1"><a class="header-anchor" href="#_4-公网smb连接"><span>4. 公网SMB连接</span></a></h2>
+<h3 id="_4-1-linux-samba-服务端" tabindex="-1"><a class="header-anchor" href="#_4-1-linux-samba-服务端"><span>4.1 Linux Samba 服务端</span></a></h3>
 <p>配置好共享后，需要去 <code v-pre>/etc/samba/smb.conf</code> 中修改</p>
-<div class="language-ini ext-ini line-numbers-mode"><pre v-pre class="language-ini"><code><span class="token section"><span class="token punctuation">[</span><span class="token section-name selector">global</span><span class="token punctuation">]</span></span>
-		...
-		<span class="token key attr-name">smb ports</span> <span class="token punctuation">=</span> <span class="token value attr-value">6727</span>
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>然后重启 <strong>samba</strong> 服务，或是直接路由器上设置 <strong>NAT</strong> 端口转发 <strong>445</strong> 转 <strong>6727</strong></p>
-<h3 id="_4-2-windows-客户端" tabindex="-1"><a class="header-anchor" href="#_4-2-windows-客户端" aria-hidden="true">#</a> 4.2 Windows 客户端</h3>
+<div class="language-ini line-numbers-mode" data-highlighter="shiki" data-ext="ini" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">[global]</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#98C379">		...</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#98C379">		smb </span><span style="--shiki-light:#E45649;--shiki-dark:#C678DD">ports</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> =</span><span style="--shiki-light:#383A42;--shiki-dark:#98C379"> 6727</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>然后重启 <strong>samba</strong> 服务，或是直接路由器上设置 <strong>NAT</strong> 端口转发 <strong>445</strong> 转 <strong>6727</strong></p>
+<h3 id="_4-2-windows-客户端" tabindex="-1"><a class="header-anchor" href="#_4-2-windows-客户端"><span>4.2 Windows 客户端</span></a></h3>
 <p>需要先关闭 <strong>Windows 防火墙</strong>，检查 <strong>control</strong> -&gt; 程序 -&gt; 启用或关闭 <strong>Windows</strong> 功能 -&gt; 是否开启了 <strong>CIFS</strong> 文件共享支持（<em>可以关闭SMB直通，无影响</em>）</p>
-<h5 id="_1-组策略关闭禁止访问无密码的-samba-共享" tabindex="-1"><a class="header-anchor" href="#_1-组策略关闭禁止访问无密码的-samba-共享" aria-hidden="true">#</a> <strong>1. 组策略关闭禁止访问无密码的 Samba 共享</strong></h5>
+<h5 id="_1-组策略关闭禁止访问无密码的-samba-共享" tabindex="-1"><a class="header-anchor" href="#_1-组策略关闭禁止访问无密码的-samba-共享"><span><strong>1. 组策略关闭禁止访问无密码的 Samba 共享</strong></span></a></h5>
 <p>直接 <kbd>Windows</kbd> + <kbd>r</kbd> 输入 <code v-pre>gpedit.msc</code> 服务</p>
 <p>在 <strong>计算机配置</strong> - <strong>管理模板</strong> - <strong>网络-Lanman工作站</strong> 中，找到并双击 <strong>启用不安全的来宾登录</strong></p>
 <p>选择 <strong>已启用</strong> 确定即可</p>
-<h5 id="_2-关闭-windows-的-445-端口" tabindex="-1"><a class="header-anchor" href="#_2-关闭-windows-的-445-端口" aria-hidden="true">#</a> <strong>2.关闭 Windows 的 445 端口</strong></h5>
+<h5 id="_2-关闭-windows-的-445-端口" tabindex="-1"><a class="header-anchor" href="#_2-关闭-windows-的-445-端口"><span><strong>2.关闭 Windows 的 445 端口</strong></span></a></h5>
 <p>命令行如下</p>
-<div class="language-powershell ext-powershell line-numbers-mode"><pre v-pre class="language-powershell"><code><span class="token function">sc</span> config LanmanServer <span class="token function">start</span>= disabled
-net stop LanmanServer
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div></div></div><p>或是直接 <kbd>Windows</kbd> + <kbd>r</kbd> 输入 <code v-pre>services.msc</code> 服务中找到 <strong>Server</strong> 停止并禁用</p>
-<h5 id="_3-启动-windows-的-ip-helper-服务" tabindex="-1"><a class="header-anchor" href="#_3-启动-windows-的-ip-helper-服务" aria-hidden="true">#</a> <strong>3. 启动 windows 的 ip helper 服务</strong></h5>
+<div class="language-powershell line-numbers-mode" data-highlighter="shiki" data-ext="powershell" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">sc config LanmanServer start</span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2">=</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> disabled</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">net stop LanmanServer</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div></div></div><p>或是直接 <kbd>Windows</kbd> + <kbd>r</kbd> 输入 <code v-pre>services.msc</code> 服务中找到 <strong>Server</strong> 停止并禁用</p>
+<h5 id="_3-启动-windows-的-ip-helper-服务" tabindex="-1"><a class="header-anchor" href="#_3-启动-windows-的-ip-helper-服务"><span><strong>3. 启动 windows 的 ip helper 服务</strong></span></a></h5>
 <blockquote>
 <p>该服务用来端口转发</p>
 </blockquote>
-<div class="language-powershell ext-powershell line-numbers-mode"><pre v-pre class="language-powershell"><code><span class="token function">sc</span> config iphlpsvc <span class="token function">start</span>= auto
-
-success
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h5 id="_4-设置-windows-端口转发" tabindex="-1"><a class="header-anchor" href="#_4-设置-windows-端口转发" aria-hidden="true">#</a> <strong>4. 设置 windows 端口转发</strong></h5>
+<div class="language-powershell line-numbers-mode" data-highlighter="shiki" data-ext="powershell" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">sc config iphlpsvc start</span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2">=</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> auto</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">success</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h5 id="_4-设置-windows-端口转发" tabindex="-1"><a class="header-anchor" href="#_4-设置-windows-端口转发"><span><strong>4. 设置 windows 端口转发</strong></span></a></h5>
 <blockquote>
 <p>假如 <strong>公网IP</strong> 是 <strong>116.31.232.32</strong> ，端口为上文的 <strong>6727</strong></p>
 </blockquote>
 <p>运行如下命令设置转发</p>
-<div class="language-powershell ext-powershell line-numbers-mode"><pre v-pre class="language-powershell"><code><span class="token comment"># 若有域名，直接将地址改为域名即可</span>
-netsh interface portproxy add v4tov4 listenport=445 connectaddress=116<span class="token punctuation">.</span>31<span class="token punctuation">.</span>232<span class="token punctuation">.</span>32 connectport=6727
-
-<span class="token comment"># 查看</span>
-netsh interface portproxy show all
-
-<span class="token comment"># 删除端口转发</span>
-netsh interface portproxy delete v4tov4 listenport=445 connectaddress=116<span class="token punctuation">.</span>31<span class="token punctuation">.</span>232<span class="token punctuation">.</span>32 connectport=6727
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h5 id="_5-输入-127-0-0-1-即可访问" tabindex="-1"><a class="header-anchor" href="#_5-输入-127-0-0-1-即可访问" aria-hidden="true">#</a> <strong>5.输入\\127.0.0.1 即可访问</strong></h5>
-<Tabs :data='[{"title":"Windows"},{"title":"Linux"},{"title":"Mac端"},{"title":"手机端"}]'>
-<template #tab0="{ title, value, isActive }">
+<div class="language-powershell line-numbers-mode" data-highlighter="shiki" data-ext="powershell" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># 若有域名，直接将地址改为域名即可</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">netsh interface portproxy add v4tov4 listenport</span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2">=</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">445</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> connectaddress</span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2">=</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">116.31</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">232.32</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> connectport</span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2">=</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">6727</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># 查看</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">netsh interface portproxy show all</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># 删除端口转发</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">netsh interface portproxy delete v4tov4 listenport</span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2">=</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">445</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> connectaddress</span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2">=</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">116.31</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">232.32</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> connectport</span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2">=</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">6727</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h5 id="_5-输入-127-0-0-1-即可访问" tabindex="-1"><a class="header-anchor" href="#_5-输入-127-0-0-1-即可访问"><span><strong>5.输入\\127.0.0.1 即可访问</strong></span></a></h5>
+<Tabs id="609" :data='[{"id":"Windows"},{"id":"Linux"},{"id":"Mac端"},{"id":"手机端"}]'>
+<template #title0="{ value, isActive }">Windows</template>
+<template #title1="{ value, isActive }">Linux</template>
+<template #title2="{ value, isActive }">Mac端</template>
+<template #title3="{ value, isActive }">手机端</template>
+<template #tab0="{ value, isActive }">
 <p>直接 <strong><code v-pre>\\127.0.0.1\共享名</code></strong>  输入账户名，密码即可访问</p>
 </template>
-<template #tab1="{ title, value, isActive }">
-<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code>$ smbclient //116.31.232.32/myshare <span class="token parameter variable">-p</span> <span class="token number">6727</span> <span class="token parameter variable">-U</span> samba
-
-<span class="token comment"># 若不知道目录，则要检索</span>
-$ smbclient <span class="token parameter variable">-L</span> //116.31.232.32 <span class="token parameter variable">-p</span> <span class="token number">6727</span> <span class="token parameter variable">-U</span> samba`
-
-<span class="token comment"># 挂载卸载</span>
-$ <span class="token function">mount</span> <span class="token parameter variable">-t</span> cifs //116.31.232.32/myshare /samba/samba1/ <span class="token parameter variable">-o</span> <span class="token assign-left variable">username</span><span class="token operator">=</span>xxx,password<span class="token operator">=</span>xxx,port<span class="token operator">=</span><span class="token number">6727</span>
-$ <span class="token function">umount</span> /samba/samba1/
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></template>
-<template #tab2="{ title, value, isActive }">
-<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code>smb://用户名:密码@116.31.232.32:6727
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div></template>
-<template #tab3="{ title, value, isActive }">
-<p>手机可以用 <a href="https://www.zhihu.com/search?q=%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E5%99%A8&amp;search_source=Entity&amp;hybrid_search_source=Entity&amp;hybrid_search_extra=%7B%22sourceType%22%3A%22answer%22%2C%22sourceId%22%3A684689433%7D" target="_blank" rel="noopener noreferrer">ES 文件管理器<ExternalLinkIcon/></a> 查看 <strong>SMB</strong>，汉堡菜单-网络-局域网-新建-服务器填 <strong>[IP: 端口]</strong></p>
+<template #tab1="{ value, isActive }">
+<div class="language-shell line-numbers-mode" data-highlighter="shiki" data-ext="shell" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">$</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> smbclient</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> //116.31.232.32/myshare</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> -p</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> 6727</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> -U</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> samba</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># 若不知道目录，则要检索</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">$</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> smbclient</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> -L</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> //116.31.232.32</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> -p</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> 6727</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> -U</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> samba`</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># 挂载卸载</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">$</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> mount </span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">-t</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> cifs //116.31.232.32/myshare /samba/samba1/ </span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">-o</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> username=xxx,password=xxx,port=</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">6727</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">$</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> umount /samba/samba1/</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></template>
+<template #tab2="{ value, isActive }">
+<div class="language-shell line-numbers-mode" data-highlighter="shiki" data-ext="shell" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">smb://用户名:密码@116.31.232.32:6727</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div></template>
+<template #tab3="{ value, isActive }">
+<p>手机可以用 <a href="https://www.zhihu.com/search?q=%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E5%99%A8&amp;search_source=Entity&amp;hybrid_search_source=Entity&amp;hybrid_search_extra=%7B%22sourceType%22%3A%22answer%22%2C%22sourceId%22%3A684689433%7D" target="_blank" rel="noopener noreferrer">ES 文件管理器</a> 查看 <strong>SMB</strong>，汉堡菜单-网络-局域网-新建-服务器填 <strong>[IP: 端口]</strong></p>
 </template>
 </Tabs>
 </div></template>

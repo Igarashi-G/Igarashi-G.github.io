@@ -1,7 +1,7 @@
-<template><div><p><a href="https://www.samba.org/ftp/rsync/rsync.html" target="_blank" rel="noopener noreferrer">rsync 官方网站<ExternalLinkIcon/></a></p>
+<template><div><p><a href="https://www.samba.org/ftp/rsync/rsync.html" target="_blank" rel="noopener noreferrer">rsync 官方网站</a></p>
 <!-- more -->
-<h2 id="_1-说明" tabindex="-1"><a class="header-anchor" href="#_1-说明" aria-hidden="true">#</a> 1. 说明</h2>
-<h3 id="_1-1-用处" tabindex="-1"><a class="header-anchor" href="#_1-1-用处" aria-hidden="true">#</a> 1.1 用处</h3>
+<h2 id="_1-说明" tabindex="-1"><a class="header-anchor" href="#_1-说明"><span>1. 说明</span></a></h2>
+<h3 id="_1-1-用处" tabindex="-1"><a class="header-anchor" href="#_1-1-用处"><span>1.1 用处</span></a></h3>
 <p>实现 <strong>本地主机</strong> 和 <strong>远程主机</strong> 上的 <strong>文件同步（推拉）</strong> 、<strong>本地不同路径的文件同步</strong>，涉及了 源文件 和 目标文件 的概念，还涉及了以哪边文件为同步基准</p>
 <ul>
 <li>
@@ -14,7 +14,7 @@
 </blockquote>
 </li>
 </ul>
-<h3 id="_1-2-组成模式" tabindex="-1"><a class="header-anchor" href="#_1-2-组成模式" aria-hidden="true">#</a> 1.2 组成模式</h3>
+<h3 id="_1-2-组成模式" tabindex="-1"><a class="header-anchor" href="#_1-2-组成模式"><span>1.2 组成模式</span></a></h3>
 <p>在同步过程中必然会涉及到源和目标两文件之间 <strong>版本控制问题：</strong></p>
 <ul>
 <li>是否要删除源主机上没有但目标上多出来的文件？</li>
@@ -36,113 +36,113 @@
 <p>在文件确定要被同步后，在同步过程 <strong>发生之前要做哪些额外工作</strong>，如是否要先删除 源主机上没有 但 目标主机上有 的文件、是否要先备份 已存在的目标文件，是否要追踪链接文件等额外操作</p>
 </li>
 </ol>
-<h3 id="_1-3-工作方式" tabindex="-1"><a class="header-anchor" href="#_1-3-工作方式" aria-hidden="true">#</a> 1.3 工作方式</h3>
-<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code><span class="token comment"># 本地同步（管道sh通信）</span>
-Local:  <span class="token function">rsync</span> <span class="token punctuation">[</span>OPTION<span class="token punctuation">..</span>.<span class="token punctuation">]</span> SRC<span class="token punctuation">..</span>. <span class="token punctuation">[</span>DEST<span class="token punctuation">]</span>
-
-<span class="token comment"># 本地使用shell 和 远程主机通信（管道sh通信）</span>
-Access via remote shell:
-  Pull: <span class="token function">rsync</span> <span class="token punctuation">[</span>OPTION<span class="token punctuation">..</span>.<span class="token punctuation">]</span> <span class="token punctuation">[</span><span class="token environment constant">USER</span>@<span class="token punctuation">]</span>HOST:SRC<span class="token punctuation">..</span>. <span class="token punctuation">[</span>DEST<span class="token punctuation">]</span>
-  Push: <span class="token function">rsync</span> <span class="token punctuation">[</span>OPTION<span class="token punctuation">..</span>.<span class="token punctuation">]</span> SRC<span class="token punctuation">..</span>. <span class="token punctuation">[</span><span class="token environment constant">USER</span>@<span class="token punctuation">]</span>HOST:DEST
-
-<span class="token comment"># 本地主机通过网络套接字 连接 远程主机上的rsync daemon（远程需 rsync 起端口）</span>
-Access via <span class="token function">rsync</span> daemon:
-  Pull: <span class="token function">rsync</span> <span class="token punctuation">[</span>OPTION<span class="token punctuation">..</span>.<span class="token punctuation">]</span> <span class="token punctuation">[</span><span class="token environment constant">USER</span>@<span class="token punctuation">]</span>HOST::SRC<span class="token punctuation">..</span>. <span class="token punctuation">[</span>DEST<span class="token punctuation">]</span>
-        <span class="token function">rsync</span> <span class="token punctuation">[</span>OPTION<span class="token punctuation">..</span>.<span class="token punctuation">]</span> rsync://<span class="token punctuation">[</span><span class="token environment constant">USER</span>@<span class="token punctuation">]</span>HOST<span class="token punctuation">[</span>:PORT<span class="token punctuation">]</span>/SRC<span class="token punctuation">..</span>. <span class="token punctuation">[</span>DEST<span class="token punctuation">]</span>
-  Push: <span class="token function">rsync</span> <span class="token punctuation">[</span>OPTION<span class="token punctuation">..</span>.<span class="token punctuation">]</span> SRC<span class="token punctuation">..</span>. <span class="token punctuation">[</span><span class="token environment constant">USER</span>@<span class="token punctuation">]</span>HOST::DEST
-        <span class="token function">rsync</span> <span class="token punctuation">[</span>OPTION<span class="token punctuation">..</span>.<span class="token punctuation">]</span> SRC<span class="token punctuation">..</span>. rsync://<span class="token punctuation">[</span><span class="token environment constant">USER</span>@<span class="token punctuation">]</span>HOST<span class="token punctuation">[</span>:PORT<span class="token punctuation">]</span>/DEST
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>第一个路径参数 <strong>一定是源文件路径</strong>，即作为同步基准的一方，可 <strong>指定多个</strong></p>
+<h3 id="_1-3-工作方式" tabindex="-1"><a class="header-anchor" href="#_1-3-工作方式"><span>1.3 工作方式</span></a></h3>
+<div class="language-shell line-numbers-mode" data-highlighter="shiki" data-ext="shell" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># 本地同步（管道sh通信）</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">Local:</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">  rsync</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> [OPTION...] SRC... [DEST]</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># 本地使用shell 和 远程主机通信（管道sh通信）</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">Access</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> via</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> remote</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> shell:</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">  Pull:</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> rsync</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> [OPTION...] [USER@]HOST:SRC... [DEST]</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">  Push:</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> rsync</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> [OPTION...] SRC... [USER@]HOST:DEST</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># 本地主机通过网络套接字 连接 远程主机上的rsync daemon（远程需 rsync 起端口）</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">Access</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> via</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> rsync</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> daemon:</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">  Pull:</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> rsync</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> [OPTION...] [USER@]HOST::SRC... [DEST]</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">        rsync</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> [OPTION...] rsync://[USER@]HOST[:PORT]/SRC... [DEST]</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">  Push:</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> rsync</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> [OPTION...] SRC... [USER@]HOST::DEST</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">        rsync</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> [OPTION...] SRC... rsync://[USER@]HOST[:PORT]/DEST</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>第一个路径参数 <strong>一定是源文件路径</strong>，即作为同步基准的一方，可 <strong>指定多个</strong></p>
 <p>最后一个路径参数 <strong>是目标文件路径</strong>，也就是被同步的，可本地、远程</p>
 <p>若只有一个路径，等效于 <code v-pre>ls -l</code></p>
-<h2 id="_2-基础使用" tabindex="-1"><a class="header-anchor" href="#_2-基础使用" aria-hidden="true">#</a> 2. 基础使用</h2>
-<h3 id="_2-1-简单示例" tabindex="-1"><a class="header-anchor" href="#_2-1-简单示例" aria-hidden="true">#</a> 2.1 简单示例</h3>
-<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code><span class="token comment"># 在本地同步</span>
-$ <span class="token function">rsync</span> <span class="token parameter variable">-r</span> /etc/fstab /tmp                
-
-<span class="token comment"># 将本地/etc 目录 拷远程 /tmp 下，保远程 /tmp 和本地 /etc 同步</span>
-$ <span class="token function">rsync</span> <span class="token parameter variable">-r</span> /etc <span class="token number">172.16</span>.10.5:/tmp       
-
-<span class="token comment"># 将远程 /etc 目录 拷本地 /tmp 下，保本地 /tmp 和远程 /etc 同步</span>
-$ <span class="token function">rsync</span> <span class="token parameter variable">-r</span> <span class="token number">172.16</span>.10.5:/etc /tmp       
-
-<span class="token comment"># 列出 本地 /etc/ 目录下的文件列表</span>
-$ <span class="token function">rsync</span> /etc/                          
-
-<span class="token comment"># 列出 远程主机上 /tmp/ 目录下的文件列表</span>
-$ <span class="token function">rsync</span> <span class="token number">172.16</span>.10.5:/tmp/              
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="custom-container info">
-<p class="custom-container-title">关于尾斜线</p>
-<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code>$ <span class="token function">rsync</span> <span class="token parameter variable">-a</span> /etc/ /tmp
-$ <span class="token function">rsync</span> <span class="token parameter variable">-a</span> /etc /tmp
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div></div></div><p>不带尾斜线是包含整个目录，即 <strong>etc</strong> 本身</p>
+<h2 id="_2-基础使用" tabindex="-1"><a class="header-anchor" href="#_2-基础使用"><span>2. 基础使用</span></a></h2>
+<h3 id="_2-1-简单示例" tabindex="-1"><a class="header-anchor" href="#_2-1-简单示例"><span>2.1 简单示例</span></a></h3>
+<div class="language-shell line-numbers-mode" data-highlighter="shiki" data-ext="shell" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># 在本地同步</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">$</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> rsync</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> -r</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> /etc/fstab</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> /tmp</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">                </span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># 将本地/etc 目录 拷远程 /tmp 下，保远程 /tmp 和本地 /etc 同步</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">$</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> rsync</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> -r</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> /etc</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> 172.16.10.5:/tmp</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">       </span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># 将远程 /etc 目录 拷本地 /tmp 下，保本地 /tmp 和远程 /etc 同步</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">$</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> rsync</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> -r</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> 172.16.10.5:/etc</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> /tmp</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">       </span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># 列出 本地 /etc/ 目录下的文件列表</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">$</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> rsync</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> /etc/</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">                          </span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># 列出 远程主机上 /tmp/ 目录下的文件列表</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">$</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> rsync</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> 172.16.10.5:/tmp/</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="hint-container info">
+<p class="hint-container-title">关于尾斜线</p>
+<div class="language-sh line-numbers-mode" data-highlighter="shiki" data-ext="sh" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">$</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> rsync</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> -a</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> /etc/</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> /tmp</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">$</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> rsync</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> -a</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> /etc</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> /tmp</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div></div></div><p>不带尾斜线是包含整个目录，即 <strong>etc</strong> 本身</p>
 <p>带尾斜线是只动 <strong>/etc</strong> 目录下的文件</p>
 </div>
-<h2 id="_2-2-选项说明" tabindex="-1"><a class="header-anchor" href="#_2-2-选项说明" aria-hidden="true">#</a> 2.2 选项说明</h2>
-<p><a href="https://www.cnblogs.com/f-ck-need-u/p/7221713.html" target="_blank" rel="noopener noreferrer">翻译手册<ExternalLinkIcon/></a></p>
-<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code>-v：显示rsync过程中详细信息。可以使用<span class="token string">"-vvvv"</span>获取更详细信息。
--P：显示文件传输的进度信息。<span class="token punctuation">(</span>实际上<span class="token string">"-P"</span><span class="token operator">=</span><span class="token string">"--partial --progress"</span>，其中的<span class="token string">"--progress"</span>才是显示进度信息的<span class="token punctuation">)</span>。
-<span class="token parameter variable">-n</span> --dry-run  ：仅测试传输，而不实际传输。常和<span class="token string">"-vvvv"</span>配合使用来查看rsync是如何工作的。
-<span class="token parameter variable">-a</span> <span class="token parameter variable">--archive</span>  ：归档模式，表示递归传输并保持文件属性。等同于<span class="token string">"-rtopgDl"</span>。
-<span class="token parameter variable">-r</span> --recursive：递归到目录中去。
-<span class="token parameter variable">-t</span> --times：保持mtime属性。
-<span class="token parameter variable">-o</span> --owner：保持owner属性<span class="token punctuation">(</span>属主<span class="token punctuation">)</span>。
-<span class="token parameter variable">-g</span> --group：保持group属性<span class="token punctuation">(</span>属组<span class="token punctuation">)</span>。
-<span class="token parameter variable">-p</span> --perms：保持perms属性<span class="token punctuation">(</span>权限，不包括特殊权限<span class="token punctuation">)</span>。
-<span class="token parameter variable">-D</span>        ：是<span class="token string">"--device --specials"</span>选项的组合，即也拷贝设备文件和特殊文件。
-<span class="token parameter variable">-l</span> --links：如果文件是软链接文件，则拷贝软链接本身而非软链接所指向的对象。
-<span class="token parameter variable">-z</span>        ：传输时进行压缩提高效率。
-<span class="token parameter variable">-R</span> --relative：使用相对路径。意味着将命令行中指定的全路径而非路径最尾部的文件名发送给服务端，包括它们的属性。用法见下文示例。
---size-only ：默认算法是检查文件大小和mtime不同的文件，使用此选项将只检查文件大小。
-<span class="token parameter variable">-u</span> <span class="token parameter variable">--update</span> ：仅在源mtime比目标已存在文件的mtime新时才拷贝。注意，该选项是接收端判断的，不会影响删除行为。
-<span class="token parameter variable">-d</span> <span class="token parameter variable">--dirs</span>   ：以不递归的方式拷贝目录本身。默认递归时，如果源为<span class="token string">"dir1/file1"</span>，则不会拷贝dir1目录，使用该选项将拷贝dir1但不拷贝file1。
---max-size  ：限制rsync传输的最大文件大小。可以使用单位后缀，还可以是一个小数值<span class="token punctuation">(</span>例如：<span class="token string">"--max-size=1.5m"</span><span class="token punctuation">)</span>
---min-size  ：限制rsync传输的最小文件大小。这可以用于禁止传输小文件或那些垃圾文件。
-<span class="token parameter variable">--exclude</span>   ：指定排除规则来排除不需要传输的文件。
-<span class="token parameter variable">--delete</span>    ：以SRC为主，对DEST进行同步。多则删之，少则补之。注意<span class="token string">"--delete"</span>是在接收端执行的，所以它是在
-            ：exclude/include规则生效之后才执行的。
-<span class="token parameter variable">-b</span> <span class="token parameter variable">--backup</span> ：对目标上已存在的文件做一个备份，备份的文件名后默认使用<span class="token string">"~"</span>做后缀。
---backup-dir：指定备份文件的保存路径。不指定时默认和待备份文件保存在同一目录下。
-<span class="token parameter variable">-e</span>          ：指定所要使用的远程shell程序，默认为ssh。
-<span class="token parameter variable">--port</span>      ：连接daemon时使用的端口号，默认为873端口。
---password-file：daemon模式时的密码文件，可以从中读取密码实现非交互式。注意，这不是远程shell认证的密码，而是rsync模块认证的密码。
-<span class="token parameter variable">-W</span> --whole-file：rsync将不再使用增量传输，而是全量传输。在网络带宽高于磁盘带宽时，该选项比增量传输更高效。
-<span class="token parameter variable">--existing</span>  ：要求只更新目标端已存在的文件，目标端还不存在的文件不传输。注意，使用相对路径时如果上层目录不存在也不会传输。
---ignore-existing：要求只更新目标端不存在的文件。和<span class="token string">"--existing"</span>结合使用有特殊功能，见下文示例。
---remove-source-files：要求删除源端已经成功传输的文件。
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>最常用的选项组合是 <code v-pre>&quot;avz&quot;</code>，即压缩和显示部分信息，并以归档模式传输</p>
-<div class="custom-container warning">
-<p class="custom-container-title">注意</p>
+<h2 id="_2-2-选项说明" tabindex="-1"><a class="header-anchor" href="#_2-2-选项说明"><span>2.2 选项说明</span></a></h2>
+<p><a href="https://www.cnblogs.com/f-ck-need-u/p/7221713.html" target="_blank" rel="noopener noreferrer">翻译手册</a></p>
+<div class="language-shell line-numbers-mode" data-highlighter="shiki" data-ext="shell" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">-v：显示rsync过程中详细信息。可以使用</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">"-vvvv"</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">获取更详细信息。</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">-P：显示文件传输的进度信息。(实际上</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">"-P"</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">=</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">"--partial --progress"</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">，其中的</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">"--progress"</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">才是显示进度信息的</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">)。</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">-n</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> --dry-run</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">  ：仅测试传输，而不实际传输。常和"-vvvv"配合使用来查看rsync是如何工作的。</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">-a</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> --archive</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">  ：归档模式，表示递归传输并保持文件属性。等同于"-rtopgDl"。</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">-r</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> --recursive：递归到目录中去。</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">-t</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> --times：保持mtime属性。</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">-o</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> --owner：保持owner属性(属主</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">)。</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">-g</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> --group：保持group属性(属组</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">)。</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">-p</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> --perms：保持perms属性(权限，不包括特殊权限</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">)。</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">-D</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">        ：是"--device --specials"选项的组合，即也拷贝设备文件和特殊文件。</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">-l</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> --links：如果文件是软链接文件，则拷贝软链接本身而非软链接所指向的对象。</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">-z</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">        ：传输时进行压缩提高效率。</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">-R</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> --relative：使用相对路径。意味着将命令行中指定的全路径而非路径最尾部的文件名发送给服务端，包括它们的属性。用法见下文示例。</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">--size-only</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> ：默认算法是检查文件大小和mtime不同的文件，使用此选项将只检查文件大小。</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">-u</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> --update</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> ：仅在源mtime比目标已存在文件的mtime新时才拷贝。注意，该选项是接收端判断的，不会影响删除行为。</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">-d</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> --dirs</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">   ：以不递归的方式拷贝目录本身。默认递归时，如果源为"dir1/file1"，则不会拷贝dir1目录，使用该选项将拷贝dir1但不拷贝file1。</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">--max-size</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">  ：限制rsync传输的最大文件大小。可以使用单位后缀，还可以是一个小数值</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">例如：</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">"--max-size=1.5m"</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">)</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">--min-size</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">  ：限制rsync传输的最小文件大小。这可以用于禁止传输小文件或那些垃圾文件。</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">--exclude</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">   ：指定排除规则来排除不需要传输的文件。</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">--delete</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">    ：以SRC为主，对DEST进行同步。多则删之，少则补之。注意"--delete"是在接收端执行的，所以它是在</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">            ：exclude/include规则生效之后才执行的。</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">-b</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> --backup</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> ：对目标上已存在的文件做一个备份，备份的文件名后默认使用"~"做后缀。</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">--backup-dir：指定备份文件的保存路径。不指定时默认和待备份文件保存在同一目录下。</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">-e</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">          ：指定所要使用的远程shell程序，默认为ssh。</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">--port</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">      ：连接daemon时使用的端口号，默认为873端口。</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">--password-file：daemon模式时的密码文件，可以从中读取密码实现非交互式。注意，这不是远程shell认证的密码，而是rsync模块认证的密码。</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">-W</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> --whole-file：rsync将不再使用增量传输，而是全量传输。在网络带宽高于磁盘带宽时，该选项比增量传输更高效。</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">--existing</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">  ：要求只更新目标端已存在的文件，目标端还不存在的文件不传输。注意，使用相对路径时如果上层目录不存在也不会传输。</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">--ignore-existing：要求只更新目标端不存在的文件。和</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">"--existing"</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">结合使用有特殊功能，见下文示例。</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">--remove-source-files：要求删除源端已经成功传输的文件。</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>最常用的选项组合是 <code v-pre>&quot;avz&quot;</code>，即压缩和显示部分信息，并以归档模式传输</p>
+<div class="hint-container warning">
+<p class="hint-container-title">注意</p>
 <p>强烈建议任何时候都加上<code v-pre>&quot;-t&quot;</code>，否则目标文件 <strong>mtime</strong> 会设置为系统时间，导致下次更新检查出 **mtime ** 不同从而导致增量传输无效</p>
 </div>
-<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code><span class="token assign-left variable">BASE_ISO_PATH</span><span class="token operator">=</span><span class="token string">"/media/cdrom"</span>
-<span class="token assign-left variable">ISO_BUILD_PATH</span><span class="token operator">=</span><span class="token string">"/tmp/iso-build"</span>
-
-<span class="token comment"># 以 /media/cdrom 为源，增量（更新）同步到 /tmp/iso-build 下，用归档模式传输</span>
-$ <span class="token function">rsync</span> <span class="token parameter variable">-au</span> <span class="token parameter variable">--exclude</span><span class="token operator">=</span>repodata <span class="token parameter variable">--exclude</span><span class="token operator">=</span>Packages <span class="token string">"<span class="token variable">${BASE_ISO_PATH}</span>/"</span> <span class="token string">"<span class="token variable">${ISO_BUILD_PATH}</span>"</span>
-
-<span class="token comment"># 同步 并 清空无效的 release 文件</span>
-$ <span class="token function">rsync</span> <span class="token parameter variable">-au</span> <span class="token parameter variable">--delete</span> <span class="token string">"release"</span> <span class="token string">"<span class="token variable">${ISO_BUILD_PATH}</span>"</span> 
-
-<span class="token comment"># 将 /var/log/anaconda 下的文件为源，备份到 /tmp 目录下</span>
-$ <span class="token function">rsync</span> <span class="token parameter variable">-R</span> <span class="token parameter variable">-r</span> <span class="token parameter variable">--backup</span> /var/log/anaconda /tmp
-`若不使用 <span class="token string">"--suffix"</span> 指定后缀，备份文件默认使用 <span class="token string">"~"</span> 做后缀
-
-<span class="token comment"># 可以使用 "--backup-dir" 指定备份文件保存路径，但要求保存路径必须存在</span>
-$ <span class="token function">mkdir</span> /tmp/log_back
-$ <span class="token function">rsync</span> <span class="token parameter variable">-R</span> <span class="token parameter variable">-r</span> <span class="token parameter variable">--backup</span> --backup-dir<span class="token operator">=</span>/tmp/log_back /var/log/anaconda /tmp
-$ tree /tmp/log_back/
-    /tmp/log_back/
-    └── log
-        └── anaconda
-            ├── anaconda.log
-            ├── ifcfg.log
-            ├── journal.log
-            ├── ks-script-1uLekR.log
-            ├── ks-script-iGpl4q.log
-            ├── packaging.log
-            ├── program.log
-            ├── storage.log
-            └── syslog
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></div></template>
+<div class="language-shell line-numbers-mode" data-highlighter="shiki" data-ext="shell" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">BASE_ISO_PATH</span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2">=</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">"/media/cdrom"</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">ISO_BUILD_PATH</span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2">=</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">"/tmp/iso-build"</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># 以 /media/cdrom 为源，增量（更新）同步到 /tmp/iso-build 下，用归档模式传输</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">$</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> rsync</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> -au</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> --exclude=repodata</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> --exclude=Packages</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> "</span><span style="--shiki-light:#E45649;--shiki-dark:#98C379">${</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">BASE_ISO_PATH</span><span style="--shiki-light:#E45649;--shiki-dark:#98C379">}</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">/"</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> "</span><span style="--shiki-light:#E45649;--shiki-dark:#98C379">${</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">ISO_BUILD_PATH</span><span style="--shiki-light:#E45649;--shiki-dark:#98C379">}</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">"</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># 同步 并 清空无效的 release 文件</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">$</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> rsync</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> -au</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> --delete</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> "release"</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> "</span><span style="--shiki-light:#E45649;--shiki-dark:#98C379">${</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">ISO_BUILD_PATH</span><span style="--shiki-light:#E45649;--shiki-dark:#98C379">}</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">"</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> </span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># 将 /var/log/anaconda 下的文件为源，备份到 /tmp 目录下</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">$</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> rsync</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> -R</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> -r</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> --backup</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> /var/log/anaconda</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> /tmp</span></span>
+<span class="line"><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">`</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">若不使用</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> "--suffix" 指定后缀，备份文件默认使用 "~" 做后缀</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># 可以使用 "--backup-dir" 指定备份文件保存路径，但要求保存路径必须存在</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">$</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> mkdir /tmp/log_back</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">$</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> rsync </span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">-R</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> -r</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> --backup</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> --backup-dir=/tmp/log_back</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> /var/log/anaconda /tmp</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">$</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> tree /tmp/log_back/</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">    /tmp/log_back/</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">    └──</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> log</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">        └──</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> anaconda</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">            ├──</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> anaconda.log</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">            ├──</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> ifcfg.log</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">            ├──</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> journal.log</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">            ├──</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> ks-script-1uLekR.log</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">            ├──</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> ks-script-iGpl4q.log</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">            ├──</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> packaging.log</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">            ├──</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> program.log</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">            ├──</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> storage.log</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">            └──</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> syslog</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></div></template>
 
 
