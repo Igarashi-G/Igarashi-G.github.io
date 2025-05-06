@@ -1,64 +1,145 @@
 <template><div><h1 id="redis" tabindex="-1"><a class="header-anchor" href="#redis"><span>Redis</span></a></h1>
-<p>一、缓存数据库介绍：<br>
-WEB2.0:<br>
-UGC：user generate content。用户不再被动的接收信息，而是自己产生信息<br>
-SNS：social network society 社交网络，如 facebook、推特、wechat 等</p>
-<pre><code>NoSQL(NoSQL = Not Only SQL )，意即&quot;不仅仅是SQL&quot;，泛指非关系型的数据库,随着互联网web2.0网站的兴起，传统的关系数据库在应付web2.0网站，
-特别是超大规模和高并发的SNS类型的web2.0纯动态网站已经显得力不从心，暴露了很多难以克服的问题，而非关系型的数据库则由于其本身的特点得到了
-非常迅速的发展。NoSQL数据库的产生就是为了解决大规模数据集合多重数据种类带来的挑战，尤其是大数据应用难题。
-
-NoSQL数据库的四大分类：
-    1.键值(Key-Value)存储数据库:
-        这一类数据库主要会使用到一个哈希表，这个表中有一个特定的键和一个指针指向特定的数据。Key/value模型对于IT系统来说的优势在于简单、
-        易部署。但是如果DBA只对部分值进行查询或更新的时候，Key/value就显得效率低下了。[3]
-        举例如：Tokyo Cabinet/Tyrant, Redis, Voldemort, Oracle BDB.
-
-    2.列存储数据库：(海量、大数据)
-        这部分数据库通常是用来应对分布式存储的海量数据。键仍然存在，但是它们的特点是指向了多个列。这些列是由列家族来安排的。
-        如：Cassandra, HBase（大数据开发经常用，做数据分析）, Riak.
-
-    3.文档型数据库:
-        文档型数据库的灵感是来自于Lotus Notes办公软件的，而且它同第一种键值存储相类似。该类型的数据模型是版本化的文档，半结构化的
-        文档以特定的格式存储，比如JSON。文档型数据库可 以看作是键值数据库的升级版，允许之间嵌套键值。而且文档型数据库比键值数据库的
-        查询效率更高。如：CouchDB, MongoDb. 国内也有文档型数据库SequoiaDB，已经开源。
-
-    4.图形(Graph)数据库:
-        图形结构的数据库同其他行列以及刚性结构的SQL数据库不同，它是使用灵活的图形模型，并且能够扩展到多个服务器上。
-        NoSQL数据库没有标准的查询语言(SQL)，因此进行数据库查询需要制定数据模型。许多NoSQL数据库都有REST式的数据接口或者查询API。
-        如：Neo4J, InfoGrid, Infinite Graph.
-
-    因此，我们总结NoSQL数据库在以下的这几种情况下比较适用：
-        1、数据模型比较简单；
-        2、需要灵活性更强的IT系统；
-        3、对数据库性能要求较高；
-        4、不需要高度的数据一致性；
-        5、对于给定key，比较容易映射复杂值的环境。
-
-键值（key-value）的：（redis）
-    典型应用场景：内容缓存，主要用于处理大量数据的高访问负载，也用于一些日志系统等等。
-    数据模型：Key 指向 Value 的键值对，通常用hash table来实现
-    优点：查找速度快
-    缺点：数据无结构化，通常只被当作字符串或者二进制数据
-
-列存储数据库：
-    典型应用场景	：分布式的文件系统
-    数据模型：以列簇式存储，将同一列数据存在一起
-    优点：查找速度快，可扩展性强，更容易进行分布式扩展
-    缺点：功能相对局限
-
-文档型数据库：
-    典型应用场景	：Web应用（与Key-Value类似，Value是结构化的，不同的是数据库能够了解Value的内容）
-    数据模型：Key-Value对应的键值对，Value为结构化数据
-    优点：数据结构要求不严格，表结构可变，不需要像关系型数据库一样需要预先定义表结构
-    缺点：查询性能不高，而且缺乏统一的查询语法。
-
-图形(Graph)数据库：
-    典型应用场景	：社交网络，推荐系统等。专注于构建关系图谱
-    数据模型：图结构
-    优点：利用图结构相关算法。比如最短路径寻址，N度关系查找等
-    缺点：很多时候需要对整个图做计算才能得出需要的信息，而且这种结构不太好做分布式的集群方案。
-</code></pre>
-<p>二、redis：<br>
+<h1 id="redis-技术文档" tabindex="-1"><a class="header-anchor" href="#redis-技术文档"><span>Redis 技术文档</span></a></h1>
+<h2 id="一、缓存数据库概述" tabindex="-1"><a class="header-anchor" href="#一、缓存数据库概述"><span>一、缓存数据库概述</span></a></h2>
+<h3 id="_1-1-web2-0时代背景" tabindex="-1"><a class="header-anchor" href="#_1-1-web2-0时代背景"><span>1.1 Web2.0时代背景</span></a></h3>
+<ul>
+<li><strong>UGC (User Generate Content)</strong>：用户由被动接收转为主动产生内容</li>
+<li><strong>SNS (Social Network Society)</strong>：社交网络的兴起，如Facebook、Twitter、WeChat等</li>
+</ul>
+<h3 id="_1-2-nosql数据库" tabindex="-1"><a class="header-anchor" href="#_1-2-nosql数据库"><span>1.2 NoSQL数据库</span></a></h3>
+<p>NoSQL（Not Only SQL）是非关系型数据库的统称，主要用于解决Web2.0时代带来的大规模数据处理挑战。</p>
+<h4 id="_1-2-1-四大分类" tabindex="-1"><a class="header-anchor" href="#_1-2-1-四大分类"><span>1.2.1 四大分类</span></a></h4>
+<ol>
+<li>
+<p><strong>键值(Key-Value)存储</strong></p>
+<ul>
+<li>特点：使用哈希表，具有特定键和指针</li>
+<li>优势：简单、易部署</li>
+<li>代表产品：Redis, Tokyo Cabinet/Tyrant, Voldemort, Oracle BDB</li>
+</ul>
+</li>
+<li>
+<p><strong>列存储数据库</strong></p>
+<ul>
+<li>应用：分布式海量数据存储</li>
+<li>特点：面向列的存储和检索</li>
+<li>代表产品：Cassandra, HBase, Riak</li>
+</ul>
+</li>
+<li>
+<p><strong>文档型数据库</strong></p>
+<ul>
+<li>特点：类似键值存储，但支持嵌套键值对</li>
+<li>数据格式：JSON等半结构化文档</li>
+<li>代表产品：MongoDB, CouchDB, SequoiaDB</li>
+</ul>
+</li>
+<li>
+<p><strong>图形(Graph)数据库</strong></p>
+<ul>
+<li>特点：使用灵活的图形模型</li>
+<li>应用：社交网络关系存储</li>
+<li>代表产品：Neo4J, InfoGrid, Infinite Graph</li>
+</ul>
+</li>
+</ol>
+<h4 id="_1-2-2-适用场景" tabindex="-1"><a class="header-anchor" href="#_1-2-2-适用场景"><span>1.2.2 适用场景</span></a></h4>
+<ul>
+<li>数据模型简单</li>
+<li>需要更灵活的系统架构</li>
+<li>高性能要求</li>
+<li>数据一致性要求不高</li>
+<li>易于映射复杂值的环境</li>
+</ul>
+<h2 id="二、redis基础" tabindex="-1"><a class="header-anchor" href="#二、redis基础"><span>二、Redis基础</span></a></h2>
+<h3 id="_2-1-简介" tabindex="-1"><a class="header-anchor" href="#_2-1-简介"><span>2.1 简介</span></a></h3>
+<p>Redis是主流的key-value型NoSQL数据库，支持多种数据类型：</p>
+<ul>
+<li>String（字符串）</li>
+<li>List（列表）</li>
+<li>Set（集合）</li>
+<li>Sorted Set（有序集合）</li>
+<li>Hash（哈希）</li>
+</ul>
+<h3 id="_2-2-主要特性" tabindex="-1"><a class="header-anchor" href="#_2-2-主要特性"><span>2.2 主要特性</span></a></h3>
+<ol>
+<li>
+<p><strong>高性能</strong></p>
+<ul>
+<li>每秒11万次写入</li>
+<li>每秒8.1万次读取</li>
+<li>基于哈希表实现的高效查询</li>
+</ul>
+</li>
+<li>
+<p><strong>数据类型丰富</strong></p>
+<ul>
+<li>支持多种数据结构</li>
+<li>便于解决不同应用场景</li>
+</ul>
+</li>
+<li>
+<p><strong>原子性操作</strong></p>
+<ul>
+<li>所有操作都是原子性的</li>
+<li>保证数据一致性</li>
+</ul>
+</li>
+<li>
+<p><strong>多功能工具</strong></p>
+<ul>
+<li>缓存</li>
+<li>消息队列</li>
+<li>会话管理</li>
+<li>计数器</li>
+</ul>
+</li>
+</ol>
+<h3 id="_2-3-安装配置" tabindex="-1"><a class="header-anchor" href="#_2-3-安装配置"><span>2.3 安装配置</span></a></h3>
+<div class="language-bash line-numbers-mode" data-highlighter="shiki" data-ext="bash" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># Ubuntu安装</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">sudo</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> apt-get</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> update</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">sudo</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> apt-get</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> install</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> redis-server</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># 启动服务</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">redis-server</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># 客户端连接</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">redis-cli</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># 测试连接</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">redis</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> 127.0.0.1:637</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">9> </span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">ping</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">PONG</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_2-4-python环境配置" tabindex="-1"><a class="header-anchor" href="#_2-4-python环境配置"><span>2.4 Python环境配置</span></a></h3>
+<div class="language-bash line-numbers-mode" data-highlighter="shiki" data-ext="bash" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># 方式1：pip安装</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">sudo</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> pip</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> install</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> redis</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># 方式2：easy_install</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">sudo</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> easy_install</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> redis</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># 方式3：源码安装</span></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># 详见：https://github.com/WoLpH/redis-py</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="三、redis数据类型操作" tabindex="-1"><a class="header-anchor" href="#三、redis数据类型操作"><span>三、Redis数据类型操作</span></a></h2>
+<h3 id="_3-1-string操作" tabindex="-1"><a class="header-anchor" href="#_3-1-string操作"><span>3.1 String操作</span></a></h3>
+<div class="language-bash line-numbers-mode" data-highlighter="shiki" data-ext="bash" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># 基本操作</span></span>
+<span class="line"><span style="--shiki-light:#0184BC;--shiki-dark:#56B6C2">set</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> name</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> igarashi</span><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">          # 设置值</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">get</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> name</span><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">                   # 获取值</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">keys</span><span style="--shiki-light:#E45649;--shiki-dark:#E5C07B"> *</span><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">                     # 查看所有键</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># 高级操作</span></span>
+<span class="line"><span style="--shiki-light:#0184BC;--shiki-dark:#56B6C2">set</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> name</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> igarashi</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> ex</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> 3</span><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">     # 设置3秒过期</span></span>
+<span class="line"><span style="--shiki-light:#0184BC;--shiki-dark:#56B6C2">set</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> name</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> qwerty</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> nx</span><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">         # 不存在才创建</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">mset</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> n1</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> ig</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> n2</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> ara</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> n3</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> shi</span><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">  # 批量设置</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">mget</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> n1</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> n2</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> n3</span><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">             # 批量获取</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_3-2-hash操作" tabindex="-1"><a class="header-anchor" href="#_3-2-hash操作"><span>3.2 Hash操作</span></a></h3>
+<div class="language-bash line-numbers-mode" data-highlighter="shiki" data-ext="bash" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># 单字段操作</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">hset</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> info</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> name</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> igarashi</span><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">    # 设置单个字段</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">hget</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> info</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> name</span><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">            # 获取单个字段</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># 多字段操作</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">hmset</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> info</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> age</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> 22</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> id</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> huaq2233</span><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">  # 批量设置</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">hmget</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> info</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> name</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> age</span><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">           # 批量获取</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">hgetall</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> info</span><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">                 # 获取所有字段和值</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>二、redis：<br>
 介绍：<br>
 redis 是业界主流的 key-value nosql 数据库之一。和 Memcached 类似，它支持存储的 value 类型相对更多，包括 string(字符串)、list(列表)、<br>
 set(集合)、zset(sorted set --有序集合)和 hash（哈希类型）。这些数据类型都支持 push/pop、add/remove 及取交集并集和差集及更丰富的操作，<br>
