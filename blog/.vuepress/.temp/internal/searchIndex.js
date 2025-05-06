@@ -555,285 +555,6 @@ export const SEARCH_INDEX = [
     "extraFields": []
   },
   {
-    "title": "asyncio Recipes",
-    "headers": [],
-    "path": "/book/python/asyncio_recipes.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "DevOps in Python",
-    "headers": [],
-    "path": "/book/python/devops_in_python.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "Fluent Python",
-    "headers": [],
-    "path": "/book/python/fluent_python.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "Python书籍",
-    "headers": [
-      {
-        "level": 2,
-        "title": "目录",
-        "slug": "目录",
-        "link": "#目录",
-        "children": []
-      }
-    ],
-    "path": "/book/python/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "Python Cookbook",
-    "headers": [],
-    "path": "/book/python/python_cookbook.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "Python源码剖析",
-    "headers": [],
-    "path": "/book/python/python%E6%BA%90%E7%A0%81%E5%89%96%E6%9E%90.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "Using Asyncio in Python",
-    "headers": [],
-    "path": "/book/python/use_asyncio.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "心理学书籍",
-    "headers": [
-      {
-        "level": 2,
-        "title": "目录",
-        "slug": "目录",
-        "link": "#目录",
-        "children": []
-      }
-    ],
-    "path": "/book/%E5%BF%83%E7%90%86%E5%AD%A6/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "亚动机与人格",
-    "headers": [],
-    "path": "/book/%E5%BF%83%E7%90%86%E5%AD%A6/%E4%BA%9A%E5%8A%A8%E6%9C%BA%E4%B8%8E%E4%BA%BA%E6%A0%BC.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "人的潜能和价值",
-    "headers": [],
-    "path": "/book/%E5%BF%83%E7%90%86%E5%AD%A6/%E4%BA%BA%E7%9A%84%E6%BD%9C%E8%83%BD%E5%92%8C%E4%BB%B7%E5%80%BC.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "好人是如何变成恶魔的",
-    "headers": [],
-    "path": "/book/%E5%BF%83%E7%90%86%E5%AD%A6/%E5%A5%BD%E4%BA%BA%E6%98%AF%E5%A6%82%E4%BD%95%E5%8F%98%E6%88%90%E6%81%B6%E9%AD%94%E7%9A%84.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "影响力",
-    "headers": [],
-    "path": "/book/%E5%BF%83%E7%90%86%E5%AD%A6/%E5%BD%B1%E5%93%8D%E5%8A%9B.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "性心理学",
-    "headers": [],
-    "path": "/book/%E5%BF%83%E7%90%86%E5%AD%A6/%E6%80%A7%E5%BF%83%E7%90%86%E5%AD%A6.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "洗脑心理学",
-    "headers": [],
-    "path": "/book/%E5%BF%83%E7%90%86%E5%AD%A6/%E6%B4%97%E8%84%91%E5%BF%83%E7%90%86%E5%AD%A6.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "进化心理学",
-    "headers": [],
-    "path": "/book/%E5%BF%83%E7%90%86%E5%AD%A6/%E8%BF%9B%E5%8C%96%E5%BF%83%E7%90%86%E5%AD%A6.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "CODE -- 编码:隐匿在计算机背后的语言",
-    "headers": [],
-    "path": "/book/%E6%8A%80%E6%9C%AF/CODE.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "技术书籍",
-    "headers": [
-      {
-        "level": 2,
-        "title": "目录",
-        "slug": "目录",
-        "link": "#目录",
-        "children": []
-      }
-    ],
-    "path": "/book/%E6%8A%80%E6%9C%AF/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "成为技术领导者",
-    "headers": [],
-    "path": "/book/%E6%8A%80%E6%9C%AF/%E6%88%90%E4%B8%BA%E6%8A%80%E6%9C%AF%E9%A2%86%E5%AF%BC%E8%80%85.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "鸟哥的Linux私房菜",
-    "headers": [],
-    "path": "/book/%E6%8A%80%E6%9C%AF/%E9%B8%9F%E5%93%A5%E7%9A%84Linux%E7%A7%81%E6%88%BF%E8%8F%9C.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "鸟哥的Linux私房菜服务器架设篇",
-    "headers": [],
-    "path": "/book/%E6%8A%80%E6%9C%AF/%E9%B8%9F%E5%93%A5%E7%9A%84Linux%E7%A7%81%E6%88%BF%E8%8F%9C%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%9E%B6%E8%AE%BE%E7%AF%87.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "黑客与画家",
-    "headers": [],
-    "path": "/book/%E6%8A%80%E6%9C%AF/%E9%BB%91%E5%AE%A2%E4%B8%8E%E7%94%BB%E5%AE%B6.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "社会学书籍",
-    "headers": [
-      {
-        "level": 2,
-        "title": "目录",
-        "slug": "目录",
-        "link": "#目录",
-        "children": []
-      }
-    ],
-    "path": "/book/%E7%A4%BE%E4%BC%9A%E5%AD%A6/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "中国人的性格",
-    "headers": [],
-    "path": "/book/%E7%A4%BE%E4%BC%9A%E5%AD%A6/%E4%B8%AD%E5%9B%BD%E4%BA%BA%E7%9A%84%E6%80%A7%E6%A0%BC.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "乌合之众",
-    "headers": [],
-    "path": "/book/%E7%A4%BE%E4%BC%9A%E5%AD%A6/%E4%B9%8C%E5%90%88%E4%B9%8B%E4%BC%97.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "娱乐至死",
-    "headers": [],
-    "path": "/book/%E7%A4%BE%E4%BC%9A%E5%AD%A6/%E5%A8%B1%E4%B9%90%E8%87%B3%E6%AD%BB.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "金融学书籍",
-    "headers": [
-      {
-        "level": 2,
-        "title": "目录",
-        "slug": "目录",
-        "link": "#目录",
-        "children": []
-      }
-    ],
-    "path": "/book/%E9%87%91%E8%9E%8D%E5%AD%A6/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "Theory of Games and Economic Behavior",
-    "headers": [],
-    "path": "/book/%E9%87%91%E8%9E%8D%E5%AD%A6/%E5%8D%9A%E5%BC%88%E8%AE%BA%E4%B8%8E%E7%BB%8F%E6%B5%8E%E8%A1%8C%E4%B8%BA.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "就业、利息和货币通论",
-    "headers": [],
-    "path": "/book/%E9%87%91%E8%9E%8D%E5%AD%A6/%E5%B0%B1%E4%B8%9A_%E5%88%A9%E6%81%AF%E5%92%8C%E8%B4%A7%E5%B8%81%E9%80%9A%E8%AE%BA.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "聪明的投资者",
-    "headers": [],
-    "path": "/book/%E9%87%91%E8%9E%8D%E5%AD%A6/%E8%81%AA%E6%98%8E%E7%9A%84%E6%8A%95%E8%B5%84%E8%80%85.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "货币金融学",
-    "headers": [],
-    "path": "/book/%E9%87%91%E8%9E%8D%E5%AD%A6/%E8%B4%A7%E5%B8%81%E9%87%91%E8%9E%8D%E5%AD%A6.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "非理性繁荣",
-    "headers": [],
-    "path": "/book/%E9%87%91%E8%9E%8D%E5%AD%A6/%E9%9D%9E%E7%90%86%E6%80%A7%E7%B9%81%E8%8D%A3.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "艺术书籍",
-    "headers": [
-      {
-        "level": 2,
-        "title": "目录",
-        "slug": "目录",
-        "link": "#目录",
-        "children": []
-      }
-    ],
-    "path": "/book/%E8%89%BA%E6%9C%AF/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "清醒思考的艺术",
-    "headers": [],
-    "path": "/book/%E8%89%BA%E6%9C%AF/%E6%B8%85%E9%86%92%E6%80%9D%E8%80%83%E7%9A%84%E8%89%BA%E6%9C%AF.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
     "title": "aioetcd3",
     "headers": [
       {
@@ -1051,6 +772,101 @@ export const SEARCH_INDEX = [
     "extraFields": []
   },
   {
+    "title": "Redis",
+    "headers": [
+      {
+        "level": 2,
+        "title": "一、缓存数据库概述",
+        "slug": "一、缓存数据库概述",
+        "link": "#一、缓存数据库概述",
+        "children": [
+          {
+            "level": 3,
+            "title": "1.1 Web2.0时代背景",
+            "slug": "_1-1-web2-0时代背景",
+            "link": "#_1-1-web2-0时代背景",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "1.2 NoSQL数据库",
+            "slug": "_1-2-nosql数据库",
+            "link": "#_1-2-nosql数据库",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "二、Redis基础",
+        "slug": "二、redis基础",
+        "link": "#二、redis基础",
+        "children": [
+          {
+            "level": 3,
+            "title": "2.1 简介",
+            "slug": "_2-1-简介",
+            "link": "#_2-1-简介",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "2.2 主要特性",
+            "slug": "_2-2-主要特性",
+            "link": "#_2-2-主要特性",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "2.3 安装配置",
+            "slug": "_2-3-安装配置",
+            "link": "#_2-3-安装配置",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "2.4 Python环境配置",
+            "slug": "_2-4-python环境配置",
+            "link": "#_2-4-python环境配置",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "三、Redis数据类型操作",
+        "slug": "三、redis数据类型操作",
+        "link": "#三、redis数据类型操作",
+        "children": [
+          {
+            "level": 3,
+            "title": "3.1 String操作",
+            "slug": "_3-1-string操作",
+            "link": "#_3-1-string操作",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "3.2 Hash操作",
+            "slug": "_3-2-hash操作",
+            "link": "#_3-2-hash操作",
+            "children": []
+          }
+        ]
+      }
+    ],
+    "path": "/database/Redis/redis.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "性能分析",
+    "headers": [],
+    "path": "/database/Redis/%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
     "title": "PostgreSQL基础",
     "headers": [
       {
@@ -1081,16 +897,281 @@ export const SEARCH_INDEX = [
     "extraFields": []
   },
   {
-    "title": "Redis",
+    "title": "asyncio Recipes",
     "headers": [],
-    "path": "/database/Redis/redis.html",
+    "path": "/book/python/asyncio_recipes.html",
     "pathLocale": "/",
     "extraFields": []
   },
   {
-    "title": "性能分析",
+    "title": "DevOps in Python",
     "headers": [],
-    "path": "/database/Redis/%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90.html",
+    "path": "/book/python/devops_in_python.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "Fluent Python",
+    "headers": [],
+    "path": "/book/python/fluent_python.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "Python书籍",
+    "headers": [
+      {
+        "level": 2,
+        "title": "目录",
+        "slug": "目录",
+        "link": "#目录",
+        "children": []
+      }
+    ],
+    "path": "/book/python/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "Python Cookbook",
+    "headers": [],
+    "path": "/book/python/python_cookbook.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "Python源码剖析",
+    "headers": [],
+    "path": "/book/python/python%E6%BA%90%E7%A0%81%E5%89%96%E6%9E%90.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "Using Asyncio in Python",
+    "headers": [],
+    "path": "/book/python/use_asyncio.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "心理学书籍",
+    "headers": [
+      {
+        "level": 2,
+        "title": "目录",
+        "slug": "目录",
+        "link": "#目录",
+        "children": []
+      }
+    ],
+    "path": "/book/%E5%BF%83%E7%90%86%E5%AD%A6/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "亚动机与人格",
+    "headers": [],
+    "path": "/book/%E5%BF%83%E7%90%86%E5%AD%A6/%E4%BA%9A%E5%8A%A8%E6%9C%BA%E4%B8%8E%E4%BA%BA%E6%A0%BC.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "人的潜能和价值",
+    "headers": [],
+    "path": "/book/%E5%BF%83%E7%90%86%E5%AD%A6/%E4%BA%BA%E7%9A%84%E6%BD%9C%E8%83%BD%E5%92%8C%E4%BB%B7%E5%80%BC.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "好人是如何变成恶魔的",
+    "headers": [],
+    "path": "/book/%E5%BF%83%E7%90%86%E5%AD%A6/%E5%A5%BD%E4%BA%BA%E6%98%AF%E5%A6%82%E4%BD%95%E5%8F%98%E6%88%90%E6%81%B6%E9%AD%94%E7%9A%84.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "影响力",
+    "headers": [],
+    "path": "/book/%E5%BF%83%E7%90%86%E5%AD%A6/%E5%BD%B1%E5%93%8D%E5%8A%9B.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "性心理学",
+    "headers": [],
+    "path": "/book/%E5%BF%83%E7%90%86%E5%AD%A6/%E6%80%A7%E5%BF%83%E7%90%86%E5%AD%A6.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "洗脑心理学",
+    "headers": [],
+    "path": "/book/%E5%BF%83%E7%90%86%E5%AD%A6/%E6%B4%97%E8%84%91%E5%BF%83%E7%90%86%E5%AD%A6.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "进化心理学",
+    "headers": [],
+    "path": "/book/%E5%BF%83%E7%90%86%E5%AD%A6/%E8%BF%9B%E5%8C%96%E5%BF%83%E7%90%86%E5%AD%A6.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "CODE -- 编码:隐匿在计算机背后的语言",
+    "headers": [],
+    "path": "/book/%E6%8A%80%E6%9C%AF/CODE.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "技术书籍",
+    "headers": [
+      {
+        "level": 2,
+        "title": "目录",
+        "slug": "目录",
+        "link": "#目录",
+        "children": []
+      }
+    ],
+    "path": "/book/%E6%8A%80%E6%9C%AF/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "成为技术领导者",
+    "headers": [],
+    "path": "/book/%E6%8A%80%E6%9C%AF/%E6%88%90%E4%B8%BA%E6%8A%80%E6%9C%AF%E9%A2%86%E5%AF%BC%E8%80%85.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "鸟哥的Linux私房菜",
+    "headers": [],
+    "path": "/book/%E6%8A%80%E6%9C%AF/%E9%B8%9F%E5%93%A5%E7%9A%84Linux%E7%A7%81%E6%88%BF%E8%8F%9C.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "鸟哥的Linux私房菜服务器架设篇",
+    "headers": [],
+    "path": "/book/%E6%8A%80%E6%9C%AF/%E9%B8%9F%E5%93%A5%E7%9A%84Linux%E7%A7%81%E6%88%BF%E8%8F%9C%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%9E%B6%E8%AE%BE%E7%AF%87.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "黑客与画家",
+    "headers": [],
+    "path": "/book/%E6%8A%80%E6%9C%AF/%E9%BB%91%E5%AE%A2%E4%B8%8E%E7%94%BB%E5%AE%B6.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "社会学书籍",
+    "headers": [
+      {
+        "level": 2,
+        "title": "目录",
+        "slug": "目录",
+        "link": "#目录",
+        "children": []
+      }
+    ],
+    "path": "/book/%E7%A4%BE%E4%BC%9A%E5%AD%A6/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "中国人的性格",
+    "headers": [],
+    "path": "/book/%E7%A4%BE%E4%BC%9A%E5%AD%A6/%E4%B8%AD%E5%9B%BD%E4%BA%BA%E7%9A%84%E6%80%A7%E6%A0%BC.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "乌合之众",
+    "headers": [],
+    "path": "/book/%E7%A4%BE%E4%BC%9A%E5%AD%A6/%E4%B9%8C%E5%90%88%E4%B9%8B%E4%BC%97.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "娱乐至死",
+    "headers": [],
+    "path": "/book/%E7%A4%BE%E4%BC%9A%E5%AD%A6/%E5%A8%B1%E4%B9%90%E8%87%B3%E6%AD%BB.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "艺术书籍",
+    "headers": [
+      {
+        "level": 2,
+        "title": "目录",
+        "slug": "目录",
+        "link": "#目录",
+        "children": []
+      }
+    ],
+    "path": "/book/%E8%89%BA%E6%9C%AF/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "清醒思考的艺术",
+    "headers": [],
+    "path": "/book/%E8%89%BA%E6%9C%AF/%E6%B8%85%E9%86%92%E6%80%9D%E8%80%83%E7%9A%84%E8%89%BA%E6%9C%AF.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "金融学书籍",
+    "headers": [
+      {
+        "level": 2,
+        "title": "目录",
+        "slug": "目录",
+        "link": "#目录",
+        "children": []
+      }
+    ],
+    "path": "/book/%E9%87%91%E8%9E%8D%E5%AD%A6/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "Theory of Games and Economic Behavior",
+    "headers": [],
+    "path": "/book/%E9%87%91%E8%9E%8D%E5%AD%A6/%E5%8D%9A%E5%BC%88%E8%AE%BA%E4%B8%8E%E7%BB%8F%E6%B5%8E%E8%A1%8C%E4%B8%BA.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "就业、利息和货币通论",
+    "headers": [],
+    "path": "/book/%E9%87%91%E8%9E%8D%E5%AD%A6/%E5%B0%B1%E4%B8%9A_%E5%88%A9%E6%81%AF%E5%92%8C%E8%B4%A7%E5%B8%81%E9%80%9A%E8%AE%BA.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "聪明的投资者",
+    "headers": [],
+    "path": "/book/%E9%87%91%E8%9E%8D%E5%AD%A6/%E8%81%AA%E6%98%8E%E7%9A%84%E6%8A%95%E8%B5%84%E8%80%85.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "货币金融学",
+    "headers": [],
+    "path": "/book/%E9%87%91%E8%9E%8D%E5%AD%A6/%E8%B4%A7%E5%B8%81%E9%87%91%E8%9E%8D%E5%AD%A6.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "非理性繁荣",
+    "headers": [],
+    "path": "/book/%E9%87%91%E8%9E%8D%E5%AD%A6/%E9%9D%9E%E7%90%86%E6%80%A7%E7%B9%81%E8%8D%A3.html",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -2451,152 +2532,6 @@ export const SEARCH_INDEX = [
     "extraFields": []
   },
   {
-    "title": "Nginx基础",
-    "headers": [
-      {
-        "level": 2,
-        "title": "1. WEB Server",
-        "slug": "_1-web-server",
-        "link": "#_1-web-server",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "2. 安装",
-        "slug": "_2-安装",
-        "link": "#_2-安装",
-        "children": [
-          {
-            "level": 3,
-            "title": "2.1 流程",
-            "slug": "_2-1-流程",
-            "link": "#_2-1-流程",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "2.2 简单配置",
-            "slug": "_2-2-简单配置",
-            "link": "#_2-2-简单配置",
-            "children": []
-          }
-        ]
-      },
-      {
-        "level": 2,
-        "title": "3. 使用基础",
-        "slug": "_3-使用基础",
-        "link": "#_3-使用基础",
-        "children": [
-          {
-            "level": 3,
-            "title": "3.1 目录结构",
-            "slug": "_3-1-目录结构",
-            "link": "#_3-1-目录结构",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "3.2 命令",
-            "slug": "_3-2-命令",
-            "link": "#_3-2-命令",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "3.3 配置文件",
-            "slug": "_3-3-配置文件",
-            "link": "#_3-3-配置文件",
-            "children": []
-          }
-        ]
-      },
-      {
-        "level": 2,
-        "title": "4. 其他操作",
-        "slug": "_4-其他操作",
-        "link": "#_4-其他操作",
-        "children": [
-          {
-            "level": 3,
-            "title": "4.1 域名设置",
-            "slug": "_4-1-域名设置",
-            "link": "#_4-1-域名设置",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "权重",
-            "slug": "权重",
-            "link": "#权重",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "ip_hash",
-            "slug": "ip-hash",
-            "link": "#ip-hash",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "backup",
-            "slug": "backup",
-            "link": "#backup",
-            "children": []
-          }
-        ]
-      }
-    ],
-    "path": "/tool/Nginx/Nginx%E5%9F%BA%E7%A1%80.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "Django部署",
-    "headers": [
-      {
-        "level": 2,
-        "title": "1. 部署说明",
-        "slug": "_1-部署说明",
-        "link": "#_1-部署说明",
-        "children": [
-          {
-            "level": 3,
-            "title": "1.1 uWSGI 服务器",
-            "slug": "_1-1-uwsgi-服务器",
-            "link": "#_1-1-uwsgi-服务器",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "1.2 uWSGI 特点",
-            "slug": "_1-2-uwsgi-特点",
-            "link": "#_1-2-uwsgi-特点",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "1.3 uWSGI 安装使用",
-            "slug": "_1-3-uwsgi-安装使用",
-            "link": "#_1-3-uwsgi-安装使用",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "1.4 配置 Nginx",
-            "slug": "_1-4-配置-nginx",
-            "link": "#_1-4-配置-nginx",
-            "children": []
-          }
-        ]
-      }
-    ],
-    "path": "/tool/Nginx/%E5%BA%94%E7%94%A8%E9%83%A8%E7%BD%B2.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
     "title": "Helm 安装使用",
     "headers": [
       {
@@ -3193,6 +3128,152 @@ export const SEARCH_INDEX = [
     "extraFields": []
   },
   {
+    "title": "Nginx基础",
+    "headers": [
+      {
+        "level": 2,
+        "title": "1. WEB Server",
+        "slug": "_1-web-server",
+        "link": "#_1-web-server",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "2. 安装",
+        "slug": "_2-安装",
+        "link": "#_2-安装",
+        "children": [
+          {
+            "level": 3,
+            "title": "2.1 流程",
+            "slug": "_2-1-流程",
+            "link": "#_2-1-流程",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "2.2 简单配置",
+            "slug": "_2-2-简单配置",
+            "link": "#_2-2-简单配置",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "3. 使用基础",
+        "slug": "_3-使用基础",
+        "link": "#_3-使用基础",
+        "children": [
+          {
+            "level": 3,
+            "title": "3.1 目录结构",
+            "slug": "_3-1-目录结构",
+            "link": "#_3-1-目录结构",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "3.2 命令",
+            "slug": "_3-2-命令",
+            "link": "#_3-2-命令",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "3.3 配置文件",
+            "slug": "_3-3-配置文件",
+            "link": "#_3-3-配置文件",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "4. 其他操作",
+        "slug": "_4-其他操作",
+        "link": "#_4-其他操作",
+        "children": [
+          {
+            "level": 3,
+            "title": "4.1 域名设置",
+            "slug": "_4-1-域名设置",
+            "link": "#_4-1-域名设置",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "权重",
+            "slug": "权重",
+            "link": "#权重",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "ip_hash",
+            "slug": "ip-hash",
+            "link": "#ip-hash",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "backup",
+            "slug": "backup",
+            "link": "#backup",
+            "children": []
+          }
+        ]
+      }
+    ],
+    "path": "/tool/Nginx/Nginx%E5%9F%BA%E7%A1%80.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "Django部署",
+    "headers": [
+      {
+        "level": 2,
+        "title": "1. 部署说明",
+        "slug": "_1-部署说明",
+        "link": "#_1-部署说明",
+        "children": [
+          {
+            "level": 3,
+            "title": "1.1 uWSGI 服务器",
+            "slug": "_1-1-uwsgi-服务器",
+            "link": "#_1-1-uwsgi-服务器",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "1.2 uWSGI 特点",
+            "slug": "_1-2-uwsgi-特点",
+            "link": "#_1-2-uwsgi-特点",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "1.3 uWSGI 安装使用",
+            "slug": "_1-3-uwsgi-安装使用",
+            "link": "#_1-3-uwsgi-安装使用",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "1.4 配置 Nginx",
+            "slug": "_1-4-配置-nginx",
+            "link": "#_1-4-配置-nginx",
+            "children": []
+          }
+        ]
+      }
+    ],
+    "path": "/tool/Nginx/%E5%BA%94%E7%94%A8%E9%83%A8%E7%BD%B2.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
     "title": "prometheus基础",
     "headers": [
       {
@@ -3520,6 +3601,28 @@ export const SEARCH_INDEX = [
     "extraFields": []
   },
   {
+    "title": "gRPC",
+    "headers": [
+      {
+        "level": 3,
+        "title": "1. 部分文档",
+        "slug": "_1-部分文档",
+        "link": "#_1-部分文档",
+        "children": []
+      }
+    ],
+    "path": "/python/%E7%94%9F%E6%80%81/%E8%BF%9C%E7%A8%8B%E8%B0%83%E7%94%A8/gRPC.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "",
+    "headers": [],
+    "path": "/python/%E7%94%9F%E6%80%81/%E8%BF%9C%E7%A8%8B%E8%B0%83%E7%94%A8/RPC.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
     "title": "",
     "headers": [],
     "path": "/python/%E7%94%9F%E6%80%81/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/kafka.html",
@@ -3560,28 +3663,6 @@ export const SEARCH_INDEX = [
       }
     ],
     "path": "/python/%E7%94%9F%E6%80%81/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/RabbitMQ.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "gRPC",
-    "headers": [
-      {
-        "level": 3,
-        "title": "1. 部分文档",
-        "slug": "_1-部分文档",
-        "link": "#_1-部分文档",
-        "children": []
-      }
-    ],
-    "path": "/python/%E7%94%9F%E6%80%81/%E8%BF%9C%E7%A8%8B%E8%B0%83%E7%94%A8/gRPC.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "",
-    "headers": [],
-    "path": "/python/%E7%94%9F%E6%80%81/%E8%BF%9C%E7%A8%8B%E8%B0%83%E7%94%A8/RPC.html",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -4558,28 +4639,6 @@ export const SEARCH_INDEX = [
     "extraFields": []
   },
   {
-    "title": "标准库链接",
-    "headers": [
-      {
-        "level": 3,
-        "title": "标准库",
-        "slug": "标准库",
-        "link": "#标准库",
-        "children": []
-      },
-      {
-        "level": 3,
-        "title": "其他第三方库",
-        "slug": "其他第三方库",
-        "link": "#其他第三方库",
-        "children": []
-      }
-    ],
-    "path": "/python/%E8%AF%AD%E8%A8%80/%E5%BA%93/%E6%A0%87%E5%87%86%E5%BA%93%E9%93%BE%E6%8E%A5.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
     "title": "Linux文件锁",
     "headers": [
       {
@@ -4922,6 +4981,28 @@ export const SEARCH_INDEX = [
       }
     ],
     "path": "/python/%E8%AF%AD%E8%A8%80/%E5%A4%9A%E4%BB%BB%E5%8A%A1%E7%BC%96%E7%A8%8B/%E9%AB%98%E6%80%A7%E8%83%BD%E7%BC%96%E7%A8%8B.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "标准库链接",
+    "headers": [
+      {
+        "level": 3,
+        "title": "标准库",
+        "slug": "标准库",
+        "link": "#标准库",
+        "children": []
+      },
+      {
+        "level": 3,
+        "title": "其他第三方库",
+        "slug": "其他第三方库",
+        "link": "#其他第三方库",
+        "children": []
+      }
+    ],
+    "path": "/python/%E8%AF%AD%E8%A8%80/%E5%BA%93/%E6%A0%87%E5%87%86%E5%BA%93%E9%93%BE%E6%8E%A5.html",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -6877,21 +6958,6 @@ export const SEARCH_INDEX = [
     "extraFields": []
   },
   {
-    "title": "认识系统服务",
-    "headers": [
-      {
-        "level": 3,
-        "title": "1. daemon 与服务（service）",
-        "slug": "_1-daemon-与服务-service",
-        "link": "#_1-daemon-与服务-service",
-        "children": []
-      }
-    ],
-    "path": "/unix/Linux/Linux%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%86%E5%91%98/%E8%AE%A4%E8%AF%86%E7%B3%BB%E7%BB%9F%E6%9C%8D%E5%8A%A1.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
     "title": "Linux磁盘与文件系统管理",
     "headers": [
       {
@@ -6972,6 +7038,21 @@ export const SEARCH_INDEX = [
     "extraFields": []
   },
   {
+    "title": "认识系统服务",
+    "headers": [
+      {
+        "level": 3,
+        "title": "1. daemon 与服务（service）",
+        "slug": "_1-daemon-与服务-service",
+        "link": "#_1-daemon-与服务-service",
+        "children": []
+      }
+    ],
+    "path": "/unix/Linux/Linux%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%86%E5%91%98/%E8%AE%A4%E8%AF%86%E7%B3%BB%E7%BB%9F%E6%9C%8D%E5%8A%A1.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
     "title": "Linux 命令速查",
     "headers": [],
     "path": "/unix/Linux/Troubleshooting/%E5%A4%87%E5%BF%98%E5%91%BD%E4%BB%A4.html",
@@ -7035,28 +7116,6 @@ export const SEARCH_INDEX = [
       }
     ],
     "path": "/unix/Linux/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "CPU",
-    "headers": [
-      {
-        "level": 2,
-        "title": "什么是 CPU",
-        "slug": "什么是-cpu",
-        "link": "#什么是-cpu",
-        "children": []
-      }
-    ],
-    "path": "/unix/%E7%A1%AC%E4%BB%B6%E5%9F%BA%E7%A1%80/CPU/CPU.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "Ubuntu系统",
-    "headers": [],
-    "path": "/unix/Ubuntu/%E4%B8%8B%E8%BD%BD/Ubuntu%E7%B3%BB%E7%BB%9F.html",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -7406,6 +7465,28 @@ export const SEARCH_INDEX = [
     "extraFields": []
   },
   {
+    "title": "Ubuntu系统",
+    "headers": [],
+    "path": "/unix/Ubuntu/%E4%B8%8B%E8%BD%BD/Ubuntu%E7%B3%BB%E7%BB%9F.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "CPU",
+    "headers": [
+      {
+        "level": 2,
+        "title": "什么是 CPU",
+        "slug": "什么是-cpu",
+        "link": "#什么是-cpu",
+        "children": []
+      }
+    ],
+    "path": "/unix/%E7%A1%AC%E4%BB%B6%E5%9F%BA%E7%A1%80/CPU/CPU.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
     "title": "主板",
     "headers": [],
     "path": "/unix/%E7%A1%AC%E4%BB%B6%E5%9F%BA%E7%A1%80/%E4%B8%BB%E6%9D%BF/%E4%B8%BB%E6%9D%BF.html",
@@ -7667,51 +7748,6 @@ export const SEARCH_INDEX = [
     "extraFields": []
   },
   {
-    "title": "Tornado框架",
-    "headers": [
-      {
-        "level": 2,
-        "title": "1. 简介",
-        "slug": "_1-简介",
-        "link": "#_1-简介",
-        "children": [
-          {
-            "level": 3,
-            "title": "1.1 各类框架的比较",
-            "slug": "_1-1-各类框架的比较",
-            "link": "#_1-1-各类框架的比较",
-            "children": []
-          }
-        ]
-      },
-      {
-        "level": 2,
-        "title": "2. 基础使用",
-        "slug": "_2-基础使用",
-        "link": "#_2-基础使用",
-        "children": [
-          {
-            "level": 3,
-            "title": "2.1 安装",
-            "slug": "_2-1-安装",
-            "link": "#_2-1-安装",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "2.2 示例",
-            "slug": "_2-2-示例",
-            "link": "#_2-2-示例",
-            "children": []
-          }
-        ]
-      }
-    ],
-    "path": "/python/%E7%94%9F%E6%80%81/Web%E6%A1%86%E6%9E%B6/Tornado/tornado.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
     "title": "FastAPI基础",
     "headers": [
       {
@@ -7924,6 +7960,51 @@ export const SEARCH_INDEX = [
     "extraFields": []
   },
   {
+    "title": "Tornado框架",
+    "headers": [
+      {
+        "level": 2,
+        "title": "1. 简介",
+        "slug": "_1-简介",
+        "link": "#_1-简介",
+        "children": [
+          {
+            "level": 3,
+            "title": "1.1 各类框架的比较",
+            "slug": "_1-1-各类框架的比较",
+            "link": "#_1-1-各类框架的比较",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "2. 基础使用",
+        "slug": "_2-基础使用",
+        "link": "#_2-基础使用",
+        "children": [
+          {
+            "level": 3,
+            "title": "2.1 安装",
+            "slug": "_2-1-安装",
+            "link": "#_2-1-安装",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "2.2 示例",
+            "slug": "_2-2-示例",
+            "link": "#_2-2-示例",
+            "children": []
+          }
+        ]
+      }
+    ],
+    "path": "/python/%E7%94%9F%E6%80%81/Web%E6%A1%86%E6%9E%B6/Tornado/tornado.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
     "title": "",
     "headers": [],
     "path": "/404.html",
@@ -7952,16 +8033,16 @@ export const SEARCH_INDEX = [
     "extraFields": []
   },
   {
-    "title": "Postgre SQL",
+    "title": "Redis",
     "headers": [],
-    "path": "/database/PostgreSQL/",
+    "path": "/database/Redis/",
     "pathLocale": "/",
     "extraFields": []
   },
   {
-    "title": "Redis",
+    "title": "Postgre SQL",
     "headers": [],
-    "path": "/database/Redis/",
+    "path": "/database/PostgreSQL/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -8001,13 +8082,6 @@ export const SEARCH_INDEX = [
     "extraFields": []
   },
   {
-    "title": "Nginx",
-    "headers": [],
-    "path": "/tool/Nginx/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
     "title": "Kubernetes",
     "headers": [],
     "path": "/tool/Kubernetes/",
@@ -8018,6 +8092,13 @@ export const SEARCH_INDEX = [
     "title": "Other",
     "headers": [],
     "path": "/tool/Other/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "Nginx",
+    "headers": [],
+    "path": "/tool/Nginx/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -8043,16 +8124,16 @@ export const SEARCH_INDEX = [
     "extraFields": []
   },
   {
-    "title": "消息队列",
+    "title": "远程调用",
     "headers": [],
-    "path": "/python/%E7%94%9F%E6%80%81/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/",
+    "path": "/python/%E7%94%9F%E6%80%81/%E8%BF%9C%E7%A8%8B%E8%B0%83%E7%94%A8/",
     "pathLocale": "/",
     "extraFields": []
   },
   {
-    "title": "远程调用",
+    "title": "消息队列",
     "headers": [],
-    "path": "/python/%E7%94%9F%E6%80%81/%E8%BF%9C%E7%A8%8B%E8%B0%83%E7%94%A8/",
+    "path": "/python/%E7%94%9F%E6%80%81/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -8078,16 +8159,16 @@ export const SEARCH_INDEX = [
     "extraFields": []
   },
   {
-    "title": "库",
+    "title": "多任务编程",
     "headers": [],
-    "path": "/python/%E8%AF%AD%E8%A8%80/%E5%BA%93/",
+    "path": "/python/%E8%AF%AD%E8%A8%80/%E5%A4%9A%E4%BB%BB%E5%8A%A1%E7%BC%96%E7%A8%8B/",
     "pathLocale": "/",
     "extraFields": []
   },
   {
-    "title": "多任务编程",
+    "title": "库",
     "headers": [],
-    "path": "/python/%E8%AF%AD%E8%A8%80/%E5%A4%9A%E4%BB%BB%E5%8A%A1%E7%BC%96%E7%A8%8B/",
+    "path": "/python/%E8%AF%AD%E8%A8%80/%E5%BA%93/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -8204,13 +8285,6 @@ export const SEARCH_INDEX = [
     "extraFields": []
   },
   {
-    "title": "Linux系统管理员",
-    "headers": [],
-    "path": "/unix/Linux/Linux%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%86%E5%91%98/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
     "title": "Linux文件",
     "headers": [],
     "path": "/unix/Linux/Linux%E6%96%87%E4%BB%B6/",
@@ -8221,6 +8295,13 @@ export const SEARCH_INDEX = [
     "title": "Shell脚本",
     "headers": [],
     "path": "/unix/Linux/Shell%E8%84%9A%E6%9C%AC/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "Linux系统管理员",
+    "headers": [],
+    "path": "/unix/Linux/Linux%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%86%E5%91%98/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -8239,16 +8320,9 @@ export const SEARCH_INDEX = [
     "extraFields": []
   },
   {
-    "title": "CPU",
+    "title": "网络",
     "headers": [],
-    "path": "/unix/%E7%A1%AC%E4%BB%B6%E5%9F%BA%E7%A1%80/CPU/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "硬件基础",
-    "headers": [],
-    "path": "/unix/%E7%A1%AC%E4%BB%B6%E5%9F%BA%E7%A1%80/",
+    "path": "/unix/Linux/%E7%BD%91%E7%BB%9C/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -8267,9 +8341,16 @@ export const SEARCH_INDEX = [
     "extraFields": []
   },
   {
-    "title": "网络",
+    "title": "CPU",
     "headers": [],
-    "path": "/unix/Linux/%E7%BD%91%E7%BB%9C/",
+    "path": "/unix/%E7%A1%AC%E4%BB%B6%E5%9F%BA%E7%A1%80/CPU/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "硬件基础",
+    "headers": [],
+    "path": "/unix/%E7%A1%AC%E4%BB%B6%E5%9F%BA%E7%A1%80/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -8344,13 +8425,6 @@ export const SEARCH_INDEX = [
     "extraFields": []
   },
   {
-    "title": "Tornado",
-    "headers": [],
-    "path": "/python/%E7%94%9F%E6%80%81/Web%E6%A1%86%E6%9E%B6/Tornado/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
     "title": "Fast API",
     "headers": [],
     "path": "/python/%E7%94%9F%E6%80%81/Web%E6%A1%86%E6%9E%B6/FastAPI/",
@@ -8361,6 +8435,13 @@ export const SEARCH_INDEX = [
     "title": "网络框架基础",
     "headers": [],
     "path": "/python/%E7%94%9F%E6%80%81/Web%E6%A1%86%E6%9E%B6/%E7%BD%91%E7%BB%9C%E6%A1%86%E6%9E%B6%E5%9F%BA%E7%A1%80/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "Tornado",
+    "headers": [],
+    "path": "/python/%E7%94%9F%E6%80%81/Web%E6%A1%86%E6%9E%B6/Tornado/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -8463,6 +8544,13 @@ export const SEARCH_INDEX = [
     "extraFields": []
   },
   {
+    "title": "远程调用 分类",
+    "headers": [],
+    "path": "/category/%E8%BF%9C%E7%A8%8B%E8%B0%83%E7%94%A8/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
     "title": "Kombu 分类",
     "headers": [],
     "path": "/category/kombu/",
@@ -8480,13 +8568,6 @@ export const SEARCH_INDEX = [
     "title": "RBMQ 分类",
     "headers": [],
     "path": "/category/rbmq/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "远程调用 分类",
-    "headers": [],
-    "path": "/category/%E8%BF%9C%E7%A8%8B%E8%B0%83%E7%94%A8/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -8687,13 +8768,6 @@ export const SEARCH_INDEX = [
     "extraFields": []
   },
   {
-    "title": "Tornado 分类",
-    "headers": [],
-    "path": "/category/tornado/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
     "title": "FastAPI 分类",
     "headers": [],
     "path": "/category/fastapi/",
@@ -8704,6 +8778,13 @@ export const SEARCH_INDEX = [
     "title": "Web框架 分类",
     "headers": [],
     "path": "/category/web%E6%A1%86%E6%9E%B6/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "Tornado 分类",
+    "headers": [],
+    "path": "/category/tornado/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -8869,27 +8950,6 @@ export const SEARCH_INDEX = [
     "extraFields": []
   },
   {
-    "title": "标签: Nginx",
-    "headers": [],
-    "path": "/tag/nginx/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "标签: Web",
-    "headers": [],
-    "path": "/tag/web/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "标签: Django",
-    "headers": [],
-    "path": "/tag/django/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
     "title": "标签: helm",
     "headers": [],
     "path": "/tag/helm/",
@@ -8932,6 +8992,27 @@ export const SEARCH_INDEX = [
     "extraFields": []
   },
   {
+    "title": "标签: Nginx",
+    "headers": [],
+    "path": "/tag/nginx/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "标签: Web",
+    "headers": [],
+    "path": "/tag/web/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "标签: Django",
+    "headers": [],
+    "path": "/tag/django/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
     "title": "标签: prometheus",
     "headers": [],
     "path": "/tag/prometheus/",
@@ -8942,6 +9023,20 @@ export const SEARCH_INDEX = [
     "title": "标签: 监控",
     "headers": [],
     "path": "/tag/%E7%9B%91%E6%8E%A7/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "标签: RPC",
+    "headers": [],
+    "path": "/tag/rpc/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "标签: gRPC",
+    "headers": [],
+    "path": "/tag/grpc/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -8963,20 +9058,6 @@ export const SEARCH_INDEX = [
     "title": "标签: RBMQ",
     "headers": [],
     "path": "/tag/rbmq/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "标签: RPC",
-    "headers": [],
-    "path": "/tag/rpc/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "标签: gRPC",
-    "headers": [],
-    "path": "/tag/grpc/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -9019,13 +9100,6 @@ export const SEARCH_INDEX = [
     "title": "标签: Pycharm",
     "headers": [],
     "path": "/tag/pycharm/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "标签: 标准库",
-    "headers": [],
-    "path": "/tag/%E6%A0%87%E5%87%86%E5%BA%93/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -9075,6 +9149,13 @@ export const SEARCH_INDEX = [
     "title": "标签: CPU",
     "headers": [],
     "path": "/tag/cpu/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "标签: 标准库",
+    "headers": [],
+    "path": "/tag/%E6%A0%87%E5%87%86%E5%BA%93/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -9310,13 +9391,6 @@ export const SEARCH_INDEX = [
     "extraFields": []
   },
   {
-    "title": "标签: Tornado",
-    "headers": [],
-    "path": "/tag/tornado/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
     "title": "标签: FastAPI",
     "headers": [],
     "path": "/tag/fastapi/",
@@ -9334,6 +9408,13 @@ export const SEARCH_INDEX = [
     "title": "标签: Web框架",
     "headers": [],
     "path": "/tag/web%E6%A1%86%E6%9E%B6/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "标签: Tornado",
+    "headers": [],
+    "path": "/tag/tornado/",
     "pathLocale": "/",
     "extraFields": []
   },
