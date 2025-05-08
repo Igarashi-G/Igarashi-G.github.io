@@ -4,7 +4,7 @@ head:
   - - meta
     - http-equiv: Content-Security-Policy
       content: upgrade-insecure-requests
-layout: Blog
+layout: BlogHome
 icon: home
 title: 主页
 bgImage: arknights_bk.jpg
