@@ -325,6 +325,15 @@ export default sidebar({
             "树",
           ]
         },
+        {
+          text: "优化",
+          collapsable: true,
+          prefix: "优化/",
+          children: [
+            "关于MapReduce",
+            "H2O引发的优化",
+          ]
+        },
       ]
     },
   ],

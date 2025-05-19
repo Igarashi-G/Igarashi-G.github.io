@@ -21,27 +21,6 @@ export default navbar([
           { text: "库", link: "库/标准库链接" },
         ],
       },
-      // {
-      //   text: "库",
-      //   icon: "edit",
-      //   prefix: "库/",
-      //   children: [
-      //     { text: "标准库基础", link: "标准库基础" },
-      //     { text: "高级", link: "高级" },
-      //     { text: "第三方库", link: "第三方库" },
-      //   ],
-      // },
-      // {
-      //   text: "框架",
-      //   icon: "edit",
-      //   prefix: "框架/",
-      //   children: [
-      //     { text: "网络框架基础", link: "网络框架基础" },
-      //     { text: "Django", link: "Django" },
-      //     { text: "Tronado", link: "Tronado" },
-      //     { text: "FastAPI", link: "FastAPI" },
-      //   ],
-      // },
       {
         text: "生态",
         icon: "edit",
@@ -72,10 +51,14 @@ export default navbar([
         text: "算法与数据结构",
         prefix: "算法与数据结构/",
         children: [
-          { text: "数组", link: "数组" },
-          { text: "线性表", link: "线性表" },
-          { text: "栈与队列", link: "栈与队列" },
-          { text: "树", link: "树" },
+          { text: "概述", link: "概述" },
+        ],
+      },
+      {
+        text: "优化",
+        prefix: "优化/",
+        children: [
+          { text: "优化", link: "关于MapReduce" },
         ],
       },
     ],

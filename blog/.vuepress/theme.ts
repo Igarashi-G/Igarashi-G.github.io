@@ -191,10 +191,10 @@ export default hopeTheme({
 
       // 启用下角标
       // https://vuepress-theme-hope.gitee.io/v2/zh/guide/markdown/sup-sub.html#%E9%85%8D%E7%BD%AE
-      sub: false,
+      sub: true,
       // 启用上角标
       // https://vuepress-theme-hope.gitee.io/v2/zh/guide/markdown/sup-sub.html#%E9%85%8D%E7%BD%AE
-      sup: false,
+      sup: true,
 
       // 添加选项卡支持
       // https://vuepress-theme-hope.gitee.io/v2/zh/guide/markdown/tabs.html

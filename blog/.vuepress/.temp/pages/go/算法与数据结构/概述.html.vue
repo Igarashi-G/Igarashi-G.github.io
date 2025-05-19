@@ -292,7 +292,7 @@
 <p>示例：</p>
 <ul>
 <li>$n^3 + 999n$：$O(n^3)$</li>
-<li>$n^3 + n^2log_2n$：$O(n^3) + O(log_2n)$</li>
+<li>$n^3 + n<sup>2log_2n$：$O(n</sup>3) + O(log_2n)$</li>
 </ul>
 <h3 id="_3-3-递归算法的推导" tabindex="-1"><a class="header-anchor" href="#_3-3-递归算法的推导"><span>3.3 递归算法的推导</span></a></h3>
 <p>对于递归算法，假设退出递归时执行的次数为 A，那么递归算法整体的执行次数是一个分段函数：</p>
@@ -451,7 +451,7 @@ $$</p>
 <td>选择排序</td>
 </tr>
 <tr>
-<td>$5n^3+3n^2+2n+1$</td>
+<td>$5n<sup>3+3n</sup>2+2n+1$</td>
 <td>$O(n^3)$</td>
 <td>立方阶</td>
 <td></td>
@@ -477,12 +477,12 @@ $$</p>
 </tbody>
 </table>
 <p>常用的时间复杂度顺序口诀——<strong>常对幂指阶</strong>：<br>
-$O(1)&lt;=O(log_2n)&lt;=O(n)&lt;=O(nlog_2n)&lt;=O(n^2)&lt;=O(n^3)&lt;=O(2^n)&lt;=O(n!)&lt;O(n^n)$</p>
+$O(1)&lt;=O(log_2n)&lt;=O(n)&lt;=O(nlog_2n)&lt;=O(n<sup>2)&lt;=O(n</sup>3)&lt;=O(2<sup>n)&lt;=O(n!)&lt;O(n</sup>n)$</p>
 <p><img src="@source/go/算法与数据结构/img/01-09-17442727614568.png" alt="复杂度曲线图"></p>
 <p>延伸：我们可以使用极限来比较复杂度的阶，如：</p>
 <ul>
 <li>$\lim\limits_{n\rightarrow\infty}\frac{log_2n}{n} = 0$：意味着 n 趋于无穷大时，n 比$log_2n$变大的速度快的多</li>
-<li>$\lim\limits_{n\rightarrow\infty}\frac{n^2}{2^n} = 0$：意味着 n 趋于无穷大时，$n^2$ 比$2^n$变大的速度快的多</li>
+<li>$\lim\limits_{n\rightarrow\infty}\frac{n<sup>2}{2</sup>n} = 0$：意味着 n 趋于无穷大时，$n^2$ 比$2^n$变大的速度快的多</li>
 </ul>
 <h2 id="_4-空间复杂度计算" tabindex="-1"><a class="header-anchor" href="#_4-空间复杂度计算"><span>4. 空间复杂度计算</span></a></h2>
 <h3 id="_4-1-空间复杂度的运算" tabindex="-1"><a class="header-anchor" href="#_4-1-空间复杂度的运算"><span>4.1 空间复杂度的运算</span></a></h3>
