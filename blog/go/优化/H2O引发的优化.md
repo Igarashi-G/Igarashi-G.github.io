@@ -36,6 +36,7 @@ import (
 	"context"
 	"fmt"
 	"math/rand"
+	"sort"
 	"sync"
 	"time"
 
@@ -43,99 +44,103 @@ import (
 	"golang.org/x/sync/semaphore"
 )
 
-// 定义水分子的组成
+// H2O 定义水分子的组成
 type H2O struct {
-  semaH *semaphore.Weighted // 氢原子的信号量
-  semaO *semaphore.Weighted // 氧原子的信号量
-  b     cyclicbarrier.CyclicBarrier // 循环栅栏，用来控制合成
+	semaH *semaphore.Weighted         // 氢原子的信号量
+	semaO *semaphore.Weighted         // 氧原子的信号量
+	b     cyclicbarrier.CyclicBarrier // 循环栅栏，用来控制合成
 }
 
 func New() *H2O {
-  return &H2O{
-    semaH: semaphore.NewWeighted(2), //氢原子需要两个
-    semaO: semaphore.NewWeighted(1), // 氧原子需要一个
-    b:     cyclicbarrier.New(3),  // 需要三个原子才能合成
-  }
+	return &H2O{
+		semaH: semaphore.NewWeighted(2), // 氢原子需要两个
+		semaO: semaphore.NewWeighted(1), // 氧原子需要一个
+		b:     cyclicbarrier.New(3),     // 需要三个原子才能合成
+	}
 }
-
 
 func (h2o *H2O) hydrogen(releaseHydrogen func()) {
-  h2o.semaH.Acquire(context.Background(), 1)
+	h2o.semaH.Acquire(context.Background(), 1)
 
-  releaseHydrogen() // 输出H
-  h2o.b.Await(context.Background()) //等待栅栏放行
-  h2o.semaH.Release(1) // 释放氢原子空槽
+	releaseHydrogen()                 // 输出H
+	h2o.b.Await(context.Background()) // 等待栅栏放行
+	h2o.semaH.Release(1)              // 释放氢原子空槽
 }
 
-
 func (h2o *H2O) oxygen(releaseOxygen func()) {
-  h2o.semaO.Acquire(context.Background(), 1)
+	h2o.semaO.Acquire(context.Background(), 1)
 
-  releaseOxygen() // 输出O
-  h2o.b.Await(context.Background()) //等待栅栏放行
-  h2o.semaO.Release(1) // 释放氢原子空槽
+	releaseOxygen()                   // 输出O
+	h2o.b.Await(context.Background()) // 等待栅栏放行
+	h2o.semaO.Release(1)              // 释放氢原子空槽
 }
 
 func main() {
-	 //用来存放水分子结果的channel
-    var ch chan string
-    releaseHydrogen := func() {
-        ch <- "H"
-    }
-    releaseOxygen := func() {
-        ch <- "O"
-    }
+	//用来存放水分子结果的channel
+	var ch chan string
+	releaseHydrogen := func() {
+		ch <- "H"
+	}
+	releaseOxygen := func() {
+		ch <- "O"
+	}
 
-    // 300个原子，300个goroutine,每个goroutine并发的产生一个原子
-    var N = 100
-    ch = make(chan string, N*3)
-    
-    h2o := New()
-    
-    // 用来等待所有的goroutine完成
+	// 300个原子，300个goroutine,每个goroutine并发的产生一个原子
+	var N = 100
+	ch = make(chan string, N*3)
+
+	h2o := New()
+
+	// 用来等待所有的goroutine完成
 	var wg sync.WaitGroup
-    wg.Add(N * 3)
-	
-     // 200个氢原子goroutine
-    for i := 0; i < 2*N; i++ {
-        go func() {
-            time.Sleep(time.Duration(rand.Intn(100)) * time.Millisecond)
-            h2o.hydrogen(releaseHydrogen)
-            wg.Done()
-        }()
-    }
-    // 100个氧原子goroutine
-    for i := 0; i < N; i++ {
-        go func() {
-            time.Sleep(time.Duration(rand.Intn(100)) * time.Millisecond)
-            h2o.oxygen(releaseOxygen)
-            wg.Done()
-        }()
-    }
+	wg.Add(N * 3)
+
+	// 200个氢原子goroutine
+	for i := 0; i < 2*N; i++ {
+		go func() {
+			time.Sleep(time.Duration(rand.Intn(100)) * time.Millisecond)
+			h2o.hydrogen(releaseHydrogen)
+			wg.Done()
+		}()
+	}
+	// 100个氧原子goroutine
+	for i := 0; i < N; i++ {
+		go func() {
+			time.Sleep(time.Duration(rand.Intn(100)) * time.Millisecond)
+			h2o.oxygen(releaseOxygen)
+			wg.Done()
+		}()
+	}
 	//等待所有的goroutine执行完
-    wg.Wait()
+	wg.Wait()
 
-    // 结果中肯定是300个原子
-    if len(ch) != N*3 {
-        t.Fatalf("❌ expect %d atom but got %d", N*3, len(ch))
-    }
+	// 结果中肯定是300个原子
+	if len(ch) != N*3 {
+		fmt.Println("错误 ❌: expect %d atom but got %d", N*3, len(ch))
+		return
+	}
 	// 每三个原子一组，分别进行检查。要求这一组原子中必须包含两个氢原子和一个氧原子，这样才能正确组成一个水分子。
-    var s = make([]string, 3)
-    for i := 0; i < N; i++ {
-        s[0] = <-ch
-        s[1] = <-ch
-        s[2] = <-ch
-        sort.Strings(s)
+	var s = make([]string, 3)
+	for i := 0; i < N; i++ {
+		s[0] = <-ch
+		s[1] = <-ch
+		s[2] = <-ch
+		sort.Strings(s)
 
-
-        water := s[0] + s[1] + s[2]
-        if water != "HHO" {
-            t.Fatalf("错误 ❌: expect a water molecule but got %s", water)
-        }
-        fmt.Println("正确 ✅:", water)
-    }
+		water := s[0] + s[1] + s[2]
+		if water != "HHO" {
+			fmt.Println("错误 ❌: expect a water molecule but got %s", water)
+			return
+		}
+		fmt.Printf("%s-正确✅\t ", water)
+	}
+	fmt.Println("")
 }
 ```
+
+**打印结果：** 
+
+![image-20250520101620273](img/image-20250520101620273.png) 
 
 ### 1.2 CyclicBarrier 与 WaitGroup
 
@@ -156,6 +161,8 @@ func main() {
 ::: tip 贴士：
 
 **WaitGroup** 更适合用在 *“一个 **goroutine** 等待一组 **goroutine** 到达 **同一个** 执行点 ”* 的场景中（非 **goroutine** 内部），或者是不需要重用的场景中。
+
+而该同步原语（*cyclicbarrier*）特别适合需要分阶段同步的并行计算场景
 
 :::
 
@@ -197,6 +204,157 @@ type CyclicBarrier interface {
 循环栅栏的使用也很简单，参与者只需调用 **Await(ctx)** 等待，等所有的参与者都到达后，再执行下一步。
 
 当执行下一步的时候，循环栅栏的状态又恢复到初始的状态了，可以迎接下一轮同样多的参与者。
+
+### 1.4 CyclicBarrier 的实现
+
+#### CyclicBarrier 的数据结构及核心代码
+
+```go
+// round
+type round struct {
+	count    int           // count of goroutines for this roundtrip
+	waitCh   chan struct{} // wait channel for this roundtrip
+	brokeCh  chan struct{} // channel for isBroken broadcast
+	isBroken bool          // is barrier broken
+}
+
+// cyclicBarrier impl CyclicBarrier intf
+type cyclicBarrier struct {
+	parties       int
+	barrierAction func() error
+
+	lock  sync.RWMutex
+	round *round
+}
+
+// New initializes a new instance of the CyclicBarrier, specifying the number of parties.
+func New(parties int) CyclicBarrier {
+	if parties <= 0 {
+		panic("parties must be positive number")
+	}
+	return &cyclicBarrier{
+		parties: parties,
+		lock:    sync.RWMutex{},
+		round: &round{
+			waitCh:  make(chan struct{}),
+			brokeCh: make(chan struct{}),
+		},
+	}
+}
+```
+
+#### Await
+
+```go
+// Await 等待直到所有参与方都在此屏障上调用了 await
+// 如果在任何 goroutine 等待时屏障被重置，或者当 await 被调用时屏障已损坏，或者在等待时屏障损坏，则返回 ErrBrokenBarrier
+// 如果任何 goroutine 在等待时被 ctx.Done() 中断，则所有其他等待的 goroutine 将返回 ErrBrokenBarrier，并且屏障进入损坏状态
+// 如果当前 goroutine 是最后一个到达的，并且在构造函数中提供了非 nil 的屏障动作，则当前 goroutine 在允许其他 goroutine 继续之前运行该动作
+// 如果在屏障动作期间发生错误，则返回该错误并且屏障进入损坏状态
+func (b *cyclicBarrier) Await(ctx context.Context) error {
+	var (
+		ctxDoneCh <-chan struct{}
+	)
+    // 如果有上下文，获取其Done通道
+	if ctx != nil {
+		ctxDoneCh = ctx.Done()
+	}
+
+	// 检查上下文是否已取消（非阻塞检查）
+	select {
+	case <-ctxDoneCh:
+		return ctx.Err()
+	default:
+	}
+
+	b.lock.Lock()
+
+	// 检查屏障是否已损坏
+	if b.round.isBroken {
+		b.lock.Unlock()
+		return ErrBrokenBarrier
+	}
+
+	// 增加等待goroutine计数
+	b.round.count++
+
+	// 保存到局部变量预防竞态条件
+	waitCh := b.round.waitCh
+	brokeCh := b.round.brokeCh
+	count := b.round.count
+
+	b.lock.Unlock()
+	
+    // 防御性检查：调用次数不能超过参与方总数
+	if count > b.parties {
+		panic("CyclicBarrier.Await is called more than count of parties")
+	}
+
+	if count < b.parties {
+		// 非最后一个到达的goroutine, 等待其他goroutine
+		select {
+		case <-waitCh:		// 正常释放通道
+			return nil
+		case <-brokeCh: 	// 屏障损坏通道
+			return ErrBrokenBarrier
+		case <-ctxDoneCh:	// 上下文取消
+			b.breakBarrier(true)
+			return ctx.Err()
+		}
+	} else {
+        // 最后一个到达的goroutine, 执行屏障动作并重置屏障
+		if b.barrierAction != nil {
+			err := b.barrierAction()
+			if err != nil {
+				b.breakBarrier(true)
+				return err
+			}
+		}
+		b.reset(true) // 安全重置屏障
+		return nil
+	}
+}
+
+func (b *cyclicBarrier) reset(safe bool) {
+	b.lock.Lock()
+	defer b.lock.Unlock()
+
+	if safe {
+        // 安全模式：broadcast 正常关闭等待通道（所有goroutine正常释放）
+		close(b.round.waitCh)
+	} else if b.round.count > 0 {
+        // 非安全模式且有等待者时，破坏屏障
+		b.breakBarrier(false)
+	}
+
+	// 创建新的轮次（关键的重置操作）
+	b.round = &round{
+		waitCh:  make(chan struct{}),
+		brokeCh: make(chan struct{}),
+	}
+}
+
+func (b *cyclicBarrier) breakBarrier(needLock bool) {
+    // 按需加锁（避免重复加锁）
+	if needLock {
+		b.lock.Lock()
+		defer b.lock.Unlock()
+	}
+
+	if !b.round.isBroken {
+		b.round.isBroken = true
+
+        // broadcast 广播损坏状态（通过关闭通道实现）
+		close(b.round.brokeCh)
+	}
+}
+```
+
+**关键点**：
+
+- **条件加锁**：通过 `needLock` 参数避免在已持有锁的情况下重复加锁
+- **广播机制**：关闭 `brokeCh` 通道会立即释放所有等待的 **goroutine**
+- **幂等设计**：只有屏障未损坏时才执行操作
 
 ## 2. 业务中的思考
 
@@ -342,6 +500,10 @@ func main() {
 }
 ```
 
+**执行结果：** 
+
+![image-20250520100945837](img/image-20250520100945837.png) 
+
 通过一个全局 `syncMap sync.Map // key: requestID, value: *SyncPoint`  即可以控制任意两类 **goroutine** 的同步栅栏，其中：
 
 - **requestID：** 即两类 **goroutine** 中的每组标志位；
@@ -355,7 +517,142 @@ func main() {
 
 ### 2.2 分布式屏障
 
-单机如上，可以不引入外部中间件来进行进程内的多协程同步，那么分布式下呢？
+单机如上，可以不引入外部中间件来进行进程中的 **多协程内执行的同步** ，那么分布式呢？
 
 
+
+```go
+package main
+
+import (
+	"context"
+	"errors"
+	"fmt"
+	"github.com/go-redis/redis/v8"
+	"math"
+	"time"
+)
+
+type RedisBarrier struct {
+	client     *redis.Client
+	barrierKey string
+	releaseKey string
+	parties    int
+	timeout    time.Duration
+}
+
+func NewRedisBarrier(client *redis.Client, barrierKey string, parties int, timeout time.Duration) *RedisBarrier {
+	return &RedisBarrier{
+		client:     client,
+		barrierKey: barrierKey,
+		releaseKey: barrierKey + ":release",
+		parties:    parties,
+		timeout:    timeout,
+	}
+}
+
+func (b *RedisBarrier) Await(ctx context.Context) error {
+	script := redis.NewScript(`
+    local n = redis.call("INCR", KEYS[1])
+    if n == 1 then
+		local timeout = tonumber(ARGV[1])
+		if timeout < 1 then timeout = 1 end
+        redis.call("EXPIRE", KEYS[1], timeout)
+    end
+    return n
+	`)
+	// 设置过期时间 防止悬挂
+	timeoutSec := int(math.Round(b.timeout.Seconds()))
+	n, err := script.Run(ctx, b.client, []string{b.barrierKey}, timeoutSec).Result()
+	if err != nil {
+		if err == redis.Nil {
+			fmt.Println(b.barrierKey, "脚本执行结果异常")
+			return nil
+		}
+		return err
+	}
+
+	if _, ok := n.(int64); !ok {
+		return errors.New("redis result n type is not int64")
+	}
+	if n == int64(b.parties) {
+		// 最后一个到达，释放其他等待者
+		for i := 0; i < b.parties-1; i++ {
+			b.client.RPush(ctx, b.releaseKey, "go")
+		}
+		// 释放自己 清理 barrier key 和 release key
+		b.client.Del(ctx, b.barrierKey)
+		b.client.Del(ctx, b.releaseKey)
+	} else {
+		// 阻塞等待被释放
+		_, err = b.client.BLPop(ctx, b.timeout, b.releaseKey).Result()
+		if err != nil {
+			if err == redis.Nil {
+				fmt.Println(b.barrierKey, "阻塞等待被释放, %s 已过期\n", b.releaseKey)
+				return nil
+			}
+			return err
+		}
+	}
+	return nil
+}
+
+func main() {
+	ctx := context.Background()
+	rdb := redis.NewClient(&redis.Options{
+		Addr:     "192.168.14.33:6379",
+		Password: "CORERAIN@redis2024",
+	})
+
+	barrierKey := fmt.Sprintf("redis_barrier_%d", 2333)
+	barrier := NewRedisBarrier(rdb, barrierKey, 2, 30*time.Second)
+	fmt.Println("arriving barrier，等待其他进程...")
+	err := barrier.Wait(ctx)
+	if err != nil {
+		fmt.Println("barrier error:", err)
+	} else {
+		fmt.Println("所有进程都到达，继续执行")
+	}
+	time.Sleep(2 * time.Second)
+	fmt.Println("Over.")
+}
+```
+
+**代码说明：** 
+
+- **barrierKey** 用于计数，**releaseKey** 用于释放等待者。
+- **parties** 是参与 **barrier** 的进程/协程数。
+- 每轮 **barrier** 结束后自动清理 **key**，可循环使用。
+- 可以在不同进程/主机上运行这段代码，达到多轮分布式同步效果。
+
+
+
+### 2.3 场景差异
+
+可能会有人和我一样，一开始觉着有些像抢分布式锁，然后怎么怎么样…. 但感觉又不像，这是由于没透彻分清差异：
+
+| 功能      | 分布式锁       | 分布式循环屏障     |
+| --------- | -------------- | ------------------ |
+| 语义      | 互斥           | 同步               |
+| 典型用法  | 只允许一个执行 | 等待所有人到齐     |
+| Redis实现 | SETNX/Redlock  | INCR+BLPOP/RPUSH等 |
+| 谁先到    | 谁先执行       | 谁先到都要等       |
+
+::: important **stack overflow的学院级示例：** 
+
+ 在一个假设的剧院中：
+
+- It is called <span style="font-size:1.1em">**Mutex** </span> if only one person is allowed to watch the play.
+  - 如果只允许一个人观看演出，则称为互斥锁。
+- It is called <span style="font-size:1.1em">**Semaphore** </span> if N number of people are allowed to watch the play. If anybody leaves the Theater during the play then other person can be allowed to watch the play.
+  - 如果允许 N 个人观看演出，则称为信号量。如果在演出期间任何人离开剧院，则可以允许其他人观看演出。
+- It is called <span style="font-size:1.1em">**CountDownLatch**</span>  if no one is allowed to enter until every person vacates the theater. Here each person has free will to leave the theater.
+  - 如果直到每个人都离开剧院才允许进入，则称为倒计时门闩。在这里，每个人都有自由离开剧院的意愿。
+- It is called <span style="font-size:1.1em">**CyclicBarrier** </span> if the play will not start until every person enters the theater. Here a showman can not start the show until all the persons enter and grab the seat. Once the play is finished the same barrier will be applied for next show.
+  - 如果演出不会开始，直到每个人都进入剧院，则称为循环屏障。在这里，表演者不能开始表演，直到所有的人都进入并占据座位。一旦演出结束，相同的屏障将适用于下一场演出。
+
+Here, a person is a *thread*, a play is a *resource*.
+在这里，一个人是一个线程，一个演出是一个资源。
+
+::: 
 

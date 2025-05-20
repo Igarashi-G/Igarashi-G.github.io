@@ -609,7 +609,7 @@ func (slr *SyncLogRecordRepo) List(ctx context.Context, filters *vo.LogRecordLis
 
 ![image-20250516181051740](img/image-20250516181051740.png) 
 
-**测试并调整并发： ** 
+**测试并调整并发：**  
 
 `160 batch * 1000 size = 16W`  数据量, **4 worker**
 

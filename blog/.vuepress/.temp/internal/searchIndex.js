@@ -1154,6 +1154,13 @@ export const SEARCH_INDEX = [
             "slug": "_1-3-cyclicbarrier-说明",
             "link": "#_1-3-cyclicbarrier-说明",
             "children": []
+          },
+          {
+            "level": 3,
+            "title": "1.4 CyclicBarrier 的实现",
+            "slug": "_1-4-cyclicbarrier-的实现",
+            "link": "#_1-4-cyclicbarrier-的实现",
+            "children": []
           }
         ]
       },
@@ -1175,6 +1182,13 @@ export const SEARCH_INDEX = [
             "title": "2.2 分布式屏障",
             "slug": "_2-2-分布式屏障",
             "link": "#_2-2-分布式屏障",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "2.3 场景差异",
+            "slug": "_2-3-场景差异",
+            "link": "#_2-3-场景差异",
             "children": []
           }
         ]
