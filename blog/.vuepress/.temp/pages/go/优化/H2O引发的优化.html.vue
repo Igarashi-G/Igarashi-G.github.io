@@ -621,6 +621,17 @@
 <p>Here, a person is a <em>thread</em>, a play is a <em>resource</em>.<br>
 在这里，一个人是一个线程，一个演出是一个资源。</p>
 </div>
+<div class="hint-container note">
+<p class="hint-container-title"><strong>附录：</strong> etcd并发原语</p>
+<ul>
+<li>
+<p><a href="https://github.com/etcd-io/etcd/blob/882713c4b6d383b18d2b9924738df7c07b2f360f/client/v3/experimental/recipes/barrier.go#L4" target="_blank" rel="noopener noreferrer"><strong>Barrier：</strong> 分布式栅栏</a></p>
+</li>
+<li>
+<p><a href="https://github.com/etcd-io/etcd/blob/882713c4b6d383b18d2b9924738df7c07b2f360f/client/v3/experimental/recipes/double_barrier.go#L27" target="_blank" rel="noopener noreferrer"><strong>DoubleBarrier：</strong> 计数型栅栏</a></p>
+</li>
+</ul>
+</div>
 </div></template>
 
 

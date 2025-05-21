@@ -656,3 +656,13 @@ Here, a person is a *thread*, a play is a *resource*.
 
 ::: 
 
+
+
+::: note **附录：** etcd并发原语
+
+- [**Barrier：** 分布式栅栏](https://github.com/etcd-io/etcd/blob/882713c4b6d383b18d2b9924738df7c07b2f360f/client/v3/experimental/recipes/barrier.go#L4)
+
+- [**DoubleBarrier：** 计数型栅栏](https://github.com/etcd-io/etcd/blob/882713c4b6d383b18d2b9924738df7c07b2f360f/client/v3/experimental/recipes/double_barrier.go#L27)
+
+:::
+
