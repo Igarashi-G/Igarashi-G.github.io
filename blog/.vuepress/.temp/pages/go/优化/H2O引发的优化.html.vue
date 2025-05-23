@@ -7,6 +7,7 @@
 这些生产线会通过一个栅栏，只有一个氧原子生产线和两个氢原子生产线都准备好，才能生成出一个水分子， 否则所有的生产线都会处于 <strong>等待状态</strong>。</p>
 <p>也就是说，一个水分子必须由三个不同的生产线提供原子，而且水分子是一个一个按照顺序产生的， 每生产一个水分子，就会打印出 <span style="color:blue"><b><code v-pre>HHO、HOH、OHH</code>  </b></span>三种形式的其中一种。<span style="color:red"><b><code v-pre>HHH、OOH、OHO、HOO、OOO</code> </b> </span> 都是不被允许的。<br>
 生产线中氢原子的生产线为 <strong>2N</strong> 条，氧原子的生产线为 <strong>N</strong> 条。</p>
+<p><img src="@source/go/优化/img/image-20250523144353993.png" alt="image-20250523144353993"></p>
 <p><strong>思路：</strong></p>
 <p>如果使用 <strong>WaitGroup</strong>，则非常复杂，而且重用和 <strong>Done</strong> 方法的调用有并发的问题，程序可能 <strong>panic</strong>，此时应考虑 <strong>循环栅栏</strong></p>
 <div class="language-go line-numbers-mode" data-highlighter="shiki" data-ext="go" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">package</span><span style="--shiki-light:#C18401;--shiki-dark:#E5C07B"> main</span></span>
@@ -560,6 +561,8 @@
 <li>每轮 <strong>barrier</strong> 结束后自动清理 <strong>key</strong>，可循环使用。</li>
 <li>可以在不同进程/主机上运行这段代码，达到多轮分布式同步效果。</li>
 </ul>
+<p><img src="@source/go/优化/img/image-20250523114501542.png" alt="image-20250523114501542"></p>
+<p><strong>开源地址：</strong> <a href="https://github.com/Igarashi-G/redisbarrier" target="_blank" rel="noopener noreferrer">Redis Barrier</a></p>
 <h3 id="_2-3-场景差异" tabindex="-1"><a class="header-anchor" href="#_2-3-场景差异"><span>2.3 场景差异</span></a></h3>
 <p>可能会有人和我一样，一开始觉着有些像抢分布式锁，然后怎么怎么样…. 但感觉又不像，这是由于没透彻分清差异：</p>
 <table>

@@ -25,6 +25,8 @@ star: true
 也就是说，一个水分子必须由三个不同的生产线提供原子，而且水分子是一个一个按照顺序产生的， 每生产一个水分子，就会打印出 <span style="color:blue"><b>`HHO、HOH、OHH`  </b></span>三种形式的其中一种。<span style="color:red"><b>`HHH、OOH、OHO、HOO、OOO` </b> </span> 都是不被允许的。
 生产线中氢原子的生产线为 **2N** 条，氧原子的生产线为 **N** 条。
 
+![image-20250523144353993](img/image-20250523144353993.png)  
+
 **思路：**  
 
 如果使用 **WaitGroup**，则非常复杂，而且重用和 **Done** 方法的调用有并发的问题，程序可能 **panic**，此时应考虑 **循环栅栏**
@@ -623,9 +625,11 @@ func main() {
 - **barrierKey** 用于计数，**releaseKey** 用于释放等待者。
 - **parties** 是参与 **barrier** 的进程/协程数。
 - 每轮 **barrier** 结束后自动清理 **key**，可循环使用。
-- 可以在不同进程/主机上运行这段代码，达到多轮分布式同步效果。
+- 可以在不同进程/主机上运行这段代码，达到多轮分布式同步效果。 
 
+![image-20250523114501542](img/image-20250523114501542.png)  
 
+**开源地址：** [Redis Barrier](https://github.com/Igarashi-G/redisbarrier) 
 
 ### 2.3 场景差异
 
