@@ -7,7 +7,7 @@
 这些生产线会通过一个栅栏，只有一个氧原子生产线和两个氢原子生产线都准备好，才能生成出一个水分子， 否则所有的生产线都会处于 <strong>等待状态</strong>。</p>
 <p>也就是说，一个水分子必须由三个不同的生产线提供原子，而且水分子是一个一个按照顺序产生的， 每生产一个水分子，就会打印出 <span style="color:blue"><b><code v-pre>HHO、HOH、OHH</code>  </b></span>三种形式的其中一种。<span style="color:red"><b><code v-pre>HHH、OOH、OHO、HOO、OOO</code> </b> </span> 都是不被允许的。<br>
 生产线中氢原子的生产线为 <strong>2N</strong> 条，氧原子的生产线为 <strong>N</strong> 条。</p>
-<p><img src="@source/go/优化/img/image-20250523144353993.png" alt="image-20250523144353993"></p>
+<p><img src="@source/go/优化/img/image-20250526102903426.png" alt="image-20250526102903426"></p>
 <p><strong>思路：</strong></p>
 <p>如果使用 <strong>WaitGroup</strong>，则非常复杂，而且重用和 <strong>Done</strong> 方法的调用有并发的问题，程序可能 <strong>panic</strong>，此时应考虑 <strong>循环栅栏</strong></p>
 <div class="language-go line-numbers-mode" data-highlighter="shiki" data-ext="go" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">package</span><span style="--shiki-light:#C18401;--shiki-dark:#E5C07B"> main</span></span>
@@ -311,7 +311,7 @@
 <h2 id="_2-业务中的思考" tabindex="-1"><a class="header-anchor" href="#_2-业务中的思考"><span>2. 业务中的思考</span></a></h2>
 <p>既然 <strong>H2O</strong> 可以通过 <strong>CyclicBarrier</strong> 控制并发 - 同步点，那么 <strong>“H” - “O”</strong> 也可以。这不正好对应的业务中的类似场景：</p>
 <ul>
-<li>视频录制地址是 <strong>预制的地址</strong> ，可能 <strong>先、后</strong> 于录制视频回调触发的路径移动，此时要控制 **A协程 地址生成后 **， <strong>B协程再进行录制视频文件的移动</strong>；</li>
+<li>视频录制地址是 <strong>预制的地址</strong> ，可能 <strong>先、后</strong> 于录制视频回调触发的路径移动，此时要控制 <strong>A协程 地址生成后</strong> ， <strong>B协程再进行录制视频文件的移动</strong>；</li>
 <li>推送时机同步；</li>
 </ul>
 <h3 id="_2-1-单机屏障" tabindex="-1"><a class="header-anchor" href="#_2-1-单机屏障"><span>2.1 单机屏障</span></a></h3>
