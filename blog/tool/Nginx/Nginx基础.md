@@ -150,7 +150,7 @@ sudo nginx -s reload
 
 - 修改配置项
 
-  ```ini
+  ```nginx
   server {
   	listen 8999;		# 改为监听 8999 端口
   	listen [::]:8999;
@@ -239,7 +239,7 @@ $ setenforce 0
 
 ::: details 示例
 
-```ini
+```nginx
 #user  nobody;              # 使用哪个用户来启动子进程
     worker_processes  1;        # 工作进程的个数，配置cpu的核心数-1或-2，cpu的亲缘性绑定，让nginx的子进程工作再哪个核心上
 
@@ -378,49 +378,333 @@ server_name www.yukiball.com www.mmmmohime.com mmmmohime.com;
 
 - 基于域名的：最简单的方式
 
-      server {
-          listen 80 default_server; # 设置 default 当使用 ip 地址访问，默认进入 server 设置的页面
-          server_name www.taobao.dom taobao.com;
-        location / {
-            root /data/taobao;
-            index index.html;
-        }
-        }
+  ```nginx
+  server {
+      listen 80 default_server; # 设置 default 当使用 ip 地址访问，默认进入 server 设置的页面
+      server_name www.taobao.dom taobao.com;
+    location / {
+        root /data/taobao;
+        index index.html;
+    }
+    }
+  ```
+
+### 4.2 关于跨域
+
+跨域是浏览器同源策略的限制，注意是针对与 **浏览器** 的，而比如微服务下，**服务A** —调用—> **服务B** 或者，其他应用比如桌面应用，创建一个 **Client** 去跨主机远程调用 **都是与跨域无关的！** 
+
+::: important **仅作用于浏览器！！!** 
+
+- 因此，通常 **前端** 的解决方案是另启动一个代理服务器，作为 **中间代理 Proxy 通信** ，帮助前端浏览器发送请求到后端
+- 后端解决则可以通过服务器指定请求头 **CORS headers** 来实现
+  - **`Access-Control-Allow-Origin：*`** 
+  - **`Access-Control-Allow-Methods：*`** 
+  - **`Access-Control-Allow-Headers：*`**  
+
+::: 
+
+那么使用了 **Nginx** 则可以通过反向代理配置文件中允许跨域来实现，如下：
+
+```nginx
+add_header 'Access-Control-Allow-Origin' '*' always;
+add_header 'Access-Control-Allow-Methods' 'GET, POST, OPTIONS, PUT, DELETE' always;
+add_header 'Access-Control-Allow-Headers' 'Origin, X-Requested-With, Content-Type, Accept, Authorization' always;
+add_header 'Access-Control-Allow-Credentials' 'true' always;
+
+# 处理预检请求
+if ($request_method = 'OPTIONS') {
+    add_header 'Access-Control-Max-Age' 1728000;
+    add_header 'Content-Type' 'text/plain charset=UTF-8';
+    add_header 'Content-Length' 0;
+    return 204;
+}
+```
+
+
+
+## 5. 示例
+
+**nginx.conf 示例** 
+
+```nginx
+# daemon off;
+worker_processes  auto; #should be 1 for Windows, for it doesn't support Unix domain socket
+#worker_processes  auto; #from versions 1.3.8 and 1.2.5
+
+#worker_cpu_affinity  0001 0010 0100 1000; #only available on FreeBSD and Linux
+worker_cpu_affinity  auto; #from version 1.9.10
+
+user root;
+error_log /var/log/nginx/error.log error;
+pid        /var/run/nginx.pid;
+
+#located before events directive, otherwise the module won't be loaded
+#or will be loaded unsuccessfully when NGINX is started
+
+#load_module modules/ngx_http_flv_live_module.so;
+
+events {
+    use epoll;
+
+    #设置单个工作进程的最大并发连接数
+    worker_connections  4096;
+
+    #on为同一时刻一个请求轮流由work进程处理,而防止被同时唤醒所有worker,避免多个睡眠进程被唤醒的设置，默认为off，新请求会唤醒所有worker进程,此过程也称为"惊群"，因此nginx刚安装完以后要进行适当的优化。建议设置为on
+    accept_mutex on;
+
+    #ON时Nginx服务器的每个工作进程可以同时接受多个新的网络连接，此指令默认为off，即默认为一个工作进程只能一次接受一个新的网络连接，打开后几个同时接受多个。建议设置为on
+    multi_accept on;
+
+}
+
+http {
+    include /usr/local/nginx/conf/mime.types;
+
+    # 隐藏nginx的版本
+    server_tokens off;
+
+    # 已开启，提高文件传输效率
+    sendfile       on;
+
+    # 匹配变量http_upgrade的值，根据匹配情况为变量connection_upgrade赋值
+    map $http_upgrade $connection_upgrade {
+        default upgrade;
+        ''      close;
+    }
+
+    client_max_body_size 2000m;
+    client_body_buffer_size 4M;
+    client_header_buffer_size 16k;
+    large_client_header_buffers 4 32k;
+
+    # 日志格式定义
+    log_format main '$remote_addr - $remote_user [$time_local] "$request" '
+                   '$status $body_bytes_sent "$http_referer" '
+                   '"$http_user_agent" "$http_x_forwarded_for"';
+
+    # 详细日志格式（推荐）
+    log_format detailed '$remote_addr - $remote_user [$time_local] "$request" '
+                        '$status $body_bytes_sent "$http_referer" '
+                        '"$http_user_agent" "$http_x_forwarded_for" '
+                        '$request_time $upstream_response_time $upstream_addr';
+
+    # JSON 格式日志（适合日志分析）
+    log_format json_log escape=json '{'
+        '"time_local":"$time_local",'
+        '"remote_addr":"$remote_addr",'
+        '"remote_user":"$remote_user",'
+        '"request":"$request",'
+        '"status": "$status",'
+        '"http_referer":"$http_referer",'
+        '"body_bytes_sent":"$body_bytes_sent",'
+        '"http_user_agent":"$http_user_agent",'
+        '"request_time":$request_time,'
+        '"upstream_response_time":$upstream_response_time'
+    '}';
+
+    # 日志路径配置
+    error_log /var/log/nginx/error.log error;
+
+    server {
+        listen 8081;
+        server_name _;
+        charset utf-8;
+
+        # 使用指定格式
+        access_log /var/log/nginx/access.log detailed buffer=32k flush=5s;
+
+        gzip_static on;
+        gzip_proxied expired no-cache no-store private auth;
+        gzip on;
+        gzip_http_version 1.1;
+        gzip_buffers 32 16K;
+        gzip_comp_level 6;
+        gzip_min_length 1k;
+        gzip_types text/plain text/css text/xml text/javascript application/json application/javascript application/x-javascript application/xml image/svg+xml;
+        gzip_vary on;
+        gzip_disable "MSIE [1-6]\.";
+
+        # 添加一些安全相关的请求头，用于防止常见的 Web 安全攻击
+        add_header X-XSS-Protection "1; mode=block";
+        add_header X-Content-Type-Options nosniff;
+
+        proxy_set_header X-Forwarded-For $remote_addr;
+
+        underscores_in_headers on;
+
+        include location/*.conf ;
+
+    }
+
+    include /etc/nginx/conf.d/*.conf;
+
+}
+
+```
+
+**nginx-ssl.conf 示例** 
+
+```nginx
+# daemon off;
+worker_processes  auto; #should be 1 for Windows, for it doesn't support Unix domain socket
+#worker_processes  auto; #from versions 1.3.8 and 1.2.5
+
+#worker_cpu_affinity  0001 0010 0100 1000; #only available on FreeBSD and Linux
+#worker_cpu_affinity  auto; #from version 1.9.10
+
+user root;
+error_log /var/log/nginx/error.log error;
+pid        /var/run/nginx.pid;
+
+#located before events directive, otherwise the module won't be loaded
+#or will be loaded unsuccessfully when NGINX is started
+
+#load_module modules/ngx_http_flv_live_module.so;
+
+events {
+    use epoll;
+    worker_connections  4096;
+    accept_mutex on;
+    multi_accept on;
+}
+
+http {
+    default_type  application/octet-stream;
+    include /usr/local/nginx/conf/mime.types;
+
+    client_max_body_size 2000m;
+    client_body_buffer_size 4M;
+    client_header_buffer_size 16k;
+    large_client_header_buffers 4 32k;
+
+    server_tokens off;
+
+     # 已开启，提高文件传输效率
+    sendfile       on;
+
+
+    # 匹配变量http_upgrade的值，根据匹配情况为变量connection_upgrade赋值
+    map $http_upgrade $connection_upgrade {
+        default upgrade;
+        ''      close;
+    }
+
+    # 日志格式定义
+    log_format main '$remote_addr - $remote_user [$time_local] "$request" '
+                   '$status $body_bytes_sent "$http_referer" '
+                   '"$http_user_agent" "$http_x_forwarded_for"';
+
+    # 详细日志格式（推荐）
+    log_format detailed '$remote_addr - $remote_user [$time_local] "$request" '
+                        '$status $body_bytes_sent "$http_referer" '
+                        '"$http_user_agent" "$http_x_forwarded_for" '
+                        '$request_time $upstream_response_time $upstream_addr';
+
+    # JSON 格式日志（适合日志分析）
+    log_format json_log escape=json '{'
+        '"time_local":"$time_local",'
+        '"remote_addr":"$remote_addr",'
+        '"remote_user":"$remote_user",'
+        '"request":"$request",'
+        '"status": "$status",'
+        '"http_referer":"$http_referer",'
+        '"body_bytes_sent":"$body_bytes_sent",'
+        '"http_user_agent":"$http_user_agent",'
+        '"request_time":$request_time,'
+        '"upstream_response_time":$upstream_response_time'
+    '}';
+
+    # 日志路径配置
+    error_log /var/log/nginx/error.log error;
+
+    server {
+        # listen 8081 ssl http2;
+        listen 8081 ssl;
+        http2 on;
+
+        server_name crip.corerain.com;
+
+        charset utf-8;
+
+        # 使用指定格式
+        access_log /var/log/nginx/access.log detailed buffer=32k flush=5s;
+
+        ssl_certificate /usr/local/nginx/cert/server.crt;
+        ssl_certificate_key /usr/local/nginx/cert/server.key;
+        ssl_protocols TLSv1.2 TLSv1.3;
+        ssl_session_timeout 5m;
+        ssl_ciphers "ECDHE-RSA-AES256-GCM-SHA384:ECDHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384:DHE-RSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-SHA384:ECDHE-RSA-AES128-SHA256:ECDHE-RSA-AES256-SHA:ECDHE-RSA-AES128-SHA:DHE-RSA-AES256-SHA256:DHE-RSA-AES128-SHA256:DHE-RSA-AES256-SHA:DHE-RSA-AES128-SHA:ECDHE-RSA-DES-CBC3-SHA:EDH-RSA-DES-CBC3-SHA:AES256-GCM-SHA384:AES128-GCM-SHA256:AES256-SHA256:AES128-SHA256:AES256-SHA:AES128-SHA:DES-CBC3-SHA:HIGH:!aNULL:!eNULL:!EXPORT:!DES:!MD5:!PSK:!RC4";
+        ssl_prefer_server_ciphers on;
+
+        gzip_static on;
+        gzip_proxied expired no-cache no-store private auth;
+        gzip on;
+        gzip_http_version 1.1;
+        gzip_buffers 32 16K;
+        gzip_comp_level 6;
+        gzip_min_length 1k;
+        gzip_types application/x-javascript text/css text/xml;
+        gzip_vary on;
+        gzip_disable "MSIE [1-6]\.";
+
+        add_header X-Content-Type-Options "nosniff";
+        add_header X-XSS-Protection "1; mode=block";
+        add_header Strict-Transport-Security "max-age=63072000; includeSubdomains; preload";
+        add_header 'Referrer-Policy' 'origin';
+        add_header X-Download-Options noopen;
+        add_header X-Permitted-Cross-Domain-Policies none;
+
+        proxy_set_header X-Forwarded-For $remote_addr;
+
+        underscores_in_headers on;
+
+        include location/*.
+```
+
+
 
 # 6.Nginx 日志
 
-    #log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
-            #                  '$status $body_bytes_sent "$http_referer" '
-            #                  '"$http_user_agent" "$http_x_forwarded_for"';
-    
-                                                        # log_format main 可以定义日志格式
-            #access_log  logs/access.log  main;         # 日志用什么格式输出
-    
-    把注释去掉即可打开日志
+```nginx
+#log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
+        #                  '$status $body_bytes_sent "$http_referer" '
+        #                  '"$http_user_agent" "$http_x_forwarded_for"';
+
+                                                    # log_format main 可以定义日志格式
+        #access_log  logs/access.log  main;         # 日志用什么格式输出
+
+把注释去掉即可打开日志
+```
 
 **查看日志**
 
-    tail -f logs/access.log
-    remote_addr: 访问ip地址
-    remote_user: 访问的用户
-    [$time_local]: 访问的本地时间
-    request: 包括请求方式、请求地址、请求协议版本
-    status： 状态码
-    body_bytes_sent 发送的大小
-    http_user_agent 用户请求的浏览器
-    http_x_forwarded_for
+```shell
+tail -f logs/access.log
+remote_addr: 访问ip地址
+remote_user: 访问的用户
+[$time_local]: 访问的本地时间
+request: 包括请求方式、请求地址、请求协议版本
+status： 状态码
+body_bytes_sent 发送的大小
+http_user_agent 用户请求的浏览器
+http_x_forwarded_for
+```
 
 **设置网段禁止访问**
 
-    deny 192.168.21.0/255.255.255.0;    设置这个网段都不能访问，不加子网掩码可以单独设置ip
-    deny 192.168.21.0/24;  同上
+```nginx
+deny 192.168.21.0/255.255.255.0;    设置这个网段都不能访问，不加子网掩码可以单独设置ip
+deny 192.168.21.0/24;  同上
+```
 
 **设置白名单**
 
-    allow 192.168.21.131;
-    以上均可写在server或location里面
+```nginx
+allow 192.168.21.131;
+以上均可写在server或location里面
+```
 
-# 7.反向代理
+## 7. 反向代理
 
 - **作用**：起到保护网站安全的作用，用户访问的永远是这台反向代理的 nginx 机器，因此只用维护 nginx 这台机器的安全防护即可。
 
@@ -428,46 +712,36 @@ server_name www.yukiball.com www.mmmmohime.com mmmmohime.com;
 
 - **负载均衡**：F5、V10、LVS、haproxy（支持 4 层还支持 7 层）nginx 最早出来之前只支持 7 层，新版支持 4 层还支持 UDP 的负载均衡。缓解一台服务器压力，可以承受更多请求。
 
-  假设目前在 ip 为 192.168.21.131 的一台主机下 配置文件中添加
-  upstream django {
-  server 192.168.21.128:81;
-  server 192.168.21.131L81; # 若此时再加上一个 131 的 81 端口，当访问 131 的 81 端口，会发现在 128 和 131 之前轮询
-  }
-
-  server{
-  listen 81;
-  location / {
-  root /data/html;
-  index index.html;
-  }
-  }
-
 ### 权重
 
-    upstream django {
-        server 192.168.21.128:81 weight=3; # 表示权重访问3次128才访问一次131
-        server 192.168.21.131L81;
+```nginx
+upstream django {
+    server 192.168.21.128:81 weight=3; # 表示权重访问3次128才访问一次131
+    server 192.168.21.131L81;
+}
+
+server{
+    listen 80 default_server;
+    listem [::]:80 default_server;
+    server_name _;
+
+    location {
+        proxy_pass http://django; #注意这里一定要加http:// + upstream别名
     }
-    
-    server{
-        listen 80 default_server;
-        listem [::]:80 default_server;
-        server_name _;
-    
-        location {
-            proxy_pass http://django; #注意这里一定要加http:// + upstream别名
-        }
-    }
+}
+```
 
 ### ip_hash
 
 每个请求做 hash 运算，这样每个固定的访客都会被负载到后端固定的机器
 
-    upstream django {
-        ip_hash;
-        server 192.168.21.128:81;
-        server 191.168.21.131:81;
-    }
+```nginx
+upstream django {
+    ip_hash;
+    server 192.168.21.128:81;
+    server 191.168.21.131:81;
+}
+```
 
 ### backup
 

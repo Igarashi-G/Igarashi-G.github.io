@@ -83,29 +83,29 @@
 <div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div></li>
 <li>
 <p>修改配置项</p>
-<div class="language-ini line-numbers-mode" data-highlighter="shiki" data-ext="ini" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#98C379">server {</span></span>
-<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#98C379">	listen 8999</span><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">;		# 改为监听 8999 端口</span></span>
-<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#98C379">	listen [::]:8999</span><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">;</span></span>
-<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#98C379">	</span></span>
-<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#98C379">	server_name _</span><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">;</span></span>
-<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#98C379">	...</span></span>
+<div class="language-nginx line-numbers-mode" data-highlighter="shiki" data-ext="nginx" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">server</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> {</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">	listen </span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">8999</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">;		</span><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># 改为监听 8999 端口</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">	listen </span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">[::]:8999;</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">	</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">	server_name </span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">_;</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">	...</span></span>
 <span class="line"></span>
-<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#98C379">	location / {</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">	location</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> / {</span></span>
 <span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">		# First attempt to serve request as file, then</span></span>
 <span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">		# as directory, then fall back to displaying a 404.</span></span>
-<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#98C379">		root /home/igarashi/images/</span><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">;	# 存放图片路径</span></span>
-<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#98C379">        autoindex on</span><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">;					# 打开浏览功能</span></span>
-<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#98C379">	}</span></span>
-<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#98C379">	</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">		root </span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">/home/igarashi/images/;	</span><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># 存放图片路径</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">        autoindex </span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">on</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">;					</span><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># 打开浏览功能</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">	}</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">	</span></span>
 <span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># 监听多个</span></span>
-<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#98C379">server {</span></span>
-<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#98C379">	listen 443 ssl</span><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">;		# ssl认证</span></span>
-<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#98C379">	listen [::]:443 ssl</span><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">;</span></span>
-<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#98C379">	</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">server</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> {</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">	listen </span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">443</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> ssl;		</span><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># ssl认证</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">	listen </span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">[::]:443 ssl;</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">	</span></span>
 <span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">    # 指定加密证书路径</span></span>
-<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#98C379">	ssl_certificate /home/igarashi/web/ssl/8500011_www.igarashi.icu.pem</span><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">;</span></span>
-<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#98C379">	ssl_certificate_key /home/igarashi/web/ssl/8500011_www.igarashi.icu.key</span><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">;</span></span>
-<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#98C379">	...</span></span></code></pre>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">	ssl_certificate </span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">/home/igarashi/web/ssl/8500011_www.igarashi.icu.pem;</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">	ssl_certificate_key </span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">/home/igarashi/web/ssl/8500011_www.igarashi.icu.key;</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">	...</span></span></code></pre>
 <div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></li>
 <li>
 <p>重载服务</p>
@@ -161,21 +161,21 @@
 <span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">$</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> setenforce</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> 0</span></span></code></pre>
 <div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_3-3-配置文件" tabindex="-1"><a class="header-anchor" href="#_3-3-配置文件"><span>3.3 配置文件</span></a></h3>
 <details class="hint-container details"><summary>示例</summary>
-<div class="language-ini line-numbers-mode" data-highlighter="shiki" data-ext="ini" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">#user  nobody;              # 使用哪个用户来启动子进程</span></span>
-<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#98C379">    worker_processes  1</span><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">;        # 工作进程的个数，配置cpu的核心数-1或-2，cpu的亲缘性绑定，让nginx的子进程工作再哪个核心上</span></span>
+<div class="language-nginx line-numbers-mode" data-highlighter="shiki" data-ext="nginx" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">#user  nobody;              # 使用哪个用户来启动子进程</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">    worker_processes </span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> 1</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">;        </span><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># 工作进程的个数，配置cpu的核心数-1或-2，cpu的亲缘性绑定，让nginx的子进程工作再哪个核心上</span></span>
 <span class="line"></span>
 <span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">    #error_log  logs/error.log;              # 错误日志的存放位置</span></span>
 <span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">    #error_log  logs/error.log  notice;</span></span>
 <span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">    #error_log  logs/error.log  info;</span></span>
 <span class="line"></span>
 <span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">    #pid        logs/nginx.pid;              # 启动之后会生成一个pid文件（socket文件）</span></span>
-<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#98C379">    events {</span></span>
-<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#98C379">        worker_connections  1024</span><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">;           # 每一个子进程工作可以处理的最大连接数，默认1024</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">    events</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> {</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">        worker_connections </span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> 1024</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">;           </span><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># 每一个子进程工作可以处理的最大连接数，默认1024</span></span>
 <span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">                                            # 还可以设置 use [epoll|select|poll] 默认则是自己选择</span></span>
-<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#98C379">    }</span></span>
-<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#98C379">    http {</span></span>
-<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#98C379">        include       mime.types</span><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">;                   # 导入</span></span>
-<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#98C379">        default_type  application/octet-stream</span><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">;     # 默认的请求方式</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">    }</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">    http</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> {</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">        include </span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">      mime.types;                   </span><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># 导入</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">        default_type </span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> application/octet-stream;     </span><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># 默认的请求方式</span></span>
 <span class="line"></span>
 <span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">        #log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '</span></span>
 <span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">        #                  '$status $body_bytes_sent "$http_referer" '</span></span>
@@ -185,40 +185,40 @@
 <span class="line"></span>
 <span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">        #access_log  logs/access.log  main;         # 日志用什么格式输出</span></span>
 <span class="line"></span>
-<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#98C379">        sendfile        on</span><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">;</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">        sendfile </span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">       on</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">;</span></span>
 <span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">        #tcp_nopush     on;</span></span>
 <span class="line"></span>
 <span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">        #keepalive_timeout  0;</span></span>
-<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#98C379">        keepalive_timeout  65</span><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">;                      # 保持长连接的超时时间 65秒</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">        keepalive_timeout </span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> 65</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">;                      </span><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># 保持长连接的超时时间 65秒</span></span>
 <span class="line"></span>
 <span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">        #gzip  on;</span></span>
 <span class="line"></span>
-<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#98C379">        server {</span></span>
-<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#98C379">            listen       80</span><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">;                        # 监听端口</span></span>
-<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#98C379">            server_name  localhost</span><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">;                 # 设置域名 此处为域名，直接写是肯定不会有个，除非本地HOSTS设置对应的</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">        server</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> {</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">            listen </span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">      80</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">;                        </span><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># 监听端口</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">            server_name </span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> localhost;                 </span><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># 设置域名 此处为域名，直接写是肯定不会有个，除非本地HOSTS设置对应的</span></span>
 <span class="line"></span>
 <span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">            #charset koi8-r;</span></span>
 <span class="line"></span>
 <span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">            #access_log  logs/host.access.log  main;</span></span>
 <span class="line"></span>
-<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#98C379">            location / {</span></span>
-<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#98C379">                root   html</span><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">;                        # 指定静态文件地址</span></span>
-<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#98C379">                index  index.html index.htm</span><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">;        # 指定默认的index页面</span></span>
-<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#98C379">            }</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">            location</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> / {</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">                root </span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">  html;                        </span><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># 指定静态文件地址</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">                index </span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> index.html index.htm;        </span><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># 指定默认的index页面</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">            }</span></span>
 <span class="line"></span>
 <span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">            #error_page  404              /404.html;    # 错误页面 找不到页面</span></span>
 <span class="line"></span>
 <span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">            # redirect server error pages to the static page /50x.html</span></span>
 <span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">            #</span></span>
-<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#98C379">            error_page   500 502 503 504  /50x.html</span><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">;    # 错误页面 服务端错误（后端代码逻辑性错误等）</span></span>
-<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#C678DD">            location</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> =</span><span style="--shiki-light:#383A42;--shiki-dark:#98C379"> /50x.html {</span></span>
-<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#98C379">                root   html</span><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">;</span></span>
-<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#98C379">            }</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">            error_page </span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">  500</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> 502</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> 503</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> 504</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">  /50x.html;    </span><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># 错误页面 服务端错误（后端代码逻辑性错误等）</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">            location</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> = </span><span style="--shiki-light:#0184BC;--shiki-dark:#E06C75">/50x.html </span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">{</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">                root </span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">  html;</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">            }</span></span>
 <span class="line"></span>
-<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#98C379">            location /img {</span></span>
-<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#98C379">                root /data/img</span><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">;         # 若为root，那么表示/data/img 这个地址为根，还要有个/img目录才行</span></span>
-<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#98C379">                alias /data/img</span><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">;        # 若为alias， 那么表示/data/img 这个地址就是/img的所在目录</span></span>
-<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#98C379">            }</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">            location</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> /img {</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">                root </span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">/data/img;         </span><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># 若为root，那么表示/data/img 这个地址为根，还要有个/img目录才行</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">                alias </span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">/data/img;        </span><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># 若为alias， 那么表示/data/img 这个地址就是/img的所在目录</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">            }</span></span>
 <span class="line"></span>
 <span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">            # proxy the PHP scripts to Apache listening on 127.0.0.1:80</span></span>
 <span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">            #</span></span>
@@ -242,7 +242,7 @@
 <span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">            #location ~ /\.ht {</span></span>
 <span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">            #    deny  all;</span></span>
 <span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">            #}</span></span>
-<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#98C379">        }</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">        }</span></span>
 <span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">        # another virtual host using mix of IP-, name-, and port-based configuration</span></span>
 <span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">        #</span></span>
 <span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">        #server {</span></span>
@@ -276,7 +276,7 @@
 <span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">        #    }</span></span>
 <span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">        #}</span></span>
 <span class="line"></span>
-<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#98C379">    }</span></span></code></pre>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">    }</span></span></code></pre>
 <div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></details>
 <h2 id="_4-其他操作" tabindex="-1"><a class="header-anchor" href="#_4-其他操作"><span>4. 其他操作</span></a></h2>
 <h3 id="_4-1-域名设置" tabindex="-1"><a class="header-anchor" href="#_4-1-域名设置"><span>4.1 域名设置</span></a></h3>
@@ -292,47 +292,299 @@
 </li>
 <li>
 <p>基于域名的：最简单的方式</p>
-<pre><code>server {
-    listen 80 default_server; # 设置 default 当使用 ip 地址访问，默认进入 server 设置的页面
-    server_name www.taobao.dom taobao.com;
-  location / {
-      root /data/taobao;
-      index index.html;
-  }
-  }
-</code></pre>
+<div class="language-nginx line-numbers-mode" data-highlighter="shiki" data-ext="nginx" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">server</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> {</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">    listen </span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">80</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> default_server</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">; </span><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># 设置 default 当使用 ip 地址访问，默认进入 server 设置的页面</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">    server_name </span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">www.taobao.dom taobao.com;</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">  location</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> / {</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">      root </span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">/data/taobao;</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">      index </span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">index.html;</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">  }</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">  }</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></li>
+</ul>
+<h3 id="_4-2-关于跨域" tabindex="-1"><a class="header-anchor" href="#_4-2-关于跨域"><span>4.2 关于跨域</span></a></h3>
+<p>跨域是浏览器同源策略的限制，注意是针对与 <strong>浏览器</strong> 的，而比如微服务下，<strong>服务A</strong> —调用—&gt; <strong>服务B</strong> 或者，其他应用比如桌面应用，创建一个 <strong>Client</strong> 去跨主机远程调用 <strong>都是与跨域无关的！</strong></p>
+<div class="hint-container important">
+<p class="hint-container-title"><strong>仅作用于浏览器！！!</strong></p>
+<ul>
+<li>因此，通常 <strong>前端</strong> 的解决方案是另启动一个代理服务器，作为 <strong>中间代理 Proxy 通信</strong> ，帮助前端浏览器发送请求到后端</li>
+<li>后端解决则可以通过服务器指定请求头 <strong>CORS headers</strong> 来实现
+<ul>
+<li><strong><code v-pre>Access-Control-Allow-Origin：*</code></strong></li>
+<li><strong><code v-pre>Access-Control-Allow-Methods：*</code></strong></li>
+<li><strong><code v-pre>Access-Control-Allow-Headers：*</code></strong></li>
+</ul>
 </li>
 </ul>
-<h1 id="_6-nginx-日志" tabindex="-1"><a class="header-anchor" href="#_6-nginx-日志"><span>6.Nginx 日志</span></a></h1>
-<pre><code>#log_format  main  '$remote_addr - $remote_user [$time_local] &quot;$request&quot; '
-        #                  '$status $body_bytes_sent &quot;$http_referer&quot; '
-        #                  '&quot;$http_user_agent&quot; &quot;$http_x_forwarded_for&quot;';
-
-                                                    # log_format main 可以定义日志格式
-        #access_log  logs/access.log  main;         # 日志用什么格式输出
-
-把注释去掉即可打开日志
-</code></pre>
-<p><strong>查看日志</strong></p>
-<pre><code>tail -f logs/access.log
-remote_addr: 访问ip地址
-remote_user: 访问的用户
-[$time_local]: 访问的本地时间
-request: 包括请求方式、请求地址、请求协议版本
-status： 状态码
-body_bytes_sent 发送的大小
-http_user_agent 用户请求的浏览器
-http_x_forwarded_for
-</code></pre>
-<p><strong>设置网段禁止访问</strong></p>
-<pre><code>deny 192.168.21.0/255.255.255.0;    设置这个网段都不能访问，不加子网掩码可以单独设置ip
-deny 192.168.21.0/24;  同上
-</code></pre>
-<p><strong>设置白名单</strong></p>
-<pre><code>allow 192.168.21.131;
-以上均可写在server或location里面
-</code></pre>
-<h1 id="_7-反向代理" tabindex="-1"><a class="header-anchor" href="#_7-反向代理"><span>7.反向代理</span></a></h1>
+</div>
+<p>那么使用了 <strong>Nginx</strong> 则可以通过反向代理配置文件中允许跨域来实现，如下：</p>
+<div class="language-nginx line-numbers-mode" data-highlighter="shiki" data-ext="nginx" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">add_header </span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">'Access-Control-Allow-Origin'</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> '*'</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> always;</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">add_header </span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">'Access-Control-Allow-Methods'</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> 'GET, POST, OPTIONS, PUT, DELETE'</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> always;</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">add_header </span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">'Access-Control-Allow-Headers'</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> 'Origin, X-Requested-With, Content-Type, Accept, Authorization'</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> always;</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">add_header </span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">'Access-Control-Allow-Credentials'</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> 'true'</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> always;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># 处理预检请求</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">if</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> ($</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">request_method</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> = </span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">'OPTIONS'</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">) {</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">    add_header </span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">'Access-Control-Max-Age'</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> 1728000</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">    add_header </span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">'Content-Type'</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> 'text/plain charset=UTF-8'</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">    add_header </span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">'Content-Length'</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> 0</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">    return</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> 204</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">}</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="_5-示例" tabindex="-1"><a class="header-anchor" href="#_5-示例"><span>5. 示例</span></a></h2>
+<p><strong>nginx.conf 示例</strong></p>
+<div class="language-nginx line-numbers-mode" data-highlighter="shiki" data-ext="nginx" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># daemon off;</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">worker_processes </span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> auto; </span><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">#should be 1 for Windows, for it doesn't support Unix domain socket</span></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">#worker_processes  auto; #from versions 1.3.8 and 1.2.5</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">#worker_cpu_affinity  0001 0010 0100 1000; #only available on FreeBSD and Linux</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">worker_cpu_affinity </span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> auto; </span><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">#from version 1.9.10</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">user </span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">root;</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">error_log </span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">/var/log/nginx/error.log </span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">error</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">pid </span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">       /var/run/nginx.pid;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">#located before events directive, otherwise the module won't be loaded</span></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">#or will be loaded unsuccessfully when NGINX is started</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">#load_module modules/ngx_http_flv_live_module.so;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">events</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> {</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">    use </span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">epoll</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">    #设置单个工作进程的最大并发连接数</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">    worker_connections </span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> 4096</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">    #on为同一时刻一个请求轮流由work进程处理,而防止被同时唤醒所有worker,避免多个睡眠进程被唤醒的设置，默认为off，新请求会唤醒所有worker进程,此过程也称为"惊群"，因此nginx刚安装完以后要进行适当的优化。建议设置为on</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">    accept_mutex </span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">on</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">    #ON时Nginx服务器的每个工作进程可以同时接受多个新的网络连接，此指令默认为off，即默认为一个工作进程只能一次接受一个新的网络连接，打开后几个同时接受多个。建议设置为on</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">    multi_accept </span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">on</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">http</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> {</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">    include </span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">/usr/local/nginx/conf/mime.types;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">    # 隐藏nginx的版本</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">    server_tokens </span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">off</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">    # 已开启，提高文件传输效率</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">    sendfile </span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">      on</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">    # 匹配变量http_upgrade的值，根据匹配情况为变量connection_upgrade赋值</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">    map</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> $</span><span style="--shiki-light:#383A42;--shiki-light-font-style:inherit;--shiki-dark:#E06C75;--shiki-dark-font-style:italic">http_upgrade</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> $</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">connection_upgrade</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> {</span></span>
+<span class="line"><span style="--shiki-light:#986801;--shiki-dark:#D19A66">        default</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> upgrade;</span></span>
+<span class="line"><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">        ''</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">      close;</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">    client_max_body_size </span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">2000m</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">    client_body_buffer_size </span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">4M</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">    client_header_buffer_size </span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">16k</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">    large_client_header_buffers </span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">4</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> 32k</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">    # 日志格式定义</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">    log_format </span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">main</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> '$</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">remote_addr</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> - $</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">remote_user</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> [$</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">time_local</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">] "$</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">request</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">" '</span></span>
+<span class="line"><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">                   '$</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">status</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> $</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">body_bytes_sent</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> "$</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">http_referer</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">" '</span></span>
+<span class="line"><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">                   '"$</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">http_user_agent</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">" "$</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">http_x_forwarded_for</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">"'</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">    # 详细日志格式（推荐）</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">    log_format </span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">detailed </span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">'$</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">remote_addr</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> - $</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">remote_user</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> [$</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">time_local</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">] "$</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">request</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">" '</span></span>
+<span class="line"><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">                        '$</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">status</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> $</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">body_bytes_sent</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> "$</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">http_referer</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">" '</span></span>
+<span class="line"><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">                        '"$</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">http_user_agent</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">" "$</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">http_x_forwarded_for</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">" '</span></span>
+<span class="line"><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">                        '$</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">request_time</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> $</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">upstream_response_time</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> $</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">upstream_addr</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">'</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">    # JSON 格式日志（适合日志分析）</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">    log_format </span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">json_log escape=json </span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">'{'</span></span>
+<span class="line"><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">        '"time_local":"$</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">time_local</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">",'</span></span>
+<span class="line"><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">        '"remote_addr":"$</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">remote_addr</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">",'</span></span>
+<span class="line"><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">        '"remote_user":"$</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">remote_user</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">",'</span></span>
+<span class="line"><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">        '"request":"$</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">request</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">",'</span></span>
+<span class="line"><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">        '"status": "$</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">status</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">",'</span></span>
+<span class="line"><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">        '"http_referer":"$</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">http_referer</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">",'</span></span>
+<span class="line"><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">        '"body_bytes_sent":"$</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">body_bytes_sent</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">",'</span></span>
+<span class="line"><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">        '"http_user_agent":"$</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">http_user_agent</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">",'</span></span>
+<span class="line"><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">        '"request_time":$</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">request_time</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">,'</span></span>
+<span class="line"><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">        '"upstream_response_time":$</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">upstream_response_time</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">'</span></span>
+<span class="line"><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">    '}'</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">    # 日志路径配置</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">    error_log </span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">/var/log/nginx/error.log </span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">error</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">    server</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> {</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">        listen </span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">8081</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">        server_name </span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">_;</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">        charset </span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">utf-8;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">        # 使用指定格式</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">        access_log </span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">/var/log/nginx/access.log detailed buffer=32k flush=5s;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">        gzip_static </span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">on</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">        gzip_proxied </span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">expired no-cache no-store private auth;</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">        gzip </span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">on</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">        gzip_http_version </span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">1.1</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">        gzip_buffers </span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">32</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> 16K</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">        gzip_comp_level </span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">6</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">        gzip_min_length </span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">1k</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">        gzip_types </span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">text/plain text/css text/xml text/javascript application/json application/javascript application/x-javascript application/xml image/svg+xml;</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">        gzip_vary </span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">on</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">        gzip_disable </span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">"MSIE [1-6]\."</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">        # 添加一些安全相关的请求头，用于防止常见的 Web 安全攻击</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">        add_header </span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">X-XSS-Protection </span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">"1; mode=block"</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">        add_header </span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">X-Content-Type-Options nosniff;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">        proxy_set_header </span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">X-Forwarded-For $</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">remote_addr</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">        underscores_in_headers </span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">on</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">        include </span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">location/*.conf ;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">    include </span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">/etc/nginx/conf.d/*.conf;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">}</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p><strong>nginx-ssl.conf 示例</strong></p>
+<div class="language-nginx line-numbers-mode" data-highlighter="shiki" data-ext="nginx" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># daemon off;</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">worker_processes </span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> auto; </span><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">#should be 1 for Windows, for it doesn't support Unix domain socket</span></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">#worker_processes  auto; #from versions 1.3.8 and 1.2.5</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">#worker_cpu_affinity  0001 0010 0100 1000; #only available on FreeBSD and Linux</span></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">#worker_cpu_affinity  auto; #from version 1.9.10</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">user </span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">root;</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">error_log </span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">/var/log/nginx/error.log </span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">error</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">pid </span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">       /var/run/nginx.pid;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">#located before events directive, otherwise the module won't be loaded</span></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">#or will be loaded unsuccessfully when NGINX is started</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">#load_module modules/ngx_http_flv_live_module.so;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">events</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> {</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">    use </span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">epoll</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">    worker_connections </span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> 4096</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">    accept_mutex </span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">on</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">    multi_accept </span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">on</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">http</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> {</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">    default_type </span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> application/octet-stream;</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">    include </span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">/usr/local/nginx/conf/mime.types;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">    client_max_body_size </span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">2000m</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">    client_body_buffer_size </span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">4M</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">    client_header_buffer_size </span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">16k</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">    large_client_header_buffers </span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">4</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> 32k</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">    server_tokens </span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">off</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">     # 已开启，提高文件传输效率</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">    sendfile </span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">      on</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">    # 匹配变量http_upgrade的值，根据匹配情况为变量connection_upgrade赋值</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">    map</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> $</span><span style="--shiki-light:#383A42;--shiki-light-font-style:inherit;--shiki-dark:#E06C75;--shiki-dark-font-style:italic">http_upgrade</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> $</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">connection_upgrade</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> {</span></span>
+<span class="line"><span style="--shiki-light:#986801;--shiki-dark:#D19A66">        default</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> upgrade;</span></span>
+<span class="line"><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">        ''</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">      close;</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">    # 日志格式定义</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">    log_format </span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">main</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> '$</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">remote_addr</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> - $</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">remote_user</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> [$</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">time_local</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">] "$</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">request</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">" '</span></span>
+<span class="line"><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">                   '$</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">status</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> $</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">body_bytes_sent</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> "$</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">http_referer</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">" '</span></span>
+<span class="line"><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">                   '"$</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">http_user_agent</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">" "$</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">http_x_forwarded_for</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">"'</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">    # 详细日志格式（推荐）</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">    log_format </span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">detailed </span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">'$</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">remote_addr</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> - $</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">remote_user</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> [$</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">time_local</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">] "$</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">request</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">" '</span></span>
+<span class="line"><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">                        '$</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">status</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> $</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">body_bytes_sent</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> "$</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">http_referer</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">" '</span></span>
+<span class="line"><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">                        '"$</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">http_user_agent</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">" "$</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">http_x_forwarded_for</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">" '</span></span>
+<span class="line"><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">                        '$</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">request_time</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> $</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">upstream_response_time</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> $</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">upstream_addr</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">'</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">    # JSON 格式日志（适合日志分析）</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">    log_format </span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">json_log escape=json </span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">'{'</span></span>
+<span class="line"><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">        '"time_local":"$</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">time_local</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">",'</span></span>
+<span class="line"><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">        '"remote_addr":"$</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">remote_addr</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">",'</span></span>
+<span class="line"><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">        '"remote_user":"$</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">remote_user</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">",'</span></span>
+<span class="line"><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">        '"request":"$</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">request</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">",'</span></span>
+<span class="line"><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">        '"status": "$</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">status</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">",'</span></span>
+<span class="line"><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">        '"http_referer":"$</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">http_referer</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">",'</span></span>
+<span class="line"><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">        '"body_bytes_sent":"$</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">body_bytes_sent</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">",'</span></span>
+<span class="line"><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">        '"http_user_agent":"$</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">http_user_agent</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">",'</span></span>
+<span class="line"><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">        '"request_time":$</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">request_time</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">,'</span></span>
+<span class="line"><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">        '"upstream_response_time":$</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">upstream_response_time</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">'</span></span>
+<span class="line"><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">    '}'</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">    # 日志路径配置</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">    error_log </span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">/var/log/nginx/error.log </span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">error</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">    server</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> {</span></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">        # listen 8081 ssl http2;</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">        listen </span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">8081</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> ssl;</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">        http2 </span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">on</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">        server_name </span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">crip.corerain.com;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">        charset </span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">utf-8;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">        # 使用指定格式</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">        access_log </span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">/var/log/nginx/access.log detailed buffer=32k flush=5s;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">        ssl_certificate </span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">/usr/local/nginx/cert/server.crt;</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">        ssl_certificate_key </span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">/usr/local/nginx/cert/server.key;</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">        ssl_protocols </span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">TLSv1.2 TLSv1.3;</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">        ssl_session_timeout </span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">5m</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">        ssl_ciphers </span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">"ECDHE-RSA-AES256-GCM-SHA384:ECDHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384:DHE-RSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-SHA384:ECDHE-RSA-AES128-SHA256:ECDHE-RSA-AES256-SHA:ECDHE-RSA-AES128-SHA:DHE-RSA-AES256-SHA256:DHE-RSA-AES128-SHA256:DHE-RSA-AES256-SHA:DHE-RSA-AES128-SHA:ECDHE-RSA-DES-CBC3-SHA:EDH-RSA-DES-CBC3-SHA:AES256-GCM-SHA384:AES128-GCM-SHA256:AES256-SHA256:AES128-SHA256:AES256-SHA:AES128-SHA:DES-CBC3-SHA:HIGH:!aNULL:!eNULL:!EXPORT:!DES:!MD5:!PSK:!RC4"</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">        ssl_prefer_server_ciphers </span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">on</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">        gzip_static </span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">on</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">        gzip_proxied </span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">expired no-cache no-store private auth;</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">        gzip </span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">on</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">        gzip_http_version </span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">1.1</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">        gzip_buffers </span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">32</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> 16K</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">        gzip_comp_level </span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">6</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">        gzip_min_length </span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">1k</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">        gzip_types </span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">application/x-javascript text/css text/xml;</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">        gzip_vary </span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">on</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">        gzip_disable </span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">"MSIE [1-6]\."</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">        add_header </span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">X-Content-Type-Options </span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">"nosniff"</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">        add_header </span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">X-XSS-Protection </span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">"1; mode=block"</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">        add_header </span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">Strict-Transport-Security </span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">"max-age=63072000; includeSubdomains; preload"</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">        add_header </span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">'Referrer-Policy'</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> 'origin'</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">        add_header </span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">X-Download-Options noopen;</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">        add_header </span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">X-Permitted-Cross-Domain-Policies none;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">        proxy_set_header </span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">X-Forwarded-For $</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">remote_addr</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">        underscores_in_headers </span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">on</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">        include </span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">location/*.</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h1 id="_6-nginx-日志" tabindex="-1"><a class="header-anchor" href="#_6-nginx-日志"><span>6.Nginx 日志</span></a></h1>
+<div class="language-nginx line-numbers-mode" data-highlighter="shiki" data-ext="nginx" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">#log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '</span></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">        #                  '$status $body_bytes_sent "$http_referer" '</span></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">        #                  '"$http_user_agent" "$http_x_forwarded_for"';</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">                                                    # log_format main 可以定义日志格式</span></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">        #access_log  logs/access.log  main;         # 日志用什么格式输出</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">把注释去掉即可打开日志</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p><strong>查看日志</strong></p>
+<div class="language-shell line-numbers-mode" data-highlighter="shiki" data-ext="shell" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">tail</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> -f</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> logs/access.log</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">remote_addr:</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> 访问ip地址</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">remote_user:</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> 访问的用户</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">[</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">$time_local</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">]: 访问的本地时间</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">request:</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> 包括请求方式、请求地址、请求协议版本</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">status：</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> 状态码</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">body_bytes_sent</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> 发送的大小</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">http_user_agent</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> 用户请求的浏览器</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">http_x_forwarded_for</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p><strong>设置网段禁止访问</strong></p>
+<div class="language-nginx line-numbers-mode" data-highlighter="shiki" data-ext="nginx" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">deny </span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">192.168.21.0/255.255.255.0;    设置这个网段都不能访问，不加子网掩码可以单独设置ip</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">deny </span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">192.168.21.0/24;  同上</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div></div></div><p><strong>设置白名单</strong></p>
+<div class="language-nginx line-numbers-mode" data-highlighter="shiki" data-ext="nginx" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">allow </span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">192.168.21.131</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">以上均可写在server或location里面</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="_7-反向代理" tabindex="-1"><a class="header-anchor" href="#_7-反向代理"><span>7. 反向代理</span></a></h2>
 <ul>
 <li>
 <p><strong>作用</strong>：起到保护网站安全的作用，用户访问的永远是这台反向代理的 nginx 机器，因此只用维护 nginx 这台机器的安全防护即可。</p>
@@ -342,45 +594,31 @@ deny 192.168.21.0/24;  同上
 </li>
 <li>
 <p><strong>负载均衡</strong>：F5、V10、LVS、haproxy（支持 4 层还支持 7 层）nginx 最早出来之前只支持 7 层，新版支持 4 层还支持 UDP 的负载均衡。缓解一台服务器压力，可以承受更多请求。</p>
-<p>假设目前在 ip 为 192.168.21.131 的一台主机下 配置文件中添加<br>
-upstream django {<br>
-server 192.168.21.128:81;<br>
-server 192.168.21.131L81; # 若此时再加上一个 131 的 81 端口，当访问 131 的 81 端口，会发现在 128 和 131 之前轮询<br>
-}</p>
-<p>server{<br>
-listen 81;<br>
-location / {<br>
-root /data/html;<br>
-index index.html;<br>
-}<br>
-}</p>
 </li>
 </ul>
 <h3 id="权重" tabindex="-1"><a class="header-anchor" href="#权重"><span>权重</span></a></h3>
-<pre><code>upstream django {
-    server 192.168.21.128:81 weight=3; # 表示权重访问3次128才访问一次131
-    server 192.168.21.131L81;
-}
-
-server{
-    listen 80 default_server;
-    listem [::]:80 default_server;
-    server_name _;
-
-    location {
-        proxy_pass http://django; #注意这里一定要加http:// + upstream别名
-    }
-}
-</code></pre>
-<h3 id="ip-hash" tabindex="-1"><a class="header-anchor" href="#ip-hash"><span>ip_hash</span></a></h3>
+<div class="language-nginx line-numbers-mode" data-highlighter="shiki" data-ext="nginx" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">upstream</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> django {</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">    server</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> 192.168.21.128:81 </span><span style="--shiki-light:#383A42;--shiki-light-font-style:inherit;--shiki-dark:#E06C75;--shiki-dark-font-style:italic">weight</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">=</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">3</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">; </span><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># 表示权重访问3次128才访问一次131</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">    server 192.168.21.131L81;</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">server{</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">    listen </span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">80</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> default_server</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">    listem</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> [::]:80 </span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">default_server</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">    server_name </span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">_;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">    location</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> {</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">        proxy_pass </span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">http://django; </span><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">#注意这里一定要加http:// + upstream别名</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">    }</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">}</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="ip-hash" tabindex="-1"><a class="header-anchor" href="#ip-hash"><span>ip_hash</span></a></h3>
 <p>每个请求做 hash 运算，这样每个固定的访客都会被负载到后端固定的机器</p>
-<pre><code>upstream django {
-    ip_hash;
-    server 192.168.21.128:81;
-    server 191.168.21.131:81;
-}
-</code></pre>
-<h3 id="backup" tabindex="-1"><a class="header-anchor" href="#backup"><span>backup</span></a></h3>
+<div class="language-nginx line-numbers-mode" data-highlighter="shiki" data-ext="nginx" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">upstream</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> django {</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">    ip_hash</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">;</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">    server</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> 192.168.21.128:81;</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">    server</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> 191.168.21.131:81;</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">}</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="backup" tabindex="-1"><a class="header-anchor" href="#backup"><span>backup</span></a></h3>
 <p>备份：</p>
 </div></template>
 

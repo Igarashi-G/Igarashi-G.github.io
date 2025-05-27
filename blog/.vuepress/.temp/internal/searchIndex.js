@@ -2731,6 +2731,28 @@ export const SEARCH_INDEX = [
           },
           {
             "level": 3,
+            "title": "4.2 关于跨域",
+            "slug": "_4-2-关于跨域",
+            "link": "#_4-2-关于跨域",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "5. 示例",
+        "slug": "_5-示例",
+        "link": "#_5-示例",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "7. 反向代理",
+        "slug": "_7-反向代理",
+        "link": "#_7-反向代理",
+        "children": [
+          {
+            "level": 3,
             "title": "权重",
             "slug": "权重",
             "link": "#权重",
