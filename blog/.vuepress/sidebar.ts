@@ -310,7 +310,8 @@ export default sidebar({
           prefix: "基础/",
           children: [
             "go语言速记",
-            "go工具速用"
+            "go工具速用",
+            "闭包"
           ]
         },
         {
