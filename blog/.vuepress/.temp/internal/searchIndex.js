@@ -1012,9 +1012,9 @@ export const SEARCH_INDEX = [
       },
       {
         "level": 2,
-        "title": "2 为何要避免闭包",
-        "slug": "_2-为何要避免闭包",
-        "link": "#_2-为何要避免闭包",
+        "title": "2 闭包性能分析",
+        "slug": "_2-闭包性能分析",
+        "link": "#_2-闭包性能分析",
         "children": [
           {
             "level": 3,
@@ -1035,6 +1035,35 @@ export const SEARCH_INDEX = [
             "title": "2.3 生产环境建议",
             "slug": "_2-3-生产环境建议",
             "link": "#_2-3-生产环境建议",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "3. 行业应用案例",
+        "slug": "_3-行业应用案例",
+        "link": "#_3-行业应用案例",
+        "children": [
+          {
+            "level": 3,
+            "title": "HTTP中间件",
+            "slug": "http中间件",
+            "link": "#http中间件",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "测试桩(Stub)生成",
+            "slug": "测试桩-stub-生成",
+            "link": "#测试桩-stub-生成",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "defer + 复杂依赖清理资源",
+            "slug": "defer-复杂依赖清理资源",
+            "link": "#defer-复杂依赖清理资源",
             "children": []
           }
         ]
