@@ -9728,6 +9728,42 @@ export const SEARCH_INDEX = [
     "path": "/timeline/",
     "pathLocale": "/",
     "extraFields": []
+  },
+  {
+    "title": "",
+    "headers": [
+      {
+        "level": 3,
+        "title": "抢锁流程**（3 个 Goroutine 抢锁）**",
+        "slug": "抢锁流程-3-个-goroutine-抢锁",
+        "link": "#抢锁流程-3-个-goroutine-抢锁",
+        "children": []
+      },
+      {
+        "level": 3,
+        "title": "释放锁",
+        "slug": "释放锁",
+        "link": "#释放锁",
+        "children": []
+      },
+      {
+        "level": 3,
+        "title": "解锁流程（G1 调用 Unlock()，当前有 G2、G3 在等待）",
+        "slug": "解锁流程-g1-调用-unlock-当前有-g2、g3-在等待",
+        "link": "#解锁流程-g1-调用-unlock-当前有-g2、g3-在等待",
+        "children": []
+      }
+    ],
+    "path": "/go/%E5%9F%BA%E7%A1%80/Metux.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "",
+    "headers": [],
+    "path": "/go/%E5%9F%BA%E7%A1%80/.~Metux.html",
+    "pathLocale": "/",
+    "extraFields": []
   }
 ]
 
