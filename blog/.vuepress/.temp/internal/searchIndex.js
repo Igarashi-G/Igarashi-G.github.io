@@ -1459,28 +1459,71 @@ export const SEARCH_INDEX = [
     "extraFields": []
   },
   {
-    "title": "",
+    "title": "sync.Mutex 发展史",
     "headers": [
       {
-        "level": 3,
-        "title": "抢锁流程**（3 个 Goroutine 抢锁）**",
-        "slug": "抢锁流程-3-个-goroutine-抢锁",
-        "link": "#抢锁流程-3-个-goroutine-抢锁",
+        "level": 2,
+        "title": "1. First Commit",
+        "slug": "_1-first-commit",
+        "link": "#_1-first-commit",
         "children": []
       },
       {
-        "level": 3,
-        "title": "释放锁",
-        "slug": "释放锁",
-        "link": "#释放锁",
-        "children": []
-      },
-      {
-        "level": 3,
-        "title": "解锁流程（G1 调用 Unlock()，当前有 G2、G3 在等待）",
-        "slug": "解锁流程-g1-调用-unlock-当前有-g2、g3-在等待",
-        "link": "#解锁流程-g1-调用-unlock-当前有-g2、g3-在等待",
-        "children": []
+        "level": 2,
+        "title": "2. 抢占&计数优化",
+        "slug": "_2-抢占-计数优化",
+        "link": "#_2-抢占-计数优化",
+        "children": [
+          {
+            "level": 3,
+            "title": "2.1 抢锁",
+            "slug": "_2-1-抢锁",
+            "link": "#_2-1-抢锁",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "2.2 抢锁流程**（3 个 Goroutine 抢锁）**",
+            "slug": "_2-2-抢锁流程-3-个-goroutine-抢锁",
+            "link": "#_2-2-抢锁流程-3-个-goroutine-抢锁",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "2.3 释放锁",
+            "slug": "_2-3-释放锁",
+            "link": "#_2-3-释放锁",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "2.4 解锁流程（G1 调用 Unlock()，当前有 G2、G3 在等待, G4新来）",
+            "slug": "_2-4-解锁流程-g1-调用-unlock-当前有-g2、g3-在等待-g4新来",
+            "link": "#_2-4-解锁流程-g1-调用-unlock-当前有-g2、g3-在等待-g4新来",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "2.5 总结",
+            "slug": "_2-5-总结",
+            "link": "#_2-5-总结",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "3. 自旋优化",
+            "slug": "_3-自旋优化",
+            "link": "#_3-自旋优化",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "4. 公平优化",
+            "slug": "_4-公平优化",
+            "link": "#_4-公平优化",
+            "children": []
+          }
+        ]
       }
     ],
     "path": "/go/%E5%9F%BA%E7%A1%80/Metux.html",
@@ -9755,6 +9798,13 @@ export const SEARCH_INDEX = [
     "title": "时间轴",
     "headers": [],
     "path": "/timeline/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "",
+    "headers": [],
+    "path": "/go/%E5%9F%BA%E7%A1%80/.~Metux.html",
     "pathLocale": "/",
     "extraFields": []
   }
