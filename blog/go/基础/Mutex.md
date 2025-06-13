@@ -1,6 +1,22 @@
+---
+title: sync.Mutex
+date: 2025-05-17
+category:
+  - Go
+  - 并发
+tag:
+  - GO
+  - 源码
+star: true
+---
 
+sync.Mutex 发展史
 
-# sync.Mutex 发展史
+<!-- more -->
+
+# 从源码理解 sync.Mutex
+
+**sync.Mutex** 的慢路径依赖于 **runtime_SemacquireMutex** 和 **runtime_Semrelease** ，要理解 `Sync.Mutex` ，首先需要理解 [runtime.semaphore]()
 
 ## 1. First Commit
 
@@ -54,6 +70,8 @@ func (m *Mutex) Lock() {
     }
 }
 ```
+
+![state状态字段](img/sync-mutex-state.png) 
 
 **state字段：** 通过位掩码存储锁状态，非常巧妙，分别是：
 
@@ -441,8 +459,13 @@ for {
 
 2016 年，@dvyukov 进行了 [第三次优化 sync](https://go-review.googlesource.com/c/go/+/34310/)：使 **Mutex** 更加公平，引入了饥饿模式的概念，使锁更加公平。
 
-`sema` 字段相对简单；它是 `runtime_SemacquireMutex` 和 `runtime_Semrelease` 调用所需的参数。 `state` 字段根据不同的位表示不同的含义，次版本已经扩展出了饥饿字段
+`sema` 字段相对简单；它是 `runtime_SemacquireMutex` 和 `runtime_Semrelease` 调用所需的参数。 `state` 字段根据不同的位表示不同的含义，次版本已经扩展出了饥饿字段 
 
-![img](img/sync-mutex-state.png) 
 
-要理解 `Sync.Mutex` ，首先需要理解 `runtime.semaphore` 
+
+
+
+
+
+- [Decrypt Go: sync.Mutex](https://pub.huizhou92.com/go-source-code-sync-mutex-3082a25ef092) 
+- 《深入理解Go并发编程》

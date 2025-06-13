@@ -5,8 +5,6 @@ category:
   - Go
 tag:
   - GO
-  - 速用
-star: true
 ---
 
 **Golang** 常用库方法、小工具，等开箱即用

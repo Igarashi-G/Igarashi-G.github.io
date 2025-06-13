@@ -311,7 +311,9 @@ export default sidebar({
           children: [
             "go语言速记",
             "go工具速用",
-            "闭包"
+            "闭包",
+            "内存管理与GC",
+            "Mutex"
           ]
         },
         {

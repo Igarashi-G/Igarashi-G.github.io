@@ -1,6 +1,6 @@
 <template><div><p>再谈闭包</p>
 <!-- more -->
-<h2 id="_1-闭包" tabindex="-1"><a class="header-anchor" href="#_1-闭包"><span>1 闭包</span></a></h2>
+<h2 id="_1-闭包" tabindex="-1"><a class="header-anchor" href="#_1-闭包"><span>1. 闭包</span></a></h2>
 <p>在 <RouteLink to="/python/%E8%AF%AD%E8%A8%80/%E8%BF%9B%E9%98%B6/%E8%A3%85%E9%A5%B0%E5%99%A8.html#_1-4-%E9%97%AD%E5%8C%85">python中的闭包</RouteLink>  和 <strong>Go</strong> 的闭包在 <strong>表层语法</strong> 上大差不差，都是 <strong>函数捕获外部变量并延长其生命周期</strong> 。但在 <strong>底层实现、作用域规则、变量捕获方式</strong> 等方面确实还是有显著区别</p>
 <h3 id="_1-1-闭包区别" tabindex="-1"><a class="header-anchor" href="#_1-1-闭包区别"><span><strong>1.1 闭包区别</strong></span></a></h3>
 <h4 id="_1-1-1-go-的限制" tabindex="-1"><a class="header-anchor" href="#_1-1-1-go-的限制"><span><strong>1.1.1 Go 的限制</strong></span></a></h4>
@@ -18,8 +18,8 @@
 <p><strong>Go闭包</strong> 的基础是 <strong>词法作用域（Lexical Scoping）</strong>：当匿名函数引用外部变量时，该变量的生命周期会延长到与闭包相同。这些被引用的外部变量称为<strong>自由变量（Free Variables）</strong>，它们在闭包被创建时被”捕获”。</p>
 <h5 id="因此闭包的核心条件需同时满足如下两点" tabindex="-1"><a class="header-anchor" href="#因此闭包的核心条件需同时满足如下两点"><span>因此闭包的核心条件需同时满足如下两点：</span></a></h5>
 <ol>
-<li><strong>变量捕获外部变量</strong>：函数内部引用了外层作用域的变量</li>
-<li><strong>延长变量生命周期</strong>：函数对象可脱离原始作用域存在（通常通过返回或赋值给外部变量）</li>
+<li><strong>捕获外部变量</strong>：函数内部引用了外层作用域的变量</li>
+<li><strong>延长变量生命周期</strong>：函数对象可 <strong>脱离原始作用域</strong> 存在（通常通过返回或赋值给外部变量）</li>
 </ol>
 <div class="hint-container caution">
 <p class="hint-container-title"><strong>反例：</strong></p>
@@ -171,7 +171,7 @@
 <li><strong>x变量逃逸到堆：</strong> Go 编译器会检测到闭包捕获了局部变量，为保证闭包后续还能访问该变量，会将其分配到堆上（即“<a href="">变量逃逸</a>”），而不是原本的栈上。这样变量不会随着函数调用栈的销毁而被回收</li>
 <li><strong>内存泄漏：</strong> 如果闭包被赋值给 <strong>全局变量</strong> 或 <strong>长生命周期对象</strong>，捕获的变量也会一直存活，直到闭包本身被回收。如果闭包长期不释放，就会造成内存无法及时回收，甚至出现内存泄漏。</li>
 </ol>
-<h2 id="_2-闭包性能分析" tabindex="-1"><a class="header-anchor" href="#_2-闭包性能分析"><span>2 闭包性能分析</span></a></h2>
+<h2 id="_2-闭包性能分析" tabindex="-1"><a class="header-anchor" href="#_2-闭包性能分析"><span>2. 闭包性能分析</span></a></h2>
 <h3 id="_2-1-benchmark示例" tabindex="-1"><a class="header-anchor" href="#_2-1-benchmark示例"><span>2.1 Benchmark示例</span></a></h3>
 <p>根据如下示例的 <strong>Benchmark</strong> 来比较一下闭包和普通传参的差异</p>
 <div class="language-go line-numbers-mode" data-highlighter="shiki" data-ext="go" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">package</span><span style="--shiki-light:#C18401;--shiki-dark:#E5C07B"> main</span></span>

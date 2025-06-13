@@ -1,7 +1,7 @@
 <template><div><p>sync.Mutex 发展史</p>
 <!-- more -->
 <h1 id="从源码理解-sync-mutex" tabindex="-1"><a class="header-anchor" href="#从源码理解-sync-mutex"><span>从源码理解 sync.Mutex</span></a></h1>
-<p><strong>sync.Mutex</strong> 的慢路径依赖于 <strong>runtime_SemacquireMutex</strong> 和 <strong>runtime_Semrelease</strong> ，如果你不熟悉它们，可以先了解一下 <a href="">runtime.semaphore</a></p>
+<p><strong>sync.Mutex</strong> 的慢路径依赖于 <strong>runtime_SemacquireMutex</strong> 和 <strong>runtime_Semrelease</strong> ，要理解 <code v-pre>Sync.Mutex</code> ，首先需要理解 <a href="">runtime.semaphore</a></p>
 <h2 id="_1-first-commit" tabindex="-1"><a class="header-anchor" href="#_1-first-commit"><span>1. First Commit</span></a></h2>
 <p>2008 年，@rsc 提交了 <a href="https://github.com/golang/go/commit/bf3dd3f0efe5b45947a991e22660c62d4ce6b671#diff-a8c424f9dc7e3acf3f180a5cbf3f7748e6fd39c6f1eab0b4fd7ec11c548cdbeb" target="_blank" rel="noopener noreferrer">sync.Mutex 的初始版本代码</a> ，早期实现相对简单，结合了 CAS（比较并交换）和信号量。</p>
 <h2 id="_2-抢占-计数优化" tabindex="-1"><a class="header-anchor" href="#_2-抢占-计数优化"><span>2. 抢占&amp;计数优化</span></a></h2>
@@ -450,11 +450,9 @@
 <h3 id="_4-公平优化" tabindex="-1"><a class="header-anchor" href="#_4-公平优化"><span>4. 公平优化</span></a></h3>
 <p>2016 年，@dvyukov 进行了 <a href="https://go-review.googlesource.com/c/go/+/34310/" target="_blank" rel="noopener noreferrer">第三次优化 sync</a>：使 <strong>Mutex</strong> 更加公平，引入了饥饿模式的概念，使锁更加公平。</p>
 <p><code v-pre>sema</code> 字段相对简单；它是 <code v-pre>runtime_SemacquireMutex</code> 和 <code v-pre>runtime_Semrelease</code> 调用所需的参数。 <code v-pre>state</code> 字段根据不同的位表示不同的含义，次版本已经扩展出了饥饿字段</p>
-<p><img src="@source/go/基础/img/sync-mutex-state.png" alt="img"></p>
-<p>要理解 <code v-pre>Sync.Mutex</code> ，首先需要理解 <code v-pre>runtime.semaphore</code></p>
 <ul>
 <li><a href="https://pub.huizhou92.com/go-source-code-sync-mutex-3082a25ef092" target="_blank" rel="noopener noreferrer">Decrypt Go: sync.Mutex</a></li>
-<li></li>
+<li>《深入理解Go并发编程》</li>
 </ul>
 </div></template>
 
