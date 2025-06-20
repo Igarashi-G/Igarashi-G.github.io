@@ -1,4 +1,4 @@
-import comp from "D:/Program/Igarashi-G.github.io/blog/.vuepress/.temp/pages/database/MySQL/index.html.vue"
+import comp from "/Users/fuuka/Desktop/CODE/Igarashi-G.github.io/blog/.vuepress/.temp/pages/database/MySQL/index.html.vue"
 const data = JSON.parse("{\"path\":\"/database/MySQL/\",\"title\":\"My SQL\",\"lang\":\"zh-CN\",\"frontmatter\":{\"title\":\"My SQL\",\"article\":false,\"feed\":false,\"sitemap\":false,\"head\":[[\"script\",{\"type\":\"application/ld+json\"},\"{\\\"@context\\\":\\\"https://schema.org\\\",\\\"@type\\\":\\\"WebPage\\\",\\\"name\\\":\\\"My SQL\\\"}\"],[\"meta\",{\"property\":\"og:url\",\"content\":\"https://igarashi-g.github.io/database/MySQL/\"}],[\"meta\",{\"property\":\"og:site_name\",\"content\":\"悦 ▪ 宝宝\"}],[\"meta\",{\"property\":\"og:title\",\"content\":\"My SQL\"}],[\"meta\",{\"property\":\"og:type\",\"content\":\"website\"}],[\"meta\",{\"property\":\"og:locale\",\"content\":\"zh-CN\"}]]},\"readingTime\":{\"minutes\":0,\"words\":1},\"filePathRelative\":null,\"excerpt\":\"\"}")
 export { comp, data }
 
