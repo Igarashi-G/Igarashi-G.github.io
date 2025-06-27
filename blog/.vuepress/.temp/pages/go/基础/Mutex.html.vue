@@ -454,6 +454,15 @@
 <li><a href="https://pub.huizhou92.com/go-source-code-sync-mutex-3082a25ef092" target="_blank" rel="noopener noreferrer">Decrypt Go: sync.Mutex</a></li>
 <li>《深入理解Go并发编程》</li>
 </ul>
+<h5 id="附录" tabindex="-1"><a class="header-anchor" href="#附录"><span>附录：</span></a></h5>
+<ul>
+<li>
+<p><a href="https://docs.python.org/zh-cn/3.15/library/asyncio-sync.html" target="_blank" rel="noopener noreferrer">Python同步原语</a></p>
+</li>
+<li>
+<p><a href="https://github.com/python/cpython/blob/main/Lib/asyncio/locks.py" target="_blank" rel="noopener noreferrer">CPython的锁实现</a></p>
+</li>
+</ul>
 </div></template>
 
 

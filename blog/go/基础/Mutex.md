@@ -71,7 +71,7 @@ func (m *Mutex) Lock() {
 }
 ```
 
-![state状态字段](img/sync-mutex-state.png) 
+![state状态字段](./img/sync-mutex-state.png)  
 
 **state字段：** 通过位掩码存储锁状态，非常巧妙，分别是：
 
@@ -469,3 +469,11 @@ for {
 
 - [Decrypt Go: sync.Mutex](https://pub.huizhou92.com/go-source-code-sync-mutex-3082a25ef092) 
 - 《深入理解Go并发编程》
+
+
+
+##### 附录：
+
+- [Python同步原语](https://docs.python.org/zh-cn/3.15/library/asyncio-sync.html) 
+
+- [CPython的锁实现](https://github.com/python/cpython/blob/main/Lib/asyncio/locks.py)  

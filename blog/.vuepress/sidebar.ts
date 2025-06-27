@@ -335,6 +335,7 @@ export default sidebar({
           children: [
             "关于MapReduce",
             "H2O引发的优化",
+            "分布式注册优化",
           ]
         },
       ]
