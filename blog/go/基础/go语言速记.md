@@ -5,7 +5,6 @@ category:
   - Go
 tag:
   - GO
-  - 速记
 ---
 
 **Golang** 特性、API、差异点等备忘速记
