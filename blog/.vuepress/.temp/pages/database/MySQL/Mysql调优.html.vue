@@ -407,6 +407,30 @@
 </tr>
 </tbody>
 </table>
+<h4 id="记忆技巧" tabindex="-1"><a class="header-anchor" href="#记忆技巧"><span><strong>记忆技巧</strong></span></a></h4>
+<p>可以这样记忆：</p>
+<ul>
+<li>隔离级别名称描述的是它<strong>保证什么</strong>，而不是它<strong>禁止什么</strong></li>
+<li>保证的内容越多，隔离级别越高</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">隔离级别</th>
+<th style="text-align:center">保证内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">READ COMMITTED</td>
+<td style="text-align:center">只读已提交的数据</td>
+</tr>
+<tr>
+<td style="text-align:center">REPEATABLE READ</td>
+<td style="text-align:center">读已提交的数据 + 同一事务内多次读取结果一致</td>
+</tr>
+</tbody>
+</table>
 <div class="hint-container tip">
 <p class="hint-container-title">关于 <strong>REPEATABLE READ</strong> 和幻读</p>
 <p><strong>MySQL</strong> 的 <strong>InnoDB</strong> 在 <strong>REPEATABLE READ</strong> 隔离级别下，通过 <strong>间隙锁</strong> 解决了部分幻读，但没有完全解决快照读下的幻读问题</p>

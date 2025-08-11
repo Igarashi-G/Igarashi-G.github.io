@@ -1,0 +1,75 @@
+<template><div><p>Map底层实现</p>
+<!-- more -->
+<h1 id="从源码理解-map" tabindex="-1"><a class="header-anchor" href="#从源码理解-map"><span>从源码理解 Map</span></a></h1>
+<p>map又称字典，有以下特性：</p>
+<ol>
+<li>k-v键值对结构；</li>
+<li>key都是可哈希的（python中是不可变类型），相同值哈希后值相同，故能去重；</li>
+<li>读、写、删除操作的时间复杂度都是O(1)；</li>
+</ol>
+<h3 id="_1-原理" tabindex="-1"><a class="header-anchor" href="#_1-原理"><span>1. 原理</span></a></h3>
+<h4 id="_1-1-map简述" tabindex="-1"><a class="header-anchor" href="#_1-1-map简述"><span>1.1 map简述</span></a></h4>
+<p><strong>map：</strong> 又称为 <strong>hash map</strong> ，算法上基于对key的哈希实现映射和寻址；在数据结构上基于 <strong>桶数组</strong> 实现对 <strong>key-value</strong> 的存储。</p>
+<p><strong>写流程简述：</strong></p>
+<ol>
+<li>通过哈希方法取到 key 的 hash 值；</li>
+<li>hash 值对桶的长度取模，确定其所属的桶；</li>
+<li>在桶中遍历并插入 kv 对；</li>
+</ol>
+<p>利用 hash 特性来去重，故取模后能<strong>映射到桶的数组位置</strong>，通过桶内遍历的方式锁定对应的 key-value ，控制每个桶内 kv 对的数量，就能保证 O(1) 的复杂度。</p>
+<h4 id="_1-2-哈希" tabindex="-1"><a class="header-anchor" href="#_1-2-哈希"><span>1.2 哈希</span></a></h4>
+<p><strong>hash：</strong> 译作散列，哈希表也就是散列表，是将<span style="color:blue">任意一种长度的输入压缩到固定长度输出摘要的过程</span> ，由于输入空间大于输出固定的输出空间长度，故哈希映射后可能会 <em><em>出现相同的值</em>（哈希冲突 ）</em>** ，故压缩过程中会有信息遗漏且过程不可逆，其特性如下：</p>
+<ul>
+<li>
+<p>**可重入性：**相同的 key，必然产生相同的 hash 值；</p>
+</li>
+<li>
+<p><strong>离散性：</strong> 只要两个 key 不相同，不论其相似度的高低，产生的 hash 值会在整个输出域内均匀地离散化；</p>
+</li>
+<li>
+<p><strong>单向性：</strong> 企图通过 hash 值反向映射回 key 是无迹可寻的；</p>
+</li>
+<li>
+<p><strong>哈希冲突：</strong> 由于输入域（key）无穷大，输出域（hash 值）有限，因此必然存在不同 key 映射到相同 hash 值的情况，称之为 hash 冲突；</p>
+</li>
+</ul>
+<h4 id="_1-3-桶数组" tabindex="-1"><a class="header-anchor" href="#_1-3-桶数组"><span>1.3 桶数组</span></a></h4>
+<p>桶数组的长度为 <strong>2 的整数次幂</strong></p>
+<ul>
+<li>每个桶固定存储 <strong>8对 kv 键值对</strong></li>
+<li>若同一桶数组索引下，超过 8 对写入，则会通过创建 <strong>桶链表</strong> 来延长存储空间</li>
+</ul>
+<p><img src="@source/go/基础/img/v2-71f30aeb8213532e333146f7184b1b31_1440w.jpg" alt="img"></p>
+<h4 id="_1-4-拉链法" tabindex="-1"><a class="header-anchor" href="#_1-4-拉链法"><span>1.4 拉链法</span></a></h4>
+<p>解决哈希冲突的手段之一</p>
+<p>拉链法中，将命中同一个桶的元素通过 <strong>链表</strong> 的形式进行链接，便于动态扩展</p>
+<p><img src="@source/go/基础/img/v2-cbceda2ebea27b26a648055d0636140a_1440w.jpg" alt="img"></p>
+<h4 id="_1-5-开放寻址法" tabindex="-1"><a class="header-anchor" href="#_1-5-开放寻址法"><span>1.5 开放寻址法</span></a></h4>
+<p>开放寻址法中，在插入新条目时，会基于一定的探测策略持续寻找，直到找到一个可用于存放数据的空位为止</p>
+<p><img src="@source/go/基础/img/v2-5a22bf137fe1734880dddf18f9a23428_1440w.jpg" alt="img"></p>
+<h3 id="_2-map的数据结构" tabindex="-1"><a class="header-anchor" href="#_2-map的数据结构"><span>2.Map的数据结构</span></a></h3>
+<h3 id="问题" tabindex="-1"><a class="header-anchor" href="#问题"><span>问题:</span></a></h3>
+<h4 id="单核下并发读写map是否安全" tabindex="-1"><a class="header-anchor" href="#单核下并发读写map是否安全"><span>单核下并发读写Map是否安全？</span></a></h4>
+<p>不安全，虽然单核CPU时间片上一时刻只能执行一个gorotine，依然会出现map写操作时进行协程切换，一个写操作包含哈希计算、查找桶、写入值等，本身就不是一个原子操作，因此会fatal。</p>
+<p>::: tips fatal和panic的区别：</p>
+<p><strong>panic：</strong></p>
+<ul>
+<li><strong>Go runtime</strong> 的错误机制</li>
+<li>可以被 <strong>recover</strong> 捕获处理</li>
+<li>通常由程序逻辑错误引发</li>
+</ul>
+<p><strong>fatal：</strong></p>
+<ul>
+<li><strong>Go runtime</strong> 的<span style="color:red">致命错误</span></li>
+<li><strong>无法被recover</strong> 捕获，会立即终止程序并打印堆栈信息</li>
+<li>通常表示程序状态已经不可恢复</li>
+</ul>
+<p>:::</p>
+<h3 id="参考" tabindex="-1"><a class="header-anchor" href="#参考"><span>参考</span></a></h3>
+<ul>
+<li><a href="https://zhuanlan.zhihu.com/p/597483155" target="_blank" rel="noopener noreferrer">https://zhuanlan.zhihu.com/p/597483155</a></li>
+<li></li>
+</ul>
+</div></template>
+
+

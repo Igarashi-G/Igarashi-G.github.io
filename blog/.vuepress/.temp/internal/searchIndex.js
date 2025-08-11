@@ -1546,6 +1546,42 @@ export const SEARCH_INDEX = [
     "extraFields": []
   },
   {
+    "title": "Map",
+    "headers": [
+      {
+        "level": 3,
+        "title": "1. 原理",
+        "slug": "_1-原理",
+        "link": "#_1-原理",
+        "children": []
+      },
+      {
+        "level": 3,
+        "title": "2.Map的数据结构",
+        "slug": "_2-map的数据结构",
+        "link": "#_2-map的数据结构",
+        "children": []
+      },
+      {
+        "level": 3,
+        "title": "问题:",
+        "slug": "问题",
+        "link": "#问题",
+        "children": []
+      },
+      {
+        "level": 3,
+        "title": "参考",
+        "slug": "参考",
+        "link": "#参考",
+        "children": []
+      }
+    ],
+    "path": "/go/%E5%9F%BA%E7%A1%80/Map.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
     "title": "sync.Mutex",
     "headers": [
       {
@@ -9105,6 +9141,13 @@ export const SEARCH_INDEX = [
     "extraFields": []
   },
   {
+    "title": "基础 分类",
+    "headers": [],
+    "path": "/category/%E5%9F%BA%E7%A1%80/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
     "title": "并发 分类",
     "headers": [],
     "path": "/category/%E5%B9%B6%E5%8F%91/",
@@ -10074,6 +10117,13 @@ export const SEARCH_INDEX = [
     "title": "时间轴",
     "headers": [],
     "path": "/timeline/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "Map",
+    "headers": [],
+    "path": "/go/%E5%9F%BA%E7%A1%80/Channel.html",
     "pathLocale": "/",
     "extraFields": []
   }

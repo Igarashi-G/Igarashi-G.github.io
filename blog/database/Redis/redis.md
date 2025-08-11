@@ -8,16 +8,29 @@ group:
 
 # Redis
 
-# Redis 技术文档
+## 1. Redis概述
 
-## 一、缓存数据库概述
+### 1.1 简介
 
-### 1.1 Web2.0时代背景
-- **UGC (User Generate Content)**：用户由被动接收转为主动产生内容
-- **SNS (Social Network Society)**：社交网络的兴起，如Facebook、Twitter、WeChat等
+**Redis(*REmote DIctionary Server*)**是一个开源（BSD许可）的，内存中的数据结构存储系统，它可以用作数据库、缓存和消息中间件。
+
+##### 特性
+
+- 性能高
+- 丰富的数据类型
+- 支持事务
+- 内建replication及集群
+- 支持持久化
+
+- 单线程，原子性操作（后续引入多线程，可配置开关）
 
 ### 1.2 NoSQL数据库
 NoSQL（Not Only SQL）是非关系型数据库的统称，主要用于解决Web2.0时代带来的大规模数据处理挑战。
+
+##### Web2.0时代背景
+
+- **UGC (User Generate Content)**：用户由被动接收转为主动产生内容
+- **SNS (Social Network Society)**：社交网络的兴起，如Facebook、Twitter、WeChat等
 
 #### 1.2.1 四大分类
 
@@ -48,15 +61,86 @@ NoSQL（Not Only SQL）是非关系型数据库的统称，主要用于解决Web
 - 数据一致性要求不高
 - 易于映射复杂值的环境
 
-## 二、Redis基础
+### 1.3 源码编译与调试
 
-### 2.1 简介
-Redis是主流的key-value型NoSQL数据库，支持多种数据类型：
-- String（字符串）
-- List（列表）
-- Set（集合）
-- Sorted Set（有序集合）
-- Hash（哈希）
+**源码下载:**  [git地址](https://github.com/redis/redis) 或者 [ Index of /releases/](https://download.redis.io/releases/)
+
+**wget也可以下载:** 
+
+```shell
+wget http://download.redis.io/releases/redis-${version}.tar.gz
+
+tar xzf redis-6.0.8.tar.gz
+```
+
+执行编译
+
+- 修改配置文件中的daemon为yes
+- 禁用gcc编译优化，将makefile文件中OPTIMIZATION?=-O2修为-O0，可直接使用源码包下的二进制程序
+- gdb redis-server [conf]，配合gdb相关命令
+- 也可以直接开启server.c的main测试函数
+
+### 1.4 压测
+
+**Redis-benchmark** 是官方自带的 **Redis** 性能测试工具，可以有效的测试 **Redis** 服务的性能。
+
+```
+redis-benchmark [-h <host>] [-p <port>] [-c <clients>] [-n <requests]> [-k <boolean>] 
+```
+
+### 1.5 安装配置
+
+```bash
+# Ubuntu安装
+sudo apt-get update
+sudo apt-get install redis-server
+
+# 启动服务
+redis-server
+
+# 客户端连接
+redis-cli
+
+# 测试连接
+redis 127.0.0.1:6379> ping
+PONG
+```
+
+##### Python环境配置
+
+```bash
+# 方式1：pip安装
+sudo pip install redis
+
+# 方式2：easy_install
+sudo easy_install redis
+
+# 方式3：源码安装
+# 详见：https://github.com/WoLpH/redis-py
+```
+
+## 2. 基本数据结构
+
+**Redis** 共有 5 种基本数据类型：String（字符串）、List（列表）、Set（集合）、Hash（散列）、Zset（有序集合）对应的底层数据结构实现如下表：
+
+| String | List                         | Hash          | Set          | Zset              |
+| :----- | :--------------------------- | :------------ | :----------- | :---------------- |
+| SDS    | LinkedList/ZipList/QuickList | Dict、ZipList | Dict、Intset | ZipList、SkipList |
+
+**Redis 3.2** 之前，List 底层实现是 LinkedList 或者 ZipList。 **Redis 3.2** 之后，引入了 LinkedList 和 ZipList 的结合 QuickList，List 的底层实现变为 QuickList。从 **Redis 7.0** 开始， ZipList 被 ListPack 取代。
+
+你可以在 Redis 官网上找到 Redis 数据类型/结构非常详细的介绍：
+
+- [Redis Data Structures](https://redis.com/redis-enterprise/data-structures/)
+- [Redis Data types tutorial](https://redis.io/docs/manual/data-types/data-types-tutorial/) 
+
+### 2.1 简单动态字符串(SDS)
+
+String 是一种二进制安全的数据类型，可以用来存储任何类型的数据比如字符串、整数、浮点数、图片（**图片的 base64 编码** 或者解码或者图片的路径）、**序列化后的对象** 
+
+#### 2.1.1
+
+
 
 ### 2.2 主要特性
 1. **高性能**
@@ -78,38 +162,7 @@ Redis是主流的key-value型NoSQL数据库，支持多种数据类型：
    - 会话管理
    - 计数器
 
-### 2.3 安装配置
-
-```bash
-# Ubuntu安装
-sudo apt-get update
-sudo apt-get install redis-server
-
-# 启动服务
-redis-server
-
-# 客户端连接
-redis-cli
-
-# 测试连接
-redis 127.0.0.1:6379> ping
-PONG
-```
-
-### 2.4 Python环境配置
-
-```bash
-# 方式1：pip安装
-sudo pip install redis
-
-# 方式2：easy_install
-sudo easy_install redis
-
-# 方式3：源码安装
-# 详见：https://github.com/WoLpH/redis-py
-```
-
-## 三、Redis数据类型操作
+### 2.3 
 
 ### 3.1 String操作
 

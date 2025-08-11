@@ -8,4 +8,14 @@ pnpm run docs:dev
 pnpm run docs:clean-dev
 
 # 构建生产版本
+<<<<<<< HEAD
 pnpm run docs:build
+=======
+pnpm run build
+
+# 预览生产版本
+pnpm run serve
+
+# 本地启动
+# pnpm run docs:dev   
+>>>>>>> bd732e2a ([Update]: md)
