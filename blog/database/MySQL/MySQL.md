@@ -197,6 +197,24 @@ $ flush privileges;
 
 ## 3. 常用操作
 
+#### 造数据
+
+```SQL
+DELIMITER ;;
+CREATE DEFINER=`root`@`%` PROCEDURE `BatchinsertDataToCusOder`(IN start_num INT,IN max_num INT)
+BEGIN
+      DECLARE i INT default start_num;
+      WHILE i < max_num DO
+          insert into `cus_order`(`id`, `score`, `name`)
+          values (i,RAND() * 1000000,CONCAT('user', i));
+          SET i = i + 1;
+      END WHILE;
+  END;;
+DELIMITER ;
+
+CALL BatchinsertDataToCusOder(1, 1000000); # 插入100w+的随机数据
+```
+
 #### 创建表
 
 ```mysql
@@ -280,7 +298,7 @@ CREATE TABLE `textbook_edition` (
 
 :::
 
-    
+
         外键，foreign key一个特殊的索引，只能是指定内容（一般对两个表有关系的列进行约束，一个表的外键通常是另一表的主键）
             constraint fk_cc foreign key (color_id) references color(nid) （constraint后面接的是 外键的标签）
     

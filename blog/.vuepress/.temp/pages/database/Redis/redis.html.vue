@@ -1,13 +1,37 @@
-<template><div><h1 id="redis" tabindex="-1"><a class="header-anchor" href="#redis"><span>Redis</span></a></h1>
-<h1 id="redis-技术文档" tabindex="-1"><a class="header-anchor" href="#redis-技术文档"><span>Redis 技术文档</span></a></h1>
-<h2 id="一、缓存数据库概述" tabindex="-1"><a class="header-anchor" href="#一、缓存数据库概述"><span>一、缓存数据库概述</span></a></h2>
-<h3 id="_1-1-web2-0时代背景" tabindex="-1"><a class="header-anchor" href="#_1-1-web2-0时代背景"><span>1.1 Web2.0时代背景</span></a></h3>
+<template><div><p><a href="https://github.com/Igarashi-G/book-redis-design" target="_blank" rel="noopener noreferrer">Fork《Redis设计与实现》</a></p>
+<!-- more -->
+<h1 id="redis" tabindex="-1"><a class="header-anchor" href="#redis"><span>Redis</span></a></h1>
+<h2 id="_1-redis-概述" tabindex="-1"><a class="header-anchor" href="#_1-redis-概述"><span>1. Redis 概述</span></a></h2>
+<h3 id="_1-1-简介" tabindex="-1"><a class="header-anchor" href="#_1-1-简介"><span>1.1 简介</span></a></h3>
+<p><strong>Redis(<em>REmote DIctionary Server</em>)</strong> 是一个开源（BSD许可）的，内存中的数据结构存储系统，它可以用作数据库、缓存和消息中间件。</p>
+<h5 id="特性" tabindex="-1"><a class="header-anchor" href="#特性"><span><strong>特性</strong></span></a></h5>
+<ul>
+<li>
+<p>性能高</p>
+</li>
+<li>
+<p>丰富的数据类型</p>
+</li>
+<li>
+<p>支持事务</p>
+</li>
+<li>
+<p>内建replication及集群</p>
+</li>
+<li>
+<p>支持持久化</p>
+</li>
+<li>
+<p>单线程，原子性操作（后续引入多线程，可配置开关）</p>
+</li>
+</ul>
+<h3 id="_1-2-nosql数据库" tabindex="-1"><a class="header-anchor" href="#_1-2-nosql数据库"><span>1.2 NoSQL数据库</span></a></h3>
+<p><strong>NoSQL（<em>Not Only SQL源于Mongo</em>）</strong> 是非关系型数据库的统称，主要用于解决Web2.0时代带来的大规模数据处理挑战。</p>
+<p><strong>Web2.0时代背景</strong></p>
 <ul>
 <li><strong>UGC (User Generate Content)</strong>：用户由被动接收转为主动产生内容</li>
 <li><strong>SNS (Social Network Society)</strong>：社交网络的兴起，如Facebook、Twitter、WeChat等</li>
 </ul>
-<h3 id="_1-2-nosql数据库" tabindex="-1"><a class="header-anchor" href="#_1-2-nosql数据库"><span>1.2 NoSQL数据库</span></a></h3>
-<p>NoSQL（Not Only SQL）是非关系型数据库的统称，主要用于解决Web2.0时代带来的大规模数据处理挑战。</p>
 <h4 id="_1-2-1-四大分类" tabindex="-1"><a class="header-anchor" href="#_1-2-1-四大分类"><span>1.2.1 四大分类</span></a></h4>
 <ol>
 <li>
@@ -51,15 +75,148 @@
 <li>数据一致性要求不高</li>
 <li>易于映射复杂值的环境</li>
 </ul>
-<h2 id="二、redis基础" tabindex="-1"><a class="header-anchor" href="#二、redis基础"><span>二、Redis基础</span></a></h2>
-<h3 id="_2-1-简介" tabindex="-1"><a class="header-anchor" href="#_2-1-简介"><span>2.1 简介</span></a></h3>
-<p>Redis是主流的key-value型NoSQL数据库，支持多种数据类型：</p>
+<h3 id="_1-3-源码编译与调试" tabindex="-1"><a class="header-anchor" href="#_1-3-源码编译与调试"><span>1.3 源码编译与调试</span></a></h3>
+<p><strong>源码下载:</strong>  <a href="https://github.com/redis/redis" target="_blank" rel="noopener noreferrer">git地址</a> 或者 <a href="https://download.redis.io/releases/" target="_blank" rel="noopener noreferrer"> Index of /releases/</a></p>
+<p><strong>wget也可以下载:</strong></p>
+<div class="language-shell line-numbers-mode" data-highlighter="shiki" data-ext="shell" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">wget</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> http://download.redis.io/releases/redis-</span><span style="--shiki-light:#E45649;--shiki-dark:#ABB2BF">${</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">version</span><span style="--shiki-light:#E45649;--shiki-dark:#ABB2BF">}</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">.tar.gz</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">tar</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> xzf</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> redis-6.0.8.tar.gz</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p><strong>执行编译：</strong></p>
 <ul>
-<li>String（字符串）</li>
-<li>List（列表）</li>
-<li>Set（集合）</li>
-<li>Sorted Set（有序集合）</li>
-<li>Hash（哈希）</li>
+<li>修改配置文件中的daemon为yes</li>
+<li>禁用gcc编译优化，将makefile文件中OPTIMIZATION?=-O2修为-O0，可直接使用源码包下的二进制程序</li>
+<li>gdb redis-server [conf]，配合gdb相关命令</li>
+<li>也可以直接开启server.c的main测试函数</li>
+</ul>
+<h3 id="_1-4-压测" tabindex="-1"><a class="header-anchor" href="#_1-4-压测"><span>1.4 压测</span></a></h3>
+<p><strong>Redis-benchmark</strong> 是官方自带的 <strong>Redis</strong> 性能测试工具，可以有效的测试 <strong>Redis</strong> 服务的性能。</p>
+<div class="language- line-numbers-mode" data-highlighter="shiki" data-ext="" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span>redis-benchmark [-h &#x3C;host>] [-p &#x3C;port>] [-c &#x3C;clients>] [-n &#x3C;requests]> [-k &#x3C;boolean>]</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div><h3 id="_1-5-安装配置" tabindex="-1"><a class="header-anchor" href="#_1-5-安装配置"><span>1.5 安装配置</span></a></h3>
+<div class="language-bash line-numbers-mode" data-highlighter="shiki" data-ext="bash" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># Ubuntu安装</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">sudo</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> apt-get</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> update</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">sudo</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> apt-get</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> install</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> redis-server</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># 启动服务</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">redis-server</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># 客户端连接</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">redis-cli</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># 测试连接</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">redis</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> 127.0.0.1:637</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">9> </span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">ping</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">PONG</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h5 id="python环境配置" tabindex="-1"><a class="header-anchor" href="#python环境配置"><span>Python环境配置</span></a></h5>
+<div class="language-bash line-numbers-mode" data-highlighter="shiki" data-ext="bash" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># 方式1：pip安装</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">sudo</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> pip</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> install</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> redis</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># 方式2：easy_install</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">sudo</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> easy_install</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> redis</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># 方式3：源码安装</span></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># 详见：https://github.com/WoLpH/redis-py</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="_2-基本数据结构" tabindex="-1"><a class="header-anchor" href="#_2-基本数据结构"><span>2. 基本数据结构</span></a></h2>
+<p><strong>Redis</strong> 共有 5 种基本数据类型：String（字符串）、List（列表）、Set（集合）、Hash（散列）、Zset（有序集合）对应的底层数据结构实现如下表：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">String</th>
+<th style="text-align:left">List</th>
+<th style="text-align:left">Hash</th>
+<th style="text-align:left">Set</th>
+<th style="text-align:left">Zset</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">SDS</td>
+<td style="text-align:left">LinkedList/ZipList/QuickList</td>
+<td style="text-align:left">Dict、ZipList</td>
+<td style="text-align:left">Dict、Intset</td>
+<td style="text-align:left">ZipList、SkipList</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Redis 3.2</strong> 之前，List 底层实现是 LinkedList 或者 ZipList。 <strong>Redis 3.2</strong> 之后，引入了 LinkedList 和 ZipList 的结合 QuickList，List 的底层实现变为 QuickList。从 <strong>Redis 7.0</strong> 开始， ZipList 被 ListPack 取代。</p>
+<p>你可以在 Redis 官网上找到 Redis 数据类型/结构非常详细的介绍：</p>
+<ul>
+<li><a href="https://redis.com/redis-enterprise/data-structures/" target="_blank" rel="noopener noreferrer">Redis Data Structures</a></li>
+<li><a href="https://redis.io/docs/manual/data-types/data-types-tutorial/" target="_blank" rel="noopener noreferrer">Redis Data types tutorial</a></li>
+</ul>
+<h3 id="_2-1-简单动态字符串-sds" tabindex="-1"><a class="header-anchor" href="#_2-1-简单动态字符串-sds"><span>2.1 简单动态字符串(SDS)</span></a></h3>
+<p><strong>String</strong> 是一种二进制安全的数据类型，可以用来存储任何类型的数据比如字符串、整数、浮点数、图片（<strong>图片的 base64 编码</strong> 或者解码或者图片的路径）、<strong>序列化后的对象</strong></p>
+<h4 id="数据结构" tabindex="-1"><a class="header-anchor" href="#数据结构"><span>数据结构</span></a></h4>
+<div class="language-c line-numbers-mode" data-highlighter="shiki" data-ext="c" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">struct</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> sdshdr{</span></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">  // 记录buf中已使用的字节数，即SDS字符串长度</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">  int</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> len;</span></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">  // 记录buf中未使用剩余的字节数</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">  int</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> free;</span></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">  // 字节数组，用于保存字符串</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">  char</span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD"> []</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">buf</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">}</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p><img src="@source/database/Redis/img/graphviz-72760f6945c3742eca0df91a91cc379168eda82d.png" alt="SDS示例"></p>
+<ul>
+<li><code v-pre>free</code> 为 <strong>0</strong> ，表示 <strong>SDS</strong> 没有任何可分配空间</li>
+<li><code v-pre>len</code> 为 <strong>5</strong>，表示当前存储了 <strong>5</strong> 个字节长度的字符串</li>
+<li><code v-pre>buf</code> 是 <strong>char类型</strong> 的数组，数组前五个字节保存了  <code v-pre>'R'</code> 、 <code v-pre>'e'</code> 、 <code v-pre>'d'</code> 、 <code v-pre>'i'</code> 、 <code v-pre>'s'</code>  <strong>5</strong> 个字符，而最后一个字节保留空字符串 <code v-pre>'\0'</code></li>
+</ul>
+<div class="hint-container tip">
+<p class="hint-container-title">注意：</p>
+<p>为啥 <code v-pre>len</code> 为 <strong>5</strong>，是由于 <strong>SDS</strong> 的内部函数 <span style="color:blue">会自动为结尾默认多分配 <strong>1</strong> 个字节 <code v-pre>\0</code> ，这样的好处是可以直接重用 <strong>C</strong> 字符串函数库的函数</span> ，比如 <strong>打印 printf()</strong> , 可直接使用 <code v-pre>stdio.h/printf</code> 函数</p>
+<div class="language-c line-numbers-mode" data-highlighter="shiki" data-ext="c" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">printf</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">"</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">%s</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">"</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">,</span><span style="--shiki-light:#383A42;--shiki-dark:#E06C75"> s</span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">-></span><span style="--shiki-light:#383A42;--shiki-light-font-style:inherit;--shiki-dark:#E06C75;--shiki-dark-font-style:italic">buf</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">);</span></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">// "Redis"</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div></div></div><p>那为啥不直接用 <strong>C</strong> 的字符串？</p>
+<ol>
+<li><strong>O(1)获取长度：</strong> <strong>C</strong> 的字符串获取长度需要遍历，SDS直接通过 <code v-pre>len</code> 可以获取到字符串长度;</li>
+<li><strong>避免缓冲区溢出：</strong>  <strong>C</strong> 的 <code v-pre>&lt;string.h&gt;/strcat</code> 拼接时，默认用户已经分配好了空间，一旦未分配则会溢出。而 SDS 的 <strong>API</strong> 则会先检查容量是否充足，不够就扩展再拼接;</li>
+<li><strong>减少内存重分配开销：</strong> <strong>C</strong> 的字符串 <code v-pre>append/trim</code> 需要重分配，否则就 <strong>缓冲区溢出/内存泄露</strong> 。SDS则：
+<ul>
+<li><strong>free预分配：</strong> 小于<strong>1MB</strong>，<code v-pre>free = len</code> 字节数量，否则每次 <strong>free+ 1MB</strong>，实际长度为 <strong>分配空间 + 1MB + 1byte</strong> 从而减少分配次数;</li>
+<li><strong>惰性空间释放：</strong> 删减字符串 <strong>不立即分配回收</strong>，而是用 <code v-pre>free</code> 记录，便于后续再扩容;</li>
+</ul>
+</li>
+<li><strong>二进制安全：</strong> <strong>C</strong> 的字符串必须符合某种编码 <strong>(<em>如 ASCII</em>)</strong> ，而SDS可以用 <code v-pre>len</code> 来判断字符串结束( 非通过 <code v-pre>\0</code> ) 且 <strong>API</strong> 都以二进制的方式去处理 <code v-pre>buf</code> 内的数据;</li>
+</ol>
+</div>
+<h5 id="附录" tabindex="-1"><a class="header-anchor" href="#附录"><span>附录</span></a></h5>
+<ul>
+<li><strong><a href="https://github.com/Igarashi-G/book-redis-design/blob/main/docs/doc/02-%E7%AE%80%E5%8D%95%E5%8A%A8%E6%80%81%E5%AD%97%E7%AC%A6%E4%B8%B2.md#23-sds-api" target="_blank" rel="noopener noreferrer">相对于 C 的区别细节</a></strong></li>
+<li><a href="https://github.com/Igarashi-G/book-redis-design/blob/main/docs/doc/02-%E7%AE%80%E5%8D%95%E5%8A%A8%E6%80%81%E5%AD%97%E7%AC%A6%E4%B8%B2.md#23-sds-api" target="_blank" rel="noopener noreferrer">SDS API</a></li>
+</ul>
+<h3 id="_2-2-链表" tabindex="-1"><a class="header-anchor" href="#_2-2-链表"><span>2.2 链表</span></a></h3>
+<p>因为 <strong>Redis</strong> 使用的 <strong>C</strong> 语言并 <strong>没有内置</strong> 这种数据结构， 所以 <strong>Redis</strong> 构建了自己的链表实现</p>
+<p>列表键 <strong>(<em>list - key</em>)</strong> 的底层实现之一就是链表 ，<strong>发布与订阅、慢查询、监视器</strong> 等功能也是，<strong>Redis</strong> 服务器本身还使用链表来 <strong>保存多个客户端的状态</strong> 信息， 以及使用链表来 <strong>构建客户端输出缓冲区(<em>output buffer</em>)</strong></p>
+<h4 id="数据结构-1" tabindex="-1"><a class="header-anchor" href="#数据结构-1"><span>数据结构</span></a></h4>
+<p>定义了 <strong>list</strong> 结构，来存储 <strong>ListNode</strong> 双向链表结构的，如下：</p>
+<div class="language-c line-numbers-mode" data-highlighter="shiki" data-ext="c" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">typedef</span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD"> struct</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> list {</span></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">    // 表头节点</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">    listNode </span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">*</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">head;</span></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">    // 表尾节点</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">    listNode </span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">*</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">tail;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">    // 链表所包含的节点数量</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">    unsigned</span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD"> long</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> len;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">    // 节点值复制函数</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">    void</span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD"> *</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(</span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">*</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">dup)(</span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">void</span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD"> *</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">ptr);</span></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">    // 节点值释放函数</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">    void</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> (</span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">*</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">free)(</span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">void</span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD"> *</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">ptr);</span></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">    // 节点值对比函数</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">    int</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> (</span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">*</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">match)(</span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">void</span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD"> *</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">ptr, </span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">void</span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD"> *</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">key);</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">} list;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">typedef</span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD"> struct</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> listNode {</span></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">    // 前驱节点</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">    struct</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> listNode </span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">*</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">prev;</span></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">    // 后继节点</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">    struct</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> listNode </span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">*</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">next;</span></span>
+<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">    // 节点的值</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">    void</span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD"> *</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">value;</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">} listNode;</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p><img src="@source/database/Redis/img/graphviz-5f4d8b6177061ac52d0ae05ef357fceb52e9cb90.png" alt="链表结构.png"></p>
+<p><strong>list</strong> 结构记录了 <strong>头/尾节点、链表长度、特殊函数</strong> ，故它可以实现如下特性：</p>
+<ul>
+<li><strong>双端：</strong> 每个节点都记录了 <strong>前驱、后继指针</strong> ，获取复杂度为 <strong>O(1)</strong></li>
+<li>无环</li>
 </ul>
 <h3 id="_2-2-主要特性" tabindex="-1"><a class="header-anchor" href="#_2-2-主要特性"><span>2.2 主要特性</span></a></h3>
 <ol>
@@ -95,30 +252,7 @@
 </ul>
 </li>
 </ol>
-<h3 id="_2-3-安装配置" tabindex="-1"><a class="header-anchor" href="#_2-3-安装配置"><span>2.3 安装配置</span></a></h3>
-<div class="language-bash line-numbers-mode" data-highlighter="shiki" data-ext="bash" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># Ubuntu安装</span></span>
-<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">sudo</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> apt-get</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> update</span></span>
-<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">sudo</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> apt-get</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> install</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> redis-server</span></span>
-<span class="line"></span>
-<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># 启动服务</span></span>
-<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">redis-server</span></span>
-<span class="line"></span>
-<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># 客户端连接</span></span>
-<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">redis-cli</span></span>
-<span class="line"></span>
-<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># 测试连接</span></span>
-<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">redis</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> 127.0.0.1:637</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">9> </span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">ping</span></span>
-<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">PONG</span></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_2-4-python环境配置" tabindex="-1"><a class="header-anchor" href="#_2-4-python环境配置"><span>2.4 Python环境配置</span></a></h3>
-<div class="language-bash line-numbers-mode" data-highlighter="shiki" data-ext="bash" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># 方式1：pip安装</span></span>
-<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">sudo</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> pip</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> install</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> redis</span></span>
-<span class="line"></span>
-<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># 方式2：easy_install</span></span>
-<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">sudo</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> easy_install</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> redis</span></span>
-<span class="line"></span>
-<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># 方式3：源码安装</span></span>
-<span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># 详见：https://github.com/WoLpH/redis-py</span></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="三、redis数据类型操作" tabindex="-1"><a class="header-anchor" href="#三、redis数据类型操作"><span>三、Redis数据类型操作</span></a></h2>
+<h3 id="_2-3" tabindex="-1"><a class="header-anchor" href="#_2-3"><span>2.3</span></a></h3>
 <h3 id="_3-1-string操作" tabindex="-1"><a class="header-anchor" href="#_3-1-string操作"><span>3.1 String操作</span></a></h3>
 <div class="language-bash line-numbers-mode" data-highlighter="shiki" data-ext="bash" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># 基本操作</span></span>
 <span class="line"><span style="--shiki-light:#0184BC;--shiki-dark:#56B6C2">set</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> name</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> igarashi</span><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">          # 设置值</span></span>

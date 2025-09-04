@@ -95,6 +95,7 @@ export default navbar([
       { text: "Docker", link: "Docker/docker容器" , icon: "docker"},
       { text: "Kubernetes", link: "Kubernetes/k8s资源Pod" , icon: "kubernetes"},
       { text: "Prometheus", link: "Prometheus/安装" , icon: "prometheus"},
+      { text: "Tailscale", link: "Tailscale/tailscale" , icon: "tailscale"},
       { text: "工具", link: "Other/网络代理" , icon: "other"},
     ],
   },

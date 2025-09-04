@@ -6,15 +6,19 @@ group:
   order: 4
 ---
 
+[Fork《Redis设计与实现》](https://github.com/Igarashi-G/book-redis-design)
+
+<!-- more -->
+
 # Redis
 
-## 1. Redis概述
+## 1. Redis 概述
 
 ### 1.1 简介
 
-**Redis(*REmote DIctionary Server*)**是一个开源（BSD许可）的，内存中的数据结构存储系统，它可以用作数据库、缓存和消息中间件。
+**Redis(*REmote DIctionary Server*)** 是一个开源（BSD许可）的，内存中的数据结构存储系统，它可以用作数据库、缓存和消息中间件。
 
-##### 特性
+##### **特性**
 
 - 性能高
 - 丰富的数据类型
@@ -25,9 +29,9 @@ group:
 - 单线程，原子性操作（后续引入多线程，可配置开关）
 
 ### 1.2 NoSQL数据库
-NoSQL（Not Only SQL）是非关系型数据库的统称，主要用于解决Web2.0时代带来的大规模数据处理挑战。
+**NoSQL（*Not Only SQL源于Mongo*）** 是非关系型数据库的统称，主要用于解决Web2.0时代带来的大规模数据处理挑战。
 
-##### Web2.0时代背景
+**Web2.0时代背景** 
 
 - **UGC (User Generate Content)**：用户由被动接收转为主动产生内容
 - **SNS (Social Network Society)**：社交网络的兴起，如Facebook、Twitter、WeChat等
@@ -73,7 +77,7 @@ wget http://download.redis.io/releases/redis-${version}.tar.gz
 tar xzf redis-6.0.8.tar.gz
 ```
 
-执行编译
+**执行编译：**  
 
 - 修改配置文件中的daemon为yes
 - 禁用gcc编译优化，将makefile文件中OPTIMIZATION?=-O2修为-O0，可直接使用源码包下的二进制程序
@@ -136,9 +140,100 @@ sudo easy_install redis
 
 ### 2.1 简单动态字符串(SDS)
 
-String 是一种二进制安全的数据类型，可以用来存储任何类型的数据比如字符串、整数、浮点数、图片（**图片的 base64 编码** 或者解码或者图片的路径）、**序列化后的对象** 
+**String** 是一种二进制安全的数据类型，可以用来存储任何类型的数据比如字符串、整数、浮点数、图片（**图片的 base64 编码** 或者解码或者图片的路径）、**序列化后的对象** 
 
-#### 2.1.1
+#### 数据结构
+
+```C
+struct sdshdr{
+  // 记录buf中已使用的字节数，即SDS字符串长度
+  int len;
+  // 记录buf中未使用剩余的字节数
+  int free;
+  // 字节数组，用于保存字符串
+  char []buf
+}
+```
+
+![SDS示例](img/graphviz-72760f6945c3742eca0df91a91cc379168eda82d.png) 
+
+- `free` 为 **0** ，表示 **SDS** 没有任何可分配空间
+- `len` 为 **5**，表示当前存储了 **5** 个字节长度的字符串
+- `buf` 是 **char类型** 的数组，数组前五个字节保存了  `'R'` 、 `'e'` 、 `'d'` 、 `'i'` 、 `'s'`  **5** 个字符，而最后一个字节保留空字符串 `'\0'` 
+
+::: tip 注意：
+
+ 为啥 `len` 为 **5**，是由于 **SDS** 的内部函数 <span style="color:blue">会自动为结尾默认多分配 **1** 个字节 `\0` ，这样的好处是可以直接重用 **C** 字符串函数库的函数</span> ，比如 **打印 printf()** , 可直接使用 `stdio.h/printf` 函数
+
+```c
+printf("%s", s->buf);
+// "Redis" 
+```
+
+那为啥不直接用 **C** 的字符串？
+
+1. **O(1)获取长度：** **C** 的字符串获取长度需要遍历，SDS直接通过 `len` 可以获取到字符串长度;
+2. **避免缓冲区溢出：**  **C** 的 `<string.h>/strcat` 拼接时，默认用户已经分配好了空间，一旦未分配则会溢出。而 SDS 的 **API** 则会先检查容量是否充足，不够就扩展再拼接;
+3. **减少内存重分配开销：** **C** 的字符串 `append/trim` 需要重分配，否则就 **缓冲区溢出/内存泄露** 。SDS则：
+   - **free预分配：** 小于**1MB**，`free = len` 字节数量，否则每次 **free+ 1MB**，实际长度为 **分配空间 + 1MB + 1byte** 从而减少分配次数;
+   - **惰性空间释放：** 删减字符串 **不立即分配回收**，而是用 `free` 记录，便于后续再扩容;
+4. **二进制安全：** **C** 的字符串必须符合某种编码 **(*如 ASCII*)** ，而SDS可以用 `len` 来判断字符串结束( 非通过 `\0` ) 且 **API** 都以二进制的方式去处理 `buf` 内的数据;
+
+:::
+
+##### 附录
+
+- **[相对于 C 的区别细节](https://github.com/Igarashi-G/book-redis-design/blob/main/docs/doc/02-%E7%AE%80%E5%8D%95%E5%8A%A8%E6%80%81%E5%AD%97%E7%AC%A6%E4%B8%B2.md#23-sds-api)**
+- [SDS API](https://github.com/Igarashi-G/book-redis-design/blob/main/docs/doc/02-%E7%AE%80%E5%8D%95%E5%8A%A8%E6%80%81%E5%AD%97%E7%AC%A6%E4%B8%B2.md#23-sds-api) 
+
+
+
+### 2.2 链表
+
+因为 **Redis** 使用的 **C** 语言并 **没有内置** 这种数据结构， 所以 **Redis** 构建了自己的链表实现
+
+列表键 **(*list - key*)** 的底层实现之一就是链表 ，**发布与订阅、慢查询、监视器** 等功能也是，**Redis** 服务器本身还使用链表来 **保存多个客户端的状态** 信息， 以及使用链表来 **构建客户端输出缓冲区(*output buffer*)** 
+
+#### 数据结构
+
+定义了 **list** 结构，来存储 **ListNode** 双向链表结构的，如下：
+
+```C
+typedef struct list {
+    // 表头节点
+    listNode *head;
+    // 表尾节点
+    listNode *tail;
+
+    // 链表所包含的节点数量
+    unsigned long len;
+
+    // 节点值复制函数
+    void *(*dup)(void *ptr);
+    // 节点值释放函数
+    void (*free)(void *ptr);
+    // 节点值对比函数
+    int (*match)(void *ptr, void *key);
+} list;
+
+typedef struct listNode {
+    // 前驱节点
+    struct listNode *prev;
+    // 后继节点
+    struct listNode *next;
+    // 节点的值
+    void *value;
+} listNode;
+```
+
+![链表结构.png](img/graphviz-5f4d8b6177061ac52d0ae05ef357fceb52e9cb90.png)  
+
+**list** 结构记录了 **头/尾节点、链表长度、特殊函数** ，故它可以实现如下特性： 
+
+- **双端：** 每个节点都记录了 **前驱、后继指针** ，获取复杂度为 **O(1)** 
+- 无环
+
+
 
 
 

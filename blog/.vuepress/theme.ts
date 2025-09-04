@@ -76,6 +76,10 @@ export default hopeTheme({
     sidebarDisplay: "mobile"
   },
 
+  markdown: {
+    mermaid: true,
+  },
+
   encrypt: {
     config: {
       "/guide/encrypt.html": ["1234"],

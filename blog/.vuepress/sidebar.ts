@@ -356,7 +356,7 @@ export default sidebar({
       icon: "mysql",
       prefix: "/database/MySQL/",
       link: "/database/MySQL/",
-      children: ["MySQL"]
+      children: ["MySQL", "MySQL执行计划"]
     }
   ],
   "/database/PostgreSQL": [
@@ -420,6 +420,15 @@ export default sidebar({
       prefix: "/tool/Nginx/",
       link: "/tool/Nginx/",
       children: ["Nginx基础", "应用部署"]
+    }
+  ],
+  "/tool/Tailscale": [
+    {
+      text: "Tailscale",
+      icon: "nginx",
+      prefix: "/tool/Tailscale/",
+      link: "/tool/Tailscale/",
+      children: ["tailscale"]
     }
   ],
   "/tool/Other": [

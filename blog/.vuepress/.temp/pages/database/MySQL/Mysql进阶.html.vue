@@ -1,312 +1,83 @@
-<template><div><p>一、本节内容概要：<br>
-本节内容虽然在开发过程中可能用到较少，但至少也能描述清楚概念和能写的出来才行。其中索引的知识为重！（而触发器存储过程和视图可能用的不是<br>
-很多）<a href="http://xn--3ds.net" target="_blank" rel="noopener noreferrer">在.net</a> 的 sqlserver 中可能写到存储过程会比较多一些。因此通常开发时还是常用 sql 语句（这才是重中之重）————mysql 中运用较少，但 sqlserver 和<br>
-Oracle 中用的还是较多（C#时把所有 sql 语句都封装成存储过程，因此存储过程利用的还是较多）</p>
-<pre><code>1、视图：
-    通常sql查询中会用到大量的临时表（先把想要的一部分东西先放到临时表里面，然后再去临时表中细化）
-
-    视图是一个虚拟表（非真实存在），其本质是【根据SQL语句获取动态的数据集，并为其命名】，用户使用时只需使用【名称】即可获取结果
-    集，并可以将其当作表来使用。（就相当于给临时表加了一个标签变量temp一样，视图就是建立对应关系，调用时相当于使用了个临时表）
-
-    1.创建视图：
-        --格式：CREATE VIEW 视图名称 AS  SQL语句    （其中as是固定用法，v1就是视图名）
-            CREATE VIEW v1 AS
-            SELET nid, name FROM A WHERE nid &gt; 4
-
-        因此以后要查询结果集的时候直接select * from v1 结果就出来了（说白了视图即虚拟临时表，为了让客户端写sql语句尽量简单点）
-
-    2.删除视图：
-        --格式：DROP VIEW 视图名称
-            DROP VIEW v1
-
-    3.修改视图：
-        -- 格式：ALTER VIEW 视图名称 AS SQL语句
-            ALTER VIEW v1 AS ...(修改一系列)
-
-    4.使用视图：
-        使用视图时，将其当作表进行操作即可，由于视图是虚拟表，所以无法使用其对真实表进行创建、更新和删除操作，仅能做查询用。
-        select * from v1（仅能查询，视图名直接当表名使用即可）
-
-
-2、触发器：!!!注意触发器若创建错误，会特么瞎jb报错，令人摸不着头脑（写完后请确认无误）
-                            ————触发器不是必须的，写了反而更浪费时间，但是还是要了解
-    对某个表进行【增/删/改】操作的前后如果希望触发某个特定的行为时，可以使用触发器，触发器用于定制用户对表的行进行【增/删/改】前后的行为。
-
-    # 插入、删除、更新前:
-        CREATE TRIGGER tri_before_insert/delete/update_tb1 BEFORE INSERT/DELETE/UPDATE ON tb1 FOR EACH ROW
-        BEGIN
-            ...
-        END
-    （其中EACH ROW 只的是每一行，若批量插入数据，则触发器执行n次）
-
-    # 插入、删除、更新后:
-        CREATE TRIGGER tri_after_insert/delete/update_tb1 AFTER INSERT/DELETE/UPDATE ON tb1 FOR EACH ROW
-        BEGIN
-            ...
-        END
-
-    如何插入数据时不在触发器内部写死：（比如再插入后触发器中插入另一条刚才插入的值）
-        delimiter $$
-        create trigger tri_before_insert_student before insert on student for each row
-        begin
-            -- new:
-                -- new.gender 1
-                -- new.class_id 2
-                -- new.sname 33
-            if new.sname = &quot;igarashi&quot; THEN
-            insert into class(caption) values(new.sname);
-            end if;
-        end $$
-        delimiter ;
-
-        insert into student(gender,class_id,sname) values(&quot;男&quot;,3,&quot;igarashi&quot;)
-        mysql内部提供了new，当进行insert时，会自动生成这三个new.值。因此new里面封装了用户新插入过来的数据（动态）
-
-    删除时的触发则内部用old：（实现删除后同时删除其他表中数据）
-        delimiter $$
-        create trigger tri_before_delete_student before delete on student for each row
-        begin
-            if old.sname = &quot;igarashi&quot; THEN
-            delete from class where caption = old.sname;
-            end if;
-        end $$
-        delimiter ;
-
-        delete from student where student.sname = &quot;igarashi&quot;
-
-    特别的：NEW表示即将插入的数据行，OLD表示即将删除的数据行。（因为凡是delete操作原表中都有，因此是old）
-            update和insert同理，凡是新传过来的数据都是new。（因为原表中没有此数据）
-
-    删除触发器：
-        DROP TRIGGER tri_after_insert_tb1;
-
-    使用触发器：
-        触发器无法由用户直接调用，而知由于对表的【增/删/改】操作被动引发的。
-
-
-3、存储过程：（这个就比较重要）
-    存储过程是一个SQL语句集合，当主动去调用存储过程时，其中内部的SQL语句会按照逻辑执行。
-    （说白了类似于函数，想拿的时候call c1()调用即可）
-
-    1.创建存储过程：
-        -- 创建存储过程
-            delimiter $$    --就像mysql是以分号作为终止符，这里是自己设定以XX作为终止符(delimiter:用于修改终止符)
-            create procedure p1()   --必须加括号
-            BEGIN
-                select * from t1;   --中间加多少语句都可以
-            END $$          --遇到 $$表示终止了，把$$前面的部分提交到了mysql
-            delimiter ;     --再次设置终止符deliniter为 ;
-
-        -- 执行存储过程
-            call p1()
-
-        这里面可以写if else、可以写for循环、可以传参等等写很多很多，比视图厉害的多
-        推荐当存储过程写错了，就干掉重建，不要去改
-
-    2.对于存储过程，可以接收参数，其参数有三类：
-        in        仅用于传入参数用    #让存储过程内部使用
-        out       仅用于返回值用（由于没有像类似return那样可以后面加入的返回值）   #返回值
-        inout     既可以传入又可以当作返回值     #
-
-        若procedure c1(in,out,inout)传参call c1(1,@i1,@i2) in传的值仅用于用，out传值@i1仅仅作为引用传递，初始为空，存储过程赋值返回。
-        out的参数传入只能用@，@i1作为存储过程内部赋值来使用.而@i2则是可以在传递之前便进行赋值的，在存储过程中还可以修改并返回。
-        （out时无需传参，因为它初始化为null）
-
-        declare：在存储过程内部声明变量时使用
-        -- 创建带参存储过程
-            delimiter \\
-            create procedure p1(
-                in i1 int,
-                in i2 int,
-                inout i3 int,
-                out r1 int
-            )
-            BEGIN
-                DECLARE temp1 int;                  --相当于 temp1 = int()  （声明变量类型）
-                DECLARE temp2 int default 0;        --相当于 temp2 = 0      （赋值为0）
-
-                set temp1 = 1;                      --由于声明过类型set直接赋值（再赋值为1）
-
-                set r1 = i1 + i2 + temp1 + temp2;
-
-                set i3 = i3 + 100;
-
-            end\\
-            delimiter ;
-
-            -- 执行存储过程
-            set @t1 =4;
-            set @t2 = 0;
-            CALL p1 (1, 2 ,@t1, @t2);
-            SELECT @t1,@t2;
-
-        上面虽然没有结果集，但通常来说，最常用的是即拿到返回结果，又拿到结果集的存储过程应用最多。（比如给存储过程传参数，传递进来，存储过程拿
-        着参数，帮我执行一大堆的sql语句，做各种各样的判断，然后做完了告诉客户端执行成功了没有，执行成功了再返回一个1）
-
-        注：存储过程的返回仅能拿到一个结果集，即一张表（但可连表，可多条操作语句），但拿返回值时可以有多个（返回值传什么类型，返回什么类型，单值）。
-
-    3.删除存储过程：
-        drop procedure proc_name;
-
-    4.执行存储过程：
-        -- 无参数
-            call proc_name()
-
-        -- 有参数，全in
-            call proc_name(1,2)
-
-        -- 有参数，有in，out，inout
-            set @t1=0;
-            set @t2=3;
-            call proc_name(1,2,@t1,@t2)
-
-        pymysql中：
-        对于python开发者，通常不会去使用终端。他总不能告诉你：你去终端连，查一个sql语句就行了，这是不合理的。因此是用python执行sql语句
-        拿到结果后给别人即可。
-
-            通过.callproc(&quot;proc_name&quot;) 去调用存储过程  #这样的好处在于，我们在给mysql传输的时候（只用传个过程名）sql语句就少了
-
-            # 执行存储过程，args里面无变量，pymsql帮你接收
-            cursor.callproc('p1', args=(1, 22, 3, 4))  #无需管in、out，in就直接传入、out则忽略、inout同in拿值。
-
-            result = cursor.fetchall()##第一次执行时只拿结果集
-
-            # 获取执行完存储的参数
-            cursor.execute(&quot;select @_p1_0,@_p1_1,@_p1_2,@_p1_3&quot;) #注select后面的为固定用法，pymsql无法判断谁是out谁是inout，但它
-                                                                 #简单粗暴把所有传参的执行结果拿了一遍
-            @加上一个下划线_，p1是存储过程的名字，_0拿第一个值（_表示分割），以此类推。把所有值都重新拿了一遍。假设是in、in、out、inout则拿到的值前两个
-            不变（@_p1_0 = 1   @_p1_1 = 22），后面的则拿到的是存储过程内部返回值
-
-            result2 = cursor.fetchall()#第二次执行变量查询select...拿到了存储过程的返回结果
-
-            conn.commit()#存储过程里可以写多个sql语句，可以写insert、update，涉及这些操作需要commit，因此保险起见还是加上commit
-    5.其他：
-        条件语句：
-            delimiter \\
-            CREATE PROCEDURE proc_if ()
-            BEGIN
-
-                declare i int default 0;
-                if i = 1 THEN               --条件后面必须+then，就相当于Python的:
-                    SELECT 1;
-                ELSEIF i = 2 THEN
-                    SELECT 2;
-                ELSE
-                    SELECT 7;
-                END IF;
-
-            END\\
-            delimiter ;
-
-        循环语句:（部分代码重复、略）
-            while：
-                DECLARE num INT ;
-                SET num = 0 ;
-                WHILE num &lt; 10 DO               --后面记得+do
-                    SELECT                      --查询这个数
-                        num ;
-                    SET num = num + 1 ;
-                END WHILE ;
-
-            repeat：
-                DECLARE i INT ;
-                SET i = 0 ;
-                repeat                          --repeat表示重复
-                    select i;
-                    set i = i + 1;
-                    until i &gt;= 5                --until直到..终止条件————相当于do - while
-                end repeat;
-
-            loop：
-                declare i int default 0;
-                loop_label: loop
-
-                    set i=i+1;
-                    if i&lt;8 then
-                        iterate loop_label;     --回到循环开始继续执行 - 像continue    若后面再接else就否则执行...
-                    end if;
-                    if i&gt;=10 then
-                        leave loop_label;       --离开循环 - 像break
-                    end if;
-                    select i;
-                end loop loop_label;
-
-    6.动态执行SQL语句：（特别、特别、特别重要！！！————搞Oracle的DBA经常用）
-        当你想通过方法名称的字符串来执行某个模块下（假设re模块下的match方法）,则需要借助反射来实现 func = getattr(re,&quot;match&quot;);func()
-        同理，若想通过传递varchar(255)的字符串sql语句，交给存储过程完成，则也需要借助其他方法。假设现在传了这样的参数：
-        in arg varchar(255),# 传递了sql语句:&quot;select * from student where sid = %s&quot;
-        in arg2 int # 这里传递了值1
-        当存储过程执行时不仅要借助某种方法，还有利用传来的两个值进行拼接，则涉及到了字符串的格式化
-        #arg1 = arg1 % (arg2) # 这里是按照python的写法变成 -- &quot;select * from student where sid = 1&quot;
-        func = getattr(&quot;arg1&quot;);func()
-        若是有这种方式，以后就传递含有占位符的sql语句，然后把第二个参数和第一个在内部做个格式化就行了。
-
-        在mysql中支持的则是prepare（提供了这种机制）
-            delimiter \\
-            DROP PROCEDURE IF EXISTS proc_sql \\
-            CREATE PROCEDURE proc_sql ()
-            BEGIN
-                declare p1 int;
-                set p1 = 11;            --这里看似多此一举，实际也是多次一举，直接@p1=11也一样
-                set @p1 = p1;           --这里是规定的传来的变量必须@开头，不然using不执行
-
-                PREPARE prod FROM 'select * from tb2 where nid &gt; ?';    --mysql中占位符是?（不是python中的%）
-                EXECUTE prod USING @p1;
-                DEALLOCATE prepare prod;
-
-            END\\
-            delimiter ;
-
-        这就是说prepare后要创建一个变量prod（类似于特殊变量，这个特殊的变量就是一个SQL语句）因此prod代指后面的sql语句
-        后面execute prod using @p1  这一句就是做字符串格式化 因此select * from tb2 where nid &gt; 11（把@p1=11放到占位符位置）
-        deallocate prepare prod 就是执行它
-
-        注：FROM后面的sql和USING后的@p1 都可以在传参处替换
-
-        在pymysql级别可以用传参方式防止注入，在mysql级别可以用动态执行的方式防止SQL注入。
-        pymysql中，需要cursor.callproc(&quot;p1&quot;,args=(&quot;select * from tb2 where nid &gt; ?&quot;,11))    来防止SQL注入
-        但这种不常用，最多情况还是用传参的方式防注.execute(&quot;select * from tb2 where nid &gt; %s&quot;,11)
-
-4、事务：（在存储过程里面执行事务）
-    之前的建表，engine = innodb 中有提到（原子性操作）
-    假设存储过程中有两个操作insert、update。当update出错时怎么办，是不是要回滚。若只是普通的写在存储过程中，默认是不回滚的，这样便产生脏数据。
-    但若把这两个操作写成事务，就会进行回滚操作。执行失败则一起吧之前的操作也删除。
-
-    MySQL中可以声明一个特殊的变量：sqlexception、sqlwarning。类似python的异常捕获
-    DECLARE exit handler for sqlexception/sqlwarning（这就表示创建了一个SQL的异常处理、警告处理）
-
-    delimiter \\
-    create PROCEDURE p1(
-        OUT p_return_code tinyint
-    )
-    BEGIN
-      DECLARE exit handler for sqlexception
-      BEGIN                                 --相当于创建了一个异常代码块，当存储过程出现异常时执行
-        -- ERROR
-        set p_return_code = 1;              --若执行出错（插入了没有的列），则报异常，返回1
-        rollback;                           --进行回滚操作，后续部分不会执行（类似python的异常处理）
-      END;
-
-      DECLARE exit handler for sqlwarning
-      BEGIN                                 --创建了一个警告代码块，当存储过程出现警告时执行
-        -- WARNING
-        set p_return_code = 2;              --若版本不兼容之类的，搞一个警告，几乎用不到
-        rollback;
-      END;
-
-      START TRANSACTION;                    --若下面这个事务操作执行成功，则上面的都不会执行
-        DELETE from tb1;
-        insert into tb2(name)values('seven');
-      COMMIT;                               --和上面关联，把delete和insert变成一个事务
-
-      -- SUCCESS                           --传入的返回参数，若执行成功，给p_return_code赋值，返回0
-      set p_return_code = 0;
-
-      END\\
-    delimiter ;
-
-    set @i =0;      call p1(@i);        select @i;
-</code></pre>
+<template><div><h1 id="mysql调优" tabindex="-1"><a class="header-anchor" href="#mysql调优"><span>Mysql调优</span></a></h1>
+<h3 id="_1-执行计划分析" tabindex="-1"><a class="header-anchor" href="#_1-执行计划分析"><span>1. 执行计划分析</span></a></h3>
+<h4 id="_1-1-什么是执行计划" tabindex="-1"><a class="header-anchor" href="#_1-1-什么是执行计划"><span>1.1 什么是执行计划</span></a></h4>
+<p><strong>执行计划:</strong>  指一条 SQL 语句在经过 <strong>MySQL 查询优化器</strong> 的优化后，具体的执行方式，常用于 <strong>SQL 性能分析、优化</strong> 等场景。</p>
+<div class="language-sql line-numbers-mode" data-highlighter="shiki" data-ext="sql" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">EXPLAIN + </span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">SELECT</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> / </span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">UPDATE</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> / </span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">DELETE</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">... 查询语句；</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div><p>通过 <code v-pre>EXPLAIN</code> 的结果，能看到目标SQL 可 <strong>命中那些 索引、是什么 type、多少行记录被查询</strong> 等</p>
+<p>支持 <code v-pre>SELECT</code>、<code v-pre>DELETE</code>、<code v-pre>INSERT</code>、<code v-pre>REPLACE</code> 以及 <code v-pre>UPDATE</code> 语句</p>
+<h4 id="_1-2-执行计划示例" tabindex="-1"><a class="header-anchor" href="#_1-2-执行计划示例"><span>1.2 执行计划示例</span></a></h4>
+<div class="language-sql line-numbers-mode" data-highlighter="shiki" data-ext="sql" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">EXPLAIN </span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">SELECT</span><span style="--shiki-light:#0184BC;--shiki-dark:#56B6C2"> COUNT</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(*) </span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">FROM</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> `SyncLogRecord`</span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD"> force</span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD"> index</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(idx_logrecord_query)</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">WHERE</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> create_at </span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2">>=</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> '2025-07-01 00:00:00'</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">AND</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> create_at </span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2">&#x3C;=</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> '2025-08-18 00:00:00'</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">AND</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> log_type </span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2">=</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> 'video'</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">AND</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> analysis_job_id</span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2">=</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">'87f15d0a5b7642eda557758905c68d90'</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">AND</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> flow_hidden</span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2">=</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">0</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">+</span><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">----+-------------+----------+------------+-------+-----------------+---------+---------+------+--------+----------+-------------+</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">| id | select_type | </span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">table</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">    | partitions | </span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">type</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">  | possible_keys   | </span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">key</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">     | key_len | ref  | </span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">rows</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">   | filtered | Extra       |</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">+</span><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">----+-------------+----------+------------+-------+-----------------+---------+---------+------+--------+----------+-------------+</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">|  </span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">1</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> | </span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">PRIMARY</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">     | dept_emp | </span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">NULL</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">       | ALL   | </span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">NULL</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">            | </span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">NULL</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">    | </span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">NULL</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">    | </span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">NULL</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> | </span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">331143</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> |   </span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">100</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">00</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> | </span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">Using</span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD"> where</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> |</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">|  </span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">2</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> | SUBQUERY    | dept_emp | </span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">NULL</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">       | </span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">index</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> | </span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">PRIMARY</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">,dept_no | </span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">PRIMARY</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> | </span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">16</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">      | </span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">NULL</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> | </span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">331143</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> |   </span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">100</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">00</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> | </span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">Using</span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD"> index</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> |</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">+</span><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">----+-------------+----------+------------+-------+-----------------+---------+---------+------+--------+----------+-------------+</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>执行计划结果中共有 12 列，各列代表的含义总结如下表：</p>
+<table>
+<thead>
+<tr>
+<th><strong>列名</strong></th>
+<th><strong>含义</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>SELECT 查询的序列标识符</td>
+</tr>
+<tr>
+<td>select_type</td>
+<td>SELECT 关键字对应的查询类型</td>
+</tr>
+<tr>
+<td>table</td>
+<td>用到的表名</td>
+</tr>
+<tr>
+<td>partitions</td>
+<td>匹配的分区，对于未分区的表，值为 NULL</td>
+</tr>
+<tr>
+<td>type</td>
+<td>表的访问方法</td>
+</tr>
+<tr>
+<td>possible_keys</td>
+<td>可能用到的索引</td>
+</tr>
+<tr>
+<td>key</td>
+<td>实际用到的索引</td>
+</tr>
+<tr>
+<td>key_len</td>
+<td>所选索引的长度</td>
+</tr>
+<tr>
+<td>ref</td>
+<td>当使用索引等值查询时，与索引作比较的列或常量</td>
+</tr>
+<tr>
+<td>rows</td>
+<td>预计要读取的行数</td>
+</tr>
+<tr>
+<td>filtered</td>
+<td>按表条件过滤后，留存的记录数的百分比</td>
+</tr>
+<tr>
+<td>Extra</td>
+<td>附加信息</td>
+</tr>
+</tbody>
+</table>
 </div></template>
 
 
