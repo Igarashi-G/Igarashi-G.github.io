@@ -1,7 +1,10 @@
 <template><div><h1 id="tailscale" tabindex="-1"><a class="header-anchor" href="#tailscale"><span>tailscale</span></a></h1>
 <p><a href="https://tailscale.com/blog/how-tailscale-works" target="_blank" rel="noopener noreferrer">tailscale</a></p>
 <!--more-->
-<h3 id="常用命令" tabindex="-1"><a class="header-anchor" href="#常用命令"><span>常用命令</span></a></h3>
+<h3 id="headscale部署" tabindex="-1"><a class="header-anchor" href="#headscale部署"><span>headscale部署</span></a></h3>
+<h5 id="docker-compose" tabindex="-1"><a class="header-anchor" href="#docker-compose"><span>docker-compose</span></a></h5>
+<div class="language-yaml line-numbers-mode" data-highlighter="shiki" data-ext="yaml" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div><h3 id="常用命令" tabindex="-1"><a class="header-anchor" href="#常用命令"><span>常用命令</span></a></h3>
 <h4 id="中继" tabindex="-1"><a class="header-anchor" href="#中继"><span>中继</span></a></h4>
 <h5 id="列节点" tabindex="-1"><a class="header-anchor" href="#列节点"><span><strong>列节点</strong></span></a></h5>
 <div class="language- line-numbers-mode" data-highlighter="shiki" data-ext="" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span>$ docker exec -ti headscale headscale nodes list</span></span></code></pre>

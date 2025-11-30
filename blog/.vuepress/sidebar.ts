@@ -440,6 +440,15 @@ export default sidebar({
       children: ["rdesktop", "screen", "网络代理"]
     }
   ],
+  "/ai/HelloAgents": [
+    {
+      text: "HelloAgents",
+      icon: "ai-agents",
+      prefix: "/ai/HelloAgents/",
+      link: "/ai/HelloAgents/",
+      children: ["Decoder-Only架构"]
+    }
+  ],
   "/book": [
     {
       text: "书籍",

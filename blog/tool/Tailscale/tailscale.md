@@ -6,6 +6,16 @@
 
 
 
+### headscale部署 
+
+##### docker-compose 
+
+```yaml
+
+```
+
+
+
 ### 常用命令
 
 #### 中继

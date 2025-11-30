@@ -156,6 +156,8 @@ func main() {
 
 处理可重用的多 **goroutine** 等待同一个执行点的场景的时候，**CyclicBarrier** 和 **WaitGroup** 方法调用的对应关系如下：
 
+
+
 <img src="./img/CyclicBarrier.jpg" style="width:600px"/>  
 
 如果使用 **WaitGroup** 实现的话，调用比较复杂，不像 **CyclicBarrier** 那么清爽。更重要的是，如果想重用 **WaitGroup**，你还要保证，将 **WaitGroup** 的计数值重置到 **n** 的时候不会出现并发问题。

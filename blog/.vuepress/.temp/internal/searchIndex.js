@@ -459,21 +459,6 @@ export const SEARCH_INDEX = [
     "extraFields": []
   },
   {
-    "title": "Python",
-    "headers": [
-      {
-        "level": 2,
-        "title": "目录",
-        "slug": "目录",
-        "link": "#目录",
-        "children": []
-      }
-    ],
-    "path": "/python/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
     "title": "PS 插画基础",
     "headers": [
       {
@@ -548,6 +533,100 @@ export const SEARCH_INDEX = [
     "extraFields": []
   },
   {
+    "title": "Python",
+    "headers": [
+      {
+        "level": 2,
+        "title": "目录",
+        "slug": "目录",
+        "link": "#目录",
+        "children": []
+      }
+    ],
+    "path": "/python/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "运维",
+    "headers": [],
+    "path": "/tool/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "Decode-Only架构",
+    "headers": [
+      {
+        "level": 2,
+        "title": "1.1 公式说明",
+        "slug": "_1-1-公式说明",
+        "link": "#_1-1-公式说明",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "1.2 为什么要使用 exp",
+        "slug": "_1-2-为什么要使用-exp",
+        "link": "#_1-2-为什么要使用-exp",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "具体步骤演示",
+        "slug": "具体步骤演示",
+        "link": "#具体步骤演示",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "3.1 提示工程的本质",
+        "slug": "_3-1-提示工程的本质",
+        "link": "#_3-1-提示工程的本质",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "3.2 采样参数",
+        "slug": "_3-2-采样参数",
+        "link": "#_3-2-采样参数",
+        "children": [
+          {
+            "level": 3,
+            "title": "3.2.1 Temperature",
+            "slug": "_3-2-1-temperature",
+            "link": "#_3-2-1-temperature",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "3.2.2 Top-K",
+            "slug": "_3-2-2-top-k",
+            "link": "#_3-2-2-top-k",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "3.2.3 Top-p",
+            "slug": "_3-2-3-top-p",
+            "link": "#_3-2-3-top-p",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "3.2.4 各参数区别",
+            "slug": "_3-2-4-各参数区别",
+            "link": "#_3-2-4-各参数区别",
+            "children": []
+          }
+        ]
+      }
+    ],
+    "path": "/ai/HelloAgents/Decoder-Only%E6%9E%B6%E6%9E%84.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
     "title": "asyncio Recipes",
     "headers": [],
     "path": "/book/python/asyncio_recipes.html",
@@ -601,13 +680,6 @@ export const SEARCH_INDEX = [
     "title": "Using Asyncio in Python",
     "headers": [],
     "path": "/book/python/use_asyncio.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "运维",
-    "headers": [],
-    "path": "/tool/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -1053,6 +1125,36 @@ export const SEARCH_INDEX = [
     "title": "SQLAlchemy基础",
     "headers": [],
     "path": "/database/MySQL/SQLAlchemy.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "PostgreSQL基础",
+    "headers": [
+      {
+        "level": 2,
+        "title": "1. PostgreSQL 数据库",
+        "slug": "_1-postgresql-数据库",
+        "link": "#_1-postgresql-数据库",
+        "children": [
+          {
+            "level": 3,
+            "title": "1. 安装",
+            "slug": "_1-安装",
+            "link": "#_1-安装",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "2. 操作",
+            "slug": "_2-操作",
+            "link": "#_2-操作",
+            "children": []
+          }
+        ]
+      }
+    ],
+    "path": "/database/PostgreSQL/PostgreSQL.html",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -2084,36 +2186,6 @@ export const SEARCH_INDEX = [
       }
     ],
     "path": "/database/etcd/%E8%BF%9B%E9%98%B6.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "PostgreSQL基础",
-    "headers": [
-      {
-        "level": 2,
-        "title": "1. PostgreSQL 数据库",
-        "slug": "_1-postgresql-数据库",
-        "link": "#_1-postgresql-数据库",
-        "children": [
-          {
-            "level": 3,
-            "title": "1. 安装",
-            "slug": "_1-安装",
-            "link": "#_1-安装",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "2. 操作",
-            "slug": "_2-操作",
-            "link": "#_2-操作",
-            "children": []
-          }
-        ]
-      }
-    ],
-    "path": "/database/PostgreSQL/PostgreSQL.html",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -4688,6 +4760,21 @@ export const SEARCH_INDEX = [
     "extraFields": []
   },
   {
+    "title": "",
+    "headers": [
+      {
+        "level": 3,
+        "title": "outline 部署",
+        "slug": "outline-部署",
+        "link": "#outline-部署",
+        "children": []
+      }
+    ],
+    "path": "/tool/Other/outline.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
     "title": "rdesktop",
     "headers": [
       {
@@ -4850,6 +4937,13 @@ export const SEARCH_INDEX = [
   {
     "title": "tailscale",
     "headers": [
+      {
+        "level": 3,
+        "title": "headscale部署",
+        "slug": "headscale部署",
+        "link": "#headscale部署",
+        "children": []
+      },
       {
         "level": 3,
         "title": "常用命令",
@@ -9017,16 +9111,16 @@ export const SEARCH_INDEX = [
     "extraFields": []
   },
   {
-    "title": "显卡",
+    "title": "扩展卡与接口",
     "headers": [],
-    "path": "/unix/%E7%A1%AC%E4%BB%B6%E5%9F%BA%E7%A1%80/%E6%98%BE%E5%8D%A1/%E6%98%BE%E5%8D%A1.html",
+    "path": "/unix/%E7%A1%AC%E4%BB%B6%E5%9F%BA%E7%A1%80/%E6%89%A9%E5%B1%95%E5%8D%A1%E4%B8%8E%E6%8E%A5%E5%8F%A3/%E6%89%A9%E5%B1%95%E5%8D%A1%E4%B8%8E%E6%8E%A5%E5%8F%A3.html",
     "pathLocale": "/",
     "extraFields": []
   },
   {
-    "title": "扩展卡与接口",
+    "title": "显卡",
     "headers": [],
-    "path": "/unix/%E7%A1%AC%E4%BB%B6%E5%9F%BA%E7%A1%80/%E6%89%A9%E5%B1%95%E5%8D%A1%E4%B8%8E%E6%8E%A5%E5%8F%A3/%E6%89%A9%E5%B1%95%E5%8D%A1%E4%B8%8E%E6%8E%A5%E5%8F%A3.html",
+    "path": "/unix/%E7%A1%AC%E4%BB%B6%E5%9F%BA%E7%A1%80/%E6%98%BE%E5%8D%A1/%E6%98%BE%E5%8D%A1.html",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -9521,6 +9615,20 @@ export const SEARCH_INDEX = [
     "extraFields": []
   },
   {
+    "title": "Hello Agents",
+    "headers": [],
+    "path": "/ai/HelloAgents/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "Ai",
+    "headers": [],
+    "path": "/ai/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
     "title": "My SQL",
     "headers": [],
     "path": "/database/MySQL/",
@@ -9535,6 +9643,13 @@ export const SEARCH_INDEX = [
     "extraFields": []
   },
   {
+    "title": "Postgre SQL",
+    "headers": [],
+    "path": "/database/PostgreSQL/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
     "title": "Redis",
     "headers": [],
     "path": "/database/Redis/",
@@ -9545,13 +9660,6 @@ export const SEARCH_INDEX = [
     "title": "Etcd",
     "headers": [],
     "path": "/database/etcd/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "Postgre SQL",
-    "headers": [],
-    "path": "/database/PostgreSQL/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -9899,16 +10007,16 @@ export const SEARCH_INDEX = [
     "extraFields": []
   },
   {
-    "title": "显卡",
+    "title": "扩展卡与接口",
     "headers": [],
-    "path": "/unix/%E7%A1%AC%E4%BB%B6%E5%9F%BA%E7%A1%80/%E6%98%BE%E5%8D%A1/",
+    "path": "/unix/%E7%A1%AC%E4%BB%B6%E5%9F%BA%E7%A1%80/%E6%89%A9%E5%B1%95%E5%8D%A1%E4%B8%8E%E6%8E%A5%E5%8F%A3/",
     "pathLocale": "/",
     "extraFields": []
   },
   {
-    "title": "扩展卡与接口",
+    "title": "显卡",
     "headers": [],
-    "path": "/unix/%E7%A1%AC%E4%BB%B6%E5%9F%BA%E7%A1%80/%E6%89%A9%E5%B1%95%E5%8D%A1%E4%B8%8E%E6%8E%A5%E5%8F%A3/",
+    "path": "/unix/%E7%A1%AC%E4%BB%B6%E5%9F%BA%E7%A1%80/%E6%98%BE%E5%8D%A1/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -10977,16 +11085,3 @@ export const SEARCH_INDEX = [
     "extraFields": []
   }
 ]
-
-if (import.meta.webpackHot) {
-  import.meta.webpackHot.accept()
-  if (__VUE_HMR_RUNTIME__.updateSearchIndex) {
-    __VUE_HMR_RUNTIME__.updateSearchIndex(searchIndex)
-  }
-}
-
-if (import.meta.hot) {
-  import.meta.hot.accept(({ searchIndex }) => {
-    __VUE_HMR_RUNTIME__.updateSearchIndex(searchIndex)
-  })
-}
