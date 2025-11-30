@@ -41,7 +41,6 @@
 </ul>
 </li>
 </ul>
-<p><img src="@source/database/Redis/img/why-redis-so-fast-TbWX24ja.png" alt="why-redis-so-fast"></p>
 <p>目前，比较业界认可的 Redis 替代品还是下面这两个开源分布式缓存（都是通过碰瓷 Redis 火的）：</p>
 <ul>
 <li><a href="https://github.com/dragonflydb/dragonfly" target="_blank" rel="noopener noreferrer">Dragonfly</a>：一种针对现代应用程序负荷需求而构建的内存数据库，完全兼容 Redis 和 Memcached 的 API，迁移时无需修改任何代码，号称全世界最快的内存数据库。</li>

@@ -555,78 +555,6 @@ export const SEARCH_INDEX = [
     "extraFields": []
   },
   {
-    "title": "Decode-Only架构",
-    "headers": [
-      {
-        "level": 2,
-        "title": "1.1 公式说明",
-        "slug": "_1-1-公式说明",
-        "link": "#_1-1-公式说明",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "1.2 为什么要使用 exp",
-        "slug": "_1-2-为什么要使用-exp",
-        "link": "#_1-2-为什么要使用-exp",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "具体步骤演示",
-        "slug": "具体步骤演示",
-        "link": "#具体步骤演示",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "3.1 提示工程的本质",
-        "slug": "_3-1-提示工程的本质",
-        "link": "#_3-1-提示工程的本质",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "3.2 采样参数",
-        "slug": "_3-2-采样参数",
-        "link": "#_3-2-采样参数",
-        "children": [
-          {
-            "level": 3,
-            "title": "3.2.1 Temperature",
-            "slug": "_3-2-1-temperature",
-            "link": "#_3-2-1-temperature",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "3.2.2 Top-K",
-            "slug": "_3-2-2-top-k",
-            "link": "#_3-2-2-top-k",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "3.2.3 Top-p",
-            "slug": "_3-2-3-top-p",
-            "link": "#_3-2-3-top-p",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "3.2.4 各参数区别",
-            "slug": "_3-2-4-各参数区别",
-            "link": "#_3-2-4-各参数区别",
-            "children": []
-          }
-        ]
-      }
-    ],
-    "path": "/ai/HelloAgents/Decoder-Only%E6%9E%B6%E6%9E%84.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
     "title": "asyncio Recipes",
     "headers": [],
     "path": "/book/python/asyncio_recipes.html",
@@ -902,6 +830,78 @@ export const SEARCH_INDEX = [
     "title": "非理性繁荣",
     "headers": [],
     "path": "/book/%E9%87%91%E8%9E%8D%E5%AD%A6/%E9%9D%9E%E7%90%86%E6%80%A7%E7%B9%81%E8%8D%A3.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "Decode-Only架构",
+    "headers": [
+      {
+        "level": 2,
+        "title": "1.1 公式说明",
+        "slug": "_1-1-公式说明",
+        "link": "#_1-1-公式说明",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "1.2 为什么要使用 exp",
+        "slug": "_1-2-为什么要使用-exp",
+        "link": "#_1-2-为什么要使用-exp",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "具体步骤演示",
+        "slug": "具体步骤演示",
+        "link": "#具体步骤演示",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "3.1 提示工程的本质",
+        "slug": "_3-1-提示工程的本质",
+        "link": "#_3-1-提示工程的本质",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "3.2 采样参数",
+        "slug": "_3-2-采样参数",
+        "link": "#_3-2-采样参数",
+        "children": [
+          {
+            "level": 3,
+            "title": "3.2.1 Temperature",
+            "slug": "_3-2-1-temperature",
+            "link": "#_3-2-1-temperature",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "3.2.2 Top-K",
+            "slug": "_3-2-2-top-k",
+            "link": "#_3-2-2-top-k",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "3.2.3 Top-p",
+            "slug": "_3-2-3-top-p",
+            "link": "#_3-2-3-top-p",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "3.2.4 各参数区别",
+            "slug": "_3-2-4-各参数区别",
+            "link": "#_3-2-4-各参数区别",
+            "children": []
+          }
+        ]
+      }
+    ],
+    "path": "/ai/HelloAgents/Decoder-Only%E6%9E%B6%E6%9E%84.html",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -8488,6 +8488,13 @@ export const SEARCH_INDEX = [
     "extraFields": []
   },
   {
+    "title": "Ubuntu系统",
+    "headers": [],
+    "path": "/unix/Ubuntu/%E4%B8%8B%E8%BD%BD/Ubuntu%E7%B3%BB%E7%BB%9F.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
     "title": "账号管理与ACL权限",
     "headers": [],
     "path": "/unix/Linux/Linux%E4%BD%BF%E7%94%A8%E8%80%85%E7%AE%A1%E7%90%86/%E8%B4%A6%E5%8F%B7%E7%AE%A1%E7%90%86%E4%B8%8EACL%E6%9D%83%E9%99%90.html",
@@ -9064,13 +9071,6 @@ export const SEARCH_INDEX = [
       }
     ],
     "path": "/unix/Linux/%E7%BD%91%E7%BB%9C/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "Ubuntu系统",
-    "headers": [],
-    "path": "/unix/Ubuntu/%E4%B8%8B%E8%BD%BD/Ubuntu%E7%B3%BB%E7%BB%9F.html",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -9895,6 +9895,20 @@ export const SEARCH_INDEX = [
     "extraFields": []
   },
   {
+    "title": "下载",
+    "headers": [],
+    "path": "/unix/Ubuntu/%E4%B8%8B%E8%BD%BD/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "Ubuntu",
+    "headers": [],
+    "path": "/unix/Ubuntu/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
     "title": "Linux使用者管理",
     "headers": [],
     "path": "/unix/Linux/Linux%E4%BD%BF%E7%94%A8%E8%80%85%E7%AE%A1%E7%90%86/",
@@ -9954,20 +9968,6 @@ export const SEARCH_INDEX = [
     "title": "网络",
     "headers": [],
     "path": "/unix/Linux/%E7%BD%91%E7%BB%9C/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "下载",
-    "headers": [],
-    "path": "/unix/Ubuntu/%E4%B8%8B%E8%BD%BD/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "Ubuntu",
-    "headers": [],
-    "path": "/unix/Ubuntu/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -11085,3 +11085,16 @@ export const SEARCH_INDEX = [
     "extraFields": []
   }
 ]
+
+if (import.meta.webpackHot) {
+  import.meta.webpackHot.accept()
+  if (__VUE_HMR_RUNTIME__.updateSearchIndex) {
+    __VUE_HMR_RUNTIME__.updateSearchIndex(searchIndex)
+  }
+}
+
+if (import.meta.hot) {
+  import.meta.hot.accept(({ searchIndex }) => {
+    __VUE_HMR_RUNTIME__.updateSearchIndex(searchIndex)
+  })
+}
