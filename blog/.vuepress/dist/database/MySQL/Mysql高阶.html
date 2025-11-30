@@ -1,0 +1,377 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="generator" content="VuePress 2.0.0-rc.21" />
+    <meta name="theme" content="VuePress Theme Hope 2.0.0-rc.82" />
+    <style>
+      :root {
+        --vp-c-bg: #fff;
+      }
+
+      [data-theme="dark"] {
+        --vp-c-bg: #1b1b1f;
+      }
+
+      html,
+      body {
+        background: var(--vp-c-bg);
+      }
+    </style>
+    <script>
+      const userMode = localStorage.getItem("vuepress-theme-hope-scheme");
+      const systemDarkMode =
+        window.matchMedia &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+      if (userMode === "dark" || (userMode !== "light" && systemDarkMode)) {
+        document.documentElement.setAttribute("data-theme", "dark");
+      }
+    </script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Mysql高阶","image":[""],"dateModified":"2022-10-12T14:58:07.000Z","author":[{"@type":"Person","name":"悦·宝宝","url":"https://github.com/Igarashi-G"}]}</script><meta property="og:url" content="https://igarashi-g.github.io/database/MySQL/Mysql%E9%AB%98%E9%98%B6.html"><meta property="og:site_name" content="悦 ▪ 宝宝"><meta property="og:title" content="Mysql高阶"><meta property="og:description" content="5、函数：（不太重要） MySQL 中提供了许多内置函数，例如：见博客 CHARLENGTH(str)：获取字符串长度 select char_length("igarashi") CONCAT(str1,str2,...)：字符串拼接 select concat("igarashi","xx","123") CONCAT_WS(separator,s..."><meta property="og:type" content="article"><meta property="og:locale" content="zh-CN"><meta property="og:updated_time" content="2022-10-12T14:58:07.000Z"><meta property="article:modified_time" content="2022-10-12T14:58:07.000Z"><link rel="stylesheet" href="//at.alicdn.com/t/c/font_3654399_wnhr8475k0a.css"><title>Mysql高阶 | 悦 ▪ 宝宝</title><meta name="description" content="5、函数：（不太重要） MySQL 中提供了许多内置函数，例如：见博客 CHARLENGTH(str)：获取字符串长度 select char_length("igarashi") CONCAT(str1,str2,...)：字符串拼接 select concat("igarashi","xx","123") CONCAT_WS(separator,s...">
+    <link rel="preload" href="/assets/style-BGbTB1Um.css" as="style"><link rel="stylesheet" href="/assets/style-BGbTB1Um.css">
+    <link rel="modulepreload" href="/assets/app-DpTzNOzd.js"><link rel="modulepreload" href="/assets/Mysql高阶.html-CzBCQHjr.js"><link rel="modulepreload" href="/assets/plugin-vueexport-helper-DlAUqK2U.js">
+    <link rel="prefetch" href="/assets/index.html-BU14j9Am.js" as="script"><link rel="prefetch" href="/assets/home.html-CM8xRYPc.js" as="script"><link rel="prefetch" href="/assets/intro.html-F7aT80pF.js" as="script"><link rel="prefetch" href="/assets/slides.html-BA3JNVOI.js" as="script"><link rel="prefetch" href="/assets/index.html-lFfFhSXA.js" as="script"><link rel="prefetch" href="/assets/index.html-CC8R66Dq.js" as="script"><link rel="prefetch" href="/assets/disable.html-DYPeWQZa.js" as="script"><link rel="prefetch" href="/assets/encrypt.html-pBP2SGCT.js" as="script"><link rel="prefetch" href="/assets/markdown.html-Ct49-Y1y.js" as="script"><link rel="prefetch" href="/assets/page.html-CKWgHhrI.js" as="script"><link rel="prefetch" href="/assets/PS操作基础.html-DHdrXr01.js" as="script"><link rel="prefetch" href="/assets/index.html-yEqxXeRu.js" as="script"><link rel="prefetch" href="/assets/SAI操作基础.html-D1jo-15g.js" as="script"><link rel="prefetch" href="/assets/index.html-II6KU0EN.js" as="script"><link rel="prefetch" href="/assets/index.html-D2b4XILZ.js" as="script"><link rel="prefetch" href="/assets/Decoder-Only架构.html-D14HzwCa.js" as="script"><link rel="prefetch" href="/assets/asyncio_recipes.html-BCQhx17n.js" as="script"><link rel="prefetch" href="/assets/devops_in_python.html-PZo30QHh.js" as="script"><link rel="prefetch" href="/assets/fluent_python.html-BtqCGzz5.js" as="script"><link rel="prefetch" href="/assets/index.html-BgSrvNNx.js" as="script"><link rel="prefetch" href="/assets/python_cookbook.html-pZiYqysG.js" as="script"><link rel="prefetch" href="/assets/python源码剖析.html-CcVsWAJN.js" as="script"><link rel="prefetch" href="/assets/use_asyncio.html-bLo3bBzn.js" as="script"><link rel="prefetch" href="/assets/index.html-BmhyXtcQ.js" as="script"><link rel="prefetch" href="/assets/亚动机与人格.html-BiSwE_hn.js" as="script"><link rel="prefetch" href="/assets/人的潜能和价值.html-CPf109Pl.js" as="script"><link rel="prefetch" href="/assets/好人是如何变成恶魔的.html-B9KCImEx.js" as="script"><link rel="prefetch" href="/assets/影响力.html-CcKkcn5i.js" as="script"><link rel="prefetch" href="/assets/性心理学.html-Dh-38R49.js" as="script"><link rel="prefetch" href="/assets/洗脑心理学.html-CqZ3_-on.js" as="script"><link rel="prefetch" href="/assets/进化心理学.html-BD9fb2wR.js" as="script"><link rel="prefetch" href="/assets/CODE.html-hgcUpefP.js" as="script"><link rel="prefetch" href="/assets/index.html-CoWoYvhM.js" as="script"><link rel="prefetch" href="/assets/成为技术领导者.html-xlUJI9hE.js" as="script"><link rel="prefetch" href="/assets/鸟哥的Linux私房菜.html-CNeov77H.js" as="script"><link rel="prefetch" href="/assets/鸟哥的Linux私房菜服务器架设篇.html-DN7Sp4lu.js" as="script"><link rel="prefetch" href="/assets/黑客与画家.html-DeIjygtm.js" as="script"><link rel="prefetch" href="/assets/index.html-HD2LWC5p.js" as="script"><link rel="prefetch" href="/assets/中国人的性格.html-C4D0cRiO.js" as="script"><link rel="prefetch" href="/assets/乌合之众.html-ncRIF62r.js" as="script"><link rel="prefetch" href="/assets/娱乐至死.html-jfhsuAFw.js" as="script"><link rel="prefetch" href="/assets/index.html-UEjsXaZd.js" as="script"><link rel="prefetch" href="/assets/清醒思考的艺术.html-CHbsWOU6.js" as="script"><link rel="prefetch" href="/assets/index.html-BpHY3dH7.js" as="script"><link rel="prefetch" href="/assets/博弈论与经济行为.html-DnprxXD-.js" as="script"><link rel="prefetch" href="/assets/就业_利息和货币通论.html-aMpGcNSR.js" as="script"><link rel="prefetch" href="/assets/聪明的投资者.html-BE9fQ7Mk.js" as="script"><link rel="prefetch" href="/assets/货币金融学.html-C8PZ0Fd_.js" as="script"><link rel="prefetch" href="/assets/非理性繁荣.html-COrouo6H.js" as="script"><link rel="prefetch" href="/assets/MySQL.html-DPViicur.js" as="script"><link rel="prefetch" href="/assets/Mysql执行计划.html-DYlK7Xb_.js" as="script"><link rel="prefetch" href="/assets/Mysql调优.html-BdIoNzH-.js" as="script"><link rel="prefetch" href="/assets/Navicat.html-BsWQT-Bw.js" as="script"><link rel="prefetch" href="/assets/SQLAlchemy.html-DyCLf7xx.js" as="script"><link rel="prefetch" href="/assets/PostgreSQL.html-B8rVjhwK.js" as="script"><link rel="prefetch" href="/assets/redis.html-flt0awbl.js" as="script"><link rel="prefetch" href="/assets/redis老八股.html-Yntgu4Bk.js" as="script"><link rel="prefetch" href="/assets/性能分析.html-CzDXGwSV.js" as="script"><link rel="prefetch" href="/assets/aioetcd3.html-2kDTewv_.js" as="script"><link rel="prefetch" href="/assets/etcd.html-Dce-uxy3.js" as="script"><link rel="prefetch" href="/assets/进阶.html-DBgxBNjw.js" as="script"><link rel="prefetch" href="/assets/H2O引发的优化.html-B75d5oys.js" as="script"><link rel="prefetch" href="/assets/关于MapReduce.html-CL9Ds3I-.js" as="script"><link rel="prefetch" href="/assets/分布式注册优化.html-CQly3iIW.js" as="script"><link rel="prefetch" href="/assets/Channel.html-BRC2BASM.js" as="script"><link rel="prefetch" href="/assets/Map.html-D9TJAdM3.js" as="script"><link rel="prefetch" href="/assets/Mutex.html-B-EtcxLp.js" as="script"><link rel="prefetch" href="/assets/go工具速用.html-TuvKVB3e.js" as="script"><link rel="prefetch" href="/assets/go语言速记.html-ZHRcDRWa.js" as="script"><link rel="prefetch" href="/assets/内存管理与GC.html-iLIx5VQm.js" as="script"><link rel="prefetch" href="/assets/闭包.html-COjoH3ey.js" as="script"><link rel="prefetch" href="/assets/数组.html-DmPU5nDr.js" as="script"><link rel="prefetch" href="/assets/栈与队列.html-CrWpUzwP.js" as="script"><link rel="prefetch" href="/assets/树.html-DvrpmjCZ.js" as="script"><link rel="prefetch" href="/assets/概述.html-gfHuRJfl.js" as="script"><link rel="prefetch" href="/assets/线性表.html-BFNpTpUX.js" as="script"><link rel="prefetch" href="/assets/docker容器.html-D_rv42P-.js" as="script"><link rel="prefetch" href="/assets/使用基础.html-Dx4DrLct.js" as="script"><link rel="prefetch" href="/assets/命令.html-CVy3OkZV.js" as="script"><link rel="prefetch" href="/assets/网络.html-Bl5nS4g4.js" as="script"><link rel="prefetch" href="/assets/CICD.html-BQYQDWl0.js" as="script"><link rel="prefetch" href="/assets/GIt提交规则.html-NSFavY9v.js" as="script"><link rel="prefetch" href="/assets/Git.html-r_OjkPpu.js" as="script"><link rel="prefetch" href="/assets/安装GitLab.html-Bfu7IDBC.js" as="script"><link rel="prefetch" href="/assets/Helm安装使用.html-PfQKAOi1.js" as="script"><link rel="prefetch" href="/assets/k8s存储.html-15sJUNQs.js" as="script"><link rel="prefetch" href="/assets/k8s安装.html-DEaRVy07.js" as="script"><link rel="prefetch" href="/assets/k8s工作负载.html-J6tiZs51.js" as="script"><link rel="prefetch" href="/assets/k8s服务.html-BXceOf4Y.js" as="script"><link rel="prefetch" href="/assets/k8s资源Pod.html-aUALPYaK.js" as="script"><link rel="prefetch" href="/assets/k8s进阶.html-CxeqHHu-.js" as="script"><link rel="prefetch" href="/assets/Nginx基础.html-BWSqUkvg.js" as="script"><link rel="prefetch" href="/assets/应用部署.html-BQGXQlhc.js" as="script"><link rel="prefetch" href="/assets/Fiddler抓包工具.html-BnJ4vylJ.js" as="script"><link rel="prefetch" href="/assets/Postman.html-DbCwf5Xw.js" as="script"><link rel="prefetch" href="/assets/Screen.html-GeKv2fuT.js" as="script"><link rel="prefetch" href="/assets/outline.html-D_xqksNq.js" as="script"><link rel="prefetch" href="/assets/rdesktop.html-Cr_3BvTr.js" as="script"><link rel="prefetch" href="/assets/tmux.html-BTaB_txv.js" as="script"><link rel="prefetch" href="/assets/网络代理.html-DyMO4UQC.js" as="script"><link rel="prefetch" href="/assets/基本使用.html-DD8cpen_.js" as="script"><link rel="prefetch" href="/assets/安装.html-DbmZR248.js" as="script"><link rel="prefetch" href="/assets/tailscale.html-rzW31Tpa.js" as="script"><link rel="prefetch" href="/assets/APScheduler.html-BXPIW46H.js" as="script"><link rel="prefetch" href="/assets/Celery.html-Dj2fUQ8j.js" as="script"><link rel="prefetch" href="/assets/Celery使用基础.html-DyBbcNtD.js" as="script"><link rel="prefetch" href="/assets/异步任务概述.html-C5YBohWk.js" as="script"><link rel="prefetch" href="/assets/RabbitMQ.html-VHr5QuNx.js" as="script"><link rel="prefetch" href="/assets/kafka.html-CzG0SWBh.js" as="script"><link rel="prefetch" href="/assets/kombu.html-Db_EG89_.js" as="script"><link rel="prefetch" href="/assets/pika.html-8q8tsL2g.js" as="script"><link rel="prefetch" href="/assets/RPC.html-B_XdkL7B.js" as="script"><link rel="prefetch" href="/assets/grpc.html-B0_Q_bBK.js" as="script"><link rel="prefetch" href="/assets/asyncio Recipes.html-C8sMBp31.js" as="script"><link rel="prefetch" href="/assets/asyncio基础.html-Dy8fEMAW.js" as="script"><link rel="prefetch" href="/assets/asyncio进阶.html-JBF_lOfx.js" as="script"><link rel="prefetch" href="/assets/事件循环.html-B6FxtJhl.js" as="script"><link rel="prefetch" href="/assets/底层实现.html-Djvi1tUI.js" as="script"><link rel="prefetch" href="/assets/异步回溯.html-zjXlRBcS.js" as="script"><link rel="prefetch" href="/assets/Python项目打包.html-BJ8_YR17.js" as="script"><link rel="prefetch" href="/assets/pip.html-BqTyCgM3.js" as="script"><link rel="prefetch" href="/assets/字符编码.html-BBUhsxT6.js" as="script"><link rel="prefetch" href="/assets/数据类型.html-Dr0Sgj1T.js" as="script"><link rel="prefetch" href="/assets/文件基础.html-BfL2PKD7.js" as="script"><link rel="prefetch" href="/assets/流程控制.html-DwLU7Ryg.js" as="script"><link rel="prefetch" href="/assets/环境安装.html-Drps-Hxw.js" as="script"><link rel="prefetch" href="/assets/Linux文件锁.html-_Mpqfxlx.js" as="script"><link rel="prefetch" href="/assets/协程.html-Bc7sBSdA.js" as="script"><link rel="prefetch" href="/assets/同步队列.html-kBIZc2UY.js" as="script"><link rel="prefetch" href="/assets/多线程编程.html-BEDn7NPO.js" as="script"><link rel="prefetch" href="/assets/多进程编程.html-CEb0fbrn.js" as="script"><link rel="prefetch" href="/assets/线程.html-BrbENe1z.js" as="script"><link rel="prefetch" href="/assets/线程进程辅助机制.html-GPfIIua4.js" as="script"><link rel="prefetch" href="/assets/进程.html-CWeZ-avB.js" as="script"><link rel="prefetch" href="/assets/高性能编程.html-CXuyhmcP.js" as="script"><link rel="prefetch" href="/assets/标准库链接.html-BgDU56yq.js" as="script"><link rel="prefetch" href="/assets/Cpython对象.html-DqSxi2G8.js" as="script"><link rel="prefetch" href="/assets/垃圾回收.html-Ceqoauqb.js" as="script"><link rel="prefetch" href="/assets/序列进阶.html-COu7y41-.js" as="script"><link rel="prefetch" href="/assets/映射进阶.html-BWU4zs68.js" as="script"><link rel="prefetch" href="/assets/设计模式.html-_iZC9wni.js" as="script"><link rel="prefetch" href="/assets/Socket.html-BKxowI3G.js" as="script"><link rel="prefetch" href="/assets/Websocket.html-R8gG2Bvz.js" as="script"><link rel="prefetch" href="/assets/事件模型.html-Ba_MAA7i.js" as="script"><link rel="prefetch" href="/assets/回调.html-DJYGvDix.js" as="script"><link rel="prefetch" href="/assets/信号量.html-Cu_00ena.js" as="script"><link rel="prefetch" href="/assets/函数.html-BVSWZuON.js" as="script"><link rel="prefetch" href="/assets/变量机制.html-BmFLVfll.js" as="script"><link rel="prefetch" href="/assets/模块和包.html-fKnuotbh.js" as="script"><link rel="prefetch" href="/assets/生成器.html-Dk5FPqGF.js" as="script"><link rel="prefetch" href="/assets/装饰器.html-CW8gf7L0.js" as="script"><link rel="prefetch" href="/assets/迭代器.html-DkBgwV3q.js" as="script"><link rel="prefetch" href="/assets/错误和异常.html-CH1Ffr_s.js" as="script"><link rel="prefetch" href="/assets/面向对象.html-Ci90ZY9W.js" as="script"><link rel="prefetch" href="/assets/DNS服务.html-BZZsrScI.js" as="script"><link rel="prefetch" href="/assets/bind.html-EVIkh7vb.js" as="script"><link rel="prefetch" href="/assets/脚本说明.html-CzthXwIU.js" as="script"><link rel="prefetch" href="/assets/AD域.html-B7Ildv8M.js" as="script"><link rel="prefetch" href="/assets/LDAP.html-D0Xl6F6F.js" as="script"><link rel="prefetch" href="/assets/Python对接AD域.html-DV7ZK94i.js" as="script"><link rel="prefetch" href="/assets/NFS服务.html-DTAv1Nrq.js" as="script"><link rel="prefetch" href="/assets/NTP服务.html-CKAC8b-E.js" as="script"><link rel="prefetch" href="/assets/SNMP服务.html-BBVMGasO.js" as="script"><link rel="prefetch" href="/assets/SNMP设计文档.html-DdKxkt-U.js" as="script"><link rel="prefetch" href="/assets/SAMBA服务.html-B8pw7dm3.js" as="script"><link rel="prefetch" href="/assets/rsync.html-BH7nbx47.js" as="script"><link rel="prefetch" href="/assets/iso构建以及发布.html-BToTGLty.js" as="script"><link rel="prefetch" href="/assets/ufscli工具.html-DYPS_jAg.js" as="script"><link rel="prefetch" href="/assets/ufs核心组件.html-BsaAKSeq.js" as="script"><link rel="prefetch" href="/assets/ufs管理平台.html-BNsO1w6d.js" as="script"><link rel="prefetch" href="/assets/uus虚拟机排错.html-DVFHDij2.js" as="script"><link rel="prefetch" href="/assets/CentOS的安装.html-D6Ws06N8.js" as="script"><link rel="prefetch" href="/assets/RPM包管理.html-gg8zLUyp.js" as="script"><link rel="prefetch" href="/assets/账号管理与ACL权限.html-DpoxWrni.js" as="script"><link rel="prefetch" href="/assets/Linux是什么与如何学习.html-Uop00yxz.js" as="script"><link rel="prefetch" href="/assets/主机规划与磁盘分区.html-DzlQscjO.js" as="script"><link rel="prefetch" href="/assets/计算机概论.html-DPMPrqCS.js" as="script"><link rel="prefetch" href="/assets/Linux磁盘与文件系统管理.html-CECgnzi4.js" as="script"><link rel="prefetch" href="/assets/文件与文件系统压缩.html-CY8q5qEO.js" as="script"><link rel="prefetch" href="/assets/文件权限与目录配置.html-DfyPO3pQ.js" as="script"><link rel="prefetch" href="/assets/认识系统服务.html-C2tVB4fx.js" as="script"><link rel="prefetch" href="/assets/shell.html-Cfn7l9qQ.js" as="script"><link rel="prefetch" href="/assets/vim 快捷键.html-9tqsPbau.js" as="script"><link rel="prefetch" href="/assets/备忘命令.html-Cv8a-LU-.js" as="script"><link rel="prefetch" href="/assets/故障快查.html-CEHGIirq.js" as="script"><link rel="prefetch" href="/assets/操作系统.html-D-FWEznw.js" as="script"><link rel="prefetch" href="/assets/CURL.html-CvZgCxJY.js" as="script"><link rel="prefetch" href="/assets/P2P.html-BWGnJ3_z.js" as="script"><link rel="prefetch" href="/assets/命令.html-BCTE592z.js" as="script"><link rel="prefetch" href="/assets/网络基础.html-xE0aH7k_.js" as="script"><link rel="prefetch" href="/assets/Ubuntu系统.html-DVyGu4Ja.js" as="script"><link rel="prefetch" href="/assets/CPU.html-ITTwsoKw.js" as="script"><link rel="prefetch" href="/assets/主板.html-DlHC3HEQ.js" as="script"><link rel="prefetch" href="/assets/内存.html-BLVQB116.js" as="script"><link rel="prefetch" href="/assets/存储.html-DnY22XP0.js" as="script"><link rel="prefetch" href="/assets/扩展卡与接口.html-D6hIhO2_.js" as="script"><link rel="prefetch" href="/assets/显卡.html-BweYRtTl.js" as="script"><link rel="prefetch" href="/assets/PVE.html-Cko-CSPL.js" as="script"><link rel="prefetch" href="/assets/添加磁盘.html-C0F_C2iP.js" as="script"><link rel="prefetch" href="/assets/网络配置.html-4uwYHXci.js" as="script"><link rel="prefetch" href="/assets/Django基础.html-CRYVze-f.js" as="script"><link rel="prefetch" href="/assets/Django概述.html-wZ64mETX.js" as="script"><link rel="prefetch" href="/assets/FastAPI基础.html-B3ZFuteT.js" as="script"><link rel="prefetch" href="/assets/FastApi基础二.html-BmNgkeo8.js" as="script"><link rel="prefetch" href="/assets/tornado.html-DEVNZU4H.js" as="script"><link rel="prefetch" href="/assets/WEB框架本质.html-C8kqfXbz.js" as="script"><link rel="prefetch" href="/assets/状态管理.html-Dl1hcrvx.js" as="script"><link rel="prefetch" href="/assets/404.html-BFs2I6Kq.js" as="script"><link rel="prefetch" href="/assets/index.html-Cwxwb9Ov.js" as="script"><link rel="prefetch" href="/assets/index.html-5vjmZJvu.js" as="script"><link rel="prefetch" href="/assets/index.html-C_gD9rvP.js" as="script"><link rel="prefetch" href="/assets/index.html-Duw-EON2.js" as="script"><link rel="prefetch" href="/assets/index.html-DvQzqx3r.js" as="script"><link rel="prefetch" href="/assets/index.html-QNlroOjL.js" as="script"><link rel="prefetch" href="/assets/index.html-DYzTfSPE.js" as="script"><link rel="prefetch" href="/assets/index.html-3M_dc1_A.js" as="script"><link rel="prefetch" href="/assets/index.html-CudswMl0.js" as="script"><link rel="prefetch" href="/assets/index.html-EEpfhXXH.js" as="script"><link rel="prefetch" href="/assets/index.html-DIwgxScE.js" as="script"><link rel="prefetch" href="/assets/index.html-COUdj_rm.js" as="script"><link rel="prefetch" href="/assets/index.html-BUfxVIAb.js" as="script"><link rel="prefetch" href="/assets/index.html-D7dDeVyq.js" as="script"><link rel="prefetch" href="/assets/index.html-DsjeBmb2.js" as="script"><link rel="prefetch" href="/assets/index.html-vvg9FAxj.js" as="script"><link rel="prefetch" href="/assets/index.html-Bq4LzAV9.js" as="script"><link rel="prefetch" href="/assets/index.html-DfBy-U5P.js" as="script"><link rel="prefetch" href="/assets/index.html-B2e4ocza.js" as="script"><link rel="prefetch" href="/assets/index.html-CvQw-Otp.js" as="script"><link rel="prefetch" href="/assets/index.html-DxgKw-XT.js" as="script"><link rel="prefetch" href="/assets/index.html-Cl5foS_0.js" as="script"><link rel="prefetch" href="/assets/index.html-CshISoz0.js" as="script"><link rel="prefetch" href="/assets/index.html-DPinpYvC.js" as="script"><link rel="prefetch" href="/assets/index.html-CxCVonxQ.js" as="script"><link rel="prefetch" href="/assets/index.html-DIegLVpn.js" as="script"><link rel="prefetch" href="/assets/index.html-CUSEBaqv.js" as="script"><link rel="prefetch" href="/assets/index.html-PiWKx1e-.js" as="script"><link rel="prefetch" href="/assets/index.html-coqaOhR2.js" as="script"><link rel="prefetch" href="/assets/index.html-CgUaCO9O.js" as="script"><link rel="prefetch" href="/assets/index.html-CjrrA1Ko.js" as="script"><link rel="prefetch" href="/assets/index.html-CS4BgNva.js" as="script"><link rel="prefetch" href="/assets/index.html--_zbikvs.js" as="script"><link rel="prefetch" href="/assets/index.html-CLvCAJXC.js" as="script"><link rel="prefetch" href="/assets/index.html-Dkt7vP66.js" as="script"><link rel="prefetch" href="/assets/index.html-DKhNkGQY.js" as="script"><link rel="prefetch" href="/assets/index.html-BUEiaGlv.js" as="script"><link rel="prefetch" href="/assets/index.html-BlU_b0Uz.js" as="script"><link rel="prefetch" href="/assets/index.html-CGc-9wWE.js" as="script"><link rel="prefetch" href="/assets/index.html-CuJ9u8dr.js" as="script"><link rel="prefetch" href="/assets/index.html-BsCJOANZ.js" as="script"><link rel="prefetch" href="/assets/index.html-C-tbaJ5n.js" as="script"><link rel="prefetch" href="/assets/index.html-B5c0-nE_.js" as="script"><link rel="prefetch" href="/assets/index.html-CyvE443Y.js" as="script"><link rel="prefetch" href="/assets/index.html-s2_IUvm-.js" as="script"><link rel="prefetch" href="/assets/index.html-BIcrk4fy.js" as="script"><link rel="prefetch" href="/assets/index.html-CIFCoFob.js" as="script"><link rel="prefetch" href="/assets/index.html-B09S2LQj.js" as="script"><link rel="prefetch" href="/assets/index.html-DFA_RzrR.js" as="script"><link rel="prefetch" href="/assets/index.html-jSKCDxBx.js" as="script"><link rel="prefetch" href="/assets/index.html-D7zvrwsG.js" as="script"><link rel="prefetch" href="/assets/index.html-jZtippTg.js" as="script"><link rel="prefetch" href="/assets/index.html-DrUJZcpo.js" as="script"><link rel="prefetch" href="/assets/index.html-DxkHmkny.js" as="script"><link rel="prefetch" href="/assets/index.html-rkUNn8xG.js" as="script"><link rel="prefetch" href="/assets/index.html-CSw55k4S.js" as="script"><link rel="prefetch" href="/assets/index.html-it2xO2O6.js" as="script"><link rel="prefetch" href="/assets/index.html-BQ8KF5kX.js" as="script"><link rel="prefetch" href="/assets/index.html-Bkzv99qn.js" as="script"><link rel="prefetch" href="/assets/index.html-BAA9-Gak.js" as="script"><link rel="prefetch" href="/assets/index.html-Dj3P5Kw2.js" as="script"><link rel="prefetch" href="/assets/index.html-Dj0aZ4Sb.js" as="script"><link rel="prefetch" href="/assets/index.html-CL45ax6N.js" as="script"><link rel="prefetch" href="/assets/index.html-QScMgDbg.js" as="script"><link rel="prefetch" href="/assets/index.html-DcQ43YgK.js" as="script"><link rel="prefetch" href="/assets/index.html-DVqFK6G0.js" as="script"><link rel="prefetch" href="/assets/index.html-DBZSsndw.js" as="script"><link rel="prefetch" href="/assets/index.html-BbdipABC.js" as="script"><link rel="prefetch" href="/assets/index.html-B1n9flS3.js" as="script"><link rel="prefetch" href="/assets/index.html-DyPISJ_F.js" as="script"><link rel="prefetch" href="/assets/index.html-es42pclH.js" as="script"><link rel="prefetch" href="/assets/index.html-BnDYfcGk.js" as="script"><link rel="prefetch" href="/assets/index.html-Dru4ZJZt.js" as="script"><link rel="prefetch" href="/assets/index.html-HpF9u1oc.js" as="script"><link rel="prefetch" href="/assets/index.html-es42pclH.js" as="script"><link rel="prefetch" href="/assets/index.html-Dzkc3ZJa.js" as="script"><link rel="prefetch" href="/assets/index.html-CxCQUTmy.js" as="script"><link rel="prefetch" href="/assets/index.html-9kmjau0m.js" as="script"><link rel="prefetch" href="/assets/index.html-DALEUGHH.js" as="script"><link rel="prefetch" href="/assets/index.html-BzaQitc8.js" as="script"><link rel="prefetch" href="/assets/index.html-CZDSJYkG.js" as="script"><link rel="prefetch" href="/assets/index.html-DWpLiyyq.js" as="script"><link rel="prefetch" href="/assets/index.html-DfsHgxCF.js" as="script"><link rel="prefetch" href="/assets/index.html-p06eNxLZ.js" as="script"><link rel="prefetch" href="/assets/index.html-D_rWyA-l.js" as="script"><link rel="prefetch" href="/assets/index.html-D6fVYHzq.js" as="script"><link rel="prefetch" href="/assets/index.html-Jyl3mNzC.js" as="script"><link rel="prefetch" href="/assets/index.html-GrhvF1RU.js" as="script"><link rel="prefetch" href="/assets/index.html-DvyG5LmW.js" as="script"><link rel="prefetch" href="/assets/index.html-UIcCFU0e.js" as="script"><link rel="prefetch" href="/assets/index.html-BOx3yXLH.js" as="script"><link rel="prefetch" href="/assets/index.html-DzlLTWeH.js" as="script"><link rel="prefetch" href="/assets/index.html-NpjJa8QY.js" as="script"><link rel="prefetch" href="/assets/index.html-Dd51hsig.js" as="script"><link rel="prefetch" href="/assets/index.html-D6KcxIEn.js" as="script"><link rel="prefetch" href="/assets/index.html-Bg0e6ecf.js" as="script"><link rel="prefetch" href="/assets/index.html-B6lgCixa.js" as="script"><link rel="prefetch" href="/assets/index.html-CytQGTcP.js" as="script"><link rel="prefetch" href="/assets/index.html-ClzIRKem.js" as="script"><link rel="prefetch" href="/assets/index.html-Du0M4pOZ.js" as="script"><link rel="prefetch" href="/assets/index.html-DGoyWtqe.js" as="script"><link rel="prefetch" href="/assets/index.html-CeAeo48B.js" as="script"><link rel="prefetch" href="/assets/index.html-CdjNlT_j.js" as="script"><link rel="prefetch" href="/assets/index.html-mNx50W4u.js" as="script"><link rel="prefetch" href="/assets/index.html-D_HJ4GHf.js" as="script"><link rel="prefetch" href="/assets/index.html-CK5Ul-Hi.js" as="script"><link rel="prefetch" href="/assets/index.html-B-NWDFR1.js" as="script"><link rel="prefetch" href="/assets/index.html-CunaynFn.js" as="script"><link rel="prefetch" href="/assets/index.html-D6gROFCF.js" as="script"><link rel="prefetch" href="/assets/index.html-BxbNbq3x.js" as="script"><link rel="prefetch" href="/assets/index.html-DrM4AgWz.js" as="script"><link rel="prefetch" href="/assets/index.html-JCFXSwdg.js" as="script"><link rel="prefetch" href="/assets/index.html-DDWpgtNl.js" as="script"><link rel="prefetch" href="/assets/index.html-F19riW20.js" as="script"><link rel="prefetch" href="/assets/index.html-D5pkwZj5.js" as="script"><link rel="prefetch" href="/assets/index.html-DmXvivWz.js" as="script"><link rel="prefetch" href="/assets/index.html-DDWpgtNl.js" as="script"><link rel="prefetch" href="/assets/index.html-awmLaYZy.js" as="script"><link rel="prefetch" href="/assets/index.html-BHEriZBY.js" as="script"><link rel="prefetch" href="/assets/index.html-Dui5xOXf.js" as="script"><link rel="prefetch" href="/assets/index.html-CnfUBPd0.js" as="script"><link rel="prefetch" href="/assets/index.html-CwwOPsRJ.js" as="script"><link rel="prefetch" href="/assets/index.html-CJ7VpUnB.js" as="script"><link rel="prefetch" href="/assets/index.html-D_uZq-Jr.js" as="script"><link rel="prefetch" href="/assets/index.html-CBQI31PW.js" as="script"><link rel="prefetch" href="/assets/index.html-8I5oKrxw.js" as="script"><link rel="prefetch" href="/assets/index.html-B8fragXC.js" as="script"><link rel="prefetch" href="/assets/index.html-CHNcar3f.js" as="script"><link rel="prefetch" href="/assets/index.html-CBFTplnW.js" as="script"><link rel="prefetch" href="/assets/index.html-CVuaHpVW.js" as="script"><link rel="prefetch" href="/assets/index.html-jNAaqqnC.js" as="script"><link rel="prefetch" href="/assets/index.html-BDrvD3pR.js" as="script"><link rel="prefetch" href="/assets/index.html-BjkQvU0c.js" as="script"><link rel="prefetch" href="/assets/index.html-CVuaHpVW.js" as="script"><link rel="prefetch" href="/assets/index.html-CMfKTIjH.js" as="script"><link rel="prefetch" href="/assets/index.html-BNNkHAG-.js" as="script"><link rel="prefetch" href="/assets/index.html-BHp6hUKu.js" as="script"><link rel="prefetch" href="/assets/index.html-CSbjarTn.js" as="script"><link rel="prefetch" href="/assets/index.html-DSGieCyV.js" as="script"><link rel="prefetch" href="/assets/index.html-Cd_C7mjC.js" as="script"><link rel="prefetch" href="/assets/index.html-B98G5j-L.js" as="script"><link rel="prefetch" href="/assets/index.html-DzGfXZhd.js" as="script"><link rel="prefetch" href="/assets/index.html-CUbAyvYG.js" as="script"><link rel="prefetch" href="/assets/index.html-A7QQn6Uw.js" as="script"><link rel="prefetch" href="/assets/index.html-aLO0QGM3.js" as="script"><link rel="prefetch" href="/assets/index.html-2HhIch08.js" as="script"><link rel="prefetch" href="/assets/index.html-2A2IEJ8x.js" as="script"><link rel="prefetch" href="/assets/index.html-_pW9gHiK.js" as="script"><link rel="prefetch" href="/assets/index.html-DAm9dzWf.js" as="script"><link rel="prefetch" href="/assets/index.html-XkcxYbfH.js" as="script"><link rel="prefetch" href="/assets/index.html-CHcT2wAb.js" as="script"><link rel="prefetch" href="/assets/index.html-BnXWJkr4.js" as="script"><link rel="prefetch" href="/assets/index.html-rrK_eL1T.js" as="script"><link rel="prefetch" href="/assets/index.html-Bn47hiiR.js" as="script"><link rel="prefetch" href="/assets/index.html-C89JnhJO.js" as="script"><link rel="prefetch" href="/assets/index.html-C54m0PvM.js" as="script"><link rel="prefetch" href="/assets/index.html-DZAnBd-B.js" as="script"><link rel="prefetch" href="/assets/index.html-tn9-StRb.js" as="script"><link rel="prefetch" href="/assets/index.html-Ck1MCXmP.js" as="script"><link rel="prefetch" href="/assets/index.html-BTW_N3HO.js" as="script"><link rel="prefetch" href="/assets/index.html-8FMzc0Ys.js" as="script"><link rel="prefetch" href="/assets/index.html-Casocn4-.js" as="script"><link rel="prefetch" href="/assets/index.html-DHpopxYa.js" as="script"><link rel="prefetch" href="/assets/index.html-tm4_7HJB.js" as="script"><link rel="prefetch" href="/assets/index.html-DMJehUwb.js" as="script"><link rel="prefetch" href="/assets/index.html-Cn0OeQ5H.js" as="script"><link rel="prefetch" href="/assets/index.html-DSadhkjC.js" as="script"><link rel="prefetch" href="/assets/index.html-DI1aK2M9.js" as="script"><link rel="prefetch" href="/assets/index.html-D4lMI0Ij.js" as="script"><link rel="prefetch" href="/assets/index.html-MSMEcdC6.js" as="script"><link rel="prefetch" href="/assets/index.html-CAjPqlP0.js" as="script"><link rel="prefetch" href="/assets/index.html-GGAzO5ws.js" as="script"><link rel="prefetch" href="/assets/index.html-BUy2Yknp.js" as="script"><link rel="prefetch" href="/assets/index.html-nq2TjJqC.js" as="script"><link rel="prefetch" href="/assets/index.html-Uem3FW0C.js" as="script"><link rel="prefetch" href="/assets/index.html-DCFhrCcN.js" as="script"><link rel="prefetch" href="/assets/index.html-lhdz6jsd.js" as="script"><link rel="prefetch" href="/assets/index.html-CnCndhT8.js" as="script"><link rel="prefetch" href="/assets/index.html-BWHvXZkC.js" as="script"><link rel="prefetch" href="/assets/index.html-BF0w6otQ.js" as="script"><link rel="prefetch" href="/assets/index.html-CkzQ8WVG.js" as="script"><link rel="prefetch" href="/assets/index.html-BRLyziDh.js" as="script"><link rel="prefetch" href="/assets/index.html-DNlYQVdr.js" as="script"><link rel="prefetch" href="/assets/index.html-1oeSOCFw.js" as="script"><link rel="prefetch" href="/assets/index.html-BQmnk7ay.js" as="script"><link rel="prefetch" href="/assets/index.html-RBU7-WBg.js" as="script"><link rel="prefetch" href="/assets/index.html-BgH-U85z.js" as="script"><link rel="prefetch" href="/assets/index.html-ByLiYys1.js" as="script"><link rel="prefetch" href="/assets/index.html-DttxGF5-.js" as="script"><link rel="prefetch" href="/assets/index.html-J9RAdv-L.js" as="script"><link rel="prefetch" href="/assets/index.html-rnu5sSQ6.js" as="script"><link rel="prefetch" href="/assets/index.html-CCypSd-1.js" as="script"><link rel="prefetch" href="/assets/index.html-CTh5uK0B.js" as="script"><link rel="prefetch" href="/assets/index.html-Dfc2G_ef.js" as="script"><link rel="prefetch" href="/assets/index.html-D9Zp_ks1.js" as="script"><link rel="prefetch" href="/assets/index.html-CiJufSb3.js" as="script"><link rel="prefetch" href="/assets/index.html-C2HayxBO.js" as="script"><link rel="prefetch" href="/assets/index.html-CGfu4iQV.js" as="script"><link rel="prefetch" href="/assets/index.html-D4uhQywt.js" as="script"><link rel="prefetch" href="/assets/index.html-ek8ug9NF.js" as="script"><link rel="prefetch" href="/assets/index.html-C0ynXsov.js" as="script"><link rel="prefetch" href="/assets/index.html-CM2zfq_J.js" as="script"><link rel="prefetch" href="/assets/index.html-BMaj7K2g.js" as="script"><link rel="prefetch" href="/assets/index.html-rO5gR7P8.js" as="script"><link rel="prefetch" href="/assets/index.html-2F4WL5pE.js" as="script"><link rel="prefetch" href="/assets/index.html-BZPalZLP.js" as="script"><link rel="prefetch" href="/assets/index.html-BMaj7K2g.js" as="script"><link rel="prefetch" href="/assets/index.html-D7WjSE3B.js" as="script"><link rel="prefetch" href="/assets/index.html-CDCF1zSu.js" as="script"><link rel="prefetch" href="/assets/index.html-j5vxw0si.js" as="script"><link rel="prefetch" href="/assets/mermaid.esm.min-CsuiQMCo.js" as="script"><link rel="prefetch" href="/assets/photoswipe.esm-DXWKOczD.js" as="script">
+  </head>
+  <body>
+    <div id="app"><!--[--><!--[--><!--[--><span tabindex="-1"></span><a href="#main-content" class="vp-skip-link sr-only">跳至主要內容</a><!--]--><div class="theme-container external-link-icon has-toc" vp-container><!--[--><header id="navbar" class="vp-navbar" vp-navbar><div class="vp-navbar-start"><button type="button" class="vp-toggle-sidebar-button" title="Toggle Sidebar"><span class="icon"></span></button><!--[--><a class="route-link vp-brand" href="/" aria-label="带我回家"><img class="vp-nav-logo" src="/avatar.jpg" alt><!----><span class="vp-site-name hide-in-pad">悦 ▪ 宝宝</span></a><!--]--></div><div class="vp-navbar-center"><!--[--><nav class="vp-nav-links"><div class="vp-nav-item hide-in-mobile"><a class="route-link auto-link" href="/" aria-label="主页" iconsizing="height"><!--[--><i class="vp-icon iconfont icon-home" sizing="height"></i><!--]-->主页<!----></a></div><div class="vp-nav-item hide-in-mobile"><div class="vp-dropdown-wrapper"><button type="button" class="vp-dropdown-title" aria-label="Python"><!--[--><i class="vp-icon iconfont icon-python" sizing="height"></i>Python<!--]--><span class="arrow"></span><ul class="vp-dropdown"><li class="vp-dropdown-item"><h4 class="vp-dropdown-subtitle">语言</h4><ul class="vp-dropdown-subitems"><li class="vp-dropdown-subitem"><a class="route-link auto-link" href="/python/%E8%AF%AD%E8%A8%80/%E5%9F%BA%E7%A1%80/%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85.html" aria-label="基础" iconsizing="both"><!---->基础<!----></a></li><li class="vp-dropdown-subitem"><a class="route-link auto-link" href="/python/%E8%AF%AD%E8%A8%80/%E8%BF%9B%E9%98%B6/%E5%8F%98%E9%87%8F%E6%9C%BA%E5%88%B6.html" aria-label="进阶" iconsizing="both"><!---->进阶<!----></a></li><li class="vp-dropdown-subitem"><a class="route-link auto-link" href="/python/%E8%AF%AD%E8%A8%80/%E6%B7%B1%E5%85%A5/%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6.html" aria-label="深入" iconsizing="both"><!---->深入<!----></a></li><li class="vp-dropdown-subitem"><a class="route-link auto-link" href="/python/%E8%AF%AD%E8%A8%80/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/Socket.html" aria-label="网络编程" iconsizing="both"><!---->网络编程<!----></a></li><li class="vp-dropdown-subitem"><a class="route-link auto-link" href="/python/%E8%AF%AD%E8%A8%80/%E5%A4%9A%E4%BB%BB%E5%8A%A1%E7%BC%96%E7%A8%8B/%E8%BF%9B%E7%A8%8B.html" aria-label="多任务编程" iconsizing="both"><!---->多任务编程<!----></a></li><li class="vp-dropdown-subitem"><a class="route-link auto-link" href="/python/%E8%AF%AD%E8%A8%80/asyncio/asyncio%E5%9F%BA%E7%A1%80.html" aria-label="asyncio" iconsizing="both"><!---->asyncio<!----></a></li><li class="vp-dropdown-subitem"><a class="route-link auto-link" href="/python/%E8%AF%AD%E8%A8%80/%E5%BA%93/%E6%A0%87%E5%87%86%E5%BA%93%E9%93%BE%E6%8E%A5.html" aria-label="库" iconsizing="both"><!---->库<!----></a></li></ul></li><li class="vp-dropdown-item"><h4 class="vp-dropdown-subtitle">生态</h4><ul class="vp-dropdown-subitems"><li class="vp-dropdown-subitem"><a class="route-link auto-link" href="/python/%E7%94%9F%E6%80%81/Web%E6%A1%86%E6%9E%B6/%E7%BD%91%E7%BB%9C%E6%A1%86%E6%9E%B6%E5%9F%BA%E7%A1%80/WEB%E6%A1%86%E6%9E%B6%E6%9C%AC%E8%B4%A8.html" aria-label="Web框架" iconsizing="both"><!--[--><i class="vp-icon iconfont icon-framework" sizing="both"></i><!--]-->Web框架<!----></a></li><li class="vp-dropdown-subitem"><a class="route-link auto-link" href="/python/%E7%94%9F%E6%80%81/%E8%BF%9C%E7%A8%8B%E8%B0%83%E7%94%A8/gRPC.html" aria-label="远程调用" iconsizing="both"><!--[--><i class="vp-icon iconfont icon-rpc" sizing="both"></i><!--]-->远程调用<!----></a></li><li class="vp-dropdown-subitem"><a class="route-link auto-link" href="/python/%E7%94%9F%E6%80%81/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/kafka.html" aria-label="消息队列" iconsizing="both"><!--[--><i class="vp-icon iconfont icon-kafka" sizing="both"></i><!--]-->消息队列<!----></a></li><li class="vp-dropdown-subitem"><a class="route-link auto-link" href="/python/%E7%94%9F%E6%80%81/%E5%BC%82%E6%AD%A5%E4%BB%BB%E5%8A%A1/Celery.html" aria-label="异步任务" iconsizing="both"><!--[--><i class="vp-icon iconfont icon-tasks" sizing="both"></i><!--]-->异步任务<!----></a></li></ul></li></ul></button></div></div><div class="vp-nav-item hide-in-mobile"><div class="vp-dropdown-wrapper"><button type="button" class="vp-dropdown-title" aria-label="Golang"><!--[--><i class="vp-icon iconfont icon-go" sizing="height"></i>Golang<!--]--><span class="arrow"></span><ul class="vp-dropdown"><li class="vp-dropdown-item"><h4 class="vp-dropdown-subtitle">基础</h4><ul class="vp-dropdown-subitems"><li class="vp-dropdown-subitem"><a class="route-link auto-link" href="/go/%E5%9F%BA%E7%A1%80/go%E8%AF%AD%E8%A8%80%E9%80%9F%E8%AE%B0.html" aria-label="go语言速记" iconsizing="both"><!---->go语言速记<!----></a></li><li class="vp-dropdown-subitem"><a class="route-link auto-link" href="/go/%E5%9F%BA%E7%A1%80/go%E5%B7%A5%E5%85%B7%E9%80%9F%E7%94%A8.html" aria-label="go工具速用" iconsizing="both"><!---->go工具速用<!----></a></li></ul></li><li class="vp-dropdown-item"><h4 class="vp-dropdown-subtitle">算法与数据结构</h4><ul class="vp-dropdown-subitems"><li class="vp-dropdown-subitem"><a class="route-link auto-link" href="/go/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%A6%82%E8%BF%B0.html" aria-label="概述" iconsizing="both"><!---->概述<!----></a></li></ul></li><li class="vp-dropdown-item"><h4 class="vp-dropdown-subtitle">优化</h4><ul class="vp-dropdown-subitems"><li class="vp-dropdown-subitem"><a class="route-link auto-link" href="/go/%E4%BC%98%E5%8C%96/%E5%85%B3%E4%BA%8EMapReduce.html" aria-label="优化" iconsizing="both"><!---->优化<!----></a></li></ul></li></ul></button></div></div><div class="vp-nav-item hide-in-mobile"><div class="vp-dropdown-wrapper"><button type="button" class="vp-dropdown-title" aria-label="数据库"><!--[--><i class="vp-icon iconfont icon-database" sizing="height"></i>数据库<!--]--><span class="arrow"></span><ul class="vp-dropdown"><li class="vp-dropdown-item"><a class="route-link auto-link" href="/database/etcd/etcd.html" aria-label="etcd" iconsizing="both"><!--[--><i class="vp-icon iconfont icon-etcd" sizing="both"></i><!--]-->etcd<!----></a></li><li class="vp-dropdown-item"><a class="route-link auto-link" href="/database/MySQL/MySQL.html" aria-label="MySQL" iconsizing="both"><!--[--><i class="vp-icon iconfont icon-mysql" sizing="both"></i><!--]-->MySQL<!----></a></li><li class="vp-dropdown-item"><a class="route-link auto-link" href="/database/Redis/redis.html" aria-label="Redis" iconsizing="both"><!--[--><i class="vp-icon iconfont icon-redis" sizing="both"></i><!--]-->Redis<!----></a></li><li class="vp-dropdown-item"><a class="route-link auto-link" href="/database/PostgreSQL/PostgreSQL.html" aria-label="PostgreSQL" iconsizing="both"><!--[--><i class="vp-icon iconfont icon-postgresql" sizing="both"></i><!--]-->PostgreSQL<!----></a></li></ul></button></div></div><div class="vp-nav-item hide-in-mobile"><div class="vp-dropdown-wrapper"><button type="button" class="vp-dropdown-title" aria-label="操作系统"><!--[--><i class="vp-icon iconfont icon-os" sizing="height"></i>操作系统<!--]--><span class="arrow"></span><ul class="vp-dropdown"><li class="vp-dropdown-item"><a class="route-link auto-link" href="/unix/Linux/Linux%E5%9F%BA%E7%A1%80%E6%8C%87%E5%BC%95/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%A6%82%E8%AE%BA.html" aria-label="Linux" iconsizing="both"><!--[--><i class="vp-icon iconfont icon-linux" sizing="both"></i><!--]-->Linux<!----></a></li><li class="vp-dropdown-item"><a class="route-link auto-link" href="/unix/CentOS/%E5%AE%89%E8%A3%85/CentOS%E7%9A%84%E5%AE%89%E8%A3%85.html" aria-label="CentOS" iconsizing="both"><!--[--><i class="vp-icon iconfont icon-centos" sizing="both"></i><!--]-->CentOS<!----></a></li><li class="vp-dropdown-item"><a class="route-link auto-link" href="/unix/Ubuntu/%E4%B8%8B%E8%BD%BD/Ubuntu%E7%B3%BB%E7%BB%9F.html" aria-label="Ubuntu" iconsizing="both"><!--[--><i class="vp-icon iconfont icon-ubuntu" sizing="both"></i><!--]-->Ubuntu<!----></a></li><li class="vp-dropdown-item"><a class="route-link auto-link" href="/unix/%E8%99%9A%E6%8B%9F%E6%9C%BA/PVE/PVE.html" aria-label="虚拟机" iconsizing="both"><!--[--><i class="vp-icon iconfont icon-pve" sizing="both"></i><!--]-->虚拟机<!----></a></li></ul></button></div></div><div class="vp-nav-item hide-in-mobile"><div class="vp-dropdown-wrapper"><button type="button" class="vp-dropdown-title" aria-label="运维工具"><!--[--><i class="vp-icon iconfont icon-devops" sizing="height"></i>运维工具<!--]--><span class="arrow"></span><ul class="vp-dropdown"><li class="vp-dropdown-item"><a class="route-link auto-link" href="/tool/Git/Git.html" aria-label="Git" iconsizing="both"><!--[--><i class="vp-icon iconfont icon-git" sizing="both"></i><!--]-->Git<!----></a></li><li class="vp-dropdown-item"><a class="route-link auto-link" href="/tool/Nginx/Nginx%E5%9F%BA%E7%A1%80.html" aria-label="Nginx" iconsizing="both"><!--[--><i class="vp-icon iconfont icon-nginx" sizing="both"></i><!--]-->Nginx<!----></a></li><li class="vp-dropdown-item"><a class="route-link auto-link" href="/tool/Docker/docker%E5%AE%B9%E5%99%A8.html" aria-label="Docker" iconsizing="both"><!--[--><i class="vp-icon iconfont icon-docker" sizing="both"></i><!--]-->Docker<!----></a></li><li class="vp-dropdown-item"><a class="route-link auto-link" href="/tool/Kubernetes/k8s%E8%B5%84%E6%BA%90Pod.html" aria-label="Kubernetes" iconsizing="both"><!--[--><i class="vp-icon iconfont icon-kubernetes" sizing="both"></i><!--]-->Kubernetes<!----></a></li><li class="vp-dropdown-item"><a class="route-link auto-link" href="/tool/Prometheus/%E5%AE%89%E8%A3%85.html" aria-label="Prometheus" iconsizing="both"><!--[--><i class="vp-icon iconfont icon-prometheus" sizing="both"></i><!--]-->Prometheus<!----></a></li><li class="vp-dropdown-item"><a class="route-link auto-link" href="/tool/Tailscale/tailscale.html" aria-label="Tailscale" iconsizing="both"><!--[--><i class="vp-icon iconfont icon-tailscale" sizing="both"></i><!--]-->Tailscale<!----></a></li><li class="vp-dropdown-item"><a class="route-link auto-link" href="/tool/Other/%E7%BD%91%E7%BB%9C%E4%BB%A3%E7%90%86.html" aria-label="工具" iconsizing="both"><!--[--><i class="vp-icon iconfont icon-other" sizing="both"></i><!--]-->工具<!----></a></li></ul></button></div></div><div class="vp-nav-item hide-in-mobile"><div class="vp-dropdown-wrapper"><button type="button" class="vp-dropdown-title" aria-label="漫漫全干卷的苦"><!--[--><!---->漫漫全干卷的苦<!--]--><span class="arrow"></span><ul class="vp-dropdown"><li class="vp-dropdown-item"><a class="auto-link external-link" href="https://draveness.me/golang/" aria-label="GO语言设计与实现" rel="noopener noreferrer" target="_blank" iconsizing="both"><!--[--><i class="vp-icon iconfont icon-go" sizing="both"></i><!--]-->GO语言设计与实现<!----></a></li><li class="vp-dropdown-item"><a class="auto-link external-link" href="https://pegasuswang.github.io/LetsGo/basics/01_go_basic_types/basic_types/" aria-label="GO备忘" rel="noopener noreferrer" target="_blank" iconsizing="both"><!--[--><i class="vp-icon iconfont icon-go" sizing="both"></i><!--]-->GO备忘<!----></a></li><li class="vp-dropdown-item"><a class="auto-link external-link" href="https://notes.fe-mm.com/interview/base/types.html" aria-label="前端内卷不归路" rel="noopener noreferrer" target="_blank" iconsizing="both"><!--[--><i class="vp-icon iconfont icon-javascript" sizing="both"></i><!--]-->前端内卷不归路<!----></a></li></ul></button></div></div><div class="vp-nav-item hide-in-mobile"><div class="vp-dropdown-wrapper"><button type="button" class="vp-dropdown-title" aria-label="AI"><!--[--><i class="vp-icon iconfont icon-ai" sizing="height"></i>AI<!--]--><span class="arrow"></span><ul class="vp-dropdown"><li class="vp-dropdown-item"><a class="route-link auto-link" href="/ai/HelloAgents/Decoder-Only%E6%9E%B6%E6%9E%84.html" aria-label="HelloAgents" iconsizing="both"><!--[--><i class="vp-icon iconfont icon-agentic" sizing="both"></i><!--]-->HelloAgents<!----></a></li></ul></button></div></div></nav><!--]--></div><div class="vp-navbar-end"><!--[--><!----><div class="vp-nav-item vp-action"><a class="vp-action-link" href="https://github.com/Igarashi-G" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><svg xmlns="http://www.w3.org/2000/svg" class="icon github-icon" viewBox="0 0 1024 1024" fill="currentColor" aria-label="github icon" name="github" style="width:1.25rem;height:1.25rem;vertical-align:middle;"><path d="M511.957 21.333C241.024 21.333 21.333 240.981 21.333 512c0 216.832 140.544 400.725 335.574 465.664 24.49 4.395 32.256-10.07 32.256-23.083 0-11.69.256-44.245 0-85.205-136.448 29.61-164.736-64.64-164.736-64.64-22.315-56.704-54.4-71.765-54.4-71.765-44.587-30.464 3.285-29.824 3.285-29.824 49.195 3.413 75.179 50.517 75.179 50.517 43.776 75.008 114.816 53.333 142.762 40.79 4.523-31.66 17.152-53.377 31.19-65.537-108.971-12.458-223.488-54.485-223.488-242.602 0-53.547 19.114-97.323 50.517-131.67-5.035-12.33-21.93-62.293 4.779-129.834 0 0 41.258-13.184 134.912 50.346a469.803 469.803 0 0 1 122.88-16.554c41.642.213 83.626 5.632 122.88 16.554 93.653-63.488 134.784-50.346 134.784-50.346 26.752 67.541 9.898 117.504 4.864 129.834 31.402 34.347 50.474 78.123 50.474 131.67 0 188.586-114.73 230.016-224.042 242.09 17.578 15.232 33.578 44.672 33.578 90.454v135.85c0 13.142 7.936 27.606 32.854 22.87C862.25 912.597 1002.667 728.747 1002.667 512c0-271.019-219.648-490.667-490.71-490.667z"></path></svg></a></div><div class="vp-nav-item hide-in-mobile"><button type="button" class="vp-outlook-button" tabindex="-1" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" class="icon outlook-icon" viewBox="0 0 1024 1024" fill="currentColor" aria-label="outlook icon" name="outlook"><path d="M224 800c0 9.6 3.2 44.8 6.4 54.4 6.4 48-48 76.8-48 76.8s80 41.6 147.2 0 134.4-134.4 38.4-195.2c-22.4-12.8-41.6-19.2-57.6-19.2C259.2 716.8 227.2 761.6 224 800zM560 675.2l-32 51.2c-51.2 51.2-83.2 32-83.2 32 25.6 67.2 0 112-12.8 128 25.6 6.4 51.2 9.6 80 9.6 54.4 0 102.4-9.6 150.4-32l0 0c3.2 0 3.2-3.2 3.2-3.2 22.4-16 12.8-35.2 6.4-44.8-9.6-12.8-12.8-25.6-12.8-41.6 0-54.4 60.8-99.2 137.6-99.2 6.4 0 12.8 0 22.4 0 12.8 0 38.4 9.6 48-25.6 0-3.2 0-3.2 3.2-6.4 0-3.2 3.2-6.4 3.2-6.4 6.4-16 6.4-16 6.4-19.2 9.6-35.2 16-73.6 16-115.2 0-105.6-41.6-198.4-108.8-268.8C704 396.8 560 675.2 560 675.2zM224 419.2c0-28.8 22.4-51.2 51.2-51.2 28.8 0 51.2 22.4 51.2 51.2 0 28.8-22.4 51.2-51.2 51.2C246.4 470.4 224 448 224 419.2zM320 284.8c0-22.4 19.2-41.6 41.6-41.6 22.4 0 41.6 19.2 41.6 41.6 0 22.4-19.2 41.6-41.6 41.6C339.2 326.4 320 307.2 320 284.8zM457.6 208c0-12.8 12.8-25.6 25.6-25.6 12.8 0 25.6 12.8 25.6 25.6 0 12.8-12.8 25.6-25.6 25.6C470.4 233.6 457.6 220.8 457.6 208zM128 505.6C128 592 153.6 672 201.6 736c28.8-60.8 112-60.8 124.8-60.8-16-51.2 16-99.2 16-99.2l316.8-422.4c-48-19.2-99.2-32-150.4-32C297.6 118.4 128 291.2 128 505.6zM764.8 86.4c-22.4 19.2-390.4 518.4-390.4 518.4-22.4 28.8-12.8 76.8 22.4 99.2l9.6 6.4c35.2 22.4 80 12.8 99.2-25.6 0 0 6.4-12.8 9.6-19.2 54.4-105.6 275.2-524.8 288-553.6 6.4-19.2-3.2-32-19.2-32C777.6 76.8 771.2 80 764.8 86.4z"></path></svg><div class="vp-outlook-dropdown"><!----></div></button></div><form class="search-box" role="search"><input type="search" placeholder="Search" autocomplete="off" spellcheck="false" value><!----></form><!--]--><button type="button" class="vp-toggle-navbar-button" aria-label="Toggle Navbar" aria-expanded="false" aria-controls="nav-screen"><span><span class="vp-top"></span><span class="vp-middle"></span><span class="vp-bottom"></span></span></button></div></header><!----><!--]--><!----><div class="toggle-sidebar-wrapper"><span class="arrow start"></span></div><aside id="sidebar" class="vp-sidebar" vp-sidebar><!----><ul class="vp-sidebar-links"><li><section class="vp-sidebar-group"><p class="vp-sidebar-header clickable"><i class="vp-icon iconfont icon-mysql" sizing="both"></i><a class="route-link route-link-active auto-link vp-sidebar-title no-external-link-icon" href="/database/MySQL/" aria-label="MySQL" iconsizing="both"><!---->MySQL<!----></a><!----></p><ul class="vp-sidebar-links"><li><a class="route-link auto-link vp-sidebar-link" href="/database/MySQL/MySQL.html" aria-label="MySQL" iconsizing="both"><!---->MySQL<!----></a></li><li><a class="route-link auto-link vp-sidebar-link" href="/database/MySQL/MySQL%E6%89%A7%E8%A1%8C%E8%AE%A1%E5%88%92.html" aria-label="MySQL执行计划" iconsizing="both"><!---->MySQL执行计划<!----></a></li></ul></section></li></ul><!----></aside><!--[--><main id="main-content" class="vp-page"><!--[--><!----><!----><nav class="vp-breadcrumb disable"></nav><div class="vp-page-title"><h1><!---->Mysql高阶</h1><div class="page-info"><span class="page-author-info" aria-label="作者🖊" data-balloon-pos="up"><svg xmlns="http://www.w3.org/2000/svg" class="icon author-icon" viewBox="0 0 1024 1024" fill="currentColor" aria-label="author icon" name="author"><path d="M649.6 633.6c86.4-48 147.2-144 147.2-249.6 0-160-128-288-288-288s-288 128-288 288c0 108.8 57.6 201.6 147.2 249.6-121.6 48-214.4 153.6-240 288-3.2 9.6 0 19.2 6.4 25.6 3.2 9.6 12.8 12.8 22.4 12.8h704c9.6 0 19.2-3.2 25.6-12.8 6.4-6.4 9.6-16 6.4-25.6-25.6-134.4-121.6-240-243.2-288z"></path></svg><span><a class="page-author-item" href="https://github.com/Igarashi-G" target="_blank" rel="noopener noreferrer">悦·宝宝</a></span><span property="author" content="悦·宝宝"></span></span><!----><span class="page-date-info" aria-label="写作日期📅" data-balloon-pos="up"><svg xmlns="http://www.w3.org/2000/svg" class="icon calendar-icon" viewBox="0 0 1024 1024" fill="currentColor" aria-label="calendar icon" name="calendar"><path d="M716.4 110.137c0-18.753-14.72-33.473-33.472-33.473-18.753 0-33.473 14.72-33.473 33.473v33.473h66.993v-33.473zm-334.87 0c0-18.753-14.72-33.473-33.473-33.473s-33.52 14.72-33.52 33.473v33.473h66.993v-33.473zm468.81 33.52H716.4v100.465c0 18.753-14.72 33.473-33.472 33.473a33.145 33.145 0 01-33.473-33.473V143.657H381.53v100.465c0 18.753-14.72 33.473-33.473 33.473a33.145 33.145 0 01-33.473-33.473V143.657H180.6A134.314 134.314 0 0046.66 277.595v535.756A134.314 134.314 0 00180.6 947.289h669.74a134.36 134.36 0 00133.94-133.938V277.595a134.314 134.314 0 00-133.94-133.938zm33.473 267.877H147.126a33.145 33.145 0 01-33.473-33.473c0-18.752 14.72-33.473 33.473-33.473h736.687c18.752 0 33.472 14.72 33.472 33.473a33.145 33.145 0 01-33.472 33.473z"></path></svg><span data-allow-mismatch="text">2022/10/12</span><meta property="datePublished" content="2022-10-12T14:58:07.000Z"></span><!----><!----><span class="page-reading-time-info" aria-label="阅读时间⌛" data-balloon-pos="up"><svg xmlns="http://www.w3.org/2000/svg" class="icon timer-icon" viewBox="0 0 1024 1024" fill="currentColor" aria-label="timer icon" name="timer"><path d="M799.387 122.15c4.402-2.978 7.38-7.897 7.38-13.463v-1.165c0-8.933-7.38-16.312-16.312-16.312H256.33c-8.933 0-16.311 7.38-16.311 16.312v1.165c0 5.825 2.977 10.874 7.637 13.592 4.143 194.44 97.22 354.963 220.201 392.763-122.204 37.542-214.893 196.511-220.2 389.397-4.661 5.049-7.638 11.651-7.638 19.03v5.825h566.49v-5.825c0-7.379-2.849-13.981-7.509-18.9-5.049-193.016-97.867-351.985-220.2-389.527 123.24-37.67 216.446-198.453 220.588-392.892zM531.16 450.445v352.632c117.674 1.553 211.787 40.778 211.787 88.676H304.097c0-48.286 95.149-87.382 213.728-88.676V450.445c-93.077-3.107-167.901-81.297-167.901-177.093 0-8.803 6.99-15.793 15.793-15.793 8.803 0 15.794 6.99 15.794 15.793 0 80.261 63.69 145.635 142.01 145.635s142.011-65.374 142.011-145.635c0-8.803 6.99-15.793 15.794-15.793s15.793 6.99 15.793 15.793c0 95.019-73.789 172.82-165.96 177.093z"></path></svg><span>大约 17 分钟</span><meta property="timeRequired" content="PT17M"></span></div><hr></div><!----><div class="" vp-content><!----><div id="markdown-content"><p>5、函数：（不太重要）<br> MySQL 中提供了许多内置函数，例如：见博客<br> CHAR<em>LENGTH(str)：获取字符串长度 select char_length(&quot;igarashi&quot;)<br> CONCAT(str1,str2,...)：字符串拼接 select concat(&quot;igarashi&quot;,&quot;xx&quot;,&quot;123&quot;)<br> CONCAT_WS(separator,str1,str2,...)：字符串拼接（自定义连接符）类似&quot;</em>&quot;.join select concat<em>ws(&quot;</em>&quot;,&quot;3&quot;,&quot;a&quot;) ###后面懒得写，见博客<br> 创建函数：<br> delimiter \<br> create function f1(i1 int,i2 int) --函数的参数<br> returns int --多了返回值 数字类型，相当于 java 的 public int func() 指定返回类型<br> BEGIN<br> declare num int;<br> set num = i1 + i2;<br> return(num);<br> END \<br> delimiter ;</p><pre><code>    函数内部无法写sql语句，用return返回（与存储过程的区别）
+    虽然sql不允许，但其中支持：
+        declare a int;
+        select nid into a from student where name = &quot;igarashi&quot;  --虽然内部不能根据sql语句获取表，但可以获取单个数据进行赋值
+
+    应用场景：
+        用select nid+100... from student 把所有nid都拿到，现在让他们都加100*20/5...
+        此时有函数的的话就直接把需要的封装到函数里面，之后把nid传入 select func(nid) from student 即可
+
+执行函数：（通常用select调用）
+     获取返回值：
+        declare @i VARCHAR(32);
+        select UPPER(&#39;alex&#39;) into @i;
+        SELECT @i;
+
+    # 在查询中使用：
+        select f1(11,nid) ,name from tb2;
+
+删除函数：
+    drop function func_name;
+</code></pre><p>6、索引：（nb 的存在，必须掌握）<br> 为什么要有 DBA，因为 DBA 要写索引。命中索引之后，查询速度回非常非常快（成百万级别的倍数）。可能你写一个要 10 秒拿到数据，DBA 写了就 0.00 几秒。<br> 索引，是数据库中专门用于帮助用户快速查询数据的一种数据结构。类似于字典中的目录，查找字典内容时可以根据目录查找到数据的存放位置，然后直接获取即可。</p><pre><code>索引有两类功能：
+    1.做约束（主键、外键、唯一、普通、组合...）
+    2.加速查找 （天差地别）
+
+为什么索引可以这么快：
+    用的最多的是B-tree索引。正常情况下，一张表做查询时是全表扫描。当做索引时会创建一个新的数据结构（例如B+树结构）
+    比如对name列建索引。 它会创建一个文件，把name列的所有数据拿出来。
+    之后把数据转为对应的数字（就像ord(&quot;a&quot;)ascii那样类似的）30、10...    之后按如下方式（二叉）排列：
+    name = &quot;igarashi&quot; =&gt; 6  之后可能进行数的二分法判断之类的事。。（算第一个）4次找到
+                                            30
+
+                                10                        40
+
+                           5         15            35             66（硬盘：位置、位置、位置）
+
+                        1   6     11    19      21      39     55     100（数据表当前行数据在硬盘上的位置）
+
+    若有1到100个数字，按照普通情况，最慢要100次才能找到，而用B+树的代价则大大降低。
+    若给1024个数据即2**10次方，那么10次左右找到。若2**20 1048576个数据时20次左右找到————因此就像字典一样，都是按照索引的形式在目录找
+
+    还有哈希索引，因为在innodb或MyISAM里面根本不支持，因此通常用B+
+
+索引的种类：
+    普通索引：-加速查找 （唯一一个功能，只有B+结构）（普通索引则可以重复，比如66存多个位置）
+    唯一索引：-加速查找，约束列数据不能重复（比如用户名列加了唯一，若想重复即报错，可以有null）
+    主键索引：-加速查找，约束列不能重复，不能为null
+    组合索引：-多列可以创建一个索引文件
+        -联合唯一 加速查找...
+
+弊端：创建索引会占用资源，查找时虽然快了，但插入、更新、删除时慢了
+
+什么时候需要创建索引：若数据表需要频繁的做增删改，那么就不要建立索引。
+
+几百万数据量建立索引的话，创建索引的速度也会很慢。（每次都有把表里的数据拿出来计算，会十分耗时）因此这种操作不会再白天做（夜深人静时）
+    DBA做分表、移库、备份的时候也是这样，要在后半夜干事。
+
+1、普通索引：（不能约束）
+    普通索引仅有一个功能：加速查询  （创建有两种方式）
+
+    创建表时便创建完毕：
+        create table in1(
+            nid int not null auto_increment primary key,
+            name varchar(32) not null,
+            email varchar(64) not null,
+            extra text,
+            index ix_name (name) --通过index关键字，给某一列创建索引
+        )
+    创建后续进行创建：
+        create index index_name on table_name(column_name) --为那个表的那一列创建索引
+
+    删除索引：
+        drop index_name on table_name;
+
+    查看索引：
+        show index from table_name;     --能看到是是index_type:BTREE
+
+    注意：对于创建索引时如果是BLOB 和 TEXT 类型，必须指定length。
+        create index ix_extra on in1(extra(32));
+
+2.唯一索引：（和上面是一个包含关系）
+    唯一索引有两个功能：加速查询 和 唯一约束（可含null）
+    创建唯一索引：
+        create table in1(
+            nid int not null auto_increment primary key,
+            name varchar(32) not null,
+            email varchar(64) not null,
+            extra text,
+            unique ix_name (name) --此处不再是index，而是unique
+        )
+
+        create unique index 索引名 on 表名(列名)
+
+    删除唯一索引：
+        drop unique index 索引名 on 表名
+
+3、主键索引：（最nb的所有，是上面的集合）
+    主键有两个功能：加速查询 和 唯一约束（不可含null）
+    创建主键索引：
+        create table in1(
+            nid int not null auto_increment primary key, --其实只要写了primary key 就直接创建了主键索引
+            name varchar(32) not null,
+            email varchar(64) not null,
+            extra text,
+            -- or  primary key(nid),
+            index ix_name (name)
+        )
+    创建主键：
+        alter table 表名 add primary key(列名);
+
+    删除主键：
+        alter table 表名 drop primary key;
+        alter table 表名  modify  列名 int, drop primary key;
+
+4、组合索引
+    组合索引是将n个列组合成一个索引。普通组合索引无约束。
+
+    其应用场景为：频繁的同时使用n列来进行查询，如：where n1 = &#39;alex&#39; and n2 = 666。
+    创建表：
+        create table in3(
+            nid int not null auto_increment primary key,
+            name varchar(32) not null,
+            email varchar(64) not null,
+            extra text
+            -- index ix_name (name,email) --普通情况只是一个索引，若再添加则变为组合索引。unique也相同
+        )
+
+    创建组合索引：
+        create index ix_name_email on in3(name,email);
+
+    组合索引查询规则：————最左匹配  （如上创建组合索引之后，查询：）
+        select * from tb1 where name = &quot;igarashi&quot; 此时会走索引，快。
+        select * from tb1 where name = &quot;igarashi&quot; and email = &quot;123&quot; 也会走索引。
+        select * from tb1 where email = &quot;123&quot; 不会走索引。
+
+        因此建立在前者生效：若三列索引(name,pwd,email)
+        name and pwd、email    -- 使用索引
+        name                   -- 使用索引
+        pwd、email             -- 不使用索引
+    因此以后建立索引但还是慢（即没有命中），那么它可能是按照最左匹配的原则没有生效。
+
+    注意：对于同时搜索n个条件时，组合索引的性能好于多个单一索引合并。
+
+    联合唯一索引：
+        当利用unique进行组合索引时，只是成为联合唯一索引 unique ix_name (name,email)此时这两个必须唯一，而不再是name唯一。就是说
+        两个只要有一个不同都算不同，单列可相同。
+
+5.覆盖索引：
+    覆盖索引不是真实存在的，只是若按照某个模式搜的，这种模式叫覆盖索引。
+    当：
+        select * from tb where nid = 1  --此时是两部操作
+        1.先去索引中找
+        2.再去数据表中找
+    但：
+        select nid from tb where nid &lt; 10   --此时还需要去数据表中找吗
+        不需要，直接取索引中即可拿到
+
+    --只需要在索引表中就能获取数据时，此时称为覆盖索引。
+
+6.合并索引：
+    nid     name(单独索引)    email(单独索引)    pwd
+    假设，给一张数据表的两列做了两个单独的索引，那么用两个单独的索引找和一个索引找一样吗
+    即：
+        select * from tb where name = &quot;igarashi&quot;
+        select * from tb where email = &quot;igarashi@163.com&quot; --这种则是单独的索引
+
+        select * from tb where name = &quot;igarashi&quot; or email = &quot;igarashi@163.com&quot;
+        --若出现这种情况吧两个单独的索引合并起来查找，此时称为合并索引
+
+    此时若让他们进行一个组合索引
+    nid     name(组)    email(合)    pwd
+    即：
+        select * from tb where naem = &quot;igarashi&quot;
+        select * from tb where email = &quot;igarashi@163.com&quot; --不走索引，最左前缀。组合索引短板。
+
+        select * from tb where name = &quot;igarashi&quot; or email = &quot;igarashi@163.com&quot;
+        --此时利用组合索引同样达到效果
+
+    下面的组合索引占用空间比两个单索引占用空间要少，但第二条查询无法命中
+
+    用户表：（组合索引和合并索引的取舍）
+        nid     username    password
+         1      igarashi       233
+         2       sasaki        123
+
+        注册时首先查看用户名是否已经存在，那么有查看密码是否存在的这个场景吗？（不可能出现上面没写用户名，下面提示密码已存在）若这种情况出现
+        那么不用输入用户名就知道库里面已经有这个密码存在了。因此都是在用户名输入的前提下才会做这件事
+
+        因此只可能有这两种应用场景：
+            select * from tb where username = &quot;xx&quot;
+            select * from tb where username = &quot;xx&quot; and password = &quot;xx&quot;
+
+        此时可以直接做一个组合索引，而不用创建两个索引（根据业务判断）组合索引通常要快一点
+</code></pre><p>7、执行计划： - 相对&quot;比较&quot;准确的表达出当前 SQL 运行的状况（走没走索引）<br> 因此以后写 sql 语句时要关注，是否走索引了。（但不能说每一次都看一下表结构吧，有可能我误判了，但也没这么干的）<br> 用于参考，也有不准确的情况方式。</p><pre><code>explain +SQL语句：如
+    explain select * from tb;
+    此时返回的不是表里面的数据,而是一张表格。其中最为重要的有 则是type：见下
+    possible_key：可能用到的索引列
+    key：表示用到的真实索引列
+    key_len:表示索引位的长度（都是预估值，不是正确的）
+
+1.ALL、index：（最常见的垃圾）
+    explain select */nid from tb11; --对应 all 、index （这个是没用索引，或查找索引列的全部列）
+
+    type: ALL，表示对数据表进行全表扫描
+    type：index，表示对索引进行全索引扫描
+    rows: 3441639 ，表示有三百多万条数据、索引
+    上面两种的效率都非常低。就是说一般出现了ALL 或是 index 的话效率是不高的。
+
+2.limit:
+    但若加上limit时，显示的还是ALL，但此时内部却不是全表扫描找的，当它找到第一条就返回不找了。因此explain只能当做参考 。
+    但若没有找到时limit 1 还是按照全表扫描。limit 1 相当于碰运气，若第一条找到还好，若最后一条都没找到就没有任何用。
+
+若以后看到Type :ALL、index 那么就表示sql有可优化的余地。
+    就算SQL层不能在优化了，那么就在数据库架构方面或是表结构方面进行优化。（最可能就是一开始表结构就设计错了...借助缓存...）
+
+3.range:（有点坑，面试可能会有）
+    explain select * from tb1 where nid &lt; 233; --在索引表中作比较
+        此时显示的type：range。 --对索引列进行范围查找，显示range
+        range的效率要比all、index高。但此时做一点改动
+
+    expalin select * from tb1 where nid &gt; 233; --在索引中用&gt;来做比较
+        此时显示的则是type：all。 此时没有走索引，效率又变低。
+
+    因此在做&gt; &gt;= &lt; &lt;= !=时：
+        注意 != 和 &gt; 符号。即是对索引列进行范围查找，也不会走索引。
+
+4.INDEX_MERGE：（之前的组合索引）
+    合并索引，使用多个单列索引搜索
+    select *  from tb1 where name = &#39;alex&#39; or nid in (11,22,33);--（不知道为啥，这个没试出来。调整后试出了const）
+
+5. REF
+    根据索引查找一个或多个值（简单的用一个索引查找）
+    select *  from tb1 where name = &#39;seven&#39;;
+
+6.EQ_REF
+    连接时使用primary key 或 unique类型（大致同上，多了个连表）或是
+    select tb2.nid,tb1.name from tb2 left join tb1 on tb2.nid = tb1.nid;
+
+7. CONST （效率和下面的是最高的）
+    常量  表最多有一个匹配行,因为仅有一行,在这行的列值可被优化器剩余部分认为是常数,const表很快,因为它们只读取一次。
+    select nid from tb1 where nid = 2 ; --例如：覆盖索引
+
+8.SYSTEM （同上，效率高）
+    系统  表仅有一行(=系统表)。这是const联接类型的一个特例。
+    select * from (select nid from tb1 where nid = 1) as A;
+
+性能高低由上到下，下面的最高，越靠下越nb，但不是所有都能走到下面，一般在range下即可（全表扫描是万万不能要的）
+</code></pre><p>8、如何命中索引：<br> mysql 中会有锁，你一个人执行用了 1.6s，当人多的时候简直不动。一个人执行时把 mysql 锁住了，别人就别想再执行。（虽然不是整体全部加锁，部分加锁也不行）</p><pre><code>- like &#39;%xx&#39;：
+    当：explain select * from tb11 where name like &quot;%cnn&quot; 此时Type：all  -- 此时没有走索引，全表扫描
+    但：explain select * from tb11 where name like &quot;cnn%&quot; 此时Type：range -- 走索引
+
+    %分号在前面有实体值的时候，就会走索引，否则不走索引。（它就类似组合索引的最左前缀）
+
+写sql语句 where列写了函数，改变了原数据值，导致索引无法生效。因此一定不要在where列上通过函数做任何计算。
+    假如在数据库中存了时间并建立了索引。而在客户端上显示是2018/3/3或2018-3-3。此时可能和数据库的无法比较。
+    select * from tb1 where corn(ctime,&#39;..-..-&#39;); -- 利用函数进行了转换，虽然内做子查询，但索引无效
+
+    这种方式不要做。应该在sql语句之前就转换为和数据库同样的格式。
+
+- or
+    select * from tb1 where nid = 1 or email = &#39;seven@live.com&#39;;
+    特别的：当or条件中有未建立索引的列才失效，以下会走索引
+        select * from tb1 where nid = 1 or name = &#39;seven&#39;;（合并索引）
+        select * from tb1 where nid = 1 or email = &#39;seven@live.com&#39; and name = &#39;alex&#39;
+
+- 类型不一致（致命的）
+    如果列是字符串类型，传入条件是必须用引号引起来，不然...
+    select * from tb1 where name = 999;
+
+-之前的!= 和 &gt;（除非主键，唯一都不走）
+    != 特别的：如果是主键，则还是会走索引     &gt; 特别的：如果是主键或索引是整数类型，则还是会走索引
+
+- order by
+    select email from tb1 order by name desc;
+    当根据索引排序时候，选择的映射如果不是索引，则不走索引
+    特别的：如果对主键排序，则还是走索引：
+        select * from tb1 order by nid desc;
+
+- 组合索引最左前缀
+</code></pre><p>其他注意事项： - 避免使用 select _ - count(1)或 count(列) 代替 count(_) - 创建表时尽量时 char 代替 varchar - 表的字段顺序固定长度的字段优先（varchar、text 等都是变长的往后放） - 组合索引代替多个单列索引（经常使用多个条件查询时）组合索引通常要快一点 - 尽量使用短索引（假如一共有 30 多位，然而前八位即可区分唯一，那么指定列的某几个字符来创建索引。text、blob 若要指定索引，必须指定长度） - 使用连接（JOIN）来代替子查询(Sub-Queries)（优先连表，效率高） - 连表时注意条件类型需一致 - 索引散列值（重复少）不适合建索引，例：性别不适合（一列中存在大量的重复，何必浪费空间）</p><p>9、SQL-limit 分页（面试必备）<br> 无论是否有索引，limit 分页是一个值得关注的问题。有分页便有翻页。<br> 分页时第一页查询倒是快，而数据量越大查询越慢。那此时怎么解决？————删库：这也是一种解决办法，然后就可以跑路了。（分库分表也行，但投机取巧，不考虑）</p><pre><code>在sql语句级别如何处理：
+    limit原理就是找到要的便不找了。从开始往下扫。若一百万行时则前面的岂不是白扫了。若id用in的话（in一个范围）也只能饮鸩止渴（网上这种解决方式都是错的，垃圾）
+    limit x,m -扫表
+    根源：（如何不扫表）限制用户这样的操作（瞎扯淡的）若我们知道它当前在那条数据上（贴吧瞬移）用nid &gt; .. limit ...直接跳过前..数据 然后扫表。
+        但是根据nid是不行的，因为第一到十条可能出现1-16 因为表中部分数据删除了，nid还自增  --因此nid排列可能是中断的
+        方式一：（实际场景里还有desc..此处先不考虑）
+            --只有上一页和下一页
+            1.当用户查看页面时，第一页：（limit 0,10） nid -- 1-16
+            2.当用户点击下一页时，（limit 10,10） nid -- 17-36
+            3.因此用户点击下一页时，何不把用户当前页面最后一次的nid传递过来、
+            因此以后写条件直接加了条件 where nid &gt; 16 limit 10; --直接limit 10取前10行（永远只扫描10条数据，因此不管数据量有多大都能快速找到）
+            全局变量定义一个当前最后id，每次赋值。上一页同理定义一个当前页的第一个值，之后order by反转limit 10 （或是反转取20条在反转取10条，麻烦了）
+
+            分页的应用其实主要是网页 --还没完，还能再加工，点第几页第几页效率还不低...以后再讨论
+</code></pre><p>10、慢日志查询：<br> 可以在内存中修改<br> 配置文件可以配置，之后让 DBA 填坑。在 mysql 的配置文件中加以下内容：</p><pre><code>a、配置MySQL自动记录慢日志（内存中默认都是OFF，改完后记得重启服务，之后指定的配置文件才生效）
+    slow_query_log = OFF                            是否开启慢日志记录
+    long_query_time = 2                              时间限制，超过此时间，则记录
+    slow_query_log_file = /usr/slow.log        日志文件
+    log_queries_not_using_indexes = OFF     为使用索引的搜索是否记录（ON：未命中索引，则记录）
+
+    注：查看当前配置信息：
+    　　     show variables like &#39;%query%&#39;
+         修改当前配置：
+    　　　　set global 变量名 = 值
+
+    若以后想再修改配置文件，还是要注释掉再重启（线上的mysql一般不要重启，因为可能一重启就起不来了！好多运维就开始推了，最后都不敢重启）
+        一旦起不来了，整宿整宿回不了家，隔壁还有黄毛呢！
+    另一种方式是在内存中修改，终端执行命令show variables like %query%;后面直接set... = ...进行设置即可
+        这种方式修改立即生效，但是重启后还是变为配置文件中的值，因此还是要可配置文件一起改
+
+b、查看MySQL慢日志：
+    mysqldumpslow -s at -a  /usr/local/var/mysql/MacBook-Pro-3-slow.log
+
+    --verbose    版本
+    --debug      调试
+    --help       帮助
+
+    -v           版本
+    -d           调试模式
+    -s ORDER     排序方式
+                 what to sort by (al, at, ar, c, l, r, t), &#39;at&#39; is default
+                  al: average lock time
+                  ar: average rows sent
+                  at: average query time
+                   c: count
+                   l: lock time
+                   r: rows sent
+                   t: query time
+    -r           反转顺序，默认文件倒序拍。reverse the sort order (largest last instead of first)
+    -t NUM       显示前N条just show the top n queries
+    -a           不要将SQL中数字转换成N，字符串转换成S。don&#39;t abstract all numbers to N and strings to &#39;S&#39;
+    -n NUM       abstract numbers with at least n digits within names
+    -g PATTERN   正则匹配；grep: only consider stmts that include this string
+    -h HOSTNAME  mysql机器名或者IP；hostname of db server for *-slow.log filename (can be wildcard),
+                 default is &#39;*&#39;, i.e. match all
+    -i NAME      name of server instance (if using mysql.server startup script)
+    -l           总时间中不减去锁定时间；don&#39;t subtract lock time from total time
+    &quot;&quot;&quot;
+</code></pre></div><!----><!----><!----></div><footer class="vp-page-meta"><!----><div class="vp-meta-item git-info"><div class="update-time"><span class="vp-meta-label">最近更新：</span><time class="vp-meta-info" datetime="2022-10-12T14:58:07.000Z" data-allow-mismatch>2022/10/12 22:58</time></div></div></footer><!----><!----><!----><!--]--></main><!--]--><footer class="vp-footer-wrapper" vp-footer><div class="vp-footer">默认页脚</div><div class="vp-copyright">Copyright © 2025 悦·宝宝 </div></footer></div><!--]--><!--[--><!----><!--[--><!--]--><!--]--><!--]--></div>
+    <script type="module" src="/assets/app-DpTzNOzd.js" defer></script>
+  </body>
+</html>

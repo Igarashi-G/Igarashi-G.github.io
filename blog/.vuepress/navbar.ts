@@ -4,7 +4,7 @@ export default navbar([
   "/",
   {
     text: "Python",
-    icon: "python",
+    icon: "python1",
     prefix: "/python/",
     children: [
       {
@@ -95,7 +95,7 @@ export default navbar([
       { text: "Docker", link: "Docker/docker容器" , icon: "docker"},
       { text: "Kubernetes", link: "Kubernetes/k8s资源Pod" , icon: "kubernetes"},
       { text: "Prometheus", link: "Prometheus/安装" , icon: "prometheus"},
-      { text: "Tailscale", link: "Tailscale/tailscale" , icon: "tailscale"},
+      { text: "Tailscale", link: "Tailscale/tailscale" , icon: "Tailscale"},
       { text: "工具", link: "Other/网络代理" , icon: "other"},
     ],
   },
@@ -108,11 +108,11 @@ export default navbar([
     ],
   },
   {
-    text: "AI",
-    icon: "ai",
+    text: "LLM",
+    icon: "AI",
     prefix: "/ai/",
     children: [
-      { text: "HelloAgents", icon: "agentic", link: "HelloAgents/Decoder-Only架构" },
+      { text: "HelloAgents", icon: "Agentic", link: "HelloAgents/Decoder-Only架构" },
       ],
   },
 ]);

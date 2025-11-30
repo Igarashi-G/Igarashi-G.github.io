@@ -425,7 +425,7 @@ export default sidebar({
   "/tool/Tailscale": [
     {
       text: "Tailscale",
-      icon: "nginx",
+      icon: "tailscale",
       prefix: "/tool/Tailscale/",
       link: "/tool/Tailscale/",
       children: ["tailscale"]
@@ -443,7 +443,7 @@ export default sidebar({
   "/ai/HelloAgents": [
     {
       text: "HelloAgents",
-      icon: "ai-agents",
+      icon: "agentic",
       prefix: "/ai/HelloAgents/",
       link: "/ai/HelloAgents/",
       children: ["Decoder-Only架构"]
