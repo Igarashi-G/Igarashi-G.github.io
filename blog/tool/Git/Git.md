@@ -413,6 +413,20 @@ $ git help config
 
        <Alert type="warning">注意：`windows` 下通过命令行：`type null > .gitkeep`来创建文件夹</Alert>
 
+- **github项目转推 gitlab** 
+
+  1. **gitlab** 创建好项目和对应分支
+
+  2. 克隆 **github** 的项目并切换到对应的 **tag**
+  
+  3. 推送到 **gitlab** 对应分支*（dev-0.0.1 分支为例）* 
+
+     ```bash
+   git push origin HEAD:dev-0.0.1 -f 
+     ```
+  
+     
+
 - **同步本地的远程分支**
 
   查看本地分支和追踪情况
