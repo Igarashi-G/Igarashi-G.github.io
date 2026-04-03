@@ -404,3 +404,255 @@ $$
 
 `温度采样（T=0.8）+ Top-k（k=50）` ，即先平滑分布，再限制候选词
 
+
+::: warning
+**注意：**
+
+
+1. 若将 **Temperature** 设为 **0**，则 **Top-k/p** 无意义，因为下一个 **Token** **除 0** 变得无穷大，必是最可能得那个预测的 **Token**；
+2. 若将 **Top-k** 设为 **1**，则 **Temperature** 和 **Top-p** 无意义，因为仅有一个 **Token** 得到，也必是下一个预测的 **Token**。
+
+:::
+
+## **3.3 指令调优**
+
+早期的 **GPT** 模型***（如 GPT-3）*** 主要是 **“文本补全”** 模型，擅长前文续写，但不一定能很好地理解并执行人类的指令
+
+**指令调优 (Instruction Tuning)：** 是一种微调技术，它使用大量 **“指令-回答”** 格式的数据对预训练模型进行进一步的训练。调优后，模型能更好地理解并遵循用户的指令。
+
+我们今天日常工作学习中使用的所有模型, **==如: ChatGPT, DeepSeek, Qwen==** 都是其模型家族中经过指令调优过的模型。
+
+```bash
+对 "文本补全" 模型的提示(你需要用少样本提示 "教会" 模型做什么)：
+
+  - 这是一段将英文翻译成中文的程序。
+#    英文:Hello
+#    中文:你好
+#    英文:How are you?
+#    中文:
+
+对 "指令调优" 模型的提示(你可以直接下达指令):
+  
+  - 请将下面的英文翻译成中文:
+#    How are you?
+```
+
+尽管模型已经指令调优，但目前的提示词工程依然有如下手段进一步调优来提升回答质量：
+
+* **角色扮演，**赋予模型一个特定的角色（更符合特定场景）
+* **上下文示例**，提供模型少样本提示，给出清晰的输入输出示例等（复杂格式或特定风格的任务）
+* **思维链**，引导模型 “一步一步地思考”（逻辑推理、计算或多步骤思考）
+
+# **4. 文本分词**
+
+计算机只能使用数字计算，因此处理自然语言文本也要将其文本序列转为数字才能计算。该过程则称为 **分词。分词器（Tokenization）**的作用就是定义一套规则，将原始文本切分成一个个最小单元，即 **词元（Token）。**
+
+那么按人类理解的词汇分词（通过空格与标点切分，会导致词表爆炸与未登录词且语义失联）、或切成一个个字符分词（英文一共就26个字母，词表虽小但无独立语义，模型要大量学习其组合，成为有意义的词）都不够科学。因此普遍采用 **子词分词。**
+
+
+:::info
+**子词分词算法（Subword Tokenization）核心思想:**
+
+* 将常见的词***（如 "agent"）***保留为 **完整 的 词元**
+* 同时将不常见的词***（如 "Tokenization"）***拆分成多个有意义的子词片段***（如 "Token" 和 "ization"）***
+* 这样既控制了词表的大小，又能让模型通过组合子词来理解和生成新词
+
+:::
+
+## **4.1 BPE 算法**
+
+**BPE （Byte-Pair Encoding）字节对编码算法：**是一种最主流的子词分词的 **贪心算法***（GPT系列采用）*，既用于 **训练前**，也用于推理时 **计算 token 数量 ，** 可以理解为一个“贪心”的合并过程，通过 ==逐步合并高频字符对== 来构建词表。
+
+**其大致步骤如下：**
+
+
+1. **初始化**：将每个字符作为独立词元初始化词表，如: `"hug" → ['h', 'u', 'g']`
+2. **迭代合并**：语料库上，找到出现频率最高的相邻字符对，合并成一个新词元，如果 "u" 和 "g" 经常一起出现，就合并成 "ug"，然后加入词表
+3. **重复**：重复合并，直到词表大小达到预设阈值
+
+**代码示例：**
+
+```python
+import re, collections
+
+def get_stats(vocab):
+    """统计词元对频率"""
+    pairs = collections.defaultdict(int)
+    for word, freq in vocab.items():
+        symbols = word.split()
+        for i in range(len(symbols)-1):
+            pairs[symbols[i],symbols[i+1]] += freq
+    return pairs
+
+def merge_vocab(pair, v_in):
+    """合并词元对"""
+    v_out = {}
+    bigram = re.escape(' '.join(pair))
+    p = re.compile(r'(?<!\S)' + bigram + r'(?!\S)')
+    for word in v_in:
+        w_out = p.sub(''.join(pair), word)
+        v_out[w_out] = v_in[word]
+    return v_out
+
+# 准备语料库，每个词末尾加上</w>表示结束，并切分好字符
+vocab = {'h u g </w>': 1, 'p u g </w>': 1, 'p u n </w>': 1, 'b u n </w>': 1}
+num_merges = 4 # 设置合并次数
+
+for i in range(num_merges):
+    pairs = get_stats(vocab)
+    if not pairs:
+        break
+    best = max(pairs, key=pairs.get)
+    vocab = merge_vocab(best, vocab)
+    print(f"第{i+1}次合并: {best} -> {''.join(best)}")
+    print(f"新词表（部分）: {list(vocab.keys())}")
+    print("-" * 20)
+
+>>>
+第1次合并: ('u', 'g') -> ug
+新词表（部分）: ['h ug </w>', 'p ug </w>', 'p u n </w>', 'b u n </w>']
+--------------------
+第2次合并: ('ug', '</w>') -> ug</w>
+新词表（部分）: ['h ug</w>', 'p ug</w>', 'p u n </w>', 'b u n </w>']
+--------------------
+第3次合并: ('u', 'n') -> un
+新词表（部分）: ['h ug</w>', 'p ug</w>', 'p un </w>', 'b un </w>']
+--------------------
+第4次合并: ('un', '</w>') -> un</w>
+新词表（部分）: ['h ug</w>', 'p ug</w>', 'p un</w>', 'b un</w>']
+--------------------
+```
+
+
+## 4.2 实际使用示例
+
+在 **RAG** 中使用 **AutoTokenizer** 就足够了，它内部已经实现了 **BPE 分词**，你可以验证 **AutoTokenizer** 确实在使用 **BPE**
+
+```python
+from transformers import AutoTokenizer
+
+# 这里只加载分词器（还未涉及到 embedding模型和模型权重）
+tokenizer = AutoTokenizer.from_pretrained("BAAI/bge-base-en-v1.5")
+
+# 查看tokenizer类型
+print(type(tokenizer))  # 通常是 PreTrainedTokenizerFast
+
+# 查看实际的token（可以看到BPE的合并结果）
+text = "unhug"
+tokens = tokenizer.tokenize(text) # 只做分词，不涉及embedding
+print(tokens)  
+
+### 可能会看到类似 ['un', 'hug'] 或 ['unh', 'ug'] 这样的子词
+### 这证明它确实在使用BPE的合并规则
+```
+
+当你在 **HuggingFace** 上发布一个模型时，模型仓库通常包含：
+
+```bash
+BAAI/bge-base-en-v1.5/
+├── config.json          # 模型配置
+├── pytorch_model.bin    # Embedding模型权重
+├── tokenizer.json       # 分词器文件（BPE规则）
+├── tokenizer_config.json
+├── vocab.txt            # 词表
+└── ...
+```
+
+所以 `AutoTokenizer.from_pretrained("BAAI/bge-base-en-v1.5")` 会：
+
+* 从该模型仓库下载分词器相关文件***（***`***tokenizer.json***`***,*** `***vocab.txt***` ***等）***
+
+
+* 此时还不会下载 embedding 模型的权重文件
+
+**一个更清晰的示例：**
+
+```python
+from transformers import AutoTokenizer, AutoModel
+
+# 步骤1：加载分词器（只做分词，不涉及embedding）
+tokenizer = AutoTokenizer.from_pretrained("BAAI/bge-base-en-v1.5")
+# 下载的文件：tokenizer.json, vocab.txt 等（很小，几MB）
+
+# 步骤2：加载embedding模型（做向量化）
+model = AutoModel.from_pretrained("BAAI/bge-base-en-v1.5")
+# 下载的文件：pytorch_model.bin（很大，几百MB）
+
+# 使用流程：
+text = "Hello world"
+
+# 第一步：分词（只用tokenizer，不涉及model）
+tokens = tokenizer(text, return_tensors="pt")
+# tokens = {'input_ids': tensor([[101, 7592, 2088, 102]]), ...}
+
+# 第二步：向量化（使用model）
+with torch.no_grad():
+    outputs = model(**tokens)
+    embeddings = outputs.last_hidden_state
+# embeddings = tensor([[[0.1, 0.2, ...], ...]])  # 向量表示
+```
+
+**为什么 AutoTokenizer、AutoModel 用同一个模型名？**
+
+分词不需要 **embedding** 模型参与，==但分词器和模型在训练时是配对的，词表一致，== 用同样的 **BGE** 模型名是因为分词器文件也在同一个仓库里，因此 `AutoTokenizer.from_pretrained()`  实际上只会下载分词器文件，不下载模型权重，完全可以单独使用分词器，**==但向量化时必须配套才行*（词表一致）*==**。
+
+
+
+## **4.3 分词器的意义**
+
+
+:::tip
+**重要：**
+
+理解分词算法的细节并非目的，但理其实际影响非常重要，这直接关系到智能体的 **==性能、成本 和 稳定性==**
+
+:::
+
+**上下文窗口限制**：模型的上下文窗口（如 8K, 128K）是以 **Token 数量** 计算的，而不是字符数或单词数。
+
+* 同样一段话，在不同语言***（如中英文）***或不同分词器下，**Token** 数量可能相差巨大
+* 精确管理输入长度、避免超出上下文限制是 **构建长时记忆智能体的基础**
+
+
+**API 成本**：大多数模型 **API** 都是按 **Token** 数量计费的。了解你的文本会被如何分词，是预估和控制智能体运行成本的关键一步。
+
+
+**模型表现的异常**：有时模型的奇怪表现 **根源在于分词，** 例如：
+
+* 模型可能很擅长计算 `2 + 2`，但对于 `2+2`*（没有空格）*就可能出错，因为后者可能被分词器视为一个独立的、不常见的词元
+  * RAG层面：分词 **影响向量相似度**，余弦相似度不同，检索结果也不同
+
+    ```bash
+    "2 + 2" → 分词 → ['2', '+', '2'] → Embedding → 向量A
+    "2+2"   → 分词 → ['2+2']         → Embedding → 向量B
+    ```
+* 同样，一个词因为 **首字母大小写不同**，也可能被切分成 **完全不同的 Token 序列**，从而影响模型的理解
+  * LLM生成中：**影响的是 token序列本身**，不仅仅是相似度
+
+    ```bash
+    "Hello" → 分词 → [15496]  (token ID)
+    "hello" → 分词 → [31373]  (完全不同的token ID)
+    ```
+
+    模型看到的是不同的 **token ID**，理解完全不同！
+* 在设计提示词和解析模型输出时，考虑到这些 **“陷阱”** 有助于提升智能体的鲁棒性
+
+**解决方案:**
+
+
+1. **文本规范化，**在 RAG 检索前规范化
+2. **查询扩展，** 生成多个查询变体，对每个变体进行检索，合并结果
+
+   ```bash
+   # 生成多个查询变体
+   def expand_query(query):
+       variants = [
+           query,                    # 原始查询
+           query.lower(),           # 小写
+           query.replace('+', ' + '), # 添加空格
+           query.replace(' ', ''),   # 移除空格
+       ]
+       return variants
+   ```
+3. **使用更好的分词器，SentencePiece*（Google 开源） ***之类的更优秀的分词器，通常更稳定
+

@@ -558,10 +558,17 @@ export const SEARCH_INDEX = [
     "title": "AI Agent踩坑",
     "headers": [
       {
-        "level": 2,
-        "title": "AI Agent 开发踩坑",
-        "slug": "ai-agent-开发踩坑-1",
-        "link": "#ai-agent-开发踩坑-1",
+        "level": 3,
+        "title": "1. 架构的坑",
+        "slug": "_1-架构的坑",
+        "link": "#_1-架构的坑",
+        "children": []
+      },
+      {
+        "level": 3,
+        "title": "2. RAG的坑",
+        "slug": "_2-rag的坑",
+        "link": "#_2-rag的坑",
         "children": []
       }
     ],
@@ -630,288 +637,37 @@ export const SEARCH_INDEX = [
             "children": []
           }
         ]
+      },
+      {
+        "level": 2,
+        "title": "3.3 指令调优",
+        "slug": "_3-3-指令调优",
+        "link": "#_3-3-指令调优",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "4.1 BPE 算法",
+        "slug": "_4-1-bpe-算法",
+        "link": "#_4-1-bpe-算法",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "4.2 实际使用示例",
+        "slug": "_4-2-实际使用示例",
+        "link": "#_4-2-实际使用示例",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "4.3 分词器的意义",
+        "slug": "_4-3-分词器的意义",
+        "link": "#_4-3-分词器的意义",
+        "children": []
       }
     ],
     "path": "/ai/HelloAgents/Decoder-Only%E6%9E%B6%E6%9E%84.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "心理学书籍",
-    "headers": [
-      {
-        "level": 2,
-        "title": "目录",
-        "slug": "目录",
-        "link": "#目录",
-        "children": []
-      }
-    ],
-    "path": "/book/%E5%BF%83%E7%90%86%E5%AD%A6/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "亚动机与人格",
-    "headers": [],
-    "path": "/book/%E5%BF%83%E7%90%86%E5%AD%A6/%E4%BA%9A%E5%8A%A8%E6%9C%BA%E4%B8%8E%E4%BA%BA%E6%A0%BC.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "人的潜能和价值",
-    "headers": [],
-    "path": "/book/%E5%BF%83%E7%90%86%E5%AD%A6/%E4%BA%BA%E7%9A%84%E6%BD%9C%E8%83%BD%E5%92%8C%E4%BB%B7%E5%80%BC.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "好人是如何变成恶魔的",
-    "headers": [],
-    "path": "/book/%E5%BF%83%E7%90%86%E5%AD%A6/%E5%A5%BD%E4%BA%BA%E6%98%AF%E5%A6%82%E4%BD%95%E5%8F%98%E6%88%90%E6%81%B6%E9%AD%94%E7%9A%84.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "影响力",
-    "headers": [],
-    "path": "/book/%E5%BF%83%E7%90%86%E5%AD%A6/%E5%BD%B1%E5%93%8D%E5%8A%9B.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "性心理学",
-    "headers": [],
-    "path": "/book/%E5%BF%83%E7%90%86%E5%AD%A6/%E6%80%A7%E5%BF%83%E7%90%86%E5%AD%A6.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "洗脑心理学",
-    "headers": [],
-    "path": "/book/%E5%BF%83%E7%90%86%E5%AD%A6/%E6%B4%97%E8%84%91%E5%BF%83%E7%90%86%E5%AD%A6.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "进化心理学",
-    "headers": [],
-    "path": "/book/%E5%BF%83%E7%90%86%E5%AD%A6/%E8%BF%9B%E5%8C%96%E5%BF%83%E7%90%86%E5%AD%A6.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "asyncio Recipes",
-    "headers": [],
-    "path": "/book/python/asyncio_recipes.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "DevOps in Python",
-    "headers": [],
-    "path": "/book/python/devops_in_python.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "Fluent Python",
-    "headers": [],
-    "path": "/book/python/fluent_python.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "Python书籍",
-    "headers": [
-      {
-        "level": 2,
-        "title": "目录",
-        "slug": "目录",
-        "link": "#目录",
-        "children": []
-      }
-    ],
-    "path": "/book/python/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "Python Cookbook",
-    "headers": [],
-    "path": "/book/python/python_cookbook.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "Python源码剖析",
-    "headers": [],
-    "path": "/book/python/python%E6%BA%90%E7%A0%81%E5%89%96%E6%9E%90.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "Using Asyncio in Python",
-    "headers": [],
-    "path": "/book/python/use_asyncio.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "CODE -- 编码:隐匿在计算机背后的语言",
-    "headers": [],
-    "path": "/book/%E6%8A%80%E6%9C%AF/CODE.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "技术书籍",
-    "headers": [
-      {
-        "level": 2,
-        "title": "目录",
-        "slug": "目录",
-        "link": "#目录",
-        "children": []
-      }
-    ],
-    "path": "/book/%E6%8A%80%E6%9C%AF/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "成为技术领导者",
-    "headers": [],
-    "path": "/book/%E6%8A%80%E6%9C%AF/%E6%88%90%E4%B8%BA%E6%8A%80%E6%9C%AF%E9%A2%86%E5%AF%BC%E8%80%85.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "鸟哥的Linux私房菜",
-    "headers": [],
-    "path": "/book/%E6%8A%80%E6%9C%AF/%E9%B8%9F%E5%93%A5%E7%9A%84Linux%E7%A7%81%E6%88%BF%E8%8F%9C.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "鸟哥的Linux私房菜服务器架设篇",
-    "headers": [],
-    "path": "/book/%E6%8A%80%E6%9C%AF/%E9%B8%9F%E5%93%A5%E7%9A%84Linux%E7%A7%81%E6%88%BF%E8%8F%9C%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%9E%B6%E8%AE%BE%E7%AF%87.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "黑客与画家",
-    "headers": [],
-    "path": "/book/%E6%8A%80%E6%9C%AF/%E9%BB%91%E5%AE%A2%E4%B8%8E%E7%94%BB%E5%AE%B6.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "社会学书籍",
-    "headers": [
-      {
-        "level": 2,
-        "title": "目录",
-        "slug": "目录",
-        "link": "#目录",
-        "children": []
-      }
-    ],
-    "path": "/book/%E7%A4%BE%E4%BC%9A%E5%AD%A6/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "中国人的性格",
-    "headers": [],
-    "path": "/book/%E7%A4%BE%E4%BC%9A%E5%AD%A6/%E4%B8%AD%E5%9B%BD%E4%BA%BA%E7%9A%84%E6%80%A7%E6%A0%BC.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "乌合之众",
-    "headers": [],
-    "path": "/book/%E7%A4%BE%E4%BC%9A%E5%AD%A6/%E4%B9%8C%E5%90%88%E4%B9%8B%E4%BC%97.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "娱乐至死",
-    "headers": [],
-    "path": "/book/%E7%A4%BE%E4%BC%9A%E5%AD%A6/%E5%A8%B1%E4%B9%90%E8%87%B3%E6%AD%BB.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "艺术书籍",
-    "headers": [
-      {
-        "level": 2,
-        "title": "目录",
-        "slug": "目录",
-        "link": "#目录",
-        "children": []
-      }
-    ],
-    "path": "/book/%E8%89%BA%E6%9C%AF/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "清醒思考的艺术",
-    "headers": [],
-    "path": "/book/%E8%89%BA%E6%9C%AF/%E6%B8%85%E9%86%92%E6%80%9D%E8%80%83%E7%9A%84%E8%89%BA%E6%9C%AF.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "金融学书籍",
-    "headers": [
-      {
-        "level": 2,
-        "title": "目录",
-        "slug": "目录",
-        "link": "#目录",
-        "children": []
-      }
-    ],
-    "path": "/book/%E9%87%91%E8%9E%8D%E5%AD%A6/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "Theory of Games and Economic Behavior",
-    "headers": [],
-    "path": "/book/%E9%87%91%E8%9E%8D%E5%AD%A6/%E5%8D%9A%E5%BC%88%E8%AE%BA%E4%B8%8E%E7%BB%8F%E6%B5%8E%E8%A1%8C%E4%B8%BA.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "就业、利息和货币通论",
-    "headers": [],
-    "path": "/book/%E9%87%91%E8%9E%8D%E5%AD%A6/%E5%B0%B1%E4%B8%9A_%E5%88%A9%E6%81%AF%E5%92%8C%E8%B4%A7%E5%B8%81%E9%80%9A%E8%AE%BA.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "聪明的投资者",
-    "headers": [],
-    "path": "/book/%E9%87%91%E8%9E%8D%E5%AD%A6/%E8%81%AA%E6%98%8E%E7%9A%84%E6%8A%95%E8%B5%84%E8%80%85.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "货币金融学",
-    "headers": [],
-    "path": "/book/%E9%87%91%E8%9E%8D%E5%AD%A6/%E8%B4%A7%E5%B8%81%E9%87%91%E8%9E%8D%E5%AD%A6.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "非理性繁荣",
-    "headers": [],
-    "path": "/book/%E9%87%91%E8%9E%8D%E5%AD%A6/%E9%9D%9E%E7%90%86%E6%80%A7%E7%B9%81%E8%8D%A3.html",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -2196,6 +1952,285 @@ export const SEARCH_INDEX = [
     "title": "性能分析",
     "headers": [],
     "path": "/database/Redis/%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "asyncio Recipes",
+    "headers": [],
+    "path": "/book/python/asyncio_recipes.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "DevOps in Python",
+    "headers": [],
+    "path": "/book/python/devops_in_python.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "Fluent Python",
+    "headers": [],
+    "path": "/book/python/fluent_python.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "Python书籍",
+    "headers": [
+      {
+        "level": 2,
+        "title": "目录",
+        "slug": "目录",
+        "link": "#目录",
+        "children": []
+      }
+    ],
+    "path": "/book/python/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "Python Cookbook",
+    "headers": [],
+    "path": "/book/python/python_cookbook.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "Python源码剖析",
+    "headers": [],
+    "path": "/book/python/python%E6%BA%90%E7%A0%81%E5%89%96%E6%9E%90.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "Using Asyncio in Python",
+    "headers": [],
+    "path": "/book/python/use_asyncio.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "CODE -- 编码:隐匿在计算机背后的语言",
+    "headers": [],
+    "path": "/book/%E6%8A%80%E6%9C%AF/CODE.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "技术书籍",
+    "headers": [
+      {
+        "level": 2,
+        "title": "目录",
+        "slug": "目录",
+        "link": "#目录",
+        "children": []
+      }
+    ],
+    "path": "/book/%E6%8A%80%E6%9C%AF/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "成为技术领导者",
+    "headers": [],
+    "path": "/book/%E6%8A%80%E6%9C%AF/%E6%88%90%E4%B8%BA%E6%8A%80%E6%9C%AF%E9%A2%86%E5%AF%BC%E8%80%85.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "鸟哥的Linux私房菜",
+    "headers": [],
+    "path": "/book/%E6%8A%80%E6%9C%AF/%E9%B8%9F%E5%93%A5%E7%9A%84Linux%E7%A7%81%E6%88%BF%E8%8F%9C.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "鸟哥的Linux私房菜服务器架设篇",
+    "headers": [],
+    "path": "/book/%E6%8A%80%E6%9C%AF/%E9%B8%9F%E5%93%A5%E7%9A%84Linux%E7%A7%81%E6%88%BF%E8%8F%9C%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%9E%B6%E8%AE%BE%E7%AF%87.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "黑客与画家",
+    "headers": [],
+    "path": "/book/%E6%8A%80%E6%9C%AF/%E9%BB%91%E5%AE%A2%E4%B8%8E%E7%94%BB%E5%AE%B6.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "心理学书籍",
+    "headers": [
+      {
+        "level": 2,
+        "title": "目录",
+        "slug": "目录",
+        "link": "#目录",
+        "children": []
+      }
+    ],
+    "path": "/book/%E5%BF%83%E7%90%86%E5%AD%A6/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "亚动机与人格",
+    "headers": [],
+    "path": "/book/%E5%BF%83%E7%90%86%E5%AD%A6/%E4%BA%9A%E5%8A%A8%E6%9C%BA%E4%B8%8E%E4%BA%BA%E6%A0%BC.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "人的潜能和价值",
+    "headers": [],
+    "path": "/book/%E5%BF%83%E7%90%86%E5%AD%A6/%E4%BA%BA%E7%9A%84%E6%BD%9C%E8%83%BD%E5%92%8C%E4%BB%B7%E5%80%BC.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "好人是如何变成恶魔的",
+    "headers": [],
+    "path": "/book/%E5%BF%83%E7%90%86%E5%AD%A6/%E5%A5%BD%E4%BA%BA%E6%98%AF%E5%A6%82%E4%BD%95%E5%8F%98%E6%88%90%E6%81%B6%E9%AD%94%E7%9A%84.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "影响力",
+    "headers": [],
+    "path": "/book/%E5%BF%83%E7%90%86%E5%AD%A6/%E5%BD%B1%E5%93%8D%E5%8A%9B.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "性心理学",
+    "headers": [],
+    "path": "/book/%E5%BF%83%E7%90%86%E5%AD%A6/%E6%80%A7%E5%BF%83%E7%90%86%E5%AD%A6.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "洗脑心理学",
+    "headers": [],
+    "path": "/book/%E5%BF%83%E7%90%86%E5%AD%A6/%E6%B4%97%E8%84%91%E5%BF%83%E7%90%86%E5%AD%A6.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "进化心理学",
+    "headers": [],
+    "path": "/book/%E5%BF%83%E7%90%86%E5%AD%A6/%E8%BF%9B%E5%8C%96%E5%BF%83%E7%90%86%E5%AD%A6.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "社会学书籍",
+    "headers": [
+      {
+        "level": 2,
+        "title": "目录",
+        "slug": "目录",
+        "link": "#目录",
+        "children": []
+      }
+    ],
+    "path": "/book/%E7%A4%BE%E4%BC%9A%E5%AD%A6/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "中国人的性格",
+    "headers": [],
+    "path": "/book/%E7%A4%BE%E4%BC%9A%E5%AD%A6/%E4%B8%AD%E5%9B%BD%E4%BA%BA%E7%9A%84%E6%80%A7%E6%A0%BC.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "乌合之众",
+    "headers": [],
+    "path": "/book/%E7%A4%BE%E4%BC%9A%E5%AD%A6/%E4%B9%8C%E5%90%88%E4%B9%8B%E4%BC%97.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "娱乐至死",
+    "headers": [],
+    "path": "/book/%E7%A4%BE%E4%BC%9A%E5%AD%A6/%E5%A8%B1%E4%B9%90%E8%87%B3%E6%AD%BB.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "艺术书籍",
+    "headers": [
+      {
+        "level": 2,
+        "title": "目录",
+        "slug": "目录",
+        "link": "#目录",
+        "children": []
+      }
+    ],
+    "path": "/book/%E8%89%BA%E6%9C%AF/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "清醒思考的艺术",
+    "headers": [],
+    "path": "/book/%E8%89%BA%E6%9C%AF/%E6%B8%85%E9%86%92%E6%80%9D%E8%80%83%E7%9A%84%E8%89%BA%E6%9C%AF.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "金融学书籍",
+    "headers": [
+      {
+        "level": 2,
+        "title": "目录",
+        "slug": "目录",
+        "link": "#目录",
+        "children": []
+      }
+    ],
+    "path": "/book/%E9%87%91%E8%9E%8D%E5%AD%A6/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "Theory of Games and Economic Behavior",
+    "headers": [],
+    "path": "/book/%E9%87%91%E8%9E%8D%E5%AD%A6/%E5%8D%9A%E5%BC%88%E8%AE%BA%E4%B8%8E%E7%BB%8F%E6%B5%8E%E8%A1%8C%E4%B8%BA.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "就业、利息和货币通论",
+    "headers": [],
+    "path": "/book/%E9%87%91%E8%9E%8D%E5%AD%A6/%E5%B0%B1%E4%B8%9A_%E5%88%A9%E6%81%AF%E5%92%8C%E8%B4%A7%E5%B8%81%E9%80%9A%E8%AE%BA.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "聪明的投资者",
+    "headers": [],
+    "path": "/book/%E9%87%91%E8%9E%8D%E5%AD%A6/%E8%81%AA%E6%98%8E%E7%9A%84%E6%8A%95%E8%B5%84%E8%80%85.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "货币金融学",
+    "headers": [],
+    "path": "/book/%E9%87%91%E8%9E%8D%E5%AD%A6/%E8%B4%A7%E5%B8%81%E9%87%91%E8%9E%8D%E5%AD%A6.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "非理性繁荣",
+    "headers": [],
+    "path": "/book/%E9%87%91%E8%9E%8D%E5%AD%A6/%E9%9D%9E%E7%90%86%E6%80%A7%E7%B9%81%E8%8D%A3.html",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -4997,6 +5032,50 @@ export const SEARCH_INDEX = [
     "extraFields": []
   },
   {
+    "title": "",
+    "headers": [],
+    "path": "/python/%E7%94%9F%E6%80%81/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/kafka.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "Kombu",
+    "headers": [
+      {
+        "level": 3,
+        "title": "1. 概述",
+        "slug": "_1-概述",
+        "link": "#_1-概述",
+        "children": []
+      }
+    ],
+    "path": "/python/%E7%94%9F%E6%80%81/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/kombu.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "",
+    "headers": [],
+    "path": "/python/%E7%94%9F%E6%80%81/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/pika.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "RabbitMQ",
+    "headers": [
+      {
+        "level": 3,
+        "title": "1. AMQP协议",
+        "slug": "_1-amqp协议",
+        "link": "#_1-amqp协议",
+        "children": []
+      }
+    ],
+    "path": "/python/%E7%94%9F%E6%80%81/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/RabbitMQ.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
     "title": "APScheduler",
     "headers": [
       {
@@ -5240,50 +5319,6 @@ export const SEARCH_INDEX = [
       }
     ],
     "path": "/python/%E7%94%9F%E6%80%81/%E5%BC%82%E6%AD%A5%E4%BB%BB%E5%8A%A1/%E5%BC%82%E6%AD%A5%E4%BB%BB%E5%8A%A1%E6%A6%82%E8%BF%B0.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "",
-    "headers": [],
-    "path": "/python/%E7%94%9F%E6%80%81/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/kafka.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "Kombu",
-    "headers": [
-      {
-        "level": 3,
-        "title": "1. 概述",
-        "slug": "_1-概述",
-        "link": "#_1-概述",
-        "children": []
-      }
-    ],
-    "path": "/python/%E7%94%9F%E6%80%81/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/kombu.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "",
-    "headers": [],
-    "path": "/python/%E7%94%9F%E6%80%81/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/pika.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "RabbitMQ",
-    "headers": [
-      {
-        "level": 3,
-        "title": "1. AMQP协议",
-        "slug": "_1-amqp协议",
-        "link": "#_1-amqp协议",
-        "children": []
-      }
-    ],
-    "path": "/python/%E7%94%9F%E6%80%81/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/RabbitMQ.html",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -6628,6 +6663,28 @@ export const SEARCH_INDEX = [
     "extraFields": []
   },
   {
+    "title": "标准库链接",
+    "headers": [
+      {
+        "level": 3,
+        "title": "标准库",
+        "slug": "标准库",
+        "link": "#标准库",
+        "children": []
+      },
+      {
+        "level": 3,
+        "title": "其他第三方库",
+        "slug": "其他第三方库",
+        "link": "#其他第三方库",
+        "children": []
+      }
+    ],
+    "path": "/python/%E8%AF%AD%E8%A8%80/%E5%BA%93/%E6%A0%87%E5%87%86%E5%BA%93%E9%93%BE%E6%8E%A5.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
     "title": "Cpython 对象",
     "headers": [
       {
@@ -6880,28 +6937,6 @@ export const SEARCH_INDEX = [
       }
     ],
     "path": "/python/%E8%AF%AD%E8%A8%80/%E6%B7%B1%E5%85%A5/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "标准库链接",
-    "headers": [
-      {
-        "level": 3,
-        "title": "标准库",
-        "slug": "标准库",
-        "link": "#标准库",
-        "children": []
-      },
-      {
-        "level": 3,
-        "title": "其他第三方库",
-        "slug": "其他第三方库",
-        "link": "#其他第三方库",
-        "children": []
-      }
-    ],
-    "path": "/python/%E8%AF%AD%E8%A8%80/%E5%BA%93/%E6%A0%87%E5%87%86%E5%BA%93%E9%93%BE%E6%8E%A5.html",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -8207,6 +8242,94 @@ export const SEARCH_INDEX = [
     "extraFields": []
   },
   {
+    "title": "CentOS安装及配置",
+    "headers": [
+      {
+        "level": 3,
+        "title": "1. 初始化相关",
+        "slug": "_1-初始化相关",
+        "link": "#_1-初始化相关",
+        "children": []
+      }
+    ],
+    "path": "/unix/CentOS/%E5%AE%89%E8%A3%85/CentOS%E7%9A%84%E5%AE%89%E8%A3%85.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "RPM包管理",
+    "headers": [
+      {
+        "level": 2,
+        "title": "1. rpm包",
+        "slug": "_1-rpm包",
+        "link": "#_1-rpm包",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "2. yum 管理工具",
+        "slug": "_2-yum-管理工具",
+        "link": "#_2-yum-管理工具",
+        "children": [
+          {
+            "level": 3,
+            "title": "2.1 更换 yum 源",
+            "slug": "_2-1-更换-yum-源",
+            "link": "#_2-1-更换-yum-源",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "2.2 安装 epel 拓展软件源",
+            "slug": "_2-2-安装-epel-拓展软件源",
+            "link": "#_2-2-安装-epel-拓展软件源",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "3. Linux 内核",
+        "slug": "_3-linux-内核",
+        "link": "#_3-linux-内核",
+        "children": [
+          {
+            "level": 3,
+            "title": "3.1 CentOS 内核",
+            "slug": "_3-1-centos-内核",
+            "link": "#_3-1-centos-内核",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "3.2 yum 升级软件和内核",
+            "slug": "_3-2-yum-升级软件和内核",
+            "link": "#_3-2-yum-升级软件和内核",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "3.3 在 CentOS 上降级内核",
+            "slug": "_3-3-在-centos-上降级内核",
+            "link": "#_3-3-在-centos-上降级内核",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "3.4 在 CentOS 上降级发行版本",
+            "slug": "_3-4-在-centos-上降级发行版本",
+            "link": "#_3-4-在-centos-上降级发行版本",
+            "children": []
+          }
+        ]
+      }
+    ],
+    "path": "/unix/CentOS/%E5%AE%89%E8%A3%85/RPM%E5%8C%85%E7%AE%A1%E7%90%86.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
     "title": "UFS-ISO构建及发布",
     "headers": [
       {
@@ -8436,94 +8559,6 @@ export const SEARCH_INDEX = [
       }
     ],
     "path": "/unix/CentOS/UFS/uus%E8%99%9A%E6%8B%9F%E6%9C%BA%E6%8E%92%E9%94%99.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "CentOS安装及配置",
-    "headers": [
-      {
-        "level": 3,
-        "title": "1. 初始化相关",
-        "slug": "_1-初始化相关",
-        "link": "#_1-初始化相关",
-        "children": []
-      }
-    ],
-    "path": "/unix/CentOS/%E5%AE%89%E8%A3%85/CentOS%E7%9A%84%E5%AE%89%E8%A3%85.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "RPM包管理",
-    "headers": [
-      {
-        "level": 2,
-        "title": "1. rpm包",
-        "slug": "_1-rpm包",
-        "link": "#_1-rpm包",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "2. yum 管理工具",
-        "slug": "_2-yum-管理工具",
-        "link": "#_2-yum-管理工具",
-        "children": [
-          {
-            "level": 3,
-            "title": "2.1 更换 yum 源",
-            "slug": "_2-1-更换-yum-源",
-            "link": "#_2-1-更换-yum-源",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "2.2 安装 epel 拓展软件源",
-            "slug": "_2-2-安装-epel-拓展软件源",
-            "link": "#_2-2-安装-epel-拓展软件源",
-            "children": []
-          }
-        ]
-      },
-      {
-        "level": 2,
-        "title": "3. Linux 内核",
-        "slug": "_3-linux-内核",
-        "link": "#_3-linux-内核",
-        "children": [
-          {
-            "level": 3,
-            "title": "3.1 CentOS 内核",
-            "slug": "_3-1-centos-内核",
-            "link": "#_3-1-centos-内核",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "3.2 yum 升级软件和内核",
-            "slug": "_3-2-yum-升级软件和内核",
-            "link": "#_3-2-yum-升级软件和内核",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "3.3 在 CentOS 上降级内核",
-            "slug": "_3-3-在-centos-上降级内核",
-            "link": "#_3-3-在-centos-上降级内核",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "3.4 在 CentOS 上降级发行版本",
-            "slug": "_3-4-在-centos-上降级发行版本",
-            "link": "#_3-4-在-centos-上降级发行版本",
-            "children": []
-          }
-        ]
-      }
-    ],
-    "path": "/unix/CentOS/%E5%AE%89%E8%A3%85/RPM%E5%8C%85%E7%AE%A1%E7%90%86.html",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -8759,6 +8794,13 @@ export const SEARCH_INDEX = [
       }
     ],
     "path": "/unix/Linux/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "Ubuntu系统",
+    "headers": [],
+    "path": "/unix/Ubuntu/%E4%B8%8B%E8%BD%BD/Ubuntu%E7%B3%BB%E7%BB%9F.html",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -9188,9 +9230,9 @@ export const SEARCH_INDEX = [
     "extraFields": []
   },
   {
-    "title": "Ubuntu系统",
+    "title": "主板",
     "headers": [],
-    "path": "/unix/Ubuntu/%E4%B8%8B%E8%BD%BD/Ubuntu%E7%B3%BB%E7%BB%9F.html",
+    "path": "/unix/%E7%A1%AC%E4%BB%B6%E5%9F%BA%E7%A1%80/%E4%B8%BB%E6%9D%BF/%E4%B8%BB%E6%9D%BF.html",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -9206,13 +9248,6 @@ export const SEARCH_INDEX = [
       }
     ],
     "path": "/unix/%E7%A1%AC%E4%BB%B6%E5%9F%BA%E7%A1%80/CPU/CPU.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "主板",
-    "headers": [],
-    "path": "/unix/%E7%A1%AC%E4%BB%B6%E5%9F%BA%E7%A1%80/%E4%B8%BB%E6%9D%BF/%E4%B8%BB%E6%9D%BF.html",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -9241,6 +9276,35 @@ export const SEARCH_INDEX = [
     "title": "显卡",
     "headers": [],
     "path": "/unix/%E7%A1%AC%E4%BB%B6%E5%9F%BA%E7%A1%80/%E6%98%BE%E5%8D%A1/%E6%98%BE%E5%8D%A1.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "PVE虚拟机",
+    "headers": [
+      {
+        "level": 3,
+        "title": "1. 安装",
+        "slug": "_1-安装",
+        "link": "#_1-安装",
+        "children": []
+      },
+      {
+        "level": 3,
+        "title": "2. 显卡驱动踩大坑",
+        "slug": "_2-显卡驱动踩大坑",
+        "link": "#_2-显卡驱动踩大坑",
+        "children": []
+      },
+      {
+        "level": 3,
+        "title": "3. 指南",
+        "slug": "_3-指南",
+        "link": "#_3-指南",
+        "children": []
+      }
+    ],
+    "path": "/unix/%E8%99%9A%E6%8B%9F%E6%9C%BA/PVE/PVE.html",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -9336,137 +9400,6 @@ export const SEARCH_INDEX = [
       }
     ],
     "path": "/unix/%E8%99%9A%E6%8B%9F%E6%9C%BA/VMware/%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "PVE虚拟机",
-    "headers": [
-      {
-        "level": 3,
-        "title": "1. 安装",
-        "slug": "_1-安装",
-        "link": "#_1-安装",
-        "children": []
-      },
-      {
-        "level": 3,
-        "title": "2. 显卡驱动踩大坑",
-        "slug": "_2-显卡驱动踩大坑",
-        "link": "#_2-显卡驱动踩大坑",
-        "children": []
-      },
-      {
-        "level": 3,
-        "title": "3. 指南",
-        "slug": "_3-指南",
-        "link": "#_3-指南",
-        "children": []
-      }
-    ],
-    "path": "/unix/%E8%99%9A%E6%8B%9F%E6%9C%BA/PVE/PVE.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "Django基础",
-    "headers": [
-      {
-        "level": 2,
-        "title": "1. 执行流程",
-        "slug": "_1-执行流程",
-        "link": "#_1-执行流程",
-        "children": []
-      }
-    ],
-    "path": "/python/%E7%94%9F%E6%80%81/Web%E6%A1%86%E6%9E%B6/Django/Django%E5%9F%BA%E7%A1%80.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "Django概述",
-    "headers": [
-      {
-        "level": 2,
-        "title": "1. 初始化",
-        "slug": "_1-初始化",
-        "link": "#_1-初始化",
-        "children": [
-          {
-            "level": 3,
-            "title": "1.1 安装",
-            "slug": "_1-1-安装",
-            "link": "#_1-1-安装",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "1.2 创建项目",
-            "slug": "_1-2-创建项目",
-            "link": "#_1-2-创建项目",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "1.3 创建应用",
-            "slug": "_1-3-创建应用",
-            "link": "#_1-3-创建应用",
-            "children": []
-          }
-        ]
-      },
-      {
-        "level": 2,
-        "title": "2. 应用指北",
-        "slug": "_2-应用指北",
-        "link": "#_2-应用指北",
-        "children": [
-          {
-            "level": 3,
-            "title": "2.1 views",
-            "slug": "_2-1-views",
-            "link": "#_2-1-views",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "2.2 urls",
-            "slug": "_2-2-urls",
-            "link": "#_2-2-urls",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "2.3 models",
-            "slug": "_2-3-models",
-            "link": "#_2-3-models",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "2.4 settings",
-            "slug": "_2-4-settings",
-            "link": "#_2-4-settings",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "2.5 数据库",
-            "slug": "_2-5-数据库",
-            "link": "#_2-5-数据库",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "2.6 模板系统",
-            "slug": "_2-6-模板系统",
-            "link": "#_2-6-模板系统",
-            "children": []
-          }
-        ]
-      }
-    ],
-    "path": "/python/%E7%94%9F%E6%80%81/Web%E6%A1%86%E6%9E%B6/Django/Django%E6%A6%82%E8%BF%B0.html",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -9614,6 +9547,108 @@ export const SEARCH_INDEX = [
       }
     ],
     "path": "/python/%E7%94%9F%E6%80%81/Web%E6%A1%86%E6%9E%B6/FastAPI/FastAPI%E5%9F%BA%E7%A1%80%E4%BA%8C.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "Django基础",
+    "headers": [
+      {
+        "level": 2,
+        "title": "1. 执行流程",
+        "slug": "_1-执行流程",
+        "link": "#_1-执行流程",
+        "children": []
+      }
+    ],
+    "path": "/python/%E7%94%9F%E6%80%81/Web%E6%A1%86%E6%9E%B6/Django/Django%E5%9F%BA%E7%A1%80.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "Django概述",
+    "headers": [
+      {
+        "level": 2,
+        "title": "1. 初始化",
+        "slug": "_1-初始化",
+        "link": "#_1-初始化",
+        "children": [
+          {
+            "level": 3,
+            "title": "1.1 安装",
+            "slug": "_1-1-安装",
+            "link": "#_1-1-安装",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "1.2 创建项目",
+            "slug": "_1-2-创建项目",
+            "link": "#_1-2-创建项目",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "1.3 创建应用",
+            "slug": "_1-3-创建应用",
+            "link": "#_1-3-创建应用",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "2. 应用指北",
+        "slug": "_2-应用指北",
+        "link": "#_2-应用指北",
+        "children": [
+          {
+            "level": 3,
+            "title": "2.1 views",
+            "slug": "_2-1-views",
+            "link": "#_2-1-views",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "2.2 urls",
+            "slug": "_2-2-urls",
+            "link": "#_2-2-urls",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "2.3 models",
+            "slug": "_2-3-models",
+            "link": "#_2-3-models",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "2.4 settings",
+            "slug": "_2-4-settings",
+            "link": "#_2-4-settings",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "2.5 数据库",
+            "slug": "_2-5-数据库",
+            "link": "#_2-5-数据库",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "2.6 模板系统",
+            "slug": "_2-6-模板系统",
+            "link": "#_2-6-模板系统",
+            "children": []
+          }
+        ]
+      }
+    ],
+    "path": "/python/%E7%94%9F%E6%80%81/Web%E6%A1%86%E6%9E%B6/Django/Django%E6%A6%82%E8%BF%B0.html",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -9861,9 +9896,9 @@ export const SEARCH_INDEX = [
     "extraFields": []
   },
   {
-    "title": "异步任务",
+    "title": "消息队列",
     "headers": [],
-    "path": "/python/%E7%94%9F%E6%80%81/%E5%BC%82%E6%AD%A5%E4%BB%BB%E5%8A%A1/",
+    "path": "/python/%E7%94%9F%E6%80%81/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -9875,9 +9910,9 @@ export const SEARCH_INDEX = [
     "extraFields": []
   },
   {
-    "title": "消息队列",
+    "title": "异步任务",
     "headers": [],
-    "path": "/python/%E7%94%9F%E6%80%81/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/",
+    "path": "/python/%E7%94%9F%E6%80%81/%E5%BC%82%E6%AD%A5%E4%BB%BB%E5%8A%A1/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -9917,16 +9952,16 @@ export const SEARCH_INDEX = [
     "extraFields": []
   },
   {
-    "title": "深入",
+    "title": "库",
     "headers": [],
-    "path": "/python/%E8%AF%AD%E8%A8%80/%E6%B7%B1%E5%85%A5/",
+    "path": "/python/%E8%AF%AD%E8%A8%80/%E5%BA%93/",
     "pathLocale": "/",
     "extraFields": []
   },
   {
-    "title": "库",
+    "title": "深入",
     "headers": [],
-    "path": "/python/%E8%AF%AD%E8%A8%80/%E5%BA%93/",
+    "path": "/python/%E8%AF%AD%E8%A8%80/%E6%B7%B1%E5%85%A5/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -10001,16 +10036,16 @@ export const SEARCH_INDEX = [
     "extraFields": []
   },
   {
-    "title": "UFS",
+    "title": "安装",
     "headers": [],
-    "path": "/unix/CentOS/UFS/",
+    "path": "/unix/CentOS/%E5%AE%89%E8%A3%85/",
     "pathLocale": "/",
     "extraFields": []
   },
   {
-    "title": "安装",
+    "title": "UFS",
     "headers": [],
-    "path": "/unix/CentOS/%E5%AE%89%E8%A3%85/",
+    "path": "/unix/CentOS/UFS/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -10071,13 +10106,6 @@ export const SEARCH_INDEX = [
     "extraFields": []
   },
   {
-    "title": "网络",
-    "headers": [],
-    "path": "/unix/Linux/%E7%BD%91%E7%BB%9C/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
     "title": "下载",
     "headers": [],
     "path": "/unix/Ubuntu/%E4%B8%8B%E8%BD%BD/",
@@ -10092,9 +10120,16 @@ export const SEARCH_INDEX = [
     "extraFields": []
   },
   {
-    "title": "CPU",
+    "title": "网络",
     "headers": [],
-    "path": "/unix/%E7%A1%AC%E4%BB%B6%E5%9F%BA%E7%A1%80/CPU/",
+    "path": "/unix/Linux/%E7%BD%91%E7%BB%9C/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "主板",
+    "headers": [],
+    "path": "/unix/%E7%A1%AC%E4%BB%B6%E5%9F%BA%E7%A1%80/%E4%B8%BB%E6%9D%BF/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -10106,9 +10141,9 @@ export const SEARCH_INDEX = [
     "extraFields": []
   },
   {
-    "title": "主板",
+    "title": "CPU",
     "headers": [],
-    "path": "/unix/%E7%A1%AC%E4%BB%B6%E5%9F%BA%E7%A1%80/%E4%B8%BB%E6%9D%BF/",
+    "path": "/unix/%E7%A1%AC%E4%BB%B6%E5%9F%BA%E7%A1%80/CPU/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -10141,9 +10176,9 @@ export const SEARCH_INDEX = [
     "extraFields": []
   },
   {
-    "title": "VMware",
+    "title": "PVE",
     "headers": [],
-    "path": "/unix/%E8%99%9A%E6%8B%9F%E6%9C%BA/VMware/",
+    "path": "/unix/%E8%99%9A%E6%8B%9F%E6%9C%BA/PVE/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -10155,16 +10190,16 @@ export const SEARCH_INDEX = [
     "extraFields": []
   },
   {
-    "title": "PVE",
+    "title": "VMware",
     "headers": [],
-    "path": "/unix/%E8%99%9A%E6%8B%9F%E6%9C%BA/PVE/",
+    "path": "/unix/%E8%99%9A%E6%8B%9F%E6%9C%BA/VMware/",
     "pathLocale": "/",
     "extraFields": []
   },
   {
-    "title": "Django",
+    "title": "Fast API",
     "headers": [],
-    "path": "/python/%E7%94%9F%E6%80%81/Web%E6%A1%86%E6%9E%B6/Django/",
+    "path": "/python/%E7%94%9F%E6%80%81/Web%E6%A1%86%E6%9E%B6/FastAPI/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -10176,9 +10211,9 @@ export const SEARCH_INDEX = [
     "extraFields": []
   },
   {
-    "title": "Fast API",
+    "title": "Django",
     "headers": [],
-    "path": "/python/%E7%94%9F%E6%80%81/Web%E6%A1%86%E6%9E%B6/FastAPI/",
+    "path": "/python/%E7%94%9F%E6%80%81/Web%E6%A1%86%E6%9E%B6/Django/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -10442,16 +10477,16 @@ export const SEARCH_INDEX = [
     "extraFields": []
   },
   {
-    "title": "UFS 分类",
+    "title": "CentOS 分类",
     "headers": [],
-    "path": "/category/ufs/",
+    "path": "/category/centos/",
     "pathLocale": "/",
     "extraFields": []
   },
   {
-    "title": "CentOS 分类",
+    "title": "UFS 分类",
     "headers": [],
-    "path": "/category/centos/",
+    "path": "/category/ufs/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -10540,16 +10575,16 @@ export const SEARCH_INDEX = [
     "extraFields": []
   },
   {
-    "title": "Django 分类",
+    "title": "FastAPI 分类",
     "headers": [],
-    "path": "/category/django/",
+    "path": "/category/fastapi/",
     "pathLocale": "/",
     "extraFields": []
   },
   {
-    "title": "FastAPI 分类",
+    "title": "Django 分类",
     "headers": [],
-    "path": "/category/fastapi/",
+    "path": "/category/django/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -10953,16 +10988,16 @@ export const SEARCH_INDEX = [
     "extraFields": []
   },
   {
-    "title": "标签: GC",
+    "title": "标签: 标准库",
     "headers": [],
-    "path": "/tag/gc/",
+    "path": "/tag/%E6%A0%87%E5%87%86%E5%BA%93/",
     "pathLocale": "/",
     "extraFields": []
   },
   {
-    "title": "标签: 标准库",
+    "title": "标签: GC",
     "headers": [],
-    "path": "/tag/%E6%A0%87%E5%87%86%E5%BA%93/",
+    "path": "/tag/gc/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -11079,20 +11114,6 @@ export const SEARCH_INDEX = [
     "extraFields": []
   },
   {
-    "title": "标签: UFS",
-    "headers": [],
-    "path": "/tag/ufs/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "标签: UUS",
-    "headers": [],
-    "path": "/tag/uus/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
     "title": "标签: CentOS",
     "headers": [],
     "path": "/tag/centos/",
@@ -11103,6 +11124,20 @@ export const SEARCH_INDEX = [
     "title": "标签: 包管理",
     "headers": [],
     "path": "/tag/%E5%8C%85%E7%AE%A1%E7%90%86/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "标签: UFS",
+    "headers": [],
+    "path": "/tag/ufs/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "标签: UUS",
+    "headers": [],
+    "path": "/tag/uus/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -11170,16 +11205,16 @@ export const SEARCH_INDEX = [
     "extraFields": []
   },
   {
-    "title": "标签: VMware",
+    "title": "标签: PVE",
     "headers": [],
-    "path": "/tag/vmware/",
+    "path": "/tag/pve/",
     "pathLocale": "/",
     "extraFields": []
   },
   {
-    "title": "标签: PVE",
+    "title": "标签: VMware",
     "headers": [],
-    "path": "/tag/pve/",
+    "path": "/tag/vmware/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -11236,6 +11271,808 @@ export const SEARCH_INDEX = [
     "title": "时间轴",
     "headers": [],
     "path": "/timeline/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "",
+    "headers": [],
+    "path": "/ai/HelloAgents/.~AI%20Agent%E5%BC%80%E5%8F%91%E8%B8%A9%E5%9D%91.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "",
+    "headers": [
+      {
+        "level": 2,
+        "title": "预测「明天穿不穿外套」",
+        "slug": "预测「明天穿不穿外套」",
+        "link": "#预测「明天穿不穿外套」",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "稍微真一点：nn.Linear 里每个数是什么意思？",
+        "slug": "稍微真一点-nn-linear-里每个数是什么意思",
+        "link": "#稍微真一点-nn-linear-里每个数是什么意思",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "3. 词 embedding：每个浮点「像什么」？",
+        "slug": "_3-词-embedding-每个浮点「像什么」",
+        "link": "#_3-词-embedding-每个浮点「像什么」",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "4. 和 LLM 的关系（一句话）",
+        "slug": "_4-和-llm-的关系-一句话",
+        "link": "#_4-和-llm-的关系-一句话",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "5. 帮你收一句",
+        "slug": "_5-帮你收一句",
+        "link": "#_5-帮你收一句",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "**1.**N-gram 模型",
+        "slug": "_1-n-gram-模型",
+        "link": "#_1-n-gram-模型",
+        "children": [
+          {
+            "level": 3,
+            "title": "1.1 N-gram 模型是什么",
+            "slug": "_1-1-n-gram-模型是什么",
+            "link": "#_1-1-n-gram-模型是什么",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "在语言模型中的应用",
+        "slug": "在语言模型中的应用",
+        "link": "#在语言模型中的应用",
+        "children": [
+          {
+            "level": 3,
+            "title": "Bigram（二元模型，N=2）",
+            "slug": "bigram-二元模型-n-2",
+            "link": "#bigram-二元模型-n-2",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "Trigram（三元模型，N=3）",
+            "slug": "trigram-三元模型-n-3",
+            "link": "#trigram-三元模型-n-3",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "为什么需要这个假设？",
+        "slug": "为什么需要这个假设",
+        "link": "#为什么需要这个假设",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "简单总结",
+        "slug": "简单总结",
+        "link": "#简单总结",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "N-gram 模型的根本缺陷",
+        "slug": "n-gram-模型的根本缺陷",
+        "link": "#n-gram-模型的根本缺陷",
+        "children": [
+          {
+            "level": 3,
+            "title": "问题：词被当作“孤立的符号”",
+            "slug": "问题-词被当作-孤立的符号",
+            "link": "#问题-词被当作-孤立的符号",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "解决方案：用向量表示词",
+        "slug": "解决方案-用向量表示词",
+        "link": "#解决方案-用向量表示词",
+        "children": [
+          {
+            "level": 3,
+            "title": "核心思想：把词变成“坐标点”",
+            "slug": "核心思想-把词变成-坐标点",
+            "link": "#核心思想-把词变成-坐标点",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "词嵌入（Word Embedding）是什么？",
+        "slug": "词嵌入-word-embedding-是什么",
+        "link": "#词嵌入-word-embedding-是什么",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "前馈神经网络语言模型的两步",
+        "slug": "前馈神经网络语言模型的两步",
+        "link": "#前馈神经网络语言模型的两步",
+        "children": [
+          {
+            "level": 3,
+            "title": "第一步：构建语义空间（词嵌入层）",
+            "slug": "第一步-构建语义空间-词嵌入层",
+            "link": "#第一步-构建语义空间-词嵌入层",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "第二步：学习映射函数（神经网络层）",
+            "slug": "第二步-学习映射函数-神经网络层",
+            "link": "#第二步-学习映射函数-神经网络层",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "完整流程示例",
+        "slug": "完整流程示例",
+        "link": "#完整流程示例",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "为什么这样更好？",
+        "slug": "为什么这样更好",
+        "link": "#为什么这样更好",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "简单总结",
+        "slug": "简单总结-1",
+        "link": "#简单总结-1",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "1. 什么叫\"拟合\"？",
+        "slug": "_1-什么叫-拟合",
+        "link": "#_1-什么叫-拟合",
+        "children": [
+          {
+            "level": 3,
+            "title": "简单理解：找规律",
+            "slug": "简单理解-找规律",
+            "link": "#简单理解-找规律",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "简单理解：找规律",
+            "slug": "简单理解-找规律-1",
+            "link": "#简单理解-找规律-1",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "2. 词向量是怎么来的？不是人工设计的",
+        "slug": "_2-词向量是怎么来的-不是人工设计的",
+        "link": "#_2-词向量是怎么来的-不是人工设计的",
+        "children": [
+          {
+            "level": 3,
+            "title": "关键：词向量是自动学习出来的，不是人工标注的",
+            "slug": "关键-词向量是自动学习出来的-不是人工标注的",
+            "link": "#关键-词向量是自动学习出来的-不是人工标注的",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "具体过程（简化版）",
+            "slug": "具体过程-简化版",
+            "link": "#具体过程-简化版",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "3. 高维空间是怎么创建的？不是拍脑袋",
+        "slug": "_3-高维空间是怎么创建的-不是拍脑袋",
+        "link": "#_3-高维空间是怎么创建的-不是拍脑袋",
+        "children": [
+          {
+            "level": 3,
+            "title": "空间是自动形成的，不是人工设计的",
+            "slug": "空间是自动形成的-不是人工设计的",
+            "link": "#空间是自动形成的-不是人工设计的",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "类比理解",
+            "slug": "类比理解",
+            "link": "#类比理解",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "4. 如何告诉程序词的近似程度？不是人工标注",
+        "slug": "_4-如何告诉程序词的近似程度-不是人工标注",
+        "link": "#_4-如何告诉程序词的近似程度-不是人工标注",
+        "children": [
+          {
+            "level": 3,
+            "title": "完全自动，不需要人工标注",
+            "slug": "完全自动-不需要人工标注",
+            "link": "#完全自动-不需要人工标注",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "原理：分布假设（Distributional Hypothesis）",
+            "slug": "原理-分布假设-distributional-hypothesis",
+            "link": "#原理-分布假设-distributional-hypothesis",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "训练过程（简化）",
+            "slug": "训练过程-简化",
+            "link": "#训练过程-简化",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "完整流程总结",
+        "slug": "完整流程总结",
+        "link": "#完整流程总结",
+        "children": [
+          {
+            "level": 3,
+            "title": "从零开始到词向量形成",
+            "slug": "从零开始到词向量形成",
+            "link": "#从零开始到词向量形成",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "关键要点",
+        "slug": "关键要点",
+        "link": "#关键要点",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "一个完整的类比",
+        "slug": "一个完整的类比",
+        "link": "#一个完整的类比",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "1. 维度数量：不是完全拍脑袋，有方法论",
+        "slug": "_1-维度数量-不是完全拍脑袋-有方法论",
+        "link": "#_1-维度数量-不是完全拍脑袋-有方法论",
+        "children": [
+          {
+            "level": 3,
+            "title": "理论依据",
+            "slug": "理论依据",
+            "link": "#理论依据",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "经验法则和实验方法",
+            "slug": "经验法则和实验方法",
+            "link": "#经验法则和实验方法",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "实际建议",
+            "slug": "实际建议",
+            "link": "#实际建议",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "2. 词向量初始化方法",
+        "slug": "_2-词向量初始化方法",
+        "link": "#_2-词向量初始化方法",
+        "children": [
+          {
+            "level": 3,
+            "title": "方法1：随机初始化（最常用）",
+            "slug": "方法1-随机初始化-最常用",
+            "link": "#方法1-随机初始化-最常用",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "方法2：预训练初始化（更高级）",
+            "slug": "方法2-预训练初始化-更高级",
+            "link": "#方法2-预训练初始化-更高级",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "方法3：特殊初始化策略",
+            "slug": "方法3-特殊初始化策略",
+            "link": "#方法3-特殊初始化策略",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "3. 如何设计一个前馈神经网络语言模型",
+        "slug": "_3-如何设计一个前馈神经网络语言模型",
+        "link": "#_3-如何设计一个前馈神经网络语言模型",
+        "children": [
+          {
+            "level": 3,
+            "title": "完整设计步骤",
+            "slug": "完整设计步骤",
+            "link": "#完整设计步骤",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "4. 维度选择的实际建议",
+        "slug": "_4-维度选择的实际建议",
+        "link": "#_4-维度选择的实际建议",
+        "children": [
+          {
+            "level": 3,
+            "title": "决策树",
+            "slug": "决策树",
+            "link": "#决策树",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "实验方法（推荐）",
+            "slug": "实验方法-推荐",
+            "link": "#实验方法-推荐",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "整体理解：这是在创建一个\"词向量矩阵\"",
+        "slug": "整体理解-这是在创建一个-词向量矩阵",
+        "link": "#整体理解-这是在创建一个-词向量矩阵",
+        "children": [
+          {
+            "level": 3,
+            "title": "创建矩阵（核心代码）",
+            "slug": "创建矩阵-核心代码",
+            "link": "#创建矩阵-核心代码",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "结果是什么样的？",
+        "slug": "结果是什么样的",
+        "link": "#结果是什么样的",
+        "children": [
+          {
+            "level": 3,
+            "title": "矩阵结构",
+            "slug": "矩阵结构",
+            "link": "#矩阵结构",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "1. 什么是梯度？",
+        "slug": "_1-什么是梯度",
+        "link": "#_1-什么是梯度",
+        "children": [
+          {
+            "level": 3,
+            "title": "简单理解：梯度 = \"方向\" + \"大小\"",
+            "slug": "简单理解-梯度-方向-大小",
+            "link": "#简单理解-梯度-方向-大小",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "数学上的梯度",
+            "slug": "数学上的梯度",
+            "link": "#数学上的梯度",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "梯度下降：用梯度来学习",
+            "slug": "梯度下降-用梯度来学习",
+            "link": "#梯度下降-用梯度来学习",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "2. 为什么零初始化有问题？",
+        "slug": "_2-为什么零初始化有问题",
+        "link": "#_2-为什么零初始化有问题",
+        "children": [
+          {
+            "level": 3,
+            "title": "问题1：所有词完全相同",
+            "slug": "问题1-所有词完全相同",
+            "link": "#问题1-所有词完全相同",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "问题2：梯度更新会对称",
+            "slug": "问题2-梯度更新会对称",
+            "link": "#问题2-梯度更新会对称",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "3. 什么是梯度爆炸？",
+        "slug": "_3-什么是梯度爆炸",
+        "link": "#_3-什么是梯度爆炸",
+        "children": [
+          {
+            "level": 3,
+            "title": "简单理解：梯度变得非常大",
+            "slug": "简单理解-梯度变得非常大",
+            "link": "#简单理解-梯度变得非常大",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "为什么会梯度爆炸？",
+            "slug": "为什么会梯度爆炸",
+            "link": "#为什么会梯度爆炸",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "为什么大随机数初始化会导致梯度爆炸？",
+            "slug": "为什么大随机数初始化会导致梯度爆炸",
+            "link": "#为什么大随机数初始化会导致梯度爆炸",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "1. 词向量的数值如何得到？",
+        "slug": "_1-词向量的数值如何得到",
+        "link": "#_1-词向量的数值如何得到",
+        "children": [
+          {
+            "level": 3,
+            "title": "步骤",
+            "slug": "步骤",
+            "link": "#步骤",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "2. 向量之间的关系怎么体现？",
+        "slug": "_2-向量之间的关系怎么体现",
+        "link": "#_2-向量之间的关系怎么体现",
+        "children": [
+          {
+            "level": 3,
+            "title": "如何量化关系？",
+            "slug": "如何量化关系",
+            "link": "#如何量化关系",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "示例（简化）",
+            "slug": "示例-简化",
+            "link": "#示例-简化",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "余弦相似度为什么能表示“相似”",
+            "slug": "余弦相似度为什么能表示-相似",
+            "link": "#余弦相似度为什么能表示-相似",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "50 维词向量的数值怎么来的（再简化）",
+            "slug": "_50-维词向量的数值怎么来的-再简化",
+            "link": "#_50-维词向量的数值怎么来的-再简化",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "1. 余弦相似度 = 比较箭头方向",
+        "slug": "_1-余弦相似度-比较箭头方向",
+        "link": "#_1-余弦相似度-比较箭头方向",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "2. 50 维词向量的相似度怎么计算？",
+        "slug": "_2-50-维词向量的相似度怎么计算",
+        "link": "#_2-50-维词向量的相似度怎么计算",
+        "children": [
+          {
+            "level": 3,
+            "title": "回顾初中三角函数：sin、cos、tan",
+            "slug": "回顾初中三角函数-sin、cos、tan",
+            "link": "#回顾初中三角函数-sin、cos、tan",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "这和余弦相似度的关系",
+            "slug": "这和余弦相似度的关系",
+            "link": "#这和余弦相似度的关系",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "tan 什么时候用？",
+            "slug": "tan-什么时候用",
+            "link": "#tan-什么时候用",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "1. 二维向量：用两个数表示箭头",
+            "slug": "_1-二维向量-用两个数表示箭头",
+            "link": "#_1-二维向量-用两个数表示箭头",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "2. 三维向量：用三个数表示空间箭头",
+            "slug": "_2-三维向量-用三个数表示空间箭头",
+            "link": "#_2-三维向量-用三个数表示空间箭头",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "3. 高维向量：用更多数字描述抽象方向",
+            "slug": "_3-高维向量-用更多数字描述抽象方向",
+            "link": "#_3-高维向量-用更多数字描述抽象方向",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "总结",
+            "slug": "总结",
+            "link": "#总结",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "1. 训练目标：预测下一个词",
+        "slug": "_1-训练目标-预测下一个词",
+        "link": "#_1-训练目标-预测下一个词",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "2. 网络结构（简化版）",
+        "slug": "_2-网络结构-简化版",
+        "link": "#_2-网络结构-简化版",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "3. 损失函数：交叉熵（Cross-Entropy）",
+        "slug": "_3-损失函数-交叉熵-cross-entropy",
+        "link": "#_3-损失函数-交叉熵-cross-entropy",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "4. 训练步骤（梯度下降 + 反向传播）",
+        "slug": "_4-训练步骤-梯度下降-反向传播",
+        "link": "#_4-训练步骤-梯度下降-反向传播",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "5. 为什么词有了关联？",
+        "slug": "_5-为什么词有了关联",
+        "link": "#_5-为什么词有了关联",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "6. 总结",
+        "slug": "_6-总结",
+        "link": "#_6-总结",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "1. 模型结构与前向传播",
+        "slug": "_1-模型结构与前向传播",
+        "link": "#_1-模型结构与前向传播",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "2. 训练目标（最大似然 / 交叉熵）",
+        "slug": "_2-训练目标-最大似然-交叉熵",
+        "link": "#_2-训练目标-最大似然-交叉熵",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "3. 参数更新（反向传播 + 梯度下降）",
+        "slug": "_3-参数更新-反向传播-梯度下降",
+        "link": "#_3-参数更新-反向传播-梯度下降",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "4. 里程碑意义",
+        "slug": "_4-里程碑意义",
+        "link": "#_4-里程碑意义",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "相同点（继承关系）",
+        "slug": "相同点-继承关系",
+        "link": "#相同点-继承关系",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "关键区别",
+        "slug": "关键区别",
+        "link": "#关键区别",
+        "children": [
+          {
+            "level": 3,
+            "title": "Bengio 2003 模型（前馈神经网络）",
+            "slug": "bengio-2003-模型-前馈神经网络",
+            "link": "#bengio-2003-模型-前馈神经网络",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "Transformer（2017）",
+            "slug": "transformer-2017",
+            "link": "#transformer-2017",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "历史演进路线",
+        "slug": "历史演进路线",
+        "link": "#历史演进路线",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "为什么 Transformer 更强大？",
+        "slug": "为什么-transformer-更强大",
+        "link": "#为什么-transformer-更强大",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "总结",
+        "slug": "总结-1",
+        "link": "#总结-1",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "为什么“看不懂 Transformer 细节”不是障碍",
+        "slug": "为什么-看不懂-transformer-细节-不是障碍",
+        "link": "#为什么-看不懂-transformer-细节-不是障碍",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "你需要做到什么水平？",
+        "slug": "你需要做到什么水平",
+        "link": "#你需要做到什么水平",
+        "children": [
+          {
+            "level": 3,
+            "title": "AI 应用/Agent 开发能力清单（半年内可达成）",
+            "slug": "ai-应用-agent-开发能力清单-半年内可达成",
+            "link": "#ai-应用-agent-开发能力清单-半年内可达成",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "你可以不需要：",
+            "slug": "你可以不需要",
+            "link": "#你可以不需要",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "如何避免“不懂底层”的不安全感？",
+        "slug": "如何避免-不懂底层-的不安全感",
+        "link": "#如何避免-不懂底层-的不安全感",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "建议的行动路线（3-6 个月）",
+        "slug": "建议的行动路线-3-6-个月",
+        "link": "#建议的行动路线-3-6-个月",
+        "children": []
+      }
+    ],
+    "path": "/ai/HelloAgents/%E5%90%84%E7%A7%8D%E7%96%91%E9%97%AE.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "",
+    "headers": [],
+    "path": "/ai/HelloAgents/.~%E5%90%84%E7%A7%8D%E7%96%91%E9%97%AE.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "",
+    "headers": [],
+    "path": "/ai/HelloAgents/.~Decoder-Only%E6%9E%B6%E6%9E%84.html",
     "pathLocale": "/",
     "extraFields": []
   }
