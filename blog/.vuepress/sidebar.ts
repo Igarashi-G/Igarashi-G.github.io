@@ -92,7 +92,7 @@ export default sidebar({
           text: "网络",
           collapsable: true,
           prefix: "网络/",
-          children: ["网络基础", "命令", "CURL", "P2P"],
+          children: ["网络基础", "常用网络命令及工具", "CURL", "NAT与穿透", "P2P"],
         },
         {
           text: "Troubleshooting",

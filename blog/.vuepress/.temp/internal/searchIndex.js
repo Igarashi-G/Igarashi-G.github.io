@@ -1,12 +1,5 @@
 export const SEARCH_INDEX = [
   {
-    "title": "主页",
-    "headers": [],
-    "path": "/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
     "title": "项目主页",
     "headers": [],
     "path": "/home.html",
@@ -39,6 +32,13 @@ export const SEARCH_INDEX = [
       }
     ],
     "path": "/intro.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "主页",
+    "headers": [],
+    "path": "/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -350,21 +350,6 @@ export const SEARCH_INDEX = [
     "extraFields": []
   },
   {
-    "title": "主要功能与配置演示",
-    "headers": [
-      {
-        "level": 2,
-        "title": "目录",
-        "slug": "目录",
-        "link": "#目录",
-        "children": []
-      }
-    ],
-    "path": "/guide/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
     "title": "布局与功能禁用",
     "headers": [],
     "path": "/guide/disable.html",
@@ -459,7 +444,7 @@ export const SEARCH_INDEX = [
     "extraFields": []
   },
   {
-    "title": "Python",
+    "title": "主要功能与配置演示",
     "headers": [
       {
         "level": 2,
@@ -469,7 +454,7 @@ export const SEARCH_INDEX = [
         "children": []
       }
     ],
-    "path": "/python/",
+    "path": "/guide/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -548,9 +533,160 @@ export const SEARCH_INDEX = [
     "extraFields": []
   },
   {
+    "title": "Python",
+    "headers": [
+      {
+        "level": 2,
+        "title": "目录",
+        "slug": "目录",
+        "link": "#目录",
+        "children": []
+      }
+    ],
+    "path": "/python/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
     "title": "运维",
     "headers": [],
     "path": "/tool/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "",
+    "headers": [],
+    "path": "/ai/HelloAgents/AI%20Agent%E5%BC%80%E5%8F%91%E8%B8%A9%E5%9D%91.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "Decode-Only架构",
+    "headers": [
+      {
+        "level": 2,
+        "title": "1.1 公式说明",
+        "slug": "_1-1-公式说明",
+        "link": "#_1-1-公式说明",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "1.2 为什么要使用 exp",
+        "slug": "_1-2-为什么要使用-exp",
+        "link": "#_1-2-为什么要使用-exp",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "具体步骤演示",
+        "slug": "具体步骤演示",
+        "link": "#具体步骤演示",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "3.1 提示工程的本质",
+        "slug": "_3-1-提示工程的本质",
+        "link": "#_3-1-提示工程的本质",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "3.2 采样参数",
+        "slug": "_3-2-采样参数",
+        "link": "#_3-2-采样参数",
+        "children": [
+          {
+            "level": 3,
+            "title": "3.2.1 Temperature",
+            "slug": "_3-2-1-temperature",
+            "link": "#_3-2-1-temperature",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "3.2.2 Top-K",
+            "slug": "_3-2-2-top-k",
+            "link": "#_3-2-2-top-k",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "3.2.3 Top-p",
+            "slug": "_3-2-3-top-p",
+            "link": "#_3-2-3-top-p",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "3.2.4 各参数区别",
+            "slug": "_3-2-4-各参数区别",
+            "link": "#_3-2-4-各参数区别",
+            "children": []
+          }
+        ]
+      }
+    ],
+    "path": "/ai/HelloAgents/Decoder-Only%E6%9E%B6%E6%9E%84.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "asyncio Recipes",
+    "headers": [],
+    "path": "/book/python/asyncio_recipes.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "DevOps in Python",
+    "headers": [],
+    "path": "/book/python/devops_in_python.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "Fluent Python",
+    "headers": [],
+    "path": "/book/python/fluent_python.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "Python书籍",
+    "headers": [
+      {
+        "level": 2,
+        "title": "目录",
+        "slug": "目录",
+        "link": "#目录",
+        "children": []
+      }
+    ],
+    "path": "/book/python/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "Python Cookbook",
+    "headers": [],
+    "path": "/book/python/python_cookbook.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "Python源码剖析",
+    "headers": [],
+    "path": "/book/python/python%E6%BA%90%E7%A0%81%E5%89%96%E6%9E%90.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "Using Asyncio in Python",
+    "headers": [],
+    "path": "/book/python/use_asyncio.html",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -669,63 +805,6 @@ export const SEARCH_INDEX = [
     "extraFields": []
   },
   {
-    "title": "asyncio Recipes",
-    "headers": [],
-    "path": "/book/python/asyncio_recipes.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "DevOps in Python",
-    "headers": [],
-    "path": "/book/python/devops_in_python.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "Fluent Python",
-    "headers": [],
-    "path": "/book/python/fluent_python.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "Python书籍",
-    "headers": [
-      {
-        "level": 2,
-        "title": "目录",
-        "slug": "目录",
-        "link": "#目录",
-        "children": []
-      }
-    ],
-    "path": "/book/python/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "Python Cookbook",
-    "headers": [],
-    "path": "/book/python/python_cookbook.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "Python源码剖析",
-    "headers": [],
-    "path": "/book/python/python%E6%BA%90%E7%A0%81%E5%89%96%E6%9E%90.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "Using Asyncio in Python",
-    "headers": [],
-    "path": "/book/python/use_asyncio.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
     "title": "社会学书籍",
     "headers": [
       {
@@ -758,100 +837,6 @@ export const SEARCH_INDEX = [
     "title": "娱乐至死",
     "headers": [],
     "path": "/book/%E7%A4%BE%E4%BC%9A%E5%AD%A6/%E5%A8%B1%E4%B9%90%E8%87%B3%E6%AD%BB.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "Decode-Only架构",
-    "headers": [
-      {
-        "level": 2,
-        "title": "1.1 公式说明",
-        "slug": "_1-1-公式说明",
-        "link": "#_1-1-公式说明",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "1.2 为什么要使用 exp",
-        "slug": "_1-2-为什么要使用-exp",
-        "link": "#_1-2-为什么要使用-exp",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "具体步骤演示",
-        "slug": "具体步骤演示",
-        "link": "#具体步骤演示",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "3.1 提示工程的本质",
-        "slug": "_3-1-提示工程的本质",
-        "link": "#_3-1-提示工程的本质",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "3.2 采样参数",
-        "slug": "_3-2-采样参数",
-        "link": "#_3-2-采样参数",
-        "children": [
-          {
-            "level": 3,
-            "title": "3.2.1 Temperature",
-            "slug": "_3-2-1-temperature",
-            "link": "#_3-2-1-temperature",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "3.2.2 Top-K",
-            "slug": "_3-2-2-top-k",
-            "link": "#_3-2-2-top-k",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "3.2.3 Top-p",
-            "slug": "_3-2-3-top-p",
-            "link": "#_3-2-3-top-p",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "3.2.4 各参数区别",
-            "slug": "_3-2-4-各参数区别",
-            "link": "#_3-2-4-各参数区别",
-            "children": []
-          }
-        ]
-      }
-    ],
-    "path": "/ai/HelloAgents/Decoder-Only%E6%9E%B6%E6%9E%84.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "艺术书籍",
-    "headers": [
-      {
-        "level": 2,
-        "title": "目录",
-        "slug": "目录",
-        "link": "#目录",
-        "children": []
-      }
-    ],
-    "path": "/book/%E8%89%BA%E6%9C%AF/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "清醒思考的艺术",
-    "headers": [],
-    "path": "/book/%E8%89%BA%E6%9C%AF/%E6%B8%85%E9%86%92%E6%80%9D%E8%80%83%E7%9A%84%E8%89%BA%E6%9C%AF.html",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -906,1453 +891,163 @@ export const SEARCH_INDEX = [
     "extraFields": []
   },
   {
-    "title": "H2O引出的优化",
+    "title": "艺术书籍",
     "headers": [
       {
         "level": 2,
-        "title": "1. 水工厂问题",
-        "slug": "_1-水工厂问题",
-        "link": "#_1-水工厂问题",
-        "children": [
-          {
-            "level": 3,
-            "title": "1.1 问题如下",
-            "slug": "_1-1-问题如下",
-            "link": "#_1-1-问题如下",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "1.2 CyclicBarrier 与 WaitGroup",
-            "slug": "_1-2-cyclicbarrier-与-waitgroup",
-            "link": "#_1-2-cyclicbarrier-与-waitgroup",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "1.3 CyclicBarrier 说明",
-            "slug": "_1-3-cyclicbarrier-说明",
-            "link": "#_1-3-cyclicbarrier-说明",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "1.4 CyclicBarrier 的实现",
-            "slug": "_1-4-cyclicbarrier-的实现",
-            "link": "#_1-4-cyclicbarrier-的实现",
-            "children": []
-          }
-        ]
-      },
-      {
-        "level": 2,
-        "title": "2. 业务中的思考",
-        "slug": "_2-业务中的思考",
-        "link": "#_2-业务中的思考",
-        "children": [
-          {
-            "level": 3,
-            "title": "2.1 单机屏障",
-            "slug": "_2-1-单机屏障",
-            "link": "#_2-1-单机屏障",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "2.2 分布式屏障",
-            "slug": "_2-2-分布式屏障",
-            "link": "#_2-2-分布式屏障",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "2.3 场景差异",
-            "slug": "_2-3-场景差异",
-            "link": "#_2-3-场景差异",
-            "children": []
-          }
-        ]
+        "title": "目录",
+        "slug": "目录",
+        "link": "#目录",
+        "children": []
       }
     ],
-    "path": "/go/%E4%BC%98%E5%8C%96/H2O%E5%BC%95%E5%8F%91%E7%9A%84%E4%BC%98%E5%8C%96.html",
+    "path": "/book/%E8%89%BA%E6%9C%AF/",
     "pathLocale": "/",
     "extraFields": []
   },
   {
-    "title": "关于MapReduce",
-    "headers": [
-      {
-        "level": 2,
-        "title": "1. 查询异常",
-        "slug": "_1-查询异常",
-        "link": "#_1-查询异常",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "2. MapReduce",
-        "slug": "_2-mapreduce",
-        "link": "#_2-mapreduce",
-        "children": [
-          {
-            "level": 3,
-            "title": "2.1 概念及基本使用",
-            "slug": "_2-1-概念及基本使用",
-            "link": "#_2-1-概念及基本使用",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "2.2 go-zero的mr源码",
-            "slug": "_2-2-go-zero的mr源码",
-            "link": "#_2-2-go-zero的mr源码",
-            "children": []
-          }
-        ]
-      },
-      {
-        "level": 2,
-        "title": "3. 优化批处理",
-        "slug": "_3-优化批处理",
-        "link": "#_3-优化批处理",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "FindInBatches",
-        "slug": "findinbatches",
-        "link": "#findinbatches",
-        "children": []
-      }
-    ],
-    "path": "/go/%E4%BC%98%E5%8C%96/%E5%85%B3%E4%BA%8EMapReduce.html",
+    "title": "清醒思考的艺术",
+    "headers": [],
+    "path": "/book/%E8%89%BA%E6%9C%AF/%E6%B8%85%E9%86%92%E6%80%9D%E8%80%83%E7%9A%84%E8%89%BA%E6%9C%AF.html",
     "pathLocale": "/",
     "extraFields": []
   },
   {
-    "title": "分布式注册优化",
-    "headers": [
-      {
-        "level": 2,
-        "title": "1. 初步想到的解决方案",
-        "slug": "_1-初步想到的解决方案",
-        "link": "#_1-初步想到的解决方案",
-        "children": [
-          {
-            "level": 3,
-            "title": "1.1 SingleFlight模式 (单飞)",
-            "slug": "_1-1-singleflight模式-单飞",
-            "link": "#_1-1-singleflight模式-单飞",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "1.2 数据库唯一约束 + 重试机制",
-            "slug": "_1-2-数据库唯一约束-重试机制",
-            "link": "#_1-2-数据库唯一约束-重试机制",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "1.3 Redis分布式锁",
-            "slug": "_1-3-redis分布式锁",
-            "link": "#_1-3-redis分布式锁",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "1.4 分段锁",
-            "slug": "_1-4-分段锁",
-            "link": "#_1-4-分段锁",
-            "children": []
-          }
-        ]
-      },
-      {
-        "level": 2,
-        "title": "2. 动态分段锁的ABA问题",
-        "slug": "_2-动态分段锁的aba问题",
-        "link": "#_2-动态分段锁的aba问题",
-        "children": [
-          {
-            "level": 3,
-            "title": "2.1 ABA的出现",
-            "slug": "_2-1-aba的出现",
-            "link": "#_2-1-aba的出现",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "2.2 什么是ABA问题？",
-            "slug": "_2-2-什么是aba问题",
-            "link": "#_2-2-什么是aba问题",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "2.3 单测 “-race” 检测",
-            "slug": "_2-3-单测-race-检测",
-            "link": "#_2-3-单测-race-检测",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "2.4 sync.Map动态锁 + 唯一ID防ABA（无效）",
-            "slug": "_2-4-sync-map动态锁-唯一id防aba-无效",
-            "link": "#_2-4-sync-map动态锁-唯一id防aba-无效",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "2.5 一句话结论",
-            "slug": "_2-5-一句话结论",
-            "link": "#_2-5-一句话结论",
-            "children": []
-          }
-        ]
-      },
-      {
-        "level": 2,
-        "title": "3. 静态分段锁",
-        "slug": "_3-静态分段锁",
-        "link": "#_3-静态分段锁",
-        "children": [
-          {
-            "level": 3,
-            "title": "3.2 分段读写锁（读多写少）",
-            "slug": "_3-2-分段读写锁-读多写少",
-            "link": "#_3-2-分段读写锁-读多写少",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "3.3 实际建议",
-            "slug": "_3-3-实际建议",
-            "link": "#_3-3-实际建议",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "4. lockedcalls.go",
-            "slug": "_4-lockedcalls-go",
-            "link": "#_4-lockedcalls-go",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "单飞",
-            "slug": "单飞",
-            "link": "#单飞",
-            "children": []
-          }
-        ]
-      }
-    ],
-    "path": "/go/%E4%BC%98%E5%8C%96/%E5%88%86%E5%B8%83%E5%BC%8F%E6%B3%A8%E5%86%8C%E4%BC%98%E5%8C%96.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "Channel",
+    "title": "aioetcd3",
     "headers": [
       {
         "level": 3,
-        "title": "1. CSP",
-        "slug": "_1-csp",
-        "link": "#_1-csp",
+        "title": "安装",
+        "slug": "安装",
+        "link": "#安装",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "1. 使用说明",
+        "slug": "_1-使用说明",
+        "link": "#_1-使用说明",
+        "children": [
+          {
+            "level": 3,
+            "title": "2. 分布式锁",
+            "slug": "_2-分布式锁",
+            "link": "#_2-分布式锁",
+            "children": []
+          }
+        ]
+      }
+    ],
+    "path": "/database/etcd/aioetcd3.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "etcd",
+    "headers": [
+      {
+        "level": 2,
+        "title": "1. 简介",
+        "slug": "_1-简介",
+        "link": "#_1-简介",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "2. 工作原理",
+        "slug": "_2-工作原理",
+        "link": "#_2-工作原理",
+        "children": [
+          {
+            "level": 3,
+            "title": "2.1 选主",
+            "slug": "_2-1-选主",
+            "link": "#_2-1-选主",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "2.2 日志复制",
+            "slug": "_2-2-日志复制",
+            "link": "#_2-2-日志复制",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "2.3 安全性",
+            "slug": "_2-3-安全性",
+            "link": "#_2-3-安全性",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "3. 使用说明",
+        "slug": "_3-使用说明",
+        "link": "#_3-使用说明",
+        "children": [
+          {
+            "level": 3,
+            "title": "3.1 安装搭建",
+            "slug": "_3-1-安装搭建",
+            "link": "#_3-1-安装搭建",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "3.2 操作说明",
+            "slug": "_3-2-操作说明",
+            "link": "#_3-2-操作说明",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "数据库操作",
+            "slug": "数据库操作",
+            "link": "#数据库操作",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "get",
+            "slug": "get",
+            "link": "#get",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "非数据库操作",
+            "slug": "非数据库操作",
+            "link": "#非数据库操作",
+            "children": []
+          }
+        ]
+      }
+    ],
+    "path": "/database/etcd/etcd.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "etcd 进阶",
+    "headers": [
+      {
+        "level": 3,
+        "title": "1. etcd 的请求是如何执行的？",
+        "slug": "_1-etcd-的请求是如何执行的",
+        "link": "#_1-etcd-的请求是如何执行的",
         "children": []
       },
       {
         "level": 3,
-        "title": "2. Channel",
-        "slug": "_2-channel",
-        "link": "#_2-channel",
+        "title": "2. 如何实现高可用、数据强一致性？",
+        "slug": "_2-如何实现高可用、数据强一致性",
+        "link": "#_2-如何实现高可用、数据强一致性",
         "children": []
       }
     ],
-    "path": "/go/%E5%9F%BA%E7%A1%80/Channel.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "Map",
-    "headers": [
-      {
-        "level": 3,
-        "title": "1. 原理",
-        "slug": "_1-原理",
-        "link": "#_1-原理",
-        "children": []
-      },
-      {
-        "level": 3,
-        "title": "2.Map的数据结构",
-        "slug": "_2-map的数据结构",
-        "link": "#_2-map的数据结构",
-        "children": []
-      },
-      {
-        "level": 3,
-        "title": "问题:",
-        "slug": "问题",
-        "link": "#问题",
-        "children": []
-      },
-      {
-        "level": 3,
-        "title": "参考",
-        "slug": "参考",
-        "link": "#参考",
-        "children": []
-      }
-    ],
-    "path": "/go/%E5%9F%BA%E7%A1%80/Map.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "sync.Mutex",
-    "headers": [
-      {
-        "level": 2,
-        "title": "1. First Commit",
-        "slug": "_1-first-commit",
-        "link": "#_1-first-commit",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "2. 抢占&计数优化",
-        "slug": "_2-抢占-计数优化",
-        "link": "#_2-抢占-计数优化",
-        "children": [
-          {
-            "level": 3,
-            "title": "2.1 抢锁",
-            "slug": "_2-1-抢锁",
-            "link": "#_2-1-抢锁",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "2.2 抢锁流程**（3 个 Goroutine 抢锁）**",
-            "slug": "_2-2-抢锁流程-3-个-goroutine-抢锁",
-            "link": "#_2-2-抢锁流程-3-个-goroutine-抢锁",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "2.3 释放锁",
-            "slug": "_2-3-释放锁",
-            "link": "#_2-3-释放锁",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "2.4 解锁流程（G1 调用 Unlock()，当前有 G2、G3 在等待, G4新来）",
-            "slug": "_2-4-解锁流程-g1-调用-unlock-当前有-g2、g3-在等待-g4新来",
-            "link": "#_2-4-解锁流程-g1-调用-unlock-当前有-g2、g3-在等待-g4新来",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "2.5 总结",
-            "slug": "_2-5-总结",
-            "link": "#_2-5-总结",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "3. 自旋优化",
-            "slug": "_3-自旋优化",
-            "link": "#_3-自旋优化",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "4. 公平优化",
-            "slug": "_4-公平优化",
-            "link": "#_4-公平优化",
-            "children": []
-          }
-        ]
-      }
-    ],
-    "path": "/go/%E5%9F%BA%E7%A1%80/Mutex.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "Go工具速用",
-    "headers": [
-      {
-        "level": 2,
-        "title": "1. 常用方法",
-        "slug": "_1-常用方法",
-        "link": "#_1-常用方法",
-        "children": [
-          {
-            "level": 3,
-            "title": "随机数",
-            "slug": "随机数",
-            "link": "#随机数",
-            "children": []
-          }
-        ]
-      }
-    ],
-    "path": "/go/%E5%9F%BA%E7%A1%80/go%E5%B7%A5%E5%85%B7%E9%80%9F%E7%94%A8.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "Go语言速记",
-    "headers": [
-      {
-        "level": 2,
-        "title": "1. 基础类型",
-        "slug": "_1-基础类型",
-        "link": "#_1-基础类型",
-        "children": [
-          {
-            "level": 3,
-            "title": "整型",
-            "slug": "整型",
-            "link": "#整型",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "浮点型",
-            "slug": "浮点型",
-            "link": "#浮点型",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "布尔",
-            "slug": "布尔",
-            "link": "#布尔",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "字符串",
-            "slug": "字符串",
-            "link": "#字符串",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "指针",
-            "slug": "指针",
-            "link": "#指针",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "数据类型转换",
-            "slug": "数据类型转换",
-            "link": "#数据类型转换",
-            "children": []
-          }
-        ]
-      },
-      {
-        "level": 2,
-        "title": "2. 容器",
-        "slug": "_2-容器",
-        "link": "#_2-容器",
-        "children": [
-          {
-            "level": 3,
-            "title": "数组（array）",
-            "slug": "数组-array",
-            "link": "#数组-array",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "切片（slice）",
-            "slug": "切片-slice",
-            "link": "#切片-slice",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "变量逃逸",
-            "slug": "变量逃逸",
-            "link": "#变量逃逸",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "关于 Go 闭包逃逸与性能优化的核心问题",
-            "slug": "关于-go-闭包逃逸与性能优化的核心问题",
-            "link": "#关于-go-闭包逃逸与性能优化的核心问题",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "1. 为什么需要避免不必要的逃逸？",
-            "slug": "_1-为什么需要避免不必要的逃逸",
-            "link": "#_1-为什么需要避免不必要的逃逸",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "2. 闭包逃逸的实际性能影响",
-            "slug": "_2-闭包逃逸的实际性能影响",
-            "link": "#_2-闭包逃逸的实际性能影响",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "3. 何时可以接受闭包逃逸？",
-            "slug": "_3-何时可以接受闭包逃逸",
-            "link": "#_3-何时可以接受闭包逃逸",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "4. 如何减少闭包逃逸？",
-            "slug": "_4-如何减少闭包逃逸",
-            "link": "#_4-如何减少闭包逃逸",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "5. 监控与调优工具",
-            "slug": "_5-监控与调优工具",
-            "link": "#_5-监控与调优工具",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "总结",
-            "slug": "总结",
-            "link": "#总结",
-            "children": []
-          }
-        ]
-      }
-    ],
-    "path": "/go/%E5%9F%BA%E7%A1%80/go%E8%AF%AD%E8%A8%80%E9%80%9F%E8%AE%B0.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "Go内存管理与GC",
-    "headers": [
-      {
-        "level": 2,
-        "title": "1. 内存模型",
-        "slug": "_1-内存模型",
-        "link": "#_1-内存模型",
-        "children": [
-          {
-            "level": 3,
-            "title": "1.1 操作系统内存模型",
-            "slug": "_1-1-操作系统内存模型",
-            "link": "#_1-1-操作系统内存模型",
-            "children": []
-          }
-        ]
-      }
-    ],
-    "path": "/go/%E5%9F%BA%E7%A1%80/%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86%E4%B8%8EGC.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "Go闭包",
-    "headers": [
-      {
-        "level": 2,
-        "title": "1. 闭包",
-        "slug": "_1-闭包",
-        "link": "#_1-闭包",
-        "children": [
-          {
-            "level": 3,
-            "title": "1.1 闭包区别",
-            "slug": "_1-1-闭包区别",
-            "link": "#_1-1-闭包区别",
-            "children": []
-          }
-        ]
-      },
-      {
-        "level": 2,
-        "title": "2. 闭包性能分析",
-        "slug": "_2-闭包性能分析",
-        "link": "#_2-闭包性能分析",
-        "children": [
-          {
-            "level": 3,
-            "title": "2.1 Benchmark示例",
-            "slug": "_2-1-benchmark示例",
-            "link": "#_2-1-benchmark示例",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "2.2 性能分析",
-            "slug": "_2-2-性能分析",
-            "link": "#_2-2-性能分析",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "2.3 生产环境建议",
-            "slug": "_2-3-生产环境建议",
-            "link": "#_2-3-生产环境建议",
-            "children": []
-          }
-        ]
-      },
-      {
-        "level": 2,
-        "title": "3. 行业应用案例",
-        "slug": "_3-行业应用案例",
-        "link": "#_3-行业应用案例",
-        "children": [
-          {
-            "level": 3,
-            "title": "HTTP中间件",
-            "slug": "http中间件",
-            "link": "#http中间件",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "测试桩(Stub)生成",
-            "slug": "测试桩-stub-生成",
-            "link": "#测试桩-stub-生成",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "defer + 复杂依赖清理资源",
-            "slug": "defer-复杂依赖清理资源",
-            "link": "#defer-复杂依赖清理资源",
-            "children": []
-          }
-        ]
-      }
-    ],
-    "path": "/go/%E5%9F%BA%E7%A1%80/%E9%97%AD%E5%8C%85.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "数组",
-    "headers": [
-      {
-        "level": 2,
-        "title": "1. 数组",
-        "slug": "_1-数组",
-        "link": "#_1-数组",
-        "children": [
-          {
-            "level": 3,
-            "title": "1.1 Golang 中的数组",
-            "slug": "_1-1-golang-中的数组",
-            "link": "#_1-1-golang-中的数组",
-            "children": []
-          }
-        ]
-      },
-      {
-        "level": 2,
-        "title": "2. 可变数组",
-        "slug": "_2-可变数组",
-        "link": "#_2-可变数组",
-        "children": [
-          {
-            "level": 3,
-            "title": "2.1 可变数组概念",
-            "slug": "_2-1-可变数组概念",
-            "link": "#_2-1-可变数组概念",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "2.2 扩容缩容机制",
-            "slug": "_2-2-扩容缩容机制",
-            "link": "#_2-2-扩容缩容机制",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "2.3 可变数组特性",
-            "slug": "_2-3-可变数组特性",
-            "link": "#_2-3-可变数组特性",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "2.4 实现",
-            "slug": "_2-4-实现",
-            "link": "#_2-4-实现",
-            "children": []
-          }
-        ]
-      },
-      {
-        "level": 2,
-        "title": "3.稀疏矩阵",
-        "slug": "_3-稀疏矩阵",
-        "link": "#_3-稀疏矩阵",
-        "children": [
-          {
-            "level": 3,
-            "title": "3.1 问题的引入",
-            "slug": "_3-1-问题的引入",
-            "link": "#_3-1-问题的引入",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "3.2 稀疏数组存储数据",
-            "slug": "_3-2-稀疏数组存储数据",
-            "link": "#_3-2-稀疏数组存储数据",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "3.3 实现",
-            "slug": "_3-3-实现",
-            "link": "#_3-3-实现",
-            "children": []
-          }
-        ]
-      }
-    ],
-    "path": "/go/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E7%BB%84.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "栈与队列",
-    "headers": [
-      {
-        "level": 2,
-        "title": "1. 栈",
-        "slug": "_1-栈",
-        "link": "#_1-栈",
-        "children": [
-          {
-            "level": 3,
-            "title": "1.1 顺序栈",
-            "slug": "_1-1-顺序栈",
-            "link": "#_1-1-顺序栈",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "1.2 链式栈",
-            "slug": "_1-2-链式栈",
-            "link": "#_1-2-链式栈",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "1.3 共享空间栈",
-            "slug": "_1-3-共享空间栈",
-            "link": "#_1-3-共享空间栈",
-            "children": []
-          }
-        ]
-      },
-      {
-        "level": 2,
-        "title": "2. 队列",
-        "slug": "_2-队列",
-        "link": "#_2-队列",
-        "children": [
-          {
-            "level": 3,
-            "title": "2.1 链式存储",
-            "slug": "_2-1-链式存储",
-            "link": "#_2-1-链式存储",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "2.2 顺序存储",
-            "slug": "_2-2-顺序存储",
-            "link": "#_2-2-顺序存储",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "2.3 循环队列",
-            "slug": "_2-3-循环队列",
-            "link": "#_2-3-循环队列",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "2.4 双端队列",
-            "slug": "_2-4-双端队列",
-            "link": "#_2-4-双端队列",
-            "children": []
-          }
-        ]
-      },
-      {
-        "level": 2,
-        "title": "3.栈的应用",
-        "slug": "_3-栈的应用",
-        "link": "#_3-栈的应用",
-        "children": [
-          {
-            "level": 3,
-            "title": "3.1 函数调用栈",
-            "slug": "_3-1-函数调用栈",
-            "link": "#_3-1-函数调用栈",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "1.2 表达式求值",
-            "slug": "_1-2-表达式求值",
-            "link": "#_1-2-表达式求值",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "1.3 栈匹配括号",
-            "slug": "_1-3-栈匹配括号",
-            "link": "#_1-3-栈匹配括号",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "1.4 浏览器历史记录",
-            "slug": "_1-4-浏览器历史记录",
-            "link": "#_1-4-浏览器历史记录",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "1.5 栈与递归",
-            "slug": "_1-5-栈与递归",
-            "link": "#_1-5-栈与递归",
-            "children": []
-          }
-        ]
-      },
-      {
-        "level": 2,
-        "title": "4. 队列的应用",
-        "slug": "_4-队列的应用",
-        "link": "#_4-队列的应用",
-        "children": [
-          {
-            "level": 3,
-            "title": "2.1 阻塞对垒",
-            "slug": "_2-1-阻塞对垒",
-            "link": "#_2-1-阻塞对垒",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "1.2 并发队列",
-            "slug": "_1-2-并发队列",
-            "link": "#_1-2-并发队列",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "1.3 线程池实现",
-            "slug": "_1-3-线程池实现",
-            "link": "#_1-3-线程池实现",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "为什么引入 栈 与 队列 这样的数据结构",
-            "slug": "为什么引入-栈-与-队列-这样的数据结构",
-            "link": "#为什么引入-栈-与-队列-这样的数据结构",
-            "children": []
-          }
-        ]
-      }
-    ],
-    "path": "/go/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%A0%88%E4%B8%8E%E9%98%9F%E5%88%97.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "树",
-    "headers": [
-      {
-        "level": 2,
-        "title": "1. 树",
-        "slug": "_1-树",
-        "link": "#_1-树",
-        "children": [
-          {
-            "level": 3,
-            "title": "1.1 树形结构",
-            "slug": "_1-1-树形结构",
-            "link": "#_1-1-树形结构",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "1.2 树的理解",
-            "slug": "_1-2-树的理解",
-            "link": "#_1-2-树的理解",
-            "children": []
-          }
-        ]
-      },
-      {
-        "level": 2,
-        "title": "2. 树的存储结构",
-        "slug": "_2-树的存储结构",
-        "link": "#_2-树的存储结构",
-        "children": [
-          {
-            "level": 3,
-            "title": "2.1 双亲表示法",
-            "slug": "_2-1-双亲表示法",
-            "link": "#_2-1-双亲表示法",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "2.2 孩子表示法",
-            "slug": "_2-2-孩子表示法",
-            "link": "#_2-2-孩子表示法",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "2.3 孩子兄弟表示法",
-            "slug": "_2-3-孩子兄弟表示法",
-            "link": "#_2-3-孩子兄弟表示法",
-            "children": []
-          }
-        ]
-      },
-      {
-        "level": 2,
-        "title": "3. 二叉树",
-        "slug": "_3-二叉树",
-        "link": "#_3-二叉树",
-        "children": [
-          {
-            "level": 3,
-            "title": "3.1 非空二叉树的特性",
-            "slug": "_3-1-非空二叉树的特性",
-            "link": "#_3-1-非空二叉树的特性",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "3.3 完全二叉树",
-            "slug": "_3-3-完全二叉树",
-            "link": "#_3-3-完全二叉树",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "3.4 二叉树存储结构",
-            "slug": "_3-4-二叉树存储结构",
-            "link": "#_3-4-二叉树存储结构",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "3.5 二叉树的四种遍历方式",
-            "slug": "_3-5-二叉树的四种遍历方式",
-            "link": "#_3-5-二叉树的四种遍历方式",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "3.6 实现",
-            "slug": "_3-6-实现",
-            "link": "#_3-6-实现",
-            "children": []
-          }
-        ]
-      },
-      {
-        "level": 2,
-        "title": "4. 二叉搜索树",
-        "slug": "_4-二叉搜索树",
-        "link": "#_4-二叉搜索树",
-        "children": [
-          {
-            "level": 3,
-            "title": "4.1 二叉搜索树查找思想",
-            "slug": "_4-1-二叉搜索树查找思想",
-            "link": "#_4-1-二叉搜索树查找思想",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "4.2 插入实现",
-            "slug": "_4-2-插入实现",
-            "link": "#_4-2-插入实现",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "4.3 二叉搜索树其他操作",
-            "slug": "_4-3-二叉搜索树其他操作",
-            "link": "#_4-3-二叉搜索树其他操作",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "4.4 时间复杂度与平衡树",
-            "slug": "_4-4-时间复杂度与平衡树",
-            "link": "#_4-4-时间复杂度与平衡树",
-            "children": []
-          }
-        ]
-      }
-    ],
-    "path": "/go/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%A0%91.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "数据结构概述",
-    "headers": [
-      {
-        "level": 2,
-        "title": "1.数据结构概述",
-        "slug": "_1-数据结构概述",
-        "link": "#_1-数据结构概述",
-        "children": [
-          {
-            "level": 3,
-            "title": "1.1 数据的容器",
-            "slug": "_1-1-数据的容器",
-            "link": "#_1-1-数据的容器",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "1.2 数据的存储",
-            "slug": "_1-2-数据的存储",
-            "link": "#_1-2-数据的存储",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "1.3 存储结构",
-            "slug": "_1-3-存储结构",
-            "link": "#_1-3-存储结构",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "2.3 物理结构和逻辑结构关系",
-            "slug": "_2-3-物理结构和逻辑结构关系",
-            "link": "#_2-3-物理结构和逻辑结构关系",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "3. 数据的抽象数据类型",
-            "slug": "_3-数据的抽象数据类型",
-            "link": "#_3-数据的抽象数据类型",
-            "children": []
-          }
-        ]
-      },
-      {
-        "level": 2,
-        "title": "2. 算法概述",
-        "slug": "_2-算法概述",
-        "link": "#_2-算法概述",
-        "children": [
-          {
-            "level": 3,
-            "title": "2.1 什么是算法",
-            "slug": "_2-1-什么是算法",
-            "link": "#_2-1-什么是算法",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "2.2 算法的特性",
-            "slug": "_2-2-算法的特性",
-            "link": "#_2-2-算法的特性",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "2.3 算法的设计要求",
-            "slug": "_2-3-算法的设计要求",
-            "link": "#_2-3-算法的设计要求",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "2.4 算法的执行次数",
-            "slug": "_2-4-算法的执行次数",
-            "link": "#_2-4-算法的执行次数",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "2.5 算法的时间复杂度",
-            "slug": "_2-5-算法的时间复杂度",
-            "link": "#_2-5-算法的时间复杂度",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "2.6 算法的空间复杂度",
-            "slug": "_2-6-算法的空间复杂度",
-            "link": "#_2-6-算法的空间复杂度",
-            "children": []
-          }
-        ]
-      },
-      {
-        "level": 2,
-        "title": "3. 大 O 表示法",
-        "slug": "_3-大-o-表示法",
-        "link": "#_3-大-o-表示法",
-        "children": [
-          {
-            "level": 3,
-            "title": "3.1 大O中的几个记号",
-            "slug": "_3-1-大o中的几个记号",
-            "link": "#_3-1-大o中的几个记号",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "3.2 推导大 $O$ 阶方法",
-            "slug": "_3-2-推导大-o-阶方法",
-            "link": "#_3-2-推导大-o-阶方法",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "3.3 递归算法的推导",
-            "slug": "_3-3-递归算法的推导",
-            "link": "#_3-3-递归算法的推导",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "3.4 常数阶 $O(1)$ 和线性阶 $O(n)$",
-            "slug": "_3-4-常数阶-o-1-和线性阶-o-n",
-            "link": "#_3-4-常数阶-o-1-和线性阶-o-n",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "3.5 平方阶 $O(n^2)$",
-            "slug": "_3-5-平方阶-o-n-2",
-            "link": "#_3-5-平方阶-o-n-2",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "3.6 指数阶 $O(2^n)$",
-            "slug": "_3-6-指数阶-o-2-n",
-            "link": "#_3-6-指数阶-o-2-n",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "3.7 对数阶",
-            "slug": "_3-7-对数阶",
-            "link": "#_3-7-对数阶",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "3.8 旅行商问题",
-            "slug": "_3-8-旅行商问题",
-            "link": "#_3-8-旅行商问题",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "3.9 总结常见的时间复杂度",
-            "slug": "_3-9-总结常见的时间复杂度",
-            "link": "#_3-9-总结常见的时间复杂度",
-            "children": []
-          }
-        ]
-      },
-      {
-        "level": 2,
-        "title": "4. 空间复杂度计算",
-        "slug": "_4-空间复杂度计算",
-        "link": "#_4-空间复杂度计算",
-        "children": [
-          {
-            "level": 3,
-            "title": "4.1 空间复杂度的运算",
-            "slug": "_4-1-空间复杂度的运算",
-            "link": "#_4-1-空间复杂度的运算",
-            "children": []
-          }
-        ]
-      }
-    ],
-    "path": "/go/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%A6%82%E8%BF%B0.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "线性表",
-    "headers": [
-      {
-        "level": 2,
-        "title": "1. 线性表",
-        "slug": "_1-线性表",
-        "link": "#_1-线性表",
-        "children": [
-          {
-            "level": 3,
-            "title": "1.1 线性表概述",
-            "slug": "_1-1-线性表概述",
-            "link": "#_1-1-线性表概述",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "1.2 线性表的特点",
-            "slug": "_1-2-线性表的特点",
-            "link": "#_1-2-线性表的特点",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "1.3 线性表的划分",
-            "slug": "_1-3-线性表的划分",
-            "link": "#_1-3-线性表的划分",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "1.4 线性表与数组的区别",
-            "slug": "_1-4-线性表与数组的区别",
-            "link": "#_1-4-线性表与数组的区别",
-            "children": []
-          }
-        ]
-      },
-      {
-        "level": 2,
-        "title": "2. 顺序表",
-        "slug": "_2-顺序表",
-        "link": "#_2-顺序表",
-        "children": [
-          {
-            "level": 3,
-            "title": "2.1 顺序表概述",
-            "slug": "_2-1-顺序表概述",
-            "link": "#_2-1-顺序表概述",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "2.2 顺序表的结构与存取",
-            "slug": "_2-2-顺序表的结构与存取",
-            "link": "#_2-2-顺序表的结构与存取",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "2.3 复杂度总结",
-            "slug": "_2-3-复杂度总结",
-            "link": "#_2-3-复杂度总结",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "2.4 实现",
-            "slug": "_2-4-实现",
-            "link": "#_2-4-实现",
-            "children": []
-          }
-        ]
-      },
-      {
-        "level": 2,
-        "title": "3. 单链表",
-        "slug": "_3-单链表",
-        "link": "#_3-单链表",
-        "children": [
-          {
-            "level": 3,
-            "title": "3.1 链表概述",
-            "slug": "_3-1-链表概述",
-            "link": "#_3-1-链表概述",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "3.2 链表的结点",
-            "slug": "_3-2-链表的结点",
-            "link": "#_3-2-链表的结点",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "3.3 头指针",
-            "slug": "_3-3-头指针",
-            "link": "#_3-3-头指针",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "3.4 头结点",
-            "slug": "_3-4-头结点",
-            "link": "#_3-4-头结点",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "3.5单链表定义总结",
-            "slug": "_3-5单链表定义总结",
-            "link": "#_3-5单链表定义总结",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "3.6 实现",
-            "slug": "_3-6-实现",
-            "link": "#_3-6-实现",
-            "children": []
-          }
-        ]
-      },
-      {
-        "level": 2,
-        "title": "4. 循环链表",
-        "slug": "_4-循环链表",
-        "link": "#_4-循环链表",
-        "children": [
-          {
-            "level": 3,
-            "title": "4.1 循环链表制作思路",
-            "slug": "_4-1-循环链表制作思路",
-            "link": "#_4-1-循环链表制作思路",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "4.2 实现",
-            "slug": "_4-2-实现",
-            "link": "#_4-2-实现",
-            "children": []
-          }
-        ]
-      },
-      {
-        "level": 2,
-        "title": "5. 双向链表",
-        "slug": "_5-双向链表",
-        "link": "#_5-双向链表",
-        "children": [
-          {
-            "level": 3,
-            "title": "5.1 双向链表概述",
-            "slug": "_5-1-双向链表概述",
-            "link": "#_5-1-双向链表概述",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "5.2 双向循环链表概述",
-            "slug": "_5-2-双向循环链表概述",
-            "link": "#_5-2-双向循环链表概述",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "5.3 实现",
-            "slug": "_5-3-实现",
-            "link": "#_5-3-实现",
-            "children": []
-          }
-        ]
-      },
-      {
-        "level": 2,
-        "title": "6. 静态链表",
-        "slug": "_6-静态链表",
-        "link": "#_6-静态链表",
-        "children": [
-          {
-            "level": 3,
-            "title": "6.1 静态链表概述",
-            "slug": "_6-1-静态链表概述",
-            "link": "#_6-1-静态链表概述",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "6.2 静态链表的实现解释",
-            "slug": "_6-2-静态链表的实现解释",
-            "link": "#_6-2-静态链表的实现解释",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "6.3 静态链表初始化与数据变更",
-            "slug": "_6-3-静态链表初始化与数据变更",
-            "link": "#_6-3-静态链表初始化与数据变更",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "6.4 静态链表实际演示",
-            "slug": "_6-4-静态链表实际演示",
-            "link": "#_6-4-静态链表实际演示",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "6.5 静态链表的优缺点",
-            "slug": "_6-5-静态链表的优缺点",
-            "link": "#_6-5-静态链表的优缺点",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "6.6 实现",
-            "slug": "_6-6-实现",
-            "link": "#_6-6-实现",
-            "children": []
-          }
-        ]
-      },
-      {
-        "level": 2,
-        "title": "7. 链表的应用",
-        "slug": "_7-链表的应用",
-        "link": "#_7-链表的应用",
-        "children": [
-          {
-            "level": 3,
-            "title": "7.1 LRU 缓存淘汰算法",
-            "slug": "_7-1-lru-缓存淘汰算法",
-            "link": "#_7-1-lru-缓存淘汰算法",
-            "children": []
-          }
-        ]
-      }
-    ],
-    "path": "/go/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%BA%BF%E6%80%A7%E8%A1%A8.html",
+    "path": "/database/etcd/%E8%BF%9B%E9%98%B6.html",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -3502,141 +2197,1663 @@ export const SEARCH_INDEX = [
     "extraFields": []
   },
   {
-    "title": "aioetcd3",
+    "title": "Channel",
     "headers": [
       {
         "level": 3,
-        "title": "安装",
-        "slug": "安装",
-        "link": "#安装",
+        "title": "1. CSP",
+        "slug": "_1-csp",
+        "link": "#_1-csp",
         "children": []
       },
       {
-        "level": 2,
-        "title": "1. 使用说明",
-        "slug": "_1-使用说明",
-        "link": "#_1-使用说明",
-        "children": [
-          {
-            "level": 3,
-            "title": "2. 分布式锁",
-            "slug": "_2-分布式锁",
-            "link": "#_2-分布式锁",
-            "children": []
-          }
-        ]
+        "level": 3,
+        "title": "2. Channel",
+        "slug": "_2-channel",
+        "link": "#_2-channel",
+        "children": []
       }
     ],
-    "path": "/database/etcd/aioetcd3.html",
+    "path": "/go/%E5%9F%BA%E7%A1%80/Channel.html",
     "pathLocale": "/",
     "extraFields": []
   },
   {
-    "title": "etcd",
+    "title": "Go工具速用",
     "headers": [
       {
         "level": 2,
-        "title": "1. 简介",
-        "slug": "_1-简介",
-        "link": "#_1-简介",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "2. 工作原理",
-        "slug": "_2-工作原理",
-        "link": "#_2-工作原理",
+        "title": "1. 常用方法",
+        "slug": "_1-常用方法",
+        "link": "#_1-常用方法",
         "children": [
           {
             "level": 3,
-            "title": "2.1 选主",
-            "slug": "_2-1-选主",
-            "link": "#_2-1-选主",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "2.2 日志复制",
-            "slug": "_2-2-日志复制",
-            "link": "#_2-2-日志复制",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "2.3 安全性",
-            "slug": "_2-3-安全性",
-            "link": "#_2-3-安全性",
-            "children": []
-          }
-        ]
-      },
-      {
-        "level": 2,
-        "title": "3. 使用说明",
-        "slug": "_3-使用说明",
-        "link": "#_3-使用说明",
-        "children": [
-          {
-            "level": 3,
-            "title": "3.1 安装搭建",
-            "slug": "_3-1-安装搭建",
-            "link": "#_3-1-安装搭建",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "3.2 操作说明",
-            "slug": "_3-2-操作说明",
-            "link": "#_3-2-操作说明",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "数据库操作",
-            "slug": "数据库操作",
-            "link": "#数据库操作",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "get",
-            "slug": "get",
-            "link": "#get",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "非数据库操作",
-            "slug": "非数据库操作",
-            "link": "#非数据库操作",
+            "title": "随机数",
+            "slug": "随机数",
+            "link": "#随机数",
             "children": []
           }
         ]
       }
     ],
-    "path": "/database/etcd/etcd.html",
+    "path": "/go/%E5%9F%BA%E7%A1%80/go%E5%B7%A5%E5%85%B7%E9%80%9F%E7%94%A8.html",
     "pathLocale": "/",
     "extraFields": []
   },
   {
-    "title": "etcd 进阶",
+    "title": "Go语言速记",
+    "headers": [
+      {
+        "level": 2,
+        "title": "1. 基础类型",
+        "slug": "_1-基础类型",
+        "link": "#_1-基础类型",
+        "children": [
+          {
+            "level": 3,
+            "title": "整型",
+            "slug": "整型",
+            "link": "#整型",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "浮点型",
+            "slug": "浮点型",
+            "link": "#浮点型",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "布尔",
+            "slug": "布尔",
+            "link": "#布尔",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "字符串",
+            "slug": "字符串",
+            "link": "#字符串",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "指针",
+            "slug": "指针",
+            "link": "#指针",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "数据类型转换",
+            "slug": "数据类型转换",
+            "link": "#数据类型转换",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "2. 容器",
+        "slug": "_2-容器",
+        "link": "#_2-容器",
+        "children": [
+          {
+            "level": 3,
+            "title": "数组（array）",
+            "slug": "数组-array",
+            "link": "#数组-array",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "切片（slice）",
+            "slug": "切片-slice",
+            "link": "#切片-slice",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "变量逃逸",
+            "slug": "变量逃逸",
+            "link": "#变量逃逸",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "关于 Go 闭包逃逸与性能优化的核心问题",
+            "slug": "关于-go-闭包逃逸与性能优化的核心问题",
+            "link": "#关于-go-闭包逃逸与性能优化的核心问题",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "1. 为什么需要避免不必要的逃逸？",
+            "slug": "_1-为什么需要避免不必要的逃逸",
+            "link": "#_1-为什么需要避免不必要的逃逸",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "2. 闭包逃逸的实际性能影响",
+            "slug": "_2-闭包逃逸的实际性能影响",
+            "link": "#_2-闭包逃逸的实际性能影响",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "3. 何时可以接受闭包逃逸？",
+            "slug": "_3-何时可以接受闭包逃逸",
+            "link": "#_3-何时可以接受闭包逃逸",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "4. 如何减少闭包逃逸？",
+            "slug": "_4-如何减少闭包逃逸",
+            "link": "#_4-如何减少闭包逃逸",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "5. 监控与调优工具",
+            "slug": "_5-监控与调优工具",
+            "link": "#_5-监控与调优工具",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "总结",
+            "slug": "总结",
+            "link": "#总结",
+            "children": []
+          }
+        ]
+      }
+    ],
+    "path": "/go/%E5%9F%BA%E7%A1%80/go%E8%AF%AD%E8%A8%80%E9%80%9F%E8%AE%B0.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "Map",
     "headers": [
       {
         "level": 3,
-        "title": "1. etcd 的请求是如何执行的？",
-        "slug": "_1-etcd-的请求是如何执行的",
-        "link": "#_1-etcd-的请求是如何执行的",
+        "title": "1. 原理",
+        "slug": "_1-原理",
+        "link": "#_1-原理",
         "children": []
       },
       {
         "level": 3,
-        "title": "2. 如何实现高可用、数据强一致性？",
-        "slug": "_2-如何实现高可用、数据强一致性",
-        "link": "#_2-如何实现高可用、数据强一致性",
+        "title": "2.Map的数据结构",
+        "slug": "_2-map的数据结构",
+        "link": "#_2-map的数据结构",
+        "children": []
+      },
+      {
+        "level": 3,
+        "title": "问题:",
+        "slug": "问题",
+        "link": "#问题",
+        "children": []
+      },
+      {
+        "level": 3,
+        "title": "参考",
+        "slug": "参考",
+        "link": "#参考",
         "children": []
       }
     ],
-    "path": "/database/etcd/%E8%BF%9B%E9%98%B6.html",
+    "path": "/go/%E5%9F%BA%E7%A1%80/Map.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "sync.Mutex",
+    "headers": [
+      {
+        "level": 2,
+        "title": "1. First Commit",
+        "slug": "_1-first-commit",
+        "link": "#_1-first-commit",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "2. 抢占&计数优化",
+        "slug": "_2-抢占-计数优化",
+        "link": "#_2-抢占-计数优化",
+        "children": [
+          {
+            "level": 3,
+            "title": "2.1 抢锁",
+            "slug": "_2-1-抢锁",
+            "link": "#_2-1-抢锁",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "2.2 抢锁流程**（3 个 Goroutine 抢锁）**",
+            "slug": "_2-2-抢锁流程-3-个-goroutine-抢锁",
+            "link": "#_2-2-抢锁流程-3-个-goroutine-抢锁",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "2.3 释放锁",
+            "slug": "_2-3-释放锁",
+            "link": "#_2-3-释放锁",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "2.4 解锁流程（G1 调用 Unlock()，当前有 G2、G3 在等待, G4新来）",
+            "slug": "_2-4-解锁流程-g1-调用-unlock-当前有-g2、g3-在等待-g4新来",
+            "link": "#_2-4-解锁流程-g1-调用-unlock-当前有-g2、g3-在等待-g4新来",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "2.5 总结",
+            "slug": "_2-5-总结",
+            "link": "#_2-5-总结",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "3. 自旋优化",
+            "slug": "_3-自旋优化",
+            "link": "#_3-自旋优化",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "4. 公平优化",
+            "slug": "_4-公平优化",
+            "link": "#_4-公平优化",
+            "children": []
+          }
+        ]
+      }
+    ],
+    "path": "/go/%E5%9F%BA%E7%A1%80/Mutex.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "Go内存管理与GC",
+    "headers": [
+      {
+        "level": 2,
+        "title": "1. 内存模型",
+        "slug": "_1-内存模型",
+        "link": "#_1-内存模型",
+        "children": [
+          {
+            "level": 3,
+            "title": "1.1 操作系统内存模型",
+            "slug": "_1-1-操作系统内存模型",
+            "link": "#_1-1-操作系统内存模型",
+            "children": []
+          }
+        ]
+      }
+    ],
+    "path": "/go/%E5%9F%BA%E7%A1%80/%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86%E4%B8%8EGC.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "Go闭包",
+    "headers": [
+      {
+        "level": 2,
+        "title": "1. 闭包",
+        "slug": "_1-闭包",
+        "link": "#_1-闭包",
+        "children": [
+          {
+            "level": 3,
+            "title": "1.1 闭包区别",
+            "slug": "_1-1-闭包区别",
+            "link": "#_1-1-闭包区别",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "2. 闭包性能分析",
+        "slug": "_2-闭包性能分析",
+        "link": "#_2-闭包性能分析",
+        "children": [
+          {
+            "level": 3,
+            "title": "2.1 Benchmark示例",
+            "slug": "_2-1-benchmark示例",
+            "link": "#_2-1-benchmark示例",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "2.2 性能分析",
+            "slug": "_2-2-性能分析",
+            "link": "#_2-2-性能分析",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "2.3 生产环境建议",
+            "slug": "_2-3-生产环境建议",
+            "link": "#_2-3-生产环境建议",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "3. 行业应用案例",
+        "slug": "_3-行业应用案例",
+        "link": "#_3-行业应用案例",
+        "children": [
+          {
+            "level": 3,
+            "title": "HTTP中间件",
+            "slug": "http中间件",
+            "link": "#http中间件",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "测试桩(Stub)生成",
+            "slug": "测试桩-stub-生成",
+            "link": "#测试桩-stub-生成",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "defer + 复杂依赖清理资源",
+            "slug": "defer-复杂依赖清理资源",
+            "link": "#defer-复杂依赖清理资源",
+            "children": []
+          }
+        ]
+      }
+    ],
+    "path": "/go/%E5%9F%BA%E7%A1%80/%E9%97%AD%E5%8C%85.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "H2O引出的优化",
+    "headers": [
+      {
+        "level": 2,
+        "title": "1. 水工厂问题",
+        "slug": "_1-水工厂问题",
+        "link": "#_1-水工厂问题",
+        "children": [
+          {
+            "level": 3,
+            "title": "1.1 问题如下",
+            "slug": "_1-1-问题如下",
+            "link": "#_1-1-问题如下",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "1.2 CyclicBarrier 与 WaitGroup",
+            "slug": "_1-2-cyclicbarrier-与-waitgroup",
+            "link": "#_1-2-cyclicbarrier-与-waitgroup",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "1.3 CyclicBarrier 说明",
+            "slug": "_1-3-cyclicbarrier-说明",
+            "link": "#_1-3-cyclicbarrier-说明",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "1.4 CyclicBarrier 的实现",
+            "slug": "_1-4-cyclicbarrier-的实现",
+            "link": "#_1-4-cyclicbarrier-的实现",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "2. 业务中的思考",
+        "slug": "_2-业务中的思考",
+        "link": "#_2-业务中的思考",
+        "children": [
+          {
+            "level": 3,
+            "title": "2.1 单机屏障",
+            "slug": "_2-1-单机屏障",
+            "link": "#_2-1-单机屏障",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "2.2 分布式屏障",
+            "slug": "_2-2-分布式屏障",
+            "link": "#_2-2-分布式屏障",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "2.3 场景差异",
+            "slug": "_2-3-场景差异",
+            "link": "#_2-3-场景差异",
+            "children": []
+          }
+        ]
+      }
+    ],
+    "path": "/go/%E4%BC%98%E5%8C%96/H2O%E5%BC%95%E5%8F%91%E7%9A%84%E4%BC%98%E5%8C%96.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "关于MapReduce",
+    "headers": [
+      {
+        "level": 2,
+        "title": "1. 查询异常",
+        "slug": "_1-查询异常",
+        "link": "#_1-查询异常",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "2. MapReduce",
+        "slug": "_2-mapreduce",
+        "link": "#_2-mapreduce",
+        "children": [
+          {
+            "level": 3,
+            "title": "2.1 概念及基本使用",
+            "slug": "_2-1-概念及基本使用",
+            "link": "#_2-1-概念及基本使用",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "2.2 go-zero的mr源码",
+            "slug": "_2-2-go-zero的mr源码",
+            "link": "#_2-2-go-zero的mr源码",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "3. 优化批处理",
+        "slug": "_3-优化批处理",
+        "link": "#_3-优化批处理",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "FindInBatches",
+        "slug": "findinbatches",
+        "link": "#findinbatches",
+        "children": []
+      }
+    ],
+    "path": "/go/%E4%BC%98%E5%8C%96/%E5%85%B3%E4%BA%8EMapReduce.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "分布式注册优化",
+    "headers": [
+      {
+        "level": 2,
+        "title": "1. 初步想到的解决方案",
+        "slug": "_1-初步想到的解决方案",
+        "link": "#_1-初步想到的解决方案",
+        "children": [
+          {
+            "level": 3,
+            "title": "1.1 SingleFlight模式 (单飞)",
+            "slug": "_1-1-singleflight模式-单飞",
+            "link": "#_1-1-singleflight模式-单飞",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "1.2 数据库唯一约束 + 重试机制",
+            "slug": "_1-2-数据库唯一约束-重试机制",
+            "link": "#_1-2-数据库唯一约束-重试机制",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "1.3 Redis分布式锁",
+            "slug": "_1-3-redis分布式锁",
+            "link": "#_1-3-redis分布式锁",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "1.4 分段锁",
+            "slug": "_1-4-分段锁",
+            "link": "#_1-4-分段锁",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "2. 动态分段锁的ABA问题",
+        "slug": "_2-动态分段锁的aba问题",
+        "link": "#_2-动态分段锁的aba问题",
+        "children": [
+          {
+            "level": 3,
+            "title": "2.1 ABA的出现",
+            "slug": "_2-1-aba的出现",
+            "link": "#_2-1-aba的出现",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "2.2 什么是ABA问题？",
+            "slug": "_2-2-什么是aba问题",
+            "link": "#_2-2-什么是aba问题",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "2.3 单测 “-race” 检测",
+            "slug": "_2-3-单测-race-检测",
+            "link": "#_2-3-单测-race-检测",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "2.4 sync.Map动态锁 + 唯一ID防ABA（无效）",
+            "slug": "_2-4-sync-map动态锁-唯一id防aba-无效",
+            "link": "#_2-4-sync-map动态锁-唯一id防aba-无效",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "2.5 一句话结论",
+            "slug": "_2-5-一句话结论",
+            "link": "#_2-5-一句话结论",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "3. 静态分段锁",
+        "slug": "_3-静态分段锁",
+        "link": "#_3-静态分段锁",
+        "children": [
+          {
+            "level": 3,
+            "title": "3.2 分段读写锁（读多写少）",
+            "slug": "_3-2-分段读写锁-读多写少",
+            "link": "#_3-2-分段读写锁-读多写少",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "3.3 实际建议",
+            "slug": "_3-3-实际建议",
+            "link": "#_3-3-实际建议",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "4. lockedcalls.go",
+            "slug": "_4-lockedcalls-go",
+            "link": "#_4-lockedcalls-go",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "单飞",
+            "slug": "单飞",
+            "link": "#单飞",
+            "children": []
+          }
+        ]
+      }
+    ],
+    "path": "/go/%E4%BC%98%E5%8C%96/%E5%88%86%E5%B8%83%E5%BC%8F%E6%B3%A8%E5%86%8C%E4%BC%98%E5%8C%96.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "数组",
+    "headers": [
+      {
+        "level": 2,
+        "title": "1. 数组",
+        "slug": "_1-数组",
+        "link": "#_1-数组",
+        "children": [
+          {
+            "level": 3,
+            "title": "1.1 Golang 中的数组",
+            "slug": "_1-1-golang-中的数组",
+            "link": "#_1-1-golang-中的数组",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "2. 可变数组",
+        "slug": "_2-可变数组",
+        "link": "#_2-可变数组",
+        "children": [
+          {
+            "level": 3,
+            "title": "2.1 可变数组概念",
+            "slug": "_2-1-可变数组概念",
+            "link": "#_2-1-可变数组概念",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "2.2 扩容缩容机制",
+            "slug": "_2-2-扩容缩容机制",
+            "link": "#_2-2-扩容缩容机制",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "2.3 可变数组特性",
+            "slug": "_2-3-可变数组特性",
+            "link": "#_2-3-可变数组特性",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "2.4 实现",
+            "slug": "_2-4-实现",
+            "link": "#_2-4-实现",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "3.稀疏矩阵",
+        "slug": "_3-稀疏矩阵",
+        "link": "#_3-稀疏矩阵",
+        "children": [
+          {
+            "level": 3,
+            "title": "3.1 问题的引入",
+            "slug": "_3-1-问题的引入",
+            "link": "#_3-1-问题的引入",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "3.2 稀疏数组存储数据",
+            "slug": "_3-2-稀疏数组存储数据",
+            "link": "#_3-2-稀疏数组存储数据",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "3.3 实现",
+            "slug": "_3-3-实现",
+            "link": "#_3-3-实现",
+            "children": []
+          }
+        ]
+      }
+    ],
+    "path": "/go/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E7%BB%84.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "栈与队列",
+    "headers": [
+      {
+        "level": 2,
+        "title": "1. 栈",
+        "slug": "_1-栈",
+        "link": "#_1-栈",
+        "children": [
+          {
+            "level": 3,
+            "title": "1.1 顺序栈",
+            "slug": "_1-1-顺序栈",
+            "link": "#_1-1-顺序栈",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "1.2 链式栈",
+            "slug": "_1-2-链式栈",
+            "link": "#_1-2-链式栈",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "1.3 共享空间栈",
+            "slug": "_1-3-共享空间栈",
+            "link": "#_1-3-共享空间栈",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "2. 队列",
+        "slug": "_2-队列",
+        "link": "#_2-队列",
+        "children": [
+          {
+            "level": 3,
+            "title": "2.1 链式存储",
+            "slug": "_2-1-链式存储",
+            "link": "#_2-1-链式存储",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "2.2 顺序存储",
+            "slug": "_2-2-顺序存储",
+            "link": "#_2-2-顺序存储",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "2.3 循环队列",
+            "slug": "_2-3-循环队列",
+            "link": "#_2-3-循环队列",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "2.4 双端队列",
+            "slug": "_2-4-双端队列",
+            "link": "#_2-4-双端队列",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "3.栈的应用",
+        "slug": "_3-栈的应用",
+        "link": "#_3-栈的应用",
+        "children": [
+          {
+            "level": 3,
+            "title": "3.1 函数调用栈",
+            "slug": "_3-1-函数调用栈",
+            "link": "#_3-1-函数调用栈",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "1.2 表达式求值",
+            "slug": "_1-2-表达式求值",
+            "link": "#_1-2-表达式求值",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "1.3 栈匹配括号",
+            "slug": "_1-3-栈匹配括号",
+            "link": "#_1-3-栈匹配括号",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "1.4 浏览器历史记录",
+            "slug": "_1-4-浏览器历史记录",
+            "link": "#_1-4-浏览器历史记录",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "1.5 栈与递归",
+            "slug": "_1-5-栈与递归",
+            "link": "#_1-5-栈与递归",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "4. 队列的应用",
+        "slug": "_4-队列的应用",
+        "link": "#_4-队列的应用",
+        "children": [
+          {
+            "level": 3,
+            "title": "2.1 阻塞对垒",
+            "slug": "_2-1-阻塞对垒",
+            "link": "#_2-1-阻塞对垒",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "1.2 并发队列",
+            "slug": "_1-2-并发队列",
+            "link": "#_1-2-并发队列",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "1.3 线程池实现",
+            "slug": "_1-3-线程池实现",
+            "link": "#_1-3-线程池实现",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "为什么引入 栈 与 队列 这样的数据结构",
+            "slug": "为什么引入-栈-与-队列-这样的数据结构",
+            "link": "#为什么引入-栈-与-队列-这样的数据结构",
+            "children": []
+          }
+        ]
+      }
+    ],
+    "path": "/go/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%A0%88%E4%B8%8E%E9%98%9F%E5%88%97.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "树",
+    "headers": [
+      {
+        "level": 2,
+        "title": "1. 树",
+        "slug": "_1-树",
+        "link": "#_1-树",
+        "children": [
+          {
+            "level": 3,
+            "title": "1.1 树形结构",
+            "slug": "_1-1-树形结构",
+            "link": "#_1-1-树形结构",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "1.2 树的理解",
+            "slug": "_1-2-树的理解",
+            "link": "#_1-2-树的理解",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "2. 树的存储结构",
+        "slug": "_2-树的存储结构",
+        "link": "#_2-树的存储结构",
+        "children": [
+          {
+            "level": 3,
+            "title": "2.1 双亲表示法",
+            "slug": "_2-1-双亲表示法",
+            "link": "#_2-1-双亲表示法",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "2.2 孩子表示法",
+            "slug": "_2-2-孩子表示法",
+            "link": "#_2-2-孩子表示法",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "2.3 孩子兄弟表示法",
+            "slug": "_2-3-孩子兄弟表示法",
+            "link": "#_2-3-孩子兄弟表示法",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "3. 二叉树",
+        "slug": "_3-二叉树",
+        "link": "#_3-二叉树",
+        "children": [
+          {
+            "level": 3,
+            "title": "3.1 非空二叉树的特性",
+            "slug": "_3-1-非空二叉树的特性",
+            "link": "#_3-1-非空二叉树的特性",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "3.3 完全二叉树",
+            "slug": "_3-3-完全二叉树",
+            "link": "#_3-3-完全二叉树",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "3.4 二叉树存储结构",
+            "slug": "_3-4-二叉树存储结构",
+            "link": "#_3-4-二叉树存储结构",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "3.5 二叉树的四种遍历方式",
+            "slug": "_3-5-二叉树的四种遍历方式",
+            "link": "#_3-5-二叉树的四种遍历方式",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "3.6 实现",
+            "slug": "_3-6-实现",
+            "link": "#_3-6-实现",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "4. 二叉搜索树",
+        "slug": "_4-二叉搜索树",
+        "link": "#_4-二叉搜索树",
+        "children": [
+          {
+            "level": 3,
+            "title": "4.1 二叉搜索树查找思想",
+            "slug": "_4-1-二叉搜索树查找思想",
+            "link": "#_4-1-二叉搜索树查找思想",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "4.2 插入实现",
+            "slug": "_4-2-插入实现",
+            "link": "#_4-2-插入实现",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "4.3 二叉搜索树其他操作",
+            "slug": "_4-3-二叉搜索树其他操作",
+            "link": "#_4-3-二叉搜索树其他操作",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "4.4 时间复杂度与平衡树",
+            "slug": "_4-4-时间复杂度与平衡树",
+            "link": "#_4-4-时间复杂度与平衡树",
+            "children": []
+          }
+        ]
+      }
+    ],
+    "path": "/go/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%A0%91.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "数据结构概述",
+    "headers": [
+      {
+        "level": 2,
+        "title": "1.数据结构概述",
+        "slug": "_1-数据结构概述",
+        "link": "#_1-数据结构概述",
+        "children": [
+          {
+            "level": 3,
+            "title": "1.1 数据的容器",
+            "slug": "_1-1-数据的容器",
+            "link": "#_1-1-数据的容器",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "1.2 数据的存储",
+            "slug": "_1-2-数据的存储",
+            "link": "#_1-2-数据的存储",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "1.3 存储结构",
+            "slug": "_1-3-存储结构",
+            "link": "#_1-3-存储结构",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "2.3 物理结构和逻辑结构关系",
+            "slug": "_2-3-物理结构和逻辑结构关系",
+            "link": "#_2-3-物理结构和逻辑结构关系",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "3. 数据的抽象数据类型",
+            "slug": "_3-数据的抽象数据类型",
+            "link": "#_3-数据的抽象数据类型",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "2. 算法概述",
+        "slug": "_2-算法概述",
+        "link": "#_2-算法概述",
+        "children": [
+          {
+            "level": 3,
+            "title": "2.1 什么是算法",
+            "slug": "_2-1-什么是算法",
+            "link": "#_2-1-什么是算法",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "2.2 算法的特性",
+            "slug": "_2-2-算法的特性",
+            "link": "#_2-2-算法的特性",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "2.3 算法的设计要求",
+            "slug": "_2-3-算法的设计要求",
+            "link": "#_2-3-算法的设计要求",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "2.4 算法的执行次数",
+            "slug": "_2-4-算法的执行次数",
+            "link": "#_2-4-算法的执行次数",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "2.5 算法的时间复杂度",
+            "slug": "_2-5-算法的时间复杂度",
+            "link": "#_2-5-算法的时间复杂度",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "2.6 算法的空间复杂度",
+            "slug": "_2-6-算法的空间复杂度",
+            "link": "#_2-6-算法的空间复杂度",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "3. 大 O 表示法",
+        "slug": "_3-大-o-表示法",
+        "link": "#_3-大-o-表示法",
+        "children": [
+          {
+            "level": 3,
+            "title": "3.1 大O中的几个记号",
+            "slug": "_3-1-大o中的几个记号",
+            "link": "#_3-1-大o中的几个记号",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "3.2 推导大 $O$ 阶方法",
+            "slug": "_3-2-推导大-o-阶方法",
+            "link": "#_3-2-推导大-o-阶方法",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "3.3 递归算法的推导",
+            "slug": "_3-3-递归算法的推导",
+            "link": "#_3-3-递归算法的推导",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "3.4 常数阶 $O(1)$ 和线性阶 $O(n)$",
+            "slug": "_3-4-常数阶-o-1-和线性阶-o-n",
+            "link": "#_3-4-常数阶-o-1-和线性阶-o-n",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "3.5 平方阶 $O(n^2)$",
+            "slug": "_3-5-平方阶-o-n-2",
+            "link": "#_3-5-平方阶-o-n-2",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "3.6 指数阶 $O(2^n)$",
+            "slug": "_3-6-指数阶-o-2-n",
+            "link": "#_3-6-指数阶-o-2-n",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "3.7 对数阶",
+            "slug": "_3-7-对数阶",
+            "link": "#_3-7-对数阶",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "3.8 旅行商问题",
+            "slug": "_3-8-旅行商问题",
+            "link": "#_3-8-旅行商问题",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "3.9 总结常见的时间复杂度",
+            "slug": "_3-9-总结常见的时间复杂度",
+            "link": "#_3-9-总结常见的时间复杂度",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "4. 空间复杂度计算",
+        "slug": "_4-空间复杂度计算",
+        "link": "#_4-空间复杂度计算",
+        "children": [
+          {
+            "level": 3,
+            "title": "4.1 空间复杂度的运算",
+            "slug": "_4-1-空间复杂度的运算",
+            "link": "#_4-1-空间复杂度的运算",
+            "children": []
+          }
+        ]
+      }
+    ],
+    "path": "/go/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%A6%82%E8%BF%B0.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "线性表",
+    "headers": [
+      {
+        "level": 2,
+        "title": "1. 线性表",
+        "slug": "_1-线性表",
+        "link": "#_1-线性表",
+        "children": [
+          {
+            "level": 3,
+            "title": "1.1 线性表概述",
+            "slug": "_1-1-线性表概述",
+            "link": "#_1-1-线性表概述",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "1.2 线性表的特点",
+            "slug": "_1-2-线性表的特点",
+            "link": "#_1-2-线性表的特点",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "1.3 线性表的划分",
+            "slug": "_1-3-线性表的划分",
+            "link": "#_1-3-线性表的划分",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "1.4 线性表与数组的区别",
+            "slug": "_1-4-线性表与数组的区别",
+            "link": "#_1-4-线性表与数组的区别",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "2. 顺序表",
+        "slug": "_2-顺序表",
+        "link": "#_2-顺序表",
+        "children": [
+          {
+            "level": 3,
+            "title": "2.1 顺序表概述",
+            "slug": "_2-1-顺序表概述",
+            "link": "#_2-1-顺序表概述",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "2.2 顺序表的结构与存取",
+            "slug": "_2-2-顺序表的结构与存取",
+            "link": "#_2-2-顺序表的结构与存取",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "2.3 复杂度总结",
+            "slug": "_2-3-复杂度总结",
+            "link": "#_2-3-复杂度总结",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "2.4 实现",
+            "slug": "_2-4-实现",
+            "link": "#_2-4-实现",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "3. 单链表",
+        "slug": "_3-单链表",
+        "link": "#_3-单链表",
+        "children": [
+          {
+            "level": 3,
+            "title": "3.1 链表概述",
+            "slug": "_3-1-链表概述",
+            "link": "#_3-1-链表概述",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "3.2 链表的结点",
+            "slug": "_3-2-链表的结点",
+            "link": "#_3-2-链表的结点",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "3.3 头指针",
+            "slug": "_3-3-头指针",
+            "link": "#_3-3-头指针",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "3.4 头结点",
+            "slug": "_3-4-头结点",
+            "link": "#_3-4-头结点",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "3.5单链表定义总结",
+            "slug": "_3-5单链表定义总结",
+            "link": "#_3-5单链表定义总结",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "3.6 实现",
+            "slug": "_3-6-实现",
+            "link": "#_3-6-实现",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "4. 循环链表",
+        "slug": "_4-循环链表",
+        "link": "#_4-循环链表",
+        "children": [
+          {
+            "level": 3,
+            "title": "4.1 循环链表制作思路",
+            "slug": "_4-1-循环链表制作思路",
+            "link": "#_4-1-循环链表制作思路",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "4.2 实现",
+            "slug": "_4-2-实现",
+            "link": "#_4-2-实现",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "5. 双向链表",
+        "slug": "_5-双向链表",
+        "link": "#_5-双向链表",
+        "children": [
+          {
+            "level": 3,
+            "title": "5.1 双向链表概述",
+            "slug": "_5-1-双向链表概述",
+            "link": "#_5-1-双向链表概述",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "5.2 双向循环链表概述",
+            "slug": "_5-2-双向循环链表概述",
+            "link": "#_5-2-双向循环链表概述",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "5.3 实现",
+            "slug": "_5-3-实现",
+            "link": "#_5-3-实现",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "6. 静态链表",
+        "slug": "_6-静态链表",
+        "link": "#_6-静态链表",
+        "children": [
+          {
+            "level": 3,
+            "title": "6.1 静态链表概述",
+            "slug": "_6-1-静态链表概述",
+            "link": "#_6-1-静态链表概述",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "6.2 静态链表的实现解释",
+            "slug": "_6-2-静态链表的实现解释",
+            "link": "#_6-2-静态链表的实现解释",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "6.3 静态链表初始化与数据变更",
+            "slug": "_6-3-静态链表初始化与数据变更",
+            "link": "#_6-3-静态链表初始化与数据变更",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "6.4 静态链表实际演示",
+            "slug": "_6-4-静态链表实际演示",
+            "link": "#_6-4-静态链表实际演示",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "6.5 静态链表的优缺点",
+            "slug": "_6-5-静态链表的优缺点",
+            "link": "#_6-5-静态链表的优缺点",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "6.6 实现",
+            "slug": "_6-6-实现",
+            "link": "#_6-6-实现",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "7. 链表的应用",
+        "slug": "_7-链表的应用",
+        "link": "#_7-链表的应用",
+        "children": [
+          {
+            "level": 3,
+            "title": "7.1 LRU 缓存淘汰算法",
+            "slug": "_7-1-lru-缓存淘汰算法",
+            "link": "#_7-1-lru-缓存淘汰算法",
+            "children": []
+          }
+        ]
+      }
+    ],
+    "path": "/go/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%BA%BF%E6%80%A7%E8%A1%A8.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "CICD",
+    "headers": [
+      {
+        "level": 2,
+        "title": "1. 构建基础",
+        "slug": "_1-构建基础",
+        "link": "#_1-构建基础",
+        "children": [
+          {
+            "level": 3,
+            "title": "1.1 概念",
+            "slug": "_1-1-概念",
+            "link": "#_1-1-概念",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "1.2 Jenkins安装",
+            "slug": "_1-2-jenkins安装",
+            "link": "#_1-2-jenkins安装",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "1.3 Jenkins 使用基础",
+            "slug": "_1-3-jenkins-使用基础",
+            "link": "#_1-3-jenkins-使用基础",
+            "children": []
+          }
+        ]
+      }
+    ],
+    "path": "/tool/Git/CICD.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "Git版本管理",
+    "headers": [
+      {
+        "level": 2,
+        "title": "1. 使用安装",
+        "slug": "_1-使用安装",
+        "link": "#_1-使用安装",
+        "children": [
+          {
+            "level": 3,
+            "title": "1.1 安装",
+            "slug": "_1-1-安装",
+            "link": "#_1-1-安装",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "1.2 配置",
+            "slug": "_1-2-配置",
+            "link": "#_1-2-配置",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "1.3. 获取 Git 帮助",
+            "slug": "_1-3-获取-git-帮助",
+            "link": "#_1-3-获取-git-帮助",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "1.4 创建一个版本库 - 步骤",
+            "slug": "_1-4-创建一个版本库-步骤",
+            "link": "#_1-4-创建一个版本库-步骤",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "2. 常用",
+        "slug": "_2-常用",
+        "link": "#_2-常用",
+        "children": [
+          {
+            "level": 3,
+            "title": "2.1 撤销",
+            "slug": "_2-1-撤销",
+            "link": "#_2-1-撤销",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "2.2 删除",
+            "slug": "_2-2-删除",
+            "link": "#_2-2-删除",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "2.3 其他内容",
+            "slug": "_2-3-其他内容",
+            "link": "#_2-3-其他内容",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "3. 分支管理",
+        "slug": "_3-分支管理",
+        "link": "#_3-分支管理",
+        "children": [
+          {
+            "level": 3,
+            "title": "3.1 基本操作",
+            "slug": "_3-1-基本操作",
+            "link": "#_3-1-基本操作",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "3.2 解决冲突",
+            "slug": "_3-2-解决冲突",
+            "link": "#_3-2-解决冲突",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "3.3 分支管理策略",
+            "slug": "_3-3-分支管理策略",
+            "link": "#_3-3-分支管理策略",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "4. 标签管理",
+        "slug": "_4-标签管理",
+        "link": "#_4-标签管理",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "5. 远程仓库",
+        "slug": "_5-远程仓库",
+        "link": "#_5-远程仓库",
+        "children": []
+      }
+    ],
+    "path": "/tool/Git/Git.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "Git提交规范",
+    "headers": [],
+    "path": "/tool/Git/GIt%E6%8F%90%E4%BA%A4%E8%A7%84%E5%88%99.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "安装GitLab",
+    "headers": [
+      {
+        "level": 3,
+        "title": "1. 配置 yum 仓库",
+        "slug": "_1-配置-yum-仓库",
+        "link": "#_1-配置-yum-仓库",
+        "children": []
+      },
+      {
+        "level": 3,
+        "title": "2. 安装依赖包",
+        "slug": "_2-安装依赖包",
+        "link": "#_2-安装依赖包",
+        "children": []
+      },
+      {
+        "level": 3,
+        "title": "3. 安装 GitLab",
+        "slug": "_3-安装-gitlab",
+        "link": "#_3-安装-gitlab",
+        "children": []
+      },
+      {
+        "level": 3,
+        "title": "4. 初始化 GitLab",
+        "slug": "_4-初始化-gitlab",
+        "link": "#_4-初始化-gitlab",
+        "children": []
+      },
+      {
+        "level": 3,
+        "title": "5. 修改网络端口",
+        "slug": "_5-修改网络端口",
+        "link": "#_5-修改网络端口",
+        "children": []
+      },
+      {
+        "level": 3,
+        "title": "6. 常用命令",
+        "slug": "_6-常用命令",
+        "link": "#_6-常用命令",
+        "children": []
+      }
+    ],
+    "path": "/tool/Git/%E5%AE%89%E8%A3%85GitLab.html",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -3896,212 +4113,170 @@ export const SEARCH_INDEX = [
     "extraFields": []
   },
   {
-    "title": "CICD",
+    "title": "Nginx基础",
     "headers": [
       {
         "level": 2,
-        "title": "1. 构建基础",
-        "slug": "_1-构建基础",
-        "link": "#_1-构建基础",
+        "title": "1. WEB Server",
+        "slug": "_1-web-server",
+        "link": "#_1-web-server",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "2. 安装",
+        "slug": "_2-安装",
+        "link": "#_2-安装",
         "children": [
           {
             "level": 3,
-            "title": "1.1 概念",
-            "slug": "_1-1-概念",
-            "link": "#_1-1-概念",
+            "title": "2.1 流程",
+            "slug": "_2-1-流程",
+            "link": "#_2-1-流程",
             "children": []
           },
           {
             "level": 3,
-            "title": "1.2 Jenkins安装",
-            "slug": "_1-2-jenkins安装",
-            "link": "#_1-2-jenkins安装",
+            "title": "2.2 简单配置",
+            "slug": "_2-2-简单配置",
+            "link": "#_2-2-简单配置",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "3. 使用基础",
+        "slug": "_3-使用基础",
+        "link": "#_3-使用基础",
+        "children": [
+          {
+            "level": 3,
+            "title": "3.1 目录结构",
+            "slug": "_3-1-目录结构",
+            "link": "#_3-1-目录结构",
             "children": []
           },
           {
             "level": 3,
-            "title": "1.3 Jenkins 使用基础",
-            "slug": "_1-3-jenkins-使用基础",
-            "link": "#_1-3-jenkins-使用基础",
+            "title": "3.2 命令",
+            "slug": "_3-2-命令",
+            "link": "#_3-2-命令",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "3.3 配置文件",
+            "slug": "_3-3-配置文件",
+            "link": "#_3-3-配置文件",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "4. 其他操作",
+        "slug": "_4-其他操作",
+        "link": "#_4-其他操作",
+        "children": [
+          {
+            "level": 3,
+            "title": "4.1 域名设置",
+            "slug": "_4-1-域名设置",
+            "link": "#_4-1-域名设置",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "4.2 关于跨域",
+            "slug": "_4-2-关于跨域",
+            "link": "#_4-2-关于跨域",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "5. 示例",
+        "slug": "_5-示例",
+        "link": "#_5-示例",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "7. 反向代理",
+        "slug": "_7-反向代理",
+        "link": "#_7-反向代理",
+        "children": [
+          {
+            "level": 3,
+            "title": "权重",
+            "slug": "权重",
+            "link": "#权重",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "ip_hash",
+            "slug": "ip-hash",
+            "link": "#ip-hash",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "backup",
+            "slug": "backup",
+            "link": "#backup",
             "children": []
           }
         ]
       }
     ],
-    "path": "/tool/Git/CICD.html",
+    "path": "/tool/Nginx/Nginx%E5%9F%BA%E7%A1%80.html",
     "pathLocale": "/",
     "extraFields": []
   },
   {
-    "title": "Git提交规范",
-    "headers": [],
-    "path": "/tool/Git/GIt%E6%8F%90%E4%BA%A4%E8%A7%84%E5%88%99.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "Git版本管理",
+    "title": "Django部署",
     "headers": [
       {
         "level": 2,
-        "title": "1. 使用安装",
-        "slug": "_1-使用安装",
-        "link": "#_1-使用安装",
+        "title": "1. 部署说明",
+        "slug": "_1-部署说明",
+        "link": "#_1-部署说明",
         "children": [
           {
             "level": 3,
-            "title": "1.1 安装",
-            "slug": "_1-1-安装",
-            "link": "#_1-1-安装",
+            "title": "1.1 uWSGI 服务器",
+            "slug": "_1-1-uwsgi-服务器",
+            "link": "#_1-1-uwsgi-服务器",
             "children": []
           },
           {
             "level": 3,
-            "title": "1.2 配置",
-            "slug": "_1-2-配置",
-            "link": "#_1-2-配置",
+            "title": "1.2 uWSGI 特点",
+            "slug": "_1-2-uwsgi-特点",
+            "link": "#_1-2-uwsgi-特点",
             "children": []
           },
           {
             "level": 3,
-            "title": "1.3. 获取 Git 帮助",
-            "slug": "_1-3-获取-git-帮助",
-            "link": "#_1-3-获取-git-帮助",
+            "title": "1.3 uWSGI 安装使用",
+            "slug": "_1-3-uwsgi-安装使用",
+            "link": "#_1-3-uwsgi-安装使用",
             "children": []
           },
           {
             "level": 3,
-            "title": "1.4 创建一个版本库 - 步骤",
-            "slug": "_1-4-创建一个版本库-步骤",
-            "link": "#_1-4-创建一个版本库-步骤",
+            "title": "1.4 配置 Nginx",
+            "slug": "_1-4-配置-nginx",
+            "link": "#_1-4-配置-nginx",
             "children": []
           }
         ]
-      },
-      {
-        "level": 2,
-        "title": "2. 常用",
-        "slug": "_2-常用",
-        "link": "#_2-常用",
-        "children": [
-          {
-            "level": 3,
-            "title": "2.1 撤销",
-            "slug": "_2-1-撤销",
-            "link": "#_2-1-撤销",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "2.2 删除",
-            "slug": "_2-2-删除",
-            "link": "#_2-2-删除",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "2.3 其他内容",
-            "slug": "_2-3-其他内容",
-            "link": "#_2-3-其他内容",
-            "children": []
-          }
-        ]
-      },
-      {
-        "level": 2,
-        "title": "3. 分支管理",
-        "slug": "_3-分支管理",
-        "link": "#_3-分支管理",
-        "children": [
-          {
-            "level": 3,
-            "title": "3.1 基本操作",
-            "slug": "_3-1-基本操作",
-            "link": "#_3-1-基本操作",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "3.2 解决冲突",
-            "slug": "_3-2-解决冲突",
-            "link": "#_3-2-解决冲突",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "3.3 分支管理策略",
-            "slug": "_3-3-分支管理策略",
-            "link": "#_3-3-分支管理策略",
-            "children": []
-          }
-        ]
-      },
-      {
-        "level": 2,
-        "title": "4. 标签管理",
-        "slug": "_4-标签管理",
-        "link": "#_4-标签管理",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "5. 远程仓库",
-        "slug": "_5-远程仓库",
-        "link": "#_5-远程仓库",
-        "children": []
       }
     ],
-    "path": "/tool/Git/Git.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "安装GitLab",
-    "headers": [
-      {
-        "level": 3,
-        "title": "1. 配置 yum 仓库",
-        "slug": "_1-配置-yum-仓库",
-        "link": "#_1-配置-yum-仓库",
-        "children": []
-      },
-      {
-        "level": 3,
-        "title": "2. 安装依赖包",
-        "slug": "_2-安装依赖包",
-        "link": "#_2-安装依赖包",
-        "children": []
-      },
-      {
-        "level": 3,
-        "title": "3. 安装 GitLab",
-        "slug": "_3-安装-gitlab",
-        "link": "#_3-安装-gitlab",
-        "children": []
-      },
-      {
-        "level": 3,
-        "title": "4. 初始化 GitLab",
-        "slug": "_4-初始化-gitlab",
-        "link": "#_4-初始化-gitlab",
-        "children": []
-      },
-      {
-        "level": 3,
-        "title": "5. 修改网络端口",
-        "slug": "_5-修改网络端口",
-        "link": "#_5-修改网络端口",
-        "children": []
-      },
-      {
-        "level": 3,
-        "title": "6. 常用命令",
-        "slug": "_6-常用命令",
-        "link": "#_6-常用命令",
-        "children": []
-      }
-    ],
-    "path": "/tool/Git/%E5%AE%89%E8%A3%85GitLab.html",
+    "path": "/tool/Nginx/%E5%BA%94%E7%94%A8%E9%83%A8%E7%BD%B2.html",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -4586,177 +4761,24 @@ export const SEARCH_INDEX = [
     "extraFields": []
   },
   {
-    "title": "Nginx基础",
-    "headers": [
-      {
-        "level": 2,
-        "title": "1. WEB Server",
-        "slug": "_1-web-server",
-        "link": "#_1-web-server",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "2. 安装",
-        "slug": "_2-安装",
-        "link": "#_2-安装",
-        "children": [
-          {
-            "level": 3,
-            "title": "2.1 流程",
-            "slug": "_2-1-流程",
-            "link": "#_2-1-流程",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "2.2 简单配置",
-            "slug": "_2-2-简单配置",
-            "link": "#_2-2-简单配置",
-            "children": []
-          }
-        ]
-      },
-      {
-        "level": 2,
-        "title": "3. 使用基础",
-        "slug": "_3-使用基础",
-        "link": "#_3-使用基础",
-        "children": [
-          {
-            "level": 3,
-            "title": "3.1 目录结构",
-            "slug": "_3-1-目录结构",
-            "link": "#_3-1-目录结构",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "3.2 命令",
-            "slug": "_3-2-命令",
-            "link": "#_3-2-命令",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "3.3 配置文件",
-            "slug": "_3-3-配置文件",
-            "link": "#_3-3-配置文件",
-            "children": []
-          }
-        ]
-      },
-      {
-        "level": 2,
-        "title": "4. 其他操作",
-        "slug": "_4-其他操作",
-        "link": "#_4-其他操作",
-        "children": [
-          {
-            "level": 3,
-            "title": "4.1 域名设置",
-            "slug": "_4-1-域名设置",
-            "link": "#_4-1-域名设置",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "4.2 关于跨域",
-            "slug": "_4-2-关于跨域",
-            "link": "#_4-2-关于跨域",
-            "children": []
-          }
-        ]
-      },
-      {
-        "level": 2,
-        "title": "5. 示例",
-        "slug": "_5-示例",
-        "link": "#_5-示例",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "7. 反向代理",
-        "slug": "_7-反向代理",
-        "link": "#_7-反向代理",
-        "children": [
-          {
-            "level": 3,
-            "title": "权重",
-            "slug": "权重",
-            "link": "#权重",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "ip_hash",
-            "slug": "ip-hash",
-            "link": "#ip-hash",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "backup",
-            "slug": "backup",
-            "link": "#backup",
-            "children": []
-          }
-        ]
-      }
-    ],
-    "path": "/tool/Nginx/Nginx%E5%9F%BA%E7%A1%80.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "Django部署",
-    "headers": [
-      {
-        "level": 2,
-        "title": "1. 部署说明",
-        "slug": "_1-部署说明",
-        "link": "#_1-部署说明",
-        "children": [
-          {
-            "level": 3,
-            "title": "1.1 uWSGI 服务器",
-            "slug": "_1-1-uwsgi-服务器",
-            "link": "#_1-1-uwsgi-服务器",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "1.2 uWSGI 特点",
-            "slug": "_1-2-uwsgi-特点",
-            "link": "#_1-2-uwsgi-特点",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "1.3 uWSGI 安装使用",
-            "slug": "_1-3-uwsgi-安装使用",
-            "link": "#_1-3-uwsgi-安装使用",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "1.4 配置 Nginx",
-            "slug": "_1-4-配置-nginx",
-            "link": "#_1-4-配置-nginx",
-            "children": []
-          }
-        ]
-      }
-    ],
-    "path": "/tool/Nginx/%E5%BA%94%E7%94%A8%E9%83%A8%E7%BD%B2.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
     "title": "Fiddler",
     "headers": [],
     "path": "/tool/Other/Fiddler%E6%8A%93%E5%8C%85%E5%B7%A5%E5%85%B7.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "outline",
+    "headers": [
+      {
+        "level": 3,
+        "title": "outline 部署",
+        "slug": "outline-部署",
+        "link": "#outline-部署",
+        "children": []
+      }
+    ],
+    "path": "/tool/Other/outline.html",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -4779,28 +4801,6 @@ export const SEARCH_INDEX = [
       }
     ],
     "path": "/tool/Other/Postman.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "screen",
-    "headers": [],
-    "path": "/tool/Other/Screen.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "outline",
-    "headers": [
-      {
-        "level": 3,
-        "title": "outline 部署",
-        "slug": "outline-部署",
-        "link": "#outline-部署",
-        "children": []
-      }
-    ],
-    "path": "/tool/Other/outline.html",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -4830,6 +4830,13 @@ export const SEARCH_INDEX = [
       }
     ],
     "path": "/tool/Other/rdesktop.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "screen",
+    "headers": [],
+    "path": "/tool/Other/Screen.html",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -4983,72 +4990,6 @@ export const SEARCH_INDEX = [
       }
     ],
     "path": "/tool/Tailscale/tailscale.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "RabbitMQ",
-    "headers": [
-      {
-        "level": 3,
-        "title": "1. AMQP协议",
-        "slug": "_1-amqp协议",
-        "link": "#_1-amqp协议",
-        "children": []
-      }
-    ],
-    "path": "/python/%E7%94%9F%E6%80%81/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/RabbitMQ.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "",
-    "headers": [],
-    "path": "/python/%E7%94%9F%E6%80%81/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/kafka.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "Kombu",
-    "headers": [
-      {
-        "level": 3,
-        "title": "1. 概述",
-        "slug": "_1-概述",
-        "link": "#_1-概述",
-        "children": []
-      }
-    ],
-    "path": "/python/%E7%94%9F%E6%80%81/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/kombu.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "",
-    "headers": [],
-    "path": "/python/%E7%94%9F%E6%80%81/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/pika.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "",
-    "headers": [],
-    "path": "/python/%E7%94%9F%E6%80%81/%E8%BF%9C%E7%A8%8B%E8%B0%83%E7%94%A8/RPC.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "gRPC",
-    "headers": [
-      {
-        "level": 3,
-        "title": "1. 部分文档",
-        "slug": "_1-部分文档",
-        "link": "#_1-部分文档",
-        "children": []
-      }
-    ],
-    "path": "/python/%E7%94%9F%E6%80%81/%E8%BF%9C%E7%A8%8B%E8%B0%83%E7%94%A8/gRPC.html",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -5300,493 +5241,68 @@ export const SEARCH_INDEX = [
     "extraFields": []
   },
   {
-    "title": "Python项目打包",
-    "headers": [
-      {
-        "level": 2,
-        "title": "1. python 打 rpm 包",
-        "slug": "_1-python-打-rpm-包",
-        "link": "#_1-python-打-rpm-包",
-        "children": [
-          {
-            "level": 3,
-            "title": "1.1 安装工具",
-            "slug": "_1-1-安装工具",
-            "link": "#_1-1-安装工具",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "1.2 建立环境",
-            "slug": "_1-2-建立环境",
-            "link": "#_1-2-建立环境",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "1.3 SPEC 阶段与目录的对应关系",
-            "slug": "_1-3-spec-阶段与目录的对应关系",
-            "link": "#_1-3-spec-阶段与目录的对应关系",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "1.4 工具使用",
-            "slug": "_1-4-工具使用",
-            "link": "#_1-4-工具使用",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "1.5 生成 SPEC 文件",
-            "slug": "_1-5-生成-spec-文件",
-            "link": "#_1-5-生成-spec-文件",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "1.6 示例文件：",
-            "slug": "_1-6-示例文件",
-            "link": "#_1-6-示例文件",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "1.7 打包命令 rpmbuild",
-            "slug": "_1-7-打包命令-rpmbuild",
-            "link": "#_1-7-打包命令-rpmbuild",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "1.8 准备打包的源代码",
-            "slug": "_1-8-准备打包的源代码",
-            "link": "#_1-8-准备打包的源代码",
-            "children": []
-          }
-        ]
-      },
-      {
-        "level": 2,
-        "title": "2. python 项目打包 wheel",
-        "slug": "_2-python-项目打包-wheel",
-        "link": "#_2-python-项目打包-wheel",
-        "children": [
-          {
-            "level": 3,
-            "title": "2.1 编写 setup.py 文件",
-            "slug": "_2-1-编写-setup-py-文件",
-            "link": "#_2-1-编写-setup-py-文件",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "2.2 编写 .service 文件",
-            "slug": "_2-2-编写-service-文件",
-            "link": "#_2-2-编写-service-文件",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "2.3 去掉依赖",
-            "slug": "_2-3-去掉依赖",
-            "link": "#_2-3-去掉依赖",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "2.4 打包到镜像",
-            "slug": "_2-4-打包到镜像",
-            "link": "#_2-4-打包到镜像",
-            "children": []
-          }
-        ]
-      }
-    ],
-    "path": "/python/%E8%AF%AD%E8%A8%80/%E5%9F%BA%E7%A1%80/Python%E9%A1%B9%E7%9B%AE%E6%89%93%E5%8C%85.html",
+    "title": "",
+    "headers": [],
+    "path": "/python/%E7%94%9F%E6%80%81/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/kafka.html",
     "pathLocale": "/",
     "extraFields": []
   },
   {
-    "title": "pip",
-    "headers": [
-      {
-        "level": 2,
-        "title": "1. 使用基础",
-        "slug": "_1-使用基础",
-        "link": "#_1-使用基础",
-        "children": [
-          {
-            "level": 3,
-            "title": "1.1 换源",
-            "slug": "_1-1-换源",
-            "link": "#_1-1-换源",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "1.2 下载 wheel",
-            "slug": "_1-2-下载-wheel",
-            "link": "#_1-2-下载-wheel",
-            "children": []
-          }
-        ]
-      }
-    ],
-    "path": "/python/%E8%AF%AD%E8%A8%80/%E5%9F%BA%E7%A1%80/pip.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "字符编码",
-    "headers": [
-      {
-        "level": 2,
-        "title": "1. 字符",
-        "slug": "_1-字符",
-        "link": "#_1-字符",
-        "children": [
-          {
-            "level": 3,
-            "title": "1.1 编码中的字符串",
-            "slug": "_1-1-编码中的字符串",
-            "link": "#_1-1-编码中的字符串",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "1.2 Python 编码发展史",
-            "slug": "_1-2-python-编码发展史",
-            "link": "#_1-2-python-编码发展史",
-            "children": []
-          }
-        ]
-      },
-      {
-        "level": 2,
-        "title": "2. 常见问题",
-        "slug": "_2-常见问题",
-        "link": "#_2-常见问题",
-        "children": [
-          {
-            "level": 3,
-            "title": "2.1 操作系统编码",
-            "slug": "_2-1-操作系统编码",
-            "link": "#_2-1-操作系统编码",
-            "children": []
-          }
-        ]
-      }
-    ],
-    "path": "/python/%E8%AF%AD%E8%A8%80/%E5%9F%BA%E7%A1%80/%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "数据类型",
-    "headers": [
-      {
-        "level": 2,
-        "title": "1. 数字类（Number）",
-        "slug": "_1-数字类-number",
-        "link": "#_1-数字类-number",
-        "children": [
-          {
-            "level": 3,
-            "title": "1.1 整型（int）—— numbers.Integral",
-            "slug": "_1-1-整型-int-——-numbers-integral",
-            "link": "#_1-1-整型-int-——-numbers-integral",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "1.2 布尔值（bool）—— numbers.Integral",
-            "slug": "_1-2-布尔值-bool-——-numbers-integral",
-            "link": "#_1-2-布尔值-bool-——-numbers-integral",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "1.3 浮点型（float）—— numbers.Real",
-            "slug": "_1-3-浮点型-float-——-numbers-real",
-            "link": "#_1-3-浮点型-float-——-numbers-real",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "1.4 复数（complex）—— numbers.Complex",
-            "slug": "_1-4-复数-complex-——-numbers-complex",
-            "link": "#_1-4-复数-complex-——-numbers-complex",
-            "children": []
-          }
-        ]
-      },
-      {
-        "level": 2,
-        "title": "2. 序列 —— 不可变序列",
-        "slug": "_2-序列-——-不可变序列",
-        "link": "#_2-序列-——-不可变序列",
-        "children": [
-          {
-            "level": 3,
-            "title": "2.1 字节串（bytes 二进制序列）",
-            "slug": "_2-1-字节串-bytes-二进制序列",
-            "link": "#_2-1-字节串-bytes-二进制序列",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "2.2 字符串（str 文本序列）",
-            "slug": "_2-2-字符串-str-文本序列",
-            "link": "#_2-2-字符串-str-文本序列",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "2.3 元组（tuple）",
-            "slug": "_2-3-元组-tuple",
-            "link": "#_2-3-元组-tuple",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "2.4 range 对象",
-            "slug": "_2-4-range-对象",
-            "link": "#_2-4-range-对象",
-            "children": []
-          }
-        ]
-      },
-      {
-        "level": 2,
-        "title": "3. 可变序列",
-        "slug": "_3-可变序列",
-        "link": "#_3-可变序列",
-        "children": [
-          {
-            "level": 3,
-            "title": "3.1 列表（list）",
-            "slug": "_3-1-列表-list",
-            "link": "#_3-1-列表-list",
-            "children": []
-          }
-        ]
-      },
-      {
-        "level": 2,
-        "title": "4. 集合类型",
-        "slug": "_4-集合类型",
-        "link": "#_4-集合类型",
-        "children": [
-          {
-            "level": 3,
-            "title": "4.1 集合（set）",
-            "slug": "_4-1-集合-set",
-            "link": "#_4-1-集合-set",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "4.2 冻结集合（frozenset）",
-            "slug": "_4-2-冻结集合-frozenset",
-            "link": "#_4-2-冻结集合-frozenset",
-            "children": []
-          }
-        ]
-      },
-      {
-        "level": 2,
-        "title": "5. 映射",
-        "slug": "_5-映射",
-        "link": "#_5-映射",
-        "children": [
-          {
-            "level": 3,
-            "title": "5.1 字典（dict）",
-            "slug": "_5-1-字典-dict",
-            "link": "#_5-1-字典-dict",
-            "children": []
-          }
-        ]
-      },
-      {
-        "level": 2,
-        "title": "6. 排序、去重和搜索",
-        "slug": "_6-排序、去重和搜索",
-        "link": "#_6-排序、去重和搜索",
-        "children": [
-          {
-            "level": 3,
-            "title": "6.1 关于排序",
-            "slug": "_6-1-关于排序",
-            "link": "#_6-1-关于排序",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "6.2 关于去重",
-            "slug": "_6-2-关于去重",
-            "link": "#_6-2-关于去重",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "6.3 关于搜索",
-            "slug": "_6-3-关于搜索",
-            "link": "#_6-3-关于搜索",
-            "children": []
-          }
-        ]
-      },
-      {
-        "level": 2,
-        "title": "杂谈",
-        "slug": "杂谈",
-        "link": "#杂谈",
-        "children": []
-      }
-    ],
-    "path": "/python/%E8%AF%AD%E8%A8%80/%E5%9F%BA%E7%A1%80/%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "文件基础",
-    "headers": [
-      {
-        "level": 2,
-        "title": "1. 文件基础",
-        "slug": "_1-文件基础",
-        "link": "#_1-文件基础",
-        "children": [
-          {
-            "level": 3,
-            "title": "1.1 文件操作",
-            "slug": "_1-1-文件操作",
-            "link": "#_1-1-文件操作",
-            "children": []
-          }
-        ]
-      },
-      {
-        "level": 2,
-        "title": "2. 上下文管理器",
-        "slug": "_2-上下文管理器",
-        "link": "#_2-上下文管理器",
-        "children": [
-          {
-            "level": 3,
-            "title": "2.1 管理协议",
-            "slug": "_2-1-管理协议",
-            "link": "#_2-1-管理协议",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "2.2 with 语句",
-            "slug": "_2-2-with-语句",
-            "link": "#_2-2-with-语句",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "2.3 自定义上下文管理器",
-            "slug": "_2-3-自定义上下文管理器",
-            "link": "#_2-3-自定义上下文管理器",
-            "children": []
-          }
-        ]
-      },
-      {
-        "level": 2,
-        "title": "3. 进阶",
-        "slug": "_3-进阶",
-        "link": "#_3-进阶",
-        "children": []
-      }
-    ],
-    "path": "/python/%E8%AF%AD%E8%A8%80/%E5%9F%BA%E7%A1%80/%E6%96%87%E4%BB%B6%E5%9F%BA%E7%A1%80.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "流程控制",
-    "headers": [
-      {
-        "level": 2,
-        "title": "1. 条件判断",
-        "slug": "_1-条件判断",
-        "link": "#_1-条件判断",
-        "children": [
-          {
-            "level": 3,
-            "title": "1.1 if 语句",
-            "slug": "_1-1-if-语句",
-            "link": "#_1-1-if-语句",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "1.2 判断运算符",
-            "slug": "_1-2-判断运算符",
-            "link": "#_1-2-判断运算符",
-            "children": []
-          }
-        ]
-      },
-      {
-        "level": 2,
-        "title": "2. 循环",
-        "slug": "_2-循环",
-        "link": "#_2-循环",
-        "children": [
-          {
-            "level": 3,
-            "title": "2.1 for 语句",
-            "slug": "_2-1-for-语句",
-            "link": "#_2-1-for-语句",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "2.2 while 语句",
-            "slug": "_2-2-while-语句",
-            "link": "#_2-2-while-语句",
-            "children": []
-          }
-        ]
-      }
-    ],
-    "path": "/python/%E8%AF%AD%E8%A8%80/%E5%9F%BA%E7%A1%80/%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "环境安装",
+    "title": "Kombu",
     "headers": [
       {
         "level": 3,
-        "title": "1. 环境安装",
-        "slug": "_1-环境安装",
-        "link": "#_1-环境安装",
-        "children": []
-      },
-      {
-        "level": 3,
-        "title": "2. python 风格指南",
-        "slug": "_2-python-风格指南",
-        "link": "#_2-python-风格指南",
-        "children": []
-      },
-      {
-        "level": 3,
-        "title": "3. Pycharm",
-        "slug": "_3-pycharm",
-        "link": "#_3-pycharm",
+        "title": "1. 概述",
+        "slug": "_1-概述",
+        "link": "#_1-概述",
         "children": []
       }
     ],
-    "path": "/python/%E8%AF%AD%E8%A8%80/%E5%9F%BA%E7%A1%80/%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85.html",
+    "path": "/python/%E7%94%9F%E6%80%81/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/kombu.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "",
+    "headers": [],
+    "path": "/python/%E7%94%9F%E6%80%81/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/pika.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "RabbitMQ",
+    "headers": [
+      {
+        "level": 3,
+        "title": "1. AMQP协议",
+        "slug": "_1-amqp协议",
+        "link": "#_1-amqp协议",
+        "children": []
+      }
+    ],
+    "path": "/python/%E7%94%9F%E6%80%81/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/RabbitMQ.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "gRPC",
+    "headers": [
+      {
+        "level": 3,
+        "title": "1. 部分文档",
+        "slug": "_1-部分文档",
+        "link": "#_1-部分文档",
+        "children": []
+      }
+    ],
+    "path": "/python/%E7%94%9F%E6%80%81/%E8%BF%9C%E7%A8%8B%E8%B0%83%E7%94%A8/gRPC.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "",
+    "headers": [],
+    "path": "/python/%E7%94%9F%E6%80%81/%E8%BF%9C%E7%A8%8B%E8%B0%83%E7%94%A8/RPC.html",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -6272,6 +5788,519 @@ export const SEARCH_INDEX = [
     "extraFields": []
   },
   {
+    "title": "pip",
+    "headers": [
+      {
+        "level": 2,
+        "title": "1. 使用基础",
+        "slug": "_1-使用基础",
+        "link": "#_1-使用基础",
+        "children": [
+          {
+            "level": 3,
+            "title": "1.1 换源",
+            "slug": "_1-1-换源",
+            "link": "#_1-1-换源",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "1.2 下载 wheel",
+            "slug": "_1-2-下载-wheel",
+            "link": "#_1-2-下载-wheel",
+            "children": []
+          }
+        ]
+      }
+    ],
+    "path": "/python/%E8%AF%AD%E8%A8%80/%E5%9F%BA%E7%A1%80/pip.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "Python项目打包",
+    "headers": [
+      {
+        "level": 2,
+        "title": "1. python 打 rpm 包",
+        "slug": "_1-python-打-rpm-包",
+        "link": "#_1-python-打-rpm-包",
+        "children": [
+          {
+            "level": 3,
+            "title": "1.1 安装工具",
+            "slug": "_1-1-安装工具",
+            "link": "#_1-1-安装工具",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "1.2 建立环境",
+            "slug": "_1-2-建立环境",
+            "link": "#_1-2-建立环境",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "1.3 SPEC 阶段与目录的对应关系",
+            "slug": "_1-3-spec-阶段与目录的对应关系",
+            "link": "#_1-3-spec-阶段与目录的对应关系",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "1.4 工具使用",
+            "slug": "_1-4-工具使用",
+            "link": "#_1-4-工具使用",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "1.5 生成 SPEC 文件",
+            "slug": "_1-5-生成-spec-文件",
+            "link": "#_1-5-生成-spec-文件",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "1.6 示例文件：",
+            "slug": "_1-6-示例文件",
+            "link": "#_1-6-示例文件",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "1.7 打包命令 rpmbuild",
+            "slug": "_1-7-打包命令-rpmbuild",
+            "link": "#_1-7-打包命令-rpmbuild",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "1.8 准备打包的源代码",
+            "slug": "_1-8-准备打包的源代码",
+            "link": "#_1-8-准备打包的源代码",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "2. python 项目打包 wheel",
+        "slug": "_2-python-项目打包-wheel",
+        "link": "#_2-python-项目打包-wheel",
+        "children": [
+          {
+            "level": 3,
+            "title": "2.1 编写 setup.py 文件",
+            "slug": "_2-1-编写-setup-py-文件",
+            "link": "#_2-1-编写-setup-py-文件",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "2.2 编写 .service 文件",
+            "slug": "_2-2-编写-service-文件",
+            "link": "#_2-2-编写-service-文件",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "2.3 去掉依赖",
+            "slug": "_2-3-去掉依赖",
+            "link": "#_2-3-去掉依赖",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "2.4 打包到镜像",
+            "slug": "_2-4-打包到镜像",
+            "link": "#_2-4-打包到镜像",
+            "children": []
+          }
+        ]
+      }
+    ],
+    "path": "/python/%E8%AF%AD%E8%A8%80/%E5%9F%BA%E7%A1%80/Python%E9%A1%B9%E7%9B%AE%E6%89%93%E5%8C%85.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "字符编码",
+    "headers": [
+      {
+        "level": 2,
+        "title": "1. 字符",
+        "slug": "_1-字符",
+        "link": "#_1-字符",
+        "children": [
+          {
+            "level": 3,
+            "title": "1.1 编码中的字符串",
+            "slug": "_1-1-编码中的字符串",
+            "link": "#_1-1-编码中的字符串",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "1.2 Python 编码发展史",
+            "slug": "_1-2-python-编码发展史",
+            "link": "#_1-2-python-编码发展史",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "2. 常见问题",
+        "slug": "_2-常见问题",
+        "link": "#_2-常见问题",
+        "children": [
+          {
+            "level": 3,
+            "title": "2.1 操作系统编码",
+            "slug": "_2-1-操作系统编码",
+            "link": "#_2-1-操作系统编码",
+            "children": []
+          }
+        ]
+      }
+    ],
+    "path": "/python/%E8%AF%AD%E8%A8%80/%E5%9F%BA%E7%A1%80/%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "数据类型",
+    "headers": [
+      {
+        "level": 2,
+        "title": "1. 数字类（Number）",
+        "slug": "_1-数字类-number",
+        "link": "#_1-数字类-number",
+        "children": [
+          {
+            "level": 3,
+            "title": "1.1 整型（int）—— numbers.Integral",
+            "slug": "_1-1-整型-int-——-numbers-integral",
+            "link": "#_1-1-整型-int-——-numbers-integral",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "1.2 布尔值（bool）—— numbers.Integral",
+            "slug": "_1-2-布尔值-bool-——-numbers-integral",
+            "link": "#_1-2-布尔值-bool-——-numbers-integral",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "1.3 浮点型（float）—— numbers.Real",
+            "slug": "_1-3-浮点型-float-——-numbers-real",
+            "link": "#_1-3-浮点型-float-——-numbers-real",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "1.4 复数（complex）—— numbers.Complex",
+            "slug": "_1-4-复数-complex-——-numbers-complex",
+            "link": "#_1-4-复数-complex-——-numbers-complex",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "2. 序列 —— 不可变序列",
+        "slug": "_2-序列-——-不可变序列",
+        "link": "#_2-序列-——-不可变序列",
+        "children": [
+          {
+            "level": 3,
+            "title": "2.1 字节串（bytes 二进制序列）",
+            "slug": "_2-1-字节串-bytes-二进制序列",
+            "link": "#_2-1-字节串-bytes-二进制序列",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "2.2 字符串（str 文本序列）",
+            "slug": "_2-2-字符串-str-文本序列",
+            "link": "#_2-2-字符串-str-文本序列",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "2.3 元组（tuple）",
+            "slug": "_2-3-元组-tuple",
+            "link": "#_2-3-元组-tuple",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "2.4 range 对象",
+            "slug": "_2-4-range-对象",
+            "link": "#_2-4-range-对象",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "3. 可变序列",
+        "slug": "_3-可变序列",
+        "link": "#_3-可变序列",
+        "children": [
+          {
+            "level": 3,
+            "title": "3.1 列表（list）",
+            "slug": "_3-1-列表-list",
+            "link": "#_3-1-列表-list",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "4. 集合类型",
+        "slug": "_4-集合类型",
+        "link": "#_4-集合类型",
+        "children": [
+          {
+            "level": 3,
+            "title": "4.1 集合（set）",
+            "slug": "_4-1-集合-set",
+            "link": "#_4-1-集合-set",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "4.2 冻结集合（frozenset）",
+            "slug": "_4-2-冻结集合-frozenset",
+            "link": "#_4-2-冻结集合-frozenset",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "5. 映射",
+        "slug": "_5-映射",
+        "link": "#_5-映射",
+        "children": [
+          {
+            "level": 3,
+            "title": "5.1 字典（dict）",
+            "slug": "_5-1-字典-dict",
+            "link": "#_5-1-字典-dict",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "6. 排序、去重和搜索",
+        "slug": "_6-排序、去重和搜索",
+        "link": "#_6-排序、去重和搜索",
+        "children": [
+          {
+            "level": 3,
+            "title": "6.1 关于排序",
+            "slug": "_6-1-关于排序",
+            "link": "#_6-1-关于排序",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "6.2 关于去重",
+            "slug": "_6-2-关于去重",
+            "link": "#_6-2-关于去重",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "6.3 关于搜索",
+            "slug": "_6-3-关于搜索",
+            "link": "#_6-3-关于搜索",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "杂谈",
+        "slug": "杂谈",
+        "link": "#杂谈",
+        "children": []
+      }
+    ],
+    "path": "/python/%E8%AF%AD%E8%A8%80/%E5%9F%BA%E7%A1%80/%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "文件基础",
+    "headers": [
+      {
+        "level": 2,
+        "title": "1. 文件基础",
+        "slug": "_1-文件基础",
+        "link": "#_1-文件基础",
+        "children": [
+          {
+            "level": 3,
+            "title": "1.1 文件操作",
+            "slug": "_1-1-文件操作",
+            "link": "#_1-1-文件操作",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "2. 上下文管理器",
+        "slug": "_2-上下文管理器",
+        "link": "#_2-上下文管理器",
+        "children": [
+          {
+            "level": 3,
+            "title": "2.1 管理协议",
+            "slug": "_2-1-管理协议",
+            "link": "#_2-1-管理协议",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "2.2 with 语句",
+            "slug": "_2-2-with-语句",
+            "link": "#_2-2-with-语句",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "2.3 自定义上下文管理器",
+            "slug": "_2-3-自定义上下文管理器",
+            "link": "#_2-3-自定义上下文管理器",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "3. 进阶",
+        "slug": "_3-进阶",
+        "link": "#_3-进阶",
+        "children": []
+      }
+    ],
+    "path": "/python/%E8%AF%AD%E8%A8%80/%E5%9F%BA%E7%A1%80/%E6%96%87%E4%BB%B6%E5%9F%BA%E7%A1%80.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "流程控制",
+    "headers": [
+      {
+        "level": 2,
+        "title": "1. 条件判断",
+        "slug": "_1-条件判断",
+        "link": "#_1-条件判断",
+        "children": [
+          {
+            "level": 3,
+            "title": "1.1 if 语句",
+            "slug": "_1-1-if-语句",
+            "link": "#_1-1-if-语句",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "1.2 判断运算符",
+            "slug": "_1-2-判断运算符",
+            "link": "#_1-2-判断运算符",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "2. 循环",
+        "slug": "_2-循环",
+        "link": "#_2-循环",
+        "children": [
+          {
+            "level": 3,
+            "title": "2.1 for 语句",
+            "slug": "_2-1-for-语句",
+            "link": "#_2-1-for-语句",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "2.2 while 语句",
+            "slug": "_2-2-while-语句",
+            "link": "#_2-2-while-语句",
+            "children": []
+          }
+        ]
+      }
+    ],
+    "path": "/python/%E8%AF%AD%E8%A8%80/%E5%9F%BA%E7%A1%80/%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "环境安装",
+    "headers": [
+      {
+        "level": 3,
+        "title": "1. 环境安装",
+        "slug": "_1-环境安装",
+        "link": "#_1-环境安装",
+        "children": []
+      },
+      {
+        "level": 3,
+        "title": "2. python 风格指南",
+        "slug": "_2-python-风格指南",
+        "link": "#_2-python-风格指南",
+        "children": []
+      },
+      {
+        "level": 3,
+        "title": "3. Pycharm",
+        "slug": "_3-pycharm",
+        "link": "#_3-pycharm",
+        "children": []
+      }
+    ],
+    "path": "/python/%E8%AF%AD%E8%A8%80/%E5%9F%BA%E7%A1%80/%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "标准库链接",
+    "headers": [
+      {
+        "level": 3,
+        "title": "标准库",
+        "slug": "标准库",
+        "link": "#标准库",
+        "children": []
+      },
+      {
+        "level": 3,
+        "title": "其他第三方库",
+        "slug": "其他第三方库",
+        "link": "#其他第三方库",
+        "children": []
+      }
+    ],
+    "path": "/python/%E8%AF%AD%E8%A8%80/%E5%BA%93/%E6%A0%87%E5%87%86%E5%BA%93%E9%93%BE%E6%8E%A5.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
     "title": "Linux文件锁",
     "headers": [
       {
@@ -6618,28 +6647,6 @@ export const SEARCH_INDEX = [
     "extraFields": []
   },
   {
-    "title": "标准库链接",
-    "headers": [
-      {
-        "level": 3,
-        "title": "标准库",
-        "slug": "标准库",
-        "link": "#标准库",
-        "children": []
-      },
-      {
-        "level": 3,
-        "title": "其他第三方库",
-        "slug": "其他第三方库",
-        "link": "#其他第三方库",
-        "children": []
-      }
-    ],
-    "path": "/python/%E8%AF%AD%E8%A8%80/%E5%BA%93/%E6%A0%87%E5%87%86%E5%BA%93%E9%93%BE%E6%8E%A5.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
     "title": "Cpython 对象",
     "headers": [
       {
@@ -6892,130 +6899,6 @@ export const SEARCH_INDEX = [
       }
     ],
     "path": "/python/%E8%AF%AD%E8%A8%80/%E6%B7%B1%E5%85%A5/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "Socket编程",
-    "headers": [
-      {
-        "level": 2,
-        "title": "1. Socket 套接字",
-        "slug": "_1-socket-套接字",
-        "link": "#_1-socket-套接字",
-        "children": [
-          {
-            "level": 3,
-            "title": "1.1 进程通信",
-            "slug": "_1-1-进程通信",
-            "link": "#_1-1-进程通信",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "1.2 Socket 概述",
-            "slug": "_1-2-socket-概述",
-            "link": "#_1-2-socket-概述",
-            "children": []
-          }
-        ]
-      }
-    ],
-    "path": "/python/%E8%AF%AD%E8%A8%80/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/Socket.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "WebSocket编程",
-    "headers": [
-      {
-        "level": 2,
-        "title": "一、websocket 概述",
-        "slug": "一、websocket-概述",
-        "link": "#一、websocket-概述",
-        "children": [
-          {
-            "level": 3,
-            "title": "0.简述：",
-            "slug": "_0-简述",
-            "link": "#_0-简述",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "1.使用场景",
-            "slug": "_1-使用场景",
-            "link": "#_1-使用场景",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "2.连接过程：",
-            "slug": "_2-连接过程",
-            "link": "#_2-连接过程",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "3.特点：",
-            "slug": "_3-特点",
-            "link": "#_3-特点",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "4.协议头部：",
-            "slug": "_4-协议头部",
-            "link": "#_4-协议头部",
-            "children": []
-          }
-        ]
-      },
-      {
-        "level": 2,
-        "title": "二、websocket 前端使用 api：",
-        "slug": "二、websocket-前端使用-api",
-        "link": "#二、websocket-前端使用-api",
-        "children": [
-          {
-            "level": 3,
-            "title": "1.WebSocket 属性",
-            "slug": "_1-websocket-属性",
-            "link": "#_1-websocket-属性",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "2.WebSocket 方法",
-            "slug": "_2-websocket-方法",
-            "link": "#_2-websocket-方法",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "3.WebSocket 实例事件",
-            "slug": "_3-websocket-实例事件",
-            "link": "#_3-websocket-实例事件",
-            "children": []
-          }
-        ]
-      }
-    ],
-    "path": "/python/%E8%AF%AD%E8%A8%80/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/Websocket.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "事件驱动模型",
-    "headers": [],
-    "path": "/python/%E8%AF%AD%E8%A8%80/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/%E4%BA%8B%E4%BB%B6%E6%A8%A1%E5%9E%8B.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "事件の起源——回调",
-    "headers": [],
-    "path": "/python/%E8%AF%AD%E8%A8%80/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/%E5%9B%9E%E8%B0%83.html",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -7538,9 +7421,126 @@ export const SEARCH_INDEX = [
     "extraFields": []
   },
   {
-    "title": "DNS 服务",
+    "title": "Socket编程",
+    "headers": [
+      {
+        "level": 2,
+        "title": "1. Socket 套接字",
+        "slug": "_1-socket-套接字",
+        "link": "#_1-socket-套接字",
+        "children": [
+          {
+            "level": 3,
+            "title": "1.1 进程通信",
+            "slug": "_1-1-进程通信",
+            "link": "#_1-1-进程通信",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "1.2 Socket 概述",
+            "slug": "_1-2-socket-概述",
+            "link": "#_1-2-socket-概述",
+            "children": []
+          }
+        ]
+      }
+    ],
+    "path": "/python/%E8%AF%AD%E8%A8%80/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/Socket.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "WebSocket编程",
+    "headers": [
+      {
+        "level": 2,
+        "title": "一、websocket 概述",
+        "slug": "一、websocket-概述",
+        "link": "#一、websocket-概述",
+        "children": [
+          {
+            "level": 3,
+            "title": "0.简述：",
+            "slug": "_0-简述",
+            "link": "#_0-简述",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "1.使用场景",
+            "slug": "_1-使用场景",
+            "link": "#_1-使用场景",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "2.连接过程：",
+            "slug": "_2-连接过程",
+            "link": "#_2-连接过程",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "3.特点：",
+            "slug": "_3-特点",
+            "link": "#_3-特点",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "4.协议头部：",
+            "slug": "_4-协议头部",
+            "link": "#_4-协议头部",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "二、websocket 前端使用 api：",
+        "slug": "二、websocket-前端使用-api",
+        "link": "#二、websocket-前端使用-api",
+        "children": [
+          {
+            "level": 3,
+            "title": "1.WebSocket 属性",
+            "slug": "_1-websocket-属性",
+            "link": "#_1-websocket-属性",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "2.WebSocket 方法",
+            "slug": "_2-websocket-方法",
+            "link": "#_2-websocket-方法",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "3.WebSocket 实例事件",
+            "slug": "_3-websocket-实例事件",
+            "link": "#_3-websocket-实例事件",
+            "children": []
+          }
+        ]
+      }
+    ],
+    "path": "/python/%E8%AF%AD%E8%A8%80/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/Websocket.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "事件驱动模型",
     "headers": [],
-    "path": "/unix/CentOS/DNS/DNS%E6%9C%8D%E5%8A%A1.html",
+    "path": "/python/%E8%AF%AD%E8%A8%80/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/%E4%BA%8B%E4%BB%B6%E6%A8%A1%E5%9E%8B.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "事件の起源——回调",
+    "headers": [],
+    "path": "/python/%E8%AF%AD%E8%A8%80/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/%E5%9B%9E%E8%B0%83.html",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -7571,6 +7571,13 @@ export const SEARCH_INDEX = [
       }
     ],
     "path": "/unix/CentOS/DNS/bind.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "DNS 服务",
+    "headers": [],
+    "path": "/unix/CentOS/DNS/DNS%E6%9C%8D%E5%8A%A1.html",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -7949,89 +7956,61 @@ export const SEARCH_INDEX = [
     "extraFields": []
   },
   {
-    "title": "Net-SNMP",
-    "headers": [
-      {
-        "level": 3,
-        "title": "1. 什么是 SNMP 协议",
-        "slug": "_1-什么是-snmp-协议",
-        "link": "#_1-什么是-snmp-协议",
-        "children": []
-      },
-      {
-        "level": 3,
-        "title": "2. SNMP 支持的网管操作",
-        "slug": "_2-snmp-支持的网管操作",
-        "link": "#_2-snmp-支持的网管操作",
-        "children": []
-      },
-      {
-        "level": 3,
-        "title": "3. SNMP 的实现结构及定义",
-        "slug": "_3-snmp-的实现结构及定义",
-        "link": "#_3-snmp-的实现结构及定义",
-        "children": []
-      },
-      {
-        "level": 3,
-        "title": "4. Net-SNMP 软件",
-        "slug": "_4-net-snmp-软件",
-        "link": "#_4-net-snmp-软件",
-        "children": []
-      }
-    ],
-    "path": "/unix/CentOS/SNMP/SNMP%E6%9C%8D%E5%8A%A1.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "SNMP设计文档",
+    "title": "rsync同步",
     "headers": [
       {
         "level": 2,
-        "title": "1. SNMP 详细设计",
-        "slug": "_1-snmp-详细设计",
-        "link": "#_1-snmp-详细设计",
+        "title": "1. 说明",
+        "slug": "_1-说明",
+        "link": "#_1-说明",
         "children": [
           {
             "level": 3,
-            "title": "1.2 SNMPv2c",
-            "slug": "_1-2-snmpv2c",
-            "link": "#_1-2-snmpv2c",
+            "title": "1.1 用处",
+            "slug": "_1-1-用处",
+            "link": "#_1-1-用处",
             "children": []
           },
           {
             "level": 3,
-            "title": "1.3 SNMPv3",
-            "slug": "_1-3-snmpv3",
-            "link": "#_1-3-snmpv3",
+            "title": "1.2 组成模式",
+            "slug": "_1-2-组成模式",
+            "link": "#_1-2-组成模式",
             "children": []
           },
           {
             "level": 3,
-            "title": "1.4 服务高可用",
-            "slug": "_1-4-服务高可用",
-            "link": "#_1-4-服务高可用",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "1.5 MIB 管理对象",
-            "slug": "_1-5-mib-管理对象",
-            "link": "#_1-5-mib-管理对象",
+            "title": "1.3 工作方式",
+            "slug": "_1-3-工作方式",
+            "link": "#_1-3-工作方式",
             "children": []
           }
         ]
       },
       {
         "level": 2,
-        "title": "2. SNMP 接收端配置",
-        "slug": "_2-snmp-接收端配置",
-        "link": "#_2-snmp-接收端配置",
+        "title": "2. 基础使用",
+        "slug": "_2-基础使用",
+        "link": "#_2-基础使用",
+        "children": [
+          {
+            "level": 3,
+            "title": "2.1 简单示例",
+            "slug": "_2-1-简单示例",
+            "link": "#_2-1-简单示例",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "2.2 选项说明",
+        "slug": "_2-2-选项说明",
+        "link": "#_2-2-选项说明",
         "children": []
       }
     ],
-    "path": "/unix/CentOS/SNMP/SNMP%E8%AE%BE%E8%AE%A1%E6%96%87%E6%A1%A3.html",
+    "path": "/unix/CentOS/Samba/rsync.html",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -8138,61 +8117,89 @@ export const SEARCH_INDEX = [
     "extraFields": []
   },
   {
-    "title": "rsync同步",
+    "title": "Net-SNMP",
     "headers": [
       {
-        "level": 2,
-        "title": "1. 说明",
-        "slug": "_1-说明",
-        "link": "#_1-说明",
-        "children": [
-          {
-            "level": 3,
-            "title": "1.1 用处",
-            "slug": "_1-1-用处",
-            "link": "#_1-1-用处",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "1.2 组成模式",
-            "slug": "_1-2-组成模式",
-            "link": "#_1-2-组成模式",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "1.3 工作方式",
-            "slug": "_1-3-工作方式",
-            "link": "#_1-3-工作方式",
-            "children": []
-          }
-        ]
+        "level": 3,
+        "title": "1. 什么是 SNMP 协议",
+        "slug": "_1-什么是-snmp-协议",
+        "link": "#_1-什么是-snmp-协议",
+        "children": []
       },
       {
-        "level": 2,
-        "title": "2. 基础使用",
-        "slug": "_2-基础使用",
-        "link": "#_2-基础使用",
-        "children": [
-          {
-            "level": 3,
-            "title": "2.1 简单示例",
-            "slug": "_2-1-简单示例",
-            "link": "#_2-1-简单示例",
-            "children": []
-          }
-        ]
+        "level": 3,
+        "title": "2. SNMP 支持的网管操作",
+        "slug": "_2-snmp-支持的网管操作",
+        "link": "#_2-snmp-支持的网管操作",
+        "children": []
       },
       {
-        "level": 2,
-        "title": "2.2 选项说明",
-        "slug": "_2-2-选项说明",
-        "link": "#_2-2-选项说明",
+        "level": 3,
+        "title": "3. SNMP 的实现结构及定义",
+        "slug": "_3-snmp-的实现结构及定义",
+        "link": "#_3-snmp-的实现结构及定义",
+        "children": []
+      },
+      {
+        "level": 3,
+        "title": "4. Net-SNMP 软件",
+        "slug": "_4-net-snmp-软件",
+        "link": "#_4-net-snmp-软件",
         "children": []
       }
     ],
-    "path": "/unix/CentOS/Samba/rsync.html",
+    "path": "/unix/CentOS/SNMP/SNMP%E6%9C%8D%E5%8A%A1.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "SNMP设计文档",
+    "headers": [
+      {
+        "level": 2,
+        "title": "1. SNMP 详细设计",
+        "slug": "_1-snmp-详细设计",
+        "link": "#_1-snmp-详细设计",
+        "children": [
+          {
+            "level": 3,
+            "title": "1.2 SNMPv2c",
+            "slug": "_1-2-snmpv2c",
+            "link": "#_1-2-snmpv2c",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "1.3 SNMPv3",
+            "slug": "_1-3-snmpv3",
+            "link": "#_1-3-snmpv3",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "1.4 服务高可用",
+            "slug": "_1-4-服务高可用",
+            "link": "#_1-4-服务高可用",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "1.5 MIB 管理对象",
+            "slug": "_1-5-mib-管理对象",
+            "link": "#_1-5-mib-管理对象",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "2. SNMP 接收端配置",
+        "slug": "_2-snmp-接收端配置",
+        "link": "#_2-snmp-接收端配置",
+        "children": []
+      }
+    ],
+    "path": "/unix/CentOS/SNMP/SNMP%E8%AE%BE%E8%AE%A1%E6%96%87%E6%A1%A3.html",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -8930,6 +8937,86 @@ export const SEARCH_INDEX = [
     "extraFields": []
   },
   {
+    "title": "NAT与穿透",
+    "headers": [
+      {
+        "level": 2,
+        "title": "1. 基本概念",
+        "slug": "_1-基本概念",
+        "link": "#_1-基本概念",
+        "children": [
+          {
+            "level": 3,
+            "title": "1.1 相关基础",
+            "slug": "_1-1-相关基础",
+            "link": "#_1-1-相关基础",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "1.2 NAT基本概念",
+            "slug": "_1-2-nat基本概念",
+            "link": "#_1-2-nat基本概念",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "1.3 断开 NAT 连接后",
+            "slug": "_1-3-断开-nat-连接后",
+            "link": "#_1-3-断开-nat-连接后",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "1.4 端口映射",
+            "slug": "_1-4-端口映射",
+            "link": "#_1-4-端口映射",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "1.5 内网穿透",
+            "slug": "_1-5-内网穿透",
+            "link": "#_1-5-内网穿透",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "2. 内网穿透是怎么实现的",
+        "slug": "_2-内网穿透是怎么实现的",
+        "link": "#_2-内网穿透是怎么实现的",
+        "children": [
+          {
+            "level": 3,
+            "title": "2.1 中继转发",
+            "slug": "_2-1-中继转发",
+            "link": "#_2-1-中继转发",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "2.2 NAT类型",
+            "slug": "_2-2-nat类型",
+            "link": "#_2-2-nat类型",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "2.3 NAT 打洞",
+            "slug": "_2-3-nat-打洞",
+            "link": "#_2-3-nat-打洞",
+            "children": []
+          }
+        ]
+      }
+    ],
+    "path": "/unix/Linux/%E7%BD%91%E7%BB%9C/NAT%E4%B8%8E%E7%A9%BF%E9%80%8F.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
     "title": "P2P 网络编程",
     "headers": [
       {
@@ -8980,7 +9067,7 @@ export const SEARCH_INDEX = [
     "extraFields": []
   },
   {
-    "title": "命令",
+    "title": "常用网络命令及工具",
     "headers": [
       {
         "level": 2,
@@ -9020,7 +9107,7 @@ export const SEARCH_INDEX = [
         ]
       }
     ],
-    "path": "/unix/Linux/%E7%BD%91%E7%BB%9C/%E5%91%BD%E4%BB%A4.html",
+    "path": "/unix/Linux/%E7%BD%91%E7%BB%9C/%E5%B8%B8%E7%94%A8%E7%BD%91%E7%BB%9C%E5%91%BD%E4%BB%A4%E5%8F%8A%E5%B7%A5%E5%85%B7.html",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -9659,37 +9746,9 @@ export const SEARCH_INDEX = [
     "extraFields": []
   },
   {
-    "title": "优化",
+    "title": "Etcd",
     "headers": [],
-    "path": "/go/%E4%BC%98%E5%8C%96/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "Go",
-    "headers": [],
-    "path": "/go/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "基础",
-    "headers": [],
-    "path": "/go/%E5%9F%BA%E7%A1%80/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "算法与数据结构",
-    "headers": [],
-    "path": "/go/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "My SQL",
-    "headers": [],
-    "path": "/database/MySQL/",
+    "path": "/database/etcd/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -9697,6 +9756,13 @@ export const SEARCH_INDEX = [
     "title": "Database",
     "headers": [],
     "path": "/database/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "My SQL",
+    "headers": [],
+    "path": "/database/MySQL/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -9715,16 +9781,30 @@ export const SEARCH_INDEX = [
     "extraFields": []
   },
   {
-    "title": "Etcd",
+    "title": "基础",
     "headers": [],
-    "path": "/database/etcd/",
+    "path": "/go/%E5%9F%BA%E7%A1%80/",
     "pathLocale": "/",
     "extraFields": []
   },
   {
-    "title": "Docker",
+    "title": "Go",
     "headers": [],
-    "path": "/tool/Docker/",
+    "path": "/go/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "优化",
+    "headers": [],
+    "path": "/go/%E4%BC%98%E5%8C%96/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "算法与数据结构",
+    "headers": [],
+    "path": "/go/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -9736,9 +9816,9 @@ export const SEARCH_INDEX = [
     "extraFields": []
   },
   {
-    "title": "Kubernetes",
+    "title": "Docker",
     "headers": [],
-    "path": "/tool/Kubernetes/",
+    "path": "/tool/Docker/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -9746,6 +9826,13 @@ export const SEARCH_INDEX = [
     "title": "Nginx",
     "headers": [],
     "path": "/tool/Nginx/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "Kubernetes",
+    "headers": [],
+    "path": "/tool/Kubernetes/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -9771,9 +9858,9 @@ export const SEARCH_INDEX = [
     "extraFields": []
   },
   {
-    "title": "消息队列",
+    "title": "异步任务",
     "headers": [],
-    "path": "/python/%E7%94%9F%E6%80%81/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/",
+    "path": "/python/%E7%94%9F%E6%80%81/%E5%BC%82%E6%AD%A5%E4%BB%BB%E5%8A%A1/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -9785,30 +9872,16 @@ export const SEARCH_INDEX = [
     "extraFields": []
   },
   {
+    "title": "消息队列",
+    "headers": [],
+    "path": "/python/%E7%94%9F%E6%80%81/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
     "title": "远程调用",
     "headers": [],
     "path": "/python/%E7%94%9F%E6%80%81/%E8%BF%9C%E7%A8%8B%E8%B0%83%E7%94%A8/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "异步任务",
-    "headers": [],
-    "path": "/python/%E7%94%9F%E6%80%81/%E5%BC%82%E6%AD%A5%E4%BB%BB%E5%8A%A1/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "基础",
-    "headers": [],
-    "path": "/python/%E8%AF%AD%E8%A8%80/%E5%9F%BA%E7%A1%80/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "语言",
-    "headers": [],
-    "path": "/python/%E8%AF%AD%E8%A8%80/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -9820,9 +9893,16 @@ export const SEARCH_INDEX = [
     "extraFields": []
   },
   {
-    "title": "多任务编程",
+    "title": "语言",
     "headers": [],
-    "path": "/python/%E8%AF%AD%E8%A8%80/%E5%A4%9A%E4%BB%BB%E5%8A%A1%E7%BC%96%E7%A8%8B/",
+    "path": "/python/%E8%AF%AD%E8%A8%80/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "基础",
+    "headers": [],
+    "path": "/python/%E8%AF%AD%E8%A8%80/%E5%9F%BA%E7%A1%80/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -9834,6 +9914,13 @@ export const SEARCH_INDEX = [
     "extraFields": []
   },
   {
+    "title": "多任务编程",
+    "headers": [],
+    "path": "/python/%E8%AF%AD%E8%A8%80/%E5%A4%9A%E4%BB%BB%E5%8A%A1%E7%BC%96%E7%A8%8B/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
     "title": "深入",
     "headers": [],
     "path": "/python/%E8%AF%AD%E8%A8%80/%E6%B7%B1%E5%85%A5/",
@@ -9841,16 +9928,16 @@ export const SEARCH_INDEX = [
     "extraFields": []
   },
   {
-    "title": "网络编程",
+    "title": "进阶",
     "headers": [],
-    "path": "/python/%E8%AF%AD%E8%A8%80/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/",
+    "path": "/python/%E8%AF%AD%E8%A8%80/%E8%BF%9B%E9%98%B6/",
     "pathLocale": "/",
     "extraFields": []
   },
   {
-    "title": "进阶",
+    "title": "网络编程",
     "headers": [],
-    "path": "/python/%E8%AF%AD%E8%A8%80/%E8%BF%9B%E9%98%B6/",
+    "path": "/python/%E8%AF%AD%E8%A8%80/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -9897,16 +9984,16 @@ export const SEARCH_INDEX = [
     "extraFields": []
   },
   {
-    "title": "SNMP",
+    "title": "Samba",
     "headers": [],
-    "path": "/unix/CentOS/SNMP/",
+    "path": "/unix/CentOS/Samba/",
     "pathLocale": "/",
     "extraFields": []
   },
   {
-    "title": "Samba",
+    "title": "SNMP",
     "headers": [],
-    "path": "/unix/CentOS/Samba/",
+    "path": "/unix/CentOS/SNMP/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -10128,6 +10215,13 @@ export const SEARCH_INDEX = [
     "extraFields": []
   },
   {
+    "title": "数据库 分类",
+    "headers": [],
+    "path": "/category/%E6%95%B0%E6%8D%AE%E5%BA%93/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
     "title": "Go 分类",
     "headers": [],
     "path": "/category/go/",
@@ -10163,9 +10257,16 @@ export const SEARCH_INDEX = [
     "extraFields": []
   },
   {
-    "title": "数据库 分类",
+    "title": "工具 分类",
     "headers": [],
-    "path": "/category/%E6%95%B0%E6%8D%AE%E5%BA%93/",
+    "path": "/category/%E5%B7%A5%E5%85%B7/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "CICD 分类",
+    "headers": [],
+    "path": "/category/cicd/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -10180,20 +10281,6 @@ export const SEARCH_INDEX = [
     "title": "Docker 分类",
     "headers": [],
     "path": "/category/docker/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "工具 分类",
-    "headers": [],
-    "path": "/category/%E5%B7%A5%E5%85%B7/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "CICD 分类",
-    "headers": [],
-    "path": "/category/cicd/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -10219,13 +10306,6 @@ export const SEARCH_INDEX = [
     "extraFields": []
   },
   {
-    "title": "RBMQ 分类",
-    "headers": [],
-    "path": "/category/rbmq/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
     "title": "Kombu 分类",
     "headers": [],
     "path": "/category/kombu/",
@@ -10236,6 +10316,13 @@ export const SEARCH_INDEX = [
     "title": "MQ 分类",
     "headers": [],
     "path": "/category/mq/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "RBMQ 分类",
+    "headers": [],
+    "path": "/category/rbmq/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -10254,16 +10341,16 @@ export const SEARCH_INDEX = [
     "extraFields": []
   },
   {
-    "title": "打包 分类",
+    "title": "asyncio 分类",
     "headers": [],
-    "path": "/category/%E6%89%93%E5%8C%85/",
+    "path": "/category/asyncio/",
     "pathLocale": "/",
     "extraFields": []
   },
   {
-    "title": "asyncio 分类",
+    "title": "打包 分类",
     "headers": [],
-    "path": "/category/asyncio/",
+    "path": "/category/%E6%89%93%E5%8C%85/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -10331,16 +10418,16 @@ export const SEARCH_INDEX = [
     "extraFields": []
   },
   {
-    "title": "SNMP 分类",
+    "title": "SMB/CIFS 分类",
     "headers": [],
-    "path": "/category/snmp/",
+    "path": "/category/smbcifs/",
     "pathLocale": "/",
     "extraFields": []
   },
   {
-    "title": "SMB/CIFS 分类",
+    "title": "SNMP 分类",
     "headers": [],
-    "path": "/category/smbcifs/",
+    "path": "/category/snmp/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -10418,6 +10505,13 @@ export const SEARCH_INDEX = [
     "title": "网络通信 分类",
     "headers": [],
     "path": "/category/%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "常用网络命令及工具 分类",
+    "headers": [],
+    "path": "/category/%E5%B8%B8%E7%94%A8%E7%BD%91%E7%BB%9C%E5%91%BD%E4%BB%A4%E5%8F%8A%E5%B7%A5%E5%85%B7/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -10520,48 +10614,6 @@ export const SEARCH_INDEX = [
     "extraFields": []
   },
   {
-    "title": "标签: GO",
-    "headers": [],
-    "path": "/tag/go/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "标签: 优化",
-    "headers": [],
-    "path": "/tag/%E4%BC%98%E5%8C%96/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "标签: 源码",
-    "headers": [],
-    "path": "/tag/%E6%BA%90%E7%A0%81/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "标签: 数据结构",
-    "headers": [],
-    "path": "/tag/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "标签: go",
-    "headers": [],
-    "path": "/tag/go/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "标签: MySQL",
-    "headers": [],
-    "path": "/tag/mysql/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
     "title": "标签: etcd",
     "headers": [],
     "path": "/tag/etcd/",
@@ -10583,23 +10635,44 @@ export const SEARCH_INDEX = [
     "extraFields": []
   },
   {
-    "title": "标签: Docker",
+    "title": "标签: MySQL",
     "headers": [],
-    "path": "/tag/docker/",
+    "path": "/tag/mysql/",
     "pathLocale": "/",
     "extraFields": []
   },
   {
-    "title": "标签: 工具",
+    "title": "标签: GO",
     "headers": [],
-    "path": "/tag/%E5%B7%A5%E5%85%B7/",
+    "path": "/tag/go/",
     "pathLocale": "/",
     "extraFields": []
   },
   {
-    "title": "标签: CLI",
+    "title": "标签: 源码",
     "headers": [],
-    "path": "/tag/cli/",
+    "path": "/tag/%E6%BA%90%E7%A0%81/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "标签: 优化",
+    "headers": [],
+    "path": "/tag/%E4%BC%98%E5%8C%96/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "标签: 数据结构",
+    "headers": [],
+    "path": "/tag/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "标签: go",
+    "headers": [],
+    "path": "/tag/go/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -10625,23 +10698,23 @@ export const SEARCH_INDEX = [
     "extraFields": []
   },
   {
-    "title": "标签: helm",
+    "title": "标签: Docker",
     "headers": [],
-    "path": "/tag/helm/",
+    "path": "/tag/docker/",
     "pathLocale": "/",
     "extraFields": []
   },
   {
-    "title": "标签: 存储库",
+    "title": "标签: 工具",
     "headers": [],
-    "path": "/tag/%E5%AD%98%E5%82%A8%E5%BA%93/",
+    "path": "/tag/%E5%B7%A5%E5%85%B7/",
     "pathLocale": "/",
     "extraFields": []
   },
   {
-    "title": "标签: k8s",
+    "title": "标签: CLI",
     "headers": [],
-    "path": "/tag/k8s/",
+    "path": "/tag/cli/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -10667,9 +10740,30 @@ export const SEARCH_INDEX = [
     "extraFields": []
   },
   {
-    "title": "标签: 服务",
+    "title": "标签: helm",
     "headers": [],
-    "path": "/tag/%E6%9C%8D%E5%8A%A1/",
+    "path": "/tag/helm/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "标签: 存储库",
+    "headers": [],
+    "path": "/tag/%E5%AD%98%E5%82%A8%E5%BA%93/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "标签: k8s",
+    "headers": [],
+    "path": "/tag/k8s/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "标签: 文档",
+    "headers": [],
+    "path": "/tag/%E6%96%87%E6%A1%A3/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -10677,6 +10771,13 @@ export const SEARCH_INDEX = [
     "title": "标签: 远程",
     "headers": [],
     "path": "/tag/%E8%BF%9C%E7%A8%8B/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "标签: 服务",
+    "headers": [],
+    "path": "/tag/%E6%9C%8D%E5%8A%A1/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -10702,9 +10803,9 @@ export const SEARCH_INDEX = [
     "extraFields": []
   },
   {
-    "title": "标签: RBMQ",
+    "title": "标签: MQ",
     "headers": [],
-    "path": "/tag/rbmq/",
+    "path": "/tag/mq/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -10716,9 +10817,9 @@ export const SEARCH_INDEX = [
     "extraFields": []
   },
   {
-    "title": "标签: MQ",
+    "title": "标签: RBMQ",
     "headers": [],
-    "path": "/tag/mq/",
+    "path": "/tag/rbmq/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -10737,30 +10838,9 @@ export const SEARCH_INDEX = [
     "extraFields": []
   },
   {
-    "title": "标签: 打包",
-    "headers": [],
-    "path": "/tag/%E6%89%93%E5%8C%85/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "标签: pip",
-    "headers": [],
-    "path": "/tag/pip/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
     "title": "标签: Python",
     "headers": [],
     "path": "/tag/python/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "标签: Pycharm",
-    "headers": [],
-    "path": "/tag/pycharm/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -10775,6 +10855,34 @@ export const SEARCH_INDEX = [
     "title": "标签: subprocess",
     "headers": [],
     "path": "/tag/subprocess/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "标签: pip",
+    "headers": [],
+    "path": "/tag/pip/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "标签: 打包",
+    "headers": [],
+    "path": "/tag/%E6%89%93%E5%8C%85/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "标签: Pycharm",
+    "headers": [],
+    "path": "/tag/pycharm/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "标签: 标准库",
+    "headers": [],
+    "path": "/tag/%E6%A0%87%E5%87%86%E5%BA%93/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -10828,30 +10936,9 @@ export const SEARCH_INDEX = [
     "extraFields": []
   },
   {
-    "title": "标签: 标准库",
-    "headers": [],
-    "path": "/tag/%E6%A0%87%E5%87%86%E5%BA%93/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
     "title": "标签: GC",
     "headers": [],
     "path": "/tag/gc/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "标签: Socket",
-    "headers": [],
-    "path": "/tag/socket/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "标签: 网络编程",
-    "headers": [],
-    "path": "/tag/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -10898,6 +10985,20 @@ export const SEARCH_INDEX = [
     "extraFields": []
   },
   {
+    "title": "标签: Socket",
+    "headers": [],
+    "path": "/tag/socket/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "标签: 网络编程",
+    "headers": [],
+    "path": "/tag/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
     "title": "标签: Linux",
     "headers": [],
     "path": "/tag/linux/",
@@ -10940,16 +11041,16 @@ export const SEARCH_INDEX = [
     "extraFields": []
   },
   {
-    "title": "标签: SNMP",
+    "title": "标签: SMB/CIFS",
     "headers": [],
-    "path": "/tag/snmp/",
+    "path": "/tag/smbcifs/",
     "pathLocale": "/",
     "extraFields": []
   },
   {
-    "title": "标签: SMB/CIFS",
+    "title": "标签: SNMP",
     "headers": [],
-    "path": "/tag/smbcifs/",
+    "path": "/tag/snmp/",
     "pathLocale": "/",
     "extraFields": []
   },

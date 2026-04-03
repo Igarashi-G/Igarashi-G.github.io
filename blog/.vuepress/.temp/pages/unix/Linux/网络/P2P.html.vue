@@ -95,7 +95,37 @@
 </li>
 </ul>
 <h5 id="其大致流程图如下" tabindex="-1"><a class="header-anchor" href="#其大致流程图如下"><span>其大致流程图如下：</span></a></h5>
-<Mermaid id="mermaid-225" code="eJxLL0osyFDwCeJSAILi0iQI/8W6fU+XtDuCBUHA0TD66a4pz6eseL6i++mu/liEhFF0SKgfVD2SsHF0iHPA041NSEIm0Z5oIqbRLyfve7F9PaqoWfTzzpXPJ7Shihrq6to5GiHZC+IbI1kI4psg2QbimyLZBeKbgfmpeSlgGpuXneA6nAyxucPJCJubnYzR/eZkghEATqZYg8rJDEfQOoG87ITwshPIy04ILzuBvOyE8LITyMtOCC87gbzshMXLjma6ekAZQy4AgPiQPA=="></Mermaid><p>会发现，<strong>TUN</strong> 设备就像一个 <strong>“包裹处理站”</strong>，它会把 <strong>IP数据包</strong> 给包裹到了**TCP（<em>四层</em> ）**报文中，作为其 <strong>包裹-Data</strong> ，再经过 <strong>IP、链路、物理 -&gt; 另一端物理、链路、IP、TCP层（<em>4-3-2-1 -&gt; 1-2-3-&gt;4层</em> ）</strong> 层层传递最后又解析出 <strong>包裹-Data</strong></p>
+<div class="language-mermaid line-numbers-mode" data-highlighter="shiki" data-ext="mermaid" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">graph LR</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">    subgraph 设备A</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">        A1[应用程序]</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">        A2[TUN 设备]</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">        A3[TCP层]</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">        A4[IP层]</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">        A5[链路层]</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">        A6[物理层]</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">        A1-->A2</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">        A2-->A3</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">        A3-->A4</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">        A4-->A5</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">        A5-->A6</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">    end</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">    </span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">    subgraph 设备B</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">        B1[物理层]</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">        B2[链路层]</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">        B3[IP层]</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">        B4[TCP层]</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">        B5[TUN 设备]</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">        B6[应用程序]</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">        B1-->B2</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">        B2-->B3</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">        B3-->B4</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">        B4-->B5</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">        B5-->B6</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">    end</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">    </span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">    A6-.->B1</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>会发现，<strong>TUN</strong> 设备就像一个 <strong>“包裹处理站”</strong>，它会把 <strong>IP数据包</strong> 给包裹到了**TCP（<em>四层</em> ）**报文中，作为其 <strong>包裹-Data</strong> ，再经过 <strong>IP、链路、物理 -&gt; 另一端物理、链路、IP、TCP层（<em>4-3-2-1 -&gt; 1-2-3-&gt;4层</em> ）</strong> 层层传递最后又解析出 <strong>包裹-Data</strong></p>
 <ul>
 <li>
 <p>应用数据进入 <strong>TUN</strong> 设备</p>
