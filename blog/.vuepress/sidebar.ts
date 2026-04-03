@@ -437,7 +437,7 @@ export default sidebar({
       icon: "other",
       prefix: "/tool/Other/",
       link: "/tool/Other/",
-      children: ["rdesktop", "screen", "网络代理"]
+      children: ["网络代理", "tmux", "outline", "Fiddler抓包工具", "rdesktop", "Screen"]
     }
   ],
   "/ai/HelloAgents": [

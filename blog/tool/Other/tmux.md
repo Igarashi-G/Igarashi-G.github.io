@@ -1,5 +1,5 @@
 ---
-title: Tmux
+title: 终端 Tmux
 order: 5
 ---
 

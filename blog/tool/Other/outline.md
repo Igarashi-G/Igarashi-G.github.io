@@ -1,4 +1,11 @@
-
+---
+title: outline
+date: 2025-08-21
+category:
+  - 工具
+tag:
+  - 文档
+---
 
 ### outline 部署 
 

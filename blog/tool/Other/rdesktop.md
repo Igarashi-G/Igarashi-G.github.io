@@ -1,5 +1,5 @@
 ---
-title: rdesktop
+title: 远程桌面
 date: 2022-02-21
 category:
   - 工具

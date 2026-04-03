@@ -369,6 +369,23 @@ revert 之后你的本地代码会回滚到指定的历史版本,这时你再 gi
 </ul>
 </li>
 <li>
+<p><strong>github项目转推 gitlab</strong></p>
+<ol>
+<li>
+<p><strong>gitlab</strong> 创建好项目和对应分支</p>
+</li>
+<li>
+<p>克隆 <strong>github</strong> 的项目并切换到对应的 <strong>tag</strong></p>
+</li>
+<li>
+<p>推送到 <strong>gitlab</strong> 对应分支*（dev-0.0.1 分支为例）*</p>
+<div class="language-bash line-numbers-mode" data-highlighter="shiki" data-ext="bash" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div></li>
+</ol>
+<p>git push origin HEAD:dev-0.0.1 -f</p>
+<div class="language- line-numbers-mode" data-highlighter="shiki" data-ext="" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span></span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div></li>
+<li>
 <p><strong>同步本地的远程分支</strong></p>
 <p>查看本地分支和追踪情况</p>
 <div class="language-bash line-numbers-mode" data-highlighter="shiki" data-ext="bash" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">$</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> git</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> remote</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> show</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> origin</span></span></code></pre>
