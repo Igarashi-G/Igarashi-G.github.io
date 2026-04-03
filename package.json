@@ -11,6 +11,7 @@
     "docs:dev": "vuepress dev blog"
   },
   "devDependencies": {
+    "@mathjax/src": "^4.1.1",
     "@vuepress/bundler-vite": "2.0.0-rc.21",
     "@vuepress/client": "2.0.0-rc.21",
     "@vuepress/plugin-search": "2.0.0-rc.94",

@@ -78,6 +78,9 @@ export default hopeTheme({
 
   markdown: {
     mermaid: true,
+    math: {
+      type: "katex", // 或 'mathjax'
+    },
   },
 
   encrypt: {

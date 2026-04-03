@@ -1,10 +1,11 @@
-<template><div><h1 id="decode-only架构" tabindex="-1"><a class="header-anchor" href="#decode-only架构"><span>Decode-Only架构</span></a></h1>
-<h1 id="_1-softmax-公式" tabindex="-1"><a class="header-anchor" href="#_1-softmax-公式"><span><strong>1. Softmax 公式</strong></span></a></h1>
-<h2 id="_1-1-公式说明" tabindex="-1"><a class="header-anchor" href="#_1-1-公式说明"><span>1.1 公式说明</span></a></h2>
+<template><div><p>读 Hello Agents 相关核心要点梳理，架构部分</p>
+<!-- more -->
+<h1 id="decode-only架构" tabindex="-1"><a class="header-anchor" href="#decode-only架构"><span>Decode-Only架构</span></a></h1>
+<h2 id="_1-softmax-公式" tabindex="-1"><a class="header-anchor" href="#_1-softmax-公式"><span><strong>1. Softmax 公式</strong></span></a></h2>
+<h3 id="_1-1-公式说明" tabindex="-1"><a class="header-anchor" href="#_1-1-公式说明"><span>1.1 公式说明</span></a></h3>
 <p><strong>Softmax 起源于</strong> 统计力学 和 概率论，传统的概率分布是由 <strong>Softmax 公式</strong> 计算得到的：</p>
-<p>$$<br>
-softmax(x_i) = exp(x_i) / Σexp(x_j)<br>
-$$</p>
+<p v-pre class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>s</mi><mi>o</mi><mi>f</mi><mi>t</mi><mi>m</mi><mi>a</mi><mi>x</mi><mo stretchy="false">(</mo><msub><mi>x</mi><mi>i</mi></msub><mo stretchy="false">)</mo><mo>=</mo><mi>e</mi><mi>x</mi><mi>p</mi><mo stretchy="false">(</mo><msub><mi>x</mi><mi>i</mi></msub><mo stretchy="false">)</mo><mi mathvariant="normal">/</mi><mi mathvariant="normal">Σ</mi><mi>e</mi><mi>x</mi><mi>p</mi><mo stretchy="false">(</mo><msub><mi>x</mi><mi>j</mi></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">softmax(x_i) = exp(x_i) / Σexp(x_j)
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">so</span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mord mathnormal">t</span><span class="mord mathnormal">ma</span><span class="mord mathnormal">x</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.0361em;vertical-align:-0.2861em;"></span><span class="mord mathnormal">e</span><span class="mord mathnormal">x</span><span class="mord mathnormal">p</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mord">/Σ</span><span class="mord mathnormal">e</span><span class="mord mathnormal">x</span><span class="mord mathnormal">p</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.05724em;">j</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></span></p>
 <p><strong>其中：</strong></p>
 <ul>
 <li><code v-pre>x_i:</code> 第 i 个元素的原始分数</li>
@@ -15,7 +16,7 @@ $$</p>
 <p>比如现在有<code v-pre>[&quot;GPT&quot;, &quot;AI&quot;, &quot;小明&quot;, &quot;老师&quot;]</code> 经过矩阵运算得出原始分数为 <code v-pre>[5.0, 3.0, 1.0, 0.5]</code> 的候选词，其中 <strong>5.0</strong> 比 <strong>3.0</strong> 大，说明 <strong>&quot;GPT&quot;</strong> 比 <strong>&quot;AI&quot;</strong> 更可能出现，但这些数字不是 <strong>概率</strong>*（概率应该在0-1之间，且和为1）*</p>
 <p><strong>目标：转换为概率</strong></p>
 <p>希望得到如概率分布为 <code v-pre>[0.5, 0.3, 0.2, 0]</code> 这种 每个值在 <strong>0-1 之间</strong>，且所有值相加为 <strong>1</strong></p>
-<h2 id="_1-2-为什么要使用-exp" tabindex="-1"><a class="header-anchor" href="#_1-2-为什么要使用-exp"><span>1.2 为什么要使用 exp</span></a></h2>
+<h3 id="_1-2-为什么要使用-exp" tabindex="-1"><a class="header-anchor" href="#_1-2-为什么要使用-exp"><span>1.2 为什么要使用 exp</span></a></h3>
 <p>比如使用最原始的  <strong><mark>相加求和再相除</mark></strong>  直接归一化行不行</p>
 <div class="language-python line-numbers-mode" data-highlighter="shiki" data-ext="python" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">原始分数 </span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2">=</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> [</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">5.0</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">, </span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">3.0</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">, </span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">1.0</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">, </span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">0.5</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">]</span></span>
 <span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">总和 </span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2">=</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> 5.0</span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2"> +</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> 3.0</span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2"> +</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> 1.0</span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2"> +</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> 0.5</span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2"> =</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> 9.5</span></span>
@@ -42,7 +43,7 @@ $$</p>
 <span class="line"></span>
 <span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">除以总和 概率归一化 </span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2">=</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> [</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">7.39</span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2">/</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">10.62</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">, </span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">2.72</span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2">/</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">10.62</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">, </span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">0.37</span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2">/</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">10.62</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">, </span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">0.14</span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2">/</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">10.62</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">]</span></span>
 <span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2">                    =</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> [</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">0.7</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">, </span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">0.26</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">, </span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">0.03</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">, </span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">0.01</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">]</span></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h1 id="_2-掩码自注意力-masked-self-attention-。" tabindex="-1"><a class="header-anchor" href="#_2-掩码自注意力-masked-self-attention-。"><span><strong>2. 掩码自注意力 (Masked Self-Attention)</strong> 。</span></a></h1>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="_2-掩码自注意力-masked-self-attention" tabindex="-1"><a class="header-anchor" href="#_2-掩码自注意力-masked-self-attention"><span><strong>2. 掩码自注意力 (Masked Self-Attention)</strong></span></a></h2>
 <p>在 Decoder-Only 架构中，这个机制变得至关重要。它的工作原理非常巧妙，其本质如下：</p>
 <p><strong>GPT 的掩码本质：</strong> 对注意力分数矩阵应用一个布尔掩码矩阵，将需要屏蔽的位置设为 -inf。是 <strong>在数值上做加法/替换</strong>，然后利用 <strong>Softmax 的数学特性</strong> 来实现屏蔽。</p>
 <div class="language-python line-numbers-mode" data-highlighter="shiki" data-ext="python" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># 1. 注意力分数矩阵（原始）</span></span>
@@ -63,20 +64,20 @@ $$</p>
 <span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">masked_scores </span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2">=</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> attention_scores.</span><span style="--shiki-light:#383A42;--shiki-dark:#61AFEF">masked_fill</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">(mask, </span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2">-</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">inf)</span></span>
 <span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># 结果：True的位置变成-inf，False的位置保持不变</span></span></code></pre>
 <div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>用具体例子解释 GPT 掩码机制，说明它如何通过&quot;大负数&quot;实现</p>
-<h2 id="具体步骤演示" tabindex="-1"><a class="header-anchor" href="#具体步骤演示"><span><strong>具体步骤演示</strong></span></a></h2>
+<h3 id="_2-1-具体步骤演示" tabindex="-1"><a class="header-anchor" href="#_2-1-具体步骤演示"><span>2.1 具体步骤演示</span></a></h3>
 <p>假设我们有一个句子：&quot;我 爱 你&quot;，计算第2个词&quot;爱&quot;的注意力时：</p>
-<h4 id="步骤1-计算注意力分数矩阵" tabindex="-1"><a class="header-anchor" href="#步骤1-计算注意力分数矩阵"><span><strong>步骤1：计算注意力分数矩阵</strong></span></a></h4>
+<h5 id="步骤1-计算注意力分数矩阵" tabindex="-1"><a class="header-anchor" href="#步骤1-计算注意力分数矩阵"><span><strong>步骤1：计算注意力分数矩阵</strong></span></a></h5>
 <div class="language-bash line-numbers-mode" data-highlighter="shiki" data-ext="bash" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">位置:</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">    [0:我]  [1:爱]  [2:你]</span></span>
 <span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">[0:我]    2.5     1.8      0.3</span></span>
 <span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">[1:爱]   </span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">`</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">3.2</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">     2.1</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">      1.5</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">`</span><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">    ←</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> 这是"爱"对所有词的注意力分数</span></span>
 <span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">[2:你]    1.0     0.8      2.0</span></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h4 id="步骤2-应用掩码-关键步骤" tabindex="-1"><a class="header-anchor" href="#步骤2-应用掩码-关键步骤"><span><strong>步骤2：应用掩码（关键步骤）</strong></span></a></h4>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h5 id="步骤2-应用掩码-关键步骤" tabindex="-1"><a class="header-anchor" href="#步骤2-应用掩码-关键步骤"><span><strong>步骤2：应用掩码（关键步骤）</strong></span></a></h5>
 <p>在预测&quot;爱&quot;时，不能看 <strong>&quot;你&quot;</strong>（位置2），所以把位置2的分数替换为 <strong>&quot;-inf&quot;</strong>（或一个很大的负数，如 <strong>-1e9</strong>）：</p>
 <div class="language-bash line-numbers-mode" data-highlighter="shiki" data-ext="bash" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">位置:</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">    [0:我]  [1:爱]  [2:你]</span></span>
 <span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">[0:我]    2.5     -inf    -inf     ← </span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">"我"</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">不能看</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">"爱"</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">和</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">"你"</span></span>
 <span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">[1:爱]    3.2     2.1     -inf     ← </span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">"爱"</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">不能看</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">"你"</span></span>
 <span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">[2:你]    1.0     0.8      2.0     ← </span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">"你"</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">可以看所有（但实际也不能看未来）</span></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h4 id="步骤3-使用-softmax-公式进行归一化" tabindex="-1"><a class="header-anchor" href="#步骤3-使用-softmax-公式进行归一化"><span><strong>步骤3：使用 Softmax 公式进行归一化</strong></span></a></h4>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h5 id="步骤3-使用-softmax-公式进行归一化" tabindex="-1"><a class="header-anchor" href="#步骤3-使用-softmax-公式进行归一化"><span><strong>步骤3：使用 Softmax 公式进行归一化</strong></span></a></h5>
 <p>对 <strong>&quot;爱&quot;</strong> 这一行  <mark>[3.2, 2.1, -inf]</mark>  计算：</p>
 <div class="language-python line-numbers-mode" data-highlighter="shiki" data-ext="python" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">import</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> math</span></span>
 <span class="line"></span>
@@ -105,11 +106,12 @@ $$</p>
 <li><strong>数学特性：</strong> <code v-pre>exp(-inf) = 0</code>，所以 <code v-pre>-inf</code> 经过 <strong>Softmax</strong> 后概率为 <strong>0</strong></li>
 <li><strong>归一化保证： Softmax</strong> 保证所有概率和为 <strong>1</strong>，被屏蔽位置的概率被分配给其他位置</li>
 </ul>
-<h1 id="_3-提示工程" tabindex="-1"><a class="header-anchor" href="#_3-提示工程"><span><strong>3. 提示工程</strong></span></a></h1>
-<h2 id="_3-1-提示工程的本质" tabindex="-1"><a class="header-anchor" href="#_3-1-提示工程的本质"><span>3.1 <strong>提示工程的本质</strong></span></a></h2>
-<p>:::success<br>
-<strong>提示工程</strong> <strong>= 通过设计提示词来引导概率分布</strong></p>
-<p>:::</p>
+<h2 id="_3-提示工程" tabindex="-1"><a class="header-anchor" href="#_3-提示工程"><span><strong>3. 提示工程</strong></span></a></h2>
+<h3 id="_3-1-提示工程的本质" tabindex="-1"><a class="header-anchor" href="#_3-1-提示工程的本质"><span>3.1 <strong>提示工程的本质</strong></span></a></h3>
+<div class="hint-container tip">
+<p class="hint-container-title">提示</p>
+<p><strong>提示工程</strong> <strong>= 通过设计提示词来引导概率分布</strong></p>
+</div>
 <p>举例：</p>
 <ul>
 <li>
@@ -124,18 +126,17 @@ $$</p>
 <span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># "机器人"、"AI"、"未来"等词概率更高</span></span></code></pre>
 <div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></li>
 </ul>
-<h2 id="_3-2-采样参数" tabindex="-1"><a class="header-anchor" href="#_3-2-采样参数"><span><strong>3.2 采样参数</strong></span></a></h2>
+<h3 id="_3-2-采样参数" tabindex="-1"><a class="header-anchor" href="#_3-2-采样参数"><span><strong>3.2 采样参数</strong></span></a></h3>
 <p>采样参数的本质就是在此基础上，根据不同策略&quot;重新调整&quot;或&quot;截断&quot;分布，从而改变大模型输出的下一个token</p>
-<h3 id="_3-2-1-temperature" tabindex="-1"><a class="header-anchor" href="#_3-2-1-temperature"><span><strong>3.2.1 Temperature</strong></span></a></h3>
+<h4 id="temperature" tabindex="-1"><a class="header-anchor" href="#temperature"><span>Temperature</span></a></h4>
 <p><strong>温度</strong> 是控制模型输出 &quot;<mark>随机性</mark>&quot; 与 &quot;<mark>确定性</mark>&quot; 的关键参数, 这个和物理中的温度也很类似：</p>
 <ul>
 <li><code v-pre>温度高 → 粒子运动剧烈 → 更随机</code></li>
 <li><code v-pre>温度低 → 粒子运动缓慢 → 更有序</code></li>
 </ul>
 <p><strong>其原理是:</strong> 引入温度 <strong>系数</strong> <strong>T &gt; 0 时</strong>, 将 <strong>Softmax</strong> 公式改写为</p>
-<p>$$<br>
-p_i(T) = exp(z_i / T) / Σexp(z_j / T)<br>
-$$</p>
+<p v-pre class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msub><mi>p</mi><mi>i</mi></msub><mo stretchy="false">(</mo><mi>T</mi><mo stretchy="false">)</mo><mo>=</mo><mi>e</mi><mi>x</mi><mi>p</mi><mo stretchy="false">(</mo><msub><mi>z</mi><mi>i</mi></msub><mi mathvariant="normal">/</mi><mi>T</mi><mo stretchy="false">)</mo><mi mathvariant="normal">/</mi><mi mathvariant="normal">Σ</mi><mi>e</mi><mi>x</mi><mi>p</mi><mo stretchy="false">(</mo><msub><mi>z</mi><mi>j</mi></msub><mi mathvariant="normal">/</mi><mi>T</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">p_i(T) = exp(z_i / T) / Σexp(z_j / T)
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.0361em;vertical-align:-0.2861em;"></span><span class="mord mathnormal">e</span><span class="mord mathnormal">x</span><span class="mord mathnormal">p</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.04398em;">z</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.044em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord">/</span><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="mclose">)</span><span class="mord">/Σ</span><span class="mord mathnormal">e</span><span class="mord mathnormal">x</span><span class="mord mathnormal">p</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.04398em;">z</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.044em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.05724em;">j</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mord">/</span><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="mclose">)</span></span></span></span></span></p>
 <p>其中：</p>
 <ul>
 <li><code v-pre>z_i:</code> 第 i 个原始分数</li>
@@ -162,24 +163,23 @@ $$</p>
 <div class="hint-container info">
 <p class="hint-container-title">相关信息</p>
 <p><strong>技巧：</strong></p>
-<p>**低温度（0 ⩽⩽ Temperature &lt;&lt; 0.3）**输出更 &quot;精准、确定&quot;</p>
+<p><strong>低温度（0 ⩽⩽ Temperature &lt;&lt; 0.3）</strong> 输出更 &quot;精准、确定&quot;</p>
 <ul>
 <li>场景： 问答、数据计算、代码生成、法律条文解读、技术文档撰写、学术概念解释等。</li>
 </ul>
-<p>**中温度（0.3 ⩽⩽ Temperature &lt;&lt; 0.7）**输出 &quot;平衡、自然&quot;</p>
+<p><strong>中温度（0.3 ⩽⩽ Temperature &lt;&lt; 0.7）</strong> 输出 &quot;平衡、自然&quot;</p>
 <ul>
 <li>场景： 客服交互、聊天机器人、如邮件撰写、产品文案、简单故事创作等。</li>
 </ul>
-<p>**高温度（0.7 ⩽⩽ Temperature &lt;&lt; 2）**输出 &quot;创新、发散&quot;</p>
+<p><strong>高温度（0.7 ⩽⩽ Temperature &lt;&lt; 2）</strong> 输出 &quot;创新、发散&quot;</p>
 <ul>
 <li>场景：诗歌创作、科幻故事构思、广告 slogan brainstorm、艺术灵感启发、发散性思考。</li>
 </ul>
 </div>
-<h3 id="_3-2-2-top-k" tabindex="-1"><a class="header-anchor" href="#_3-2-2-top-k"><span>3.2.2 Top-K</span></a></h3>
+<h4 id="top-k" tabindex="-1"><a class="header-anchor" href="#top-k"><span>Top-K</span></a></h4>
 <p><strong>其原理是:</strong>  将所有 token 按概率从高到低排序，取排名前 k 个的 token 组成 &quot;候选集&quot;，随后对筛选出的 k 个 token 的概率进行 &quot;归一化&quot;：</p>
-<p>$$<br>
-p̂_i = p_i / Σp_j  (j ∈ 候选集)<br>
-$$</p>
+<p v-pre class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msub><mover accent="true"><mi>p</mi><mo>^</mo></mover><mi>i</mi></msub><mo>=</mo><msub><mi>p</mi><mi>i</mi></msub><mi mathvariant="normal">/</mi><mi mathvariant="normal">Σ</mi><msub><mi>p</mi><mi>j</mi></msub><mo stretchy="false">(</mo><mi>j</mi><mo>∈</mo><mtext>候选集</mtext><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">p̂_i = p_i / Σp_j  (j ∈ 候选集)
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord accent"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.6944em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal">p</span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.1667em;"><span class="mord">^</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.1944em;"><span></span></span></span></span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.0361em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord">/Σ</span><span class="mord"><span class="mord mathnormal">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.05724em;">j</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord cjk_fallback">候选集</span><span class="mclose">)</span></span></span></span></span></p>
 <p><strong>其中：</strong></p>
 <ul>
 <li><code v-pre>p_i:</code> 原始概率</li>
@@ -260,21 +260,21 @@ $$</p>
 <li>&quot;是&quot;<em>（35%概率）</em></li>
 <li>&quot;在&quot;<em>（18%概率）</em></li>
 </ul>
-<h3 id="_3-2-3-top-p" tabindex="-1"><a class="header-anchor" href="#_3-2-3-top-p"><span>3.2.3 Top-p</span></a></h3>
+<h4 id="top-p" tabindex="-1"><a class="header-anchor" href="#top-p"><span>Top-p</span></a></h4>
 <p><strong>其原理是:</strong>  将所有 token 按概率从高到低排序，从排序后的第一个 token 开始，逐步累加概率*，*依次加入 <em><strong>集合 S</strong></em>，直到累积和首次达到或超过 <em><strong>阈值 p</strong></em> 时：</p>
-<p>$$<br>
-i∈S<br>
-∑<br>
-​<br>
-p(i)≥p<br>
-$$</p>
+<p v-pre class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>i</mi><mo>∈</mo><mi>S</mi><mo>∑</mo><mtext>​</mtext><mi>p</mi><mo stretchy="false">(</mo><mi>i</mi><mo stretchy="false">)</mo><mo>≥</mo><mi>p</mi></mrow><annotation encoding="application/x-tex">i∈S
+∑
+​
+ p(i)≥p
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6986em;vertical-align:-0.0391em;"></span><span class="mord mathnormal">i</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.6em;vertical-align:-0.55em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop op-symbol large-op" style="position:relative;top:0em;">∑</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">​</span><span class="mord mathnormal">p</span><span class="mopen">(</span><span class="mord mathnormal">i</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≥</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">p</span></span></span></span></span></p>
 <p>当前 <em><strong>集合 S</strong></em> 就是 <mark>&quot;核集合&quot;</mark>， 最后只对 <em><strong>集合 S</strong></em> 中的 token 重新归一化，再进行采样。</p>
 <p>当模型预测每个词（token）的概率时，整个词表可能有 <strong>几万个候选</strong>，<strong>Softmax</strong> 把这些词转成概率分布。但即便某个字符概率只有 0.01%，如果只用普通采样，它也有机会被选中，导致输出可能突然 <strong>&quot;跳车&quot;</strong>。</p>
 <p>**目标：**只在 <mark>&quot;累积概率重要&quot;</mark> 的词里抽样。</p>
-<p>:::success<br>
-<strong>Top-p：</strong> 能动态适应不同分布的 <strong>&quot;长尾&quot;</strong> 特性，<strong>对概率分布不均匀的极端情况</strong> 的适应性更好。</p>
-<p>:::</p>
-<h3 id="_3-2-4-各参数区别" tabindex="-1"><a class="header-anchor" href="#_3-2-4-各参数区别"><span>3.2.4 各参数区别</span></a></h3>
+<div class="hint-container tip">
+<p class="hint-container-title">提示</p>
+<p><strong>Top-p：</strong> 能动态适应不同分布的 <strong>&quot;长尾&quot;</strong> 特性，<strong>对概率分布不均匀的极端情况</strong> 的适应性更好。</p>
+</div>
+<h4 id="各参数区别" tabindex="-1"><a class="header-anchor" href="#各参数区别"><span>各参数区别</span></a></h4>
 <table>
 <thead>
 <tr>
@@ -288,14 +288,14 @@ $$</p>
 <tr>
 <td><strong>温度</strong></td>
 <td>T</td>
-<td>调整概率形状***（陡 / 平）***</td>
-<td><strong>调整</strong> 所有词的 **概率，**不削减候选，影响全局</td>
+<td>调整概率形状 <em><strong>（陡 / 平）</strong></em></td>
+<td><strong>调整</strong> 所有词的 <strong>概率，</strong> 不削减候选，影响全局</td>
 </tr>
 <tr>
 <td><strong>Top-k</strong></td>
 <td>k</td>
 <td>固定保留 k 个</td>
-<td><strong>限制</strong> 候选词 **数量，**不看具体概率大小</td>
+<td><strong>限制</strong> 候选词 <strong>数量，</strong> 不看具体概率大小</td>
 </tr>
 <tr>
 <td><strong>Top-p</strong></td>

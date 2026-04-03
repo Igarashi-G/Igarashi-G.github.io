@@ -129,14 +129,7 @@
 <p>查询所匹配记录所在的分区，对于未分区的表，值为 <code v-pre>NULL</code>。</p>
 <h4 id="type-重要" tabindex="-1"><a class="header-anchor" href="#type-重要"><span>type(重要)</span></a></h4>
 <p>查询执行的类型，描述了查询是如何执行的。所有值的顺序从最优到最差排序为：</p>
-<div class="language-mermaid line-numbers-mode" data-highlighter="shiki" data-ext="mermaid" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">graph LR</span></span>
-<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">    A[system] --> B[const]</span></span>
-<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">    B --> C[eq_ref]</span></span>
-<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">    C --> D[ref]</span></span>
-<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">    D --> E[range]</span></span>
-<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">    E --> F[index]</span></span>
-<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">    F --> G[ALL]</span></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h5 id="常见的几种类型含义如下" tabindex="-1"><a class="header-anchor" href="#常见的几种类型含义如下"><span><strong>常见的几种类型含义如下：</strong></span></a></h5>
+<Mermaid id="mermaid-247" code="eJxLL0osyFDwCeJSAALH6OLK4pLU3FgFXV07Bafo5Py84pJYsJQTWMg5OrUwvig1DSLmDBZziYYLuIAFXKOLEvPSUyFCrmAht+jMvJTUCoiQG1jIPdrRxyeWCwCrAiDY"></Mermaid><h5 id="常见的几种类型含义如下" tabindex="-1"><a class="header-anchor" href="#常见的几种类型含义如下"><span><strong>常见的几种类型含义如下：</strong></span></a></h5>
 <table>
 <thead>
 <tr>
@@ -369,76 +362,8 @@
 <span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">| </span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">1</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">  | </span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">`SIMPLE`</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">    | SyncLogRecord  | </span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">`NULL`</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">     | </span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">range</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> | idx_logrecord_query5| idx_logrecord_query5| </span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">2051</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">    | </span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">NULL</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> | </span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">44909</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> | </span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">1</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">.</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66">00</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">     | </span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">`Using where; Using index`</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> |</span></span>
 <span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">+</span><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">---------------------------------------------------------------------------------------------------------------------------------------------------------------------+</span></span></code></pre>
 <div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>如下实际索引和索引示意图</p>
-<div class="language-mermaid line-numbers-mode" data-highlighter="shiki" data-ext="mermaid" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">flowchart TD</span></span>
-<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">  %% 逻辑视图：按复合键 (log_type, analysis_job_id, flow_hidden, create_at) 的字典序组织</span></span>
-<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">  %% 内部页与叶子页都“存多条记录”；内部页记录形如：(部分键) -> 子页指针；叶子页记录形如：完整键 + 主键</span></span>
-<span class="line"></span>
-<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">  subgraph P0["Root 内部页（多条记录）"]</span></span>
-<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">    P0i1["('image') -> P1"]</span></span>
-<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">    P0i2["('video') -> P2"]</span></span>
-<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">    P0i3["('voice') -> P3"]</span></span>
-<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">  end</span></span>
-<span class="line"></span>
-<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">  P0 -->|log_type='image'| P1</span></span>
-<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">  P0 -->|log_type='video'| P2</span></span>
-<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">  P0 -->|log_type='voice'| P3</span></span>
-<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">  </span></span>
-<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> subgraph P2I["内部页（按 ana_id 划分）"]</span></span>
-<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">    P2a["('video','87f15d...') -> P2A"]</span></span>
-<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">    P2b["('video','abc123...') -> P2B"]</span></span>
-<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">    P2c["('video','f9e8d7...') -> P2C"]</span></span>
-<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">  end</span></span>
-<span class="line"></span>
-<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">  P2 --> P2I</span></span>
-<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">  P2I -->|analysis_job_id='87f15d0a5b7642eda557758905c68d90'| P2A</span></span>
-<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">  P2I --> P2B</span></span>
-<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">  P2I --> P2C</span></span>
-<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">  </span></span>
-<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">  subgraph P2A_I["内部页（再按 flow_..划分）"]</span></span>
-<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">    P2A0["('video','87f15d...',0) -> L20"]</span></span>
-<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">    P2A1["('video','87f15d...',1) -> L21"]</span></span>
-<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">  end</span></span>
-<span class="line"></span>
-<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">  P2A --> P2A_I</span></span>
-<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">  P2A_I -->|flow_hidden=0| L20</span></span>
-<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">  P2A_I -->|flow_hidden=1| L21</span></span>
-<span class="line"></span>
-<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">  %% 叶子页：存放完整复合键与主键，并有序双向链表</span></span>
-<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">  subgraph L20["叶子页,按 create_at 有序"]</span></span>
-<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">    L20r1["('video','87f15d...',0,'2025-07-10 12:34:43', PK=...)"]</span></span>
-<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">    L20r2["('video','87f15d...',0,'2025-07-11 00:00:00', PK=...)"]</span></span>
-<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">    L20r3["..."]</span></span>
-<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">    L20r4["('video','87f15d...',0,'2025-08-18 09:10:27', PK=...)"]</span></span>
-<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">  end</span></span>
-<span class="line"></span>
-<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">  subgraph L21["叶子页,按其他 create_at 段"]</span></span>
-<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">    L21x["..."]</span></span>
-<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">  end</span></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p><strong>1. 高效索引：</strong> <code v-pre>(log_type, analysis_job_id, flow_hidden, create_at)</code></p>
-<div class="language-mermaid line-numbers-mode" data-highlighter="shiki" data-ext="mermaid" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">graph TD</span></span>
-<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">    Root[根节点] -->|log_type='video'| Node1[中间节点1]</span></span>
-<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">    Root -->|log_type='image'| Node2[中间节点2]</span></span>
-<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">    Node1 -->|alysis_job_id='87f15d...'| Leaf1[叶子节点1]</span></span>
-<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">    Node1 -->|analysis_job_id='abc123...'| Leaf2[叶子节点2]</span></span>
-<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">    Leaf1 -->|flow_hidden=0, create_at=2025-07-10| Data1[数据行1]</span></span>
-<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">    Leaf1 -->|flow_hidden=0, create_at=2025-07-11| Data2[数据行2]</span></span>
-<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">    Leaf1 -->|...| DataN[数据行N]</span></span>
-<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">    Leaf2 -->|...| DataX[其他数据]</span></span>
-<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">    style Leaf1 stroke:#0000ff,stroke-width:2px</span></span>
-<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">    style Data1 stroke:#0000ff,stroke-width:2px</span></span>
-<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">    style Data2 stroke:#0000ff,stroke-width:2px</span></span>
-<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">    style DataN stroke:#0000ff,stroke-width:2px</span></span>
-<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">      %% 全局节点背景色设置</span></span>
-<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">    style Root fill:#E6E6FA</span></span>
-<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">    style Node1 fill:#E6E6FA</span></span>
-<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">    style Node2 fill:#E6E6FA</span></span>
-<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">    style Leaf1 fill:#E6E6FA</span></span>
-<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">    style Leaf2 fill:#E6E6FA</span></span>
-<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">    style Data1 fill:#E6E6FA</span></span>
-<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">    style Data2 fill:#E6E6FA</span></span>
-<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">    style DataN fill:#E6E6FA</span></span>
-<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">    style DataX fill:#E6E6FA</span></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p><strong>检索路径</strong>（蓝色标注部分）</p>
+<Mermaid id="mermaid-701" code="eJyFVE1PGkEYvvsrJiQGTRcyM7AukGBC7cW0B9L0ZprNwq66jXUN0g8TD6YqYoL1o9oaPw42pvUC6aEaW5AfYxxkT/yFvrO77I4UYsJhZ55nnvd5n5mX6TnrQ35WKxTRq2dDCA0PI3ul3m7utn+W2HGz0zhqVTbZ+RbbKdv7NTQyZ82oxaUFQ0LavDa3tGguqm+snGrqEuJK6qyp68a8hPIFQysaqlYcRfdHa6z6ja1fs7/b9/W1+/qGW4eV1u3VC/vs8u76M9u+YtUd+LZXb25XTlj1kJ0ftU7P2rVf7ObgduW00zj2+e4mu/nOfnwCgyOwy8olsDeKIuPI1WlVNuy9Mj/VVe45xWqV1sFv3tMTdHddh48hsLX4LjdT0BZmURZPhV5aVjFw2WmURU+dxmboNZxAQDXJVGgkbL7VZoyw4yFLAoxy7L2pG5aH0QCLOZhl5rvnYg5mzOvcTBajSGR8uRt52quwDPL9ULcGoLQv6lQBNAbokNAonZwKiU3CffO7hStFrLwHwQqdUi1oRgonlGki69FotNtYxuflRJ6WyxMaE3hPfV5e5E0njYSuCLyJB2lQ3hH36ywmnf56HmHa84Q1OaeMxamha7KsKHIiieX8WEJPYiefTKDA3TxYTTjxiPlk1J6EWGmLh+S892j0/5Ay8Hb6pSRhp68XFAdU5+X0oRKP6j4kP4KM5xI8uWvVzUGYvTRe5iUGwoTDhMvxGexOB5+I6mFrv+nOhT/xMJvudHQaFfbnqnWyCVPMtitsZ9f+0myfXYhZQVlIqisp8ZD8/wHkHvU6B2ZhUOtYClNM5QhWIgQjQlOxeCoeC0so+zwNhFFBQpitgRIEYZxyfn0lYARhR9iIP6aZiJAEwskUwSmq9Gh6FyUkAl0+SIStX93Vv4q51C796uRj4IZL/QPjJhE/"></Mermaid><p><strong>1. 高效索引：</strong> <code v-pre>(log_type, analysis_job_id, flow_hidden, create_at)</code></p>
+<Mermaid id="mermaid-705" code="eJyVkk9LwmAcx++9igdEvDjZnlBDWBBop9ghOghDxqN7pqvlI+4hEzyE4aEw6lLRrW5dtD+EJFGvxs31Lhp7RtsMRz638f18vs9vz/PU26jVAHvFNeCuXUKobN9PnfP+vD+tAI7b7BmkrtBuC4upI13FJNUDElGxIM/eR9+3b4wUKr/6gqMfojr2HRhxIHO8Mk9CRtfUTWWfVBVdFVMbeU3IqplMxrV3MNIE2bqcWKOryI4hu7ngo2pNgOuBDyO+v7tX7PmaQTpKQ1dV3BT5NKi1MaJYQVSEPMxyfJ4T+B4oIooE2b5+ti/GzsPQH2KVEoGVwKDkzyTuyAySAkgKIBiFyrI1mMw+bhjKMJN2Dew3mrRNDnAhwbtL09Lsk+voKm0UYOs4xHs/tyIPV+Slf/EAJJPAGjxaLyfstpzToX335Jy9OuOv+ec4VOo9OU03jEKilCvltrdCGXscMSFcFrKjiwmXmuwQY8JYU4oLy9HwB3ZsTUA="></Mermaid><p><strong>检索路径</strong>（蓝色标注部分）</p>
 <ol>
 <li>从根节点定位 <code v-pre>log_type='video'</code> 的子树</li>
 <li>在中间节点定位 <code v-pre>analysis_job_id='87f15d...'</code></li>
@@ -446,30 +371,7 @@
 <li>直接返回匹配的连续数据块</li>
 </ol>
 <p><strong>2. 低效索引：</strong> <code v-pre>(create_at, analysis_job_id, log_type, flow_hidden)</code></p>
-<div class="language-mermaid line-numbers-mode" data-highlighter="shiki" data-ext="mermaid" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes one-light one-dark-pro vp-code" v-pre=""><code><span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">graph TD</span></span>
-<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">    Root[根节点] -->|create_at=2025-01-01| Node1[中间节点1]</span></span>
-<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">    Root -->|create_at=2025-04-01| Node2[中间节点2]</span></span>
-<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">    Root -->|create_at=2025-07-10| Node3[中间节点3]</span></span>
-<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">    Node3 -->|create_at范围| Leaf1[叶子节点1]</span></span>
-<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">    Node3 -->|create_at范围| Leaf2[叶子节点2]</span></span>
-<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">    Leaf1 -->|analysis_job_id='123abc...', log_type='text'| Data1[不匹配]</span></span>
-<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">    Leaf1 -->|analysis_job_id='87f15d...', log_type='video'| Data2[需逐条检查]</span></span>
-<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">    Leaf2 -->|analysis_job_id='87f15d...', log_type='video'| Data3[需逐条检查]</span></span>
-<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">    style Leaf1 stroke:#ff0000,stroke-width:2px</span></span>
-<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">    style Leaf2 stroke:#ff0000,stroke-width:2px</span></span>
-<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">    style Data2 stroke:#ff0000,stroke-width:2px</span></span>
-<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">    style Data3 stroke:#ff0000,stroke-width:2px</span></span>
-<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">     %% 全局节点背景色设置</span></span>
-<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">    style Root fill:#E6E6FA</span></span>
-<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">    style Node1 fill:#E6E6FA</span></span>
-<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">    style Node2 fill:#E6E6FA</span></span>
-<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">    style Node3 fill:#E6E6FA</span></span>
-<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">    style Leaf1 fill:#E6E6FA</span></span>
-<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">    style Leaf2 fill:#E6E6FA</span></span>
-<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">    style Data1 fill:#E6E6FA</span></span>
-<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">    style Data2 fill:#E6E6FA</span></span>
-<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">    style Data3 fill:#E6E6FA</span></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p><strong>检索路径</strong>（红色标注部分）：</p>
+<Mermaid id="mermaid-734" code="eJxLL0osyFAIceFSAIKg/PyS6GcLdr7oanretDNWQVfXria5KDWxJDU+scTWyMDIVNfAEIhqFPzyU1INo5/sWPty+haIasNYuBFY9ZnA9Rmh6DMioM9c19AAos8YRZ8xRB9YAlXji57mp7O31Cj4pCamGUY/7d/2dO0EFDcS0GOEogfqPrBhYD2JeYk5lcWZxfFZ+UnxmSm26oZGxolJyXp6euo6Cjn56fEllQWptuolqRUl6jUKLokliaCA6n3as/Nlay9BwyzM0wxNU9ANK8tMSc2HmmYU/XJOw8uGCc/mLny2uOHZ/KUIM43INdMYu5nFJZU5qVDXFpcU5WenWimnpRkAgQ6Eq1uemVKSYWVUUIGm3ogE9WBPkajemCj1CqqqCk9bVzzd2ACJyxfNPc9mrn/RuenFun3P965DMhOc/NIyc3KslF3NXM3cHJHkwGkdn6QRPkljXJKQYMUjidNYcJrCJ4lXJ5qDABZ6bhw="></Mermaid><p><strong>检索路径</strong>（红色标注部分）：</p>
 <ol>
 <li>从根节点扫描 <code v-pre>create_at</code> 范围（<em>2025-07-10 到 2025-08-18</em>）</li>
 <li>加载所有匹配的叶子节点（<em>44,909 行</em>）</li>

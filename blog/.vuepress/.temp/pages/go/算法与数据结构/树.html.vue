@@ -130,7 +130,7 @@
 <h3 id="_3-1-非空二叉树的特性" tabindex="-1"><a class="header-anchor" href="#_3-1-非空二叉树的特性"><span>3.1 非空二叉树的特性</span></a></h3>
 <ul>
 <li><strong>每层结点数</strong>：二叉树的第 <strong>i</strong> 层上至多有 <strong>2<sup>i-1</sup></strong> 个 结点 <strong>（i&gt;=1）</strong></li>
-<li><strong>全部结点数</strong>：高度为 <strong>h</strong> 的二叉树至多有 <strong>2<sup>k</sup>-1</strong> 个结点 <strong>（h&gt;=1，也是叶结点所在的最大层数）</strong> 相应的高度 <strong>h = log$_2$n+1</strong></li>
+<li><strong>全部结点数</strong>：高度为 <strong>h</strong> 的二叉树至多有 <strong>2<sup>k</sup>-1</strong> 个结点 <strong>（h&gt;=1，也是叶结点所在的最大层数）</strong> 相应的高度 <strong>h = log<span v-pre class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mrow></mrow><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">_2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4511em;vertical-align:-0.15em;"></span><span class="mord"><span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>n+1</strong></li>
 <li><strong>叶结点数与度关系</strong>：<strong>叶结点数 = 度为 2 结点数 + 1</strong></li>
 </ul>
 <p>叶结点与度关系推导：</p>

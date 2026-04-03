@@ -555,138 +555,84 @@ export const SEARCH_INDEX = [
     "extraFields": []
   },
   {
-    "title": "",
-    "headers": [],
+    "title": "AI Agent踩坑",
+    "headers": [
+      {
+        "level": 2,
+        "title": "AI Agent 开发踩坑",
+        "slug": "ai-agent-开发踩坑-1",
+        "link": "#ai-agent-开发踩坑-1",
+        "children": []
+      }
+    ],
     "path": "/ai/HelloAgents/AI%20Agent%E5%BC%80%E5%8F%91%E8%B8%A9%E5%9D%91.html",
     "pathLocale": "/",
     "extraFields": []
   },
   {
-    "title": "Decode-Only架构",
+    "title": "Hello Agents入门",
     "headers": [
       {
         "level": 2,
-        "title": "1.1 公式说明",
-        "slug": "_1-1-公式说明",
-        "link": "#_1-1-公式说明",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "1.2 为什么要使用 exp",
-        "slug": "_1-2-为什么要使用-exp",
-        "link": "#_1-2-为什么要使用-exp",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "具体步骤演示",
-        "slug": "具体步骤演示",
-        "link": "#具体步骤演示",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "3.1 提示工程的本质",
-        "slug": "_3-1-提示工程的本质",
-        "link": "#_3-1-提示工程的本质",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "3.2 采样参数",
-        "slug": "_3-2-采样参数",
-        "link": "#_3-2-采样参数",
+        "title": "1. Softmax 公式",
+        "slug": "_1-softmax-公式",
+        "link": "#_1-softmax-公式",
         "children": [
           {
             "level": 3,
-            "title": "3.2.1 Temperature",
-            "slug": "_3-2-1-temperature",
-            "link": "#_3-2-1-temperature",
+            "title": "1.1 公式说明",
+            "slug": "_1-1-公式说明",
+            "link": "#_1-1-公式说明",
             "children": []
           },
           {
             "level": 3,
-            "title": "3.2.2 Top-K",
-            "slug": "_3-2-2-top-k",
-            "link": "#_3-2-2-top-k",
+            "title": "1.2 为什么要使用 exp",
+            "slug": "_1-2-为什么要使用-exp",
+            "link": "#_1-2-为什么要使用-exp",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "2. 掩码自注意力 (Masked Self-Attention)",
+        "slug": "_2-掩码自注意力-masked-self-attention",
+        "link": "#_2-掩码自注意力-masked-self-attention",
+        "children": [
+          {
+            "level": 3,
+            "title": "2.1 具体步骤演示",
+            "slug": "_2-1-具体步骤演示",
+            "link": "#_2-1-具体步骤演示",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "3. 提示工程",
+        "slug": "_3-提示工程",
+        "link": "#_3-提示工程",
+        "children": [
+          {
+            "level": 3,
+            "title": "3.1 提示工程的本质",
+            "slug": "_3-1-提示工程的本质",
+            "link": "#_3-1-提示工程的本质",
             "children": []
           },
           {
             "level": 3,
-            "title": "3.2.3 Top-p",
-            "slug": "_3-2-3-top-p",
-            "link": "#_3-2-3-top-p",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "3.2.4 各参数区别",
-            "slug": "_3-2-4-各参数区别",
-            "link": "#_3-2-4-各参数区别",
+            "title": "3.2 采样参数",
+            "slug": "_3-2-采样参数",
+            "link": "#_3-2-采样参数",
             "children": []
           }
         ]
       }
     ],
     "path": "/ai/HelloAgents/Decoder-Only%E6%9E%B6%E6%9E%84.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "asyncio Recipes",
-    "headers": [],
-    "path": "/book/python/asyncio_recipes.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "DevOps in Python",
-    "headers": [],
-    "path": "/book/python/devops_in_python.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "Fluent Python",
-    "headers": [],
-    "path": "/book/python/fluent_python.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "Python书籍",
-    "headers": [
-      {
-        "level": 2,
-        "title": "目录",
-        "slug": "目录",
-        "link": "#目录",
-        "children": []
-      }
-    ],
-    "path": "/book/python/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "Python Cookbook",
-    "headers": [],
-    "path": "/book/python/python_cookbook.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "Python源码剖析",
-    "headers": [],
-    "path": "/book/python/python%E6%BA%90%E7%A0%81%E5%89%96%E6%9E%90.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "Using Asyncio in Python",
-    "headers": [],
-    "path": "/book/python/use_asyncio.html",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -751,6 +697,63 @@ export const SEARCH_INDEX = [
     "title": "进化心理学",
     "headers": [],
     "path": "/book/%E5%BF%83%E7%90%86%E5%AD%A6/%E8%BF%9B%E5%8C%96%E5%BF%83%E7%90%86%E5%AD%A6.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "asyncio Recipes",
+    "headers": [],
+    "path": "/book/python/asyncio_recipes.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "DevOps in Python",
+    "headers": [],
+    "path": "/book/python/devops_in_python.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "Fluent Python",
+    "headers": [],
+    "path": "/book/python/fluent_python.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "Python书籍",
+    "headers": [
+      {
+        "level": 2,
+        "title": "目录",
+        "slug": "目录",
+        "link": "#目录",
+        "children": []
+      }
+    ],
+    "path": "/book/python/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "Python Cookbook",
+    "headers": [],
+    "path": "/book/python/python_cookbook.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "Python源码剖析",
+    "headers": [],
+    "path": "/book/python/python%E6%BA%90%E7%A0%81%E5%89%96%E6%9E%90.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "Using Asyncio in Python",
+    "headers": [],
+    "path": "/book/python/use_asyncio.html",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -841,6 +844,28 @@ export const SEARCH_INDEX = [
     "extraFields": []
   },
   {
+    "title": "艺术书籍",
+    "headers": [
+      {
+        "level": 2,
+        "title": "目录",
+        "slug": "目录",
+        "link": "#目录",
+        "children": []
+      }
+    ],
+    "path": "/book/%E8%89%BA%E6%9C%AF/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "清醒思考的艺术",
+    "headers": [],
+    "path": "/book/%E8%89%BA%E6%9C%AF/%E6%B8%85%E9%86%92%E6%80%9D%E8%80%83%E7%9A%84%E8%89%BA%E6%9C%AF.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
     "title": "金融学书籍",
     "headers": [
       {
@@ -887,28 +912,6 @@ export const SEARCH_INDEX = [
     "title": "非理性繁荣",
     "headers": [],
     "path": "/book/%E9%87%91%E8%9E%8D%E5%AD%A6/%E9%9D%9E%E7%90%86%E6%80%A7%E7%B9%81%E8%8D%A3.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "艺术书籍",
-    "headers": [
-      {
-        "level": 2,
-        "title": "目录",
-        "slug": "目录",
-        "link": "#目录",
-        "children": []
-      }
-    ],
-    "path": "/book/%E8%89%BA%E6%9C%AF/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "清醒思考的艺术",
-    "headers": [],
-    "path": "/book/%E8%89%BA%E6%9C%AF/%E6%B8%85%E9%86%92%E6%80%9D%E8%80%83%E7%9A%84%E8%89%BA%E6%9C%AF.html",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -2197,6 +2200,253 @@ export const SEARCH_INDEX = [
     "extraFields": []
   },
   {
+    "title": "H2O引出的优化",
+    "headers": [
+      {
+        "level": 2,
+        "title": "1. 水工厂问题",
+        "slug": "_1-水工厂问题",
+        "link": "#_1-水工厂问题",
+        "children": [
+          {
+            "level": 3,
+            "title": "1.1 问题如下",
+            "slug": "_1-1-问题如下",
+            "link": "#_1-1-问题如下",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "1.2 CyclicBarrier 与 WaitGroup",
+            "slug": "_1-2-cyclicbarrier-与-waitgroup",
+            "link": "#_1-2-cyclicbarrier-与-waitgroup",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "1.3 CyclicBarrier 说明",
+            "slug": "_1-3-cyclicbarrier-说明",
+            "link": "#_1-3-cyclicbarrier-说明",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "1.4 CyclicBarrier 的实现",
+            "slug": "_1-4-cyclicbarrier-的实现",
+            "link": "#_1-4-cyclicbarrier-的实现",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "2. 业务中的思考",
+        "slug": "_2-业务中的思考",
+        "link": "#_2-业务中的思考",
+        "children": [
+          {
+            "level": 3,
+            "title": "2.1 单机屏障",
+            "slug": "_2-1-单机屏障",
+            "link": "#_2-1-单机屏障",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "2.2 分布式屏障",
+            "slug": "_2-2-分布式屏障",
+            "link": "#_2-2-分布式屏障",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "2.3 场景差异",
+            "slug": "_2-3-场景差异",
+            "link": "#_2-3-场景差异",
+            "children": []
+          }
+        ]
+      }
+    ],
+    "path": "/go/%E4%BC%98%E5%8C%96/H2O%E5%BC%95%E5%8F%91%E7%9A%84%E4%BC%98%E5%8C%96.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "关于MapReduce",
+    "headers": [
+      {
+        "level": 2,
+        "title": "1. 查询异常",
+        "slug": "_1-查询异常",
+        "link": "#_1-查询异常",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "2. MapReduce",
+        "slug": "_2-mapreduce",
+        "link": "#_2-mapreduce",
+        "children": [
+          {
+            "level": 3,
+            "title": "2.1 概念及基本使用",
+            "slug": "_2-1-概念及基本使用",
+            "link": "#_2-1-概念及基本使用",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "2.2 go-zero的mr源码",
+            "slug": "_2-2-go-zero的mr源码",
+            "link": "#_2-2-go-zero的mr源码",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "3. 优化批处理",
+        "slug": "_3-优化批处理",
+        "link": "#_3-优化批处理",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "FindInBatches",
+        "slug": "findinbatches",
+        "link": "#findinbatches",
+        "children": []
+      }
+    ],
+    "path": "/go/%E4%BC%98%E5%8C%96/%E5%85%B3%E4%BA%8EMapReduce.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "分布式注册优化",
+    "headers": [
+      {
+        "level": 2,
+        "title": "1. 初步想到的解决方案",
+        "slug": "_1-初步想到的解决方案",
+        "link": "#_1-初步想到的解决方案",
+        "children": [
+          {
+            "level": 3,
+            "title": "1.1 SingleFlight模式 (单飞)",
+            "slug": "_1-1-singleflight模式-单飞",
+            "link": "#_1-1-singleflight模式-单飞",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "1.2 数据库唯一约束 + 重试机制",
+            "slug": "_1-2-数据库唯一约束-重试机制",
+            "link": "#_1-2-数据库唯一约束-重试机制",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "1.3 Redis分布式锁",
+            "slug": "_1-3-redis分布式锁",
+            "link": "#_1-3-redis分布式锁",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "1.4 分段锁",
+            "slug": "_1-4-分段锁",
+            "link": "#_1-4-分段锁",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "2. 动态分段锁的ABA问题",
+        "slug": "_2-动态分段锁的aba问题",
+        "link": "#_2-动态分段锁的aba问题",
+        "children": [
+          {
+            "level": 3,
+            "title": "2.1 ABA的出现",
+            "slug": "_2-1-aba的出现",
+            "link": "#_2-1-aba的出现",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "2.2 什么是ABA问题？",
+            "slug": "_2-2-什么是aba问题",
+            "link": "#_2-2-什么是aba问题",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "2.3 单测 “-race” 检测",
+            "slug": "_2-3-单测-race-检测",
+            "link": "#_2-3-单测-race-检测",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "2.4 sync.Map动态锁 + 唯一ID防ABA（无效）",
+            "slug": "_2-4-sync-map动态锁-唯一id防aba-无效",
+            "link": "#_2-4-sync-map动态锁-唯一id防aba-无效",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "2.5 一句话结论",
+            "slug": "_2-5-一句话结论",
+            "link": "#_2-5-一句话结论",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "3. 静态分段锁",
+        "slug": "_3-静态分段锁",
+        "link": "#_3-静态分段锁",
+        "children": [
+          {
+            "level": 3,
+            "title": "3.2 分段读写锁（读多写少）",
+            "slug": "_3-2-分段读写锁-读多写少",
+            "link": "#_3-2-分段读写锁-读多写少",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "3.3 实际建议",
+            "slug": "_3-3-实际建议",
+            "link": "#_3-3-实际建议",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "4. lockedcalls.go",
+            "slug": "_4-lockedcalls-go",
+            "link": "#_4-lockedcalls-go",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "单飞",
+            "slug": "单飞",
+            "link": "#单飞",
+            "children": []
+          }
+        ]
+      }
+    ],
+    "path": "/go/%E4%BC%98%E5%8C%96/%E5%88%86%E5%B8%83%E5%BC%8F%E6%B3%A8%E5%86%8C%E4%BC%98%E5%8C%96.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
     "title": "Channel",
     "headers": [
       {
@@ -2586,253 +2836,6 @@ export const SEARCH_INDEX = [
       }
     ],
     "path": "/go/%E5%9F%BA%E7%A1%80/%E9%97%AD%E5%8C%85.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "H2O引出的优化",
-    "headers": [
-      {
-        "level": 2,
-        "title": "1. 水工厂问题",
-        "slug": "_1-水工厂问题",
-        "link": "#_1-水工厂问题",
-        "children": [
-          {
-            "level": 3,
-            "title": "1.1 问题如下",
-            "slug": "_1-1-问题如下",
-            "link": "#_1-1-问题如下",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "1.2 CyclicBarrier 与 WaitGroup",
-            "slug": "_1-2-cyclicbarrier-与-waitgroup",
-            "link": "#_1-2-cyclicbarrier-与-waitgroup",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "1.3 CyclicBarrier 说明",
-            "slug": "_1-3-cyclicbarrier-说明",
-            "link": "#_1-3-cyclicbarrier-说明",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "1.4 CyclicBarrier 的实现",
-            "slug": "_1-4-cyclicbarrier-的实现",
-            "link": "#_1-4-cyclicbarrier-的实现",
-            "children": []
-          }
-        ]
-      },
-      {
-        "level": 2,
-        "title": "2. 业务中的思考",
-        "slug": "_2-业务中的思考",
-        "link": "#_2-业务中的思考",
-        "children": [
-          {
-            "level": 3,
-            "title": "2.1 单机屏障",
-            "slug": "_2-1-单机屏障",
-            "link": "#_2-1-单机屏障",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "2.2 分布式屏障",
-            "slug": "_2-2-分布式屏障",
-            "link": "#_2-2-分布式屏障",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "2.3 场景差异",
-            "slug": "_2-3-场景差异",
-            "link": "#_2-3-场景差异",
-            "children": []
-          }
-        ]
-      }
-    ],
-    "path": "/go/%E4%BC%98%E5%8C%96/H2O%E5%BC%95%E5%8F%91%E7%9A%84%E4%BC%98%E5%8C%96.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "关于MapReduce",
-    "headers": [
-      {
-        "level": 2,
-        "title": "1. 查询异常",
-        "slug": "_1-查询异常",
-        "link": "#_1-查询异常",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "2. MapReduce",
-        "slug": "_2-mapreduce",
-        "link": "#_2-mapreduce",
-        "children": [
-          {
-            "level": 3,
-            "title": "2.1 概念及基本使用",
-            "slug": "_2-1-概念及基本使用",
-            "link": "#_2-1-概念及基本使用",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "2.2 go-zero的mr源码",
-            "slug": "_2-2-go-zero的mr源码",
-            "link": "#_2-2-go-zero的mr源码",
-            "children": []
-          }
-        ]
-      },
-      {
-        "level": 2,
-        "title": "3. 优化批处理",
-        "slug": "_3-优化批处理",
-        "link": "#_3-优化批处理",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "FindInBatches",
-        "slug": "findinbatches",
-        "link": "#findinbatches",
-        "children": []
-      }
-    ],
-    "path": "/go/%E4%BC%98%E5%8C%96/%E5%85%B3%E4%BA%8EMapReduce.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "分布式注册优化",
-    "headers": [
-      {
-        "level": 2,
-        "title": "1. 初步想到的解决方案",
-        "slug": "_1-初步想到的解决方案",
-        "link": "#_1-初步想到的解决方案",
-        "children": [
-          {
-            "level": 3,
-            "title": "1.1 SingleFlight模式 (单飞)",
-            "slug": "_1-1-singleflight模式-单飞",
-            "link": "#_1-1-singleflight模式-单飞",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "1.2 数据库唯一约束 + 重试机制",
-            "slug": "_1-2-数据库唯一约束-重试机制",
-            "link": "#_1-2-数据库唯一约束-重试机制",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "1.3 Redis分布式锁",
-            "slug": "_1-3-redis分布式锁",
-            "link": "#_1-3-redis分布式锁",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "1.4 分段锁",
-            "slug": "_1-4-分段锁",
-            "link": "#_1-4-分段锁",
-            "children": []
-          }
-        ]
-      },
-      {
-        "level": 2,
-        "title": "2. 动态分段锁的ABA问题",
-        "slug": "_2-动态分段锁的aba问题",
-        "link": "#_2-动态分段锁的aba问题",
-        "children": [
-          {
-            "level": 3,
-            "title": "2.1 ABA的出现",
-            "slug": "_2-1-aba的出现",
-            "link": "#_2-1-aba的出现",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "2.2 什么是ABA问题？",
-            "slug": "_2-2-什么是aba问题",
-            "link": "#_2-2-什么是aba问题",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "2.3 单测 “-race” 检测",
-            "slug": "_2-3-单测-race-检测",
-            "link": "#_2-3-单测-race-检测",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "2.4 sync.Map动态锁 + 唯一ID防ABA（无效）",
-            "slug": "_2-4-sync-map动态锁-唯一id防aba-无效",
-            "link": "#_2-4-sync-map动态锁-唯一id防aba-无效",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "2.5 一句话结论",
-            "slug": "_2-5-一句话结论",
-            "link": "#_2-5-一句话结论",
-            "children": []
-          }
-        ]
-      },
-      {
-        "level": 2,
-        "title": "3. 静态分段锁",
-        "slug": "_3-静态分段锁",
-        "link": "#_3-静态分段锁",
-        "children": [
-          {
-            "level": 3,
-            "title": "3.2 分段读写锁（读多写少）",
-            "slug": "_3-2-分段读写锁-读多写少",
-            "link": "#_3-2-分段读写锁-读多写少",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "3.3 实际建议",
-            "slug": "_3-3-实际建议",
-            "link": "#_3-3-实际建议",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "4. lockedcalls.go",
-            "slug": "_4-lockedcalls-go",
-            "link": "#_4-lockedcalls-go",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "单飞",
-            "slug": "单飞",
-            "link": "#单飞",
-            "children": []
-          }
-        ]
-      }
-    ],
-    "path": "/go/%E4%BC%98%E5%8C%96/%E5%88%86%E5%B8%83%E5%BC%8F%E6%B3%A8%E5%86%8C%E4%BC%98%E5%8C%96.html",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -3325,9 +3328,9 @@ export const SEARCH_INDEX = [
           },
           {
             "level": 3,
-            "title": "3.2 推导大 $O$ 阶方法",
-            "slug": "_3-2-推导大-o-阶方法",
-            "link": "#_3-2-推导大-o-阶方法",
+            "title": "3.2 推导大  阶方法",
+            "slug": "_3-2-推导大-阶方法",
+            "link": "#_3-2-推导大-阶方法",
             "children": []
           },
           {
@@ -3339,23 +3342,23 @@ export const SEARCH_INDEX = [
           },
           {
             "level": 3,
-            "title": "3.4 常数阶 $O(1)$ 和线性阶 $O(n)$",
-            "slug": "_3-4-常数阶-o-1-和线性阶-o-n",
-            "link": "#_3-4-常数阶-o-1-和线性阶-o-n",
+            "title": "3.4 常数阶  和线性阶",
+            "slug": "_3-4-常数阶-和线性阶",
+            "link": "#_3-4-常数阶-和线性阶",
             "children": []
           },
           {
             "level": 3,
-            "title": "3.5 平方阶 $O(n^2)$",
-            "slug": "_3-5-平方阶-o-n-2",
-            "link": "#_3-5-平方阶-o-n-2",
+            "title": "3.5 平方阶",
+            "slug": "_3-5-平方阶",
+            "link": "#_3-5-平方阶",
             "children": []
           },
           {
             "level": 3,
-            "title": "3.6 指数阶 $O(2^n)$",
-            "slug": "_3-6-指数阶-o-2-n",
-            "link": "#_3-6-指数阶-o-2-n",
+            "title": "3.6 指数阶",
+            "slug": "_3-6-指数阶",
+            "link": "#_3-6-指数阶",
             "children": []
           },
           {
@@ -3648,216 +3651,6 @@ export const SEARCH_INDEX = [
     "extraFields": []
   },
   {
-    "title": "CICD",
-    "headers": [
-      {
-        "level": 2,
-        "title": "1. 构建基础",
-        "slug": "_1-构建基础",
-        "link": "#_1-构建基础",
-        "children": [
-          {
-            "level": 3,
-            "title": "1.1 概念",
-            "slug": "_1-1-概念",
-            "link": "#_1-1-概念",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "1.2 Jenkins安装",
-            "slug": "_1-2-jenkins安装",
-            "link": "#_1-2-jenkins安装",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "1.3 Jenkins 使用基础",
-            "slug": "_1-3-jenkins-使用基础",
-            "link": "#_1-3-jenkins-使用基础",
-            "children": []
-          }
-        ]
-      }
-    ],
-    "path": "/tool/Git/CICD.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "Git版本管理",
-    "headers": [
-      {
-        "level": 2,
-        "title": "1. 使用安装",
-        "slug": "_1-使用安装",
-        "link": "#_1-使用安装",
-        "children": [
-          {
-            "level": 3,
-            "title": "1.1 安装",
-            "slug": "_1-1-安装",
-            "link": "#_1-1-安装",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "1.2 配置",
-            "slug": "_1-2-配置",
-            "link": "#_1-2-配置",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "1.3. 获取 Git 帮助",
-            "slug": "_1-3-获取-git-帮助",
-            "link": "#_1-3-获取-git-帮助",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "1.4 创建一个版本库 - 步骤",
-            "slug": "_1-4-创建一个版本库-步骤",
-            "link": "#_1-4-创建一个版本库-步骤",
-            "children": []
-          }
-        ]
-      },
-      {
-        "level": 2,
-        "title": "2. 常用",
-        "slug": "_2-常用",
-        "link": "#_2-常用",
-        "children": [
-          {
-            "level": 3,
-            "title": "2.1 撤销",
-            "slug": "_2-1-撤销",
-            "link": "#_2-1-撤销",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "2.2 删除",
-            "slug": "_2-2-删除",
-            "link": "#_2-2-删除",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "2.3 其他内容",
-            "slug": "_2-3-其他内容",
-            "link": "#_2-3-其他内容",
-            "children": []
-          }
-        ]
-      },
-      {
-        "level": 2,
-        "title": "3. 分支管理",
-        "slug": "_3-分支管理",
-        "link": "#_3-分支管理",
-        "children": [
-          {
-            "level": 3,
-            "title": "3.1 基本操作",
-            "slug": "_3-1-基本操作",
-            "link": "#_3-1-基本操作",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "3.2 解决冲突",
-            "slug": "_3-2-解决冲突",
-            "link": "#_3-2-解决冲突",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "3.3 分支管理策略",
-            "slug": "_3-3-分支管理策略",
-            "link": "#_3-3-分支管理策略",
-            "children": []
-          }
-        ]
-      },
-      {
-        "level": 2,
-        "title": "4. 标签管理",
-        "slug": "_4-标签管理",
-        "link": "#_4-标签管理",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "5. 远程仓库",
-        "slug": "_5-远程仓库",
-        "link": "#_5-远程仓库",
-        "children": []
-      }
-    ],
-    "path": "/tool/Git/Git.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "Git提交规范",
-    "headers": [],
-    "path": "/tool/Git/GIt%E6%8F%90%E4%BA%A4%E8%A7%84%E5%88%99.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "安装GitLab",
-    "headers": [
-      {
-        "level": 3,
-        "title": "1. 配置 yum 仓库",
-        "slug": "_1-配置-yum-仓库",
-        "link": "#_1-配置-yum-仓库",
-        "children": []
-      },
-      {
-        "level": 3,
-        "title": "2. 安装依赖包",
-        "slug": "_2-安装依赖包",
-        "link": "#_2-安装依赖包",
-        "children": []
-      },
-      {
-        "level": 3,
-        "title": "3. 安装 GitLab",
-        "slug": "_3-安装-gitlab",
-        "link": "#_3-安装-gitlab",
-        "children": []
-      },
-      {
-        "level": 3,
-        "title": "4. 初始化 GitLab",
-        "slug": "_4-初始化-gitlab",
-        "link": "#_4-初始化-gitlab",
-        "children": []
-      },
-      {
-        "level": 3,
-        "title": "5. 修改网络端口",
-        "slug": "_5-修改网络端口",
-        "link": "#_5-修改网络端口",
-        "children": []
-      },
-      {
-        "level": 3,
-        "title": "6. 常用命令",
-        "slug": "_6-常用命令",
-        "link": "#_6-常用命令",
-        "children": []
-      }
-    ],
-    "path": "/tool/Git/%E5%AE%89%E8%A3%85GitLab.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
     "title": "Docker 安装",
     "headers": [
       {
@@ -4113,170 +3906,212 @@ export const SEARCH_INDEX = [
     "extraFields": []
   },
   {
-    "title": "Nginx基础",
+    "title": "CICD",
     "headers": [
       {
         "level": 2,
-        "title": "1. WEB Server",
-        "slug": "_1-web-server",
-        "link": "#_1-web-server",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "2. 安装",
-        "slug": "_2-安装",
-        "link": "#_2-安装",
+        "title": "1. 构建基础",
+        "slug": "_1-构建基础",
+        "link": "#_1-构建基础",
         "children": [
           {
             "level": 3,
-            "title": "2.1 流程",
-            "slug": "_2-1-流程",
-            "link": "#_2-1-流程",
+            "title": "1.1 概念",
+            "slug": "_1-1-概念",
+            "link": "#_1-1-概念",
             "children": []
           },
           {
             "level": 3,
-            "title": "2.2 简单配置",
-            "slug": "_2-2-简单配置",
-            "link": "#_2-2-简单配置",
-            "children": []
-          }
-        ]
-      },
-      {
-        "level": 2,
-        "title": "3. 使用基础",
-        "slug": "_3-使用基础",
-        "link": "#_3-使用基础",
-        "children": [
-          {
-            "level": 3,
-            "title": "3.1 目录结构",
-            "slug": "_3-1-目录结构",
-            "link": "#_3-1-目录结构",
+            "title": "1.2 Jenkins安装",
+            "slug": "_1-2-jenkins安装",
+            "link": "#_1-2-jenkins安装",
             "children": []
           },
           {
             "level": 3,
-            "title": "3.2 命令",
-            "slug": "_3-2-命令",
-            "link": "#_3-2-命令",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "3.3 配置文件",
-            "slug": "_3-3-配置文件",
-            "link": "#_3-3-配置文件",
-            "children": []
-          }
-        ]
-      },
-      {
-        "level": 2,
-        "title": "4. 其他操作",
-        "slug": "_4-其他操作",
-        "link": "#_4-其他操作",
-        "children": [
-          {
-            "level": 3,
-            "title": "4.1 域名设置",
-            "slug": "_4-1-域名设置",
-            "link": "#_4-1-域名设置",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "4.2 关于跨域",
-            "slug": "_4-2-关于跨域",
-            "link": "#_4-2-关于跨域",
-            "children": []
-          }
-        ]
-      },
-      {
-        "level": 2,
-        "title": "5. 示例",
-        "slug": "_5-示例",
-        "link": "#_5-示例",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "7. 反向代理",
-        "slug": "_7-反向代理",
-        "link": "#_7-反向代理",
-        "children": [
-          {
-            "level": 3,
-            "title": "权重",
-            "slug": "权重",
-            "link": "#权重",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "ip_hash",
-            "slug": "ip-hash",
-            "link": "#ip-hash",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "backup",
-            "slug": "backup",
-            "link": "#backup",
+            "title": "1.3 Jenkins 使用基础",
+            "slug": "_1-3-jenkins-使用基础",
+            "link": "#_1-3-jenkins-使用基础",
             "children": []
           }
         ]
       }
     ],
-    "path": "/tool/Nginx/Nginx%E5%9F%BA%E7%A1%80.html",
+    "path": "/tool/Git/CICD.html",
     "pathLocale": "/",
     "extraFields": []
   },
   {
-    "title": "Django部署",
+    "title": "Git版本管理",
     "headers": [
       {
         "level": 2,
-        "title": "1. 部署说明",
-        "slug": "_1-部署说明",
-        "link": "#_1-部署说明",
+        "title": "1. 使用安装",
+        "slug": "_1-使用安装",
+        "link": "#_1-使用安装",
         "children": [
           {
             "level": 3,
-            "title": "1.1 uWSGI 服务器",
-            "slug": "_1-1-uwsgi-服务器",
-            "link": "#_1-1-uwsgi-服务器",
+            "title": "1.1 安装",
+            "slug": "_1-1-安装",
+            "link": "#_1-1-安装",
             "children": []
           },
           {
             "level": 3,
-            "title": "1.2 uWSGI 特点",
-            "slug": "_1-2-uwsgi-特点",
-            "link": "#_1-2-uwsgi-特点",
+            "title": "1.2 配置",
+            "slug": "_1-2-配置",
+            "link": "#_1-2-配置",
             "children": []
           },
           {
             "level": 3,
-            "title": "1.3 uWSGI 安装使用",
-            "slug": "_1-3-uwsgi-安装使用",
-            "link": "#_1-3-uwsgi-安装使用",
+            "title": "1.3. 获取 Git 帮助",
+            "slug": "_1-3-获取-git-帮助",
+            "link": "#_1-3-获取-git-帮助",
             "children": []
           },
           {
             "level": 3,
-            "title": "1.4 配置 Nginx",
-            "slug": "_1-4-配置-nginx",
-            "link": "#_1-4-配置-nginx",
+            "title": "1.4 创建一个版本库 - 步骤",
+            "slug": "_1-4-创建一个版本库-步骤",
+            "link": "#_1-4-创建一个版本库-步骤",
             "children": []
           }
         ]
+      },
+      {
+        "level": 2,
+        "title": "2. 常用",
+        "slug": "_2-常用",
+        "link": "#_2-常用",
+        "children": [
+          {
+            "level": 3,
+            "title": "2.1 撤销",
+            "slug": "_2-1-撤销",
+            "link": "#_2-1-撤销",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "2.2 删除",
+            "slug": "_2-2-删除",
+            "link": "#_2-2-删除",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "2.3 其他内容",
+            "slug": "_2-3-其他内容",
+            "link": "#_2-3-其他内容",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "3. 分支管理",
+        "slug": "_3-分支管理",
+        "link": "#_3-分支管理",
+        "children": [
+          {
+            "level": 3,
+            "title": "3.1 基本操作",
+            "slug": "_3-1-基本操作",
+            "link": "#_3-1-基本操作",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "3.2 解决冲突",
+            "slug": "_3-2-解决冲突",
+            "link": "#_3-2-解决冲突",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "3.3 分支管理策略",
+            "slug": "_3-3-分支管理策略",
+            "link": "#_3-3-分支管理策略",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "4. 标签管理",
+        "slug": "_4-标签管理",
+        "link": "#_4-标签管理",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "5. 远程仓库",
+        "slug": "_5-远程仓库",
+        "link": "#_5-远程仓库",
+        "children": []
       }
     ],
-    "path": "/tool/Nginx/%E5%BA%94%E7%94%A8%E9%83%A8%E7%BD%B2.html",
+    "path": "/tool/Git/Git.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "Git提交规范",
+    "headers": [],
+    "path": "/tool/Git/GIt%E6%8F%90%E4%BA%A4%E8%A7%84%E5%88%99.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "安装GitLab",
+    "headers": [
+      {
+        "level": 3,
+        "title": "1. 配置 yum 仓库",
+        "slug": "_1-配置-yum-仓库",
+        "link": "#_1-配置-yum-仓库",
+        "children": []
+      },
+      {
+        "level": 3,
+        "title": "2. 安装依赖包",
+        "slug": "_2-安装依赖包",
+        "link": "#_2-安装依赖包",
+        "children": []
+      },
+      {
+        "level": 3,
+        "title": "3. 安装 GitLab",
+        "slug": "_3-安装-gitlab",
+        "link": "#_3-安装-gitlab",
+        "children": []
+      },
+      {
+        "level": 3,
+        "title": "4. 初始化 GitLab",
+        "slug": "_4-初始化-gitlab",
+        "link": "#_4-初始化-gitlab",
+        "children": []
+      },
+      {
+        "level": 3,
+        "title": "5. 修改网络端口",
+        "slug": "_5-修改网络端口",
+        "link": "#_5-修改网络端口",
+        "children": []
+      },
+      {
+        "level": 3,
+        "title": "6. 常用命令",
+        "slug": "_6-常用命令",
+        "link": "#_6-常用命令",
+        "children": []
+      }
+    ],
+    "path": "/tool/Git/%E5%AE%89%E8%A3%85GitLab.html",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -4757,6 +4592,174 @@ export const SEARCH_INDEX = [
       }
     ],
     "path": "/tool/Kubernetes/k8s%E8%BF%9B%E9%98%B6.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "Nginx基础",
+    "headers": [
+      {
+        "level": 2,
+        "title": "1. WEB Server",
+        "slug": "_1-web-server",
+        "link": "#_1-web-server",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "2. 安装",
+        "slug": "_2-安装",
+        "link": "#_2-安装",
+        "children": [
+          {
+            "level": 3,
+            "title": "2.1 流程",
+            "slug": "_2-1-流程",
+            "link": "#_2-1-流程",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "2.2 简单配置",
+            "slug": "_2-2-简单配置",
+            "link": "#_2-2-简单配置",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "3. 使用基础",
+        "slug": "_3-使用基础",
+        "link": "#_3-使用基础",
+        "children": [
+          {
+            "level": 3,
+            "title": "3.1 目录结构",
+            "slug": "_3-1-目录结构",
+            "link": "#_3-1-目录结构",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "3.2 命令",
+            "slug": "_3-2-命令",
+            "link": "#_3-2-命令",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "3.3 配置文件",
+            "slug": "_3-3-配置文件",
+            "link": "#_3-3-配置文件",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "4. 其他操作",
+        "slug": "_4-其他操作",
+        "link": "#_4-其他操作",
+        "children": [
+          {
+            "level": 3,
+            "title": "4.1 域名设置",
+            "slug": "_4-1-域名设置",
+            "link": "#_4-1-域名设置",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "4.2 关于跨域",
+            "slug": "_4-2-关于跨域",
+            "link": "#_4-2-关于跨域",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "5. 示例",
+        "slug": "_5-示例",
+        "link": "#_5-示例",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "7. 反向代理",
+        "slug": "_7-反向代理",
+        "link": "#_7-反向代理",
+        "children": [
+          {
+            "level": 3,
+            "title": "权重",
+            "slug": "权重",
+            "link": "#权重",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "ip_hash",
+            "slug": "ip-hash",
+            "link": "#ip-hash",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "backup",
+            "slug": "backup",
+            "link": "#backup",
+            "children": []
+          }
+        ]
+      }
+    ],
+    "path": "/tool/Nginx/Nginx%E5%9F%BA%E7%A1%80.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "Django部署",
+    "headers": [
+      {
+        "level": 2,
+        "title": "1. 部署说明",
+        "slug": "_1-部署说明",
+        "link": "#_1-部署说明",
+        "children": [
+          {
+            "level": 3,
+            "title": "1.1 uWSGI 服务器",
+            "slug": "_1-1-uwsgi-服务器",
+            "link": "#_1-1-uwsgi-服务器",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "1.2 uWSGI 特点",
+            "slug": "_1-2-uwsgi-特点",
+            "link": "#_1-2-uwsgi-特点",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "1.3 uWSGI 安装使用",
+            "slug": "_1-3-uwsgi-安装使用",
+            "link": "#_1-3-uwsgi-安装使用",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "1.4 配置 Nginx",
+            "slug": "_1-4-配置-nginx",
+            "link": "#_1-4-配置-nginx",
+            "children": []
+          }
+        ]
+      }
+    ],
+    "path": "/tool/Nginx/%E5%BA%94%E7%94%A8%E9%83%A8%E7%BD%B2.html",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -6279,28 +6282,6 @@ export const SEARCH_INDEX = [
     "extraFields": []
   },
   {
-    "title": "标准库链接",
-    "headers": [
-      {
-        "level": 3,
-        "title": "标准库",
-        "slug": "标准库",
-        "link": "#标准库",
-        "children": []
-      },
-      {
-        "level": 3,
-        "title": "其他第三方库",
-        "slug": "其他第三方库",
-        "link": "#其他第三方库",
-        "children": []
-      }
-    ],
-    "path": "/python/%E8%AF%AD%E8%A8%80/%E5%BA%93/%E6%A0%87%E5%87%86%E5%BA%93%E9%93%BE%E6%8E%A5.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
     "title": "Linux文件锁",
     "headers": [
       {
@@ -6903,6 +6884,152 @@ export const SEARCH_INDEX = [
     "extraFields": []
   },
   {
+    "title": "标准库链接",
+    "headers": [
+      {
+        "level": 3,
+        "title": "标准库",
+        "slug": "标准库",
+        "link": "#标准库",
+        "children": []
+      },
+      {
+        "level": 3,
+        "title": "其他第三方库",
+        "slug": "其他第三方库",
+        "link": "#其他第三方库",
+        "children": []
+      }
+    ],
+    "path": "/python/%E8%AF%AD%E8%A8%80/%E5%BA%93/%E6%A0%87%E5%87%86%E5%BA%93%E9%93%BE%E6%8E%A5.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "Socket编程",
+    "headers": [
+      {
+        "level": 2,
+        "title": "1. Socket 套接字",
+        "slug": "_1-socket-套接字",
+        "link": "#_1-socket-套接字",
+        "children": [
+          {
+            "level": 3,
+            "title": "1.1 进程通信",
+            "slug": "_1-1-进程通信",
+            "link": "#_1-1-进程通信",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "1.2 Socket 概述",
+            "slug": "_1-2-socket-概述",
+            "link": "#_1-2-socket-概述",
+            "children": []
+          }
+        ]
+      }
+    ],
+    "path": "/python/%E8%AF%AD%E8%A8%80/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/Socket.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "WebSocket编程",
+    "headers": [
+      {
+        "level": 2,
+        "title": "一、websocket 概述",
+        "slug": "一、websocket-概述",
+        "link": "#一、websocket-概述",
+        "children": [
+          {
+            "level": 3,
+            "title": "0.简述：",
+            "slug": "_0-简述",
+            "link": "#_0-简述",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "1.使用场景",
+            "slug": "_1-使用场景",
+            "link": "#_1-使用场景",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "2.连接过程：",
+            "slug": "_2-连接过程",
+            "link": "#_2-连接过程",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "3.特点：",
+            "slug": "_3-特点",
+            "link": "#_3-特点",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "4.协议头部：",
+            "slug": "_4-协议头部",
+            "link": "#_4-协议头部",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "二、websocket 前端使用 api：",
+        "slug": "二、websocket-前端使用-api",
+        "link": "#二、websocket-前端使用-api",
+        "children": [
+          {
+            "level": 3,
+            "title": "1.WebSocket 属性",
+            "slug": "_1-websocket-属性",
+            "link": "#_1-websocket-属性",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "2.WebSocket 方法",
+            "slug": "_2-websocket-方法",
+            "link": "#_2-websocket-方法",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "3.WebSocket 实例事件",
+            "slug": "_3-websocket-实例事件",
+            "link": "#_3-websocket-实例事件",
+            "children": []
+          }
+        ]
+      }
+    ],
+    "path": "/python/%E8%AF%AD%E8%A8%80/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/Websocket.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "事件驱动模型",
+    "headers": [],
+    "path": "/python/%E8%AF%AD%E8%A8%80/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/%E4%BA%8B%E4%BB%B6%E6%A8%A1%E5%9E%8B.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "事件の起源——回调",
+    "headers": [],
+    "path": "/python/%E8%AF%AD%E8%A8%80/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/%E5%9B%9E%E8%B0%83.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
     "title": "信号量",
     "headers": [
       {
@@ -7417,130 +7544,6 @@ export const SEARCH_INDEX = [
       }
     ],
     "path": "/python/%E8%AF%AD%E8%A8%80/%E8%BF%9B%E9%98%B6/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "Socket编程",
-    "headers": [
-      {
-        "level": 2,
-        "title": "1. Socket 套接字",
-        "slug": "_1-socket-套接字",
-        "link": "#_1-socket-套接字",
-        "children": [
-          {
-            "level": 3,
-            "title": "1.1 进程通信",
-            "slug": "_1-1-进程通信",
-            "link": "#_1-1-进程通信",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "1.2 Socket 概述",
-            "slug": "_1-2-socket-概述",
-            "link": "#_1-2-socket-概述",
-            "children": []
-          }
-        ]
-      }
-    ],
-    "path": "/python/%E8%AF%AD%E8%A8%80/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/Socket.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "WebSocket编程",
-    "headers": [
-      {
-        "level": 2,
-        "title": "一、websocket 概述",
-        "slug": "一、websocket-概述",
-        "link": "#一、websocket-概述",
-        "children": [
-          {
-            "level": 3,
-            "title": "0.简述：",
-            "slug": "_0-简述",
-            "link": "#_0-简述",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "1.使用场景",
-            "slug": "_1-使用场景",
-            "link": "#_1-使用场景",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "2.连接过程：",
-            "slug": "_2-连接过程",
-            "link": "#_2-连接过程",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "3.特点：",
-            "slug": "_3-特点",
-            "link": "#_3-特点",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "4.协议头部：",
-            "slug": "_4-协议头部",
-            "link": "#_4-协议头部",
-            "children": []
-          }
-        ]
-      },
-      {
-        "level": 2,
-        "title": "二、websocket 前端使用 api：",
-        "slug": "二、websocket-前端使用-api",
-        "link": "#二、websocket-前端使用-api",
-        "children": [
-          {
-            "level": 3,
-            "title": "1.WebSocket 属性",
-            "slug": "_1-websocket-属性",
-            "link": "#_1-websocket-属性",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "2.WebSocket 方法",
-            "slug": "_2-websocket-方法",
-            "link": "#_2-websocket-方法",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "3.WebSocket 实例事件",
-            "slug": "_3-websocket-实例事件",
-            "link": "#_3-websocket-实例事件",
-            "children": []
-          }
-        ]
-      }
-    ],
-    "path": "/python/%E8%AF%AD%E8%A8%80/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/Websocket.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "事件驱动模型",
-    "headers": [],
-    "path": "/python/%E8%AF%AD%E8%A8%80/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/%E4%BA%8B%E4%BB%B6%E6%A8%A1%E5%9E%8B.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "事件の起源——回调",
-    "headers": [],
-    "path": "/python/%E8%AF%AD%E8%A8%80/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/%E5%9B%9E%E8%B0%83.html",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -9242,35 +9245,6 @@ export const SEARCH_INDEX = [
     "extraFields": []
   },
   {
-    "title": "PVE虚拟机",
-    "headers": [
-      {
-        "level": 3,
-        "title": "1. 安装",
-        "slug": "_1-安装",
-        "link": "#_1-安装",
-        "children": []
-      },
-      {
-        "level": 3,
-        "title": "2. 显卡驱动踩大坑",
-        "slug": "_2-显卡驱动踩大坑",
-        "link": "#_2-显卡驱动踩大坑",
-        "children": []
-      },
-      {
-        "level": 3,
-        "title": "3. 指南",
-        "slug": "_3-指南",
-        "link": "#_3-指南",
-        "children": []
-      }
-    ],
-    "path": "/unix/%E8%99%9A%E6%8B%9F%E6%9C%BA/PVE/PVE.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
     "title": "添加磁盘",
     "headers": [
       {
@@ -9362,6 +9336,35 @@ export const SEARCH_INDEX = [
       }
     ],
     "path": "/unix/%E8%99%9A%E6%8B%9F%E6%9C%BA/VMware/%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "PVE虚拟机",
+    "headers": [
+      {
+        "level": 3,
+        "title": "1. 安装",
+        "slug": "_1-安装",
+        "link": "#_1-安装",
+        "children": []
+      },
+      {
+        "level": 3,
+        "title": "2. 显卡驱动踩大坑",
+        "slug": "_2-显卡驱动踩大坑",
+        "link": "#_2-显卡驱动踩大坑",
+        "children": []
+      },
+      {
+        "level": 3,
+        "title": "3. 指南",
+        "slug": "_3-指南",
+        "link": "#_3-指南",
+        "children": []
+      }
+    ],
+    "path": "/unix/%E8%99%9A%E6%8B%9F%E6%9C%BA/PVE/PVE.html",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -9781,9 +9784,9 @@ export const SEARCH_INDEX = [
     "extraFields": []
   },
   {
-    "title": "基础",
+    "title": "优化",
     "headers": [],
-    "path": "/go/%E5%9F%BA%E7%A1%80/",
+    "path": "/go/%E4%BC%98%E5%8C%96/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -9795,9 +9798,9 @@ export const SEARCH_INDEX = [
     "extraFields": []
   },
   {
-    "title": "优化",
+    "title": "基础",
     "headers": [],
-    "path": "/go/%E4%BC%98%E5%8C%96/",
+    "path": "/go/%E5%9F%BA%E7%A1%80/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -9809,13 +9812,6 @@ export const SEARCH_INDEX = [
     "extraFields": []
   },
   {
-    "title": "Git",
-    "headers": [],
-    "path": "/tool/Git/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
     "title": "Docker",
     "headers": [],
     "path": "/tool/Docker/",
@@ -9823,9 +9819,9 @@ export const SEARCH_INDEX = [
     "extraFields": []
   },
   {
-    "title": "Nginx",
+    "title": "Git",
     "headers": [],
-    "path": "/tool/Nginx/",
+    "path": "/tool/Git/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -9833,6 +9829,13 @@ export const SEARCH_INDEX = [
     "title": "Kubernetes",
     "headers": [],
     "path": "/tool/Kubernetes/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "Nginx",
+    "headers": [],
+    "path": "/tool/Nginx/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -9907,13 +9910,6 @@ export const SEARCH_INDEX = [
     "extraFields": []
   },
   {
-    "title": "库",
-    "headers": [],
-    "path": "/python/%E8%AF%AD%E8%A8%80/%E5%BA%93/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
     "title": "多任务编程",
     "headers": [],
     "path": "/python/%E8%AF%AD%E8%A8%80/%E5%A4%9A%E4%BB%BB%E5%8A%A1%E7%BC%96%E7%A8%8B/",
@@ -9928,9 +9924,9 @@ export const SEARCH_INDEX = [
     "extraFields": []
   },
   {
-    "title": "进阶",
+    "title": "库",
     "headers": [],
-    "path": "/python/%E8%AF%AD%E8%A8%80/%E8%BF%9B%E9%98%B6/",
+    "path": "/python/%E8%AF%AD%E8%A8%80/%E5%BA%93/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -9938,6 +9934,13 @@ export const SEARCH_INDEX = [
     "title": "网络编程",
     "headers": [],
     "path": "/python/%E8%AF%AD%E8%A8%80/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "进阶",
+    "headers": [],
+    "path": "/python/%E8%AF%AD%E8%A8%80/%E8%BF%9B%E9%98%B6/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -10138,9 +10141,9 @@ export const SEARCH_INDEX = [
     "extraFields": []
   },
   {
-    "title": "PVE",
+    "title": "VMware",
     "headers": [],
-    "path": "/unix/%E8%99%9A%E6%8B%9F%E6%9C%BA/PVE/",
+    "path": "/unix/%E8%99%9A%E6%8B%9F%E6%9C%BA/VMware/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -10152,9 +10155,9 @@ export const SEARCH_INDEX = [
     "extraFields": []
   },
   {
-    "title": "VMware",
+    "title": "PVE",
     "headers": [],
-    "path": "/unix/%E8%99%9A%E6%8B%9F%E6%9C%BA/VMware/",
+    "path": "/unix/%E8%99%9A%E6%8B%9F%E6%9C%BA/PVE/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -10215,6 +10218,13 @@ export const SEARCH_INDEX = [
     "extraFields": []
   },
   {
+    "title": "AI 分类",
+    "headers": [],
+    "path": "/category/ai/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
     "title": "数据库 分类",
     "headers": [],
     "path": "/category/%E6%95%B0%E6%8D%AE%E5%BA%93/",
@@ -10257,20 +10267,6 @@ export const SEARCH_INDEX = [
     "extraFields": []
   },
   {
-    "title": "工具 分类",
-    "headers": [],
-    "path": "/category/%E5%B7%A5%E5%85%B7/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "CICD 分类",
-    "headers": [],
-    "path": "/category/cicd/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
     "title": "运维 分类",
     "headers": [],
     "path": "/category/%E8%BF%90%E7%BB%B4/",
@@ -10281,6 +10277,20 @@ export const SEARCH_INDEX = [
     "title": "Docker 分类",
     "headers": [],
     "path": "/category/docker/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "工具 分类",
+    "headers": [],
+    "path": "/category/%E5%B7%A5%E5%85%B7/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "CICD 分类",
+    "headers": [],
+    "path": "/category/cicd/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -10614,6 +10624,20 @@ export const SEARCH_INDEX = [
     "extraFields": []
   },
   {
+    "title": "标签: AI",
+    "headers": [],
+    "path": "/tag/ai/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "标签: Agent",
+    "headers": [],
+    "path": "/tag/agent/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
     "title": "标签: etcd",
     "headers": [],
     "path": "/tag/etcd/",
@@ -10649,16 +10673,16 @@ export const SEARCH_INDEX = [
     "extraFields": []
   },
   {
-    "title": "标签: 源码",
+    "title": "标签: 优化",
     "headers": [],
-    "path": "/tag/%E6%BA%90%E7%A0%81/",
+    "path": "/tag/%E4%BC%98%E5%8C%96/",
     "pathLocale": "/",
     "extraFields": []
   },
   {
-    "title": "标签: 优化",
+    "title": "标签: 源码",
     "headers": [],
-    "path": "/tag/%E4%BC%98%E5%8C%96/",
+    "path": "/tag/%E6%BA%90%E7%A0%81/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -10673,27 +10697,6 @@ export const SEARCH_INDEX = [
     "title": "标签: go",
     "headers": [],
     "path": "/tag/go/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "标签: gitlab",
-    "headers": [],
-    "path": "/tag/gitlab/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "标签: CICD",
-    "headers": [],
-    "path": "/tag/cicd/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "标签: git",
-    "headers": [],
-    "path": "/tag/git/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -10719,23 +10722,23 @@ export const SEARCH_INDEX = [
     "extraFields": []
   },
   {
-    "title": "标签: Nginx",
+    "title": "标签: gitlab",
     "headers": [],
-    "path": "/tag/nginx/",
+    "path": "/tag/gitlab/",
     "pathLocale": "/",
     "extraFields": []
   },
   {
-    "title": "标签: Web",
+    "title": "标签: CICD",
     "headers": [],
-    "path": "/tag/web/",
+    "path": "/tag/cicd/",
     "pathLocale": "/",
     "extraFields": []
   },
   {
-    "title": "标签: Django",
+    "title": "标签: git",
     "headers": [],
-    "path": "/tag/django/",
+    "path": "/tag/git/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -10757,6 +10760,27 @@ export const SEARCH_INDEX = [
     "title": "标签: k8s",
     "headers": [],
     "path": "/tag/k8s/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "标签: Nginx",
+    "headers": [],
+    "path": "/tag/nginx/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "标签: Web",
+    "headers": [],
+    "path": "/tag/web/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "标签: Django",
+    "headers": [],
+    "path": "/tag/django/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -10880,13 +10904,6 @@ export const SEARCH_INDEX = [
     "extraFields": []
   },
   {
-    "title": "标签: 标准库",
-    "headers": [],
-    "path": "/tag/%E6%A0%87%E5%87%86%E5%BA%93/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
     "title": "标签: 文件锁",
     "headers": [],
     "path": "/tag/%E6%96%87%E4%BB%B6%E9%94%81/",
@@ -10943,6 +10960,27 @@ export const SEARCH_INDEX = [
     "extraFields": []
   },
   {
+    "title": "标签: 标准库",
+    "headers": [],
+    "path": "/tag/%E6%A0%87%E5%87%86%E5%BA%93/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "标签: Socket",
+    "headers": [],
+    "path": "/tag/socket/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "标签: 网络编程",
+    "headers": [],
+    "path": "/tag/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
     "title": "标签: 信号量",
     "headers": [],
     "path": "/tag/%E4%BF%A1%E5%8F%B7%E9%87%8F/",
@@ -10981,20 +11019,6 @@ export const SEARCH_INDEX = [
     "title": "标签: 迭代器",
     "headers": [],
     "path": "/tag/%E8%BF%AD%E4%BB%A3%E5%99%A8/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "标签: Socket",
-    "headers": [],
-    "path": "/tag/socket/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "标签: 网络编程",
-    "headers": [],
-    "path": "/tag/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -11146,16 +11170,16 @@ export const SEARCH_INDEX = [
     "extraFields": []
   },
   {
-    "title": "标签: PVE",
+    "title": "标签: VMware",
     "headers": [],
-    "path": "/tag/pve/",
+    "path": "/tag/vmware/",
     "pathLocale": "/",
     "extraFields": []
   },
   {
-    "title": "标签: VMware",
+    "title": "标签: PVE",
     "headers": [],
-    "path": "/tag/vmware/",
+    "path": "/tag/pve/",
     "pathLocale": "/",
     "extraFields": []
   },
