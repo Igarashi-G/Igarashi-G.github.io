@@ -1,4 +1,4 @@
-import comp from "D:/Program/Igarashi-G.github.io/blog/.vuepress/.temp/pages/category/cicd/index.html.vue"
+import comp from "/Users/fuuka/Desktop/CODE/Igarashi-G.github.io/blog/.vuepress/.temp/pages/category/cicd/index.html.vue"
 const data = JSON.parse("{\"path\":\"/category/cicd/\",\"title\":\"CICD 分类\",\"lang\":\"zh-CN\",\"frontmatter\":{\"title\":\"CICD 分类\",\"dir\":{\"index\":false},\"index\":false,\"feed\":false,\"sitemap\":false,\"blog\":{\"type\":\"category\",\"name\":\"CICD\",\"key\":\"category\"},\"layout\":\"BlogCategory\",\"head\":[[\"script\",{\"type\":\"application/ld+json\"},\"{\\\"@context\\\":\\\"https://schema.org\\\",\\\"@type\\\":\\\"WebPage\\\",\\\"name\\\":\\\"CICD 分类\\\"}\"],[\"meta\",{\"property\":\"og:url\",\"content\":\"https://igarashi-g.github.io/category/cicd/\"}],[\"meta\",{\"property\":\"og:site_name\",\"content\":\"悦 ▪ 宝宝\"}],[\"meta\",{\"property\":\"og:title\",\"content\":\"CICD 分类\"}],[\"meta\",{\"property\":\"og:type\",\"content\":\"website\"}],[\"meta\",{\"property\":\"og:locale\",\"content\":\"zh-CN\"}]]},\"readingTime\":{\"minutes\":0,\"words\":0},\"filePathRelative\":null,\"excerpt\":\"\"}")
 export { comp, data }
 
