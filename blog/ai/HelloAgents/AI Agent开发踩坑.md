@@ -1,6 +1,6 @@
 ---
 title: AI Agent踩坑
-date: 2026-03-3
+date: 2026-03-03
 category:
   - AI
 tag:
@@ -155,7 +155,6 @@ OpenAI 专门写了一篇 [Unrolling the Codex agent loop](https://openai.com/zh
 - [ ] **怎么设计评估体系，用来在上线前发现检索退化？** 
 
 - [ ] **怎么处理权限控制（谁能看到哪些文档）？** 
-
 
 
 
