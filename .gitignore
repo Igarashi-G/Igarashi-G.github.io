@@ -1,4 +1,6 @@
 node_modules
 ._*
 .DS_Store
-blog/.vitepress/.temp
+blog/.vuepress/.cache/
+blog/.vuepress/.temp/
+blog/.vuepress/dist/

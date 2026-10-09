@@ -1,10 +1,8 @@
-# node version 18 
-sudo n 18
+#!/usr/bin/env bash
+set -euo pipefail
 
-npm install -g pnpm@7.33.7
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+PROJECT_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
 
-pnpm install --frozen-lockfile
-
-pnpm update @vuepress/bundler-vite @vuepress/client vuepress vuepress-theme-hope 
-
-pnpm run docs:dev
+make -C "$PROJECT_ROOT" setup
+exec make -C "$PROJECT_ROOT" dev

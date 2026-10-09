@@ -10,8 +10,6 @@ export default hopeTheme({
     url: "https://github.com/Igarashi-G",
   },
 
-  iconAssets: "//at.alicdn.com/t/c/font_3654399_7msjqsxnn8t.css",
-
   logo: "avatar.jpg",
 
   repo: "Igarashi-G",
@@ -77,10 +75,56 @@ export default hopeTheme({
   },
 
   markdown: {
+    align: true,
+    attrs: true,
+    chartjs: true,
+    codeTabs: true,
+    demo: true,
+    echarts: true,
+    flowchart: true,
+    gfm: true,
+    highlighter: {
+      type: "shiki",
+      langAlias: {
+        flow: "plaintext",
+        mysql: "sql",
+        python3: "python",
+        sehll: "shellscript",
+      },
+    },
+    imgLazyload: true,
+    imgMark: true,
+    imgSize: true,
+    include: true,
+    mark: true,
     mermaid: true,
     math: {
-      type: "katex", // 或 'mathjax'
+      type: "katex",
     },
+    playground: {
+      presets: ["ts", "vue"],
+    },
+    revealjs: {
+      plugins: ["highlight", "math", "search", "notes", "zoom"],
+    },
+    stylize: [
+      {
+        matcher: "Recommanded",
+        replacer: ({ tag }) => {
+          if (tag === "em")
+            return {
+              tag: "Badge",
+              attrs: { type: "tip" },
+              content: "Recommanded",
+            }
+        },
+      },
+    ],
+    sub: true,
+    sup: true,
+    tabs: true,
+    vPre: true,
+    vuePlayground: true,
   },
 
   encrypt: {
@@ -104,6 +148,16 @@ export default hopeTheme({
       timeline: "/timeline/",               // 时间线列表	
     },
     copyCode: {},
+    search: {
+      locales: {
+        "/": {
+          placeholder: "搜索",
+        },
+      },
+    },
+    icon: {
+      assets: "//at.alicdn.com/t/c/font_3654399_7msjqsxnn8t.css",
+    },
 
     // 如果你不需要评论，可以直接删除 comment 配置，
     // 以下配置仅供体验，如果你需要评论，请自行配置并使用自己的环境，详见文档。
@@ -131,88 +185,10 @@ export default hopeTheme({
     //   // serverURL: "https://vuepress-theme-hope-comment.vercel.app",
     // },
 
-    // 禁用不需要的配置
-    mdEnhance: {
-      // 自定义对齐
-      // https://vuepress-theme-hope.gitee.io/v2/zh/guide/markdown/align.html
-      align: true,
-
-      // Markdown 元素添加属性
-      // https://vuepress-theme-hope.gitee.io/v2/zh/guide/markdown/attrs.html
-      attrs: true,
-
-      chart: true,
-      codetabs: true,
-
-      // 添加提示、注释、信息、注意、警告和详情自定义容器的支持
-      // https://vuepress-theme-hope.gitee.io/v2/zh/guide/markdown/container.html
-      container: true,
-
-      demo: true,
-      echarts: true,
-      flowchart: true,
-      gfm: true,
-
-      // 启用图片标记
-      // https://vuepress-theme-hope.gitee.io/v2/zh/guide/markdown/image.html#%E9%85%8D%E7%BD%AE
-      imageMark: true,
-      // 启用图片大小
-      // https://vuepress-theme-hope.gitee.io/v2/zh/guide/markdown/image.html#%E9%85%8D%E7%BD%AE
-      imageSize: true,
-
-      // 支持导入其他文件
-      // https://vuepress-theme-hope.gitee.io/v2/zh/guide/markdown/include.html#%E9%85%8D%E7%BD%AE
-      include: true,
-      lazyLoad: true,
-
-      // 支持标记
-      // https://vuepress-theme-hope.gitee.io/v2/zh/guide/markdown/mark.html
-      mark: true,
-
-      mermaid: true,
-      playground: {
-        presets: ["ts", "vue"],
-      },
-
-      // 支持幻灯片
-      // https://vuepress-theme-hope.gitee.io/v2/zh/guide/markdown/presentation.html
-      presentation: {
-        plugins: ["highlight", "math", "search", "notes", "zoom"],
-      },
-
-      // 样式化
-      // https://vuepress-theme-hope.gitee.io/v2/zh/guide/markdown/stylize.html
-      stylize: [
-        {
-          matcher: "Recommanded",
-          replacer: ({ tag }) => {
-            if (tag === "em")
-              return {
-                tag: "Badge",
-                attrs: { type: "tip" },
-                content: "Recommanded",
-              }
-          },
-        },
-      ],
-
-      // 启用下角标
-      // https://vuepress-theme-hope.gitee.io/v2/zh/guide/markdown/sup-sub.html#%E9%85%8D%E7%BD%AE
-      sub: true,
-      // 启用上角标
-      // https://vuepress-theme-hope.gitee.io/v2/zh/guide/markdown/sup-sub.html#%E9%85%8D%E7%BD%AE
-      sup: true,
-
-      // 添加选项卡支持
-      // https://vuepress-theme-hope.gitee.io/v2/zh/guide/markdown/tabs.html
-      tabs: true,
-      tex: true,
-      vpre: true,
-      vuePlayground: true,
-    },
     // 组件
-    // https://vuepress-theme-hope.gitee.io/v2/zh/guide/markdown/components.html
-    components: ["Badge", "PDF"],
+    components: {
+      components: ["Badge"],
+    },
 
     // 版权信息
     // https://vuepress-theme-hope.gitee.io/v2/zh/guide/feature/copyright.html

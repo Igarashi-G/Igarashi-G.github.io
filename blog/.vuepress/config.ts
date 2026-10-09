@@ -1,7 +1,6 @@
 import { defineUserConfig } from "vuepress";
 import theme from "./theme.js";
 import { viteBundler } from "@vuepress/bundler-vite";
-import { searchPlugin } from "@vuepress/plugin-search";
 
 const INVALID_CHAR_REGEX = /[\x00-\x1F\x7F<>*#"{}|^[\]`;?:&=+$,]/g;
 const DRIVE_LETTER_REGEX = /^[a-z]:/i;
@@ -28,21 +27,6 @@ export default defineUserConfig({
   //是否开启页面预拉取，如果服务器宽带足够，可改为 true，会提升其他页面加载速度
   shouldPrefetch: true,
   
-  plugins: [
-    // algolia 全文搜索：没设置爬虫的话，需删除 docsearchPlugin 区块以使用节点搜索
-    // docsearchPlugin({
-    // }),
-    // 本地搜索：默认情况下，该插件会将页面标题和小标题作为搜索索引。
-    searchPlugin({
-      // 你的选项
-      locales: {
-        '/': {
-          placeholder: 'Search',
-        },
-      },
-    }),
-  ],
-
   pagePatterns: [
     "**/*.md",
     "!**/*.snippet.md",
@@ -53,8 +37,56 @@ export default defineUserConfig({
   define: () => ({
     IS_NETLIFY: "NETLIFY" in process.env,
   }),
-  
+
+  // Vite 8 treats `img/foo.png` as a package import. Normalize legacy article
+  // assets to explicit relative paths without rewriting Markdown content.
+  extendsMarkdown: (md) => {
+    md.core.ruler.after("inline", "normalize-relative-image-paths", (state) => {
+      const visit = (tokens: typeof state.tokens): void => {
+        for (const token of tokens) {
+          if (token.type === "image") {
+            const src = token.attrGet("src")
+            if (
+              src &&
+              !src.startsWith(".") &&
+              !src.startsWith("/") &&
+              !/^[a-z][a-z\d+.-]*:/i.test(src) &&
+              src.includes("/")
+            ) {
+              token.attrSet("src", `./${src}`)
+            }
+          }
+          if (token.children) visit(token.children)
+        }
+      }
+
+      visit(state.tokens)
+    })
+  },
+
   bundler: viteBundler({
+    configureVite: (config) => {
+      config.build ??= {}
+      // Vue Playground lazily loads Babel standalone (~4.2 MB) only on its demo page.
+      config.build.chunkSizeWarningLimit = 4500
+
+      config.optimizeDeps ??= {}
+      const include = config.optimizeDeps.include
+      config.optimizeDeps.include = [
+        ...(Array.isArray(include) ? include : include ? [include] : []),
+        "@braintree/sanitize-url",
+        "dayjs",
+        "elkjs",
+        "elkjs/lib/elk.bundled.js",
+      ]
+      config.optimizeDeps.needsInterop = [
+        ...(config.optimizeDeps.needsInterop ?? []),
+        "@braintree/sanitize-url",
+        "dayjs",
+        "elkjs",
+        "elkjs/lib/elk.bundled.js",
+      ]
+    },
     vuePluginOptions: {
       template: {
         compilerOptions: {

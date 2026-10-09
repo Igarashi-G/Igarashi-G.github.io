@@ -15,7 +15,7 @@ group:
 **86** 年诞生的，**开源**、**对象关系型** 数据库，采用 **客户端/服务器** 模型
 
 - `postgres`： 服务器进程，管理数据库
-- `Navicat`：等连接服务器的，客户端工具
+- [DBX](https://github.com/t8y2/dbx)：开源数据库客户端，支持 PostgreSQL、MySQL、Redis 等多种数据库
 
 ### 1. 安装
 
