@@ -69,6 +69,8 @@ NODE_OPTIONS=--max_old_space_size=8192 pnpm run docs:build
 
 `pnpm run build` 是同一 VuePress 构建的别名。输出写入 `blog/.vuepress/dist/`。
 
+`make verify` 也会执行完整生产构建，但使用临时的 `dist`、`.temp` 和 `.cache` 目录，避免验证过程改写 Git 跟踪的生成文件。需要检查实际站点产物时使用 `make build`。
+
 > 依据：`package.json:8-9`、`.github/workflows/deploy-docs.yml:38-45`。
 
 ### 4.2 构建副作用
@@ -94,7 +96,7 @@ NODE_OPTIONS=--max_old_space_size=8192 pnpm run docs:build
 | `make lint-content` | 运行 `scripts/lint-content.mjs` |
 | `make lint` | 依次执行两个静态检查器 |
 | `make test` | 兼容入口；当前等同于 `make lint`，不代表存在单元测试 |
-| `make verify` | 静态检查通过后执行生产构建 |
+| `make verify` | 静态检查通过后执行隔离的生产构建 |
 
 这是仓库级稳定接口的预期定义；命令是否可用须以当前 `Makefile` 为准。
 

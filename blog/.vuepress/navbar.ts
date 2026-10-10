@@ -69,7 +69,7 @@ export default navbar([
     prefix: "/database/",
     children: [
       { text: "etcd", link: "etcd/etcd", icon: "etcd"},
-      { text: "MySQL", link: "MySQL/MySQL", icon: "mysql"},
+      { text: "MySQL", link: "MySQL/MySQL基础", icon: "mysql"},
       { text: "Redis", link: "Redis/redis", icon: "redis"},
       { text: "PostgreSQL", link: "PostgreSQL/PostgreSQL", icon: "postgresql"},
     ],

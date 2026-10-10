@@ -357,10 +357,9 @@ export default sidebar({
       prefix: "/database/MySQL/",
       link: "/database/MySQL/",
       children: [
-        "MySQL",
+        "MySQL基础",
         "MySQL执行计划",
         "Mysql调优",
-        "SQLAlchemy",
       ]
     }
   ],

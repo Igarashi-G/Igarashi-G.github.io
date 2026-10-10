@@ -1,5 +1,5 @@
 ---
-title: MySQL
+title: MySQL基础
 date: 2018-03-21
 category:
   - 数据库
@@ -20,44 +20,6 @@ MySQL 是常用的关系型数据库。本文以 MySQL 8.4+、InnoDB、`utf8mb4`
 安装后先确认服务状态，再使用客户端连接。生产环境应固定 MySQL 大版本和镜像标签，避免使用不可控的 `latest`。
 
 ::: tabs
-
-@tab CentOS / RHEL
-
-```bash
-# 已配置 MySQL 官方 Yum 仓库
-sudo dnf install mysql-community-server -y
-sudo systemctl enable --now mysqld
-sudo systemctl status mysqld
-
-# 使用交互式提示输入密码，不要把密码直接写在命令行参数中
-mysql --host=127.0.0.1 --port=3306 --user=root --password
-```
-
-如果发行版仓库没有目标版本，应配置 MySQL 官方仓库后再安装。不要在生产环境混用不同来源的客户端和服务端包。
-
-@tab Ubuntu / Debian
-
-```bash
-sudo apt update
-sudo apt install mysql-server -y
-sudo systemctl enable --now mysql
-sudo systemctl status mysql
-
-mysql --host=127.0.0.1 --port=3306 --user=root --password
-```
-
-@tab Windows
-
-推荐使用 MySQL Installer 安装 MySQL Server 8.4，并在安装向导中设置服务名、端口和管理员密码。安装完成后可以在 PowerShell 中检查服务：
-
-```powershell
-Get-Service -Name 'MySQL*'
-Start-Service -Name 'MySQL84'
-
-mysql.exe --host=127.0.0.1 --port=3306 --user=root --password
-```
-
-如果安装时使用了其他服务名，请以 `Get-Service -Name 'MySQL*'` 的实际结果为准。
 
 @tab Docker Compose
 
@@ -105,37 +67,58 @@ mysql --host=127.0.0.1 --port=3306 --user=app --password app
 
 生产环境还应将数据卷放在可靠存储上，规划备份、恢复和版本升级流程；不要把数据库容器当作备份方案。
 
-@tab DBX
-
-[DBX](https://github.com/t8y2/dbx) 是支持 MySQL、PostgreSQL 和 Redis 的数据库管理工具。它适合开发、测试和受控的运维入口，不能替代数据库账号权限、审计和备份策略。
-
-将下面内容保存为单独的 `compose.dbx.yaml`，执行后访问 `http://localhost:4224`：
-
-```yaml
-services:
-  dbx:
-    image: t8y2/dbx:latest
-    pull_policy: always
-    ports:
-      - "4224:4224"
-    volumes:
-      - dbx-data:/app/data
-    restart: unless-stopped
-
-volumes:
-  dbx-data:
-```
+@tab CentOS / RHEL
 
 ```bash
-docker compose -f compose.dbx.yaml up -d
-docker compose -f compose.dbx.yaml ps
+# 已配置 MySQL 官方 Yum 仓库
+sudo dnf install mysql-community-server -y
+sudo systemctl enable --now mysqld
+sudo systemctl status mysqld
+
+# 使用交互式提示输入密码，不要把密码直接写在命令行参数中
+mysql --host=127.0.0.1 --port=3306 --user=root --password
 ```
 
-如果要在生产环境使用 DBX，应额外限制网络入口、配置访问认证，并避免让它暴露在公网。
+如果发行版仓库没有目标版本，应配置 MySQL 官方仓库后再安装。不要在生产环境混用不同来源的客户端和服务端包。
+
+@tab Ubuntu / Debian
+
+```bash
+sudo apt update
+sudo apt install mysql-server -y
+sudo systemctl enable --now mysql
+sudo systemctl status mysql
+
+mysql --host=127.0.0.1 --port=3306 --user=root --password
+```
+
+@tab Windows
+
+推荐使用 MySQL Installer 安装 MySQL Server 8.4，并在安装向导中设置服务名、端口和管理员密码。安装完成后可以在 PowerShell 中检查服务：
+
+```powershell
+Get-Service -Name 'MySQL*'
+Start-Service -Name 'MySQL84'
+
+mysql.exe --host=127.0.0.1 --port=3306 --user=root --password
+```
+
+如果安装时使用了其他服务名，请以 `Get-Service -Name 'MySQL*'` 的实际结果为准。
 
 :::
 
-### 1.2 安装后的基本检查
+### 1.2 DBX 可视化管理
+
+[DBX](https://github.com/t8y2/dbx) 提供表浏览、SQL 编辑和结果查看等可视化能力，适合开发、测试和受控运维入口。它仍应遵循数据库账号最小权限、网络隔离和审计要求，不能替代备份或权限治理。
+
+```bash
+docker compose -f compose.dbx.yaml up -d
+```
+
+启动后访问 `http://localhost:4224`；生产使用时请限制访问来源并配置认证，避免直接暴露公网。
+
+
+### 1.3 安装后的基本检查
 
 ```sql
 SELECT VERSION(), CURRENT_USER();
@@ -244,6 +227,7 @@ DROP USER 'report'@'10.0.%';
 新表使用 `InnoDB`。它提供事务、行级锁和崩溃恢复；不要为了追求旧资料中的“速度”而在新项目中选择不支持事务的引擎。
 
 ```sql
+-- 订单主表：金额使用定点数，时间保留微秒
 CREATE TABLE orders (
   id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
   order_no VARCHAR(32) NOT NULL,
@@ -276,6 +260,8 @@ CREATE TABLE orders (
 | `ENUM` | 少量稳定选项 | 选项经常变化时使用字典表，避免频繁修改表结构。 |
 | `BLOB` 系列 | 二进制内容 | 图片、视频通常放对象存储，数据库保存对象键或路径。 |
 
+`JSON` 会校验文档格式，但路径字段默认不具备普通列的统计信息；需要高频过滤时可用生成列或多值索引。`ENUM` 以内部数值保存选项，适合变化很少的状态；业务选项经常扩展时，使用字典表或普通字符串更便于演进。
+
 ### 4.3 主键、唯一约束与外键
 
 - 主键用于唯一标识一行，不能为 `NULL`；InnoDB 的二级索引会保存主键值。
@@ -283,6 +269,7 @@ CREATE TABLE orders (
 - 外键维护引用完整性，但会增加写入顺序和删除策略约束；高并发系统应结合数据模型与迁移流程决定是否使用。
 
 ```sql
+-- 字典表：名称做唯一约束，避免重复选项
 CREATE TABLE color (
   id INT UNSIGNED NOT NULL AUTO_INCREMENT,
   name VARCHAR(32) NOT NULL,
@@ -290,6 +277,7 @@ CREATE TABLE color (
   UNIQUE KEY uk_color_name (name)
 ) ENGINE=InnoDB DEFAULT CHARACTER SET utf8mb4;
 
+-- 业务表：外键列同时建立索引，便于连接与约束检查
 CREATE TABLE item (
   id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
   color_id INT UNSIGNED NOT NULL,
@@ -378,6 +366,7 @@ DROP TABLE staging_orders;
 ### 5.3 事务与隔离级别
 
 ```sql
+-- 先锁定余额行，再按固定顺序更新，减少并发竞争
 START TRANSACTION;
 
 SELECT balance
@@ -403,6 +392,17 @@ COMMIT;
 SELECT @@transaction_isolation;
 SET SESSION TRANSACTION ISOLATION LEVEL READ COMMITTED;
 ```
+
+常见隔离级别与读现象如下（InnoDB 默认通常为 `REPEATABLE READ`）：
+
+| 隔离级别 Isolation level | 脏读 Dirty read | 不可重复读 Non-repeatable read | 幻读 Phantom read |
+| --- | --- | --- | --- |
+| `READ UNCOMMITTED`（读未提交） | 是 Yes | 是 Yes | 是 Yes |
+| `READ COMMITTED`（读已提交） | 否 No | 是 Yes | 是 Yes |
+| `REPEATABLE READ`（可重复读） | 否 No | 否 No | 通常否 No* |
+| `SERIALIZABLE`（串行化） | 否 No | 否 No | 否 No |
+
+\* InnoDB 的一致性读和间隙锁会降低幻读风险，但锁定读、范围条件和具体 SQL 仍需结合执行计划验证。
 
 不要仅凭“行级锁”判断不会阻塞；范围条件、缺少索引、外键检查和 DDL 都可能扩大锁影响范围。
 
@@ -553,6 +553,8 @@ FROM user_profiles
 WHERE country_code = 'CN';
 ```
 
+日常开发中要明确 JSON 路径缺失、`NULL` 与空字符串的区别；更新嵌套字段时优先使用 JSON 函数，避免应用层读改写覆盖并发更新。
+
 ### 6.8 常用字符串函数与存储函数
 
 ```sql
@@ -661,6 +663,8 @@ ALTER TABLE orders
   ALTER INDEX idx_orders_status_created VISIBLE;
 ```
 
+索引变更要和发布流程绑定：先用不可见索引或影子环境观察计划，再决定删除；不要仅凭开发环境的小数据量判断索引收益。
+
 ## 8. 分页与查询性能
 
 ### 8.1 偏移分页
@@ -731,6 +735,8 @@ mysqldumpslow -s c -t 20 /var/lib/mysql/*-slow.log
 ```
 
 定位到 SQL 后，使用脱敏参数复现并运行 `EXPLAIN` 或 `EXPLAIN ANALYZE`。优化前后比较 p95/p99 延迟、扫描行数、锁等待和写入成本，不要只比较单次查询时间。
+
+建议按“慢日志定位 → `EXPLAIN` 判断访问路径 → 检查索引、统计信息与 SQL 形状 → 小范围改动 → 压测复核”的顺序调优。执行计划中的 `rows`、实际扫描行数、`Using temporary`/`Using filesort` 和估算偏差，是连接慢查询与调优决策的主要证据。
 
 ### 9.3 锁等待与运行状态
 

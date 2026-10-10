@@ -26,4 +26,10 @@ lint: lint-arch lint-content
 # This static site has no unit-test suite; its automated tests are repository lint checks.
 test: lint
 
-verify: lint build
+verify: lint
+	@build_root=$$(mktemp -d "$${TMPDIR:-/tmp}/igarashi-verify.XXXXXX"); \
+	trap 'rm -rf "$$build_root"' EXIT INT TERM; \
+	NODE_OPTIONS="$(NODE_OPTIONS)" $(PNPM) run docs:build -- \
+		--dest "$$build_root/dist" \
+		--temp "$$build_root/temp" \
+		--cache "$$build_root/cache"

@@ -44,7 +44,7 @@
 | `lint-content` | `node scripts/lint-content.mjs` |
 | `lint` | 依次运行两个 lint 目标 |
 | `test` | 当前兼容入口，等同于静态 lint，不是单元测试 |
-| `verify` | lint 全部通过后执行 build |
+| `verify` | lint 全部通过后执行隔离的生产 build，不改写工作区生成目录 |
 
 目标是否已实现以当前 `Makefile` 为准；这张表是各工具不得随意破坏的命令契约。
 
@@ -131,7 +131,7 @@ Mermaid 12 的 `dayjs`、`@braintree/sanitize-url` 与 `elkjs/lib/elk.bundled.js
 
 1. `scripts/lint-architecture.mjs`
 2. `scripts/lint-content.mjs`
-3. 生产构建
+3. 生产构建（输出写入临时目录，验证结束后清理）
 
 前一步失败时不应继续发布意义更高的步骤。检查器必须输出 WHAT、WHY、HOW 和具体位置。
 
