@@ -1,5 +1,5 @@
 ---
-title: SQLAlchemy 2.x 基础
+title: SQLAlchemy基础
 order: 1
 group:
   title: SQLAlchemy
@@ -10,91 +10,304 @@ tag:
   - Python
   - SQLAlchemy
   - MySQL
+description: 保留 SQLAlchemy 历史架构与 Query 笔记，补充 SQLAlchemy 2.x 的现代写法
 ---
 
-SQLAlchemy 同时提供 SQL 表达式工具包 Core 和对象关系映射 ORM。本文采用 SQLAlchemy 2.x 风格，以 MySQL 和 PyMySQL 为例，覆盖连接、模型、查询、事务、关系加载、批量写入和异步访问。
+SQLAlchemy：
+<img src="./img/sqlalchemy结构.png" alt="SQLAlchemy 结构示意图">
 
-<!-- more -->
+> 本文保留早期 `session.query()` 示例作为历史 API 参考。新代码建议使用 SQLAlchemy 2.x 的 `select()`、显式事务和 `Mapped` 类型声明。
 
-## 1. 安装与组件
+::: tip 连接字符串
 
-```bash
-python -m pip install "SQLAlchemy>=2.0,<3.0" PyMySQL
-```
+密码包含 `@`、`/` 或 `:` 时不要直接拼接 URL。可以使用 `URL.create()`，并将密码放入环境变量或密钥管理系统；示例中的 `user:password` 仅表示占位符。
 
-SQLAlchemy 不直接实现 MySQL 网络协议，而是通过 DBAPI 驱动访问数据库：
+:::
 
-```text
-应用代码 -> SQLAlchemy ORM/Core -> MySQL Dialect -> PyMySQL -> MySQL
-```
+一、sqlalchemy 安装：
+在 Python 中，最有名的 ORM 框架是 SQLAlchemy。用户包括 openstack＼Dropbox 等知名公司或应用。
+主要用户列表http://www.sqlalchemy.org/organizations.html#openstack
 
-主要对象：
+        安装：
+            pip install SQLAlchemy
+            pip install pymysql  #由于mysqldb依然不支持py3，所以这里我们用pymysql与sqlalchemy交互
 
-| 对象 | 职责 |
-|---|---|
-| `Engine` | 管理方言、连接池和 SQL 执行入口 |
-| `Connection` | 一次 Core 层数据库连接 |
-| `Session` | ORM 工作单元，跟踪对象状态与事务 |
-| `DeclarativeBase` | 声明 ORM 映射的基类 |
-| `select()` 等表达式 | 以 Python 对象构建 SQL |
+        组成部分：
+            <1>Engine，框架的引擎
+            <2>Connection Pooling ，数据库连接池
+            <3>Dialect，选择连接数据库的DBAPI种类
+            <4>Schema/Types，架构和类型
+            <5>SQL Exprression Language，SQL表达式语言
 
-## 2. 创建 Engine
+        由于SQLAlchemy本身无法操作数据库，其必须以来pymsql等第三方插件Dialect用于和数据API进行交流，
 
-### 2.1 避免手工拼接 URL
+        DBAPI：
+            根据配置文件的不同调用不同的数据库API，从而实现对数据库的操作，如：
+            MySQL-Python
+                mysql+mysqldb://<user>:<password>@<host>[:<port>]/<dbname>
 
-密码包含 `@`、`/`、`:` 等字符时，手写字符串必须进行 URL 编码。使用 `URL.create()` 更稳妥：
+                注：MySQL-python貌似只支持python2.7 win环境还会报错，就别费劲了，直接pymysql
+
+            pymysql
+                mysql+pymysql://<username>:<password>@<host>/<dbname>[?<options>]
+
+            MySQL-Connector
+                mysql+mysqlconnector://<user>:<password>@<host>[:<port>]/<dbname>
+
+            cx_Oracle
+                oracle+cx_oracle://user:pass@host:port/dbname[?key=value&key=value...]
+
+            更多详见：http://docs.sqlalchemy.org/en/latest/dialects/index.html
+
+
+    二、概要：
+        ORM框架通常分为两类：    -DB first / code first
+            DB first：即先创建数据库和表，之后则生成对应表的类。（手动创建数据库及表，通过框架自动生成类）
+            code first：即先写代码，利用代码来创建表。（手动创建数据库和类，通过ORM框架，自动生成数据库中的表）
+        SQLAlchemy属于code first，而Django则两个都可以。
+
+        SQLAlchemy ORM类 转化为SQL语句需要通过 SQLAlchemy Core 部分的 Schema/Types和SQL Expression language 来实现。
+        内部架构见图。
+
+    三、sqlalchemy基本使用：
+        a.功能
+        数据类型：通过from sqlalchemy import 各种类型都有（引入需要的数据类型）
+
+            -创建数据库表 ：通过创建的类的形式创建。与类不同：表字段没有写在init中，但本质上内部会copy到init里。
+                -连接数据库：（不是sqlalchemy做的，而是pymysql做的，它只负责转换连接的sql语句转换给pymsql，让其连接执行，
+                                同理mysqldb也可以。）
+                -类转化SQL语句：
+                    类-->表
+                    对象-->行
+
+            class UserType(Base):
+                __tablename__ = "usertype"
+                id = Column(Integer,primary_key=True,autoincrement=True)
+                title = Column(String(16),unique=True)
+
+            class Users(Base):
+                __tablename__ = "users"                     #表名为users
+                id = Column(Integer,primary_key=True)       #id字段=Column代表库中的每一列，里面写各种参数，非空、索引、默认等
+                name = Column(String(32),nullable=True)
+                user_type_id = Column(Integer,ForeignKey("usertype.id"))    #创建外键关联，多对一用户类型
+
+                __table_args__ = (
+                    UniqueConstraint("id","name",name="uix_id_name"),   #UniqueConstarint指让id和name联合唯一，并设置索引名
+                    index("ix_id_name","name","extra"),     #加索引,与上不同的是索引名字要设置在前
+                )
+
+        创建引擎：
+            engine = create_engine("mysql+pymysql://user:password@127.0.0.1:3306/testdb?charset=utf8mb4",max_overflow=5)
+            #若有密码写在root:之后，端口3306后接那个数据库，编码是什么。指定后交给sqlalchemy，它会解析字符串远程连接。
+            部分参数：
+                max_overflow：允许的最大额外连接数量，这些连接会被挂起，进入队列等待，直到连接池有空余位置。实际上标志了等待队列的大小。
+                pool：连接池对象，需为SqlAlchemy中Pool类型或其子类的实例，当参数为None时候，将使用连接参数来构造连接池，非None时，
+                    将使用pool指定的连接池
+                pool_size：连接池中允许的并发连接数量，不同的子连接类型对于无限连接的设置可能不同，请参阅相关文档。
+                pool_recycle：连接回收时间，单位为秒，即当超过连接时间时，连接将被回收。-1表示不回收。实际上不同的数据库还有自己
+                    的默认回收时间。对于MySql，若连接在8小时内无动作时将启动自动回收。
+                echo = False：是否对所有命令进行日志记录，输出地默认为sys.stout,即控制台的CMD界面（打印row sql）。
+                echo_pool = False : 是否记录连接与断开连接信息，输出地默认为sys.stout。
+
+            create_engine方法具有丰富的定制参数，实际上在使用的时候，除去connect_args之外，其余的只要使用默认参数，SqlAlchemy就可以工作的很好。
+
+        事件：（触发短信邮件通知）
+            说是触发器，其实并不是触发器，这是sqlalchemy中的钩子，也称为事件，在触发某个操作的时候执行某个函数。
+            def __connect_handle(dbapi_connection, connection_record):
+                dbapi_connection.query('SET time_zone=\'+08:00\';')
+                logger.debug('SET time_zone=\'+08:00\';')
+
+            event.listen(engine, 'connect', self.__connect_handle)
+            listen(表单或表单字段, 触发事件, 回调函数, 是否改变插入值)    -- 这里是引擎，回调函数是__connect_handle
+            通过listen()或listens_for()装饰器来订阅事件（参考文档）
+
+
+        构造表结构的基类：
+            构造的这个基类会 被赋予一个元类，元类能根据构建的表生成Table对象
+            Base = declarative_base() 貌似必须这么写，这是规定
+            之后创建的Users必须继承Base，
+
+            之后通过基类Base的元类下的方法即可创建表对应的类：
+            Base.metadata.create_all(engine)    #create_all表示找到py文件中所有类，直接在数据库中创建表。
+            Base.metadata.drop_all(engine)      #能创建自然能删除，drop_all默认就会把类对应的表删除。
+
+        创建元数据：
+            MetaData：Table对象及其关联的模式构造的集合。它是一个容器对象，它将所描述的数据库（或多个数据库）的许多不同特性保持在一起。
+
+            除了上文用Base.metadata来创建数据之外，当然也可以创建一个
+            metadata = MetaData()
+            # SQLAlchemy 2.x 不再把 engine 绑定到 MetaData，创建时显式传入 engine：
+            metadata.create_all(engine)
+
+        创建会话：
+            有了数据引擎和数据表之后就可以对数据库进行增删改查操作了，但是要通过什么来进行通信？
+
+            首先，要创建一个Session（会话类）,Session可以认为是从engine创建的连接池中拿出一个连接。（如上所述，engine是创建连接的）
+                Session = sessionmaker(bind=engine)     # 创建一个Sessoin对象绑定引擎，就是要从engine里面拿出一个连接
+                session = Session()                     # 起个名叫session，这里就是连接的意思
+
+                session.commit()                        # 向数据库提交
+                session.close()                         # 关闭连接
+
+                sessin.rollback()                       # 回滚当前正在进行的事务
+
+        管理会话：
+            提供Session对象生命周期的管理。采用的注册模式，简单来说，是指在整个程序运行的过程当中，只存在唯一的一个session对象。
+            Session = scoped_session(session_maker)
+            some_session = Session()
+
+            由于scoped session采用的是注册模式，因此下面代码的session1和session2是一个相同的对象引用。
+            session1 = Session()
+            session2 = Session()
+
+            scoped_session本质上是一个全局变量。可是，如果直接把session定义成全局变量，在多线程的环境下，会造成线程同步的问题。
+            为此，scoped session在默认情况下，采用的线程本地化存储方式。也就是说，每个线程的session对象是不同的。这样，不同线程
+            对数据库的操作不会相互影响。
+
+            还包含方法configure()：重新配置sessionmaker、remove()：将首先调用Session.close()，之后将Session丢弃。在下一次使用同一
+            范围内时，将生成一个新 对象。（具体参考文档）
+
+
+        b.CURD：
+            增加：
+                obj1 = UserType(title="普通用户")        # 数据初始化，若要添加多条数据，可以用列表放入对个对象。
+                session.add(obj1)                       # 添加数据，将对象放入session
+
+            查询：
+                session.query(UserType)           # 此时输出的是查询的SQL语句
+                .all()                            # 则获取全部数据，返回list类型，里面的每一个元素是UserType类型即它的对象
+                .filter()                         # 过滤，里面即可加入过滤条件，如UserType.id>2，相当于where
+
+            删除：
+                session.delete()                  # 处理关联数据，配置了cascade='all,delete-orphan'，则删除从表的数据
+                session.query(UserType.id).filter(UserType.id<2).delete()  # 先查询后删除对应的数据，不处理关联，无则报错
+
+            修改：
+                session.query(UserType.title).filter(UserType.id>2).update({"title":"白金"})    # 此时的写法为字典，而不是==或赋值
+                    批量也如此，就会把符合结果的直接批量修改
+                .update({UserType.title:UserType + "233"},synchronize_session=False)    # 在原来基础上进行添加，
+                .update({UserType.title:UserType + 1},synchronize_session="evaluate")    # 根据数字和字符串类型不同，后续参数设置不同
+
+
+    四、sqlalchemy其他操作
+        线程安全，基于本地线程实现每个线程用同一个session
+        特殊的：scoped_session中有原来方法的Session中的一下方法：
+
+        开启多线程：
+            Session = sessionmaker(bind=engine)
+            def task(arg):
+                session = Session()
+
+                obj1 = Users(name="igarashi")
+                session.add(obj1)
+
+                session.commit()
+
+            for i in range(10):
+                t = threading.Thread(target=task, args=(i,))
+                t.start()
+
+        通配符：
+            ret = session.query(Users).filter(Users.name.like('e%')).all()  # e% 以e开头的所有，e_ 以e开头的一个
+            ret = session.query(Users).filter(~Users.name.like('e%')).all() # ~ 指 not in
+
+        限制：
+            ret = session.query(Users)[1:2]
+
+        # 排序
+        ret = session.query(Users).order_by(Users.name.desc()).all()
+        ret = session.query(Users).order_by(Users.name.desc(), Users.id.asc()).all()
+
+        # 分组
+        from sqlalchemy.sql import func
+
+        ret = session.query(Users).group_by(Users.extra).all()
+        ret = session.query(
+            func.max(Users.id),
+            func.sum(Users.id),
+            func.min(Users.id)).group_by(Users.name).all()
+
+        ret = session.query(
+            func.max(Users.id),
+            func.sum(Users.id),
+            func.min(Users.id)).group_by(Users.name).having(func.min(Users.id) >2).all()
+
+        # 连表
+        ret = session.query(Users, Favor).filter(Users.id == Favor.nid).all()
+
+        ret = session.query(Person).join(Favor).all()
+
+        ret = session.query(Person).join(Favor, isouter=True).all()
+
+        select_from：
+            q = session.query(Address).select_from(User).join(User.addresses).filter(User.name == 'ed')
+            select_from明确的设置查询子句（其实多于join连用，来控制根据那张表来左连接）
+            如上，查询Address表，但是按照User表的address字段进行左连接，得出的即是按照User表的实体，User表有的Address没有则Null
+
+        # 组合
+        q1 = session.query(Users.name).filter(Users.id > 2)
+        q2 = session.query(Favor.caption).filter(Favor.nid < 2)
+        ret = q1.union(q2).all()
+
+        q1 = session.query(Users.name).filter(Users.id > 2)
+        q2 = session.query(Favor.caption).filter(Favor.nid < 2)
+        ret = q1.union_all(q2).all()
+
+        # if/then表达式 if[满足条件] 执行then后语句，只要有条件不满足，则运行else
+        case([
+                    (users_table.c.name == 'wendy', 'W'),  等同于   WHEN (name = :name_1) THEN :param_1
+                    (users_table.c.name == 'jack', 'J')             WHEN (name = :name_2) THEN :param_2
+                ],
+                else_='E'                                           ELSE :param_3
+            )
+        case(
+                {"wendy": "W", "jack": "J"},        简写形式
+                value=users_table.c.name,
+                else_='E'
+            )
+
+        # 执行原生 SQL 时使用 text() 并绑定参数：
+        from sqlalchemy import text
+        cursor = session.execute(text('insert into users(name) values(:value)'), {"value": 'wupeiqi'})
+
+        # 连接表达式：
+        and_(users_table.c.name == 'wendy', users_table.c.enrolled == True)  -- python &  需要括号
+        or_(users_table.c.name == 'wendy', users_table.c.name == 'jack')     -- python |  需要括号
+
+
+    备注：
+        .filter(SelfDefinedService.cycle.op('&')(cycle_byte) != 0) # 其中的.op()可能是为了进行 & 运算的
+
+        实现计数器字段的原子递增：
+            session.query(table).update({table.counter: table.counter + 1})
+            session.commit()
+
+        大批量插入测试数据：
+            如： 此时需要用原生SQL，用ORM会很影响速度
+            session.execute(
+                User.__table__.insert(),
+                [{'name': `randint(1, 100)`,'age': randint(1, 100)} for i in xrange(10000)]
+            )
+
+        打印Row SQL：
+            若为engine_from_config()：方法配置，通过配置字典中的echo: true 来控制显示
+            若为create_engine()：方法配置，通过参数echo=True来控制
+            若为Flask-SQLAlchemy：通过配置app.config["SQLALCHEMY_ECHO"] = True来控制
+
+        危险的in_操作：
+            当删除、更新 涉及到批量的in_操作时，添加条件synchronize_session=False。因为会默认会尝试更新、删除 session 中符合条件的对象
+            而in操作不支持，故解决办法就是删除、更新时不对 session进行同步，直接进行删除和更新，然后再让 session 里的所有实体都过期。
+            另：不要使用in_查询一个空的可迭代对象，若必须，就在创建这个语句之前做个判断，判断ids是不是为空。
+
+## SQLAlchemy 2.x 增量写法
+
+### 1. Typed Declarative
+
+历史代码中的 `declarative_base()`、`Column` 和 `session.query()` 仍可帮助理解旧项目，但新模型建议使用 2.x 的类型声明：
 
 ```python
-import os
-
-from sqlalchemy import URL, create_engine
-
-url = URL.create(
-    drivername="mysql+pymysql",
-    username=os.environ["DB_USER"],
-    password=os.environ["DB_PASSWORD"],
-    host=os.getenv("DB_HOST", "127.0.0.1"),
-    port=int(os.getenv("DB_PORT", "3306")),
-    database=os.environ["DB_NAME"],
-    query={"charset": "utf8mb4"},
-)
-
-engine = create_engine(
-    url,
-    pool_pre_ping=True,
-    pool_recycle=1800,
-    echo=False,
-)
-```
-
-- `pool_pre_ping=True` 在取出连接时检查它是否仍然可用。
-- `pool_recycle` 可降低服务端空闲超时导致陈旧连接的概率，具体值应根据服务端和网络配置确定。
-- `echo=True` 会打印 SQL，适合本地排查，不应无审查地用于生产环境。
-
-`Engine` 通常在进程内创建一次并复用，不要为每个请求重新创建连接池。
-
-### 2.2 验证连接
-
-SQLAlchemy 2.x 执行文本 SQL 时需要显式使用 `text()`：
-
-```python
-from sqlalchemy import text
-
-with engine.connect() as connection:
-    version = connection.scalar(text("SELECT VERSION()"))
-    print(version)
-```
-
-## 3. Typed Declarative 模型
-
-```python
-from __future__ import annotations
-
-from datetime import datetime
-from decimal import Decimal
-
-from sqlalchemy import BigInteger, DateTime, ForeignKey, Numeric, String, func
-from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column, relationship
+from sqlalchemy import String
+from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
 
 
 class Base(DeclarativeBase):
@@ -104,315 +317,43 @@ class Base(DeclarativeBase):
 class User(Base):
     __tablename__ = "users"
 
-    id: Mapped[int] = mapped_column(BigInteger, primary_key=True)
-    name: Mapped[str] = mapped_column(String(100), nullable=False)
-    email: Mapped[str] = mapped_column(String(255), unique=True, nullable=False)
-    created_at: Mapped[datetime] = mapped_column(
-        DateTime(timezone=False),
-        server_default=func.current_timestamp(),
-        nullable=False,
-    )
-
-    orders: Mapped[list[Order]] = relationship(back_populates="user")
-
-
-class Order(Base):
-    __tablename__ = "orders"
-
-    id: Mapped[int] = mapped_column(BigInteger, primary_key=True)
-    user_id: Mapped[int] = mapped_column(ForeignKey("users.id"), index=True)
-    order_no: Mapped[str] = mapped_column(String(32), unique=True)
-    amount: Mapped[Decimal] = mapped_column(Numeric(12, 2))
-
-    user: Mapped[User] = relationship(back_populates="orders")
+    id: Mapped[int] = mapped_column(primary_key=True)
+    name: Mapped[str] = mapped_column(String(64), nullable=False)
 ```
 
-类型标注不仅服务于编辑器，也表达字段是否可空、关系是一对一还是一对多。数据库约束仍应由 `nullable`、`unique`、`ForeignKey`、`CheckConstraint` 等明确声明。
-
-本地演示可直接建表：
-
-```python
-Base.metadata.create_all(engine)
-```
-
-生产项目应使用 Alembic 等迁移工具管理可审查、可回滚的结构变更，不要把 `create_all()` 当作迁移系统。
-
-## 4. Session 与事务边界
-
-`Session` 代表一次 ORM 工作单元，同时维护事务和对象身份映射。它不是全局缓存，也不应在并发请求之间共享。
-
-```python
-from sqlalchemy.orm import Session, sessionmaker
-
-SessionFactory = sessionmaker(engine, expire_on_commit=False)
-
-with SessionFactory() as session:
-    with session.begin():
-        user = User(name="Fuuka", email="fuuka@example.com")
-        session.add(user)
-```
-
-内层 `session.begin()` 成功退出时提交，发生异常时回滚；外层上下文负责关闭 Session。
-
-### 4.1 flush 不等于 commit
-
-```python
-with Session(engine) as session:
-    with session.begin():
-        user = User(name="Alice", email="alice@example.com")
-        session.add(user)
-        session.flush()
-        print(user.id)
-```
-
-`flush()` 把待处理变更发送到数据库，因此可以取得自增主键，但事务尚未提交，之后仍可回滚。很多查询和提交前会自动触发 flush。
-
-### 4.2 每次工作使用独立 Session
-
-- Web 应用通常每个请求一个 Session。
-- 后台任务通常每个任务或每个明确事务一个 Session。
-- Session 及其 ORM 对象不适合在多个线程或异步任务间共享。
-- 事务中不要夹杂耗时网络调用，避免长期占用连接和数据库锁。
-
-## 5. SQLAlchemy 2.x 查询方式
-
-### 5.1 按主键读取
-
-```python
-with Session(engine) as session:
-    user = session.get(User, 1001)
-```
-
-`Session.get()` 会先检查当前 Session 的身份映射，适合主键读取。
-
-### 5.2 select 与 scalars
+### 2. 显式 Session 与 `select()`
 
 ```python
 from sqlalchemy import select
-
-stmt = (
-    select(User)
-    .where(User.email.like("%@example.com"))
-    .order_by(User.id)
-    .limit(20)
-)
+from sqlalchemy.orm import Session
 
 with Session(engine) as session:
-    users = session.scalars(stmt).all()
-```
-
-SQLAlchemy 2.x 教程应以 `select()` 为主线，而不是旧式 `session.query()`。
-
-### 5.3 选择部分列与连接
-
-```python
-stmt = (
-    select(User.name, Order.order_no, Order.amount)
-    .join(Order, Order.user_id == User.id)
-    .where(Order.amount >= 100)
-    .order_by(Order.amount.desc())
-)
+    with session.begin():
+        session.add(User(name="igarashi"))
 
 with Session(engine) as session:
-    for name, order_no, amount in session.execute(stmt):
-        print(name, order_no, amount)
+    users = session.scalars(
+        select(User).where(User.name.like("i%"))
+    ).all()
 ```
 
-### 5.4 聚合
+`Session` 不应在并发请求之间共享；一个工作单元使用独立 Session，事务结束后及时关闭。`flush()` 只把变更发送到数据库，`commit()` 才会提交事务。
 
-```python
-from sqlalchemy import func
+### 3. 关系加载与批量操作
 
-stmt = (
-    select(
-        Order.user_id,
-        func.count(Order.id).label("order_count"),
-        func.sum(Order.amount).label("total_amount"),
-    )
-    .group_by(Order.user_id)
-    .having(func.count(Order.id) >= 2)
-)
-```
-
-表达式生成器会绑定参数，不要用字符串拼接用户输入。动态排序和列名也应通过白名单映射到模型属性。
-
-## 6. 关系加载与 N+1
-
-直接遍历关系属性可能触发每个用户一次额外查询：
-
-```python
-users = session.scalars(select(User)).all()
-for user in users:
-    print(user.orders)
-```
-
-这类 N+1 查询在数据量增加后会显著放大延迟。对于一对多关系，常用 `selectinload()` 批量加载：
+一对多关系直接逐个访问容易产生 N+1 查询。可以按访问场景选择 `selectinload()` 或 `joinedload()`，并用数据库执行计划验证生成的 SQL：
 
 ```python
 from sqlalchemy.orm import selectinload
 
-stmt = (
-    select(User)
-    .options(selectinload(User.orders))
-    .order_by(User.id)
-)
-
+stmt = select(User).options(selectinload(User.orders))
 users = session.scalars(stmt).all()
 ```
 
-`joinedload()` 会把关系合并到同一查询，更适合某些多对一或一对一场景；用于集合时会增加结果行数。加载策略应根据关系基数和访问模式选择，并通过 SQL 日志或链路追踪验证。
+批量插入可以使用 Core 表达式，减少对象构造和往返次数；批次仍应控制大小，避免长事务和内存压力。
 
-## 7. 更新与删除
+### 4. 异步边界
 
-### 7.1 修改 ORM 对象
+异步应用使用 `create_async_engine()` 和 `async_sessionmaker()`。同一个 `AsyncSession` 不能被多个并发任务共享；`asyncio.gather()` 中的每个任务都应创建自己的 Session。
 
-```python
-with Session(engine) as session:
-    with session.begin():
-        user = session.get(User, 1001)
-        if user is None:
-            raise LookupError("user not found")
-        user.name = "New Name"
-```
-
-### 7.2 集合更新
-
-```python
-from sqlalchemy import update
-
-stmt = (
-    update(User)
-    .where(User.email == "old@example.com")
-    .values(email="new@example.com")
-)
-
-with Session(engine) as session:
-    with session.begin():
-        result = session.execute(stmt)
-        if result.rowcount != 1:
-            raise RuntimeError("unexpected affected row count")
-```
-
-集合更新绕过逐对象业务逻辑。批量修改前应确认影响行数、并发语义和 Session 中是否已有相关对象。
-
-## 8. 批量写入
-
-```python
-from sqlalchemy import insert
-
-rows = [
-    {"name": "Alice", "email": "alice@example.com"},
-    {"name": "Bob", "email": "bob@example.com"},
-]
-
-with Session(engine) as session:
-    with session.begin():
-        session.execute(insert(User), rows)
-```
-
-批量接口可以减少 Python 对象构造和数据库往返，但不会自动执行所有逐对象事件。超大批次应分块提交，避免单个事务、内存和锁范围失控。
-
-## 9. Core 与原生 SQL
-
-复杂报表或数据库特有语法不必强行包装成 ORM 对象。可以使用 Core 表达式或明确的文本 SQL：
-
-```python
-from sqlalchemy import text
-
-stmt = text(
-    """
-    SELECT order_no, amount
-    FROM orders
-    WHERE user_id = :user_id
-      AND amount >= :min_amount
-    ORDER BY id DESC
-    LIMIT 20
-    """
-)
-
-with engine.connect() as connection:
-    rows = connection.execute(
-        stmt,
-        {"user_id": 1001, "min_amount": 100},
-    ).mappings().all()
-```
-
-参数仍通过绑定传递。表名、列名和排序方向不能当作普通值参数绑定，动态生成这些结构时必须使用受控白名单。
-
-## 10. 异步访问
-
-安装异步 MySQL 驱动，例如：
-
-```bash
-python -m pip install asyncmy
-```
-
-```python
-import os
-
-from sqlalchemy import URL, select
-from sqlalchemy.ext.asyncio import async_sessionmaker, create_async_engine
-
-async_url = URL.create(
-    drivername="mysql+asyncmy",
-    username=os.environ["DB_USER"],
-    password=os.environ["DB_PASSWORD"],
-    host=os.getenv("DB_HOST", "127.0.0.1"),
-    port=int(os.getenv("DB_PORT", "3306")),
-    database=os.environ["DB_NAME"],
-    query={"charset": "utf8mb4"},
-)
-
-async_engine = create_async_engine(async_url, pool_pre_ping=True)
-AsyncSessionFactory = async_sessionmaker(
-    async_engine,
-    expire_on_commit=False,
-)
-
-
-async def list_users() -> list[User]:
-    async with AsyncSessionFactory() as session:
-        result = await session.scalars(
-            select(User).order_by(User.id).limit(20)
-        )
-        return list(result)
-```
-
-一个 `AsyncSession` 只能服务一个并发任务。使用 `asyncio.gather()` 并发执行多个数据库任务时，每个任务都应创建自己的 `AsyncSession`。
-
-异步 API 不会让数据库查询本身变快，它主要避免等待 I/O 时阻塞事件循环。连接池上限、数据库承载能力和事务边界仍然需要控制。
-
-## 11. 常见问题
-
-### 11.1 DetachedInstanceError
-
-对象离开 Session 后又触发未加载属性，常会出现该异常。应在 Session 生命周期内完成所需加载，或用 `selectinload()` 等方式显式预加载，而不是长期保留 Session。
-
-### 11.2 连接空闲后失效
-
-启用 `pool_pre_ping`，并让 `pool_recycle` 与 MySQL、代理和网络设备的超时策略匹配。应用仍要对可重试的瞬时连接错误设置有限次数、带退避的重试。
-
-### 11.3 查询结果为什么重复
-
-连接一对多集合时，一条父记录会对应多条 SQL 结果行。使用 joined eager loading 集合后，通常需要按 SQLAlchemy API 要求调用 `unique()`；也可改用 `selectinload()`。
-
-### 11.4 自动提交去了哪里
-
-SQLAlchemy 2.x 的 `Connection` 和 `Session` 都强调显式事务边界。写入后应明确提交，推荐使用 `.begin()` 上下文，不依赖旧式 autocommit 行为。
-
-## 12. 实践检查表
-
-- 一个进程复用一个 `Engine`，一个工作单元使用一个 `Session`。
-- 数据库凭据来自环境或密钥管理系统，不写入源码。
-- 所有值使用参数绑定，动态结构使用白名单。
-- 事务尽量短，异常路径能够回滚。
-- 通过日志和追踪发现 N+1、慢 SQL 与连接池耗尽。
-- 结构变更由迁移工具管理，并与应用发布顺序兼容。
-- ORM 生成的慢 SQL 仍用数据库的[执行计划](./MySQL执行计划.md)和[调优流程](./Mysql调优.md)验证。
-
-## 参考资料
-
-- [SQLAlchemy 2.0 ORM Quick Start](https://docs.sqlalchemy.org/en/20/orm/quickstart.html)
-- [SQLAlchemy 2.0 Session Basics](https://docs.sqlalchemy.org/en/20/orm/session_basics.html)
-- [SQLAlchemy 2.0 MySQL and MariaDB Dialect](https://docs.sqlalchemy.org/en/20/dialects/mysql.html)
-- [SQLAlchemy 2.0 AsyncIO](https://docs.sqlalchemy.org/en/20/orm/extensions/asyncio.html)
+更多 MySQL 索引、事务和锁的数据库侧验证，参见[MySQL 调优](./Mysql调优.md)与[MySQL 执行计划](./MySQL执行计划.md)。

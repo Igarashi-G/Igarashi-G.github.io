@@ -358,7 +358,6 @@ export default sidebar({
       link: "/database/MySQL/",
       children: [
         "MySQL",
-        "Mysql高阶",
         "MySQL执行计划",
         "Mysql调优",
         "SQLAlchemy",

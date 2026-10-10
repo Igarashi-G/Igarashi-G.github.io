@@ -5,257 +5,475 @@ category:
   - 数据库
 tag:
   - MySQL
-  - SQL优化
+order: 3
+description: 保留历史 EXPLAIN 案例与联合索引图，补充 MySQL 8.4+ 的估算和实测分析
 ---
 
-执行计划描述 MySQL 优化器准备如何访问表、使用索引、连接数据和完成排序。它是定位 SQL 性能问题的证据之一，但不能替代真实耗时、等待事件和业务调用频率。
+# MySQL 执行计划
 
-<!-- more -->
+::: tip 先读结论
 
-## 1. EXPLAIN 与 EXPLAIN ANALYZE
+本文的 `type` 表格和 B+Tree 图用于建立直觉，不能把访问类型当成脱离数据量的性能排名。MySQL 8.4 可以通过 `EXPLAIN FORMAT=TREE`、`EXPLAIN FORMAT=JSON` 和 `EXPLAIN ANALYZE` 交叉验证估算与实际执行。
 
-### 1.1 只查看估算计划
+:::
 
-```sql
-EXPLAIN
-SELECT id, order_no, created_at
-FROM orders
-WHERE customer_id = 1001
-  AND status = 'paid'
-ORDER BY created_at DESC
-LIMIT 20;
-```
+### 1. 执行计划分析
 
-`EXPLAIN` 不执行普通 `SELECT`，主要展示优化器基于统计信息得到的估算。它也可用于 `UPDATE`、`DELETE`、`INSERT`、`REPLACE` 等语句，但对写语句做分析时仍应先确认目标和环境。
+#### 1.1 什么是执行计划
 
-### 1.2 查看实际执行数据
+**执行计划:**  指一条 SQL 语句在经过 **MySQL 查询优化器** 的优化后，具体的执行方式，常用于 **SQL 性能分析、优化** 等场景。
 
 ```sql
-EXPLAIN ANALYZE
-SELECT id, order_no, created_at
-FROM orders
-WHERE customer_id = 1001
-  AND status = 'paid'
-ORDER BY created_at DESC
-LIMIT 20;
+EXPLAIN + SELECT / UPDATE / DELETE... 查询语句；
 ```
 
-`EXPLAIN ANALYZE` 会真实执行语句，并以 TREE 形式返回每个迭代器的估算成本、实际耗时、实际行数和循环次数。MySQL 8.4 支持分析 `SELECT`、`TABLE` 以及多表 `UPDATE`、`DELETE`。它比单纯 `EXPLAIN` 更能揭示估算偏差，但必须注意：
+通过 `EXPLAIN` 的结果，能看到目标SQL 可 **命中那些 索引、是什么 type、多少行记录被查询** 等 
 
-- 对慢查询运行它，查询仍然可能很慢。
-- 对受支持的多表 `UPDATE`、`DELETE` 使用它会产生真实副作用，不能把它当成无害的预览。
-- 生产环境应先评估负载、锁影响和返回数据量，必要时在副本或脱敏数据环境复现。
-
-## 2. 输出格式怎么选
+`EXPLAIN` 可用于 `SELECT`、`DELETE`、`INSERT`、`REPLACE` 以及 `UPDATE`。`EXPLAIN ANALYZE` 会实际执行语句，MySQL 8.4 支持 `SELECT`、`TABLE` 以及多表 `UPDATE`/`DELETE`，因此不要把它当成无副作用的预览。
 
 ```sql
 EXPLAIN FORMAT=TRADITIONAL SELECT ...;
-EXPLAIN FORMAT=JSON SELECT ...;
 EXPLAIN FORMAT=TREE SELECT ...;
+EXPLAIN FORMAT=JSON SELECT ...;
+EXPLAIN ANALYZE SELECT ...;
 ```
 
-| 格式 | 适合场景 | 特点 |
-|---|---|---|
-| `TRADITIONAL` | 日常快速检查 | 一表一行，字段紧凑，最常见 |
-| `TREE` | 理解算子层级 | 直接呈现执行树，`EXPLAIN ANALYZE` 使用该结构 |
-| `JSON` | 工具处理与深入分析 | 信息更完整，包含成本和层级结构 |
+MySQL 8.4 的默认格式由 `explain_format` 系统变量决定；团队文档和排障记录中建议显式写出 `FORMAT`，减少环境差异。
 
-阅读执行树时，应从最内层或最先执行的叶子算子开始，沿数据流向外看，而不是把文本第一行当作第一步。
+#### 1.2 执行计划示例
+
+```sql
+mysql> EXPLAIN 
+SELECT * FROM employee_department 
+WHERE employee_id IN (
+    SELECT employee_id 
+    FROM employee_department 
+    GROUP BY employee_id 
+    HAVING COUNT(*) > 1
+);
+
++----+-------------+----------------------+------------+-------+---------------------------+---------------+---------+------+--------+----------+-------------+
+| id | select_type | table                | partitions | type  | possible_keys             | key           | key_len | ref  | rows   | filtered | Extra       |
++----+-------------+----------------------+------------+-------+---------------------------+---------------+---------+------+--------+----------+-------------+
+|  1 | PRIMARY     | employee_department  | NULL       | ALL   | NULL                      | NULL          | NULL    | NULL | 331143 |   100.00 | Using where |
+|  2 | SUBQUERY    | employee_department  | NULL       | index | PRIMARY,department_id_idx | PRIMARY       | 16      | NULL | 331143 |   100.00 | Using index |
++----+-------------+----------------------+------------+-------+---------------------------+---------------+---------+------+--------+----------+-------------+
+```
+
+执行计划结果中共有 12 列，各列代表的含义总结如下表：
+
+| **列名**      | **含义**                                     |
+| ------------- | -------------------------------------------- |
+| id            | SELECT 查询的序列标识符                      |
+| select_type   | SELECT 关键字对应的查询类型                  |
+| table         | 用到的表名                                   |
+| partitions    | 匹配的分区，对于未分区的表，值为 NULL        |
+| type          | 表的访问方法                                 |
+| possible_keys | 可能用到的索引                               |
+| key           | 实际用到的索引                               |
+| key_len       | 所选索引的长度                               |
+| ref           | 当使用索引等值查询时，与索引作比较的列或常量 |
+| rows          | 预计要读取的行数                             |
+| filtered      | 按表条件过滤后，留存的记录数的百分比         |
+| Extra         | 附加信息                                     |
+
+### 2. 如何分析EXPLAIN结果
+
+首先需要明确执行计划中的每个字段含义：
+
+#### id
+
+`SELECT` 标识符，用于标识每个 `SELECT` 语句的执行顺序。
+
+**id** 就像 SQL 查询的 **执行顺序编号**，告诉你哪个部分先执行、哪个后执行
+
+- **id 相同**，看类型 **SUBQUERY → PRIMARY → UNION** 
+
+  ```sql
+  | id | select_type | table          |
+  |----|-------------|----------------|
+  | 1  | PRIMARY     | 主查询         |
+  | 1  | SUBQUERY    | 子查询         |
+  ```
+
+- **id 不同**，值越大，执行优先级越高
+
+  ```sql
+  | id | select_type | table          |
+  |----|-------------|----------------|
+  | 1  | PRIMARY     | 主查询         |
+  | 2  | SUBQUERY    | 子查询         |
+  ```
+
+- **id值为NULL**，永远最后执行的合并操作（比如 `UNION` 的结果）
+
+  ```sql
+  | id   | select_type | table        |
+  |------|-------------|--------------|
+  | NULL | UNION       | 合并结果集     |
+  ```
+
+  
+
+#### select_type 查询类型
+
+查询的类型，主要用于区分普通查询、联合查询、子查询等复杂的查询，常见的值有：
+
+- **SIMPLE**：**简单查询**，最基础的 `SELECT` 查询，没有嵌套或联合。
+- **PRIMARY**：**主查询**，若包含子查询或其他部分，外层的 SELECT 将被标记为 PRIMARY。
+- **SUBQUERY**：**子查询**，被嵌套在主查询内部的独立查询。
+- **UNION**：**联合查询**，在UNION操作中，第二个及以后的查询语句。
+- **DERIVED**：**派生表**，FROM子句中的子查询，会生成临时表。
+- **UNION RESULT**：**联合结果**，UNION操作的最终合并结果。
+
+
+
+#### table
+
+当前查询执行的数据表
+
+每行都有对应的表名，表名除了正常的表之外，也可能是以下列出的值：
+
+- **`<unionM,N>`** : 本行引用了 id 为 M 和 N 的行的 UNION 结果；
+- **`<derivedN>`** : 本行引用了 id 为 N 的表所产生的的派生表结果。派生表有可能产生自 FROM 语句中的子查询。
+- **`<subqueryN>`** : 本行引用了 id 为 N 的表所产生的的物化子查询结果。
+
+
+
+#### partitions
+
+查询所匹配记录所在的分区，对于未分区的表，值为 `NULL`。
+
+
+
+#### type(重要)
+
+查询执行的类型，描述了查询使用的访问方法。下面的顺序便于初读，但不是脱离数据量、循环次数和返回行数的固定性能排行榜：
 
 ```mermaid
-flowchart BT
-    scan[索引范围扫描 orders] --> filter[过滤 status]
-    filter --> lookup[按主键回表]
-    lookup --> sort[排序或利用索引顺序]
-    sort --> limit[返回前 20 行]
+graph LR
+    A[system] --> B[const]
+    B --> C[eq_ref]
+    C --> D[ref]
+    D --> E[range]
+    E --> F[index]
+    F --> G[ALL]
 ```
 
-实际计划不一定包含图中的每一步。例如覆盖索引可避免回表，索引顺序匹配时也可能不需要额外排序。
+##### **常见的几种类型含义如下：** 
 
-## 3. 传统输出的关键列
+| 访问类型        | 通俗解释                                                     | 性能等级 | 示例场景                                                     |
+| --------------- | ------------------------------------------------------------ | -------- | ------------------------------------------------------------ |
+| **system**      | 表只有一行数据（系统表特例）                                 | 🚀 最优   | `SELECT * FROM system_table WHERE id=1` (***MyISAM引擎***)   |
+| **const**       | 用主键/唯一索引直接定位单条数据                              | 🚀 最优   | `SELECT * FROM users WHERE user_id = 1`                      |
+| **eq_ref**      | 联表时，前表的每行在后表 **唯一匹配一条** （主键/唯一索引联表） | ⭐️ 极优   | `SELECT * FROM users JOIN orders ON users.id = orders.user_id` |
+| **ref**         | 用普通索引找到 **多条匹配数据**                              | 👍 良好   | `SELECT * FROM users WHERE age = 25` (age有普通索引)         |
+| **index_merge** | 同时使用多个索引，然后合并结果                               | ⚡️ 较优   | `SELECT * FROM users WHERE user_id = 1 OR username = 'admin'` |
+| **range**       | 用索引检索 **范围数据**，执行计划中的 **key** 列表示使用了哪个索引 | ✅ 不错   | `SELECT * FROM users WHERE age BETWEEN 20 AND 30`            |
+| **index**       | 全索引扫描，查询遍历了整棵索引树（***比 ALL 快因为只扫描索引，而索引一般在内存***） | ⚠️ 较差   | `SELECT COUNT(*) FROM users` (使用了覆盖索引)                |
+| **ALL**         | 全表扫描（***需要优化***）                                   | 🐢 最差   | `SELECT * FROM users WHERE phone LIKE '%123%'`               |
 
-| 列 | 含义 | 阅读重点 |
-|---|---|---|
-| `id` | 查询块标识 | 不能简单按数值推断所有执行顺序 |
-| `select_type` | 查询块类型 | 如 `SIMPLE`、`PRIMARY`、`SUBQUERY`、`DERIVED` |
-| `table` | 当前访问对象 | 可能是表、派生表或物化结果 |
-| `partitions` | 访问的分区 | 用于判断是否发生分区裁剪 |
-| `type` | 访问方法 | 反映如何定位行，不是独立的性能分数 |
-| `possible_keys` | 候选索引 | 有候选不代表采用它一定更优 |
-| `key` | 实际索引 | `NULL` 表示未选择索引访问 |
-| `key_len` | 使用的索引键长度 | 可辅助判断联合索引使用到哪一部分 |
-| `ref` | 与索引比较的值 | 可能是常量或前表列 |
-| `rows` | 预计检查的行数 | 是统计估算，不是实际值 |
-| `filtered` | 条件过滤后预计保留比例 | 可粗略估算传给下一步的数据量 |
-| `Extra` | 额外执行信息 | 需结合完整计划解释 |
+`type` 只描述访问路径。小表使用 `ALL` 可能比大表反复回表更合理，`index` 也不一定比 `ALL` 快。最终应结合 `rows`、`filtered`、外层循环、锁等待和实际耗时判断。
 
-粗略估算某一步传出的行数时，可以观察：
+##### **`eq_ref` 与 `ref` 的区别** 
 
-```text
-rows × filtered / 100
-```
+|    类型    | 匹配行数 |   索引类型    |              示例              |
+| :--------: | :------: | :-----------: | :----------------------------: |
+| **eq_ref** | 唯一1条  | 主键/唯一索引 | `ON users.id = orders.user_id` |
+|  **ref**   | 可能多条 |   普通索引    |   `WHERE department_id = 3`    |
 
-连接查询还要考虑该步骤的循环次数，因此不能只看单行 `rows` 就判断总工作量。
+##### **性能优化建议**
 
-## 4. type：访问方法而非排行榜
+1. **避免 `ALL`**：
 
-常见访问方法包括：
+   - 为查询条件添加索引
+   - •避免在索引列上使用函数或通配符`%`开头
 
-| `type` | 含义 | 常见场景 |
-|---|---|---|
-| `system` / `const` | 最多匹配一行 | 主键或唯一键与常量等值比较 |
-| `eq_ref` | 前表每行在当前表最多匹配一行 | 使用主键或唯一非空索引连接 |
-| `ref` | 通过非唯一索引查找一组行 | 普通索引等值查询 |
-| `range` | 扫描索引区间 | 范围、部分 `IN`、前缀范围 |
-| `index` | 扫描整个索引 | 可能比扫描整行更窄，但仍是全索引扫描 |
-| `ALL` | 扫描整表 | 小表可能合理，大表需结合过滤和频率判断 |
+2. **提升 `range` 到 `ref`**：
 
-常见访问路径可以概括为：
+   ```sql
+   -- 优化前：type=range
+   SELECT * FROM orders 
+   WHERE order_date > '2023-01-01'
+   
+   -- 优化后：type=ref (如果status有索引)
+   SELECT * FROM orders 
+   WHERE status = 'paid' 
+     AND order_date > '2023-01-01'
+   ```
 
-```mermaid
-flowchart LR
-    point[单点定位] --> range[范围定位]
-    range --> fullIndex[全索引扫描]
-    fullIndex --> fullTable[全表扫描]
-```
+3. **`index` 特殊情况**：
 
-这张图只表达“定位范围通常逐渐扩大”，不表示前一项在任何场景都更快。例如：
+   当查询只需要索引列时（覆盖索引），**index** 比 **ALL** 快很多：
 
-- 返回表中大部分数据时，顺序扫描可能比大量随机回表更便宜。
-- 小表全表扫描通常不是优化重点。
-- 一个 `ref` 访问若被外层循环数百万次，可能比一次可控的 `ALL` 更慢。
+   ```sql
+   -- 虽然扫描整个索引，但不需要回表
+   SELECT user_id FROM users 
+   WHERE last_login_time > '2023-01-01'
+   ```
 
-## 5. Extra 中的常见信息
 
-### 5.1 Using index
 
-通常表示只读取索引就能提供所需列，即覆盖索引。它可以减少回表，但不意味着扫描行数一定少。
+#### possible_keys
 
-### 5.2 Using index condition
+**possible_keys** 列表示 **MySQL** 执行查询时**可能用到的索引**。
 
-表示使用索引条件下推，在存储引擎层利用索引列先过滤一部分记录，再决定是否回表。
+如果这一列为 **NULL** ，则表示 **没有可能用到的索引**，这种情况下，需要检查 `WHERE` 语句中所使用的的列，看是否可以通过给这些列中某个或多个添加索引的方法来提高查询性能。
 
-### 5.3 Using where
 
-表示还需对读取到的行应用条件。它本身不是故障，关键在于进入过滤步骤的行数是否合理。
 
-### 5.4 Using temporary
+#### key(重要)
 
-表示执行过程中需要内部临时表，常见于某些分组、排序、去重或派生表场景。应结合临时表规模和是否落盘判断影响。
+**key** 列表示 **MySQL** 实际使用到的索引，如果为 **NULL**，则表示未用到索引。
 
-### 5.5 Using filesort
 
-表示不能直接用索引顺序完成排序，需要额外排序算法。名称中的 `file` 不代表一定写入磁盘；排序能否留在内存还取决于数据量、行宽和内存限制。
 
-## 6. 从估算到实测
+#### key_len
 
-假设 TREE 输出包含：
+表示 **MySQL** 实际使用的索引的最大长度（***字节*** ），例如：
 
-```text
--> Index lookup on orders using idx_customer_status
-   (cost=120 rows=100)
-   (actual time=0.050..18.200 rows=12000 loops=1)
-```
+- **smallint :** **2** 个字节
+- **varchar(255) :** **1022** 个字节
+  - `255×4=1020（字符数据）+2（长度前缀）+0（如果字段是NOTNULL）=1022字节` 
+- **datetime:** **5** 个字节
 
-这里真正值得关注的是：优化器估算 100 行，实际却返回 12000 行。常见原因包括：
+当使用到联合索引时，有可能是多个列的长度和，在满足需求的前提下 **越短越好**。
 
-- 统计信息陈旧。
-- 列值分布倾斜，普通统计无法准确描述。
-- 多列条件高度相关，但优化器按相对独立估算。
-- 参数在不同调用间差异很大。
+如果 key 列显示 NULL ，则 key_len 列也显示 NULL 。
 
-可按以下顺序处理：
 
-1. 确认 SQL 与参数确实来自慢请求。
-2. 更新并检查统计信息，而不是立刻强制索引。
-3. 比较估算行数和实际行数，找到偏差最大的节点。
-4. 检查高耗时节点的 `loops`，确认是否被重复执行。
-5. 再评估索引、SQL 改写、直方图或数据模型调整。
+
+#### ref
+
+表示在查询索引时，哪些列或者常量被用来与索引的值进行比较:
+
+- **const :** 表示使用了常量值（如 `WHERE id = 5`）
+- **func :** 表示使用了函数（如 `WHERE UPPER(name) = 'JOHN'`）
+- **NULL :** 表示没有使用索引匹配（可能是全表扫描或索引失效），或查询使用了 **范围查询**（`create_at BETWEEN ...`），而不是精确匹配（`=`），因为它不是直接通过  `=` 或  `IN` 匹配索引
+
+
+
+#### rows
+
+表示 **预估扫描行数**， 根据表统计信息及选用情况，大致估算出找到所需的记录或所需读取的行数，数值越小越好。
+
+
+
+#### filtered
+
+表示估算的经过查询条件删选出的列数的百分比。例如 `rows` 是 1000，`filtered` 是 50（50%），则实际筛选出的列数为 1000 * 50% = 500。
+
+
+
+#### Extra(重要)
+
+包含了 **MySQL** 解析查询的额外信息，通过这些信息，可以更准确的理解 MySQL 到底是如何执行查询的。常见的值如下：
+
+| Extra 值                                  | 通俗解释                                                     | 性能影响 | 优化建议                         |
+| ----------------------------------------- | ------------------------------------------------------------ | -------- | -------------------------------- |
+| **Using index**                           | 查询只通过索引就完成了（***覆盖索引*** ），无需回表查数据    | ✅ 极优   | 保持当前索引策略                 |
+| **Using index condition**                 | 表示查询优化器使用了**索引条件下推（*ICP*）**，在存储引擎层提前过滤数据 | ✅ 较优   | MySQL 5.6+默认开启，无需特别优化 |
+| **Using where**                           | 表明 **查询使用了 WHERE 子句** 进行条件过滤，需要在Server层对存储引擎返回的数据进行过滤（***比如 create_at 范围*** ） | ⚠️ 中     | 检查WHERE条件是否可以利用索引    |
+| **Using filesort**                        | 需要额外内存排序（***未用索引排序*** ）                      | ❌ 差     | 为ORDER BY字段添加索引           |
+| **Using temporary**                       | 需要创建临时表存储查询结果（***常见于 ORDER BY / GROUP BY*** ） | ❌ 差     | 优化GROUP BY字段顺序或添加索引   |
+| **Using join buffer (Block Nested Loop)** | 连表查询时使用了缓存块，通常因为 **被驱动表无索引** 时，MySQL先将驱动表读出放到 **join buffer** 中，**再遍历**被驱动表与驱动表进行查询 | ⚠️ 中     | 为关联字段添加索引               |
+| **Select tables optimized away**          | 查询已被优化到只需读取索引（如MIN/MAX使用索引）              | ✅ 极优   | 保持即可                         |
+
+这里提醒下，当 Extra 列包含 <span style="color: red"><b>Using filesort </b></span>或 <span style="color: red"><b>Using temporary</b></span> 时，MySQL 的性能可能会存在问题，需要尽可能避免。
+
+
+
+### 3. 案例 
+
+##### **索引对比说明**
+
+创建如下两个不同顺序的索引
 
 ```sql
-ANALYZE TABLE orders;
+CREATE INDEX idx_logrecord_query ON SyncLogRecord(log_type, analysis_job_id, flow_hidden,create_at);
+
+CREATE INDEX idx_logrecord_query5 ON SyncLogRecord(create_at, analysis_job_id, log_type, flow_hidden);
 ```
 
-`ANALYZE TABLE` 会影响优化器统计信息，生产执行前应了解表规模和版本行为。
-
-## 7. 联合索引案例
-
-查询如下：
+下面是使用两个索引的执行计划对比
 
 ```sql
-SELECT id, created_at
-FROM audit_logs
-WHERE log_type = 'video'
-  AND job_id = '87f15d0a5b7642eda557758905c68d90'
-  AND hidden = 0
-  AND created_at >= '2026-10-01'
-ORDER BY created_at DESC
-LIMIT 100;
+EXPLAIN SELECT COUNT(*) FROM `SyncLogRecord` force index(idx_logrecord_query)
+WHERE create_at >= '2025-07-10 12:34:43'
+AND create_at <= '2025-08-18 09:10:27'
+AND log_type = 'video'
+AND analysis_job_id='87f15d0a5b7642eda557758905c68d90'
+AND flow_hidden=0
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| id | select_type | table          | partitions | type  | possible_keys       | key                 | key_len | ref  | rows  | filtered | Extra                      |
+|----|-------------|----------------|------------|-------|---------------------|---------------------|---------|------|-------|----------|----------------------------|
+| 1  | `SIMPLE`    | SyncLogRecord  | `NULL`     | range | idx_logrecord_query | idx_logrecord_query | 2051    | NULL | 44909 | 100.00   | `Using where; Using index` |
+
+
+EXPLAIN SELECT COUNT(*) FROM `SyncLogRecord` force index(idx_logrecord_query5)
+WHERE create_at >= '2025-07-10 12:34:43'
+AND create_at <= '2025-08-18 09:10:27'
+AND log_type = 'video'
+AND analysis_job_id='87f15d0a5b7642eda557758905c68d90'
+AND flow_hidden=0
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| id | select_type | table          | partitions | type  | possible_keys       | key                 | key_len | ref  | rows  | filtered | Extra                      |
+|----|-------------|----------------|------------|-------|---------------------|---------------------|---------|------|-------|----------|----------------------------|
+| 1  | `SIMPLE`    | SyncLogRecord  | `NULL`     | range | idx_logrecord_query5| idx_logrecord_query5| 2051    | NULL | 44909 | 1.00     | `Using where; Using index` |
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
 ```
 
-候选索引：
-
-```sql
-KEY idx_log_job_hidden_created (
-  log_type,
-  job_id,
-  hidden,
-  created_at
-)
-```
-
-前三列是等值条件，随后是时间范围和排序列。这个顺序让 MySQL 能先缩小等值前缀，再扫描相邻的时间区间：
+如下实际索引和索引示意图
 
 ```mermaid
 flowchart TD
-    root[按 log_type 定位] --> job[按 job_id 定位]
-    job --> hidden[按 hidden 定位]
-    hidden --> time[扫描 created_at 范围]
-    time --> rows[取得主键或覆盖列]
+  %% 逻辑视图：按复合键 (log_type, analysis_job_id, flow_hidden, create_at) 的字典序组织
+  %% 内部页与叶子页都“存多条记录”；内部页记录形如：(部分键) -> 子页指针；叶子页记录形如：完整键 + 主键
+
+  subgraph P0["Root 内部页（多条记录）"]
+    P0i1["('image') -> P1"]
+    P0i2["('video') -> P2"]
+    P0i3["('voice') -> P3"]
+  end
+
+  P0 -->|log_type='image'| P1
+  P0 -->|log_type='video'| P2
+  P0 -->|log_type='voice'| P3
+  
+ subgraph P2I["内部页（按 ana_id 划分）"]
+    P2a["('video','87f15d...') -> P2A"]
+    P2b["('video','abc123...') -> P2B"]
+    P2c["('video','f9e8d7...') -> P2C"]
+  end
+
+  P2 --> P2I
+  P2I -->|analysis_job_id='87f15d0a5b7642eda557758905c68d90'| P2A
+  P2I --> P2B
+  P2I --> P2C
+  
+  subgraph P2A_I["内部页（再按 flow_..划分）"]
+    P2A0["('video','87f15d...',0) -> L20"]
+    P2A1["('video','87f15d...',1) -> L21"]
+  end
+
+  P2A --> P2A_I
+  P2A_I -->|flow_hidden=0| L20
+  P2A_I -->|flow_hidden=1| L21
+
+  %% 叶子页：存放完整复合键与主键，并有序双向链表
+  subgraph L20["叶子页,按 create_at 有序"]
+    L20r1["('video','87f15d...',0,'2025-07-10 12:34:43', PK=...)"]
+    L20r2["('video','87f15d...',0,'2025-07-11 00:00:00', PK=...)"]
+    L20r3["..."]
+    L20r4["('video','87f15d...',0,'2025-08-18 09:10:27', PK=...)"]
+  end
+
+  subgraph L21["叶子页,按其他 create_at 段"]
+    L21x["..."]
+  end
 ```
 
-但它是否是正确索引仍要回答：
+**1. 高效索引：** `(log_type, analysis_job_id, flow_hidden, create_at)` 
 
-- 各条件的选择性和数据分布如何？
-- 查询需要哪些返回列，是否会大量回表？
-- 相同前缀是否服务于其他高频查询？
-- 写放大、索引体积和缓存命中率是否可接受？
-- `EXPLAIN ANALYZE` 的实际行数、循环和耗时是否改善？
+```mermaid
+graph TD
+    Root[根节点] -->|log_type='video'| Node1[中间节点1]
+    Root -->|log_type='image'| Node2[中间节点2]
+    Node1 -->|analysis_job_id='87f15d...'| Leaf1[叶子节点1]
+    Node1 -->|analysis_job_id='abc123...'| Leaf2[叶子节点2]
+    Leaf1 -->|flow_hidden=0, create_at=2025-07-10| Data1[数据行1]
+    Leaf1 -->|flow_hidden=0, create_at=2025-07-11| Data2[数据行2]
+    Leaf1 -->|...| DataN[数据行N]
+    Leaf2 -->|...| DataX[其他数据]
+    style Leaf1 stroke:#0000ff,stroke-width:2px
+    style Data1 stroke:#0000ff,stroke-width:2px
+    style Data2 stroke:#0000ff,stroke-width:2px
+    style DataN stroke:#0000ff,stroke-width:2px
+      %% 全局节点背景色设置
+    style Root fill:#E6E6FA
+    style Node1 fill:#E6E6FA
+    style Node2 fill:#E6E6FA
+    style Leaf1 fill:#E6E6FA
+    style Leaf2 fill:#E6E6FA
+    style Data1 fill:#E6E6FA
+    style Data2 fill:#E6E6FA
+    style DataN fill:#E6E6FA
+    style DataX fill:#E6E6FA
+```
 
-不能把“等值列在前、范围列在后”机械应用于所有查询。索引顺序最终由访问模式与成本决定。
+**检索路径**（蓝色标注部分）
 
-## 8. 常见误判
+1. 从根节点定位 `log_type='video'` 的子树
+2. 在中间节点定位 `analysis_job_id='87f15d...'`
+3. 在叶子节点过滤 `flow_hidden=0`并扫描 `create_at`范围
+4. 直接返回匹配的连续数据块
 
-### 8.1 possible_keys 有索引，为什么 key 是 NULL
+**2. 低效索引：** `(create_at, analysis_job_id, log_type, flow_hidden)`
 
-优化器认为其他路径成本更低。可能是返回比例太高、表很小、统计估算如此，或索引回表成本过高。不要仅凭这一列强制索引。
+```mermaid
+graph TD
+    Root[根节点] -->|create_at=2025-01-01| Node1[中间节点1]
+    Root -->|create_at=2025-04-01| Node2[中间节点2]
+    Root -->|create_at=2025-07-10| Node3[中间节点3]
+    Node3 -->|create_at范围| Leaf1[叶子节点1]
+    Node3 -->|create_at范围| Leaf2[叶子节点2]
+    Leaf1 -->|analysis_job_id='123abc...', log_type='text'| Data1[不匹配]
+    Leaf1 -->|analysis_job_id='87f15d...', log_type='video'| Data2[需逐条检查]
+    Leaf2 -->|analysis_job_id='87f15d...', log_type='video'| Data3[需逐条检查]
+    style Leaf1 stroke:#ff0000,stroke-width:2px
+    style Leaf2 stroke:#ff0000,stroke-width:2px
+    style Data2 stroke:#ff0000,stroke-width:2px
+    style Data3 stroke:#ff0000,stroke-width:2px
+     %% 全局节点背景色设置
+    style Root fill:#E6E6FA
+    style Node1 fill:#E6E6FA
+    style Node2 fill:#E6E6FA
+    style Node3 fill:#E6E6FA
+    style Leaf1 fill:#E6E6FA
+    style Leaf2 fill:#E6E6FA
+    style Data1 fill:#E6E6FA
+    style Data2 fill:#E6E6FA
+    style Data3 fill:#E6E6FA
+```
 
-### 8.2 rows 很小，为什么仍然慢
+**检索路径**（红色标注部分）：
 
-`rows` 是估算，还可能忽略外层循环、锁等待、网络传输、磁盘抖动和结果处理。用 `EXPLAIN ANALYZE` 与性能监控交叉验证。
+1. 从根节点扫描 `create_at` 范围（*2025-07-10 到 2025-08-18*）
+2. 加载所有匹配的叶子节点（*44,909 行*）
+3. 对每行数据逐条检查：
+   - `if analysis_job_id='87f15d...'?`  
+   - `if log_type='video' ?` 
+   - `if flow_hidden=0 ?`  
+4. 最终返回匹配数据
 
-### 8.3 key_len 越长越好吗
+##### **关键差异对比及总结** 
 
-不是。它用于理解参与查找的键长度，受类型、字符集、可空性和索引前缀影响，不是性能评分。
+|         特性         |          高效索引          |                    低效索引                    |
+| :------------------: | :------------------------: | :--------------------------------------------: |
+|   **B+树组织方式**   |   按等值列分组后范围扫描   |             按范围列分组后逐条过滤             |
+| **叶子节点访问模式** |      顺序访问连续区块      |                随机访问分散节点                |
+|   **存储引擎过滤**   |      完全在索引层完成      | 仅能过滤 `create_at`，其他条件回 **Server** 层 |
+|     **I/O次数**      | 3-4次树高访问 + 少量顺序读 |           3-4次树高访问 + 大量随机读           |
 
-### 8.4 出现 Using filesort 就必须加索引吗
+1. **高效索引**
+   - 等值条件（`log_type`等）快速收敛到子树，**大幅减少扫描范围**
+   - 范围查询（`create_at`）仅在最终的小数据集上执行
+2. **低效索引**
+   - 范围查询前置导致**必须加载所有日期匹配的叶子节点**
+   - 后续等值条件无法利用索引有序性，变成**暴力扫描**
+3. **B+树特性**
+   - 非叶子节点仅存储导航键值，叶子节点通过链表连接
+   - **索引列顺序决定数据的物理排序方式**，影响检索路径
 
-不是。小结果集排序可能很便宜，而为低频查询增加宽索引会持续增加写入和存储成本。
+**为啥有 Using Where ？** 
 
-## 9. 一套可复用的分析流程
+**Using where 显示 ≠ 性能问题**，它表示读取后还需要应用条件。即使索引覆盖查询，也不能脱离数据量、条件复杂度和执行计划固定估算它的损耗。
 
-1. 从慢查询日志或链路追踪确认 SQL、参数、频率和端到端耗时。
-2. 查看表结构、索引、数据规模与字段分布。
-3. 运行 `EXPLAIN`，记录访问方法、索引、估算行数和额外操作。
-4. 在风险可控时运行 `EXPLAIN ANALYZE`，比较估算与实际。
-5. 只针对主要成本提出改动，并明确写入、存储和维护代价。
-6. 用相同数据、参数和并发条件复测，不只比较单次执行。
-7. 观察上线后的慢查询分布，确认没有把成本转移到其他 SQL。
+✅ `type=range`（已优化）
 
-更完整的证据采集、索引设计和配置边界见[MySQL 调优](./Mysql调优.md)。
+✅ `key_len`（完全覆盖）
 
-## 参考资料
-
-- [MySQL 8.4 EXPLAIN Statement](https://dev.mysql.com/doc/refman/8.4/en/explain.html)
-- [MySQL 8.4 Obtaining Execution Plan Information](https://dev.mysql.com/doc/refman/8.4/en/execution-plan-information.html)
-- [MySQL 8.4 Understanding the Query Execution Plan](https://dev.mysql.com/doc/refman/8.4/en/execution-plan-understanding.html)
+✅ `filtered=100%` 
