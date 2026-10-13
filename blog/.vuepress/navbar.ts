@@ -69,9 +69,11 @@ export default navbar([
     prefix: "/database/",
     children: [
       { text: "etcd", link: "etcd/etcd", icon: "etcd"},
+      { text: "Redis", link: "Redis/redis", icon: "redis" },
       { text: "MySQL", link: "MySQL/MySQL基础", icon: "mysql"},
-      { text: "Redis", link: "Redis/redis", icon: "redis"},
-      { text: "PostgreSQL", link: "PostgreSQL/PostgreSQL", icon: "postgresql"},
+      { text: "根上理解MySQL", icon: "mysql", link: "https://relph1119.github.io/mysql-learning-notes/#/" },
+      { text: "PostgreSQL", link: "PostgreSQL/PostgreSQL", icon: "postgresql" },
+      { text: "PG36计", icon: "postgresql", link: "https://pg36g.vonng.com/toc/" },
     ],
   },
   {
